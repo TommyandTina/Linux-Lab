@@ -1,0 +1,71 @@
+.build_template: &build_template
+  stage: build
+  tags:
+    - mylongtag
+  script:
+    - cd ${APP_DIR}
+    - echo ${APP_DIR}
+    - cmake . -DJOB_ID=$CI_JOB_ID
+    - make
+    - cd ..
+    - echo ${APP_DIR}
+  artifacts:
+    paths:
+      - ${APP_DIR}/bin/
+  rules:
+  - if: '$CI_PIPELINE_SOURCE == "web"'
+    when: manual
+  - if: '$CI_PIPELINE_SOURCE == "push"'
+    when: never
+
+build_hello_world_1:
+  <<: *build_template
+  variables:
+    APP_DIR: "hello_world_1"
+
+build_hello_world_2:
+  extends:
+    - .build_template
+  variables:
+    APP_DIR: "hello_world_2"
+      
+build_hello_world_3:
+  <<: *build_template
+  variables:
+    APP_DIR: "hello_world_3"
+
+# .build_template:
+#   stage: build
+#   tags:
+#     - mylongtag
+#   script:
+#     - cd ${APP_DIR}
+#     - mkdir build && cd build
+#     - cmake -DJOB_ID=${JOB_ID} ..
+#     - make
+#     - cd .. && ls
+#   artifacts:
+#     paths:
+#       - ${APP_DIR}/build/
+
+
+# build_hello_world_1:
+#   extends: 
+#     - .build_template
+#   variables:
+#     APP_DIR: "hello_world_1"
+#     JOB_ID: "1"
+
+# build_hello_world_2:
+#   extends: 
+#     - .build_template
+#   variables:
+#     APP_DIR: "hello_world_2"
+#     JOB_ID: "2"
+
+# build_hello_world_3:
+#   extends: 
+#     - .build_template
+#   variables:
+#     APP_DIR: "hello_world_3"
+#     JOB_ID: "3"
