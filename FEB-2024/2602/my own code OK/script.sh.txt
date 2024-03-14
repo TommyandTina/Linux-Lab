@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Get the file name from the script's argument
+file_name=$1
+
+# Initialize counters
+total_cases=0
+ok_cases=0
+failed_cases=0
+
+# Read the file line by line
+while IFS= read -r line
+do
+  total_cases=$((total_cases+1))
+  if [[ $line == *"OK"* ]]; then
+    ok_cases=$((ok_cases+1))
+  elif [[ $line == *"FAILED"* ]]; then
+    failed_cases=$((failed_cases+1))
+  fi
+done < "$file_name"
+
+# Print the results
+echo "Total cases: $total_cases"
+echo -e "OK cases: \033[0;32m$ok_cases\033[0m"
+echo -e "FAILED cases: \033[0;31m$failed_cases\033[0m"

@@ -1,0 +1,11 @@
+/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/CMakeFiles/edit_cache.dir
+/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/CMakeFiles/rebuild_cache.dir
+/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/hello_world_1/CMakeFiles/hello_world_1.dir
+/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/hello_world_1/CMakeFiles/edit_cache.dir
+/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/hello_world_1/CMakeFiles/rebuild_cache.dir
+/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/hello_world_2/CMakeFiles/hello_world_2.dir
+/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/hello_world_2/CMakeFiles/edit_cache.dir
+/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/hello_world_2/CMakeFiles/rebuild_cache.dir
+/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/hello_world_3/CMakeFiles/hello_world_3.dir
+/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/hello_world_3/CMakeFiles/edit_cache.dir
+/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/hello_world_3/CMakeFiles/rebuild_cache.dir

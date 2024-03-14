@@ -1,0 +1,12 @@
+# Define the common build stage
+# extemp.gitlab-ci.yml
+stages:
+  - build
+
+.build_template:
+  stage: build
+  script:
+    - echo "Building Extern Template"
+
+
+# Extend this template to define specific jobs for each application

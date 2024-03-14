@@ -1,0 +1,16 @@
+
+See 'systemctl status psplash-start.service' for details.
+[DEPEND] Dependency failed for Star▒…progress communication helper.
+[  OK  ] Started Load Kernel Modules.
+
+
+
+
+
+
+
+
+[FAILED]
+
+
+

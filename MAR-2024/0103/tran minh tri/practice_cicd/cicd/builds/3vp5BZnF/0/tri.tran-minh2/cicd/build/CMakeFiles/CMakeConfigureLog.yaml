@@ -1,0 +1,529 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake:233 (message)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      The system is: Linux - 5.4.0-150-generic - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /usr/bin/cc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is GNU, found in:
+        /home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/CMakeFiles/3.28.3/CompilerIdC/a.out
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /usr/bin/c++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is GNU, found in:
+        /home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/CMakeFiles/3.28.3/CompilerIdCXX/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/CMakeFiles/CMakeScratch/TryCompile-kjaYoS"
+      binary: "/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/CMakeFiles/CMakeScratch/TryCompile-kjaYoS"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/CMakeFiles/CMakeScratch/TryCompile-kjaYoS'
+        
+        Run Build Command(s): /snap/cmake/1366/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_46c64/fast
+        /usr/bin/make  -f CMakeFiles/cmTC_46c64.dir/build.make CMakeFiles/cmTC_46c64.dir/build
+        make[1]: Entering directory '/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/CMakeFiles/CMakeScratch/TryCompile-kjaYoS'
+        Building C object CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o
+        /usr/bin/cc   -v -o CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o -c /snap/cmake/1366/share/cmake-3.28/Modules/CMakeCCompilerABI.c
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        Target: x86_64-pc-linux-gnu
+        Configured with: ../configure --prefix=/home/socmember/soc_dyle/test_pkc/local_lsd/usr --disable-multilib --with-system-zlib --enable-languages=c,c++,d,fortran,go,objc,obj-c++ --program-suffix=-9.3.0
+        Thread model: posix
+        gcc version 9.3.0 (GCC) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+         /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/cc1 -quiet -v -imultiarch x86_64-linux-gnu -iprefix /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/ /snap/cmake/1366/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o -version -o /tmp/ccyZ8fCP.s
+        GNU C17 (GCC) version 9.3.0 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 9.3.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../x86_64-pc-linux-gnu/include"
+        ignoring duplicate directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include"
+        ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
+        ignoring duplicate directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed"
+        ignoring nonexistent directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../x86_64-pc-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include
+         /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed
+         /usr/local/include
+         /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../include
+         /usr/include/x86_64-linux-gnu
+         /usr/include
+        End of search list.
+        GNU C17 (GCC) version 9.3.0 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 9.3.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: 581edd3f807fb413ea51140b959ebb89
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+         as -v --64 -o CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o /tmp/ccyZ8fCP.s
+        GNU assembler version 2.30 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.30
+        COMPILER_PATH=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/
+        LIBRARY_PATH=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64/:/lib/x86_64-linux-gnu/:/lib/../lib64/:/usr/lib/x86_64-linux-gnu/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+        Linking C executable cmTC_46c64
+        /snap/cmake/1366/bin/cmake -E cmake_link_script CMakeFiles/cmTC_46c64.dir/link.txt --verbose=1
+        /usr/bin/cc  -v CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o -o cmTC_46c64 
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        COLLECT_LTO_WRAPPER=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/lto-wrapper
+        Target: x86_64-pc-linux-gnu
+        Configured with: ../configure --prefix=/home/socmember/soc_dyle/test_pkc/local_lsd/usr --disable-multilib --with-system-zlib --enable-languages=c,c++,d,fortran,go,objc,obj-c++ --program-suffix=-9.3.0
+        Thread model: posix
+        gcc version 9.3.0 (GCC) 
+        COMPILER_PATH=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/
+        LIBRARY_PATH=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64/:/lib/x86_64-linux-gnu/:/lib/../lib64/:/usr/lib/x86_64-linux-gnu/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_46c64' '-mtune=generic' '-march=x86-64'
+         /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/collect2 -plugin /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/liblto_plugin.so -plugin-opt=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cc0LquX7.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_46c64 /usr/lib/x86_64-linux-gnu/crt1.o /usr/lib/x86_64-linux-gnu/crti.o /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtbegin.o -L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0 -L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc -L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../.. CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtend.o /usr/lib/x86_64-linux-gnu/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_46c64' '-mtune=generic' '-march=x86-64'
+        make[1]: Leaving directory '/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/CMakeFiles/CMakeScratch/TryCompile-kjaYoS'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include]
+          add: [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed]
+          add: [/usr/local/include]
+          add: [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../include]
+          add: [/usr/include/x86_64-linux-gnu]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include]
+        collapse include dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../include] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/include]
+        collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include;/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed;/usr/local/include;/home/socadmin/Temp/usr/local/gcc-9.3.0/include;/usr/include/x86_64-linux-gnu;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:159 (message)"
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/CMakeFiles/CMakeScratch/TryCompile-kjaYoS']
+        ignore line: []
+        ignore line: [Run Build Command(s): /snap/cmake/1366/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_46c64/fast]
+        ignore line: [/usr/bin/make  -f CMakeFiles/cmTC_46c64.dir/build.make CMakeFiles/cmTC_46c64.dir/build]
+        ignore line: [make[1]: Entering directory '/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/CMakeFiles/CMakeScratch/TryCompile-kjaYoS']
+        ignore line: [Building C object CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o -c /snap/cmake/1366/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/cc]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: ../configure --prefix=/home/socmember/soc_dyle/test_pkc/local_lsd/usr --disable-multilib --with-system-zlib --enable-languages=c c++ d fortran go objc obj-c++ --program-suffix=-9.3.0]
+        ignore line: [Thread model: posix]
+        ignore line: [gcc version 9.3.0 (GCC) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+        ignore line: [ /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/cc1 -quiet -v -imultiarch x86_64-linux-gnu -iprefix /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/ /snap/cmake/1366/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o -version -o /tmp/ccyZ8fCP.s]
+        ignore line: [GNU C17 (GCC) version 9.3.0 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 9.3.0  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [ignoring duplicate directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include"]
+        ignore line: [ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"]
+        ignore line: [ignoring duplicate directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed"]
+        ignore line: [ignoring nonexistent directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include]
+        ignore line: [ /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../include]
+        ignore line: [ /usr/include/x86_64-linux-gnu]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [GNU C17 (GCC) version 9.3.0 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 9.3.0  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: 581edd3f807fb413ea51140b959ebb89]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o /tmp/ccyZ8fCP.s]
+        ignore line: [GNU assembler version 2.30 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.30]
+        ignore line: [COMPILER_PATH=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/]
+        ignore line: [LIBRARY_PATH=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64/:/lib/x86_64-linux-gnu/:/lib/../lib64/:/usr/lib/x86_64-linux-gnu/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+        ignore line: [Linking C executable cmTC_46c64]
+        ignore line: [/snap/cmake/1366/bin/cmake -E cmake_link_script CMakeFiles/cmTC_46c64.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/cc  -v CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o -o cmTC_46c64 ]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/cc]
+        ignore line: [COLLECT_LTO_WRAPPER=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/lto-wrapper]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: ../configure --prefix=/home/socmember/soc_dyle/test_pkc/local_lsd/usr --disable-multilib --with-system-zlib --enable-languages=c c++ d fortran go objc obj-c++ --program-suffix=-9.3.0]
+        ignore line: [Thread model: posix]
+        ignore line: [gcc version 9.3.0 (GCC) ]
+        ignore line: [COMPILER_PATH=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/]
+        ignore line: [LIBRARY_PATH=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64/:/lib/x86_64-linux-gnu/:/lib/../lib64/:/usr/lib/x86_64-linux-gnu/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_46c64' '-mtune=generic' '-march=x86-64']
+        link line: [ /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/collect2 -plugin /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/liblto_plugin.so -plugin-opt=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cc0LquX7.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_46c64 /usr/lib/x86_64-linux-gnu/crt1.o /usr/lib/x86_64-linux-gnu/crti.o /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtbegin.o -L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0 -L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc -L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../.. CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtend.o /usr/lib/x86_64-linux-gnu/crtn.o]
+          arg [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cc0LquX7.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_46c64] ==> ignore
+          arg [/usr/lib/x86_64-linux-gnu/crt1.o] ==> obj [/usr/lib/x86_64-linux-gnu/crt1.o]
+          arg [/usr/lib/x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/x86_64-linux-gnu/crti.o]
+          arg [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtbegin.o] ==> obj [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtbegin.o]
+          arg [-L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0] ==> dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0]
+          arg [-L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc] ==> dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc]
+          arg [-L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64] ==> dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64]
+          arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+          arg [-L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../..] ==> dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../..]
+          arg [CMakeFiles/cmTC_46c64.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [-lc] ==> lib [c]
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtend.o] ==> obj [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtend.o]
+          arg [/usr/lib/x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/x86_64-linux-gnu/crtn.o]
+        collapse obj [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtbegin.o] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtbegin.o]
+        collapse obj [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtend.o] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtend.o]
+        collapse library dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0]
+        collapse library dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc]
+        collapse library dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib64]
+        collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../..] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib]
+        implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+        implicit objs: [/usr/lib/x86_64-linux-gnu/crt1.o;/usr/lib/x86_64-linux-gnu/crti.o;/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtbegin.o;/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtend.o;/usr/lib/x86_64-linux-gnu/crtn.o]
+        implicit dirs: [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0;/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc;/home/socadmin/Temp/usr/local/gcc-9.3.0/lib64;/lib/x86_64-linux-gnu;/lib64;/usr/lib/x86_64-linux-gnu;/home/socadmin/Temp/usr/local/gcc-9.3.0/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/CMakeFiles/CMakeScratch/TryCompile-AC5suQ"
+      binary: "/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/CMakeFiles/CMakeScratch/TryCompile-AC5suQ"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/CMakeFiles/CMakeScratch/TryCompile-AC5suQ'
+        
+        Run Build Command(s): /snap/cmake/1366/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_af533/fast
+        /usr/bin/make  -f CMakeFiles/cmTC_af533.dir/build.make CMakeFiles/cmTC_af533.dir/build
+        make[1]: Entering directory '/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/CMakeFiles/CMakeScratch/TryCompile-AC5suQ'
+        Building CXX object CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o
+        /usr/bin/c++   -v -o CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o -c /snap/cmake/1366/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/c++
+        Target: x86_64-pc-linux-gnu
+        Configured with: ../configure --prefix=/home/socmember/soc_dyle/test_pkc/local_lsd/usr --disable-multilib --with-system-zlib --enable-languages=c,c++,d,fortran,go,objc,obj-c++ --program-suffix=-9.3.0
+        Thread model: posix
+        gcc version 9.3.0 (GCC) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+         /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -iprefix /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/ -D_GNU_SOURCE /snap/cmake/1366/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o -version -o /tmp/ccTKqnCX.s
+        GNU C++14 (GCC) version 9.3.0 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 9.3.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../x86_64-pc-linux-gnu/include"
+        ignoring duplicate directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0"
+        ignoring duplicate directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0/x86_64-pc-linux-gnu"
+        ignoring duplicate directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0/backward"
+        ignoring duplicate directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include"
+        ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
+        ignoring duplicate directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed"
+        ignoring nonexistent directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../x86_64-pc-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0
+         /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0/x86_64-pc-linux-gnu
+         /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0/backward
+         /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include
+         /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed
+         /usr/local/include
+         /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../include
+         /usr/include/x86_64-linux-gnu
+         /usr/include
+        End of search list.
+        GNU C++14 (GCC) version 9.3.0 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 9.3.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: 175d02e0cb46c3653dd9189310dc9e3d
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+         as -v --64 -o CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccTKqnCX.s
+        GNU assembler version 2.30 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.30
+        COMPILER_PATH=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/
+        LIBRARY_PATH=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64/:/lib/x86_64-linux-gnu/:/lib/../lib64/:/usr/lib/x86_64-linux-gnu/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+        Linking CXX executable cmTC_af533
+        /snap/cmake/1366/bin/cmake -E cmake_link_script CMakeFiles/cmTC_af533.dir/link.txt --verbose=1
+        /usr/bin/c++  -v CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_af533 
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/c++
+        COLLECT_LTO_WRAPPER=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/lto-wrapper
+        Target: x86_64-pc-linux-gnu
+        Configured with: ../configure --prefix=/home/socmember/soc_dyle/test_pkc/local_lsd/usr --disable-multilib --with-system-zlib --enable-languages=c,c++,d,fortran,go,objc,obj-c++ --program-suffix=-9.3.0
+        Thread model: posix
+        gcc version 9.3.0 (GCC) 
+        COMPILER_PATH=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/
+        LIBRARY_PATH=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64/:/lib/x86_64-linux-gnu/:/lib/../lib64/:/usr/lib/x86_64-linux-gnu/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_af533' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+         /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/collect2 -plugin /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/liblto_plugin.so -plugin-opt=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccVS20uY.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_af533 /usr/lib/x86_64-linux-gnu/crt1.o /usr/lib/x86_64-linux-gnu/crti.o /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtbegin.o -L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0 -L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc -L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../.. CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtend.o /usr/lib/x86_64-linux-gnu/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_af533' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+        make[1]: Leaving directory '/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/CMakeFiles/CMakeScratch/TryCompile-AC5suQ'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0]
+          add: [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0/x86_64-pc-linux-gnu]
+          add: [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0/backward]
+          add: [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include]
+          add: [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed]
+          add: [/usr/local/include]
+          add: [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../include]
+          add: [/usr/include/x86_64-linux-gnu]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/include/c++/9.3.0]
+        collapse include dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0/x86_64-pc-linux-gnu] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/include/c++/9.3.0/x86_64-pc-linux-gnu]
+        collapse include dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0/backward] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/include/c++/9.3.0/backward]
+        collapse include dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include]
+        collapse include dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../include] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/include]
+        collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/home/socadmin/Temp/usr/local/gcc-9.3.0/include/c++/9.3.0;/home/socadmin/Temp/usr/local/gcc-9.3.0/include/c++/9.3.0/x86_64-pc-linux-gnu;/home/socadmin/Temp/usr/local/gcc-9.3.0/include/c++/9.3.0/backward;/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include;/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed;/usr/local/include;/home/socadmin/Temp/usr/local/gcc-9.3.0/include;/usr/include/x86_64-linux-gnu;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:159 (message)"
+      - "/snap/cmake/1366/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/CMakeFiles/CMakeScratch/TryCompile-AC5suQ']
+        ignore line: []
+        ignore line: [Run Build Command(s): /snap/cmake/1366/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_af533/fast]
+        ignore line: [/usr/bin/make  -f CMakeFiles/cmTC_af533.dir/build.make CMakeFiles/cmTC_af533.dir/build]
+        ignore line: [make[1]: Entering directory '/home/tri.tran-minh2/cicd/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/CMakeFiles/CMakeScratch/TryCompile-AC5suQ']
+        ignore line: [Building CXX object CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/usr/bin/c++   -v -o CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o -c /snap/cmake/1366/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/c++]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: ../configure --prefix=/home/socmember/soc_dyle/test_pkc/local_lsd/usr --disable-multilib --with-system-zlib --enable-languages=c c++ d fortran go objc obj-c++ --program-suffix=-9.3.0]
+        ignore line: [Thread model: posix]
+        ignore line: [gcc version 9.3.0 (GCC) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+        ignore line: [ /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -iprefix /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/ -D_GNU_SOURCE /snap/cmake/1366/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o -version -o /tmp/ccTKqnCX.s]
+        ignore line: [GNU C++14 (GCC) version 9.3.0 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 9.3.0  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [ignoring duplicate directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0"]
+        ignore line: [ignoring duplicate directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0/x86_64-pc-linux-gnu"]
+        ignore line: [ignoring duplicate directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0/backward"]
+        ignore line: [ignoring duplicate directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include"]
+        ignore line: [ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"]
+        ignore line: [ignoring duplicate directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed"]
+        ignore line: [ignoring nonexistent directory "/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0]
+        ignore line: [ /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0/x86_64-pc-linux-gnu]
+        ignore line: [ /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0/backward]
+        ignore line: [ /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include]
+        ignore line: [ /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/../../include]
+        ignore line: [ /usr/include/x86_64-linux-gnu]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [GNU C++14 (GCC) version 9.3.0 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 9.3.0  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: 175d02e0cb46c3653dd9189310dc9e3d]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccTKqnCX.s]
+        ignore line: [GNU assembler version 2.30 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.30]
+        ignore line: [COMPILER_PATH=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/]
+        ignore line: [LIBRARY_PATH=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64/:/lib/x86_64-linux-gnu/:/lib/../lib64/:/usr/lib/x86_64-linux-gnu/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+        ignore line: [Linking CXX executable cmTC_af533]
+        ignore line: [/snap/cmake/1366/bin/cmake -E cmake_link_script CMakeFiles/cmTC_af533.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/c++  -v CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_af533 ]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/c++]
+        ignore line: [COLLECT_LTO_WRAPPER=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/lto-wrapper]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: ../configure --prefix=/home/socmember/soc_dyle/test_pkc/local_lsd/usr --disable-multilib --with-system-zlib --enable-languages=c c++ d fortran go objc obj-c++ --program-suffix=-9.3.0]
+        ignore line: [Thread model: posix]
+        ignore line: [gcc version 9.3.0 (GCC) ]
+        ignore line: [COMPILER_PATH=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/]
+        ignore line: [LIBRARY_PATH=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64/:/lib/x86_64-linux-gnu/:/lib/../lib64/:/usr/lib/x86_64-linux-gnu/:/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_af533' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+        link line: [ /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/collect2 -plugin /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/liblto_plugin.so -plugin-opt=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccVS20uY.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_af533 /usr/lib/x86_64-linux-gnu/crt1.o /usr/lib/x86_64-linux-gnu/crti.o /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtbegin.o -L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0 -L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc -L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../.. CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtend.o /usr/lib/x86_64-linux-gnu/crtn.o]
+          arg [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../libexec/gcc/x86_64-pc-linux-gnu/9.3.0/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccVS20uY.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_af533] ==> ignore
+          arg [/usr/lib/x86_64-linux-gnu/crt1.o] ==> obj [/usr/lib/x86_64-linux-gnu/crt1.o]
+          arg [/usr/lib/x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/x86_64-linux-gnu/crti.o]
+          arg [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtbegin.o] ==> obj [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtbegin.o]
+          arg [-L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0] ==> dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0]
+          arg [-L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc] ==> dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc]
+          arg [-L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64] ==> dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64]
+          arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+          arg [-L/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../..] ==> dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../..]
+          arg [CMakeFiles/cmTC_af533.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtend.o] ==> obj [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtend.o]
+          arg [/usr/lib/x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/x86_64-linux-gnu/crtn.o]
+        collapse obj [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtbegin.o] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtbegin.o]
+        collapse obj [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtend.o] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtend.o]
+        collapse library dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0]
+        collapse library dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc]
+        collapse library dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib64]
+        collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/home/socadmin/Temp/usr/local/gcc-9.3.0/bin/../lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../..] ==> [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib]
+        implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+        implicit objs: [/usr/lib/x86_64-linux-gnu/crt1.o;/usr/lib/x86_64-linux-gnu/crti.o;/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtbegin.o;/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/crtend.o;/usr/lib/x86_64-linux-gnu/crtn.o]
+        implicit dirs: [/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0;/home/socadmin/Temp/usr/local/gcc-9.3.0/lib/gcc;/home/socadmin/Temp/usr/local/gcc-9.3.0/lib64;/lib/x86_64-linux-gnu;/lib64;/usr/lib/x86_64-linux-gnu;/home/socadmin/Temp/usr/local/gcc-9.3.0/lib]
+        implicit fwks: []
+      
+      
+...

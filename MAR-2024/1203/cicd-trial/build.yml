@@ -1,0 +1,7 @@
+build_job:
+  stage: build
+  script:
+    - mkdir build
+    - cd build
+    - cmake .. -DJOB_ID=$CI_JOB_ID
+    - make

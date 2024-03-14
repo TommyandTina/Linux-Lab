@@ -1,0 +1,44 @@
+/dts-v1/;
+/ {
+    compatible = "BV,Yellow's BV";
+
+    cpus {
+        cpu@0 {
+            compatible = "arm,cortex-a9";
+            reg = <0>;
+        };
+        cpu@1 {
+            compatible = "arm,cortex-a9";
+            reg = <1>;
+        };
+    };
+
+    serial@101B1000 {
+        compatible = "arm,bv011";
+        reg = <0x101B1000>;
+    };
+
+    serial@101B2000 {
+        compatible = "arm,bv011";
+        reg = <0x101B2000>;
+    };
+
+    gpio@101B3000 {
+        compatible = "arm,bv061";
+        reg = <0x101B3000>;
+    };
+
+    spi@10180000 {
+        compatible = "arm,bv022";
+        reg = <0x10180000>;
+    };
+
+    i2c@10190000 {
+        compatible = "bv,bv-i2c-bus";
+        reg = <0x10190000>;
+        ds1338@58 {
+            compatible = "bv,ds1338";
+            reg = <0x58>;
+        };
+    };
+};

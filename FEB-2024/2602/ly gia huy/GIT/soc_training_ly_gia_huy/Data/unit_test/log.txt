@@ -1,0 +1,46 @@
+[I][==========] RunAllTests() START
+[I][----------] 4 tests from UT_check_image_and_square
+[I][ RUN      ] UT_check_image_and_square_RPI3.check_image_and_square_0001
+[V]<OK> ReturnValue [output] 0xFFFFFFFF(-1) <==> [expected] 0xFFFFFFFF(-1)
+[V]<OK> *p_config [output] null(-84279296) <==> [expected] null(-84279296)
+[V][ RESULT   ] check_image_and_square-0001: OK
+[          OK ] UT_check_image_and_square_RPI3.check_image_and_square_0001
+[I][ RUN      ] UT_check_image_and_square_RPI3.check_image_and_square_0002
+[V]<OK> ReturnValue [output] 0xFFFFFFFF(-1) <==> [expected] 0xFFFFFFFF(-1)
+[V]<OK> *p_config [output] not null(-84279295) <==> [expected] not null(-84279295)
+[V][ RESULT   ] check_image_and_square-0002: OK
+[          OK ] UT_check_image_and_square_RPI3.check_image_and_square_0002
+[I][ RUN      ] UT_check_image_and_square_RPI3.check_image_and_square_0003
+[V]<OK> ReturnValue [output] 0x00000000(0) <==> [expected] 0x00000000(0)
+[V]<OK> *p_config [output] not null(-84279295) <==> [expected] not null(-84279295)
+[V]<OK> *p_config.width_of_image [output] 0x00000064(100) <==> [expected] 0x00000064(100)
+[V]<OK> *p_config.height_of_image [output] 0x000000C8(200) <==> [expected] 0x000000C8(200)
+[V][ RESULT   ] check_image_and_square-0003: OK
+[          OK ] UT_check_image_and_square_RPI3.check_image_and_square_0003
+[I][ RUN      ] UT_check_image_and_square_RPI3.check_image_and_square_0004
+[V]<OK> ReturnValue [output] 0x00000000(0) <==> [expected] 0x00000000(0)
+[V]<OK> *p_config [output] not null(-84279295) <==> [expected] not null(-84279295)
+[V]<OK> *p_config.width_of_image [output] 0x00000096(150) <==> [expected] 0x00000096(150)
+[V]<OK> *p_config.height_of_image [output] 0x000000FA(250) <==> [expected] 0x000000FA(250)
+[V][ RESULT   ] check_image_and_square-0004: OK
+[          OK ] UT_check_image_and_square_RPI3.check_image_and_square_0004
+[I][----------] 4 tests from UT_check_image_and_square
+[I][ PASSED   ] 4 tests from UT_check_image_and_square
+[I][ Result   ] UT_check_image_and_square : OK = 4, NG = 0, Skip = 0
+
+[I][==========] RunAllTests() END
+[I][==========] TEST SUMMARY
+[SUMMARY-START]
+  [TOTAL-TC-DETECTED]           4
+    [TOTAL-TC-NOT-EXEC]         -
+      [TOTAL-TC-ARGS-FILTER]    -
+      [TOTAL-TC-ENV-FILTER]     -
+      [TOTAL-TC-SKIP]           -
+    [TOTAL-TC-EXEC]             4
+      [TOTAL-TC-PASS]           4
+      [TOTAL-TC-FAIL]           0
+      [TOTAL-TC-ERR]            -
+      [TOTAL-TC-INCONSISTENCY]  -
+  [TEST-DURATION-US]            -
+  [EXIT-CODE]                   0
+[SUMMARY-END]

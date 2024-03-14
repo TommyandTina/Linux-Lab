@@ -1,0 +1,1 @@
+cmd_/home/nfs/rpi3/01-b8-27-eb-01-e2-f8/long.trinh-tien/home/root/finalTestex2/Module.symvers := sed 's/ko$$/o/' /home/nfs/rpi3/01-b8-27-eb-01-e2-f8/long.trinh-tien/home/root/finalTestex2/modules.order | scripts/mod/modpost -m -a   -o /home/nfs/rpi3/01-b8-27-eb-01-e2-f8/long.trinh-tien/home/root/finalTestex2/Module.symvers -e -i Module.symvers   -T -

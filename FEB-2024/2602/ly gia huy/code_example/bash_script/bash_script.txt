@@ -1,0 +1,9 @@
+$#: đại diện cho số lượng các đối số truyền vào. VD:./my_script.sh arg1 arg2 arg3 --> $# = 3
+$0: giá trị đối số 0
+if [ -e "$file_path" ]: this command use to check for path existence. True -> exists
+if [! -e "$file_path" ]: True -> non-exists
+IFS= read -r line: reads one line from the input files and stores it in the variable 'line'
+percent=$(echo "scale=$decimals; $i / $total * 100" | bc) với decimals=1, i=20, total=80 ->echo $percent=25.0%, khi định nghĩa scale và |bc kèm sau, thì sẽ định nghĩa chữ số thập phân sau dấu phẩy
+"\r" :using the \r character to keep the updates in one line
+chú ý khi truyền tham số vào function: ví dụ truyền tham số vào hàm (string_read "$1" "$3") thì để lấy ra tham số sẽ là $1 và $2
+

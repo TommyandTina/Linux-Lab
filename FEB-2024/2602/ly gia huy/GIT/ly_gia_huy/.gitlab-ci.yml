@@ -1,0 +1,119 @@
+# .gitlab-ci.yml
+# stages:
+#   - build
+#   - test
+
+# variables:
+#   MY_VARIABLE: "Hello from build stage!"
+
+# # Stage: Build
+# build:
+#   stage: build
+#   script:
+#     - MY_VARIABLE=NONONO
+#     - echo $MY_VARIABLE >> my_variable.txt
+
+#   artifacts:
+#     paths:
+#       - my_variable.txt
+
+# # Stage: Test
+# test:
+#   stage: test
+#   dependencies:
+#     - build
+#   script:
+#     - cat my_variable.txt
+
+# # .gitlab-ci.yml
+# stages:
+#   - build
+#   - test
+# include:
+#   - local: 'build.yml'
+#   - local: 'test.yml'
+
+# # .gitlab-ci.yml
+# include:
+#     - local: 'build.yml'
+
+# # Job 1: Build Application 1
+# job_build_app1:
+#   extends: .build_template
+#   variables:
+#     APP_NAME: "Application 1"
+#   script:
+#     - echo "Executing $APP_NAME"
+
+# # Job 2: Build Application 2
+# job_build_app2:
+#   extends: .build_template
+#   variables:
+#     APP_NAME: "Application 2"
+#   script:
+#     - echo "Executing $APP_NAME"
+
+# # Job 3: Build Application 3
+# job_build_app3:
+#   extends: .build_template
+#   variables:
+#     APP_NAME: "Application 3"
+#   script:
+#     - echo "Executing $APP_NAME"
+
+# .gitlab-ci.yml
+stages:
+  - build
+  - test
+
+include:
+  - local: 'build.yml'
+  - local: 'test.yml'
+
+# .gitlab-ci.yml
+# stages:
+#   - build
+
+# job_build_app1:
+#   stage: build
+#   script:
+#     - echo "Executing $APP_NAME"
+#   except:
+#     variables:
+#       - $CI_PIPELINE_SOURCE == "push"
+
+# # Job 2: Build Application 2
+# job_build_app2:
+#   stage: build
+#   script:
+#     - echo "Executing $APP_NAME"
+#     - CI_PIPELINE_SOURCE=push
+
+# .gitlab-ci.yml
+# stages:
+#   - build
+#   - test
+
+# build:
+#   stage: build
+#   script:
+#     - echo "Building all applications..."
+
+# hello_world_1:
+#   stage: test
+#   script:
+#     - echo "Running tests for hello_world_1..."
+
+# hello_world_2:
+#   stage: test
+#   allow_failure: true
+#   script:
+#     - echo "Running tests for hello_world_2..."
+#     - cd run
+
+# hello_world_3:
+#   stage: test
+#   script:
+#     - echo "Okee..."
+#   needs:
+#     - hello_world_1

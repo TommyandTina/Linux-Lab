@@ -1,0 +1,28 @@
+# test_applications:
+#   stage: test
+#   script:
+#     - cd /build/bin
+#     - ./hello_wolrd_1 
+#     - ./hello_wolrd_2
+#     - ./hello_wolrd_3
+#   dependencies:
+#     - build_applications
+
+# build_applications:
+#   stage: build
+#   script:
+#     - mkdir build
+#     - cd build
+#     - cmake .. -DJOB_ID=$CI_JOB_ID
+#     - make
+#   artifacts:
+#     paths:
+#       - build/
+
+stages:
+  - build
+
+job1:
+  stage: build
+  script:
+    - echo "This is a file yml for test"

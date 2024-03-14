@@ -1,0 +1,58 @@
+# build.yml
+
+build_applications:
+  image: cmake:latest
+  stage: build
+  script:
+    - cd exercise_cicd/
+    - rm -rf build
+    - mkdir build
+    - cd build
+    - cmake ../ -DJOB_ID=$CI_JOB_ID
+    - cmake --build .
+  artifacts:
+    paths:
+      - exercise_cicd/build/bin/
+
+# # build.yml
+# stages:
+#   - build
+
+# .build_script_template:
+#   stage: build
+#   script:
+#     - cd $DIRECTORY
+#     - rm -rf build
+#     - mkdir build
+#     - cd build
+#     - cmake ../ -DJOB_ID=$CI_JOB_ID
+#     - cmake --build .
+#     - echo "I'm done $VALUE"
+#   artifacts:
+#     paths:
+#       - ${DIRECTORY}/build/bin/
+
+# hello_world_1:
+#   stage: build
+#   variables:
+#     DIRECTORY: "exercise_cicd/hello_world_1/"
+#     VALUE: 1
+#   extends: .build_script_template
+
+# hello_world_2:
+#   stage: build
+#   variables:
+#     DIRECTORY: "exercise_cicd/hello_world_2/"
+#     VALUE: 2
+#   extends: .build_script_template
+#   needs:
+#     - hello_world_1
+
+# hello_world_3:
+#   stage: build
+#   variables:
+#     DIRECTORY: "exercise_cicd/hello_world_3/"
+#     VALUE: 3
+#   extends: .build_script_template
+#   needs:
+#     - hello_world_2

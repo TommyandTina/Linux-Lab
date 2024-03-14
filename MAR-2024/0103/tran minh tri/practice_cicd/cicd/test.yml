@@ -1,0 +1,48 @@
+# test_applications:
+#   stage: test
+#   script:
+#     - /home/tri.tran-minh2/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/bin/hello_world_1 > hello_world_1_output.txt
+#     - /home/tri.tran-minh2/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/bin/hello_world_2 > hello_world_2_output.txt
+#     - /home/tri.tran-minh2/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/bin/hello_world_3 > hello_world_3_output.txt
+#   dependencies:
+#     - build_applications
+#   artifacts:
+#     paths:
+#       - hello_world_1_output.txt
+#       - hello_world_2_output.txt
+#       - hello_world_3_output.txt
+
+.test_template:
+  stage: test
+  script:
+    - /home/tri.tran-minh2/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/bin/hello_world_1
+    - /home/tri.tran-minh2/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/bin/hello_world_2
+    - /home/tri.tran-minh2/builds/3vp5BZnF/0/tri.tran-minh2/cicd/build/bin/hello_world_3
+  dependencies:
+    - build_applications
+  when: manual
+
+test_hello_world_1:
+  extends: 
+    - .test_template
+  variables:
+    APP_DIR: "hello_world_1"
+
+test_hello_world_2:
+  extends: 
+    - .test_template
+  script: 
+    - invalid_command
+  variables:
+    APP_DIR: "hello_world_2"
+  allow_failure: true
+    
+test_hello_world_3:
+  extends: 
+    - .test_template
+  script: 
+    - invalid_command
+  variables:
+    APP_DIR: "hello_world_3"
+  allow_failure: false
+  

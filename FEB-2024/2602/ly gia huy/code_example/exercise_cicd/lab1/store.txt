@@ -1,0 +1,85 @@
+# build.yml
+
+build_applications:
+  image: cmake:latest
+  stage: build
+  script:
+    - cd exercise_cicd/lab1
+    - rm -rf build
+    - mkdir build
+    - cd build
+    - cmake ../ -DJOB_ID=$CI_JOB_ID
+    - cmake --build .
+
+  # artifacts:
+  #   paths:
+  #     - build/bin/
+  # tags:
+  #   - docker
+  # dependencies: []
+
+
+********************
+# test.yml
+
+test_applications:
+  image: cmake:latest
+  stage: test
+  script:
+    - cd exercise_cicd/lab1/build/bin
+    - ./hello_world_1
+    - ./hello_world_1
+    - ./hello_world_2
+    - ./hello_world_3
+  dependencies:
+    - build_applications
+# test.yml
+# stages:
+#   - build
+
+# # Define the common build job template
+# .build_template:
+#   stage: build
+#   script:
+#     - echo "Building Extern Template"
+************************
+# .gitlab-ci.yml
+
+stages:
+  - build
+  - test
+
+include:
+  - local: 'build.yml'
+  # - local: 'test.yml'
+
+# **********************************************************************
+# Include the common build template
+# include:
+#   - if: '$CI_CONFIG_PATH'
+#     template: test.yml
+
+# # Job 1: Build Application 1
+# job_build_app1:
+#   extends: .build_template
+#   variables:
+#     APP_NAME: "Application 1"
+#   script:
+#     - echo "Executing $APP_NAME"
+
+# # Job 2: Build Application 2
+# job_build_app2:
+#   extends: .build_template
+#   variables:
+#     APP_NAME: "Application 2"
+#   script:
+#     - echo "Executing $APP_NAME"
+
+# # Job 3: Build Application 3
+# job_build_app3:
+#   extends: .build_template
+#   variables:
+#     APP_NAME: "Application 3"
+#   script:
+#     - echo "Executing $APP_NAME"
+

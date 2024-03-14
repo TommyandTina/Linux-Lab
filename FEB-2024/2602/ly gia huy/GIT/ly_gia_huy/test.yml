@@ -1,0 +1,55 @@
+# **************Test******************
+# # test.yml
+# test_applications:
+#   image: cmake:latest
+#   stage: test
+#   script:
+#     - cd exercise_cicd/build/bin/
+#     - ./hello_world_1
+#     - ./hello_world_2
+#     - ./hello_world_3
+#   dependencies:
+#     - build_applications
+
+# test.yml
+stages:
+  - test
+
+include:
+  - local: 'build.yml'
+
+.test_script_template:
+  stage: test
+  script:
+    - cd ${DIRECTORY}/build/bin/
+    - ./${TARGET} >> ${TARGET}.txt
+  artifacts:
+    paths:
+      - ${DIRECTORY}/build/bin/${TARGET}.txt
+    
+test_app_1:
+  stage: test
+  variables:
+    DIRECTORY: "exercise_cicd"
+    TARGET: hello_world_1
+  extends: .test_script_template
+
+test_app_2:
+  stage: test
+  allow_failure: true
+  variables:
+    DIRECTORY: "exercise_cicd"
+    TARGET: hello_world_22
+  extends: .test_script_template
+  needs:
+    - test_app_1
+
+test_app_3:
+  stage: test
+  allow_failure: false
+  variables:
+    DIRECTORY: "exercise_cicd"
+    TARGET: hello_world_3
+  extends: .test_script_template
+  needs:
+    - test_app_2

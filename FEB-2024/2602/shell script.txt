@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Kiểm tra xem có đối số đầu vào hay không
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 filename"
+    exit 1
+fi
+
+# Lấy tên tệp từ đối số đầu tiên
+filename=$1
+
+# Đếm số lượng các trường hợp
+total_cases=$(wc -l < "$filename")
+ok_cases=$(grep -c 'OK' "$filename")
+failed_cases=$(grep -c 'FAILED' "$filename")
+
+# In kết quả
+echo -e "Total cases: $total_cases"
+echo -e "\033[32mOK cases: $ok_cases\033[0m"
+echo -e "\033[31mFAILED cases: $failed_cases\033[0m"

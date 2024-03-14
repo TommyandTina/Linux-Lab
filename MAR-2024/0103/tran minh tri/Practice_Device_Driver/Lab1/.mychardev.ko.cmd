@@ -1,0 +1,1 @@
+cmd_/home/tri/Desktop/Practice_Device_Driver/Lab1/mychardev.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000  --build-id  -T ./scripts/module-common.lds -o /home/tri/Desktop/Practice_Device_Driver/Lab1/mychardev.ko /home/tri/Desktop/Practice_Device_Driver/Lab1/mychardev.o /home/tri/Desktop/Practice_Device_Driver/Lab1/mychardev.mod.o;  true

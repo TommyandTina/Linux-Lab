@@ -1,0 +1,67 @@
+/dts-v1/;
+
+/ {
+    compatible = "BV,Yellow's BV";
+
+    cpus {
+        #address-cells = <1>;
+        #size-cells = <0>;
+        cpu@0 {
+            compatible = "arm,cortex-a9";
+            reg = <0>;
+        };
+        cpu@1 {
+            compatible = "arm,cortex-a9";
+            reg = <1>;
+        };
+    };
+
+    localbus {
+        compatible = "bus-group-one-addcell-one-sizecell";
+        #address-cells = <1>;
+        #size-cells = <1>;
+
+        serial0 : serial@101b1000 {
+            compatible = "arm,bv011";
+            reg = <0x101b1000 0x1000>;
+        };
+
+        serial1 : serial@101b2000 {
+            compatible = "arm,bv011";
+            reg = <0x101b2000 0x1000>;
+        };
+
+        gpio0 : gpio@101b3000 {
+            compatible = "arm,bv061";
+            reg = <0x101b3000 0x1000>;
+        };
+
+        spi@10180000 {
+            compatible = "arm,bv022";
+            reg = <0x10180000 0x1000>;
+        };
+
+        i2c@10190000 {
+            compatible = "bv,bv-i2c-bus";
+            #address-cells = <1>;
+		    #size-cells = <0>;
+            reg = <0x10190000>;
+
+            ds1338@58 {
+                compatible = "bv,ds1338";
+                reg = <0x58>;
+            };
+        };
+    };
+
+    aliases {
+        serial0 = &serial0;
+        serial1 = &serial1;
+        gpio = &gpio0;
+    };
+
+    chosen {
+        bootargs = "ignore_loglevel rw root=/dev/nfs ip=on";
+        stdout-path = "serial0:115200n8";
+    };
+};

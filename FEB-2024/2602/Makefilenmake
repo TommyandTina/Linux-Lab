@@ -1,0 +1,11 @@
+# Quy tắc biên dịch các file .c thành file .obj
+.c.obj:
+    cl /c /Fo$*.obj /I. $<
+
+# Quy tắc liên kết các file .obj thành chương trình lab1.exe
+lab1.exe: lab1.obj lab1_func.obj
+    link /OUT:lab1.exe lab1.obj lab1_func.obj
+
+# Quy tắc xóa các file .obj và chương trình lab1.exe
+clean:
+    del *.obj lab1.exe
