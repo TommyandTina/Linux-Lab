@@ -1,0 +1,50 @@
+.test_template : &test_template
+  stage: test
+  tags:
+    - mylongtag
+  script:
+    - export BUILD_DIR="$CI_PROJECT_DIR/build/bin"
+    - ${BUILD_DIR}/${NAME_OF_FILE}
+  rules:
+  - if: '$CI_PIPELINE_SOURCE == "web"'
+    when: manual
+  - if: '$CI_PIPELINE_SOURCE == "push"'
+    when: never
+  needs:
+    - job: build_job
+
+test_hello_world1:
+  <<: *test_template
+  variables:
+    EXE_DIR: "hello_world_1"
+    NAME_OF_FILE: $EXE_DIR
+
+
+test_hello_world2:
+  # extends: 
+  #   - .test_template
+  # variables:
+  #   EXE_DIR: "hello_world_2"
+  #   NAME_OF_FILE: $EXE_DIR
+  tags:
+  - mylongtag
+  script:
+  - echo "Run a script that results in exit code 137. This job is allowed to fail."
+  - exit 137
+  allow_failure: true
+    # exit_codes: 137
+
+
+test_hello_world3:
+  # extends: 
+  #   - .test_template
+  # variables:
+  #   EXE_DIR: "hello_world_3"
+  #   NAME_OF_FILE: $EXE_DIR
+  tags:
+    - mylongtag  
+  script:
+  - echo "Run a script that results in exit code 137. This job is not allowed to fail."
+  - exit 137
+  allow_failure: false
+

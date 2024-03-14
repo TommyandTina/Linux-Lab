@@ -1,0 +1,16 @@
+test:
+  stage: test
+  tags:
+    - mylongtag
+  dependencies:
+    - build_job
+  script:
+    - export BUILD_DIR="$CI_PROJECT_DIR/build/bin/"
+    - echo $BUILD_DIR
+    - echo $CI_PROJECT_DIR
+    - echo $CI_PIPELINE_ID
+    - echo $CI_JOB_ID
+    - $BUILD_DIR/hello_world_1
+    - $BUILD_DIR/hello_world_2
+    - $BUILD_DIR/hello_world_3
+  when: manual

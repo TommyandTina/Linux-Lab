@@ -1,0 +1,40 @@
+.test_template : &test_template
+  stage: test
+  tags:
+    - mylongtag
+  script:
+    - export BUILD_DIR="$CI_PROJECT_DIR/${EXE_DIR}"
+    - ${BUILD_DIR}/bin/${NAME_OF_FILE}
+  # when: manual
+
+test_hello_world1:
+  <<: *test_template
+  variables:
+    EXE_DIR: "hello_world_1"
+    NAME_OF_FILE: $EXE_DIR
+  # dependencies:
+  #   - build_hello_world_1
+  needs:
+    - job: build_hello_world_1
+
+test_hello_world2:
+  extends: 
+    - .test_template
+  variables:
+    EXE_DIR: "hello_world_2"
+    NAME_OF_FILE: $EXE_DIR
+  # dependencies:
+  #   - build_hello_world_2
+  needs:
+    - job: build_hello_world_2
+
+test_hello_world3:
+  extends: 
+    - .test_template
+  variables:
+    EXE_DIR: "hello_world_3"
+    NAME_OF_FILE: $EXE_DIR
+  # dependencies:
+  #   - build_hello_world_3
+  needs:
+    - job: build_hello_world_3

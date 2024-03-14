@@ -1,0 +1,17 @@
+build_job:
+  stage: build
+  tags:
+    - mylongtag
+  script:
+    - mkdir build
+    - cd build
+    - cmake .. -DJOB_ID=$CI_JOB_ID
+    - make
+  artifacts:
+    paths:
+      - build/bin
+  rules:
+  - if: '$CI_PIPELINE_SOURCE == "web"'
+    when: manual
+  - if: '$CI_PIPELINE_SOURCE == "push"'
+    when: never
