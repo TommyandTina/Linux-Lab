@@ -1,0 +1,10 @@
+H.264 And MPEG-4 Video Compression Sections 1, 2 & 3.
+T-REC-H.264-201201-I!!PDF-E Sections 6.1, 6.2, 6.3, 7
+
+Share knowledge about H264 standard.
+Investigate needed items:
+
+H.264.And.MPEG-4.Video.Compression: Section 1,2 & 3.
+T-REC-H.264-201201-I!!PDF-E: 6.1, 6.2, 6.3, 7, 8.1, 8.2.1, 9.2, 9.3, Annex-A, Annex-B.
+Color format 4:0:0 4:2:0 4:2:2 4:4:4 ().
+Formula calculate frame_crop_bottom/left/right/top offset.
