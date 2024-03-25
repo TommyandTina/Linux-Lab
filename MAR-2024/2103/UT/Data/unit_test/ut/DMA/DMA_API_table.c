@@ -1,5 +1,6 @@
 #include "testenv.h"
 
+
 TEST_CASE_F(UT, DMA_API, RPI3, DMA_API_0001) { EXPECT_EQ( true, TEST_DMA_API("PCL", 1)); }
 TEST_CASE_F(UT, DMA_API, RPI3, DMA_API_0002) { EXPECT_EQ( true, TEST_DMA_API("PCL", 2)); }
 TEST_CASE_F(UT, DMA_API, RPI3, DMA_API_0003) { EXPECT_EQ( true, TEST_DMA_API("PCL", 3)); }
@@ -9,6 +10,7 @@ TEST_CASE_F(UT, DMA_API, RPI3, DMA_API_0006) { EXPECT_EQ( true, TEST_DMA_API("PC
 TEST_CASE_F(UT, DMA_API, RPI3, DMA_API_0007) { EXPECT_EQ( true, TEST_DMA_API("PCL", 7)); }
 TEST_CASE_F(UT, DMA_API, RPI3, DMA_API_0008) { EXPECT_EQ( true, TEST_DMA_API("PCL", 8)); }
 TEST_CASE_F(UT, DMA_API, RPI3, DMA_API_0009) { EXPECT_EQ( true, TEST_DMA_API("PCL", 9)); }
+// TEST_CASE_F(UT, DMA_API, RPI3, DMA_API_0010) { EXPECT_EQ( true, TEST_DMA_API("PCL", 10)); }
 
 struct TestCase UT_DMA_API_All_Tests[] = {
 	TEST_CASE_T(UT, DMA_API, RPI3, DMA_API_0001, DMA_API_0001),
@@ -20,5 +22,14 @@ struct TestCase UT_DMA_API_All_Tests[] = {
 	TEST_CASE_T(UT, DMA_API, RPI3, DMA_API_0007, DMA_API_0007),
 	TEST_CASE_T(UT, DMA_API, RPI3, DMA_API_0008, DMA_API_0008),
 	TEST_CASE_T(UT, DMA_API, RPI3, DMA_API_0009, DMA_API_0009),
+	// TEST_CASE_T(UT, DMA_API, RPI3, DMA_API_0010, DMA_API_0010),
 	TEST_CASE_END
 };
+
+/*
+#define TEST_CASE_F(type, func, target, id)\
+	void type##_##func##_##id##_##target##_Test()
+
+#define TEST_CASE_T(type, func, target, funcid, id)\
+	{ #type, #func, #target, #id, TEST_FUNC_NAME(type##_##func, target, funcid)	}
+*/

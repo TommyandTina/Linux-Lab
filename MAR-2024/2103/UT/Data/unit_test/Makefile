@@ -8,7 +8,7 @@ OBJS :=
 DEPS :=
 
 #-----------------------------------------------------------------
-# Test source files
+# Test source files include
 #-----------------------------------------------------------------
 C_SRC    := $(wildcard ./*.c)
 C_SRC	 += $(wildcard ./framework/*.c)
@@ -32,7 +32,7 @@ OBJS     += $(subst ./,./$(OBJDIR)/,$(C_SRC:.c=.c.o))
 DEPS     += $(subst ./,./$(DEPDIR)/,$(C_SRC:.c=.c.d))
 
 #-----------------------------------------------------------------
-# Test Target files
+# Test Target files include
 #-----------------------------------------------------------------
 C_DRV_SRC  += $(abspath ../src/DMA.c)
 

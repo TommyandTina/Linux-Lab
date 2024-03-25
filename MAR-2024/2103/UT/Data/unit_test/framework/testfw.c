@@ -186,7 +186,7 @@ static void TEST_SetFilterString(char *str, const char *env, const char *name)
 void TEST_main(int argc, char *argv[], const char *env, const char *target, const struct TestInfo *testInfo)
 {
 	// Parse input arguments
-	TEST_ParseArges(argc, argv);
+	TEST_ParseArges(argc, argv); //check if autorun or something need to do before test
 
 	//TEST_File_Init();
 
@@ -371,7 +371,7 @@ int TEST_RunTest(const struct TestInfo *testInfo, int target)
 		else
 		{
 			sprintf(g_test.runningTestName, "%s_%s_%s.%s", test_case->type, test_case->func_name, test_case->target, test_case->id);
-			ILOG("[ RUN      ] %s", g_test.runningTestName);
+			ILOG("[ RUN      ] %s (from testfw.c)", g_test.runningTestName);
 			test_case->func();
 		}
 	}

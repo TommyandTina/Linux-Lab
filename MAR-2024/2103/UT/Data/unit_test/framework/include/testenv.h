@@ -82,7 +82,7 @@ class TestBase : public ::testing::Test
 		bool val2 = act;	\
 		if (val1 == val2)	\
 		{\
-			printf("[          OK ] %s\n", g_test.runningTestName);	g_test.passed++;\
+			printf("[          OK ] %s (from testenv.h)\n\n\n\n", g_test.runningTestName);	g_test.passed++;\
 		}\
 		else\
 		{\

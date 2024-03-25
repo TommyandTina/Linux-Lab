@@ -10,6 +10,7 @@
     /* "34" is the line number where DMA_API is called in function pre_check_config in file config.c (source_coverage)
        Update this number if the DMA_API is no longer in line 34 */
     #define DMA_API_ut_34   DMA_API_stub
+    #define DMA_API_ut_33   DMA_API_stub
 #endif
 
 #include "config.c"
