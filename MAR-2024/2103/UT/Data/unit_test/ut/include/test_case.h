@@ -14,9 +14,9 @@ DECLARE_TESTCASE_TABLE(pre_check_config);
 
 static const struct TestInfo TEST_UT_Info[] = 
 {
-	TESTCASE_TABLE("DMA", DMA_API), // { "DMA_API", "DMA", UT_DMA_API_All_Tests }
+	// TESTCASE_TABLE("DMA", DMA_API), // { "DMA_API", "DMA", UT_DMA_API_All_Tests }
 	// TESTCASE_TABLE("DMA", data_format_convert),
-	// TESTCASE_TABLE("config", pre_check_config),
+	TESTCASE_TABLE("config", pre_check_config),
 	{ NULL, "", NULL }
 };
 

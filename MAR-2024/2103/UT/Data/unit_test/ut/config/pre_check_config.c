@@ -29,6 +29,8 @@ bool TEST_pre_check_config(const char *category, int32_t no)
 	else
 	{
 		func_params.p_config = &g_uts_p_config;
+		func_params.p_config->image_config = inputs->image_info.image_config;//personally added
+		func_params.p_config->square_config = inputs->image_info.square_config;//personally added
 	}
 	if (inputs->DMA_API.is_stub)
 	{

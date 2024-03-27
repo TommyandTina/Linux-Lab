@@ -6,10 +6,12 @@
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_GREEN   "\x1b[32m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
+#define ANSI_COLOR_YELLOW  "\x1b[101m" //Light Red background, not yellow
  
 #define C0C1_checker(line_C0C1_is_activated, function_count_C0C1) \
     if (line_C0C1_is_activated) {\
         function_count_C0C1 = 1; \
+        printf(ANSI_COLOR_YELLOW "[V] The function_count: %s passed C0C1 coverage check (from coverage_checker.h)\n" ANSI_COLOR_RESET, STRINGIFY(function_count_C0C1)); \
         line_C0C1_is_activated = false;}
 
 #define C2_checker(subexpression_C2_is_activated, subexpression, function_count_C2_true, function_count_C2_false) \
