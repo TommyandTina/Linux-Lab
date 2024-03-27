@@ -24,12 +24,33 @@ e_validation_t DMA_API(uint16_t x, uint16_t y, const st_DMA_config_t* p_dma_conf
     C2_checker(DMA_API_C2_subexpression_activate_list[1], E_SUCCESS == result, DMA_API_C2_list_true[1], DMA_API_C2_list_false[1]);
     if (E_SUCCESS == result)
     {   C0C1_checker(DMA_API_C0C1_line_activate_list[3], DMA_API_C0C1_list[3]);
+    /*
+    if (DMA_API_C0C1_line_activate_list[3]) { 
+        DMA_API_C0C1_list[3] = 1; 
+        DMA_API_C0C1_line_activate_list[3] = 0;
+    }
+    */
         C2_checker(DMA_API_C2_subexpression_activate_list[2], p_dma_config->enable, DMA_API_C2_list_true[2], DMA_API_C2_list_false[2]);
         if(p_dma_config->enable)
 	    {   C0C1_checker(DMA_API_C0C1_line_activate_list[4], DMA_API_C0C1_list[4]);
             uint16_t x1_max = p_dma_config->offset_x + p_dma_config->width - 1; C0C1_checker(DMA_API_C0C1_line_activate_list[5], DMA_API_C0C1_list[5]);
             uint16_t y1_max = p_dma_config->offset_y + p_dma_config->height - 1; C0C1_checker(DMA_API_C0C1_line_activate_list[6], DMA_API_C0C1_list[6]);
             C2_checker(DMA_API_C2_subexpression_activate_list[3], x >= p_dma_config->offset_x, DMA_API_C2_list_true[3], DMA_API_C2_list_false[3]);
+            /*
+            if (DMA_API_C2_subexpression_activate_list[3]) 
+            { 
+                if (x >= p_dma_config->offset_x) {
+                        DMA_API_C2_list_true[3] = 1;
+                    } 
+                        if (!(x >= p_dma_config->offset_x)) { 
+                            DMA_API_C2_list_false[3] = 1;
+                        } 
+                        if (DMA_API_C2_list_true[3] == 1 && DMA_API_C2_list_false[3] == 1) { 
+                                printf("\x1b[32m" "[V] The subexpression: %s passed C2 coverage check (from coverage_checker.h)\n" "\x1b[0m", "x >= p_dma_config->offset_x"); 
+                                DMA_API_C2_subexpression_activate_list[3] = 0;
+                            }
+                        }
+            */
             C2_checker(DMA_API_C2_subexpression_activate_list[4], y >= p_dma_config->offset_y, DMA_API_C2_list_true[4], DMA_API_C2_list_false[4]);
             C2_checker(DMA_API_C2_subexpression_activate_list[5], x < x1_max, DMA_API_C2_list_true[5], DMA_API_C2_list_false[5]);
             C2_checker(DMA_API_C2_subexpression_activate_list[6], y < y1_max, DMA_API_C2_list_true[6], DMA_API_C2_list_false[6]);
