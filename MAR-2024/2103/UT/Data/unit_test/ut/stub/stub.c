@@ -27,3 +27,28 @@ e_validation_t DMA_API_stub(uint16_t x, uint16_t y, const st_DMA_config_t* p_dma
     }
     return ret_func;
 }
+
+//is_DMA_Check added
+e_validation_t ut_stub_is_DMA_Check(void)
+{
+    s_is_DMA_Check *IO = &g_is_DMA_Check;
+    e_validation_t ReturnValue;
+    ReturnValue = IO->ReturnValue[IO->ut_index];
+    IO->ut_index++;
+    printf("%d is return value in (stub.c)\n",ReturnValue);
+    return ReturnValue;
+}
+
+e_validation_t is_DMA_Check_stub(void)
+{
+    e_validation_t ret_func;
+    if (NULL != g_hook_is_DMA_Check)
+    {
+        ret_func = g_hook_is_DMA_Check();
+    }
+    else
+    {
+        ret_func = is_DMA_Check();
+    }
+    return ret_func;
+}

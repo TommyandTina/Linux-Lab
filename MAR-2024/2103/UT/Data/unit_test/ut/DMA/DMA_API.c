@@ -1,6 +1,7 @@
 #include "base.h"
 #include "util.h"
 #include "patterns/DMA_API_PCL.h"
+//DMA_API_PCL.h include DMA_API.h
 
 static bool TEST_GetAddr_DMA_API(uint32_t *flag, struct DMA_API_params *func_params)
 {
