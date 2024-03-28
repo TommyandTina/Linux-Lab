@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "data_format_convert.h": "c"
+        "data_format_convert.h": "c",
+        "base.h": "c",
+        "util.h": "c"
     }
 }

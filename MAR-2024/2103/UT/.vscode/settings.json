@@ -1,5 +1,15 @@
 {
     "files.associations": {
-        "system_error": "c"
+        "system_error": "c",
+        "data_format_convert_pcl.h": "c",
+        "testenv.h": "c",
+        "functions.h": "c",
+        "drv_def.h": "c",
+        "check_image_and_square_pcl.h": "c",
+        "base.h": "c",
+        "util.h": "c",
+        "stdbool.h": "c",
+        "check_image_and_square.h": "c",
+        "pre_check_config.h": "c"
     }
 }
