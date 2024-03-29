@@ -152,5 +152,6 @@ double data_format_convert(uint8_t flow_encode, uint16_t component)
 }
 
 bool is_DMA_Check(void){
+    printf("\n------\nOH NO, this is not is_DMA_Check stub\n-------\n");
     return false;
 }

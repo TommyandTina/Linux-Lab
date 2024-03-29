@@ -22,8 +22,3 @@
 #include "config.c"
 #undef DMA_API
 #undef is_DMA_Check
-/*
-bool is_DMA_Check(void){
-    return false;
-}
-*/

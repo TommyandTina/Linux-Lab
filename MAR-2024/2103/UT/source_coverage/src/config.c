@@ -109,7 +109,7 @@ e_validation_t check_noise(st_noise_t noise)
         C0C1_checker(check_noise_C0C1_line_activate_list[0], check_noise_C0C1_list[0]);
         C0C1_checker(check_noise_C0C1_line_activate_list[1], check_noise_C0C1_list[1]);
         return E_FAILURE;
-    }
+    } //note that at C2_checker on top call 2 times is_DMA_Check() -> eliminate IO->index++ inside stub function
     C2_checker(check_noise_C2_subexpression_activate_list[1], noise.noise_1 > 10, check_noise_C2_list_true[1], check_noise_C2_list_false[1]);
     C2_checker(check_noise_C2_subexpression_activate_list[2], noise.noise_2 > 11, check_noise_C2_list_true[2], check_noise_C2_list_false[2]);
     C2_checker(check_noise_C2_subexpression_activate_list[3], noise.noise_3 > 12, check_noise_C2_list_true[3], check_noise_C2_list_false[3]);
@@ -126,15 +126,16 @@ e_validation_t check_noise(st_noise_t noise)
     }
 }
 
-e_validation_t crop_image_and_divide(st_image_size_t* p_image, uint8_t divisor)
+e_validation_t crop_image_and_divide(st_image_size_t* p_image, uint32_t divisor)
 {
     e_validation_t result = E_SUCCESS; C0C1_checker(crop_image_and_divide_C0C1_line_activate_list[0], crop_image_and_divide_C0C1_list[0]);
     C2_checker(crop_image_and_divide_C2_subexpression_activate_list[0], p_image == NULL, crop_image_and_divide_C2_list_true[0], crop_image_and_divide_C2_list_false[0]);
     if (p_image == NULL)
     {   C0C1_checker(crop_image_and_divide_C0C1_line_activate_list[1], crop_image_and_divide_C0C1_list[1]);
         C0C1_checker(crop_image_and_divide_C0C1_line_activate_list[2], crop_image_and_divide_C0C1_list[2]);
-        result = E_FAILURE;
+        return result = E_FAILURE;
     }
+    printf("\n%d is width,%d is height\n",p_image->width_of_image,p_image->height_of_image);
     C2_checker(crop_image_and_divide_C2_subexpression_activate_list[1], p_image->width_of_image <= 500, crop_image_and_divide_C2_list_true[1], crop_image_and_divide_C2_list_false[1]);
     C2_checker(crop_image_and_divide_C2_subexpression_activate_list[2], p_image->height_of_image <= 500, crop_image_and_divide_C2_list_true[2], crop_image_and_divide_C2_list_false[2]);
     if (p_image->width_of_image <= 500 || p_image->height_of_image <= 500) {
