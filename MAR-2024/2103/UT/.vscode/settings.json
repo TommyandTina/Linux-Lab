@@ -10,6 +10,8 @@
         "util.h": "c",
         "stdbool.h": "c",
         "check_image_and_square.h": "c",
-        "pre_check_config.h": "c"
+        "pre_check_config.h": "c",
+        "dma_api_pcl.h": "c",
+        "stdio.h": "c"
     }
 }

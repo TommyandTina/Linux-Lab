@@ -3,6 +3,7 @@
 #include "base.h"
 
 #define UT_DMA_API      (10)
+#define UT_is_DMA_Check      (10)
 typedef e_validation_t (*p_DMA_API)(uint16_t x, uint16_t y, const st_DMA_config_t* p_dma_config);
 typedef struct{
     e_validation_t ReturnValue[UT_DMA_API];
@@ -17,7 +18,6 @@ e_validation_t DMA_API_stub(uint16_t x, uint16_t y, const st_DMA_config_t* p_dma
 extern st_config_t g_uts_p_config;
 
 //is_DMA_Check added
-#define UT_is_DMA_Check      (10)
 typedef e_validation_t (*p_is_DMA_Check)(void);
 typedef struct{
     e_validation_t ReturnValue[UT_is_DMA_Check];
