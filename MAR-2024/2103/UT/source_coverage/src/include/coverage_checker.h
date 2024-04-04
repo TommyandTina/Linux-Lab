@@ -23,5 +23,8 @@
         if (function_count_C2_true == 1 && function_count_C2_false == 1) {\
             printf(ANSI_COLOR_GREEN "[V] The subexpression: %s passed C2 coverage check (from coverage_checker.h)\n" ANSI_COLOR_RESET, STRINGIFY(subexpression)); \
             subexpression_C2_is_activated = false;}}
- 
+
+// void C2_PATH_Checker
+
+// #define C2_PATH_Checker(total_subexpression,...) MACRO_FUNC(__VA_ARGS__)
 #endif
