@@ -1,0 +1,1 @@
+Xóa toàn bộ thay đổi trên repo mà chưa push
