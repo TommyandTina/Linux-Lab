@@ -1,0 +1,8 @@
+E:\Hoc\c#\LapTrinhHuongDoiTuong\laptrinhhuongdoituong3_tinhkethua\bin\Debug\laptrinhhuongdoituong3_tinhkethua.exe.config
+E:\Hoc\c#\LapTrinhHuongDoiTuong\laptrinhhuongdoituong3_tinhkethua\bin\Debug\laptrinhhuongdoituong3_tinhkethua.exe
+E:\Hoc\c#\LapTrinhHuongDoiTuong\laptrinhhuongdoituong3_tinhkethua\bin\Debug\laptrinhhuongdoituong3_tinhkethua.pdb
+E:\Hoc\c#\LapTrinhHuongDoiTuong\laptrinhhuongdoituong3_tinhkethua\obj\Debug\laptrinhhuongdoituong3_tinhkethua.csproj.AssemblyReference.cache
+E:\Hoc\c#\LapTrinhHuongDoiTuong\laptrinhhuongdoituong3_tinhkethua\obj\Debug\laptrinhhuongdoituong3_tinhkethua.csproj.SuggestedBindingRedirects.cache
+E:\Hoc\c#\LapTrinhHuongDoiTuong\laptrinhhuongdoituong3_tinhkethua\obj\Debug\laptrinhhuongdoituong3_tinhkethua.csproj.CoreCompileInputs.cache
+E:\Hoc\c#\LapTrinhHuongDoiTuong\laptrinhhuongdoituong3_tinhkethua\obj\Debug\laptrinhhuongdoituong3_tinhkethua.exe
+E:\Hoc\c#\LapTrinhHuongDoiTuong\laptrinhhuongdoituong3_tinhkethua\obj\Debug\laptrinhhuongdoituong3_tinhkethua.pdb

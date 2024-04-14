@@ -1,0 +1,8 @@
+E:\Hoc\c#\LapTrinhHuongDoiTuong\laptrinhhuongdoituong2\obj\Debug\laptrinhhuongdoituong2.csproj.AssemblyReference.cache
+E:\Hoc\c#\LapTrinhHuongDoiTuong\laptrinhhuongdoituong2\obj\Debug\laptrinhhuongdoituong2.csproj.SuggestedBindingRedirects.cache
+E:\Hoc\c#\LapTrinhHuongDoiTuong\laptrinhhuongdoituong2\obj\Debug\laptrinhhuongdoituong2.csproj.CoreCompileInputs.cache
+E:\Hoc\c#\LapTrinhHuongDoiTuong\laptrinhhuongdoituong2\bin\Debug\laptrinhhuongdoituong2.exe.config
+E:\Hoc\c#\LapTrinhHuongDoiTuong\laptrinhhuongdoituong2\bin\Debug\laptrinhhuongdoituong2.exe
+E:\Hoc\c#\LapTrinhHuongDoiTuong\laptrinhhuongdoituong2\bin\Debug\laptrinhhuongdoituong2.pdb
+E:\Hoc\c#\LapTrinhHuongDoiTuong\laptrinhhuongdoituong2\obj\Debug\laptrinhhuongdoituong2.exe
+E:\Hoc\c#\LapTrinhHuongDoiTuong\laptrinhhuongdoituong2\obj\Debug\laptrinhhuongdoituong2.pdb
