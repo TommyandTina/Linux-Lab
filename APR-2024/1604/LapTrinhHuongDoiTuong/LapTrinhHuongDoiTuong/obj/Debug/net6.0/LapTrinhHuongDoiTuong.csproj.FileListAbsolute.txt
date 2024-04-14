@@ -1,0 +1,15 @@
+E:\Hoc\c#\LapTrinhHuongDoiTuong\LapTrinhHuongDoiTuong\bin\Debug\net6.0\LapTrinhHuongDoiTuong.exe
+E:\Hoc\c#\LapTrinhHuongDoiTuong\LapTrinhHuongDoiTuong\bin\Debug\net6.0\LapTrinhHuongDoiTuong.deps.json
+E:\Hoc\c#\LapTrinhHuongDoiTuong\LapTrinhHuongDoiTuong\bin\Debug\net6.0\LapTrinhHuongDoiTuong.runtimeconfig.json
+E:\Hoc\c#\LapTrinhHuongDoiTuong\LapTrinhHuongDoiTuong\bin\Debug\net6.0\LapTrinhHuongDoiTuong.dll
+E:\Hoc\c#\LapTrinhHuongDoiTuong\LapTrinhHuongDoiTuong\bin\Debug\net6.0\LapTrinhHuongDoiTuong.pdb
+E:\Hoc\c#\LapTrinhHuongDoiTuong\LapTrinhHuongDoiTuong\obj\Debug\net6.0\LapTrinhHuongDoiTuong.csproj.AssemblyReference.cache
+E:\Hoc\c#\LapTrinhHuongDoiTuong\LapTrinhHuongDoiTuong\obj\Debug\net6.0\LapTrinhHuongDoiTuong.GeneratedMSBuildEditorConfig.editorconfig
+E:\Hoc\c#\LapTrinhHuongDoiTuong\LapTrinhHuongDoiTuong\obj\Debug\net6.0\LapTrinhHuongDoiTuong.AssemblyInfoInputs.cache
+E:\Hoc\c#\LapTrinhHuongDoiTuong\LapTrinhHuongDoiTuong\obj\Debug\net6.0\LapTrinhHuongDoiTuong.AssemblyInfo.cs
+E:\Hoc\c#\LapTrinhHuongDoiTuong\LapTrinhHuongDoiTuong\obj\Debug\net6.0\LapTrinhHuongDoiTuong.csproj.CoreCompileInputs.cache
+E:\Hoc\c#\LapTrinhHuongDoiTuong\LapTrinhHuongDoiTuong\obj\Debug\net6.0\LapTrinhHuongDoiTuong.dll
+E:\Hoc\c#\LapTrinhHuongDoiTuong\LapTrinhHuongDoiTuong\obj\Debug\net6.0\refint\LapTrinhHuongDoiTuong.dll
+E:\Hoc\c#\LapTrinhHuongDoiTuong\LapTrinhHuongDoiTuong\obj\Debug\net6.0\LapTrinhHuongDoiTuong.pdb
+E:\Hoc\c#\LapTrinhHuongDoiTuong\LapTrinhHuongDoiTuong\obj\Debug\net6.0\LapTrinhHuongDoiTuong.genruntimeconfig.cache
+E:\Hoc\c#\LapTrinhHuongDoiTuong\LapTrinhHuongDoiTuong\obj\Debug\net6.0\ref\LapTrinhHuongDoiTuong.dll
