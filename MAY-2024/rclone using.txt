@@ -1,0 +1,23 @@
+lsblk: xem các phân vùng ổ cứng
+
+rclone config file để tìm ra path của file config
+
+- mount:
+sudo mkdir /mnt/d
+sudo mount -t drvfs D: /mnt/d
+/*
+Tùy chọn -t drvfs trong lệnh mount khi sử dụng Windows Subsystem for Linux (WSL) chỉ định rằng hệ thống tệp được mount là một hệ thống tệp kiểu DrvFs, tức là một hệ thống tệp của Windows1. Điều này cho phép WSL truy cập các ổ đĩa Windows như là các hệ thống tệp Linux, với khả năng giữ các quyền Unix-style khi metadata được bật2.
+
+Nếu bạn không sử dụng -t drvfs, WSL sẽ không biết bạn đang cố gắng mount một hệ thống tệp Windows và có thể không xử lý đúng cách các quyền tệp hoặc các tính năng đặc biệt khác của hệ thống tệp Windows. Tuy nhiên, trong một số trường hợp, nếu bạn chỉ đơn giản muốn truy cập các tệp từ ổ đĩa Windows mà không cần quan tâm đến quyền Unix, bạn có thể không cần sử dụng tùy chọn này.
+
+Để đảm bảo tính tương thích và tránh các vấn đề về quyền, nên sử dụng -t drvfs khi mount các hệ thống tệp Windows trong WSL
+*/
+
+-unmount:
+sudo umount /mnt/d
+
+xem file:
+rclone ls lab_bv:
+
+copy
+rclone copy source:path dest:path [flags]
