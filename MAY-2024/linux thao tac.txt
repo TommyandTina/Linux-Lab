@@ -37,3 +37,9 @@ find [path-cần-kiểm-tra] -type d -exec echo '{}' \;
 - Tạo nhiều thư mục:
 	mkdir -p "$directory/another_dir/another_dir2"
 	Hay được sử dụng với kiểm tra các thư mục có tồn tại hay ko : if[! -d "$directory"]; then ... fi
+
+- đã cài thêm: apt-get
+	pkg-config libx11-dev libxkbcommon-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev (doxygen >200MB) (mesa-common-dev 175MB)
+
+
+
