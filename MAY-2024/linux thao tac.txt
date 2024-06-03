@@ -1,0 +1,39 @@
+- xem package
+snap list |grep -v canonical
+apt-mark showmanual
+
+-copy:
+cp -u from to : copy cái mới hơn
+cp -r from to: copy recursively
+
+-remove:
+rm -rf:xóa sạch folder + file
+
+-xem os,lsb version:
+cat /etc/os-release
+cat /etc/lsb-release
+lsb_release
+
+-dry run rm:
+ls -R folder/
+
+-copy file tới ssh:
+scp [other options] [source username@IP]:/[directory and file name] [destination username@IP]:/[destination directory]
+scp "C:\Users\long.trinh-tien\.ssh\id_rsa.pub" long.trinh-tien@192.168.2.25:~/.ssh
+
+-Xem version của package:
+apt-show-versions name_of_package (chỉ show được package đã cài)
+apt show <package>
+
+-Kiểm tra file trước khi xóa
+find [path-cần-kiểm-tra] -type d -exec echo '{}' \;
+
+-ls, ll, l, la : xem file và thư mục
+
+- Xem thời gian execute:
+	Linux: time + command
+	Powershell: Measure-Command {.\do_something.ps1}
+
+- Tạo nhiều thư mục:
+	mkdir -p "$directory/another_dir/another_dir2"
+	Hay được sử dụng với kiểm tra các thư mục có tồn tại hay ko : if[! -d "$directory"]; then ... fi
