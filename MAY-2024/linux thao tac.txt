@@ -5,6 +5,7 @@ apt-mark showmanual
 -copy:
 cp -u from to : copy cái mới hơn
 cp -r from to: copy recursively
+cp -L from to : copy file gốc (thay vì copy symbolic link)
 
 -remove:
 rm -rf:xóa sạch folder + file
@@ -40,6 +41,20 @@ find [path-cần-kiểm-tra] -type d -exec echo '{}' \;
 
 - đã cài thêm: apt-get
 	pkg-config libx11-dev libxkbcommon-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev (doxygen >200MB) (mesa-common-dev 175MB)
+	(raspi) :bison, flex, libssl-dev, libncurses-dev
 
 
+-cross-compiler arm64 from linux: 
+	export PATH=~/tools/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu/bin:$PATH
+	make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu-
 
+-Cách xài putty serial: 
+	vào /dev/ttxx kiểm tra xem device mới input vào, kiểm tra baudrate/speed (rasp 115200)
+
+- Cách xài docker
+	viết Dockerfile FROM:ubuntu + command install package (nhớ -y)
+	docker build -t name_in_lowercase . (tại thư mục chứa Dockerfile)
+	docker run -it name_in_lowercase bash : tạo mới container
+	docker run -rm name_in_lowercase: chạy xong xóa luôn container : để demo sản phẩm
+	docker start nameOfContainer : khởi chạy container đã run ở trên
+	docker attach nameOfContainer : vào trong container đó
