@@ -1,0 +1,13 @@
+Input:
+
+Ebisu_suman_rev001_0118.pdf
+e_Salvator-XS_suman_rev200_0303 1.pdf
+e_Gray_Hawk(Single_Board)_suman_rev090.pdf
+Output:
+
+Have a basic knowledge of the specifications and layout of the R-Car Gen 3/4 board:
+Salvator-XS - Done mạch
+Ebisu
+Darks
+Gray/White/Black Hawk
+Car Server/Communication Gateway
