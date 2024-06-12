@@ -20,7 +20,7 @@ ls -R folder/
 
 -copy file tới ssh:
 scp [other options] [source username@IP]:/[directory and file name] [destination username@IP]:/[destination directory]
-scp "C:\Users\long.trinh-tien\.ssh\id_rsa.pub" long.trinh-tien@192.168.2.25:~/.ssh
+scp "C:\Users\long.trinh-tien\.ssh\id_rsa.pub" long.trinh-tien@192.168.2.25:~/.ssh ; sau đó lưu dưới tên authorized_keys
 
 -Xem version của package:
 apt-show-versions name_of_package (chỉ show được package đã cài)
