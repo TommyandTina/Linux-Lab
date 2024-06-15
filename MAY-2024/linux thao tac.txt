@@ -29,7 +29,7 @@ apt show <package>
 -Kiểm tra file trước khi xóa
 find [path-cần-kiểm-tra] -type d -exec echo '{}' \;
 
--ls, ll, l, la : xem file và thư mục
+-ls, ll, l, la, tree -L num_of_child : xem file và thư mục
 
 - Xem thời gian execute:
 	Linux: time + command
@@ -58,3 +58,16 @@ find [path-cần-kiểm-tra] -type d -exec echo '{}' \;
 	docker run -rm name_in_lowercase: chạy xong xóa luôn container : để demo sản phẩm
 	docker start nameOfContainer : khởi chạy container đã run ở trên
 	docker attach nameOfContainer : vào trong container đó
+
+- Cách để process chạy trên background (on shell only)
+	Cho process chạy (VD: sleep 60s)
+	Ấn Ctrl+Z để suspend process đó (hiện tại thì đang dừng)
+	Ấn 'jobs' để xem các job đang suspend và lấy job_id (do chạy trên shell nên ta lấy job_id thay vì PID)
+	Ấn 'bg job_id' (để chạy background) hoặc 'fg job_id' (để chạy foreground)
+- Đợi 1 process khác xong
+	Dùng hàm 'wait'
+
+- Kill 1 process bất kì
+	Ấn 'ps' (xem process của user chạy) 'ps -x' (process + command liên quan tới user) 'ps -u' (nhiều thông tin hơn)
+	Hoặc ấn 'top' để xem toàn bộ process đang chạy
+	Lấy PID và ấn 'kill -9 PID' là kill được 
