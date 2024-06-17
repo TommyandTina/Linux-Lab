@@ -1,0 +1,9 @@
+Source: https://github.com/nhm4hc/linux-bsp/tree/v5.10.194/rcar-5.3.0.rc3 (branch v5.10.194/rcar-5.3.0.rc3)
+
+# source /prj/soc-sw/local/common/opt/poky/3.1.11/environment-setup-aarch64-poky-linux
+# make clean
+# make distclean
+# unset LD_LIBRARY_PATH
+# unset PKG_CONFIG_PATH
+# make defconfig
+# make -j16

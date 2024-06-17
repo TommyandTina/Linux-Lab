@@ -1,0 +1,24 @@
+# fdisk -u /dev/sda
+Command (m for help): n
+Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (1-4, default 1): 1
+First sector (2048-234441647, default 2048): 8192
+Last sector, +sectors or +size{K,M,G,T,P} (8192-234441647, default 234441647):
+
+Created a new partition 1 of type 'Linux' and of size 111.8 GiB.
+
+Command (m for help): w
+The partition table has been altered.
+C[  617.898626]  sda: sda1
+alling ioctl() to re-read partition table.
+Syncing disks.
+
+Format to EXT4 by executing 
+# mkfs.ext4 /dev/sda1
+
+
+
+

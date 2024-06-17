@@ -1,0 +1,26 @@
+* Prerequisite:
++ Build linux_bsp first
++ mmngr_drv repo: https://github.com/nhm4hc/mmngr_drv (branch: rcar_gen3_maintenance)
++ mmngr_lib repo: https://github.com/renesas-rcar/mmngr_lib (branch: rcar_gen3)
+
+Step 1: Toolchain
+# source /prj/soc-sw/local/common/opt/poky/3.1.11/environment-setup-aarch64-poky-linux
+# export INCSHARED=$SDKTARGETSYSROOT/usr/local/include
+
+Step 2: Build mmngr_lib
+# cd mmngr_lib/libmmngr/mmngr
+# autoreconf -i
+# ./configure ${CONFIGURE_FLAGS} --prefix=$PWD/tmp
+# make
+# make install includedir=$INCSHARED
+
+Step 3: Build mmngr_drv
+# cd mmngr_drv/mmngr_drv/mmngr/mmngr-module/files/mmngr/drv
+# export KERNELSRC=<path_to_linux_bsp_repo>
+# export CP=cp
+# export MMNGR_CONFIG=MMNGR_SALVATORX 
+# export MMNGR_SSP_CONFIG=MMNGR_SSP_DISABLE
+# export MMNGR_IPMMU_MMU_CONFIG=IPMMU_MMU_DISABLE
+# export MMNGR_VALIDATE_CONFIG=MMNGR_ADDRESS_VALIDATION
+# export INCSHARED=$SDKTARGETSYSROOT/usr/local/include
+# make
