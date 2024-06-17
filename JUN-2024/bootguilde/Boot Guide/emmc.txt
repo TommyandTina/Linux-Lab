@@ -1,0 +1,14 @@
+The ext2ls command in U-Boot allows you to list files and directories on an eMMC (embedded MultiMediaCard) or SD card. Here’s how you can use it:
+
+First, ensure that you are in U-Boot’s command-line interface.
+Use the mmc list command to display the available MMC devices. For example:
+U-Boot> mmc list
+sdhci@ff160000: 0 (eMMC)
+sdhci@ff170000: 1 (SD)
+In this example, device 0 represents the eMMC.
+Select the desired MMC device using the mmc dev command. For instance:
+U-Boot> mmc dev 0
+This sets the current device to the eMMC.
+Now you can use the ext2ls command to list files and directories. For example:
+U-Boot> ext2ls mmc 0:1 /
+Here, mmc 0:1 specifies the eMMC device and partition (partition 1), and / represents the root directory.

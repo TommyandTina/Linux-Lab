@@ -1,0 +1,51 @@
+
+
+#M3e
+setenv bootargs_sd0 'rw root=/dev/mmcblk1p1 rootwait' 
+setenv booti_cmd 'booti 0x48080000 - 0x48000000' 
+setenv dtb 'r8a779m3-salvator-xs.dtb' 
+setenv bootcmd_sd0 'setenv bootargs ${bootargs_sd0};ext2load mmc 0:1 0x48080000 /boot/Image;ext2load mmc 0:1 0x48000000 /boot/${dtb};run booti_cmd' 
+setenv bootcmd 'run bootcmd_sd0' 
+saveenv
+
+
+#H3
+setenv bootargs_sd0 'rw root=/dev/mmcblk1p1 rootwait' 
+setenv booti_cmd 'booti 0x48080000 - 0x48000000' 
+setenv dtb 'r8a77951-salvator-xs.dtb' 
+setenv bootcmd_sd0 'setenv bootargs ${bootargs_sd0};ext2load mmc 0:1 0x48080000 H3/boot/Image;ext2load mmc 0:1 0x48000000 H3/boot/${dtb};run booti_cmd' 
+setenv bootcmd 'run bootcmd_sd0' 
+saveenv
+
+#E3
+setenv bootargs_sd0 'rw root=/dev/mmcblk1p1 rootwait' 
+setenv booti_cmd 'booti 0x48080000 - 0x48000000' 
+setenv dtb 'r8a77990-ebisu-4d.dtb' 
+setenv bootcmd_sd0 'setenv bootargs ${bootargs_sd0};ext2load mmc 0:1 0x48080000 /boot/Image;ext2load mmc 0:1 0x48000000 /boot/${dtb};run booti_cmd' 
+setenv bootcmd 'run bootcmd_sd0' 
+saveenv
+
+
+
+##usb 
+usb start
+setenv bootargs 'rw root=/dev/sda1 rootwait'
+ext4load usb 0:1 0x48080000 /boot/Image
+ext4load usb 0:1 0x48000000 /boot/r8a77990-ebisu-4d.dtb
+booti 0x48080000 - 0x48000000
+
+#H3
+setenv bootargs_usb 'rw root=/dev/sda1 rootwait'
+setenv booti_cmd 'booti 0x48080000 - 0x48000000' 
+setenv dtb 'r8a77951-salvator-xs.dtb' 
+setenv bootcmd_usb 'usb start;setenv bootargs ${bootargs_usb};ext2load usb 0:1 0x48080000 /boot/Image;ext2load usb 0:1 0x48000000 /boot/${dtb};run booti_cmd' 
+setenv bootcmd 'run bootcmd_usb' 
+saveenv
+
+#E3
+setenv bootargs_usb 'rw root=/dev/sda1 rootwait'
+setenv booti_cmd 'booti 0x48080000 - 0x48000000' 
+setenv dtb 'r8a77990-ebisu-4d.dtb' 
+setenv bootcmd_usb 'usb start;setenv bootargs ${bootargs_usb};ext2load usb 0:1 0x48080000 /boot/Image;ext2load usb 0:1 0x48000000 /boot/${dtb};run booti_cmd' 
+setenv bootcmd 'run bootcmd_usb' 
+saveenv
