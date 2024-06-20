@@ -1,0 +1,175 @@
+getdir DIR
+
+;===================================================
+;; COM Port / baud rate setting
+COM_PORT = '4'
+BAUDRATE = '115200'
+;===================================================
+;; 1 Command assembly
+COMMAND = '/C='
+strconcat COMMAND COM_PORT
+strconcat COMMAND ' /BAUD='
+strconcat COMMAND BAUDRATE
+
+;; 2 Connection
+;connect COMMAND
+
+;---------------------------------------------------
+; Initialize DRAM
+;---------------------------------------------------
+;wait '>'
+;mpause 100
+;sendln 'init_dram'
+
+;---------------------------------------------------
+; Setting load image parameter
+;---------------------------------------------------
+
+setbaud 115200
+FILE_NAME = DIR
+strconcat FILE_NAME '\AArch64_Gen3_H3_M3_Scif_MiniMon_V5.11.mot'
+sendfile FILE_NAME 1
+
+ARRAY_NUM = 6
+strdim IMGNM ARRAY_NUM
+IMGNM[0] = 'bootparam_sa0-4x2g.srec'
+IMGNM[1] = 'bl2-salvator-x-4x2g.srec'
+IMGNM[2] = 'cert_header_sa6-4x2g.srec'
+IMGNM[3] = 'bl31-salvator-x-4x2g.srec'
+IMGNM[4] = 'tee-salvator-x.srec'
+IMGNM[5] = 'u-boot-elf-salvator-xs-4x2g.srec'
+
+strdim IMGADR ARRAY_NUM
+IMGADR[0] = 'E6320000'
+IMGADR[1] = 'E6304000'
+IMGADR[2] = 'E6320000'
+IMGADR[3] = '44000000'
+IMGADR[4] = '44100000'
+IMGADR[5] = '50000000'
+
+strdim FLASHADR ARRAY_NUM
+FLASHADR[0] = '0'
+FLASHADR[1] = '40000'
+FLASHADR[2] = '180000'
+FLASHADR[3] = '1C0000'
+FLASHADR[4] = '200000'
+FLASHADR[5] = '640000'
+
+;-------------------------------------------------------------
+; switch Scif speed UP (Change to 460.8kbps baud rate setting)
+;-------------------------------------------------------------
+sendln ''
+wait '>'
+mpause 100
+:send_sup
+sendln 'sup'
+wait 'Change to 460.8Kbps baud rate setting of the SCIF. OK? (y/n)' 'Please change to 921.6Kbps baud rate setting of the terminal.' 'Please change to 460.8Kbps baud rate setting of the terminal.' 'command not found'
+
+If result=1 then
+  sendln 'y'
+  wait 'Please change to 460.8Kbps baud rate setting of the terminal.'
+  setbaud 460800
+elseif result=2 then
+  ; result=2
+  setbaud 921600
+elseif result=3 then
+  ; result=3
+  setbaud 460800
+else
+  ; result=4
+  goto send_sup
+endif
+
+;---------------------------------------------------
+; Select load all images or selected image
+;---------------------------------------------------
+;wait '>'
+mpause 100
+
+call Load_all_image
+
+setbaud 115200
+
+end
+
+;---------------------------------------------------
+; load all images
+;---------------------------------------------------
+:Load_All_image
+
+; file check
+for i 0 ARRAY_NUM-1
+   index = i
+   call Load_Image
+next
+;messagebox "Total flashing finish" ""
+return
+
+;---------------------------------------------------
+; Select load selected Image
+;---------------------------------------------------
+:Load_selected_image
+:retry
+    listbox 'Please select the image to be written' 'Image selection' IMGNM
+    index = result
+    if index = -1 then
+;        messagebox "Write end" ""
+    else
+        ; file check
+        filesearch IMGNM[index]
+        If result=0 then
+            sprintf 'File "%s" not found' IMGNM[index]
+            messagebox inputstr 'error'
+        else
+            call Decode_srec_start_address
+            call Load_Image
+        endif
+        goto retry
+    endif
+return
+
+;---------------------------------------------------
+; Load Image
+;---------------------------------------------------
+:Load_Image
+sendln 'xls2'
+
+while 1
+  wait '  Select (1-3)>' '(Push Y key)' '  Please Input : H'
+
+  If result=1 then
+    mpause 10
+    sendln '3'
+  elseif result=2 then
+    mpause 10
+    sendln 'y'
+  elseif result=3 then
+    break
+  endif
+endwhile
+
+wait '  Please Input : H'
+mpause 1
+sendln IMGADR[index]
+wait '  Please Input : H'
+sendln FLASHADR[index]
+wait 'CR stop load)'
+mpause 400
+FILE_NAME = DIR
+strconcat FILE_NAME '\'
+strconcat FILE_NAME IMGNM[index]
+statusbox IMGNM[index] 'Sending file'
+sendfile FILE_NAME 1
+wait 'Clear OK?(y/n)' '>'
+
+If result=1 then
+  sendln 'y'
+  wait '>'
+endif
+
+mpause 100
+return
+
+;; 3 Macro end
+;end
+

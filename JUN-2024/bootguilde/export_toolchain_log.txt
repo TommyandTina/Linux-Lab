@@ -1,0 +1,204 @@
+    +----------------------------------------------------------------------+
+    ¦                 • MobaXterm Personal Edition v23.1 •                 ¦
+    ¦               (SSH client, X server and network tools)               ¦
+    ¦                                                                      ¦
+    ¦ ? SSH session to long.trinh-tien@192.168.2.25                        ¦
+    ¦   • Direct SSH      :  ?                                             ¦
+    ¦   • SSH compression :  ?                                             ¦
+    ¦   • SSH-browser     :  ?                                             ¦
+    ¦   • X11-forwarding  :  ?  (remote display is forwarded through SSH)  ¦
+    ¦                                                                      ¦
+    ¦ ? For more info, ctrl+click on help or visit our website.            ¦
+    +----------------------------------------------------------------------+
+
+Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-186-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Wed 19 Jun 2024 10:33:28 AM +07
+
+
+Last login: Wed Jun 19 10:30:22 2024 from 10.89.234.154
+long.trinh-tien@pc-012:~$ htop
+long.trinh-tien@pc-012:~$ cat /opt/
+hubcontrol_firmware/ poky/                wine-stable/
+long.trinh-tien@pc-012:~$ cat /opt/
+hubcontrol_firmware/ poky/                wine-stable/
+long.trinh-tien@pc-012:~$ cat /opt/poky/3.
+3.1.11/ 3.1.8/  3.3.6/
+long.trinh-tien@pc-012:~$ cat /opt/poky/3.
+3.1.11/ 3.1.8/  3.3.6/
+long.trinh-tien@pc-012:~$ cat /opt/poky/3.3.6/
+environment-setup-cortexa57-cortexa53-poky-linux  sysroots/
+site-config-cortexa57-cortexa53-poky-linux        version-cortexa57-cortexa53-poky-linux
+long.trinh-tien@pc-012:~$ cat /opt/poky/3.3.6/environment-setup-cortexa57-cortexa53-poky-linux
+# Check for LD_LIBRARY_PATH being set, which can break SDK and generally is a bad practice
+# http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html#AEN80
+# http://xahlee.info/UnixResource_dir/_/ldpath.html
+# Only disable this check if you are absolutely know what you are doing!
+if [ ! -z "$LD_LIBRARY_PATH" ]; then
+    echo "Your environment is misconfigured, you probably need to 'unset LD_LIBRARY_PATH'"
+    echo "but please check why this was set in the first place and that it's safe to unset."
+    echo "The SDK will not operate correctly in most cases when LD_LIBRARY_PATH is set."
+    echo "For more references see:"
+    echo "  http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html#AEN80"
+    echo "  http://xahlee.info/UnixResource_dir/_/ldpath.html"
+    return 1
+fi
+
+export SDKTARGETSYSROOT=/opt/poky/3.3.6/sysroots/cortexa57-cortexa53-poky-linux
+export PATH=/opt/poky/3.3.6/sysroots/x86_64-pokysdk-linux/usr/bin:/opt/poky/3.3.6/sysroots/x86_64-pokysdk-linux/usr/sbin:/opt/poky/3.3.6/sysroots/x86_64-pokysdk-linux/bin:6_64-pokysdk-linux/sbin:/opt/poky/3.3.6/sysroots/x86_64-pokysdk-linux/usr/bin/../x86_64-pokysdk-linux/bin:/opt/poky/3.3.6/sysroots/x86_64-pokysdk-linux/usr/bin/aarch64-pokroots/x86_64-pokysdk-linux/usr/bin/aarch64-poky-linux-musl:$PATH
+export PKG_CONFIG_SYSROOT_DIR=$SDKTARGETSYSROOT
+export PKG_CONFIG_PATH=$SDKTARGETSYSROOT/usr/lib/pkgconfig:$SDKTARGETSYSROOT/usr/share/pkgconfig
+export CONFIG_SITE=/opt/poky/3.3.6/site-config-cortexa57-cortexa53-poky-linux
+export OECORE_NATIVE_SYSROOT="/opt/poky/3.3.6/sysroots/x86_64-pokysdk-linux"
+export OECORE_TARGET_SYSROOT="$SDKTARGETSYSROOT"
+export OECORE_ACLOCAL_OPTS="-I /opt/poky/3.3.6/sysroots/x86_64-pokysdk-linux/usr/share/aclocal"
+export OECORE_BASELIB="lib"
+export OECORE_TARGET_ARCH="aarch64"
+export OECORE_TARGET_OS="linux"
+unset command_not_found_handle
+export CC="aarch64-poky-linux-gcc  -mcpu=cortex-a57.cortex-a53 -march=armv8-a+crc -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=formARGETSYSROOT"
+export CXX="aarch64-poky-linux-g++  -mcpu=cortex-a57.cortex-a53 -march=armv8-a+crc -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=forTARGETSYSROOT"
+export CPP="aarch64-poky-linux-gcc -E  -mcpu=cortex-a57.cortex-a53 -march=armv8-a+crc -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=SDKTARGETSYSROOT"
+export AS="aarch64-poky-linux-as "
+export LD="aarch64-poky-linux-ld  --sysroot=$SDKTARGETSYSROOT"
+export GDB=aarch64-poky-linux-gdb
+export STRIP=aarch64-poky-linux-strip
+export RANLIB=aarch64-poky-linux-ranlib
+export OBJCOPY=aarch64-poky-linux-objcopy
+export OBJDUMP=aarch64-poky-linux-objdump
+export READELF=aarch64-poky-linux-readelf
+export AR=aarch64-poky-linux-ar
+export NM=aarch64-poky-linux-nm
+export M4=m4
+export TARGET_PREFIX=aarch64-poky-linux-
+export CONFIGURE_FLAGS="--target=aarch64-poky-linux --host=aarch64-poky-linux --build=x86_64-linux --with-libtool-sysroot=$SDKTARGETSYSROOT"
+export CFLAGS=" -O2 -pipe -g -feliminate-unused-debug-types "
+export CXXFLAGS=" -O2 -pipe -g -feliminate-unused-debug-types "
+export LDFLAGS="-Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed -Wl,-z,relro,-z,now"
+export CPPFLAGS=""
+export KCFLAGS="--sysroot=$SDKTARGETSYSROOT"
+export OECORE_DISTRO_VERSION="3.3.6"
+export OECORE_SDK_VERSION="3.3.6"
+export ARCH=arm64
+export CROSS_COMPILE=aarch64-poky-linux-
+
+# Append environment subscripts
+if [ -d "$OECORE_TARGET_SYSROOT/environment-setup.d" ]; then
+    for envfile in $OECORE_TARGET_SYSROOT/environment-setup.d/*.sh; do
+            . $envfile
+    done
+fi
+if [ -d "$OECORE_NATIVE_SYSROOT/environment-setup.d" ]; then
+    for envfile in $OECORE_NATIVE_SYSROOT/environment-setup.d/*.sh; do
+            . $envfile
+    done
+fi
+long.trinh-tien@pc-012:~$ cd /home/long.trinh-tien/yocto_s4sk/build/build-s4sk-gateway/tmp/deploy/sdk/
+long.trinh-tien@pc-012:~/yocto_s4sk/build/build-s4sk-gateway/tmp/deploy/sdk$ bash poky-glibc-x86_64-rcar-image-gateway-aarch64-s4sk-toolchain-3.1.11.sh
+Poky (Yocto Project Reference Distro) SDK installer version 3.1.11
+==================================================================
+Enter target directory for SDK (default: /opt/poky/3.1.11): /home/long.trinh-tien/yocto_s4sk/sdk_extract3.1.11
+You are about to install the SDK to "/home/long.trinh-tien/yocto_s4sk/sdk_extract3.1.11". Proceed [Y/n]? y
+Extracting SDK..........................................................................................................................................................................................................done
+Setting it up...done
+SDK has been successfully set up and is ready to be used.
+Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
+ $ . /home/long.trinh-tien/yocto_s4sk/sdk_extract3.1.11/environment-setup-aarch64-poky-linux
+long.trinh-tien@pc-012:~/yocto_s4sk/build/build-s4sk-gateway/tmp/deploy/sdk$ ./home/long.trinh-tien/yocto_s4sk/sdk_extract3.1.11/environment-setup-aarch64-poky-linux
+-bash: ./home/long.trinh-tien/yocto_s4sk/sdk_extract3.1.11/environment-setup-aarch64-poky-linux: No such file or directory
+long.trinh-tien@pc-012:~/yocto_s4sk/build/build-s4sk-gateway/tmp/deploy/sdk$ . /home/long.trinh-tien/yocto_s4sk/sdk_extract3.1.11/environment-setup-aarch64-poky-linux
+long.trinh-tien@pc-012:~/yocto_s4sk/build/build-s4sk-gateway/tmp/deploy/sdk$ source /home/long.trinh-tien/yocto_s4sk/sdk_extract3.1.11/environment-setup-aarch64-poky-linuxlong.trinh-tien@pc-012:~/yocto_s4sk/build/build-s4sk-gateway/tmp/deploy/sdk$ cd
+long.trinh-tien@pc-012:~$ ls
+backup_file  kernel_build  tools  u-boot  u_boot_H3_test_outside  ut_test  yocto  yocto_H3_multimedia  yocto_s4sk  yocto_s4sk_backup  yocto_u-boot_poky_done
+long.trinh-tien@pc-012:~$ rm -rf yocto_s4sk_backup/
+long.trinh-tien@pc-012:~$ ls
+backup_file  kernel_build  tools  u-boot  u_boot_H3_test_outside  ut_test  yocto  yocto_H3_multimedia  yocto_s4sk  yocto_u-boot_poky_done
+long.trinh-tien@pc-012:~$ cd yocto
+long.trinh-tien@pc-012:~/yocto$ ls
+build  meta-openembedded  meta-renesas  poky  u-boot
+long.trinh-tien@pc-012:~/yocto$ wget https://downloads.yoctoproject.org/releases/yocto/yocto-5.0.1/toolchain/x86_64/poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-5.0.1.sh
+--2024-06-19 13:26:03--  https://downloads.yoctoproject.org/releases/yocto/yocto-5.0.1/toolchain/x86_64/poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-5.0.1.sh
+Resolving downloads.yoctoproject.org (downloads.yoctoproject.org)... 198.145.29.62
+Connecting to downloads.yoctoproject.org (downloads.yoctoproject.org)|198.145.29.62|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 768956349 (733M) [application/octet-stream]
+Saving to: ‘poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-5.0.1.sh’
+
+poky-glibc-x86_64-core-image-sato-cortexa5 100%[=======================================================================================>] 733.33M  4.34MB/s    in 2m 42s
+
+2024-06-19 13:28:46 (4.52 MB/s) - ‘poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-5.0.1.sh’ saved [768956349/768956349]
+
+long.trinh-tien@pc-012:~/yocto$ bash poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-5.0.1.sh
+Poky (Yocto Project Reference Distro) SDK installer version 5.0.1
+=================================================================
+Enter target directory for SDK (default: /opt/poky/5.0.1): "/home/long.trinh-tien/yocto_s4sk/sdk_5.0.1/""/home/long.trinh-tien/yocto_s4sk/sdk_5.0.1"
+You are about to install the SDK to "/home/long.trinh-tien/yocto_s4sk/sdk_5.0.1/home/long.trinh-tien/yocto_s4sk/sdk_5.0.1". Proceed [Y/n]? n
+Installation aborted!
+long.trinh-tien@pc-012:~/yocto$ bash poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-5.0.1.sh
+Poky (Yocto Project Reference Distro) SDK installer version 5.0.1
+=================================================================
+Enter target directory for SDK (default: /opt/poky/5.0.1): "/home/long.trinh-tien/yocto_s4sk/sdk_5.0.1/"
+You are about to install the SDK to "/home/long.trinh-tien/yocto_s4sk/sdk_5.0.1". Proceed [Y/n]? y
+Extracting SDK....................................................................................................................................................................................................done
+Setting it up...done
+SDK has been successfully set up and is ready to be used.
+Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
+ $ . /home/long.trinh-tien/yocto_s4sk/sdk_5.0.1/environment-setup-cortexa57-poky-linux
+long.trinh-tien@pc-012:~/yocto$ ls
+build  meta-openembedded  meta-renesas  poky  poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-5.0.1.sh  u-boot
+long.trinh-tien@pc-012:~/yocto$ wget https://downloads.yoctoproject.org/releases/yocto/yocto-4.3.4/toolchain/x86_64/poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-4.3.4.sh
+--2024-06-19 15:13:21--  https://downloads.yoctoproject.org/releases/yocto/yocto-4.3.4/toolchain/x86_64/poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-4.3.4.sh
+Resolving downloads.yoctoproject.org (downloads.yoctoproject.org)... 198.145.29.62
+Connecting to downloads.yoctoproject.org (downloads.yoctoproject.org)|198.145.29.62|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 716125279 (683M) [application/octet-stream]
+Saving to: ‘poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-4.3.4.sh’
+
+poky-glibc-x86_64-core-image-sato-cortexa5 100%[=======================================================================================>] 682.95M  1.52MB/s    in 21m 13s
+
+2024-06-19 15:34:35 (549 KB/s) - ‘poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-4.3.4.sh’ saved [716125279/716125279]
+
+long.trinh-tien@pc-012:~/yocto$ ls
+build              meta-renesas  poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-4.3.4.sh  u-boot
+meta-openembedded  poky          poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-5.0.1.sh
+long.trinh-tien@pc-012:~/yocto$ bash poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-4.3.4.sh
+Poky (Yocto Project Reference Distro) SDK installer version 4.3.4
+=================================================================
+Enter target directory for SDK (default: /opt/poky/4.3.4): /home/long.trinh-tien/yocto_s4sk/sdk4.3.4
+You are about to install the SDK to "/home/long.trinh-tien/yocto_s4sk/sdk4.3.4". Proceed [Y/n]? y
+Extracting SDK...................................................................................................................................................................................done
+Setting it up...done
+SDK has been successfully set up and is ready to be used.
+Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
+ $ . /home/long.trinh-tien/yocto_s4sk/sdk4.3.4/environment-setup-cortexa57-poky-linux
+long.trinh-tien@pc-012:~/yocto$ wget https://downloads.yoctoproject.org/releases/yocto/yocto-3.4.4/toolchain/x86_64/poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-3.4.4.sh
+--2024-06-19 16:36:00--  https://downloads.yoctoproject.org/releases/yocto/yocto-3.4.4/toolchain/x86_64/poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-3.4.4.sh
+Resolving downloads.yoctoproject.org (downloads.yoctoproject.org)... 198.145.29.62
+Connecting to downloads.yoctoproject.org (downloads.yoctoproject.org)|198.145.29.62|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 495000055 (472M) [application/octet-stream]
+Saving to: ‘poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-3.4.4.sh’
+
+poky-glibc-x86_64-core-image-sato-cortexa5 100%[=======================================================================================>] 472.07M  2.87MB/s    in 2m 12s
+
+2024-06-19 16:38:13 (3.56 MB/s) - ‘poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-3.4.4.sh’ saved [495000055/495000055]
+
+long.trinh-tien@pc-012:~/yocto$ ls
+build              poky                                                                      poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-5.0.1.sh
+meta-openembedded  poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-3.4.4.sh  u-boot
+meta-renesas       poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-4.3.4.sh
+long.trinh-tien@pc-012:~/yocto$ bash poky-glibc-x86_64-core-image-sato-cortexa57-qemuarm64-toolchain-3.4.4.sh
+Poky (Yocto Project Reference Distro) SDK installer version 3.4.4
+=================================================================
+Enter target directory for SDK (default: /opt/poky/3.4.4):  /home/long.trinh-tien/yocto_s4sk/sdk3.4.4
+You are about to install the SDK to "/home/long.trinh-tien/yocto_s4sk/sdk3.4.4". Proceed [Y/n]? y
+Extracting SDK..........................................................................................................................done
+Setting it up...done
+SDK has been successfully set up and is ready to be used.
+Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
+ $ . /home/long.trinh-tien/yocto_s4sk/sdk3.4.4/environment-setup-cortexa57-poky-linux
+long.trinh-tien@pc-012:~/yocto$
