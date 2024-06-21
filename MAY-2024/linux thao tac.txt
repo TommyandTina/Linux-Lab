@@ -71,3 +71,24 @@ find [path-cần-kiểm-tra] -type d -exec echo '{}' \;
 	Ấn 'ps' (xem process của user chạy) 'ps -x' (process + command liên quan tới user) 'ps -u' (nhiều thông tin hơn)
 	Hoặc ấn 'top' để xem toàn bộ process đang chạy
 	Lấy PID và ấn 'kill -9 PID' là kill được 
+
+- Mount 1 folder từ máy khác trong lan vào máy mình
+	Install sshfs
+		$ sudo apt-get install sshfs
+
+	2.Create local mount point
+
+		$ mkdir /home/johndoe/sshfs-path/
+
+	3.Mount remote folder /remote/path to /home/johndoe/sshfs-path/
+
+		$ sshfs -o allow_other remoteuser@111.222.333.444:/remote/path /home/johndoe/sshfs-path/
+
+	And finally, to umount ...
+		$ fusermount -u /home/johndoe/sshfs-path/
+
+-Nén và giải nén zip
+	zip -r name.zip folder
+	unzip name.zip
+	tar -cf folder (nén tar.gz)
+	tar -xf folder.tar.gz (giải nén)
