@@ -92,3 +92,14 @@ find [path-cần-kiểm-tra] -type d -exec echo '{}' \;
 	unzip name.zip
 	tar -cf folder (nén tar.gz)
 	tar -xf folder.tar.gz (giải nén)
+
+- Search trong file/tên file và trong lịch sử commit:
+	git grep "word" 
+	git ls-files "*name_of_file_to_search*"
+	git log -p -S "commit_search"
+	ack -g "name_file"
+- Kiểm tra các file .pc khi sử dụng poky cross toolchains (đôi khi nó include 1 package mà máy ta không có -> lỗi)
+	Xóa file hoặc unset PKG_CONFIG_PATH
+
+- Kiểm tra pico có ai đang xài không
+	ps aux | grep pico
