@@ -1,9 +1,0 @@
-root@salvator-x:~/vin2# ./v4l2_videocap_test --device /dev/video0 --none --width_c 720 --height_c 480 --width_s 720 --height_s 480
-Capacity(0,0)(720x480)
-<G_CROP: size (720x480), position (0,0)>
-<G_FMT: size (720x480), field:1, format:1346520914>
-copying a ppm!
-[ 2598.645885] rcar-vin e6ef0000.video: =================  START STATUS  =================
-[ 2598.656938] v4l2-ctrls: rcar-vin e6ef0000.video: Alpha Component: 255
-[ 2598.666299] rcar-vin e6ef0000.video: ==================  END STATUS  ==================
-

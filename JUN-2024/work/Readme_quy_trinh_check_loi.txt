@@ -4,3 +4,4 @@
 	từ đây tới SW Maintenance -> Prj_Output -> 2024 -> Gen3_CICD -> spec_Gen3 -> tên module -> spec.xls
 	vào file spec *.xls tới tab 2.2, mục 106 (do item là 2.2.106) xem lỗi đó là gì
 	qua tab 1.4 để xem cách setup
+- Tìm đến file user manual : software để xem chi tiết cách hoạt động của nó

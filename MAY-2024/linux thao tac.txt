@@ -103,3 +103,6 @@ find [path-cần-kiểm-tra] -type d -exec echo '{}' \;
 
 - Kiểm tra pico có ai đang xài không
 	ps aux | grep pico
+
+- Kiểm tra tiến trình call gì 
+	strace -p PID

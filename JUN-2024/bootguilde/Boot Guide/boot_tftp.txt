@@ -45,12 +45,13 @@ setenv bootcmd 'run bootcmd_tftp'
 saveenv
 
 ## FL2/M3e
-setenv bootargs 'root=/dev/nfs nfsroot=192.168.10.199:/tftpboot/thuanha/M3e/rootfs,nfsvers=4 ip=192.168.10.13'
-setenv bootcmd_tftp 'tftp 0x48080000 thuanha/M3e/Image;tftp 0x48000000 thuanha/M3e/${dtb};booti 0x48080000 - 0x48000000'
-setenv ipaddr '192.168.10.13'
-setenv serverip '192.168.10.199'
+setenv bootargs 'root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/h3-test/M3/rootfs,nfsvers=4 ip=192.168.8.20'
+setenv bootcmd_tftp 'tftp 0x48080000 h3-test/M3/Image;tftp 0x48000000 h3-test/M3/${dtb};booti 0x48080000 - 0x48000000'
+setenv ipaddr '192.168.8.20'
+setenv serverip '192.168.8.8'
 setenv dtb 'r8a779m3-salvator-xs.dtb'
 setenv bootcmd 'run bootcmd_tftp'
+run bootcmd_tftp
 saveenv
 
 ## FL2/M3N
