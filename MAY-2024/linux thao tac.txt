@@ -106,3 +106,5 @@ find [path-cần-kiểm-tra] -type d -exec echo '{}' \;
 
 - Kiểm tra tiến trình call gì 
 	strace -p PID
+- Truyền pass vào sudo:
+	echo Pass1234 |sudo -S 'command go here'
