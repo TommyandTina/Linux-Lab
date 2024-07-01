@@ -98,8 +98,14 @@ find [path-cần-kiểm-tra] -type d -exec echo '{}' \;
 	git ls-files "*name_of_file_to_search*"
 	git log -p -S "commit_search"
 	ack -g "name_file"
+	grep -Rnw '/path/to/somewhere/' -e 'pattern' (-r or -R is recursive ; use -R to search entirely; -n is 
+		line number; -w stands for match the whole word.
+
 - Kiểm tra các file .pc khi sử dụng poky cross toolchains (đôi khi nó include 1 package mà máy ta không có -> lỗi)
 	Xóa file hoặc unset PKG_CONFIG_PATH
+
+- Kiểm tra md5sum xem file có giống nhau không
+	md5sum FileName
 
 - Kiểm tra pico có ai đang xài không
 	ps aux | grep pico
@@ -108,3 +114,7 @@ find [path-cần-kiểm-tra] -type d -exec echo '{}' \;
 	strace -p PID
 - Truyền pass vào sudo:
 	echo Pass1234 |sudo -S 'command go here'
+- Spam 
+	yes "word"
+- Logout user
+	sudo pkill -KILL -u username
