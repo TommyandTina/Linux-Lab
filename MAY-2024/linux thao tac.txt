@@ -1,35 +1,37 @@
 - xem package
-snap list |grep -v canonical
-apt-mark showmanual
+	snap list |grep -v canonical
+	apt-mark showmanual
 
 -copy:
-cp -u from to : copy cái mới hơn
-cp -r from to: copy recursively
-cp -L from to : copy file gốc (thay vì copy symbolic link)
+	cp -u from to : copy cái mới hơn
+	cp -r from to: copy recursively
+	cp -L from to : copy file gốc (thay vì copy symbolic link)
 
 -remove:
-rm -rf:xóa sạch folder + file
+	rm -rf:xóa sạch folder + file
 
--xem os,lsb version:
-cat /etc/os-release
-cat /etc/lsb-release
-lsb_release
+- xem os,lsb version:
+	cat /etc/os-release
+	cat /etc/lsb-release
+	lsb_release
 
--dry run rm:
-ls -R folder/
+- dry run rm:
+	ls -R folder/
 
--copy file tới ssh:
-scp [other options] [source username@IP]:/[directory and file name] [destination username@IP]:/[destination directory]
-scp "C:\Users\long.trinh-tien\.ssh\id_rsa.pub" long.trinh-tien@192.168.2.25:~/.ssh ; sau đó lưu dưới tên authorized_keys
+- copy file tới ssh:
+	scp [other options] [source username@IP]:/[directory and file name] [destination username@IP]:/[destination directory]
+	scp "C:\Users\long.trinh-tien\.ssh\id_rsa.pub" long.trinh-tien@192.168.2.25:~/.ssh ; sau đó lưu dưới tên authorized_keys
 
--Xem version của package:
-apt-show-versions name_of_package (chỉ show được package đã cài)
-apt show <package>
+- Xem version của package:
+	apt-show-versions name_of_package (chỉ show được package đã cài)
+	apt show <package>
 
--Kiểm tra file trước khi xóa
-find [path-cần-kiểm-tra] -type d -exec echo '{}' \;
+- Kiểm tra file trước khi xóa
+	find [path-cần-kiểm-tra] -type d -exec echo '{}' \;
 
--ls, ll, l, la, tree -L num_of_child : xem file và thư mục
+- ls, ll, l, la, tree -L num_of_child : xem file và thư mục
+	ls -1 : xem list theo hàng dọc
+		
 
 - Xem thời gian execute:
 	Linux: time + command
@@ -64,6 +66,7 @@ find [path-cần-kiểm-tra] -type d -exec echo '{}' \;
 	Ấn Ctrl+Z để suspend process đó (hiện tại thì đang dừng)
 	Ấn 'jobs' để xem các job đang suspend và lấy job_id (do chạy trên shell nên ta lấy job_id thay vì PID)
 	Ấn 'bg job_id' (để chạy background) hoặc 'fg job_id' (để chạy foreground)
+
 - Đợi 1 process khác xong
 	Dùng hàm 'wait'
 
@@ -116,5 +119,39 @@ find [path-cần-kiểm-tra] -type d -exec echo '{}' \;
 	echo Pass1234 |sudo -S 'command go here'
 - Spam 
 	yes "word"
+
 - Logout user
 	sudo pkill -KILL -u username
+
+- Lọc và đếm tổng số lượng unique 
+	awk '{print $1}' example.txt | uniq | wc -l hoặc awk '{print $1}' example.txt | sort | uniq | wc -l
+
+- chmod mọi thứ
+	chmod -R 777 path/to/change/mode
+
+- vim
+	thêm dòng cuối : Shift+g (hoặc ctrl +d)  o
+	thêm dòng đầu : gg (hoặc ctrl + u) shift+o
+	exit và lưu ":wq"
+	tới cuối dòng  $
+	tới cuối trang :$ hoặc ctrl + end
+	undo ctrl+u
+
+- tải package mannually bằng apt/apt-get
+	apt download htop
+	dpkg-deb -x package.deb . Để giải nén
+
+- để cài thủ công package cho poky toolchain
+	echo $SDKTARGETSYSROOT -> xem path sysroot
+	pkg-config --variable=pc_path pkg-config -> xem nơi các file *.pc được đọc từ toolchain
+	Chép file .pc vào rồi kiểm tra lại path include và link library trong file đó
+	Thêm lib, module vào 
+
+- find 
+	find . -type f/d -name '*pattern*'
+
+- dùng locate tìm
+	locate pattern (chưa test kỹ)
+
+- copy file giữ path (để xài cho việc chép vào poky)
+	rsync -avR $(find . -name '*pciaccess*') destination_directory
