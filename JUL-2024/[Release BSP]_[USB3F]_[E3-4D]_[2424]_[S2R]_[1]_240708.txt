@@ -805,3 +805,48 @@ root@salvator-x:~# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device
 root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/state
 configured
 root@salvator-x:~#
+
+
+
+---------- HOST-PC -----------
+
+rvc@L410730-CL011:~/Downloads$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            3,8G     0  3,8G   0% /dev
+tmpfs           784M  2,2M  782M   1% /run
+/dev/nvme0n1p4  458G  246G  189G  57% /
+tmpfs           3,9G     0  3,9G   0% /dev/shm
+tmpfs           5,0M  4,0K  5,0M   1% /run/lock
+tmpfs           3,9G     0  3,9G   0% /sys/fs/cgroup
+/dev/loop0      128K  128K     0 100% /snap/bare/5
+/dev/loop4      350M  350M     0 100% /snap/gnome-3-38-2004/143
+/dev/loop1       64M   64M     0 100% /snap/core20/2182
+/dev/loop2      347M  347M     0 100% /snap/gnome-3-38-2004/119
+/dev/loop3      497M  497M     0 100% /snap/gnome-42-2204/141
+/dev/loop9       92M   92M     0 100% /snap/gtk-common-themes/1535
+/dev/loop8      506M  506M     0 100% /snap/gnome-42-2204/176
+/dev/loop6       64M   64M     0 100% /snap/core20/2318
+/dev/loop5       75M   75M     0 100% /snap/core22/1380
+/dev/loop7       74M   74M     0 100% /snap/core22/864
+/dev/loop10     9,8M  9,8M     0 100% /snap/htop/4407
+/dev/loop13      13M   13M     0 100% /snap/snap-store/1113
+/dev/loop14      41M   41M     0 100% /snap/snapd/20290
+/dev/loop11      13M   13M     0 100% /snap/snap-store/959
+/dev/loop12      39M   39M     0 100% /snap/snapd/21759
+/dev/nvme0n1p1  3,7G  199M  3,3G   6% /boot
+/dev/nvme0n1p2  3,9G  6,1M  3,9G   1% /boot/efi
+tmpfs           784M   36K  784M   1% /run/user/1000
+/dev/sdc        968M   44K  918M   1% /media/rvc/storage
+rvc@L410730-CL011:~/Downloads$ mkdir /mnt/usb
+mkdir: cannot create directory ‘/mnt/usb’: File exists
+rvc@L410730-CL011:~/Downloads$ sudo mount /dev/sdc /mnt/usb
+[sudo] password for rvc:
+rvc@L410730-CL011:~/Downloads$ sudo cp file-100m /mnt/usb/file-100m_from_host
+rvc@L410730-CL011:~/Downloads$ sudo cp /mnt/usb/file-100m_from_host ./file-100m_from_board
+rvc@L410730-CL011:~/Downloads$ md5sum file-100m file-100m
+file-100m             file-100m_from_board
+rvc@L410730-CL011:~/Downloads$ md5sum file-100m file-100m_from_board
+a297e2e34a725c64d414b6856730ac6b  file-100m
+a297e2e34a725c64d414b6856730ac6b  file-100m_from_board
+rvc@L410730-CL011:~/Downloads$ sudo umount /mnt/usb
+rvc@L410730-CL011:~/Downloads$
