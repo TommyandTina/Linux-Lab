@@ -1,0 +1,280 @@
+getdir DIR
+
+;===================================================
+;; COM Port / baud rate setting
+COM_PORT = '4'
+BAUDRATE = '115200'
+;===================================================
+;; 1 Command assembly
+COMMAND = '/C='
+strconcat COMMAND COM_PORT
+strconcat COMMAND ' /BAUD='
+strconcat COMMAND BAUDRATE
+
+;; 2 Connection
+;connect COMMAND
+
+;---------------------------------------------------
+; Initialize DRAM
+;---------------------------------------------------
+;wait '>'
+;mpause 100
+;sendln 'init_dram'
+
+;---------------------------------------------------
+; Setting load image parameter
+;---------------------------------------------------
+strdim DEVICE 10
+DEVICE[0] = 'R-Car H3 Salvator XS 8Gb(4x2g)'
+DEVICE[1] = 'R-Car H3 Salvator XS 4Gb(4x1g)'
+DEVICE[2] = 'R-Car H3 Salvator XS'
+DEVICE[3] = 'R-Car M3 Salvator XS (2x2g)'
+DEVICE[4] = 'R-Car M3 Salvator XS'
+DEVICE[5] = 'R-Car M3N Salvator XS'
+DEVICE[6] = 'R-Car E3 Ebisu-4D'
+DEVICE[7] = 'R-Car E3 Ebisu'
+DEVICE[8] = 'R-Car H3ULCB'
+DEVICE[9] = 'R-Car M3ULCB'
+
+strdim IMGNM 6
+listbox 'Please select the device to be set' 'Device selection' DEVICE
+
+if result<6 then
+    setbaud 115200
+    FILE_NAME = DIR
+    strconcat FILE_NAME '\AArch64_Gen3_H3_M3_Scif_MiniMon_V5.11.mot'
+    sendfile FILE_NAME 1
+elseif result=6 then
+    setbaud 115200
+    FILE_NAME = DIR
+    strconcat FILE_NAME '\AArch64_Gen3_E3-4D_Scif_MiniMon_V5.03A.mot'
+    sendfile FILE_NAME 1
+endif
+
+if result=0 then
+	; R-Car H3 Salvator XS (4x2g)
+	IMGNM[0] = 'bootparam_sa0-4x2g.srec'
+	IMGNM[1] = 'bl2-salvator-x-4x2g.srec'
+	IMGNM[2] = 'cert_header_sa6-4x2g.srec'
+	IMGNM[3] = 'bl31-salvator-x-4x2g.srec'
+	IMGNM[4] = 'tee-salvator-x.srec'
+	IMGNM[5] = 'u-boot-elf-salvator-xs-4x2g.srec'
+elseif result=1 then
+	; R-Car H3 Salvator XS (4x1g)
+	IMGNM[0] = 'bootparam_sa0-4x1g.srec'
+	IMGNM[1] = 'bl2-salvator-x-4x1g.srec'
+	IMGNM[2] = 'cert_header_sa6-4x1g.srec'
+	IMGNM[3] = 'bl31-salvator-x-4x1g.srec'
+	IMGNM[4] = 'tee-salvator-x.srec'
+	IMGNM[5] = 'u-boot-elf-salvator-xs-4x1g.srec'
+elseif result=2 then
+	; R-Car H3 Salvator XS
+	IMGNM[0] = 'bootparam_sa0.srec'
+	IMGNM[1] = 'bl2-salvator-x.srec'
+	IMGNM[2] = 'cert_header_sa6.srec'
+	IMGNM[3] = 'bl31-salvator-x.srec'
+	IMGNM[4] = 'tee-salvator-x.srec'
+	IMGNM[5] = 'u-boot-elf-salvator-xs.srec'
+elseif result=3 then
+	; R-Car M3 Salvator XS (2x4g)
+	IMGNM[0] = 'bootparam_sa0.srec'
+	IMGNM[1] = 'bl2-salvator-x.srec'
+	IMGNM[2] = 'cert_header_sa6.srec'
+	IMGNM[3] = 'bl31-salvator-x.srec'
+	IMGNM[4] = 'tee-salvator-x.srec'
+	IMGNM[5] = 'u-boot-elf-salvator-xs-2x4g.srec'
+elseif result=4 then
+	; R-Car M3 Salvator XS
+	IMGNM[0] = 'bootparam_sa0.srec'
+	IMGNM[1] = 'bl2-salvator-x.srec'
+	IMGNM[2] = 'cert_header_sa6.srec'
+	IMGNM[3] = 'bl31-salvator-x.srec'
+	IMGNM[4] = 'tee-salvator-x.srec'
+	IMGNM[5] = 'u-boot-elf-salvator-xs.srec'
+elseif result=5 then
+	; R-Car M3N Salvator XS
+	IMGNM[0] = 'bootparam_sa0.srec'
+	IMGNM[1] = 'bl2-salvator-x.srec'
+	IMGNM[2] = 'cert_header_sa6.srec'
+	IMGNM[3] = 'bl31-salvator-x.srec'
+	IMGNM[4] = 'tee-salvator-x.srec'
+	IMGNM[5] = 'u-boot-elf-salvator-xs.srec'
+elseif result=6 then
+	; R-Car E3 Ebisu-4D
+	IMGNM[0] = 'bootparam_sa0-4d.srec'
+	IMGNM[1] = 'bl2-ebisu-4d.srec'
+	IMGNM[2] = 'cert_header_sa6-4d.srec'
+	IMGNM[3] = 'bl31-ebisu-4d.srec'
+	IMGNM[4] = 'tee-ebisu.srec'
+	IMGNM[5] = 'u-boot-elf-ebisu-4d.srec'
+elseif result=7 then
+	; R-Car E3 Ebisu
+	IMGNM[0] = 'bootparam_sa0.srec'
+	IMGNM[1] = 'bl2-ebisu.srec'
+	IMGNM[2] = 'cert_header_sa6.srec'
+	IMGNM[3] = 'bl31-ebisu.srec'
+	IMGNM[4] = 'tee-ebisu.srec'
+	IMGNM[5] = 'u-boot-elf-ebisu.srec'
+elseif result=8 then
+	; R-Car H3ULCB
+	IMGNM[0] = 'bootparam_sa0.srec'
+	IMGNM[1] = 'bl2-h3ulcb.srec'
+	IMGNM[2] = 'cert_header_sa6.srec'
+	IMGNM[3] = 'bl31-h3ulcb.srec'
+	IMGNM[4] = 'tee-h3ulcb.srec'
+	IMGNM[5] = 'u-boot-elf-h3ulcb.srec'
+elseif result=9 then
+	; R-Car M3ULCB
+	IMGNM[0] = 'bootparam_sa0.srec'
+	IMGNM[1] = 'bl2-m3ulcb.srec'
+	IMGNM[2] = 'cert_header_sa6.srec'
+	IMGNM[3] = 'bl31-m3ulcb.srec'
+	IMGNM[4] = 'tee-m3ulcb.srec'
+	IMGNM[5] = 'u-boot-elf-m3ulcb.srec'
+else
+	end
+endif
+
+
+strdim IMGADR 6
+IMGADR[0] = 'E6320000'
+IMGADR[1] = 'E6304000'
+IMGADR[2] = 'E6320000'
+IMGADR[3] = '44000000'
+IMGADR[4] = '44100000'
+IMGADR[5] = '50000000'
+
+
+strdim FLASHADR 6
+FLASHADR[0] = '0'
+FLASHADR[1] = '40000'
+FLASHADR[2] = '180000'
+FLASHADR[3] = '1C0000'
+FLASHADR[4] = '200000'
+FLASHADR[5] = '640000'
+
+
+
+;-------------------------------------------------------------
+; switch Scif speed UP (Change to 460.8kbps baud rate setting)
+;-------------------------------------------------------------
+sendln ''
+wait '>'
+mpause 100
+:send_sup
+sendln 'sup'
+wait 'Change to 460.8Kbps baud rate setting of the SCIF. OK? (y/n)' 'Please change to 921.6Kbps baud rate setting of the terminal.' 'Please change to 460.8Kbps baud rate setting of the terminal.' 'command not found'
+
+If result=1 then
+  sendln 'y'
+  wait 'Please change to 460.8Kbps baud rate setting of the terminal.'
+  setbaud 460800
+elseif result=2 then
+  ; result=2
+  setbaud 921600
+elseif result=3 then
+  ; result=3
+  setbaud 460800
+else
+  ; result=4
+  goto send_sup
+endif
+
+;---------------------------------------------------
+; Select load all images or selected image
+;---------------------------------------------------
+;wait '>'
+mpause 100
+
+yesnobox 'Load all image?' 'Load selected image'
+Str_Yesno = result
+
+if Str_Yesno=1 then
+  call Load_all_image
+else
+  call Load_selected_image
+endif
+
+setbaud 115200
+
+end
+
+;---------------------------------------------------
+; load all images
+;---------------------------------------------------
+:Load_All_image
+for i 0 5
+   index = i
+   call Load_Image
+next
+;messagebox "Total flashing finish" ""
+return
+
+;---------------------------------------------------
+; Select load selected Image
+;---------------------------------------------------
+:Load_selected_image
+:retry
+    listbox 'Please select the image to be written' 'Image selection' IMGNM
+    index = result
+    if index = -1 then
+;        messagebox "Write end" ""
+    else
+        ; file check
+        filesearch IMGNM[index]
+        If result=0 then
+            sprintf 'File "%s" not found' IMGNM[index]
+            messagebox inputstr 'error'
+        else
+            call Decode_srec_start_address
+            call Load_Image
+        endif
+        goto retry
+    endif
+return
+
+;---------------------------------------------------
+; Load Image
+;---------------------------------------------------
+:Load_Image
+sendln 'xls2'
+
+while 1
+  wait '  Select (1-3)>' '(Push Y key)' '  Please Input : H'
+
+  If result=1 then
+    mpause 10
+    sendln '3'
+  elseif result=2 then
+    mpause 10
+    sendln 'y'
+  elseif result=3 then
+    break
+  endif
+endwhile
+
+wait '  Please Input : H'
+mpause 1
+sendln IMGADR[index]
+wait '  Please Input : H'
+sendln FLASHADR[index]
+wait 'CR stop load)'
+mpause 400
+FILE_NAME = DIR
+strconcat FILE_NAME '\'
+strconcat FILE_NAME IMGNM[index]
+statusbox IMGNM[index] 'Sending file'
+sendfile FILE_NAME 1
+wait 'Clear OK?(y/n)' '>'
+
+If result=1 then
+  sendln 'y'
+  wait '>'
+endif
+
+mpause 100
+return
+
+;; 3 Macro end
+;end
+
