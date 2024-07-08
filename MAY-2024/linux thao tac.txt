@@ -136,16 +136,23 @@
 	tới cuối dòng  $
 	tới cuối trang :$ hoặc ctrl + end
 	undo ctrl+u
+	search : /word		next search: n
 
 - tải package mannually bằng apt/apt-get
 	apt download htop
+	apt-get download libxml2-dev:arm64 (để cho arm64)
 	dpkg-deb -x package.deb . Để giải nén
 
-- để cài thủ công package cho poky toolchain
+- để cài thủ công package cho poky toolchain/rootfs bất kì
 	echo $SDKTARGETSYSROOT -> xem path sysroot
 	pkg-config --variable=pc_path pkg-config -> xem nơi các file *.pc được đọc từ toolchain
 	Chép file .pc vào rồi kiểm tra lại path include và link library trong file đó
 	Thêm lib, module vào 
+	
+	Với file exec (trong bin hoặc sbin khi ta gõ lệnh nó sẽ hiện như htop) thì cần tìm tên
+		readelf -d /path/to/bin
+		objdump -x /path/to/bin (chưa test)
+		Xong find các lib và chép qua
 
 - find 
 	find . -type f/d -name '*pattern*'
@@ -155,3 +162,21 @@
 
 - copy file giữ path (để xài cho việc chép vào poky)
 	rsync -avR $(find . -name '*pciaccess*') destination_directory
+
+- xem module info
+	modinfo *.ko
+	mobprobe ?
+	depmod ?
+	insmod + rmmod
+	
+- config linux kernel version magic
+	Thông thường nếu ta không config gì thì version magic sẽ ra dạng : version.random_number. EX: 5.10.218.123456489
+	Để thay đổi số version, ta vào Makefile ở thư mục ngoài cùng của kernel sẽ thấy các mục để thay đổi
+		VERSION = 5
+		PATCHLEVEL = 10
+		SUBLEVEL = 218
+		EXTRAVERSION =
+	Và để thêm ngay sau version 1 dòng chữ thì thêm LOCALVERSION (thêm trực tiếp trên cmd )
+		make -j16 modules LOCALVERSION=-yocto-standard
+	Để xóa phần random_number thì tắt (comment)
+		LOCALVERSION_AUTO=y
