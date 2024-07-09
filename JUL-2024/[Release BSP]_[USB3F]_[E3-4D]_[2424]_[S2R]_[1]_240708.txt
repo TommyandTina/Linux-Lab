@@ -736,6 +736,8 @@ testing and development purposes only. It is recommended that you create your
 own distribution for production use.
 
 [   77.348414] audit: type=1006 audit(1720418408.423:3): pid=395 uid=0 old-auid=4294967295 auid=0 tty=(none) old-ses=4294967295 ses=2 res=1
+root@salvator-x:~# insmod g_printer.ko
+[   90.184546] printer gadget: printer ready
 root@salvator-x:~# mount -t tmpfs -o size=1011M tmpfs /tmp
 root@salvator-x:~# dd if=/dev/zero of=/tmp/tmp.img bs=1M count=1000
 1000+0 records in
