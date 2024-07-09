@@ -638,23 +638,27 @@ root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s
 configured
 root@salvator-x:~# i2cset -f -y 7 0x30 0x20 0x0f
 
+Switch SW23 off
+
 ---------- HOST-PC -----------
-rvc@L410730-CL011:~/Downloads$ dmesg |tail
-[439051.269685] sd 2:0:0:0: [sdc] 2048000 512-byte logical blocks: (1.05 GB/1000 MiB)
-[439051.377470] sd 2:0:0:0: [sdc] Write Protect is off
-[439051.377474] sd 2:0:0:0: [sdc] Mode Sense: 0f 00 00 00
-[439051.485447] sd 2:0:0:0: [sdc] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
-[439051.925376] sd 2:0:0:0: [sdc] Attached SCSI removable disk
-[439052.237172] EXT4-fs (sdc): mounting ext3 file system using the ext4 subsystem
-[439052.255965] EXT4-fs (sdc): recovery complete
-[439052.256247] EXT4-fs (sdc): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
-[439279.237194] audit: type=1400 audit(1720423725.233:51): apparmor="DENIED" operation="open" profile="snap.htop.htop" name="/proc/1/mounts" pid=3134470 comm="htop" requested_mask="r" denied_mask="r" fsuid=0 ouid=0
-[439308.109058] audit: type=1400 audit(1720423754.105:52): apparmor="DENIED" operation="open" profile="snap.htop.htop" name="/proc/1/mounts" pid=3136894 comm="htop" requested_mask="r" denied_mask="r" fsuid=0 ouid=0
-rvc@L410730-CL011:~/Downloads$ df -h
+
+rvc@L410730-CL011:/tftpboot/long.trinh-tien/E3$ dmesg|tail
+[463432.697708] sd 6:0:0:0: Attached scsi generic sg1 type 0
+[463432.698105] sd 6:0:0:0: Power-on or device reset occurred
+[463432.698728] sd 6:0:0:0: [sdg] 2048000 512-byte logical blocks: (1.05 GB/1000 MiB)
+[463432.806132] sd 6:0:0:0: [sdg] Write Protect is off
+[463432.806137] sd 6:0:0:0: [sdg] Mode Sense: 0f 00 00 00
+[463432.913977] sd 6:0:0:0: [sdg] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[463433.027785] sd 6:0:0:0: [sdg] Attached SCSI removable disk
+[463433.294206] EXT4-fs (sdg): mounting ext3 file system using the ext4 subsystem
+[463433.298438] EXT4-fs (sdg): recovery complete
+[463433.298653] EXT4-fs (sdg): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+rvc@L410730-CL011:/tftpboot/long.trinh-tien/E3$ sudo mount /dev/sdg /mnt/usb
+rvc@L410730-CL011:/tftpboot/long.trinh-tien/E3$ df -h
 Filesystem      Size  Used Avail Use% Mounted on
 udev            3,8G     0  3,8G   0% /dev
 tmpfs           784M  2,2M  782M   1% /run
-/dev/nvme0n1p4  458G  261G  174G  61% /
+/dev/nvme0n1p4  458G  266G  169G  62% /
 tmpfs           3,9G     0  3,9G   0% /dev/shm
 tmpfs           5,0M  4,0K  5,0M   1% /run/lock
 tmpfs           3,9G     0  3,9G   0% /sys/fs/cgroup
@@ -676,43 +680,16 @@ tmpfs           3,9G     0  3,9G   0% /sys/fs/cgroup
 /dev/nvme0n1p1  3,7G  199M  3,3G   6% /boot
 /dev/nvme0n1p2  3,9G  6,1M  3,9G   1% /boot/efi
 tmpfs           784M   36K  784M   1% /run/user/1000
-/dev/sdb        968M  101M  817M  11% /mnt/usb
-/dev/sdc        968M  101M  817M  11% /media/rvc/storage
-rvc@L410730-CL011:~/Downloads$ sudo mount /dev/sdc /mnt/usb
-[sudo] password for rvc:
-rvc@L410730-CL011:~/Downloads$ df -h
-Filesystem      Size  Used Avail Use% Mounted on
-udev            3,8G     0  3,8G   0% /dev
-tmpfs           784M  2,2M  782M   1% /run
-/dev/nvme0n1p4  458G  261G  174G  61% /
-tmpfs           3,9G     0  3,9G   0% /dev/shm
-tmpfs           5,0M  4,0K  5,0M   1% /run/lock
-tmpfs           3,9G     0  3,9G   0% /sys/fs/cgroup
-/dev/loop0      128K  128K     0 100% /snap/bare/5
-/dev/loop4      350M  350M     0 100% /snap/gnome-3-38-2004/143
-/dev/loop1       64M   64M     0 100% /snap/core20/2182
-/dev/loop2      347M  347M     0 100% /snap/gnome-3-38-2004/119
-/dev/loop3      497M  497M     0 100% /snap/gnome-42-2204/141
-/dev/loop9       92M   92M     0 100% /snap/gtk-common-themes/1535
-/dev/loop8      506M  506M     0 100% /snap/gnome-42-2204/176
-/dev/loop6       64M   64M     0 100% /snap/core20/2318
-/dev/loop5       75M   75M     0 100% /snap/core22/1380
-/dev/loop7       74M   74M     0 100% /snap/core22/864
-/dev/loop10     9,8M  9,8M     0 100% /snap/htop/4407
-/dev/loop13      13M   13M     0 100% /snap/snap-store/1113
-/dev/loop14      41M   41M     0 100% /snap/snapd/20290
-/dev/loop11      13M   13M     0 100% /snap/snap-store/959
-/dev/loop12      39M   39M     0 100% /snap/snapd/21759
-/dev/nvme0n1p1  3,7G  199M  3,3G   6% /boot
-/dev/nvme0n1p2  3,9G  6,1M  3,9G   1% /boot/efi
-tmpfs           784M   36K  784M   1% /run/user/1000
-/dev/sdc        968M  101M  817M  11% /mnt/usb
-rvc@L410730-CL011:~/Downloads$ sudo cp file-100m /mnt/usb/file-100m_from_host; sync
+/dev/sdg        968M   44K  918M   1% /mnt/usb
+rvc@L410730-CL011:/tftpboot/long.trinh-tien/E3$ cd ~/Downloads/
+rvc@L410730-CL011:~/Downloads$ sudo cp file-100m /mnt/usb/file-100m_from_host
+rvc@L410730-CL011:~/Downloads$ sudo cp /mnt/usb/file-100m_from_host ./file-100m_from_board
 rvc@L410730-CL011:~/Downloads$
 
 
 
 ---------- BOARD -----------
+
 root@salvator-x:~# echo mem > /sys/power/state
 [  963.823940] PM: suspend entry (deep)
 [  963.827858] Filesystems sync: 0.000 seconds
@@ -720,6 +697,9 @@ root@salvator-x:~# echo mem > /sys/power/state
 [  963.842260] OOM killer disabled.
 [  963.845632] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
 [  963.854803] printk: Suspending console(s) (use no_console_suspend to debug)
+
+Switch SW23 on
+
 NOTICE:  BL2: R-Car Gen3 Initial Program Loader(CA53) Rev.4.0.0
 NOTICE:  BL2: PRR is R-Car E3 Ver.1.1
 NOTICE:  BL2: PLL1 nonSSCG Clock select
@@ -736,95 +716,49 @@ NOTICE:  BL2: FDT at 0xe6316d28
 NOTICE:  BL2: v2.9(release):9cdb21f75-dirty
 NOTICE:  BL2: Built : 11:42:42, Jun 29 2024
 NOTICE:  BL2: Normal boot
-[  963.893303] ravb e6800000.ethernet eth0: Link is Down
-[  963.903453] Disabling non-boot CPUs ...
-[  963.904509] CPU1: shutdown
-[  963.905547] psci: CPU1 killed (polled 0 ms)
-[  963.908273] Enabling non-boot CPUs ...
-[  963.908652] Detected VIPT I-cache on CPU1
-[  963.908764] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
-[  963.909745] CPU1 is up
-[  964.066392] ravb e6800000.ethernet eth0: limited PHY to 100Mbit/s
-[  964.066419] Micrel KSZ9031 Gigabit PHY e6800000.ethernet-ffffffff:00: attached PHY driver [Micrel KSZ9031 Gigabit PHY] (mii_bus:phy_addr=e6800000.ethernet-ffffffff:00, irq=147)
-[  964.220049] OOM killer enabled.
-[  964.220057] Restarting tasks ... done.
-[  964.229539] PM: suspend exit
-[  965.625681] ravb e6800000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+[ 7846.861074] ravb e6800000.ethernet eth0: Link is Down
+[ 7846.871640] Disabling non-boot CPUs ...
+[ 7846.872711] CPU1: shutdown
+[ 7846.873748] psci: CPU1 killed (polled 0 ms)
+[ 7846.876074] Enabling non-boot CPUs ...
+[ 7846.876447] Detected VIPT I-cache on CPU1
+[ 7846.876559] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
+[ 7846.877521] CPU1 is up
+[ 7847.033794] ravb e6800000.ethernet eth0: limited PHY to 100Mbit/s
+[ 7847.033822] Micrel KSZ9031 Gigabit PHY e6800000.ethernet-ffffffff:00: attached PHY driver [Micrel KSZ9031 Gigabit PHY] (mii_bus:phy_addr=e6800000.ethernet-ffffffff:00, irq=147)
+[ 7847.187555] OOM killer enabled.
+[ 7847.187563] Restarting tasks ... done.
+[ 7847.194030] PM: suspend exit
+[ 7848.702508] ravb e6800000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
 root@salvator-x:~#
-
 
 ---------- HOST-PC -----------
 
-rvc@L410730-CL011:~/Downloads$ dmesg |tail
-[440401.441719] scsi 3:0:0:0: Attached scsi generic sg1 type 0
-[440401.442129] sd 3:0:0:0: Power-on or device reset occurred
-[440401.442386] sd 3:0:0:0: [sdd] 2048000 512-byte logical blocks: (1.05 GB/1000 MiB)
-[440401.548608] sd 3:0:0:0: [sdd] Write Protect is off
-[440401.548615] sd 3:0:0:0: [sdd] Mode Sense: 0f 00 00 00
-[440401.656670] sd 3:0:0:0: [sdd] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
-[440401.768670] sd 3:0:0:0: [sdd] Attached SCSI removable disk
-[440403.153138] EXT4-fs (sdd): mounting ext3 file system using the ext4 subsystem
-[440403.187277] EXT4-fs (sdd): recovery complete
-[440403.187608] EXT4-fs (sdd): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
-rvc@L410730-CL011:~/Downloads$ df -h
-Filesystem      Size  Used Avail Use% Mounted on
-udev            3,8G     0  3,8G   0% /dev
-tmpfs           784M  2,2M  782M   1% /run
-/dev/nvme0n1p4  458G  261G  174G  61% /
-tmpfs           3,9G     0  3,9G   0% /dev/shm
-tmpfs           5,0M  4,0K  5,0M   1% /run/lock
-tmpfs           3,9G     0  3,9G   0% /sys/fs/cgroup
-/dev/loop0      128K  128K     0 100% /snap/bare/5
-/dev/loop4      350M  350M     0 100% /snap/gnome-3-38-2004/143
-/dev/loop1       64M   64M     0 100% /snap/core20/2182
-/dev/loop2      347M  347M     0 100% /snap/gnome-3-38-2004/119
-/dev/loop3      497M  497M     0 100% /snap/gnome-42-2204/141
-/dev/loop9       92M   92M     0 100% /snap/gtk-common-themes/1535
-/dev/loop8      506M  506M     0 100% /snap/gnome-42-2204/176
-/dev/loop6       64M   64M     0 100% /snap/core20/2318
-/dev/loop5       75M   75M     0 100% /snap/core22/1380
-/dev/loop7       74M   74M     0 100% /snap/core22/864
-/dev/loop10     9,8M  9,8M     0 100% /snap/htop/4407
-/dev/loop13      13M   13M     0 100% /snap/snap-store/1113
-/dev/loop14      41M   41M     0 100% /snap/snapd/20290
-/dev/loop11      13M   13M     0 100% /snap/snap-store/959
-/dev/loop12      39M   39M     0 100% /snap/snapd/21759
-/dev/nvme0n1p1  3,7G  199M  3,3G   6% /boot
-/dev/nvme0n1p2  3,9G  6,1M  3,9G   1% /boot/efi
-tmpfs           784M   36K  784M   1% /run/user/1000
-/dev/sdc        968M  101M  817M  11% /mnt/usb
-/dev/sdd        968M  101M  817M  11% /media/rvc/storage
-rvc@L410730-CL011:~/Downloads$ sudo mount /dev/sdd /mnt/usb
-rvc@L410730-CL011:~/Downloads$ df -h
-Filesystem      Size  Used Avail Use% Mounted on
-udev            3,8G     0  3,8G   0% /dev
-tmpfs           784M  2,2M  782M   1% /run
-/dev/nvme0n1p4  458G  261G  174G  61% /
-tmpfs           3,9G     0  3,9G   0% /dev/shm
-tmpfs           5,0M  4,0K  5,0M   1% /run/lock
-tmpfs           3,9G     0  3,9G   0% /sys/fs/cgroup
-/dev/loop0      128K  128K     0 100% /snap/bare/5
-/dev/loop4      350M  350M     0 100% /snap/gnome-3-38-2004/143
-/dev/loop1       64M   64M     0 100% /snap/core20/2182
-/dev/loop2      347M  347M     0 100% /snap/gnome-3-38-2004/119
-/dev/loop3      497M  497M     0 100% /snap/gnome-42-2204/141
-/dev/loop9       92M   92M     0 100% /snap/gtk-common-themes/1535
-/dev/loop8      506M  506M     0 100% /snap/gnome-42-2204/176
-/dev/loop6       64M   64M     0 100% /snap/core20/2318
-/dev/loop5       75M   75M     0 100% /snap/core22/1380
-/dev/loop7       74M   74M     0 100% /snap/core22/864
-/dev/loop10     9,8M  9,8M     0 100% /snap/htop/4407
-/dev/loop13      13M   13M     0 100% /snap/snap-store/1113
-/dev/loop14      41M   41M     0 100% /snap/snapd/20290
-/dev/loop11      13M   13M     0 100% /snap/snap-store/959
-/dev/loop12      39M   39M     0 100% /snap/snapd/21759
-/dev/nvme0n1p1  3,7G  199M  3,3G   6% /boot
-/dev/nvme0n1p2  3,9G  6,1M  3,9G   1% /boot/efi
-tmpfs           784M   36K  784M   1% /run/user/1000
-/dev/sdd        968M  101M  817M  11% /mnt/usb
-rvc@L410730-CL011:~/Downloads$ md5sum file-100m /mnt/usb/file-100m_from_host
+rvc@L410730-CL011:~/Downloads$ dmesg|tail
+[464453.947082] sd 7:0:0:0: Power-on or device reset occurred
+[464453.947640] sd 7:0:0:0: [sdh] 2048000 512-byte logical blocks: (1.05 GB/1000 MiB)
+[464454.055901] sd 7:0:0:0: [sdh] Write Protect is off
+[464454.055906] sd 7:0:0:0: [sdh] Mode Sense: 0f 00 00 00
+[464454.163625] sd 7:0:0:0: [sdh] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[464454.599567] sd 7:0:0:0: [sdh] Attached SCSI removable disk
+[464454.815760] EXT4-fs (sdh): mounting ext3 file system using the ext4 subsystem
+[464454.821338] EXT4-fs (sdh): recovery complete
+[464454.821543] EXT4-fs (sdh): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+[464457.085080] EXT4-fs error (device sdh): ext4_validate_block_bitmap:428: comm ext4lazyinit: bg 5: block 163904: invalid block bitmap
+rvc@L410730-CL011:~/Downloads$ md5sum file-100m file-100m_from_board
 a297e2e34a725c64d414b6856730ac6b  file-100m
-a297e2e34a725c64d414b6856730ac6b  /mnt/usb/file-100m_from_host
+a297e2e34a725c64d414b6856730ac6b  file-100m_from_board
+rvc@L410730-CL011:~/Downloads$ sudo time dd if=/dev/sdh of=/dev/zero bs=64M count=10 skip=1 iflag=direct
+10+0 records in
+10+0 records out
+671088640 bytes (671 MB, 640 MiB) copied, 3,00417 s, 223 MB/s
+0.00user 0.12system 0:03.01elapsed 4%CPU (0avgtext+0avgdata 68132maxresident)k
+1310720inputs+0outputs (0major+16480minor)pagefaults 0swaps
+rvc@L410730-CL011:~/Downloads$ sudo time dd if=/dev/zero of=/dev/sdh bs=64M count=10 seek=1 oflag=direct
+10+0 records in
+10+0 records out
+671088640 bytes (671 MB, 640 MiB) copied, 3,72596 s, 180 MB/s
+0.00user 0.19system 0:03.74elapsed 5%CPU (0avgtext+0avgdata 68032maxresident)k
+0inputs+1310720outputs (0major+16477minor)pagefaults 0swaps
 rvc@L410730-CL011:~/Downloads$
-
 

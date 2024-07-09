@@ -604,6 +604,8 @@ own distribution for production use.
 [  271.253724] audit: type=1006 audit(1720422606.209:3): pid=406 uid=0 old-auid=4294967295 auid=0 tty=(none) old-ses=4294967295 ses=2 res=1
 root@salvator-x:~# lsmod
 Module                  Size  Used by
+root@salvator-x:~# insmod g_printer.ko
+[  590.894816] printer gadget: printer ready
 root@salvator-x:~# mount -t tmpfs -o size=1011M tmpfs /tmp
 root@salvator-x:~# dd if=/dev/zero of=/tmp/tmp.img bs=1M count=1000
 1000+0 records in
@@ -637,6 +639,30 @@ configured
 root@salvator-x:~# i2cset -f -y 7 0x30 0x20 0x0f
 
 ---------- HOST-PC -----------
+rvc@L410730-CL011:/tftpboot/long.trinh-tien/E3$ dmesg |tail
+[463432.697708] sd 6:0:0:0: Attached scsi generic sg1 type 0
+[463432.698105] sd 6:0:0:0: Power-on or device reset occurred
+[463432.698728] sd 6:0:0:0: [sdg] 2048000 512-byte logical blocks: (1.05 GB/1000 MiB)
+[463432.806132] sd 6:0:0:0: [sdg] Write Protect is off
+[463432.806137] sd 6:0:0:0: [sdg] Mode Sense: 0f 00 00 00
+[463432.913977] sd 6:0:0:0: [sdg] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[463433.027785] sd 6:0:0:0: [sdg] Attached SCSI removable disk
+[463433.294206] EXT4-fs (sdg): mounting ext3 file system using the ext4 subsystem
+[463433.298438] EXT4-fs (sdg): recovery complete
+[463433.298653] EXT4-fs (sdg): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+rvc@L410730-CL011:/tftpboot/long.trinh-tien/E3$ sudo time dd if=/dev/sdg of=/dev/zero bs=64M count=10 skip=1 iflag=direct
+10+0 records in
+10+0 records out
+671088640 bytes (671 MB, 640 MiB) copied, 3,02414 s, 222 MB/s
+0.00user 0.13system 0:03.04elapsed 4%CPU (0avgtext+0avgdata 68032maxresident)k
+1310720inputs+0outputs (0major+16476minor)pagefaults 0swaps
+rvc@L410730-CL011:/tftpboot/long.trinh-tien/E3$ sudo time dd if=/dev/zero of=/dev/sdg bs=64M count=10 seek=1 oflag=direct
+10+0 records in
+10+0 records out
+671088640 bytes (671 MB, 640 MiB) copied, 3,65067 s, 184 MB/s
+0.00user 0.18system 0:03.66elapsed 5%CPU (0avgtext+0avgdata 68040maxresident)k
+0inputs+1310720outputs (0major+16477minor)pagefaults 0swaps
+rvc@L410730-CL011:/tftpboot/long.trinh-tien/E3$
 
 
 ---------- BOARD -----------

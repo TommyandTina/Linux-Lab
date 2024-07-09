@@ -583,6 +583,8 @@ own distribution for production use.
 [  154.076410] audit: type=1006 audit(1720420261.274:3): pid=396 uid=0 old-auid=4294967295 auid=0 tty=(none) old-ses=4294967295 ses=2 res=1
 root@salvator-x:~# ls
 g_mass_storage.ko  g_ncm.ko  g_printer.ko
+root@salvator-x:~# insmod g_printer.ko
+[  180.154846] printer gadget: printer ready
 root@salvator-x:~# insmod g_ncm.ko
 [  195.225821] using random self ethernet address
 [  195.230463] using random host ethernet address

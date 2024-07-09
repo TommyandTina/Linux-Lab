@@ -1,0 +1,15 @@
+E3
+UIO small items onepass 5
+UIO s2r small items 0
+
+USB3F small item onepass 2
+USB3F s2r small items 12
+
+sudo mkdir rootfs&&sudo tar -xf ~/banvien_stuff/minimal/core-image-weston-salvator-x.rootfsFULLCMDNEW-20240705041212.tar.bz2 -C ./rootfs
+sudo cp ./usr/bin/lsblk ../../E3/rootfs/usr/bin/
+sudo cp ./drivers/usb/gadget/legacy/g_ncm.ko ./drivers/usb/gadget/legacy/g_printer.ko ./drivers/usb/gadget/legacy/g_mass_storage.ko /tftpboot/long.trinh-tien/E3/rootfs2/home/root/
+
+source /opt/poky/5.0/environment-setup-cortexa55-poky-linux
+make modules -j16 LOCALVERSION=-yocto-standard
+sudo make modules_install INSTALL_MOD_PATH=/tftpboot/long.trinh-tien/E3/rootfs LOCALVERSION=-yocto-standard
+sudo cp arch/arm64/boot/Image /tftpboot/long.trinh-tien/E3/Image_412
