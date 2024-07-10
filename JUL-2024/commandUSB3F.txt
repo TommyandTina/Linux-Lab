@@ -13,3 +13,10 @@ source /opt/poky/5.0/environment-setup-cortexa55-poky-linux
 make modules -j16 LOCALVERSION=-yocto-standard
 sudo make modules_install INSTALL_MOD_PATH=/tftpboot/long.trinh-tien/E3/rootfs LOCALVERSION=-yocto-standard
 sudo cp arch/arm64/boot/Image /tftpboot/long.trinh-tien/E3/Image_412
+
+
+
+
+setenv LONG_bootargs 'rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/long.trinh-tien/E3/rootfs_fromKien,nfsvers=4 ip=192.168.8.20 baudrate=115200'
+setenv bootcmd 'run bootcmd_LONG_tftp'
+setenv bootcmd_LONG_tftp 'setenv bootargs ${LONG_bootargs} ; tftp 0x48080000 long.trinh-tien/E3/Image_USB3F ; tftp 0x48000000 long.trinh-tien/E3/${dtb};booti 0x48080000 - 0x48000000'
