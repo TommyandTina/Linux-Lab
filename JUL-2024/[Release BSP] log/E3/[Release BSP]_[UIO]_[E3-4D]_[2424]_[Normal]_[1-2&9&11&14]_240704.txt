@@ -771,20 +771,47 @@ vermagic:       5.10.218-yocto-standard SMP preempt mod_unload aarch64
 parm:           of_id:Openfirmware id of the device to be handled by uio (string)
 root@salvator-x:~# insmod [   35.812026] SDHI0 VccQ: disabling
 [   35.815435] SDHI1 VccQ: disabling
-root@salvator-x:~#
-root@salvator-x:~#
-root@salvator-x:~#
-root@salvator-x:~#
-root@salvator-x:~# insmod uio_pdrv_genirq.ko of_id="generic-uio"
-root@salvator-x:~# ls /dev/u
-uio0     urandom
-root@salvator-x:~# ls /dev/u
-uio0     urandom
-root@salvator-x:~# ls /dev/u
-uio0     urandom
-root@salvator-x:~# zcat /proc/con
-config.gz  consoles
-root@salvator-x:~# zcat /proc/config.gz |grep UIO
+root@ebisu:~# insmod uio_pdrv_genirq.ko of_id="generic-uio"
+root@ebisu:~# cd uio
+uio/                uio_pdrv_genirq.ko
+root@ebisu:~# cd uio/
+root@ebisu:~/uio# ls
+test_scripts_uio  uio_test-gen3e_beta  uio_test-gen3e_beta.tar.bz2
+root@ebisu:~/uio# cd uio_test-gen3e_beta
+root@ebisu:~/uio/uio_test-gen3e_beta# ls
+README.txt  test_scripts  testapp
+root@ebisu:~/uio/uio_test-gen3e_beta# cd test_scripts/
+root@ebisu:~/uio/uio_test-gen3e_beta/test_scripts# ls
+enable_pd_set_IMP-bus.sh                        run_uio_performance_test.sh  tc2_probe_uio.sh         tc9_read_reg_uio.sh
+run_uio_abnormal_test.sh                        run_uio_test.sh              tc3_read_uio.sh
+run_uio_normal_test.sh                          tc10_write_reg_uio.sh        tc6-7_open_close_uio.sh
+run_uio_normal_test_leak_deadlock_detection.sh  tc1_read_uio_configs.sh      tc8_map_unmap_uio.sh
+root@ebisu:~/uio/uio_test-gen3e_beta/test_scripts# ls -lah
+total 60K
+drwxr-xr-x 2 root root 4.0K Jul 10  2024 .
+drwxr-xr-x 4 root root 4.0K Jul 10  2024 ..
+-rwxr-xr-x 1 root root 4.0K Jul 10  2024 enable_pd_set_IMP-bus.sh
+-rwxr-xr-x 1 root root  975 Jul 10  2024 run_uio_abnormal_test.sh
+-rwxr-xr-x 1 root root 3.7K Jul 10  2024 run_uio_normal_test.sh
+-rwxr-xr-x 1 root root 3.6K Jul 10  2024 run_uio_normal_test_leak_deadlock_detection.sh
+-rwxr-xr-x 1 root root 1.5K Jul 10  2024 run_uio_performance_test.sh
+-rwxr-xr-x 1 root root 3.7K Jul 10  2024 run_uio_test.sh
+-rwxr-xr-x 1 root root   25 Jul 10  2024 tc10_write_reg_uio.sh
+-rwxr-xr-x 1 root root   32 Jul 10  2024 tc1_read_uio_configs.sh
+-rwxr-xr-x 1 root root  534 Jul 10  2024 tc2_probe_uio.sh
+-rwxr-xr-x 1 root root  495 Jul 10  2024 tc3_read_uio.sh
+-rwxr-xr-x 1 root root   26 Jul 10  2024 tc6-7_open_close_uio.sh
+-rwxr-xr-x 1 root root   24 Jul 10  2024 tc8_map_unmap_uio.sh
+-rwxr-xr-x 1 root root   24 Jul 10  2024 tc9_read_reg_uio.sh
+root@ebisu:~/uio/uio_test-gen3e_beta/test_scripts# ./run_uio_normal_test
+run_uio_normal_test.sh                          run_uio_normal_test_leak_deadlock_detection.sh
+root@ebisu:~/uio/uio_test-gen3e_beta/test_scripts# ./run_uio_normal_test.sh
+
+******* Start UIO IT Normal test ******
+
+
+***********Normal TC 01: Check UIO configs in /proc/configs.gz
+
 CONFIG_UIO=y
 # CONFIG_UIO_CIF is not set
 CONFIG_UIO_PDRV_GENIRQ=m
@@ -795,6 +822,318 @@ CONFIG_UIO_PDRV_GENIRQ=m
 # CONFIG_UIO_NETX is not set
 # CONFIG_UIO_PRUSS is not set
 # CONFIG_UIO_MF624 is not set
-root@salvator-x:~# lsblk
--sh: lsblk: command not found
-root@salvator-x:~#
+
+***********Normal TC 02: Check UIO devices in /dev sysfs
+
+Probe UIO driver
+insmod: ERROR: could not load module uio_pdrv_genirq.ko: No such file or directory
+Show UIO devices in /dev after UIO driver probe
+
+/dev/uio0
+
+***********Normal TC 03: Check content of UIO devices in uio sysfs
+
+Read info of /sys/class/uio/uio0
+device name: imr_00
+addr: 0x00000000fe860000
+size: 0x0000000000002000
+
+Read info of /sys/class/uio/uio1
+cat: /sys/class/uio/uio1/name: No such file or directory
+device name:
+cat: /sys/class/uio/uio1/maps/map0/addr: No such file or directory
+addr:
+cat: /sys/class/uio/uio1/maps/map0/size: No such file or directory
+size:
+
+Read info of /sys/class/uio/uio2
+cat: /sys/class/uio/uio2/name: No such file or directory
+device name:
+cat: /sys/class/uio/uio2/maps/map0/addr: No such file or directory
+addr:
+cat: /sys/class/uio/uio2/maps/map0/size: No such file or directory
+size:
+
+Read info of /sys/class/uio/uio3
+cat: /sys/class/uio/uio3/name: No such file or directory
+device name:
+cat: /sys/class/uio/uio3/maps/map0/addr: No such file or directory
+addr:
+cat: /sys/class/uio/uio3/maps/map0/size: No such file or directory
+size:
+
+
+***********Normal TC 04: Check UIO unbind feature
+
+Unbind /dev/uio0 and check that the /dev/uio0 become unavailable
+
+1./dev/uio0 is available
+
+Read info of /sys/class/uio/uio0
+imr_00
+0x00000000fe860000
+0x0000000000002000
+
+2.Unbind /dev/uio0
+
+./run_uio_normal_test.sh: line 29: echo: write error: No such device
+3.Verify that /dev/uio0/ become unavailable
+
+Read info of /sys/class/uio/uio0
+imr_00
+0x00000000fe860000
+0x0000000000002000
+./run_uio_normal_test.sh: line 35: echo: write error: No such device
+
+***********Normal TC 05: Check UIO unbind and bind again
+
+Unbind /dev/uio0, check that /dev/uio0 become unavailable, bind again
+                   and check that device become available again\n
+1.Unbind /dev/uio0
+
+./run_uio_normal_test.sh: line 45: echo: write error: No such device
+2.Verify that /dev/uio0/ becomes unavailable
+
+Read info of /sys/class/uio/uio0
+imr_00
+0x00000000fe860000
+0x0000000000002000
+
+3.Bind /dev/uio0 again
+
+./run_uio_normal_test.sh: line 51: echo: write error: No such device
+4.Verify that /dev/uio0/ becomes available again
+
+Read info of /sys/class/uio/uio0
+imr_00
+0x00000000fe860000
+0x0000000000002000
+
+***********Normal TC 06: Open UIO devices
+
+Open /dev/uio0
+
+Normal TC6: Please check the device clock status and power domain status by ICE
+
+Press any key to continue
+
+***********Normal TC 07: Close UIO devices
+
+Close /dev/uio0
+
+Normal TC7: Please check the device clock status and power domain status by ICE
+
+Press any key to continue
+
+***********Normal TC 08: Map and unmap UIO devices
+
+Open /dev/uio0, mmap: 0xbce1e000
+Close /dev/uio0
+
+***********Normal TC 09: Read the mapped register of UIO devices
+
+
+Read registers
+/dev/uio0: Reg 0x0 has value 0x2191
+
+***********Normal TC 10: Write to the mapped register of UIO devices
+
+
+Check expected registers value after write
+/dev/uio0: 0x2000: Write 0xa, Got 0xa
+
+***********Normal TC 11: Check UIO interrupt in /proc/interrupts
+
+           CPU0       CPU1
+ 12:      10299       7816     GIC-0  27 Level     arch_timer
+ 14:          0          0     GIC-0 116 Level     arm-pmu
+ 15:          0          0     GIC-0 117 Level     arm-pmu
+ 16:          0          0     GIC-0  36 Level     e6050000.gpio
+ 17:          0          0     GIC-0  37 Level     e6051000.gpio
+ 18:          1          0     GIC-0  38 Level     e6052000.gpio
+ 19:          0          0     GIC-0  39 Level     e6053000.gpio
+ 20:          0          0     GIC-0  40 Level     e6054000.gpio
+ 21:          0          0     GIC-0  41 Level     e6055000.gpio
+ 22:          0          0     GIC-0  42 Level     e6055400.gpio
+ 23:         49          0     GIC-0 205 Level     e60b0000.i2c
+ 24:         11          0     GIC-0  99 Level     e6190000.thermal
+ 25:          5          0     GIC-0 100 Level     e6190000.thermal
+ 27:          0          0     GIC-0  32 Level     e61c0000.interrupt-controller
+ 28:          0          0     GIC-0  33 Level     e61c0000.interrupt-controller
+ 29:          0          0     GIC-0  34 Level     e61c0000.interrupt-controller
+ 30:          0          0     GIC-0  35 Level     e61c0000.interrupt-controller
+ 31:          0          0     GIC-0  50 Level     e61c0000.interrupt-controller
+ 32:          0          0     GIC-0 193 Level     e61c0000.interrupt-controller
+ 33:        930          0     GIC-0 319 Level     e6500000.i2c
+ 34:        130          0     GIC-0 322 Level     e66d0000.i2c
+ 35:          0          0     GIC-0 139 Level     e6590000.usb
+ 36:          0          0     GIC-0 141 Level     e65a0000.dma-controller:0, e65a0000.dma-controller:1
+ 37:          0          0     GIC-0 142 Level     e65b0000.dma-controller:0, e65b0000.dma-controller:1
+ 40:          0          0     GIC-0 232 Level     e6700000.dma-controller:0
+ 41:          0          0     GIC-0 233 Level     e6700000.dma-controller:1
+ 42:          0          0     GIC-0 234 Level     e6700000.dma-controller:2
+ 43:          0          0     GIC-0 235 Level     e6700000.dma-controller:3
+ 44:          0          0     GIC-0 236 Level     e6700000.dma-controller:4
+ 45:          0          0     GIC-0 237 Level     e6700000.dma-controller:5
+ 46:          0          0     GIC-0 238 Level     e6700000.dma-controller:6
+ 47:          0          0     GIC-0 239 Level     e6700000.dma-controller:7
+ 48:          0          0     GIC-0 240 Level     e6700000.dma-controller:8
+ 49:          0          0     GIC-0 241 Level     e6700000.dma-controller:9
+ 50:          0          0     GIC-0 242 Level     e6700000.dma-controller:10
+ 51:          0          0     GIC-0 243 Level     e6700000.dma-controller:11
+ 52:          0          0     GIC-0 244 Level     e6700000.dma-controller:12
+ 53:          0          0     GIC-0 245 Level     e6700000.dma-controller:13
+ 54:          0          0     GIC-0 246 Level     e6700000.dma-controller:14
+ 55:          0          0     GIC-0 247 Level     e6700000.dma-controller:15
+ 57:          0          0     GIC-0 248 Level     e7300000.dma-controller:0
+ 58:          0          0     GIC-0 249 Level     e7300000.dma-controller:1
+ 59:          0          0     GIC-0 250 Level     e7300000.dma-controller:2
+ 60:          0          0     GIC-0 251 Level     e7300000.dma-controller:3
+ 61:          0          0     GIC-0 340 Level     e7300000.dma-controller:4
+ 62:          0          0     GIC-0 341 Level     e7300000.dma-controller:5
+ 63:          0          0     GIC-0 342 Level     e7300000.dma-controller:6
+ 64:          0          0     GIC-0 343 Level     e7300000.dma-controller:7
+ 65:          0          0     GIC-0 344 Level     e7300000.dma-controller:8
+ 66:          0          0     GIC-0 345 Level     e7300000.dma-controller:9
+ 67:          0          0     GIC-0 346 Level     e7300000.dma-controller:10
+ 68:          0          0     GIC-0 347 Level     e7300000.dma-controller:11
+ 69:          0          0     GIC-0 348 Level     e7300000.dma-controller:12
+ 70:          0          0     GIC-0 349 Level     e7300000.dma-controller:13
+ 71:          0          0     GIC-0 350 Level     e7300000.dma-controller:14
+ 72:          0          0     GIC-0 351 Level     e7300000.dma-controller:15
+ 74:          0          0     GIC-0 449 Level     e7310000.dma-controller:0
+ 75:          0          0     GIC-0 450 Level     e7310000.dma-controller:1
+ 76:          0          0     GIC-0 451 Level     e7310000.dma-controller:2
+ 77:          0          0     GIC-0 452 Level     e7310000.dma-controller:3
+ 78:          0          0     GIC-0 453 Level     e7310000.dma-controller:4
+ 79:          0          0     GIC-0 454 Level     e7310000.dma-controller:5
+ 80:          0          0     GIC-0 455 Level     e7310000.dma-controller:6
+ 81:          0          0     GIC-0 456 Level     e7310000.dma-controller:7
+ 82:          0          0     GIC-0 457 Level     e7310000.dma-controller:8
+ 83:          0          0     GIC-0 458 Level     e7310000.dma-controller:9
+ 84:          0          0     GIC-0 459 Level     e7310000.dma-controller:10
+ 85:          0          0     GIC-0 460 Level     e7310000.dma-controller:11
+ 86:          0          0     GIC-0 461 Level     e7310000.dma-controller:12
+ 87:          0          0     GIC-0 462 Level     e7310000.dma-controller:13
+ 88:          0          0     GIC-0 463 Level     e7310000.dma-controller:14
+ 89:          0          0     GIC-0 429 Level     e7310000.dma-controller:15
+ 90:          0          0     GIC-0 228 Level     e67b0000.iommu
+ 92:      32602          0     GIC-0  71 Level     eth0:ch0:rx_be
+ 93:          0          0     GIC-0  72 Level     eth0:ch1:rx_nc
+110:      23357          0     GIC-0  89 Level     eth0:ch18:tx_be
+111:          0          0     GIC-0  90 Level     eth0:ch19:tx_nc
+114:          0          0     GIC-0  93 Level     eth0:ch22:multi
+116:          2          0     GIC-0  95 Level     eth0:ch24:emac
+119:       3356          0     GIC-0 196 Level     e6e88000.serial:mux
+120:          0          0     GIC-0 206 Level     rcar_vin
+121:          0          0     GIC-0 207 Level     rcar_vin
+123:          0          0     GIC-0 352 Level     ec700000.dma-controller:0
+124:          0          0     GIC-0 353 Level     ec700000.dma-controller:1
+125:          0          0     GIC-0 354 Level     ec700000.dma-controller:2
+126:          0          0     GIC-0 355 Level     ec700000.dma-controller:3
+127:          0          0     GIC-0 356 Level     ec700000.dma-controller:4
+128:          0          0     GIC-0 357 Level     ec700000.dma-controller:5
+129:          0          0     GIC-0 358 Level     ec700000.dma-controller:6
+130:          0          0     GIC-0 359 Level     ec700000.dma-controller:7
+131:          0          0     GIC-0 360 Level     ec700000.dma-controller:8
+132:          0          0     GIC-0 361 Level     ec700000.dma-controller:9
+133:          0          0     GIC-0 362 Level     ec700000.dma-controller:10
+134:          0          0     GIC-0 363 Level     ec700000.dma-controller:11
+135:          0          0     GIC-0 364 Level     ec700000.dma-controller:12
+136:          0          0     GIC-0 365 Level     ec700000.dma-controller:13
+137:          0          0     GIC-0 366 Level     ec700000.dma-controller:14
+138:          0          0     GIC-0 367 Level     ec700000.dma-controller:15
+141:          0          0     GIC-0 136 Level     ee020000.usb
+142:          0          0     GIC-0 140 Level     ee080200.usb-phy, ehci_hcd:usb1, ohci_hcd:usb2
+143:          0          0     GIC-0 197 Level     ee100000.mmc
+144:          0          0     GIC-0 198 Level     ee120000.mmc
+145:        345          0     GIC-0 200 Level     ee160000.mmc
+147:          1          0  gpio-rcar  21 Level     e6800000.ethernet-ffffffff:00
+148:          0          0  gpio-rcar  22 Level     0-0020
+159:      50279          0     GIC-0 498 Level     fea20000.vsp
+160:          0          0     GIC-0 499 Level     fea28000.vsp
+162:          0          0     GIC-0 278 Level     rcar_csi2
+163:        837          0     GIC-0 288 Level     feb00000.display
+164:          0          0     GIC-0 300 Level     feb00000.display
+166:          0          0     GIC-0 481 Level     ffc10000.dma-controller:0
+167:          0          0     GIC-0 482 Level     ffc10000.dma-controller:1
+168:          0          0     GIC-0 483 Level     ffc10000.dma-controller:2
+169:          0          0     GIC-0 484 Level     ffc10000.dma-controller:3
+170:          0          0     GIC-0 485 Level     ffc10000.dma-controller:4
+171:          0          0     GIC-0 486 Level     ffc10000.dma-controller:5
+172:          0          0     GIC-0 487 Level     ffc10000.dma-controller:6
+173:          0          0     GIC-0 488 Level     ffc10000.dma-controller:7
+175:          0          0     GIC-0 489 Level     ffc20000.dma-controller:0
+176:          0          0     GIC-0 490 Level     ffc20000.dma-controller:1
+177:          0          0     GIC-0 491 Level     ffc20000.dma-controller:2
+178:          0          0     GIC-0 492 Level     ffc20000.dma-controller:3
+179:          0          0     GIC-0 493 Level     ffc20000.dma-controller:4
+180:          0          0     GIC-0 494 Level     ffc20000.dma-controller:5
+181:          0          0     GIC-0 495 Level     ffc20000.dma-controller:6
+182:          0          0     GIC-0 496 Level     ffc20000.dma-controller:7
+183:          0          0     GIC-0 224 Level     imr_00
+184:          0          0  gpio-rcar   1 Level     0-0039
+186:          0          0     GIC-0 402 Level     ec500000.sound
+187:          0          0     GIC-0 403 Level     ec500000.sound
+196:          0          0     GIC-0 384 Level     ec500000.sound
+197:          0          0     GIC-0 385 Level     ec500000.sound
+206:          0          0      irqc   0 Level     bd9574mwf
+207:          0          0  gpio-rcar  12 Edge      ee100000.mmc cd
+208:          0          0  gpio-rcar  14 Edge      ee120000.mmc cd
+IPI0:     12222      35239       Rescheduling interrupts
+IPI1:       352        370       Function call interrupts
+IPI2:         0          0       CPU stop interrupts
+IPI3:         0          0       CPU stop (for crash dump) interrupts
+IPI4:       142        802       Timer broadcast interrupts
+IPI5:        58         53       IRQ work interrupts
+IPI6:         0          0       CPU wake-up interrupts
+Err:          0
+
+***********Normal TC 14: Check PMA get status functions when devices are opened
+
+
+***********Normal TC 14: PMA: Check get status functions
+
+/dev/uio0: Power is on. Clk is on. Software reset is off
+
+***********Normal TC 15: Check PMA set power function
+
+/dev/uio0: Power is on. Clk is on. Software reset is off
+
+***********Normal TC 15/16/17: PMA: Check set status functions
+
+/dev/uio0: Power is off. Clk is off. Software reset is off.
+
+TC15: Power OFF power domain. Please check the power domain status by ICE
+
+Press any key to continue
+
+
+***********Normal TC 16: Check PMA set clk function
+
+/dev/uio0: Power is on. Clk is on. Software reset is off
+
+***********Normal TC 15/16/17: PMA: Check set status functions
+
+/dev/uio0: Power is on. Clk is off. Software reset is off.
+
+TC16: Power OFF device clock. Please check the device clock status by ICE
+
+Press any key to continue
+
+
+***********Normal TC 17: Check PMA set software reset function
+
+/dev/uio0: Power is on. Clk is on. Software reset is off
+
+***********Normal TC 15/16/17: PMA: Check set status functions
+
+/dev/uio0: Power is on. Clk is on. Software reset is on.
+
+TC17: Turn ON device reset status. Please check the software reset status by ICE
+
+Press any key to continue
+
+
+******* end UIO IT Normal test ******
+

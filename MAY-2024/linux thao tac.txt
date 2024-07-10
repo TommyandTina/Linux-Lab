@@ -6,6 +6,8 @@
 	cp -u from to : copy cái mới hơn
 	cp -r from to: copy recursively
 	cp -L from to : copy file gốc (thay vì copy symbolic link)
+	find /path/to/source/directory -name 'r8*.dtb' -exec cp {} /path/to/destination/directory \; (copy file với điều kiện; {} là placeholder đem link ở find qua; \ là dừng exec)
+	cp $(find . -name 'r8*.dtb') /path/to/destination/directory (ko nên xài khi có quá nhiều file, lệnh này ghi đè)
 
 -remove:
 	rm -rf:xóa sạch folder + file
@@ -180,3 +182,10 @@
 		make -j16 modules LOCALVERSION=-yocto-standard
 	Để xóa phần random_number thì tắt (comment)
 		LOCALVERSION_AUTO=y
+
+- Xem dung lượng cả ổ cứng :
+	df -h .
+	Xem folder: du -sh .
+
+- Xem config của board :
+	zcat /proc/config.gz
