@@ -1,0 +1,89 @@
+
+#####
+# I2C Command control for Salvator-XS
+#####
+sata_start_i2c() {
+	echo "i2cset -y -f 4 0x20 0x02 0x00"
+	i2cset -y -f 4 0x20 0x02 0x00
+	echo "i2cset -y -f 4 0x20 0x03 0x7f"
+	i2cset -y -f 4 0x20 0x03 0x7f
+	echo "i2cset -y -f 4 0x20 0x01 0x7f"
+	i2cset -y -f 4 0x20 0x01 0x7f
+}
+
+#####
+# Error Function
+#
+# $1: Error message
+#####
+error_msg() {
+	echo "Error: $1"
+	exit 1
+}
+
+#####
+# Module Install Function
+#
+# $1: Mode: "INSMOD" or "MODPROBE"
+#####
+sata_module_install() {
+	echo "lsmod | grep sata_rcar"
+	lsmod | grep sata_rcar
+	if [ $? == 0 ]; then
+		echo "sata_rcar.ko is already installed"
+	elif [ "X$1" == "XINSMOD" ]; then
+		local MOD_PATH=/lib/modules/`uname -r`/kernel/drivers/ata
+		echo "insmod $MOD_PATH/sata_rcar.ko"
+		insmod $MOD_PATH/sata_rcar.ko || error_msg "insmod error"
+	else
+		echo "modprobe sata_rcar"
+		modprobe sata_rcar
+	fi
+	echo "sleep 3"
+	sleep 3
+}
+
+#####
+# fdisk
+#
+#####
+sata_fdisk() {
+	expect -c "
+	set timeout 5
+	spawn fdisk -u /dev/sda
+	expect \"Command (m for help):\"
+	send \"n\n\"
+	expect {
+		\"Select\" {
+			send \"p\n\"
+			exp_continue
+		}
+
+		\"Partition number\" {
+			send \"1\n\"
+			exp_continue
+		}
+
+		\"First sector\" {
+			send \"8192\n\"
+			exp_continue
+		}
+
+		\"Last sector\" {
+			send \"\n\"
+			exp_continue
+		}
+
+		\"Do you want to\" {
+			send \"y\n\"
+			exp_continue
+		}
+
+		\"Command (m for help):\" {
+			send \"w\n\"
+		}
+	}
+	sleep 2
+	exit 0
+	"
+}

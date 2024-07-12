@@ -1,0 +1,6 @@
+We have these config when you input test cases: (update if there are any changes)
+
+STORAGE='RAM' #RAM, SD
+CP_TO='READ_AND_WRITE_SPEED' #BOARD (from host), HOST (from board), WRITE_SPEED, READ_SPEED, NONE, READ_AND_WRITE_SPEED
+SIZE=100 #MB
+S2R=True #True, False

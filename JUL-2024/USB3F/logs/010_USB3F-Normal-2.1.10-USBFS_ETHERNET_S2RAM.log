@@ -1,0 +1,332 @@
+----------- BOARD ------------
+
+root@salvator-x:~# dmesg -C
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_ether
+[  260.797326] g_ether gadget.0: HOST MAC 1e:eb:5c:60:18:ec
+[  260.802728] g_ether gadget.0: MAC ae:c9:72:a5:c6:ac
+[  260.808236] g_ether gadget.0: Ethernet Gadget, version: Memorial Day 2008
+[  260.815128] g_ether gadget.0: g_ether ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s tate
+configured
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+[189157.810036] usb 2-1: USB disconnect, device number 8
+[189159.126221] usb 2-1: new SuperSpeed USB device number 9 using xhci_hcd
+[189159.148818] usb 2-1: New USB device found, idVendor=0525, idProduct=a4a2, bcdDevice= 6.07
+[189159.148834] usb 2-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[189159.148842] usb 2-1: Product: RNDIS/Ethernet Gadget
+[189159.148848] usb 2-1: Manufacturer: Linux 6.7.0-rc2-arm64-renesas with renesas_usb3
+[189159.156920] cdc_ether 2-1:1.0 usb0: register 'cdc_ether' at usb-0000:00:14.0-1, CDC Ethernet Device, 1e:eb:5c:60:18:ec
+[189159.179738] usbcore: registered new interface driver cdc_subset
+[189159.189419] cdc_ether 2-1:1.0 enx1eeb5c6018ec: renamed from usb0
+[189159.221709] audit: type=1400 audit(1700812442.463:2455): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sssd" name="/sys/devices/pci0000:00/0000:00:14.0/usb2/2-1/2-1:1.0/net/enx1eeb5c6018ec/type" pid=679 comm="sssd" requested_mask="r" denied_mask="r" fsuid=0 ouid=0
+
+sudo ifconfig enx1eeb5c6018ec 192.168.11.2 up
+ifconfig -a
+ap0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.12.1  netmask 255.255.255.0  broadcast 192.168.12.255
+        inet6 fe80::16ab:c5ff:fedb:fbe3  prefixlen 64  scopeid 0x20<link>
+        ether 14:ab:c5:db:fb:e3  txqueuelen 1000  (Ethernet)
+        RX packets 286385  bytes 42879184 (42.8 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 544913  bytes 695456125 (695.4 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+docker0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+        inet6 fe80::42:97ff:fe2d:94e5  prefixlen 64  scopeid 0x20<link>
+        ether 02:42:97:2d:94:e5  txqueuelen 0  (Ethernet)
+        RX packets 927473  bytes 333596538 (333.5 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 1981607  bytes 1131038891 (1.1 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enp0s31f6: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.10.98  netmask 255.255.255.0  broadcast 192.168.10.255
+        inet6 fe80::2af1:eff:fe41:d1d0  prefixlen 64  scopeid 0x20<link>
+        ether 28:f1:0e:41:d1:d0  txqueuelen 1000  (Ethernet)
+        RX packets 76538255  bytes 79404219679 (79.4 GB)
+        RX errors 0  dropped 569955  overruns 0  frame 0
+        TX packets 85133503  bytes 79543418579 (79.5 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device interrupt 16  memory 0xe1300000-e1320000  
+
+enx1eeb5c6018ec: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 192.168.11.2  netmask 255.255.255.0  broadcast 192.168.11.255
+        ether 1e:eb:5c:60:18:ec  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 140481  bytes 2233550170 (2.2 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 140481  bytes 2233550170 (2.2 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+vethb3d378b: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::4c1f:4ff:fe90:efe1  prefixlen 64  scopeid 0x20<link>
+        ether 4e:1f:04:90:ef:e1  txqueuelen 0  (Ethernet)
+        RX packets 927473  bytes 346581160 (346.5 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 1981730  bytes 1131051771 (1.1 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp1s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.5.193  netmask 255.255.254.0  broadcast 192.168.5.255
+        inet6 fe80::16ab:c5ff:fedb:fbe1  prefixlen 64  scopeid 0x20<link>
+        ether 14:ab:c5:db:fb:e1  txqueuelen 1000  (Ethernet)
+        RX packets 827554  bytes 927265944 (927.2 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 332979  bytes 54236329 (54.2 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+----------- BOARD ------------
+
+root@salvator-x:~# dmesg
+[32m[  260.797326] [0m[33mg_ether gadget.0[0m: HOST MAC 1e:eb:5c:60:18:ec
+[32m[  260.802728] [0m[33mg_ether gadget.0[0m: MAC ae:c9:72:a5:c6:ac
+[32m[  260.808236] [0m[33mg_ether gadget.0[0m: Ethernet Gadget, version: Memorial Day 2008
+[32m[  260.815128] [0m[33mg_ether gadget.0[0m: g_ether ready
+root@salvator-x:~# 
+root@salvator-x:~# ifconfig usb0 192.168.11.1 up
+root@salvator-x:~# 
+root@salvator-x:~# ifconfig -a
+eth0      Link encap:Ethernet  HWaddr 2e:09:0a:03:84:e0  
+          inet addr:192.168.10.132  Bcast:192.168.10.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:32964 errors:0 dropped:271 overruns:0 frame:0
+          TX packets:12200 errors:0 dropped:0 overruns:0 carrier:1
+          collisions:0 txqueuelen:1000 
+          RX bytes:41802143 (39.8 MiB)  TX bytes:3266728 (3.1 MiB)
+          Interrupt:187 
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:8 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:8 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:736 (736.0 B)  TX bytes:736 (736.0 B)
+
+usb0      Link encap:Ethernet  HWaddr ae:c9:72:a5:c6:ac  
+          inet addr:192.168.11.1  Bcast:192.168.11.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:4 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:73 (73.0 B)  TX bytes:569 (569.0 B)
+
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+ping -c 20 192.168.11.1 &
+PING 192.168.11.1 (192.168.11.1) 56(84) bytes of data.
+64 bytes from 192.168.11.1: icmp_seq=1 ttl=64 time=0.663 ms
+64 bytes from 192.168.11.1: icmp_seq=2 ttl=64 time=0.382 ms
+
+----------- BOARD ------------
+
+root@salvator-x:~# 64 bytes from 192.168.11.1: icmp_seq=3 ttl=64 time=0.550 ms
+i2cset -f -y 7 0x64 bytes from 192.168.11.1: icmp_seq=4 ttl=64 time=0.326 ms
+30 0x20 0x0f
+root@salvator-x:~# 
+
+Switch SW23 off and input 'yes' to continue:
+64 bytes from 192.168.11.1: icmp_seq=5 ttl=64 time=0.560 ms
+64 bytes from 192.168.11.1: icmp_seq=6 ttl=64 time=0.393 ms
+64 bytes from 192.168.11.1: icmp_seq=7 ttl=64 time=0.561 ms
+
+root@salvator-x:~# echo N >64 bytes from 192.168.11.1: icmp_seq=8 ttl=64 time=0.386 ms
+ /sys/module/printk/64 bytes from 192.168.11.1: icmp_seq=9 ttl=64 time=0.372 ms
+parameters/console_s64 bytes from 192.168.11.1: icmp_seq=10 ttl=64 time=0.190 ms
+uspend
+root@salvator-x:~# 
+root@salvator-x:~# 64 bytes from 192.168.11.1: icmp_seq=11 ttl=64 time=0.367 ms
+echo mem > /sys/p64 bytes from 192.168.11.1: icmp_seq=12 ttl=64 time=0.195 ms
+ower/state
+[  276.049884] PM: suspend entry (deep)
+[  276.054167] Filesystems sync: 0.000 seconds
+[  276.118676] Freezing user space processes
+[  276.135666] Freezing user space processes completed (elapsed 0.005 seconds)
+[  276.149998] OOM killer disabled.
+[  276.159771] Freezing remaining freezable tasks
+[  276.173669] Freezing remaining freezable tasks completed (elapsed 0.004 seconds)
+[  276.207876] ------------[ cut here ]------------
+[  276.212555] WARNING: CPU: 0 PID: 507 at drivers/media/v4l2-core/v4l2-subdev.c:408 call_s_stream+0xd4/0xf0
+[  276.222206] Modules linked in: usb_f_ecm g_ether usb_f_rndis u_ether usb_f_acm u_serial libcomposite bluetooth ecdh_generic ecc rfkill crct10dif_ce optee_rng rng_core [last unloaded: g_serial]
+[  276.239529] CPU: 0 PID: 507 Comm: sh Tainted: G        W          6.7.0-rc2-arm64-renesas #1
+[  276.248029] Hardware name: Renesas Salvator-X 2nd version board based on r8a77951 (DT)
+[  276.256001] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  276.263018] pc : call_s_stream+0xd4/0xf0
+[  276.266973] lr : vsp1_pipeline_stop+0x10c/0x2a4
+[  276.271545] sp : ffff800084cc35f0
+[  276.274885] x29: ffff800084cc35f0 x28: 0000000000000000 x27: 0000000000000001
+[  276.282088] x26: 0000000000000000 x25: ffff0004c3aefb08 x24: ffff0004c3aef880
+[  276.289289] x23: 0000000000000288 x22: ffff0004c3aefb30 x21: 0000000000000000
+[  276.296490] x20: ffff0004c3aea880 x19: ffff0004c3aef0f0 x18: 0000000000000009
+[  276.303690] x17: 0000000000000000 x16: 000000000000d83c x15: ffff800083074eb8
+[  276.310890] x14: 0000000000000001 x13: 0000000000000002 x12: 0000000000040000
+[  276.318090] x11: 0000000000000400 x10: ffff800083682e78 x9 : 0000000000000000
+[  276.325291] x8 : ffff0004c48b4980 x7 : 0000000000000000 x6 : 000001ffffffffff
+[  276.332491] x5 : 0000000000000000 x4 : ffff8000857d0000 x3 : ffff800080e37d40
+[  276.339692] x2 : ffff800080e7881c x1 : 0000000000000000 x0 : 0000000000000001
+[  276.346892] Call trace:
+[  276.349358]  call_s_stream+0xd4/0xf0
+[  276.352962]  vsp1_pipeline_stop+0x10c/0x2a4
+[  276.357181]  vsp1_du_setup_lif+0x334/0x478
+[  276.361310]  rcar_du_vsp_disable+0x1c/0x24
+[  276.365443]  rcar_du_crtc_atomic_disable+0x2f8/0x438
+[  276.370451]  disable_outputs+0x22c/0x338
+[  276.374407]  drm_atomic_helper_commit_modeset_disables+0x18/0x44
+[  276.380460]  rcar_du_atomic_commit_tail+0x90/0xd8
+[  276.385204]  commit_tail+0x9c/0x178
+[  276.388721]  drm_atomic_helper_commit+0x190/0x1a4
+[  276.393463]  drm_atomic_commit+0xa4/0x100
+[  276.397510]  drm_atomic_helper_disable_all+0x1ec/0x200
+[  276.402688]  drm_atomic_helper_suspend+0xa0/0x208
+[  276.407428]  drm_mode_config_helper_suspend+0x2c/0x70
+[  276.412523]  rcar_du_pm_suspend+0x14/0x1c
+[  276.416567]  platform_pm_suspend+0x28/0x64
+[  276.420698]  dpm_run_callback+0x34/0x90
+[  276.424567]  __device_suspend+0x10c/0x3c4
+[  276.428609]  dpm_suspend+0x140/0x250
+[  276.432215]  dpm_suspend_start+0x78/0x90
+[  276.436169]  suspend_devices_and_enter+0x124/0x570
+[  276.441001]  pm_suspend+0x1ec/0x310
+[  276.444519]  state_store+0x88/0x124
+[  276.448038]  kobj_attr_store+0x14/0x24
+[  276.451821]  sysfs_kf_write+0x48/0x6c
+[  276.455519]  kernfs_fop_write_iter+0x118/0x1a8
+[  276.460000]  vfs_write+0x21c/0x2c0
+[  276.463435]  ksys_write+0x64/0xec
+[  276.466779]  __arm64_sys_write+0x18/0x20
+[  276.470734]  invoke_syscall+0x44/0x108
+[ 64 bytes from 192.168.11.1: icmp_seq=13 ttl=64 time=0.354 ms
+ 276.474518]  el0_svc_common.constprop.0+0xb4/0xd4
+[  276.479260]  do_el0_svc+0x18/0x20
+[  276.482604]  el0_svc+0x3c/0xb8
+[  276.485689]  el0t_64_sync_handler+0xb8/0xbc
+[  276.489907]  el0t_64_sync+0x14c/0x150
+[  276.493602] irq event stamp: 266462
+[  276.497117] hardirqs last  enabled at (266461): [<ffff80008129f25c>] _raw_spin_unlock_irqrestore+0x6c/0x70
+[  276.506847] hardirqs last disabled at (266462): [<ffff80008128c418>] el1_dbg+0x20/0x80
+[  276.514825] softirqs last  enabled at (266416): [<ffff800080010a84>] __do_softirq+0x494/0x4dc
+[  276.523412] softirqs last disabled at (266409): [<ffff800080015e18>] ____do_softirq+0xc/0x14
+[  276.531914] ---[ end trace 0000000000000000 ]---
+[  276.544105] ravb e6800000.ethernet eth0: Link is Down
+[  276.608252] Disabling non-boot CPUs ...
+[  276.615560] psci: CPU1 killed (polled 0 ms)
+[  276.623198] psci: CPU2 killed (polled 0 ms)
+[  276.631513] psci: CPU3 killed (polled 0 ms)
+[  276.640393] psci: CPU4 killed (polled 0 ms)
+[  276.653273] psci: CPU5 killed (polled 0 ms)
+[  276.661177] psci: CPU6 killed (polled 0 ms)
+[  276.671710] psci: CPU7 killed (polled 0 ms)
+ 
+ Switch power switch: 
+
+NOTICE:  BL2: R-Car Gen3 Initial Program Loader(CA57) Rev.3.0.0
+NOTICE:  BL2: PRR is R-Car H3 Ver.3.0
+NOTICE:  BL2: Board is Salvator-XS Rev.1.0
+NOTICE:  BL2: Boot device is HyperFlash(160MHz)
+NOTICE:  BL2: LCM state is CM
+NOTICE:  AVS setting succeeded. DVFS_SetVID=0x53
+NOTICE:  BL2: DDR3200(rev.0.41)
+NOTICE:  BL2: [WARM_BOOT]
+NOTICE:  BL2: DRAM Split is 4ch(DDR f)
+NOTICE:  BL2: QoS is default setting(rev.0.11)
+NOTICE:  BL2: DRAM refresh interval 1.95 usec
+NOTICE:  BL2: Periodic Write DQ Training
+NOTICE:  BL2: CH0: 400000000 - 47fffffff, 2 GiB
+NOTICE:  BL2: CH1: 500000000 - 57fffffff, 2 GiB
+NOTICE:  BL2: CH2: 600000000 - 67fffffff, 2 GiB
+NOTICE:  BL2: CH3: 700000000 - 77fffffff, 2 GiB
+NOTICE:  BL2: FDT at 0xe6325e70
+NOTICE:  BL2: v2.6(release):v2.6
+NOTICE:  BL2: Built : 09:11:03, May 18 2022
+NOTICE:  BL2: Normal boot
+[  276.676972] Enabling non-boot CPUs ...
+[  276.681743] Detected PIPT I-cache on CPU1
+[  276.681835] CPU1: Booted secondary processor 0x0000000001 [0x411fd073]
+[  276.683731] CPU1 is up
+[  276.697039] Detected PIPT I-cache on CPU2
+[  276.697094] CPU2: Booted secondary processor 0x0000000002 [0x411fd073]
+[  276.698746] CPU2 is up
+[  276.712005] Detected PIPT I-cache on CPU3
+[  276.712060] CPU3: Booted secondary processor 0x0000000003 [0x411fd073]
+[  276.713749] CPU3 is up
+[  276.727071] Detected VIPT I-cache on CPU4
+[  276.727174] CPU4: Booted secondary processor 0x0000000100 [0x410fd034]
+[  276.731850] cpufreq: cpufreq_online: CPU4: Running at unlisted initial frequency: 1198080 KHz, changing to: 1200000 KHz
+[  276.755809] CPU4 is up
+[  276.758519] Detected VIPT I-cache on CPU5
+[  276.758618] CPU5: Booted secondary processor 0x0000000101 [0x410fd034]
+[  276.761903] CPU5 is up
+[  276.775180] Detected VIPT I-cache on CPU6
+[  276.775267] CPU6: Booted secondary processor 0x0000000102 [0x410fd034]
+[  276.778471] CPU6 is up
+[  276.791747] Detected VIPT I-cache on CPU7
+[  276.791832] CPU7: Booted secondary processor 0x0000000103 [0x410fd034]
+[  276.795115] CPU7 is up
+[  276.945199] Micrel KSZ9031 Gigabit PHY e6800000.ethernet-ffffffff:00: attached PHY driver (mii_bus:phy_addr=e6800000.ethernet-ffffffff:00, irq=193)
+[  277.020081] OOM killer enabled.
+[  277.029692] Restarting tasks ... done.
+[  277.045647] random: crng reseeded on system resumption
+[  277.054501] PM: suspend exit
+root@salvator-x:~# [  277.281481] ata1: link resume succeeded after 1 retries
+[  277.389590] ata1: SATA link down (SStatus 0 SControl 300)
+
+--- 192.168.11.1 ping statistics ---
+20 packets transmitted, 13 received, 35% packet loss, time 19452ms
+rtt min/avg/max/mdev = 0.190/0.407/0.663/0.135 ms
+[  283.493691] ravb e6800000.ethernet eth0: Link is Up - 1Gbps/Full - flow control off
+
+root@salvator-x:~# echo "Wake up sucessfully"
+Wake up sucessfully
+root@salvator-x:~# 
+----------- BOARD ------------
+
+root@salvator-x:~# ifconfig usb0 192.168.11.1 up
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+sudo ifconfig enx1eeb5c6018ec 192.168.11.2 up
+
+
+---------- HOST-PC -----------
+
+ping -c 10 192.168.11.1
+PING 192.168.11.1 (192.168.11.1) 56(84) bytes of data.
+64 bytes from 192.168.11.1: icmp_seq=1 ttl=64 time=0.668 ms
+64 bytes from 192.168.11.1: icmp_seq=2 ttl=64 time=0.513 ms
+64 bytes from 192.168.11.1: icmp_seq=3 ttl=64 time=0.173 ms
+64 bytes from 192.168.11.1: icmp_seq=4 ttl=64 time=0.271 ms
+64 bytes from 192.168.11.1: icmp_seq=5 ttl=64 time=0.543 ms
+64 bytes from 192.168.11.1: icmp_seq=6 ttl=64 time=0.273 ms
+64 bytes from 192.168.11.1: icmp_seq=7 ttl=64 time=0.549 ms
+64 bytes from 192.168.11.1: icmp_seq=8 ttl=64 time=0.548 ms
+64 bytes from 192.168.11.1: icmp_seq=9 ttl=64 time=0.384 ms
+64 bytes from 192.168.11.1: icmp_seq=10 ttl=64 time=0.385 ms
+
+--- 192.168.11.1 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9215ms
+rtt min/avg/max/mdev = 0.173/0.430/0.668/0.149 ms
+
+----------- BOARD ------------
+
+root@salvator-x:~# rmmod g_ether
+root@salvator-x:~# 
+ 
+#### Result: OK ####

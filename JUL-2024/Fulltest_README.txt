@@ -8,3 +8,5 @@
 - Sửa file config.py với tên board cho phù hợp
 
 - Đổi PLATFORM trong conserial nếu ko tiện đổi trong host
+
+- Vào common_index.py để đổi tên folder log

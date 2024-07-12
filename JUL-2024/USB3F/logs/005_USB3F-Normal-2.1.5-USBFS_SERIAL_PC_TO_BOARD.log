@@ -1,0 +1,42 @@
+----------- BOARD ------------
+
+root@salvator-x:~# modprobe g_serial
+[   50.991519] g_serial gadget.0: Gadget Serial v2.4
+[   50.996456] g_serial gadget.0: g_serial ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/state
+configured
+root@salvator-x:~# 
+root@salvator-x:~# ls /dev/ttyGS0
+/dev/ttyGS0
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+[710209.520645] usb 2-4: USB disconnect, device number 52
+[710210.360674] usb 2-4: new SuperSpeed USB device number 53 using xhci_hcd
+[710210.382701] usb 2-4: New USB device found, idVendor=0525, idProduct=a4a7, bcdDevice= 6.07
+[710210.382717] usb 2-4: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[710210.382724] usb 2-4: Product: Gadget Serial v2.4
+[710210.382730] usb 2-4: Manufacturer: Linux 6.7.0-arm64-renesas with renesas_usb3
+[710210.385730] cdc_acm 2-4:2.0: ttyACM0: USB ACM device
+
+ls /dev/ttyACM0
+/dev/ttyACM0
+
+
+---------- HOST-PC -----------
+
+echo 'Test transferring data from HOST to BOARD via usb serial' > /dev/ttyACM0
+
+----------- BOARD ------------
+
+root@salvator-x:~# cat /dev/ttyGS0
+Test transferring data from HOST to BOARD via usb serial
+^C
+root@salvator-x:~# 
+root@salvator-x:~# rmmod g_serial
+root@salvator-x:~# 
+ 
+#### Result: OK ####

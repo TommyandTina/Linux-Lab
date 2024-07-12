@@ -1,0 +1,13 @@
+----------- BOARD ------------
+
+root@salvator-x:~# dmesg -C
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_ether
+root@salvator-x:~# 
+root@salvator-x:~# rmmod g_ether
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_ether
+[  223.912757] UDC core: g_ether: couldn't find an available UDC
+root@salvator-x:~# 
+ 
+#### Result: NG ####

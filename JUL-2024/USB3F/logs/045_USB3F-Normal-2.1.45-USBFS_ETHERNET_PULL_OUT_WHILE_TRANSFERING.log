@@ -1,0 +1,179 @@
+----------- BOARD ------------
+
+root@salvator-x:~# dmesg -C
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_ether
+[   83.225973] g_ether gadget.0: HOST MAC b2:8d:23:a1:4a:bb
+[   83.231423] g_ether gadget.0: MAC 26:eb:55:2c:0c:33
+[   83.237168] g_ether gadget.0: Ethernet Gadget, version: Memorial Day 2008
+[   83.244033] g_ether gadget.0: g_ether ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/state
+configured
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+[710242.647524] usb 2-4: new SuperSpeed USB device number 56 using xhci_hcd
+[710242.674477] usb 2-4: New USB device found, idVendor=0525, idProduct=a4a2, bcdDevice= 6.07
+[710242.674484] usb 2-4: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[710242.674488] usb 2-4: Product: RNDIS/Ethernet Gadget
+[710242.674490] usb 2-4: Manufacturer: Linux 6.7.0-arm64-renesas with renesas_usb3
+[710242.676885] cdc_subset: probe of 2-4:1.0 failed with error -22
+[710242.678886] cdc_ether 2-4:1.0 usb0: register 'cdc_ether' at usb-0000:00:14.0-4, CDC Ethernet Device, b2:8d:23:a1:4a:bb
+[710242.714846] cdc_ether 2-4:1.0 enxb28d23a14abb: renamed from usb0
+[710242.750256] audit: type=1400 audit(1705997698.580:15492): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sssd" name="/sys/devices/pci0000:00/0000:00:14.0/usb2/2-4/2-4:1.0/net/enxb28d23a14abb/type" pid=676 comm="sssd" requested_mask="r" denied_mask="r" fsuid=0 ouid=0
+[710242.755257] audit: type=1400 audit(1705997698.588:15493): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sssd" name="/sys/devices/pci0000:00/0000:00:14.0/usb2/2-4/2-4:1.0/net/enxb28d23a14abb/type" pid=676 comm="sssd" requested_mask="r" denied_mask="r" fsuid=0 ouid=0
+[710242.758177] audit: type=1400 audit(1705997698.588:15494): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sssd" name="/sys/devices/pci0000:00/0000:00:14.0/usb2/2-4/2-4:1.0/net/enxb28d23a14abb/type" pid=676 comm="sssd" requested_mask="r" denied_mask="r" fsuid=0 ouid=0
+
+sudo ifconfig enxb28d23a14abb 192.168.11.2 up
+ifconfig -a
+ap0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.12.1  netmask 255.255.255.0  broadcast 192.168.12.255
+        inet6 fe80::16ab:c5ff:fedb:fbe3  prefixlen 64  scopeid 0x20<link>
+        ether 14:ab:c5:db:fb:e3  txqueuelen 1000  (Ethernet)
+        RX packets 3056578  bytes 939445158 (939.4 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 4413917  bytes 3482489928 (3.4 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+        ether 02:42:bd:56:7e:17  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enp0s31f6: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.10.98  netmask 255.255.255.0  broadcast 192.168.10.255
+        ether 28:f1:0e:41:d1:d0  txqueuelen 1000  (Ethernet)
+        RX packets 78267453  bytes 64846412594 (64.8 GB)
+        RX errors 0  dropped 2696099  overruns 0  frame 0
+        TX packets 71706885  bytes 55712614613 (55.7 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device interrupt 16  memory 0xe1300000-e1320000  
+
+enxb28d23a14abb: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 192.168.11.2  netmask 255.255.255.0  broadcast 192.168.11.255
+        inet6 fe80::80c4:4c7f:466a:17aa  prefixlen 64  scopeid 0x20<link>
+        ether b2:8d:23:a1:4a:bb  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 4639561  bytes 6944778392 (6.9 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 4639561  bytes 6944778392 (6.9 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+tun0: flags=4305<UP,POINTOPOINT,RUNNING,NOARP,MULTICAST>  mtu 1500
+        inet 10.89.234.6  netmask 255.255.255.0  destination 10.89.234.6
+        inet6 fe80::ca3d:acc6:b9fb:a4be  prefixlen 64  scopeid 0x20<link>
+        unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen 100  (UNSPEC)
+        RX packets 4508378  bytes 3387157219 (3.3 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 3132193  bytes 909386171 (909.3 MB)
+        TX errors 0  dropped 1564 overruns 0  carrier 0  collisions 0
+
+wlp1s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.1.74  netmask 255.255.248.0  broadcast 192.168.7.255
+        inet6 fe80::bd9c:f8d5:7bdf:36e8  prefixlen 64  scopeid 0x20<link>
+        ether 14:ab:c5:db:fb:e1  txqueuelen 1000  (Ethernet)
+        RX packets 9730639  bytes 5268546210 (5.2 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 5960411  bytes 5795458845 (5.7 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+----------- BOARD ------------
+
+root@salvator-x:~# dmesg
+[32m[   83.225973] [0m[33mg_ether gadget.0[0m: HOST MAC b2:8d:23:a1:4a:bb
+[32m[   83.231423] [0m[33mg_ether gadget.0[0m: MAC 26:eb:55:2c:0c:33
+[32m[   83.237168] [0m[33mg_ether gadget.0[0m: Ethernet Gadget, version: Memorial Day 2008
+[32m[   83.244033] [0m[33mg_ether gadget.0[0m: g_ether ready
+root@salvator-x:~# 
+root@salvator-x:~# ifconfig usb0 192.168.11.1 up
+root@salvator-x:~# 
+root@salvator-x:~# ifconfig -a
+eth0      Link encap:Ethernet  HWaddr 2e:09:0a:06:d4:ee  
+          inet addr:192.168.10.132  Bcast:192.168.10.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:32237 errors:0 dropped:247 overruns:0 frame:0
+          TX packets:11205 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:41556388 (39.6 MiB)  TX bytes:3107571 (2.9 MiB)
+          Interrupt:187 
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:5 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:5 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:360 (360.0 B)  TX bytes:360 (360.0 B)
+
+usb0      Link encap:Ethernet  HWaddr 26:eb:55:2c:0c:33  
+          inet addr:192.168.11.1  Bcast:192.168.11.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:4 errors:0 dropped:1 overruns:0 frame:0
+          TX packets:7 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:791 (791.0 B)  TX bytes:958 (958.0 B)
+
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+ping -c 10 192.168.11.1
+PING 192.168.11.1 (192.168.11.1) 56(84) bytes of data.
+64 bytes from 192.168.11.1: icmp_seq=1 ttl=64 time=0.708 ms
+64 bytes from 192.168.11.1: icmp_seq=2 ttl=64 time=0.289 ms
+
+Please plug out and plug in cable:
+
+64 bytes from 192.168.11.1: icmp_seq=3 ttl=64 time=0.380 ms
+64 bytes from 192.168.11.1: icmp_seq=4 ttl=64 time=0.257 ms
+
+--- 192.168.11.1 ping statistics ---
+10 packets transmitted, 4 received, 60% packet loss, time 9220ms
+rtt min/avg/max/mdev = 0.257/0.408/0.708/0.178 ms
+
+----------- BOARD ------------
+
+root@salvator-x:~# ifconfig usb0 192.168.11.1 up
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+sudo ifconfig enxb28d23a14abb 192.168.11.2 up
+
+ping -c 10 192.168.11.1
+PING 192.168.11.1 (192.168.11.1) 56(84) bytes of data.
+64 bytes from 192.168.11.1: icmp_seq=1 ttl=64 time=0.894 ms
+64 bytes from 192.168.11.1: icmp_seq=2 ttl=64 time=0.501 ms
+64 bytes from 192.168.11.1: icmp_seq=3 ttl=64 time=0.287 ms
+64 bytes from 192.168.11.1: icmp_seq=4 ttl=64 time=0.529 ms
+64 bytes from 192.168.11.1: icmp_seq=5 ttl=64 time=0.500 ms
+64 bytes from 192.168.11.1: icmp_seq=6 ttl=64 time=0.415 ms
+64 bytes from 192.168.11.1: icmp_seq=7 ttl=64 time=0.517 ms
+64 bytes from 192.168.11.1: icmp_seq=8 ttl=64 time=0.513 ms
+64 bytes from 192.168.11.1: icmp_seq=9 ttl=64 time=0.261 ms
+64 bytes from 192.168.11.1: icmp_seq=10 ttl=64 time=0.431 ms
+
+--- 192.168.11.1 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9218ms
+rtt min/avg/max/mdev = 0.261/0.484/0.894/0.163 ms
+
+----------- BOARD ------------
+
+root@salvator-x:~# rmmod g_ether
+root@salvator-x:~# 
+ 
+#### Result: OK ####

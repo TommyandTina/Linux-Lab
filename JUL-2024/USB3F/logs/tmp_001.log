@@ -1,0 +1,10 @@
+
+ebisu login: root
+
+WARNING: Poky is a reference Yocto Project distribution that should be used for
+testing and development purposes only. It is recommended that you create your
+own distribution for production use.
+
+7[r[999;999H[6n8root@ebisu:~# dmesg | grep renesas_usb3
+[    2.365779] renesas_usb3 ee020000.usb: probed with phy
+root@ebisu:~# 
