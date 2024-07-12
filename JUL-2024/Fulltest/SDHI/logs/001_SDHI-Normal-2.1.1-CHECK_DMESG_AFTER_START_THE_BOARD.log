@@ -1,0 +1,15 @@
+
+root@salvator-x:~# dmesg | grep sdhi
+[   13.233040] renesas_sdhi_internal_dmac ee100000.mmc: deferred probe timeout, ignoring dependency
+[   13.234058] renesas_sdhi_internal_dmac ee160000.mmc: deferred probe timeout, ignoring dependency
+[   13.238256] renesas_sdhi_internal_dmac ee140000.mmc: deferred probe timeout, ignoring dependency
+[   13.248262] renesas_sdhi_internal_dmac ee100000.mmc: Got CD GPIO
+[   13.250781] renesas_sdhi_internal_dmac ee160000.mmc: Got CD GPIO
+[   13.259462] renesas_sdhi_internal_dmac ee100000.mmc: Got WP GPIO
+[   13.265450] renesas_sdhi_internal_dmac ee160000.mmc: Got WP GPIO
+[   13.293897] renesas_sdhi_internal_dmac ee140000.mmc: mmc0 base at 0x00000000ee140000, max clock rate 200 MHz
+[   13.318277] renesas_sdhi_internal_dmac ee100000.mmc: mmc1 base at 0x00000000ee100000, max clock rate 200 MHz
+[   13.337139] renesas_sdhi_internal_dmac ee160000.mmc: mmc2 base at 0x00000000ee160000, max clock rate 200 MHz
+root@salvator-x:~# 
+ 
+#### Result: OK ####

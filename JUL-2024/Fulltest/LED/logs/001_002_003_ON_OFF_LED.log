@@ -1,0 +1,15 @@
+
+root@salvator-x:~# echo 1 > /sys/class/leds/led6/brightness
+root@salvator-x:~# 
+root@salvator-x:~# echo 0 > /sys/class/leds/led6/brightness
+root@salvator-x:~# 
+root@salvator-x:~# echo 1 > /sys/class/leds/led5/brightness
+root@salvator-x:~# 
+root@salvator-x:~# echo 0 > /sys/class/leds/led5/brightness
+root@salvator-x:~# 
+root@salvator-x:~# echo 1 > /sys/class/leds/led4/brightness
+root@salvator-x:~# 
+root@salvator-x:~# echo 0 > /sys/class/leds/led4/brightness
+root@salvator-x:~# 
+ 
+#### Result: OK ####

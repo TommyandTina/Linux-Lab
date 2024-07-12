@@ -1,0 +1,71 @@
+----------- BOARD ------------
+
+root@salvator-x:~# modprobe g_serial
+[   59.975020] g_serial gadget.0: Gadget Serial v2.4
+[   59.980274] g_serial gadget.0: g_serial ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/state
+configured
+root@salvator-x:~# 
+root@salvator-x:~# ls /dev/ttyGS0
+/dev/ttyGS0
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+[710219.348496] usb 2-4: new SuperSpeed USB device number 54 using xhci_hcd
+[710219.370425] usb 2-4: New USB device found, idVendor=0525, idProduct=a4a7, bcdDevice= 6.07
+[710219.370439] usb 2-4: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[710219.370446] usb 2-4: Product: Gadget Serial v2.4
+[710219.370452] usb 2-4: Manufacturer: Linux 6.7.0-arm64-renesas with renesas_usb3
+[710219.373576] cdc_acm 2-4:2.0: ttyACM0: USB ACM device
+
+ls /dev/ttyACM0
+/dev/ttyACM0
+
+
+---------- HOST-PC -----------
+
+echo 'Test transferring data from HOST to BOARD via usb serial' > /dev/ttyACM0
+
+----------- BOARD ------------
+
+root@salvator-x:~# cat /dev/ttyGS0
+Test transferring data from HOST to BOARD via usb serial
+
+Please plug out and plug in cable:
+
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+
+dmesg
+[710226.239729] usb 2-4: USB disconnect, device number 54
+[710227.663903] usb 2-4: new SuperSpeed USB device number 55 using xhci_hcd
+[710227.685771] usb 2-4: New USB device found, idVendor=0525, idProduct=a4a7, bcdDevice= 6.07
+[710227.685785] usb 2-4: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[710227.685792] usb 2-4: Product: Gadget Serial v2.4
+[710227.685797] usb 2-4: Manufacturer: Linux 6.7.0-arm64-renesas with renesas_usb3
+[710227.689022] cdc_acm 2-4:2.0: ttyACM0: USB ACM device
+
+ls /dev/ttyACM0
+/dev/ttyACM0
+
+
+---------- HOST-PC -----------
+
+echo 'Test again =]]' > /dev/ttyACM0
+
+----------- BOARD ------------
+
+root@salvator-x:~# cat /dev/ttyGS0
+Test again =]]
+
+^C
+root@salvator-x:~# 
+root@salvator-x:~# rmmod g_serial
+root@salvator-x:~# 
+ 
+#### Result: OK ####

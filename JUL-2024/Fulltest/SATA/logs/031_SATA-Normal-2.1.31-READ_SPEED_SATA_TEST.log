@@ -1,0 +1,49 @@
+
+root@salvator-x:~# find /sys/devices/platform/soc/ee300000.sata/ -name sd*
+/sys/devices/platform/soc/ee300000.sata/ata1/host0/target0:0:0/0:0:0:0/block/sda
+/sys/devices/platform/soc/ee300000.sata/ata1/host0/target0:0:0/0:0:0:0/block/sda/sda2
+/sys/devices/platform/soc/ee300000.sata/ata1/host0/target0:0:0/0:0:0:0/block/sda/sda1
+root@salvator-x:~# 
+root@salvator-x:~# rm -rf /tmp/file-350M
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sda2 /mnt/
+[  105.674480] EXT4-fs (sda2): mounted filesystem bdf86149-3fdc-43b3-a0e6-601b42705d5b r/w with ordered data mode. Quota mode: none.
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file-350M bs=1M count=350; sync
+350+0 records in
+350+0 records out
+367001600 bytes (367 MB, 350 MiB) copied, 5.36167 s, 68.4 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# echo 3 > /proc/sys/vm/drop_caches
+[  113.324059] sh (499): drop_caches: 3
+root@salvator-x:~# 
+root@salvator-x:~# time cp /mnt/file-350M /tmp/; time umount /mnt
+
+real	0m1.657s
+user	0m0.000s
+sys	0m1.198s
+[  116.189352] EXT4-fs (sda2): unmounting filesystem bdf86149-3fdc-43b3-a0e6-601b42705d5b.
+
+real	0m0.148s
+user	0m0.000s
+sys	0m0.113s
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sda2 /mnt
+[  117.241263] EXT4-fs (sda2): mounted filesystem bdf86149-3fdc-43b3-a0e6-601b42705d5b r/w with ordered data mode. Quota mode: none.
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file-350M /mnt/file-350M
+e9a1d03bf6be5a6a4e79db53ad0476fc  /tmp/file-350M
+e9a1d03bf6be5a6a4e79db53ad0476fc  /mnt/file-350M
+root@salvator-x:~# 
+ 
+ SPEED = 112.32 MB/s
+
+root@salvator-x:~# umount /mnt
+[  123.570588] EXT4-fs (sda2): unmounting filesystem bdf86149-3fdc-43b3-a0e6-601b42705d5b.
+root@salvator-x:~# 
+root@salvator-x:~# rm /tmp/file-350M
+root@salvator-x:~# 
+ 
+#### Result: OK ####

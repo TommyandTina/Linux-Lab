@@ -1,0 +1,15 @@
+
+root@salvator-x:~# time dd if=/dev/zero  of=/dev/sda bs=64M count=10 seek=8 oflag=direct > write_dd.txt
+10+0 records in
+10+0 records out
+671088640 bytes (671 MB, 640 MiB) copied, 0.960718 s, 699 MB/s
+
+real	0m0.973s
+user	0m0.005s
+sys	0m0.956s
+root@salvator-x:~# 
+ 
+ SPEED = 699 MB/s
+
+ 
+#### Result: OK ####

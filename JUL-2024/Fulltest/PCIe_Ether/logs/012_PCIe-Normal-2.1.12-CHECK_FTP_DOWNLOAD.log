@@ -1,0 +1,32 @@
+
+root@salvator-x:~# ifconfig | grep enp1s0
+enp1s0    Link encap:Ethernet  HWaddr 00:1b:21:80:a8:44  
+root@salvator-x:~# 
+root@salvator-x:~# ftp -n 192.168.10.98
+Connected to 192.168.10.98.
+220 Welcome to blah FTP service.
+ftp> 
+ftp> user bsp Pass1234
+331 Please specify the password.
+230 Login successful.
+ftp> 
+ftp> binary
+200 Switching to Binary mode.
+ftp> 
+ftp> get /home/bsp/test_pcie/random12.bin /tmp/random12.bin
+200 PORT command successful. Consider using PASV.
+150 Opening BINARY mode data connection for /home/bsp/test_pcie/random12.bin (104857600 bytes).
+226 Transfer complete.
+104857600 bytes received in 0.907 seconds (110 Mbytes/s)
+ftp> 
+ftp> quit
+221 Goodbye.
+root@salvator-x:~# 
+md5sum /home/bsp/test_pcie/random12.bin
+100dce50a6d1c209d3d15ade6aa79554  /home/bsp/test_pcie/random12.bin
+
+root@salvator-x:~# md5sum /tmp/random12.bin
+100dce50a6d1c209d3d15ade6aa79554  /tmp/random12.bin
+root@salvator-x:~# 
+ 
+#### Result: OK ####

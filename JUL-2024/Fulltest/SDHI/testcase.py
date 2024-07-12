@@ -1,0 +1,100 @@
+#!/usr/bin/python
+
+import threading
+import serial
+import sys
+import time
+import re
+import datetime
+import os
+
+list_TC = { 1:'SDHI-Normal 2.1.1-CHECK_DMESG_AFTER_START_THE_BOARD', \
+            2:'SDHI-Normal 2.1.2-CHECK_INTERRUPT_AFTER_START_THE_BOARD', \
+            3:'SDHI-Normal 2.1.3-CONFIRM_SDHI0_RECOGNITION', \
+            4:'SDHI-Normal 2.1.4-CONFIRM_SDHI0_RECOGNITION_5_TIMES',\
+            5:'SDHI-Normal 2.1.5-CONFIRM_SDHI3_RECOGNITION', \
+            6:'SDHI-Normal 2.1.6-CONFIRM_SDHI3_RECOGNITION_5_TIMES',\
+            7:'SDHI-Normal 2.1.7-CREATING_PARTITION_AND_MAKING_FILE_SYSTEM_FOR_SDHI',\
+            8:'SDHI-Normal 2.1.8-WRITE_DATA_FROM_RAM_TO_SDHI0',\
+            9:'SDHI-Normal 2.1.9-WRITE_DATA_FROM_RAM_TO_SDHI0',\
+            10:'SDHI-Normal 2.1.10-WRITE_DATA_FROM_RAM_TO_SDHI0',\
+            11:'SDHI-Normal 2.1.11-WRITE_FOLDER_FROM_RAM_TO_SDHI',\
+            12:'SDHI-Normal 2.1.12-WRITE_FOLDER_FROM_RAM_TO_SDHI',\
+            13:'SDHI-Normal 2.1.13-WRITE_DATA_FROM_RAM_TO_SDHI0',\
+            14:'SDHI-Normal 2.1.14-WRITE_DATA_FROM_RAM_TO_SDHI0',\
+            15:'SDHI-Normal 2.1.15-WRITE_DATA_FROM_RAM_TO_SDHI0',\
+            16:'SDHI-Normal 2.1.16-WRITE_FOLDER_FROM_RAM_TO_SDHI',\
+            17:'SDHI-Normal 2.1.17-WRITE_FOLDER_FROM_RAM_TO_SDHI',\
+            18:'SDHI-Normal 2.1.18-EXCEEDS_CAPACITY_WRITE',\
+            19:'SDHI-Normal 2.1.19-READ_DATA_FROM_SDHI_TO_RAM',\
+            20:'SDHI-Normal 2.1.20-READ_DATA_FROM_SDHI_TO_RAM',\
+            21:'SDHI-Normal 2.1.21-READ_DATA_FROM_SDHI_TO_RAM',\
+            22:'SDHI-Normal 2.1.22-READ_FOLDER_FROM_SDHI_TO_RAM',\
+            23:'SDHI-Normal 2.1.23-READ_FOLDER_FROM_SDHI_TO_RAM',\
+            24:'SDHI-Normal 2.1.24-WRITE_DATA_FROM_RAM_TO_SDHI3',\
+            25:'SDHI-Normal 2.1.25-WRITE_DATA_FROM_RAM_TO_SDHI3',\
+            26:'SDHI-Normal 2.1.26-WRITE_DATA_FROM_RAM_TO_SDHI3',\
+            27:'SDHI-Normal 2.1.27-WRITE_FOLDER_FROM_RAM_TO_SDHI3',\
+            28:'SDHI-Normal 2.1.28-WRITE_FOLDER_FROM_RAM_TO_SDHI3',\
+            29:'SDHI-Normal 2.1.29-WRITE_DATA_FROM_RAM_TO_SDHI3',\
+            30:'SDHI-Normal 2.1.30-WRITE_DATA_FROM_RAM_TO_SDHI3',\
+            31:'SDHI-Normal 2.1.31-WRITE_DATA_FROM_RAM_TO_SDHI3',\
+            32:'SDHI-Normal 2.1.32-WRITE_FOLDER_FROM_RAM_TO_SDHI3',\
+            33:'SDHI-Normal 2.1.33-WRITE_FOLDER_FROM_RAM_TO_SDHI3',\
+            34:'SDHI-Normal 2.1.34-EXCEEDS_CAPACITY_WRITE3',\
+            35:'SDHI-Normal 2.1.35-READ_DATA_FROM_SDHI3_TO_RAM',\
+            36:'SDHI-Normal 2.1.36-READ_DATA_FROM_SDHI3_TO_RAM',\
+            37:'SDHI-Normal 2.1.37-READ_DATA_FROM_SDHI3_TO_RAM',\
+            38:'SDHI-Normal 2.1.38-READ_FOLDER_FROM_SDHI3_TO_RAM',\
+            39:'SDHI-Normal 2.1.39-READ_FOLDER_FROM_SDHI3_TO_RAM',\
+            40:'SDHI-Normal 2.1.40-WRITE_DATA_INSIDE_2_SDHI',\
+            41:'SDHI-Normal 2.1.41-WRITE_DATA_INSIDE_2_SDHI',\
+            42:'SDHI-Normal 2.1.42-WRITE_FOLDER_INSIDE_2_SDHI',\
+            43:'SDHI-Normal 2.1.43-WRITE_FOLDER_INSIDE_2_SDHI',\
+            44:'SDHI-Normal 2.1.44-WRITE_DATA_INSIDE_2_SDHI',\
+            45:'SDHI-Normal 2.1.45-WRITE_DATA_INSIDE_2_SDHI',\
+            46:'SDHI-Normal 2.1.46-WRITE_FOLDER_INSIDE_2_SDHI',\
+            47:'SDHI-Normal 2.1.47-WRITE_FOLDER_INSIDE_2_SDHI',\
+            48:'SDHI-Normal 2.1.48-CHECK_COPY_DEVICE_SIMULTANOUSLY',\
+            49:'SDHI-Normal 2.1.49-CHECK_COPY_DEVICE_SIMULTANOUSLY',\
+            50:'SDHI-Normal 2.1.50-SIMULTANEOUSLY_COPY_RAM_AND_SDHI',\
+            51:'SDHI-Normal 2.1.51-SIMULTANEOUSLY_COPY_RAM_AND_SDHI',\
+            52:'SDHI-Normal 2.1.52-SIMULTANEOUSLY_COPY_RAM_AND_SDHI',\
+            53:'SDHI-Normal 2.1.53-SIMULTANEOUSLY_COPY_RAM_AND_SDHI',\
+            54:'SDHI-Normal 2.1.54-SIMULATANEOUSLY_COPY_2_SDHI',\
+            55:'SDHI-Normal 2.1.55-SIMULATANEOUSLY_COPY_2_SDHI',\
+            56:'SDHI-Normal 2.1.56-SIMULATANEOUSLY_COPY_2_SDHI',\
+            57:'SDHI-Normal 2.1.57-WRITE_SPEED_SDHI_TEST_SDHI0',\
+            58:'SDHI-Normal 2.1.58-READ_SPEED_SDHI_TEST_SDHI0',\
+            59:'SDHI-Normal 2.1.59-WRITE_SPEED_SDHI_TEST_SDHI3',\
+            60:'SDHI-Normal 2.1.60-READ_SPEED_SDHI_TEST_SDHI3',\
+            61:'SDHI-Normal 2.1.61-UNBIND_BIND_WRITING_SDHI0',\
+            62:'SDHI-Normal 2.1.62-UNBIND_BIND_READING_SDHI0',\
+            63:'SDHI-Normal 2.1.63-UNBIND_BIND_SDHI_WRITING_SDHI3',\
+            64:'SDHI-Normal 2.1.64-UNBIND_BIND_SDHI_WHILE_COPY_SDHI3',\
+            65:'SDHI-Normal 2.1.65-S2RAM_WRITING_SDHI0',\
+            66:'SDHI-Normal 2.1.66-S2RAM_READING_SDHI0',\
+            67:'SDHI-Normal 2.1.67-S2RAM_WRITING_SDHI3',\
+            68:'SDHI-Normal 2.1.68-S2RAM_READING_SDHI3',\
+            69:'SDHI-Normal 2.1.69-S2RAM_WHILE_WRITING',\
+            70:'SDHI-Normal 2.1.70-S2RAM_WHILE_READING',\
+            71:'SDHI-Abnormal 2.1.71-PULL_OUT_WHILE_WRITING_SDHI0',\
+            72:'SDHI-Abnormal 2.1.72-PULL_OUT_WHILE_READING_SDHI0',\
+            73:'SDHI-Abnormal 2.1.73-PULL_OUT_WHILE_WRITING_SDHI3',\
+            74:'SDHI-Abnormal 2.1.74-PULL_OUT_WHILE_READING_SDHI3',\
+            75:'SDHI-Abnormal 2.1.75-CTR+C_WRITE_DATA',\
+            76:'SDHI-Abnormal 2.1.76-CTR+Z_WRITE_DATA',\
+            77:'SDHI-Abnormal 2.1.77-CTR+C_WRITE_DATA',\
+            78:'SDHI-Abnormal 2.1.76-CTR+Z_WRITE_DATA',\
+            81:'SDHI-Boundary 2.1.81-SDHI_TEST_BLOCK_OVER_SEEK',\
+            82:'SDHI-Boundary 2.1.82-SDHI_TEST_BLOCK_OVER_SEEK',\
+            83:'SDHI-Boundary 2.1.83-SDHI_TEST_LAST_BLOCK',\
+            84:'SDHI-Boundary 2.1.84-SDHI_TEST_BLOCK_OVER_COUNT',\
+            85:'SDHI-SMP 2.1.85-SMP_TEST_MULTIPLE_CPU_TO_SD',\
+            86:'SDHI-SMP 2.1.86-SMP_TEST_MULTIPLE_CPU_MULTIPLE_SD_CARD',\
+            87:'SDHI-SMP 2.1.87-SMP_TEST_ONE_CPU_MULTIPLE_SD_CARD',\
+            88:'SDHI-Durability 2.1.88-100_TIMES_READ_DATA_FROM_SDHI0_TO_RAM',\
+            89:'SDHI-Durability 2.1.89-100_TIMES_WRITE_DATA_FROM_RAM_TO_SDHI0',\
+            90:'SDHI-Durability 2.1.90-100_TIMES_READ_DATA_FROM_SDHI3_TO_RAM',\
+            91:'SDHI-Durability 2.1.91-100_TIMES_WRITE_DATA_FROM_RAM_TO_SDHI3'\
+} 

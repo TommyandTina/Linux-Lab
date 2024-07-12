@@ -1,0 +1,328 @@
+----------- BOARD ------------
+
+root@salvator-x:~# mount -t tmpfs -o size=400M tmpfs /tmp
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/zero of=/tmp/tmp.img bs=1M count=350
+350+0 records in
+350+0 records out
+367001600 bytes (367 MB, 350 MiB) copied, 1.90939 s, 192 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# mkfs.ext3 -L storage /tmp/tmp.img
+mke2fs 1.43.5 (04-Aug-2017)
+Discarding device blocks:   1024/358400             done                            
+Creating filesystem with 358400 1k blocks and 89760 inodes
+Filesystem UUID: 8a762e6c-a99f-4564-a653-123e8e0e06d2
+Superblock backups stored on blocks: 
+	8193, 24577, 40961, 57345, 73729, 204801, 221185
+
+Allocating group tables:  0/44     done                            
+Writing inode tables:  0/44     done                            
+Creating journal (8192 blocks): done
+Writing superblocks and filesystem accounting information:  0/44     done
+
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_mass_storage file=/tmp/tmp.img
+[  333.880804] Mass Storage Function, version: 2009/09/11
+[  333.886114] LUN: removable file: (no medium)
+[  333.890656] LUN: file: /tmp/tmp.img
+[  333.894198] Number of LUNs=1
+[  333.897882] g_mass_storage gadget.0: Mass Storage Gadget, version: 2009/09/11
+[  333.905074] g_mass_storage gadget.0: userspace failed to provide iSerialNumber
+[  333.912341] g_mass_storage gadget.0: g_mass_storage ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s tate
+configured
+root@salvator-x:~# 
+---------- HOST-PC -----------
+
+dmesg
+[189235.113773] usb 2-1: new SuperSpeed USB device number 12 using xhci_hcd
+[189235.136020] usb 2-1: New USB device found, idVendor=0525, idProduct=a4a5, bcdDevice= 6.07
+[189235.136035] usb 2-1: New USB device strings: Mfr=3, Product=4, SerialNumber=0
+[189235.136041] usb 2-1: Product: Mass Storage Gadget
+[189235.136047] usb 2-1: Manufacturer: Linux 6.7.0-rc2-arm64-renesas with renesas_usb3
+[189235.140736] usb-storage 2-1:1.0: USB Mass Storage device detected
+[189235.141098] usb-storage 2-1:1.0: Quirks match for vid 0525 pid a4a5: 10000
+[189235.141517] scsi host3: usb-storage 2-1:1.0
+[189236.174842] scsi 3:0:0:0: Direct-Access     Linux    File-Stor Gadget 0607 PQ: 0 ANSI: 2
+[189236.175403] sd 3:0:0:0: Attached scsi generic sg0 type 0
+[189236.176086] sd 3:0:0:0: Power-on or device reset occurred
+[189236.176858] sd 3:0:0:0: [sdb] 716800 512-byte logical blocks: (367 MB/350 MiB)
+[189236.283075] sd 3:0:0:0: [sdb] Write Protect is off
+[189236.283090] sd 3:0:0:0: [sdb] Mode Sense: 0f 00 00 00
+[189236.391018] sd 3:0:0:0: [sdb] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[189236.826896] sd 3:0:0:0: [sdb] Attached SCSI disk
+[189237.186364] EXT4-fs (sdb): mounting ext3 file system using the ext4 subsystem
+[189237.204878] EXT4-fs (sdb): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+[189237.204889] ext3 filesystem being mounted at /media/bsp/storage supports timestamps until 2038 (0x7fffffff)
+
+df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            7,7G     0  7,7G   0% /dev
+tmpfs           1,6G  2,2M  1,6G   1% /run
+/dev/nvme0n1p2  938G  414G  476G  47% /
+tmpfs           7,7G     0  7,7G   0% /dev/shm
+tmpfs           5,0M  8,0K  5,0M   1% /run/lock
+tmpfs           7,7G     0  7,7G   0% /sys/fs/cgroup
+/dev/loop0      128K  128K     0 100% /snap/bare/5
+/dev/loop2       64M   64M     0 100% /snap/core20/2015
+/dev/loop3       74M   74M     0 100% /snap/core22/858
+/dev/loop1       64M   64M     0 100% /snap/core20/1974
+/dev/loop4       74M   74M     0 100% /snap/core22/864
+/dev/loop5      497M  497M     0 100% /snap/gnome-42-2204/141
+/dev/loop10      46M   46M     0 100% /snap/snap-store/638
+/dev/loop9       13M   13M     0 100% /snap/nmap/3152
+/dev/loop13      92M   92M     0 100% /snap/gtk-common-themes/1535
+/dev/loop8      350M  350M     0 100% /snap/gnome-3-38-2004/140
+/dev/loop11      13M   13M     0 100% /snap/snap-store/959
+/dev/loop7      350M  350M     0 100% /snap/gnome-3-38-2004/143
+/dev/loop14      41M   41M     0 100% /snap/snapd/20092
+/dev/loop15      12M   12M     0 100% /snap/nmap/3077
+/dev/loop12      41M   41M     0 100% /snap/snapd/20290
+/dev/loop6      497M  497M     0 100% /snap/gnome-42-2204/132
+/dev/nvme0n1p1  511M  6,1M  505M   2% /boot/efi
+tmpfs           1,6G   44K  1,6G   1% /run/user/1001
+/dev/sda         29M  988K   26M   4% /mnt
+overlay         938G  414G  476G  47% /var/lib/docker/overlay2/e7cde569aa7c453bdd0ed7b49db6c553a359a451a4e51371509a5f35c445d9c9/merged
+/dev/sdb        329M   47K  312M   1% /media/bsp/storage
+
+dd if=/dev/urandom of=./file-300M bs=1M count=300
+300+0 records in
+300+0 records out
+314572800 bytes (315 MB, 300 MiB) copied, 1,06485 s, 295 MB/s
+
+---------- HOST-PC -----------
+
+root@salvator-x:~# i2cset -f -y 7 0x30 0x20 0x0f
+root@salvator-x:~# 
+
+Switch SW23 off and input 'yes' to continue:
+
+root@salvator-x:~# echo N > /sys/module/printk/parameters/console_suspend
+root@salvator-x:~# 
+root@salvator-x:~# echo mem > /sys/power/state
+[  351.514218] PM: suspend entry (deep)
+[  351.518539] Filesystems sync: 0.000 seconds
+[  351.579520] Freezing user space processes
+[  351.595150] Freezing user space processes completed (elapsed 0.005 seconds)
+[  351.605275] OOM killer disabled.
+[  351.614894] Freezing remaining freezable tasks
+[  351.629323] Freezing remaining freezable tasks completed (elapsed 0.003 seconds)
+[  351.667364] ------------[ cut here ]------------
+[  351.672104] WARNING: CPU: 4 PID: 507 at drivers/media/v4l2-core/v4l2-subdev.c:408 call_s_stream+0xd4/0xf0
+[  351.681840] Modules linked in: g_mass_storage usb_f_mass_storage usb_f_ecm usb_f_rndis u_ether usb_f_acm u_serial libcomposite bluetooth ecdh_generic ecc rfkill crct10dif_ce optee_rng rng_core [last unloaded: g_mass_storage]
+[  351.702178] CPU: 4 PID: 507 Comm: sh Tainted: G        W          6.7.0-rc2-arm64-renesas #1
+[  351.710749] Hardware name: Renesas Salvator-X 2nd version board based on r8a77951 (DT)
+[  351.718788] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  351.725863] pc : call_s_stream+0xd4/0xf0
+[  351.729855] lr : vsp1_pipeline_stop+0x10c/0x2a4
+[  351.734473] sp : ffff800084cc35f0
+[  351.737846] x29: ffff800084cc35f0 x28: 0000000000000000 x27: 0000000000000001
+[  351.745116] x26: 0000000000000000 x25: ffff0004c3aefb08 x24: ffff0004c3aef880
+[  351.752386] x23: 0000000000000288 x22: ffff0004c3aefb30 x21: 0000000000000000
+[  351.759656] x20: ffff0004c3aea880 x19: ffff0004c3aef0f0 x18: 0000000000000000
+[  351.766926] x17: 000000040044ffff x16: 00400032b5503510 x15: 0000000000000001
+[  351.774196] x14: 0000000000000001 x13: 0000000000000002 x12: 0000000000040000
+[  351.781466] x11: 0000000000000400 x10: ffff800083682e78 x9 : 0000000000000000
+[  351.788736] x8 : ffff0004c48b4980 x7 : 0000000000000000 x6 : 000001ffffffffff
+[  351.796005] x5 : 0000000000000000 x4 : ffff8000857d0000 x3 : ffff800080e37d40
+[  351.803275] x2 : ffff800080e7881c x1 : 0000000000000000 x0 : 0000000000000001
+[  351.810544] Call trace:
+[  351.813037]  call_s_stream+0xd4/0xf0
+[  351.816677]  vsp1_pipeline_stop+0x10c/0x2a4
+[  351.820938]  vsp1_du_setup_lif+0x334/0x478
+[  351.825108]  rcar_du_vsp_disable+0x1c/0x24
+[  351.829282]  rcar_du_crtc_atomic_disable+0x2f8/0x438
+[  351.834338]  disable_outputs+0x22c/0x338
+[  351.838335]  drm_atomic_helper_commit_modeset_disables+0x18/0x44
+[  351.844442]  rcar_du_atomic_commit_tail+0x90/0xd8
+[  351.849230]  commit_tail+0x9c/0x178
+[  351.852785]  drm_atomic_helper_commit+0x190/0x1a4
+[  351.857572]  drm_atomic_commit+0xa4/0x100
+[  351.861660]  drm_atomic_helper_disable_all+0x1ec/0x200
+[  351.866887]  drm_atomic_helper_suspend+0xa0/0x208
+[  351.871673]  drm_mode_config_helper_suspend+0x2c/0x70
+[  351.876816]  rcar_du_pm_suspend+0x14/0x1c
+[  351.880899]  platform_pm_suspend+0x28/0x64
+[  351.885072]  dpm_run_callback+0x34/0x90
+[  351.888981]  __device_suspend+0x10c/0x3c4
+[  351.893064]  dpm_suspend+0x140/0x250
+[  351.896707]  dpm_suspend_start+0x78/0x90
+[  351.900700]  suspend_devices_and_enter+0x124/0x570
+[  351.905580]  pm_suspend+0x1ec/0x310
+[  351.909134]  state_store+0x88/0x124
+[  351.912688]  kobj_attr_store+0x14/0x24
+[  351.916509]  sysfs_kf_write+0x48/0x6c
+[  351.920245]  kernfs_fop_write_iter+0x118/0x1a8
+[  351.924768]  vfs_write+0x21c/0x2c0
+[  351.928240]  ksys_write+0x64/0xec
+[  351.931619]  __arm64_sys_write+0x18/0x20
+[  351.935614]  invoke_syscall+0x44/0x108
+[  351.939437]  el0_svc_common.constprop.0+0xb4/0xd4
+[  351.944224]  do_el0_svc+0x18/0x20
+[  351.947602]  el0_svc+0x3c/0xb8
+[  351.950720]  el0t_64_sync_handler+0xb8/0xbc
+[  351.954979]  el0t_64_sync+0x14c/0x150
+[  351.958711] irq event stamp: 402580
+[  351.962261] hardirqs last  enabled at (402579): [<ffff80008129f25c>] _raw_spin_unlock_irqrestore+0x6c/0x70
+[  351.972071] hardirqs last disabled at (402580): [<ffff80008128c418>] el1_dbg+0x20/0x80
+[  351.980116] softirqs last  enabled at (400440): [<ffff800080010a84>] __do_softirq+0x494/0x4dc
+[  351.988774] softirqs last disabled at (400431): [<ffff800080015e18>] ____do_softirq+0xc/0x14
+[  351.997347] ---[ end trace 0000000000000000 ]---
+[  352.008142] ravb e6800000.ethernet eth0: Link is Down
+[  352.086727] Disabling non-boot CPUs ...
+[  352.093453] psci: CPU1 killed (polled 4 ms)
+[  352.101453] psci: CPU2 killed (polled 4 ms)
+[  352.110234] psci: CPU3 killed (polled 0 ms)
+[  352.118266] psci: CPU4 killed (polled 0 ms)
+[  352.126103] psci: CPU5 killed (polled 0 ms)
+[  352.133716] psci: CPU6 killed (polled 0 ms)
+[  352.145479] psci: CPU7 killed (polled 4 ms)
+ 
+ Switch power switch: 
+
+NOTICE:  BL2: R-Car Gen3 Initial Program Loader(CA57) Rev.3.0.0
+NOTICE:  BL2: PRR is R-Car H3 Ver.3.0
+NOTICE:  BL2: Board is Salvator-XS Rev.1.0
+NOTICE:  BL2: Boot device is HyperFlash(160MHz)
+NOTICE:  BL2: LCM state is CM
+NOTICE:  AVS setting succeeded. DVFS_SetVID=0x53
+NOTICE:  BL2: DDR3200(rev.0.41)
+NOTICE:  BL2: [WARM_BOOT]
+NOTICE:  BL2: DRAM Split is 4ch(DDR f)
+NOTICE:  BL2: QoS is default setting(rev.0.11)
+NOTICE:  BL2: DRAM refresh interval 1.95 usec
+NOTICE:  BL2: Periodic Write DQ Training
+NOTICE:  BL2: CH0: 400000000 - 47fffffff, 2 GiB
+NOTICE:  BL2: CH1: 500000000 - 57fffffff, 2 GiB
+NOTICE:  BL2: CH2: 600000000 - 67fffffff, 2 GiB
+NOTICE:  BL2: CH3: 700000000 - 77fffffff, 2 GiB
+NOTICE:  BL2: FDT at 0xe6325e70
+NOTICE:  BL2: v2.6(release):v2.6
+NOTICE:  BL2: Built : 09:11:03, May 18 2022
+NOTICE:  BL2: Normal boot
+[  352.150815] Enabling non-boot CPUs ...
+[  352.155344] Detected PIPT I-cache on CPU1
+[  352.155434] CPU1: Booted secondary processor 0x0000000001 [0x411fd073]
+[  352.157476] CPU1 is up
+[  352.170752] Detected PIPT I-cache on CPU2
+[  352.170806] CPU2: Booted secondary processor 0x0000000002 [0x411fd073]
+[  352.172447] CPU2 is up
+[  352.185720] Detected PIPT I-cache on CPU3
+[  352.185776] CPU3: Booted secondary processor 0x0000000003 [0x411fd073]
+[  352.187485] CPU3 is up
+[  352.200782] Detected VIPT I-cache on CPU4
+[  352.200885] CPU4: Booted secondary processor 0x0000000100 [0x410fd034]
+[  352.203833] cpufreq: cpufreq_online: CPU4: Running at unlisted initial frequency: 1198080 KHz, changing to: 1200000 KHz
+[  352.227658] CPU4 is up
+[  352.230316] Detected VIPT I-cache on CPU5
+[  352.230406] CPU5: Booted secondary processor 0x0000000101 [0x410fd034]
+[  352.233690] CPU5 is up
+[  352.247012] Detected VIPT I-cache on CPU6
+[  352.247097] CPU6: Booted secondary processor 0x0000000102 [0x410fd034]
+[  352.250274] CPU6 is up
+[  352.263542] Detected VIPT I-cache on CPU7
+[  352.263627] CPU7: Booted secondary processor 0x0000000103 [0x410fd034]
+[  352.266932] CPU7 is up
+[  352.418398] Micrel KSZ9031 Gigabit PHY e6800000.ethernet-ffffffff:00: attached PHY driver (mii_bus:phy_addr=e6800000.ethernet-ffffffff:00, irq=193)
+[  352.491324] OOM killer enabled.
+[  352.500926] Restarting tasks ... done.
+[  352.517695] random: crng reseeded on system resumption
+root@salvator-x:[  352.530017] PM: suspend exit
+~# [  352.753508] ata1: link resume succeeded after 1 retries
+[  352.866163] ata1: SATA link down (SStatus 0 SControl 300)
+[  360.694411] ravb e6800000.ethernet eth0: Link is Up - 1Gbps/Full - flow control off
+
+root@salvator-x:~# echo "Wake up sucessfully"
+Wake up sucessfully
+root@salvator-x:~# 
+---------- HOST-PC -----------
+
+dmesg
+[189252.925906] usb 2-1: USB disconnect, device number 12
+[189252.926936] blk_update_request: I/O error, dev sdb, sector 0 op 0x1:(WRITE) flags 0x800 phys_seg 0 prio class 0
+[189252.953385] sd 3:0:0:0: [sdb] Synchronizing SCSI cache
+[189252.953490] sd 3:0:0:0: [sdb] Synchronize Cache(10) failed: Result: hostbyte=DID_NO_CONNECT driverbyte=DRIVER_OK
+[189253.000735] Buffer I/O error on dev sdb, logical block 531, lost sync page write
+[189253.000748] JBD2: Error -5 detected when updating journal superblock for sdb-8.
+[189253.000754] Aborting journal on device sdb-8.
+[189253.000759] Buffer I/O error on dev sdb, logical block 531, lost sync page write
+[189253.000765] JBD2: Error -5 detected when updating journal superblock for sdb-8.
+[189253.000798] EXT4-fs error (device sdb): ext4_put_super:1196: comm umount: Couldn't clean up the journal
+[189253.000806] EXT4-fs (sdb): Remounting filesystem read-only
+[189256.965662] usb 2-1: new SuperSpeed USB device number 13 using xhci_hcd
+[189256.987643] usb 2-1: New USB device found, idVendor=0525, idProduct=a4a5, bcdDevice= 6.07
+[189256.987657] usb 2-1: New USB device strings: Mfr=3, Product=4, SerialNumber=0
+[189256.987664] usb 2-1: Product: Mass Storage Gadget
+[189256.987669] usb 2-1: Manufacturer: Linux 6.7.0-rc2-arm64-renesas with renesas_usb3
+[189256.990073] usb-storage 2-1:1.0: USB Mass Storage device detected
+[189256.990342] usb-storage 2-1:1.0: Quirks match for vid 0525 pid a4a5: 10000
+[189256.990438] scsi host3: usb-storage 2-1:1.0
+[189257.998455] scsi 3:0:0:0: Direct-Access     Linux    File-Stor Gadget 0607 PQ: 0 ANSI: 2
+[189257.998796] sd 3:0:0:0: Attached scsi generic sg0 type 0
+[189257.999517] sd 3:0:0:0: Power-on or device reset occurred
+[189258.000245] sd 3:0:0:0: [sdb] 716800 512-byte logical blocks: (367 MB/350 MiB)
+[189258.109075] sd 3:0:0:0: [sdb] Write Protect is off
+[189258.109079] sd 3:0:0:0: [sdb] Mode Sense: 0f 00 00 00
+[189258.216776] sd 3:0:0:0: [sdb] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[189258.648326] sd 3:0:0:0: [sdb] Attached SCSI disk
+[189259.030895] EXT4-fs (sdb): mounting ext3 file system using the ext4 subsystem
+[189259.056110] EXT4-fs (sdb): recovery complete
+[189259.056935] EXT4-fs (sdb): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+[189259.056957] ext3 filesystem being mounted at /media/bsp/storage supports timestamps until 2038 (0x7fffffff)
+
+df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            7,7G     0  7,7G   0% /dev
+tmpfs           1,6G  2,2M  1,6G   1% /run
+/dev/nvme0n1p2  938G  414G  476G  47% /
+tmpfs           7,7G     0  7,7G   0% /dev/shm
+tmpfs           5,0M  8,0K  5,0M   1% /run/lock
+tmpfs           7,7G     0  7,7G   0% /sys/fs/cgroup
+/dev/loop0      128K  128K     0 100% /snap/bare/5
+/dev/loop2       64M   64M     0 100% /snap/core20/2015
+/dev/loop3       74M   74M     0 100% /snap/core22/858
+/dev/loop1       64M   64M     0 100% /snap/core20/1974
+/dev/loop4       74M   74M     0 100% /snap/core22/864
+/dev/loop5      497M  497M     0 100% /snap/gnome-42-2204/141
+/dev/loop10      46M   46M     0 100% /snap/snap-store/638
+/dev/loop9       13M   13M     0 100% /snap/nmap/3152
+/dev/loop13      92M   92M     0 100% /snap/gtk-common-themes/1535
+/dev/loop8      350M  350M     0 100% /snap/gnome-3-38-2004/140
+/dev/loop11      13M   13M     0 100% /snap/snap-store/959
+/dev/loop7      350M  350M     0 100% /snap/gnome-3-38-2004/143
+/dev/loop14      41M   41M     0 100% /snap/snapd/20092
+/dev/loop15      12M   12M     0 100% /snap/nmap/3077
+/dev/loop12      41M   41M     0 100% /snap/snapd/20290
+/dev/loop6      497M  497M     0 100% /snap/gnome-42-2204/132
+/dev/nvme0n1p1  511M  6,1M  505M   2% /boot/efi
+tmpfs           1,6G   44K  1,6G   1% /run/user/1001
+/dev/sda         29M  988K   26M   4% /mnt
+overlay         938G  414G  476G  47% /var/lib/docker/overlay2/e7cde569aa7c453bdd0ed7b49db6c553a359a451a4e51371509a5f35c445d9c9/merged
+/dev/sdb        329M   47K  312M   1% /media/bsp/storage
+
+sudo cp ./file-300M /media/bsp/storage
+
+md5sum ./file-300M /media/bsp/storage/file-300M
+8498bbe81317a0a3040fc0e8f048e51a  ./file-300M
+8498bbe81317a0a3040fc0e8f048e51a  /media/bsp/storage/file-300M
+
+sudo umount /media/bsp/storage
+
+----------- BOARD ------------
+
+root@salvator-x:~# rmmod g_mass_storage
+root@salvator-x:~# 
+root@salvator-x:~# rm -rf /tmp/tmp.img
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+[189274.683532] audit: type=1400 audit(1700812557.924:2475): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sssd" name="/proc/1951339/cmdline" pid=893 comm="sssd_nss" requested_mask="r" denied_mask="r" fsuid=0 ouid=0
+[189278.448812] usb 2-1: USB disconnect, device number 13
+[189278.481100] sd 3:0:0:0: [sdb] Synchronizing SCSI cache
+[189278.481178] sd 3:0:0:0: [sdb] Synchronize Cache(10) failed: Result: hostbyte=DID_NO_CONNECT driverbyte=DRIVER_OK
+
+ 
+#### Result: OK ####

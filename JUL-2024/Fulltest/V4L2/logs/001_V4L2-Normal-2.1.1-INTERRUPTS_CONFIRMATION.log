@@ -1,0 +1,12 @@
+
+root@salvator-x:~# cat /proc/interrupts | grep vsp
+ 48:          0          0          0          0          0          0          0          0     GICv2 497 Level     fe920000.vsp
+ 49:          0          0          0          0          0          0          0          0     GICv2 298 Level     fe960000.vsp
+ 50:       3471          0          0          0          0          0          0          0     GICv2 498 Level     fea20000.vsp
+ 51:          0          0          0          0          0          0          0          0     GICv2 499 Level     fea28000.vsp
+ 52:          0          0          0          0          0          0          0          0     GICv2 500 Level     fea30000.vsp
+ 53:          0          0          0          0          0          0          0          0     GICv2 476 Level     fe9a0000.vsp
+ 54:          0          0          0          0          0          0          0          0     GICv2 477 Level     fe9b0000.vsp
+root@salvator-x:~# 
+ 
+#### Result: OK ####

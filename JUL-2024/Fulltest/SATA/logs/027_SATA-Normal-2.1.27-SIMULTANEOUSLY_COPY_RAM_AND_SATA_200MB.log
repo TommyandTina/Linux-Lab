@@ -1,0 +1,55 @@
+
+root@salvator-x:~# find /sys/devices/platform/soc/ee300000.sata/ -name sd*
+/sys/devices/platform/soc/ee300000.sata/ata1/host0/target0:0:0/0:0:0:0/block/sda
+/sys/devices/platform/soc/ee300000.sata/ata1/host0/target0:0:0/0:0:0:0/block/sda/sda2
+/sys/devices/platform/soc/ee300000.sata/ata1/host0/target0:0:0/0:0:0:0/block/sda/sda1
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sda2 /mnt/
+[  459.456548] EXT4-fs (sda2): mounting ext3 file system using the ext4 subsystem
+[  459.473806] EXT4-fs (sda2): mounted filesystem a2c57eea-25c1-4649-82f0-9ab8c84ea7cd r/w with ordered data mode. Quota mode: none.
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.55448 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.15174 s, 97.5 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 726
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  501 tty2     00:00:00 weston-keyboard
+  502 tty2     00:00:00 weston-desktop-
+  503 ttySC0   00:00:03 sh
+  728 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  501 tty2     00:00:00 weston-keyboard
+  502 tty2     00:00:00 weston-desktop-
+  503 ttySC0   00:00:03 sh
+  729 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+9e6b6303c4cde642fcea60c03ee198b6  /tmp/file1-200M
+9e6b6303c4cde642fcea60c03ee198b6  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+5dd81c6888286715b3907478b9f5c48a  /tmp/file2-200M
+5dd81c6888286715b3907478b9f5c48a  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# umount /mnt
+[  482.934589] EXT4-fs (sda2): unmounting filesystem a2c57eea-25c1-4649-82f0-9ab8c84ea7cd.
+root@salvator-x:~# 
+root@salvator-x:~# rm /tmp/file1-200M ; rm /tmp/file2-200M
+root@salvator-x:~# 
+ 
+#### Result: OK ####

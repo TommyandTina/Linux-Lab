@@ -1,0 +1,19 @@
+
+root@salvator-x:~# find /sys/devices/platform/soc/ee300000.sata/ -name sd*
+/sys/devices/platform/soc/ee300000.sata/ata1/host0/target0:0:0/0:0:0:0/block/sda
+root@salvator-x:~# 
+ 
+#### Result: NG ####
+
+root@salvator-x:~# find /sys/devices/platform/soc/ee300000.sata/ -name sd*
+/sys/devices/platform/soc/ee300000.sata/ata1/host0/target0:0:0/0:0:0:0/block/sda
+root@salvator-x:~# Traceback (most recent call last):
+  File "003.py", line 24, in <module>
+    print_result.func_fail(a)
+  File "../common/print_result.py", line 41, in func_fail
+    restart_board.after_boot(self)
+  File "../common/restart_board.py", line 27, in after_boot
+    DEVICE = re.findall(r'[A-Za-z]+|\d+', MOUNT_POINT)[0]
+  File "/usr/lib/python2.7/re.py", line 181, in findall
+    return _compile(pattern, flags).findall(string)
+TypeError: expected string or buffer

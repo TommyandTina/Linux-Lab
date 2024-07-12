@@ -1,0 +1,853 @@
+
+
+----------Item 8----------
+
+
+Plug in USB device at CN10L
+
+
+Press any button to continue
+
+[   85.936506] usb 1-1: new high-speed USB device number 3 using ehci-platform
+
+Please press switch to restart board 
+
+[F 00:00:120
+[   86.100371] usb-storage 1-1:1.0: USB Mass Storage device detected
+[   86.108163] scsi host0: usb-storage 1-1:1.0
+[F 00:00:119
+[   87.133858] scsi 0:0:0:0: Direct-Access     SanDisk  Extreme Pro      0    PQ: 0 ANSI: 6
+[   87.144308] sd 0:0:0:0: [sda] 250085376 512-byte logical blocks: (128 GB/119 GiB)
+[   87.153182] sd 0:0:0:0: [sda] Write Protect is off
+[   87.159026] sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[   87.198389]  sda: sda1
+[   87.205312] sd 0:0:0:0: [sda] Attached SCSI removable disk
+[F 00:00:118
+[F 00:00:117
+NOTICE:  BL2: R-Car Gen3 Initial Program Loader(CA57) Rev.4.0.0
+NOTICE:  BL2: PRR is R-Car M3 Ver.3.0
+NOTICE:  BL2: Board is Salvator-XS Rev.1.0
+NOTICE:  BL2: Boot device is HyperFlash(160MHz)
+NOTICE:  BL2: LCM state is CM
+NOTICE:  AVS setting succeeded. DVFS_SetVID=0x53
+NOTICE:  BL2: DDR3200(rev.0.42)
+NOTICE:  BL2: [COLD_BOOT]
+NOTICE:  BL2: DRAM Split is 2ch
+NOTICE:  BL2: QoS is default setting(rev.0.04)
+NOTICE:  BL2: DRAM refresh interval 1.95 usec
+NOTICE:  BL2: Periodic Write DQ Training
+NOTICE:  BL2: CH0: 400000000 - 4ffffffff, 4 GiB
+NOTICE:  BL2: CH2: 600000000 - 6ffffffff, 4 GiB
+NOTICE:  BL2: Lossy Decomp areas
+NOTICE:       Entry 0: DCMPAREACRAx:0x80000540 DCMPAREACRBx:0x570
+NOTICE:       Entry 1: DCMPAREACRAx:0x40000000 DCMPAREACRBx:0x0
+NOTICE:       Entry 2: DCMPAREACRAx:0x20000000 DCMPAREACRBx:0x0
+NOTICE:  BL2: FDT at 0xe6326f70
+NOTICE:  BL2: v2.9(release):9cdb21f75
+NOTICE:  BL2: Built : 08:35:43, Jan 13 2024
+NOTICE:  BL2: Normal boot
+NOTICE:  BL2: dst=0xe6326800 src=0x8180000 len=512(0x200)
+NOTICE:  BL2: dst=0x43f00000 src=0x8180400 len=6144(0x1800)
+NOTICE:  rcar_file_len: len: 0x0003e000
+NOTICE:  BL2: dst=0x44000000 src=0x81c0000 len=253952(0x3e000)
+NOTICE:  rcar_file_len: len: 0x00200000
+NOTICE:  BL2: dst=0x44100000 src=0x8200000 len=2097152(0x200000)
+NOTICE:  rcar_file_len: len: 0x00100000
+NOTICE:  BL2: dst=0x50000000 src=0x8640000 len=1048576(0x100000)
+NOTICE:  BL2: Booting BL31
+
+
+U-Boot 2020.10 (Jan 13 2024 - 08:36:37 +0000)
+
+CPU: Renesas Electronics R8A7796 rev 3.0
+Model: Renesas Salvator-X 2nd version board based on r8a77961
+DRAM:  7.9 GiB
+RAM Configuration:
+Bank #0: 0x048000000 - 0x0bfffffff, 1.9 GiB
+Bank #1: 0x480000000 - 0x4ffffffff, 2 GiB
+Bank #2: 0x600000000 - 0x6ffffffff, 4 GiB
+
+MMC:   mmc@ee100000: 0, mmc@ee140000: 1, mmc@ee160000: 2
+Loading Environment from MMC... OK
+In:    serial@e6e88000
+Out:   serial@e6e88000
+Err:   serial@e6e88000
+Net:   eth0: ethernet@e6800000
+Hit any key to stop autoboot:  2  1  0 
+ethernet@e6800000 Waiting for PHY auto negotiation to complete.......... done
+Using ethernet@e6800000 device
+TFTP from server 192.168.10.98; our IP address is 192.168.10.107
+Filename 'BV/PT3/boot_USB2H/Image'.
+Load address: 0x48080000
+Loading: *#################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 ################################################################
+	 4 MiB/s
+done
+Bytes transferred = 33376768 (1fd4a00 hex)
+Using ethernet@e6800000 device
+TFTP from server 192.168.10.98; our IP address is 192.168.10.107
+Filename 'BV/PT3/boot_USB2H/r8a779m3-salvator-xs.dtb'.
+Load address: 0x48000000
+Loading: *######
+	 4.9 MiB/s
+done
+Bytes transferred = 76881 (12c51 hex)
+Moving Image from 0x48080000 to 0x48200000, end=4a260000
+## Flattened Device Tree blob at 48000000
+   Booting using the fdt blob at 0x48000000
+   Loading Device Tree to 0000000053fea000, end 0000000053fffc50 ... OK
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x411fd073]
+[    0.000000] Linux version 5.10.194-yocto-standard (thuan.nguyen-hong@banvien) (aarch64-poky-linux-gcc (GCC) 9.3.0, GNU ld (GNU Binutils) 2.34.0.20200220) #10 SMP PREEMPT Mon Feb 19 03:51:05 UTC 2024
+[    0.000000] Machine model: Renesas Salvator-X 2nd version board based on r8a779m3
+[    0.000000] efi: UEFI not found.
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000057000000, size 16 MiB
+[    0.000000] OF: reserved mem: initialized node linux,adsp@57000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000058000000, size 384 MiB
+[    0.000000] OF: reserved mem: initialized node linux,cma@58000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000070000000, size 256 MiB
+[    0.000000] OF: reserved mem: initialized node linux,multimedia@70000000, compatible id shared-dma-pool
+[    0.000000] NUMA: No NUMA configuration found
+[    0.000000] NUMA: Faking a node at [mem 0x0000000048000000-0x00000006ffffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0x6fefebb00-0x6fefedfff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000048000000-0x00000000ffffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   [mem 0x0000000100000000-0x00000006ffffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000048000000-0x0000000053ffffff]
+[    0.000000]   node   0: [mem 0x0000000054000000-0x0000000056ffffff]
+[    0.000000]   node   0: [mem 0x0000000057000000-0x00000000bfffffff]
+[    0.000000]   node   0: [mem 0x0000000480000000-0x00000004ffffffff]
+[    0.000000]   node   0: [mem 0x0000000600000000-0x00000006ffffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000048000000-0x00000006ffffffff]
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS resident on physical CPU 0x0
+[    0.000000] psci: SMC Calling Convention v1.2
+[    0.000000] percpu: Embedded 23 pages/cpu s56984 r8192 d29032 u94208
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: EL2 vector hardening
+[    0.000000] CPU features: detected: Spectre-v2
+[    0.000000] CPU features: detected: ARM errata 1165522, 1319367, or 1530923
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: detected: ARM erratum 1742098
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 2032128
+[    0.000000] Policy zone: Normal
+[    0.000000] Kernel command line: rw root=/dev/nfs nfsroot=192.168.10.98:/data/tftpboot/BV/PT3/rootfs_M3e,nfsvers=4 ip=192.168.10.107
+[    0.000000] Dentry cache hash table entries: 1048576 (order: 11, 8388608 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] software IO TLB: mapped [mem 0x00000000bc000000-0x00000000c0000000] (64MB)
+[    0.000000] Memory: 7277108K/8257536K available (15232K kernel code, 2834K rwdata, 8240K rodata, 6144K init, 517K bss, 308684K reserved, 671744K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=6, Nodes=1
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=6.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=6
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] arch_timer: cp15 timer(s) running at 8.32MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x1eb398c07, max_idle_ns: 440795202503 ns
+[    0.000003] sched_clock: 56 bits at 8MHz, resolution 120ns, wraps every 2199023255503ns
+[    0.000219] Console: colour dummy device 80x25
+[    0.000425] printk: console [tty0] enabled
+[    0.000507] Calibrating delay loop (skipped), value calculated using timer frequency.. 16.64 BogoMIPS (lpj=33280)
+[    0.000523] pid_max: default: 32768 minimum: 301
+[    0.000579] LSM: Security Framework initializing
+[    0.000668] Mount-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.000721] Mountpoint-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.002241] rcu: Hierarchical SRCU implementation.
+[    0.003882] Detected Renesas R-Car Gen3 r8a77961 ES3.0
+[    0.005717] EFI services will not be available.
+[    0.006063] smp: Bringing up secondary CPUs ...
+[    0.006565] Detected PIPT I-cache on CPU1
+[    0.006623] CPU1: Booted secondary processor 0x0000000001 [0x411fd073]
+[    0.007196] CPU features: detected: ARM erratum 845719
+[    0.007212] Detected VIPT I-cache on CPU2
+[    0.007268] CPU2: Booted secondary processor 0x0000000100 [0x410fd034]
+[    0.007770] Detected VIPT I-cache on CPU3
+[    0.007797] CPU3: Booted secondary processor 0x0000000101 [0x410fd034]
+[    0.008296] Detected VIPT I-cache on CPU4
+[    0.008324] CPU4: Booted secondary processor 0x0000000102 [0x410fd034]
+[    0.008810] Detected VIPT I-cache on CPU5
+[    0.008836] CPU5: Booted secondary processor 0x0000000103 [0x410fd034]
+[    0.008918] smp: Brought up 1 node, 6 CPUs
+[    0.008973] SMP: Total of 6 processors activated.
+[    0.008981] CPU features: detected: 32-bit EL0 Support
+[    0.008989] CPU features: detected: CRC32 instructions
+[    0.008996] CPU features: detected: 32-bit EL1 Support
+[    0.022673] CPU: All CPU(s) started at EL1
+[    0.022732] alternatives: patching kernel code
+[    0.023746] devtmpfs: initialized
+[    0.029811] KASLR disabled due to lack of seed
+[    0.029976] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.029999] futex hash table entries: 2048 (order: 5, 131072 bytes, linear)
+[    0.038529] pinctrl core: initialized pinctrl subsystem
+[    0.040116] DMI not present or invalid.
+[    0.040635] NET: Registered protocol family 16
+[    0.041537] DMA: preallocated 1024 KiB GFP_KERNEL pool for atomic allocations
+[    0.041718] DMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.041985] DMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.042033] audit: initializing netlink subsys (disabled)
+[    0.042229] audit: type=2000 audit(0.040:1): state=initialized audit_enabled=0 res=1
+[    0.043429] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.044027] cpuidle: using governor menu
+[    0.044227] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.044334] ASID allocator initialised with 65536 entries
+[    0.045810] Serial: AMBA PL011 UART driver
+[    0.081949] sh-pfc e6060000.pinctrl: r8a77961_pfc support registered
+[    0.094604] HugeTLB registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.094619] HugeTLB registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.094627] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.094635] HugeTLB registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.095685] cryptd: max_cpu_qlen set to 1000
+[    0.098026] ACPI: Interpreter disabled.
+[    0.101510] rcar-avs: use avs value: 0
+[    0.101530] rcar-avs: cpu@0 is running with: opp_table0
+[    0.101539] rcar-avs: cpu@1 is running with: opp_table0
+[    0.101634] rcar-avs: gsx@fd000000 is running with: gsx_opp_table0
+[    0.103183] iommu: Default domain type: Translated 
+[    0.103853] ipmmu-vmsa e67b0000.iommu: IPMMU context 0 is reserved
+[    0.104837] vgaarb: loaded
+[    0.105131] SCSI subsystem initialized
+[    0.105414] usbcore: registered new interface driver usbfs
+[    0.105442] usbcore: registered new interface driver hub
+[    0.105470] usbcore: registered new device driver usb
+[    0.109089] i2c-sh_mobile e60b0000.i2c: I2C adapter 7, bus speed 400000 Hz
+[    0.109639] mc: Linux media interface: v0.10
+[    0.109663] videodev: Linux video capture interface: v2.00
+[    0.109721] pps_core: LinuxPPS API ver. 1 registered
+[    0.109728] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.109743] PTP clock support registered
+[    0.109942] EDAC MC: Ver: 3.0.0
+[    0.111967] FPGA manager framework
+[    0.112037] Advanced Linux Sound Architecture Driver Initialized.
+[    0.112673] clocksource: Switched to clocksource arch_sys_counter
+[    0.112827] VFS: Disk quotas dquot_6.6.0
+[    0.112874] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    0.113015] pnp: PnP ACPI: disabled
+[    0.116717] NET: Registered protocol family 2
+[    0.117143] IP idents hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.119392] tcp_listen_portaddr_hash hash table entries: 4096 (order: 4, 65536 bytes, linear)
+[    0.119496] TCP established hash table entries: 65536 (order: 7, 524288 bytes, linear)
+[    0.119782] TCP bind hash table entries: 65536 (order: 8, 1048576 bytes, linear)
+[    0.120396] TCP: Hash tables configured (established 65536 bind 65536)
+[    0.120531] UDP hash table entries: 4096 (order: 5, 131072 bytes, linear)
+[    0.120645] UDP-Lite hash table entries: 4096 (order: 5, 131072 bytes, linear)
+[    0.120891] NET: Registered protocol family 1
+[    0.121243] RPC: Registered named UNIX socket transport module.
+[    0.121255] RPC: Registered udp transport module.
+[    0.121261] RPC: Registered tcp transport module.
+[    0.121267] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.121279] PCI: CLS 0 bytes, default 64
+[    0.122102] hw perfevents: enabled with armv8_cortex_a53 PMU driver, 7 counters available
+[    0.122322] hw perfevents: enabled with armv8_cortex_a57 PMU driver, 7 counters available
+[    0.122865] kvm [1]: HYP mode not available
+[    0.125792] Initialise system trusted keyrings
+[    0.125928] workingset: timestamp_bits=42 max_order=21 bucket_order=0
+[    0.129183] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.129622] NFS: Registering the id_resolver key type
+[    0.129651] Key type id_resolver registered
+[    0.129659] Key type id_legacy registered
+[    0.129720] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    0.129730] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    0.129849] 9p: Installing v9fs 9p2000 file system support
+[    0.156691] Key type asymmetric registered
+[    0.156708] Asymmetric key parser 'x509' registered
+[    0.156747] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 243)
+[    0.156758] io scheduler mq-deadline registered
+[    0.156767] io scheduler kyber registered
+[    0.169837] gpio_rcar e6050000.gpio: driving 16 GPIOs
+[    0.170159] gpio_rcar e6051000.gpio: driving 29 GPIOs
+[    0.170456] gpio_rcar e6052000.gpio: driving 15 GPIOs
+[    0.170799] gpio_rcar e6053000.gpio: driving 16 GPIOs
+[    0.171065] gpio_rcar e6054000.gpio: driving 18 GPIOs
+[    0.171363] gpio_rcar e6055000.gpio: driving 26 GPIOs
+[    0.171627] gpio_rcar e6055400.gpio: driving 32 GPIOs
+[    0.171917] gpio_rcar e6055800.gpio: driving 4 GPIOs
+[    0.174731] rcar-pcie fe000000.pcie: host bridge /soc/pcie@fe000000 ranges:
+[    0.174768] rcar-pcie fe000000.pcie:       IO 0x00fe100000..0x00fe1fffff -> 0x0000000000
+[    0.174790] rcar-pcie fe000000.pcie:      MEM 0x00fe200000..0x00fe3fffff -> 0x00fe200000
+[    0.174808] rcar-pcie fe000000.pcie:      MEM 0x0030000000..0x0037ffffff -> 0x0030000000
+[    0.174822] rcar-pcie fe000000.pcie:      MEM 0x0038000000..0x003fffffff -> 0x0038000000
+[    0.174839] rcar-pcie fe000000.pcie:   IB MEM 0x0040000000..0x00bfffffff -> 0x0040000000
+[    0.174908] rcar-pcie fe000000.pcie: no pcie3v3 regulator found
+[    0.174920] rcar-pcie fe000000.pcie: no pcie1v8 regulator found
+[    0.244374] rcar-pcie fe000000.pcie: PCIe link down
+[    0.244574] rcar-pcie ee800000.pcie: host bridge /soc/pcie@ee800000 ranges:
+[    0.244598] rcar-pcie ee800000.pcie:       IO 0x00ee900000..0x00ee9fffff -> 0x0000000000
+[    0.244618] rcar-pcie ee800000.pcie:      MEM 0x00eea00000..0x00eebfffff -> 0x00eea00000
+[    0.244636] rcar-pcie ee800000.pcie:      MEM 0x00c0000000..0x00c7ffffff -> 0x00c0000000
+[    0.244665] rcar-pcie ee800000.pcie:      MEM 0x00c8000000..0x00cfffffff -> 0x00c8000000
+[    0.244684] rcar-pcie ee800000.pcie:   IB MEM 0x0040000000..0x00bfffffff -> 0x0040000000
+[    0.244719] rcar-pcie ee800000.pcie: no pcie3v3 regulator found
+[    0.244729] rcar-pcie ee800000.pcie: no pcie1v8 regulator found
+[    0.312357] rcar-pcie ee800000.pcie: PCIe link down
+[    0.314517] EINJ: ACPI disabled.
+[    0.346043] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    0.348455] SuperH (H)SCI(F) driver initialized
+[    0.348930] e6550000.serial: ttySC1 at MMIO 0xe6550000 (irq = 40, base_baud = 0) is a hscif
+[    0.349771] e6e88000.serial: ttySC0 at MMIO 0xe6e88000 (irq = 123, base_baud = 0) is a scif
+[    1.513492] printk: console [ttySC0] enabled
+[    1.518987] msm_serial: driver initialized
+[    1.528420] rcar-dw-hdmi fead0000.hdmi: Detected HDMI TX controller v2.01a with HDCP (DWC HDMI 2.0 TX PHY)
+[    1.538377] rcar-dw-hdmi fead0000.hdmi: registered DesignWare HDMI I2C bus driver
+[    1.554234] loop: module loaded
+[    1.558862] megasas: 07.714.04.00-rc1
+[    1.568346] tun: Universal TUN/TAP device driver, 1.6
+[    1.574238] thunder_xcv, ver 1.0
+[    1.577507] thunder_bgx, ver 1.0
+[    1.580756] nicpf, ver 1.0
+[    1.584706] hclge is initializing
+[    1.588040] hns3: Hisilicon Ethernet Network Driver for Hip08 Family - version
+[    1.595263] hns3: Copyright (c) 2017 Huawei Corporation.
+[    1.600603] e1000: Intel(R) PRO/1000 Network Driver
+[    1.605482] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[    1.611247] e1000e: Intel(R) PRO/1000 Network Driver
+[    1.616212] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    1.622154] igb: Intel(R) Gigabit Ethernet Network Driver
+[    1.627553] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    1.633139] igbvf: Intel(R) Gigabit Virtual Function Network Driver
+[    1.639409] igbvf: Copyright (c) 2009 - 2012 Intel Corporation.
+[    1.645703] sky2: driver version 1.30
+[    1.653427] ravb e6800000.ethernet eth0: Base address at 0xe6800000, 2e:09:0a:03:99:2c, IRQ 120.
+[    1.663667] VFIO - User Level meta-driver version: 0.3
+[    1.670664] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.677211] ehci-pci: EHCI PCI platform driver
+[    1.681678] ehci-platform: EHCI generic platform driver
+[    1.687401] ehci-platform ee0a0100.usb: EHCI Host Controller
+[    1.693089] ehci-platform ee0a0100.usb: new USB bus registered, assigned bus number 1
+[    1.701006] ehci-platform ee0a0100.usb: irq 170, io mem 0xee0a0100
+[    1.720668] ehci-platform ee0a0100.usb: USB 2.0 started, EHCI 1.10
+[    1.727230] hub 1-0:1.0: USB hub found
+[    1.731003] hub 1-0:1.0: 1 port detected
+[    1.735416] ehci-orion: EHCI orion driver
+[    1.739708] ehci-exynos: EHCI Exynos driver
+[    1.744009] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    1.750209] ohci-pci: OHCI PCI platform driver
+[    1.754711] ohci-platform: OHCI generic platform driver
+[    1.760310] ohci-platform ee0a0000.usb: Generic Platform OHCI controller
+[    1.767031] ohci-platform ee0a0000.usb: new USB bus registered, assigned bus number 2
+[    1.774935] ohci-platform ee0a0000.usb: irq 170, io mem 0xee0a0000
+[    1.870992] hub 2-0:1.0: USB hub found
+[    1.874764] hub 2-0:1.0: 1 port detected
+[    1.879141] ohci-exynos: OHCI Exynos driver
+[    1.884041] xhci-hcd ee000000.usb: xHCI Host Controller
+[    1.889293] xhci-hcd ee000000.usb: new USB bus registered, assigned bus number 3
+[    1.912576] xhci-hcd ee000000.usb: hcc params 0x014051ce hci version 0x100 quirks 0x0000000000830410
+[    1.921761] xhci-hcd ee000000.usb: irq 167, io mem 0xee000000
+[    1.927624] xhci-hcd ee000000.usb: xHCI Host Controller
+[    1.932860] xhci-hcd ee000000.usb: new USB bus registered, assigned bus number 4
+[    1.940265] xhci-hcd ee000000.usb: Host supports USB 3.0 SuperSpeed
+[    1.946875] hub 3-0:1.0: USB hub found
+[    1.950653] hub 3-0:1.0: 1 port detected
+[    1.954753] usb usb4: We don't know the algorithms for LPM for this host, disabling LPM.
+[    1.963149] hub 4-0:1.0: USB hub found
+[    1.966921] hub 4-0:1.0: 1 port detected
+[    1.971774] usbcore: registered new interface driver usb-storage
+[    1.979327] renesas_usbhs e6590000.usb: host probed
+[    1.984226] renesas_usbhs e6590000.usb: no transceiver found
+[    1.989963] renesas_usbhs e6590000.usb: gadget probed
+[    1.995197] renesas_usbhs e6590000.usb: probed
+[    2.001937] i2c /dev entries driver
+[    2.016262] cs2000-cp 2-004f: revision - C1
+[    2.020533] i2c-rcar e6510000.i2c: probed
+[    2.025478] pca953x 4-0020: supply vcc not found, using dummy regulator
+[    2.032194] pca953x 4-0020: using no AI
+[    2.042849] i2c-rcar e66d8000.i2c: probed
+[    2.048215] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@7/endpoint on port 7
+[    2.057207] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@8/endpoint on port 8
+[    2.066179] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@a/endpoint on port 10
+[    2.075254] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@b/endpoint on port 11
+[    2.084647] adv748x 4-0070: chip found @ 0xe0 revision 2143
+[    2.138137] rcar-csi2 fea80000.csi2: 1 lanes found
+[    2.143305] rcar-csi2 feaa0000.csi2: 4 lanes found
+[    2.153089] rcar-vin e6ef0000.video: Device registered as video0
+[    2.159184] rcar-vin e6ef1000.video: Device registered as video1
+[    2.165268] rcar-vin e6ef2000.video: Device registered as video2
+[    2.171344] rcar-vin e6ef3000.video: Device registered as video3
+[    2.177429] rcar-vin e6ef4000.video: Device registered as video4
+[    2.183503] rcar-vin e6ef5000.video: Device registered as video5
+[    2.189576] rcar-vin e6ef6000.video: Device registered as video6
+[    2.195645] rcar-vin e6ef7000.video: Device registered as video7
+[    2.204328] rcar_gen3_thermal e6198000.thermal: is using pseudo fixed FUSE values
+[    2.216453] rcar_gen3_thermal e6198000.thermal: TSC0: Loaded 1 trip points
+[    2.227882] rcar_gen3_thermal e6198000.thermal: TSC1: Loaded 1 trip points
+[    2.239143] rcar_gen3_thermal e6198000.thermal: TSC2: Loaded 3 trip points
+[    2.251188] sdhci: Secure Digital Host Controller Interface driver
+[    2.257401] sdhci: Copyright(c) Pierre Ossman
+[    2.262563] Synopsys Designware Multimedia Card Interface Driver
+[    2.263089] renesas_sdhi_internal_dmac ee160000.mmc: Got CD GPIO
+[    2.263120] renesas_sdhi_internal_dmac ee100000.mmc: Got CD GPIO
+[    2.263169] renesas_sdhi_internal_dmac ee100000.mmc: Got WP GPIO
+[    2.263225] renesas_sdhi_internal_dmac ee140000.mmc: Adding to iommu group 0
+[    2.263269] renesas_sdhi_internal_dmac ee140000.mmc: Using IPMMU context 1
+[    2.269795] sdhci-pltfm: SDHCI platform and OF driver helper
+[    2.274624] renesas_sdhi_internal_dmac ee160000.mmc: Got WP GPIO
+[    2.312760] renesas_sdhi_internal_dmac ee140000.mmc: mmc0 base at 0x00000000ee140000, max clock rate 200 MHz
+[    2.322721] ledtrig-cpu: registered to indicate activity on CPUs
+[    2.329763] SMCCC: SOC_ID: ARCH_SOC_ID not implemented, skipping ....
+[    2.336830] usbcore: registered new interface driver usbhid
+[    2.342409] usbhid: USB HID core driver
+[    2.349602] optee: probing for conduit method.
+[    2.354081] optee: revision 3.22 (314ecf9d)
+[    2.354674] optee driver R-Car Rev.1.0.11
+[    2.363110] optee: dynamic shared memory is enabled
+[    2.368302] optee: initialized driver
+[    2.382672] rcar_sound ec500000.sound: probed
+[    2.387825] NET: Registered protocol family 17
+[    2.392429] 9pnet: Installing 9P2000 support
+[    2.396780] Key type dns_resolver registered
+[    2.401377] registered taskstats version 1
+[    2.405509] Loading compiled-in X.509 certificates
+[    2.420557] thermal emergency: set temperature to 110 celsius
+[    2.426559] thermal emergency: shutdown target cpus 1-5
+[    2.431810] thermal emergency: freq scaled target cpus 0
+[    2.437245] mmc0: new HS400 MMC card at address 0001
+[    2.437534] renesas_irqc e61c0000.interrupt-controller: driving 6 irqs
+[    2.443136] mmcblk0: mmc0:0001 BGSD4R 29.1 GiB 
+[    2.453687] mmcblk0boot0: mmc0:0001 BGSD4R partition 1 31.9 MiB
+[    2.459989] mmcblk0boot1: mmc0:0001 BGSD4R partition 2 31.9 MiB
+[    2.466088] mmcblk0rpmb: mmc0:0001 BGSD4R partition 3 4.00 MiB, chardev (509:0)
+[    2.474871]  mmcblk0: p1 p2
+[    2.488689] ehci-platform ee080100.usb: EHCI Host Controller
+[    2.494388] ehci-platform ee080100.usb: new USB bus registered, assigned bus number 5
+[    2.502302] ehci-platform ee080100.usb: irq 169, io mem 0xee080100
+[    2.520771] ehci-platform ee080100.usb: USB 2.0 started, EHCI 1.10
+[    2.527438] hub 5-0:1.0: USB hub found
+[    2.531214] hub 5-0:1.0: 1 port detected
+[    2.536764] ohci-platform ee080000.usb: Generic Platform OHCI controller
+[    2.543497] ohci-platform ee080000.usb: new USB bus registered, assigned bus number 6
+[    2.551393] ohci-platform ee080000.usb: irq 169, io mem 0xee080000
+[    2.647128] hub 6-0:1.0: USB hub found
+[    2.650905] hub 6-0:1.0: 1 port detected
+[    2.656530] cpu cpu0: EM: created perf domain
+[    2.661640] cpu cpu2: EM: created perf domain
+[    2.670421] renesas_sdhi_internal_dmac ee100000.mmc: Got CD GPIO
+[    2.676478] renesas_sdhi_internal_dmac ee100000.mmc: Got WP GPIO
+[    2.685390] renesas_sdhi_internal_dmac ee160000.mmc: Got CD GPIO
+[    2.691505] renesas_sdhi_internal_dmac ee160000.mmc: Got WP GPIO
+[    2.700906] [drm] Initialized rcar-du 1.0.0 20130110 for feb00000.display on minor 0
+[    2.708855] [drm] Device feb00000.display probed
+[    2.734964] renesas_sdhi_internal_dmac ee100000.mmc: mmc1 base at 0x00000000ee100000, max clock rate 200 MHz
+[    2.746444] renesas_sdhi_internal_dmac ee160000.mmc: mmc2 base at 0x00000000ee160000, max clock rate 200 MHz
+[    2.750666] Console: switching to colour frame buffer device 128x48
+[    2.794226] rcar-du feb00000.display: [drm] fb0: rcar-dudrmfb frame buffer device
+[    2.803858] input: keys as /devices/platform/keys/input/input0
+[    2.884019] Micrel KSZ9031 Gigabit PHY e6800000.ethernet-ffffffff:00: attached PHY driver [Micrel KSZ9031 Gigabit PHY] (mii_bus:phy_addr=e6800000.ethernet-ffffffff:00, irq=175)
+[    3.096878] usb 1-1: new high-speed USB device number 2 using ehci-platform
+[    3.259534] usb-storage 1-1:1.0: USB Mass Storage device detected
+[    3.266723] scsi host0: usb-storage 1-1:1.0
+[    4.285910] scsi 0:0:0:0: Direct-Access     SanDisk  Extreme Pro      0    PQ: 0 ANSI: 6
+[    4.296972] sd 0:0:0:0: [sda] 250085376 512-byte logical blocks: (128 GB/119 GiB)
+[    4.305598] sd 0:0:0:0: [sda] Write Protect is off
+[    4.311474] sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[    4.325619]  sda: sda1
+[    4.331841] sd 0:0:0:0: [sda] Attached SCSI removable disk
+[    9.488855] ravb e6800000.ethernet eth0: Link is Up - 1Gbps/Full - flow control off
+[    9.520698] IP-Config: Guessing netmask 255.255.255.0
+[    9.525859] IP-Config: Complete:
+[    9.532797]      device=eth0, hwaddr=2e:09:0a:03:99:2c, ipaddr=192.168.10.107, mask=255.255.255.0, gw=255.255.255.255
+[    9.547298]      host=192.168.10.107, domain=, nis-domain=(none)
+[    9.557226]      bootserver=255.255.255.255, rootserver=192.168.10.98, rootpath=
+[    9.557786] ALSA device list:
+[    9.574278]   #0: rcar-sound
+[   10.111188] VFS: Mounted root (nfs4 filesystem) on device 0:22.
+[   10.122407] devtmpfs: mounted
+[   10.132496] Freeing unused kernel memory: 6144K
+[   10.164805] Run /sbin/init as init process
+[   10.375407] systemd[1]: System time before build time, advancing clock.
+[   10.785607] NET: Registered protocol family 10
+[   10.794227] Segment Routing with IPv6
+[   10.833150] systemd[1]: systemd 244 running in system mode. (+PAM -AUDIT -SELINUX +IMA -APPARMOR -SMACK +SYSVINIT +UTMP -LIBCRYPTSETUP -GCRYPT -GNUTLS +ACL +XZ -LZ4 -SECCOMP +BLKID -ELFUTILS +KMOD -IDN2 -IDN -PCRE2 default-hierarchy=hybrid)
+[   10.863635] systemd[1]: Detected architecture arm64.
+
+Welcome to [1mPoky (Yocto Project Reference Distro) 3.1.11 (dunfell)[0m!
+
+[   10.903010] systemd[1]: Set hostname to <salvator-x>.
+[   11.689628] random: systemd: uninitialized urandom read (16 bytes read)
+[   11.701179] systemd[1]: system-getty.slice: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+[   11.720591] systemd[1]: (This warning is only shown for the first unit using IP firewalling.)
+[   11.735133] systemd[1]: Created slice system-getty.slice.
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-getty.slice[0m.
+[   11.756909] random: systemd: uninitialized urandom read (16 bytes read)
+[   11.765909] systemd[1]: Created slice system-serial\x2dgetty.slice.
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-serial\x2dgetty.slice[0m.
+[   11.788813] random: systemd: uninitialized urandom read (16 bytes read)
+[   11.797698] systemd[1]: Created slice User and Session Slice.
+[[0;32m  OK  [0m] Created slice [0;1;39mUser and Session Slice[0m.
+[   11.821044] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+[[0;32m  OK  [0m] Started [0;1;39mDispatch Password …ts to Console Directory Watch[0m.
+[   11.849119] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[[0;32m  OK  [0m] Started [0;1;39mForward Password R…uests to Wall Directory Watch[0m.
+[   11.877014] systemd[1]: Reached target Paths.
+[[0;32m  OK  [0m] Reached target [0;1;39mPaths[0m.
+[   11.900879] systemd[1]: Reached target Remote File Systems.
+[[0;32m  OK  [0m] Reached target [0;1;39mRemote File Systems[0m.
+[   11.924832] systemd[1]: Reached target Slices.
+[[0;32m  OK  [0m] Reached target [0;1;39mSlices[0m.
+[   11.948861] systemd[1]: Reached target Swap.
+[[0;32m  OK  [0m] Reached target [0;1;39mSwap[0m.
+[   11.975895] systemd[1]: Listening on RPCbind Server Activation Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mRPCbind Server Activation Socket[0m.
+[   12.004928] systemd[1]: Reached target RPC Port Mapper.
+[[0;32m  OK  [0m] Reached target [0;1;39mRPC Port Mapper[0m.
+[   12.029222] systemd[1]: Listening on initctl Compatibility Named Pipe.
+[[0;32m  OK  [0m] Listening on [0;1;39minitctl Compatibility Named Pipe[0m.
+[   12.058946] systemd[1]: Listening on Journal Audit Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mJournal Audit Socket[0m.
+[   12.086303] systemd[1]: Listening on Journal Socket (/dev/log).
+[[0;32m  OK  [0m] Listening on [0;1;39mJournal Socket (/dev/log)[0m.
+[   12.113620] systemd[1]: Listening on Journal Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mJournal Socket[0m.
+[   12.138404] systemd[1]: Listening on Network Service Netlink Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mNetwork Service Netlink Socket[0m.
+[   12.166827] systemd[1]: Listening on udev Control Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mudev Control Socket[0m.
+[   12.193412] systemd[1]: Listening on udev Kernel Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mudev Kernel Socket[0m.
+[   12.222532] systemd[1]: Mounting Huge Pages File System...
+         Mounting [0;1;39mHuge Pages File System[0m...
+[   12.250706] systemd[1]: Mounting POSIX Message Queue File System...
+         Mounting [0;1;39mPOSIX Message Queue File System[0m...
+[   12.282530] systemd[1]: Mounting Kernel Debug File System...
+         Mounting [0;1;39mKernel Debug File System[0m...
+[   12.313256] systemd[1]: Mounting Temporary Directory (/tmp)...
+         Mounting [0;1;39mTemporary Directory (/tmp)[0m...
+[   12.343661] systemd[1]: Starting Create list of static device nodes for the current kernel...
+         Starting [0;1;39mCreate list of st…odes for the current kernel[0m...
+[   12.378388] systemd[1]: Starting Start psplash boot splash screen...
+         Starting [0;1;39mStart psplash boot splash screen[0m...
+[   12.412601] systemd[1]: Starting RPC Bind...
+         Starting [0;1;39mRPC Bind[0m...
+[   12.445362] systemd[1]: Condition check resulted in File System Check on Root Device being skipped.
+[   12.459907] systemd[1]: Starting Journal Service...
+         Starting [0;1;39mJournal Service[0m...
+[   12.488373] systemd[1]: Starting Load Kernel Modules...
+         Starting [0;1;39mLoad Kernel Modules[0m...
+[   12.513907] systemd[1]: Starting Remount Root and Kernel File Systems...
+         Starting [0;1;39mRemount Root and Kernel File Systems[0m...
+[   12.542325] systemd[1]: Starting udev Coldplug all Devices...
+         Starting [0;1;39mudev Coldplug all Devices[0m...
+[   12.572052] systemd[1]: Started Start psplash boot splash screen.
+[   12.572706] random: crng init done
+[   12.581556] random: 27 urandom warning(s) missed due to ratelimiting
+[[0;32m  OK  [0m] Started [0;1;39mStart psplash boot splash screen[0m.
+[   12.609268] systemd[1]: Started RPC Bind.
+[[0;32m  OK  [0m] Started [0;1;39mRPC Bind[0m.
+[   12.629541] systemd[1]: Started Journal Service.
+[[0;32m  OK  [0m] Started [0;1;39mJournal Service[0m.
+[[0;32m  OK  [0m] Mounted [0;1;39mHuge Pages File System[0m.
+[[0;32m  OK  [0m] Mounted [0;1;39mPOSIX Message Queue File System[0m.
+[[0;32m  OK  [0m] Mounted [0;1;39mKernel Debug File System[0m.
+[[0;32m  OK  [0m] Mounted [0;1;39mTemporary Directory (/tmp)[0m.
+[[0;32m  OK  [0m] Started [0;1;39mCreate list of sta… nodes for the current kernel[0m.
+[[0;32m  OK  [0m] Started [0;1;39mLoad Kernel Modules[0m.
+[[0;32m  OK  [0m] Started [0;1;39mRemount Root and Kernel File Systems[0m.
+         Mounting [0;1;39mKernel Configuration File System[0m...
+[[0;32m  OK  [0m] Started [0;1;39mStart psplash-syst…progress communication helper[0m.
+         Starting [0;1;39mFlush Journal to Persistent Storage[0m...
+         Starting [0;1;39mApply Kernel Variables[0m...
+[   12.883262] systemd-journald[327]: Received client request to flush runtime journal.
+         Starting [0;1;39mCreate Static Device Nodes in /dev[0m...
+[[0;32m  OK  [0m] Mounted [0;1;39mKernel Configuration File System[0m.
+[[0;32m  OK  [0m] Started [0;1;39mFlush Journal to Persistent Storage[0m.
+[[0;32m  OK  [0m] Started [0;1;39mApply Kernel Variables[0m.
+[[0;32m  OK  [0m] Started [0;1;39mCreate Static Device Nodes in /dev[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mLocal File Systems (Pre)[0m.
+         Mounting [0;1;39m/var/volatile[0m...
+         Starting [0;1;39mudev Kernel Device Manager[0m...
+[[0;32m  OK  [0m] Started [0;1;39mudev Coldplug all Devices[0m.
+[[0;32m  OK  [0m] Mounted [0;1;39m/var/volatile[0m.
+         Starting [0;1;39mLoad/Save Random Seed[0m...
+[[0;32m  OK  [0m] Reached target [0;1;39mLocal File Systems[0m.
+         Starting [0;1;39mCreate Volatile Files and Directories[0m...
+[[0;32m  OK  [0m] Started [0;1;39mLoad/Save Random Seed[0m.
+[[0;32m  OK  [0m] Started [0;1;39mudev Kernel Device Manager[0m.
+         Starting [0;1;39mNetwork Service[0m...
+[[0;32m  OK  [0m] Started [0;1;39mCreate Volatile Files and Directories[0m.
+[[0;32m  OK  [0m] Started [0;1;39mNetwork Service[0m.
+         Starting [0;1;39mNetwork Name Resolution[0m...
+         Starting [0;1;39mNetwork Time Synchronization[0m...
+         Starting [0;1;39mUpdate UTMP about System Boot/Shutdown[0m...
+[[0;32m  OK  [0m] Started [0;1;39mUpdate UTMP about System Boot/Shutdown[0m.
+[[0;32m  OK  [0m] Started [0;1;39mNetwork Name Resolution[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mNetwork[0m.[   13.560990] pwm-backlight: probe of backlight failed with error -16
+
+[[0;32m  OK  [0m] Reached target [0;1;39mHost and Network Name Lookups[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mHardware activated USB gadget[0m.
+[   13.647094] at24 7-0050: supply vcc not found, using dummy regulator
+[[0;32m  OK  [0m] Started [0;1;39mNetwork Time Synchronization[0m.
+[   13.661242] at24 7-0050: 128 byte br24t01 EEPROM, writable, 8 bytes/write
+[[0;32m  OK  [0m] Reached target [0;1;39mSystem Initialization[0m.
+[[0;32m  OK  [0m] Started [0;1;39mDaily Cleanup of Temporary Directories[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mSystem Time Set[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mSystem Time Synchronized[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mTimers[0m.
+[[0;32m  OK  [0m] Listening on [0;1;39mAvahi mDNS/DNS-SD Stack Activation Socket[0m.
+[[0;32m  OK  [0m] Listening on [0;1;39mD-Bus System Message Bus Socket[0m.
+[[0;32m  OK  [0m] Listening on [0;1;39mdropbear.socket[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mSockets[0m.
+[   13.874212] renesas_usb3 ee020000.usb: probed with phy
+[[0;32m  OK  [0m] Reached target [0;1;39mBasic System[0m.
+         Starting [0;1;39mAvahi mDNS/DNS-SD Stack[0m...
+[[0;32m  OK  [0m] Started [0;1;39mD-Bus System Message Bus[0m.
+[[0;32m  OK  [0m] Started [0;1;39moptee services[0m.
+[   13.990310] ccree e6601000.crypto: ARM CryptoCell 630P Driver: HW version 0xAF400001/0xDCC63000, Driver version 5.0
+         Starting [0;1;39mpvrinit.service[0m...
+[   14.015171] ccree e6601000.crypto: ARM ccree device initialized
+         Starting [0;1;39mPowerVR consumer services[0m...
+         Starting [0;1;39mLogin Service[0m...
+         Starting [0;1;39mPermit User Sessions[0m...
+[[0;32m  OK  [0m] Started [0;1;39mXinetd A Powerful Replacement For Inetd[0m.
+[[0;32m  OK  [0m] Started [0;1;39mPermit User Sessions[0m.
+[[0;1;31mFAILED[0m] Failed to start [0;1;39mPowerVR consumer services[0m.
+See 'systemctl status rc.pvr.service' for details.
+[[0;1;31mFAILED[0m] Failed to start [0;1;39mpvrinit.service[0m.
+See 'systemctl status pvrinit.service' for details.
+[[0;32m  OK  [0m] Started [0;1;39mAvahi mDNS/DNS-SD Stack[0m.
+[[0;32m  OK  [0m] Started [0;1;39mLogin Service[0m.
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-weston.slice[0m.
+         Starting [0;1;39mSave/Restore Sound Card State[0m...
+[[0;32m  OK  [0m] Started [0;1;39mGetty on tty1[0m.
+         Starting [0;1;39mPowerVR consumer services[0m...
+[[0;32m  OK  [0m] Started [0;1;39mSerial Getty on ttySC0[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mLogin Prompts[0m.
+         Starting [0;1;39mset_default_governor.service[0m...
+[[0;32m  OK  [0m] Started [0;1;39mSave/Restore Sound Card State[0m.
+[[0;1;31mFAILED[0m] Failed to start [0;1;39mPowerVR consumer services[0m.
+See 'systemctl status rc.pvr.service' for details.
+[   14.585054] rd 0-5: Disabling EAS, schedutil is mandatory
+[[0;1;38;5;185mDEPEND[0m] Dependency failed for [0;1;39mWeston Wayland Compositor[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mSound Card[0m.
+[[0;32m  OK  [0m] Started [0;1;39mset_default_governor.service[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mMulti-User System[0m.
+         Starting [0;1;39mUpdate UTMP about System Runlevel Changes[0m...
+[[0;32m  OK  [0m] Started [0;1;39mUpdate UTMP about System Runlevel Changes[0m.
+
+Poky (Yocto Project Reference Distro) 3.1.11 salvator-x ttySC0
+
+salvator-x login: 
+salvator-x login: root
+[   16.365446] audit: type=1006 audit(1705131392.988:2): pid=503 uid=0 old-auid=4294967295 auid=0 tty=(none) old-ses=4294967295 ses=1 res=1
+7[r[999;999H[6n8root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# 
+----------Prepare----------
+
+
+root@salvator-x:~# find /sys/devices/platform/soc/ee0a0100.usb/ -name 'sd*'
+/sys/devices/platform/soc/ee0a0100.usb/usb1/1-1/1-1:1.0/host0/target0:0:0/0:0:0:0/block/sda
+/sys/devices/platform/soc/ee0a0100.usb/usb1/1-1/1-1:1.0/host0/target0:0:0/0:0:0:0/block/sda/sda1
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=testdata bs=10M count=5
+5+0 records in
+5+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 1.23638 s, 42.4 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# mkdir -p /mnt/usb
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sda1 /mnt/usb
+[   38.501924] EXT4-fs (sda1): recovery complete
+[   38.507658] EXT4-fs (sda1): mounted filesystem with ordered data mode. Opts: (null)
+root@salvator-x:~# 
+root@salvator-x:~# cp testdata /mnt/usb/
+[   39.900734] SDHI0 VccQ: disabling
+[   39.904164] SDHI3 VccQ: disabling
+root@salvator-x:~# 
+root@salvator-x:~# umount /mnt/usb
+root@salvator-x:~# 
+root@salvator-x:~# find /sys/devices/platform/soc/ee0a0100.usb/ -name 'sd*'
+/sys/devices/platform/soc/ee0a0100.usb/usb1/1-1/1-1:1.0/host0/target0:0:0/0:0:0:0/block/sda
+/sys/devices/platform/soc/ee0a0100.usb/usb1/1-1/1-1:1.0/host0/target0:0:0/0:0:0:0/block/sda/sda1
+root@salvator-x:~# 
+root@salvator-x:~# i2cset -f -y 7 0x30 0x20 0x0f
+root@salvator-x:~# 
+
+Switch SW23 off and input 'yes' to continue:
+Input 'yes' to continue: 
+
+root@salvator-x:~# echo N > /sys/module/printk/parameters/console_suspend
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sda1 /mnt/usb
+[   55.311180] EXT4-fs (sda1): mounted filesystem with ordered data mode. Opts: (null)
+root@salvator-x:~# 
+root@salvator-x:~# cp testdata /mnt/usb/testdata_from_nfs &
+[1] 528
+root@salvator-x:~# 
+root@salvator-x:~# echo mem > /sys/power/state
+[   56.712967] PM: suspend entry (deep)
+[   58.541639] Filesystems sync: 1.825 seconds
+[   58.547909] Freezing user space processes ... (elapsed 0.001 seconds) done.
+[   58.549913] OOM killer disabled.
+[   58.549916] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+[   58.592765] sd 0:0:0:0: [sda] Synchronizing SCSI cache
+[   58.832813] ravb e6800000.ethernet eth0: Link is Down
+[   58.848877] Disabling non-boot CPUs ...
+[   58.853412] CPU1: shutdown
+[   58.856123] psci: CPU1 killed (polled 0 ms)
+[   58.862926] CPU2: shutdown
+[   58.865687] psci: CPU2 killed (polled 0 ms)
+[   58.872287] CPU3: shutdown
+[   58.875021] psci: CPU3 killed (polled 0 ms)
+[   58.881109] CPU4: shutdown
+[   58.883825] psci: CPU4 killed (polled 0 ms)
+[   58.889890] CPU5: shutdown
+[   58.892607] psci: CPU5 killed (polled 0 ms)
+ 
+Pull out USB device at CN10L
+
+
+Press any button to continue
+
+
+ Switch power switch: 
+
+NOTICE:  BL2: R-Car Gen3 Initial Program Loader(CA57) Rev.4.0.0
+NOTICE:  BL2: PRR is R-Car M3 Ver.3.0
+NOTICE:  BL2: Board is Salvator-XS Rev.1.0
+NOTICE:  BL2: Boot device is HyperFlash(160MHz)
+NOTICE:  BL2: LCM state is CM
+NOTICE:  AVS setting succeeded. DVFS_SetVID=0x53
+NOTICE:  BL2: DDR3200(rev.0.42)
+NOTICE:  BL2: [WARM_BOOT]
+NOTICE:  BL2: DRAM Split is 2ch
+NOTICE:  BL2: QoS is default setting(rev.0.04)
+NOTICE:  BL2: DRAM refresh interval 1.95 usec
+NOTICE:  BL2: Periodic Write DQ Training
+NOTICE:  BL2: CH0: 400000000 - 4ffffffff, 4 GiB
+NOTICE:  BL2: CH2: 600000000 - 6ffffffff, 4 GiB
+NOTICE:  BL2: Lossy Decomp areas
+NOTICE:       Entry 0: DCMPAREACRAx:0x80000540 DCMPAREACRBx:0x570
+NOTICE:       Entry 1: DCMPAREACRAx:0x40000000 DCMPAREACRBx:0x0
+NOTICE:       Entry 2: DCMPAREACRAx:0x20000000 DCMPAREACRBx:0x0
+NOTICE:  BL2: FDT at 0xe6326f70
+NOTICE:  BL2: v2.9(release):9cdb21f75
+NOTICE:  BL2: Built : 08:35:43, Jan 13 2024
+NOTICE:  BL2: Normal boot
+[   58.898114] Enabling non-boot CPUs ...
+[   58.902168] Detected PIPT I-cache on CPU1
+[   58.902226] CPU1: Booted secondary processor 0x0000000001 [0x411fd073]
+[   58.902708] CPU1 is up
+[   58.915858] Detected VIPT I-cache on CPU2
+[   58.915913] CPU2: Booted secondary processor 0x0000000100 [0x410fd034]
+[   58.916805] CPU2 is up
+[   58.929822] Detected VIPT I-cache on CPU3
+[   58.929857] CPU3: Booted secondary processor 0x0000000101 [0x410fd034]
+[   58.930431] CPU3 is up
+[   58.943440] Detected VIPT I-cache on CPU4
+[   58.943474] CPU4: Booted secondary processor 0x0000000102 [0x410fd034]
+[   58.944034] CPU4 is up
+[   58.957061] Detected VIPT I-cache on CPU5
+[   58.957095] CPU5: Booted secondary processor 0x0000000103 [0x410fd034]
+[   58.957749] CPU5 is up
+[   59.028228] xhci-hcd ee000000.usb: xHC error in resume, USBSTS 0x401, Reinit
+[   59.035294] usb usb3: root hub lost power or was reset
+[   59.040419] usb usb4: root hub lost power or was reset
+[   59.095525] Micrel KSZ9031 Gigabit PHY e6800000.ethernet-ffffffff:00: attached PHY driver [Micrel KSZ9031 Gigabit PHY] (mii_bus:phy_addr=e6800000.ethernet-ffffffff:00, irq=175)
+[   59.206648] usb usb2: root hub lost power or was reset
+[   59.211836] usb usb1: root hub lost power or was reset
+[   59.322645] usb usb6: root hub lost power or was reset
+[   59.327921] usb usb5: root hub lost power or was reset
+[   62.076062] OOM killer enabled.
+[   62.079227] Restarting tasks ... 
+[   62.079542] usb 1-1: USB disconnect, device number 2
+[   62.079947] done.
+[1]+  Done                    cp testdata /mnt/usb/testdata_from_nfs
+root@salvator-x:~# [   62.090214] PM: suspend exit
+[   62.100683] blk_update_request: I/O error, dev sda, sector 8448256 op 0x1:(WRITE) flags 0x4000 phys_seg 30 prio class 0
+[   62.100735] blk_update_request: I/O error, dev sda, sector 8448496 op 0x1:(WRITE) flags 0x4000 phys_seg 30 prio class 0
+[   62.100809] blk_update_request: I/O error, dev sda, sector 8448736 op 0x1:(WRITE) flags 0x4000 phys_seg 30 prio class 0
+[   62.100826] blk_update_request: I/O error, dev sda, sector 8448976 op 0x1:(WRITE) flags 0x4000 phys_seg 30 prio class 0
+[   62.100865] blk_update_request: I/O error, dev sda, sector 8449216 op 0x1:(WRITE) flags 0x4000 phys_seg 30 prio class 0
+[   62.100876] blk_update_request: I/O error, dev sda, sector 8449456 op 0x1:(WRITE) flags 0x4000 phys_seg 30 prio class 0
+[   62.100915] blk_update_request: I/O error, dev sda, sector 8449696 op 0x1:(WRITE) flags 0x4000 phys_seg 30 prio class 0
+[   62.100927] blk_update_request: I/O error, dev sda, sector 8449936 op 0x1:(WRITE) flags 0x4000 phys_seg 30 prio class 0
+[   62.100999] blk_update_request: I/O error, dev sda, sector 8450176 op 0x1:(WRITE) flags 0x0 phys_seg 16 prio class 0
+[   62.101013] blk_update_request: I/O error, dev sda, sector 8450304 op 0x1:(WRITE) flags 0x4800 phys_seg 30 prio class 0
+[   62.101330] Aborting journal on device sda1-8.
+[   62.101358] Buffer I/O error on dev sda1, logical block 15237120, lost sync page write
+[   62.101375] JBD2: Error -5 detected when updating journal superblock for sda1-8.
+[   65.644386] ravb e6800000.ethernet eth0: Link is Up - 1Gbps/Full - flow control off
+
+root@salvator-x:~# echo "Wake up sucessfully"
+Wake up sucessfully
+root@salvator-x:~# 
+Plug in USB device at CN10L
+
+
+Press any button to continue
+
+[   77.664635] usb 1-1: new high-speed USB device number 3 using ehci-platform
+[   77.827411] usb-storage 1-1:1.0: USB Mass Storage device detected
+[   77.833891] scsi host1: usb-storage 1-1:1.0
+[   78.846274] scsi 1:0:0:0: Direct-Access     SanDisk  Extreme Pro      0    PQ: 0 ANSI: 6
+[   78.856831] sd 1:0:0:0: [sdb] 250085376 512-byte logical blocks: (128 GB/119 GiB)
+[   78.865535] sd 1:0:0:0: [sdb] Write Protect is off
+[   78.871356] sd 1:0:0:0: [sdb] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[   78.899106]  sdb: sdb1
+[   78.906250] sd 1:0:0:0: [sdb] Attached SCSI removable disk
+
+root@salvator-x:~# find /sys/devices/platform/soc/ee0a0100.usb/ -name 'sd*'
+/sys/devices/platform/soc/ee0a0100.usb/usb1/1-1/1-1:1.0/host1/target1:0:0/1:0:0:0/block/sdb
+/sys/devices/platform/soc/ee0a0100.usb/usb1/1-1/1-1:1.0/host1/target1:0:0/1:0:0:0/block/sdb/sdb1
+root@salvator-x:~# 
+root@salvator-x:~# wait
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sdb1 /mnt/usb
+[   81.999972] EXT4-fs (sdb1): recovery complete
+[   82.005916] EXT4-fs (sdb1): mounted filesystem with ordered data mode. Opts: (null)
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cmp testdata /mnt/usb/testdata_from_nfs
+root@salvator-x:~# 
+root@salvator-x:~# umount /mnt/usb
+root@salvator-x:~# 
+ 
+#### Result: OK ####

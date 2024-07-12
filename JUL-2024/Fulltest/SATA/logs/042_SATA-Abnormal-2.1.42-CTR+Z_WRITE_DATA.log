@@ -1,0 +1,35 @@
+
+root@salvator-x:~# find /sys/devices/platform/soc/ee300000.sata/ -name sd*
+/sys/devices/platform/soc/ee300000.sata/ata3/host1/target1:0:0/1:0:0:0/block/sdb
+/sys/devices/platform/soc/ee300000.sata/ata3/host1/target1:0:0/1:0:0:0/block/sdb/sdb2
+/sys/devices/platform/soc/ee300000.sata/ata3/host1/target1:0:0/1:0:0:0/block/sdb/sdb1
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file-350M bs=1M count=350
+350+0 records in
+350+0 records out
+367001600 bytes (367 MB, 350 MiB) copied, 2.70864 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sdb2 /mnt/
+[  605.073752] EXT4-fs (sdb2): mounting ext3 file system using the ext4 subsystem
+[  605.092046] EXT4-fs (sdb2): mounted filesystem a2c57eea-25c1-4649-82f0-9ab8c84ea7cd r/w with ordered data mode. Quota mode: none.
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file-350M /mnt/
+^Z
+[1]+  Stopped(SIGTSTP)        cp /tmp/file-350M /mnt/
+
+root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# fg
+cp /tmp/file-350M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file-350M /mnt/file-350M
+058ec586ce684a12a9fc563b17c53082  /tmp/file-350M
+058ec586ce684a12a9fc563b17c53082  /mnt/file-350M
+root@salvator-x:~# 
+root@salvator-x:~# umount /mnt
+[  614.938816] EXT4-fs (sdb2): unmounting filesystem a2c57eea-25c1-4649-82f0-9ab8c84ea7cd.
+root@salvator-x:~# 
+root@salvator-x:~# rm /tmp/file-350M
+root@salvator-x:~# 
+ 
+#### Result: OK ####

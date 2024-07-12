@@ -1,0 +1,460 @@
+
+root@salvator-x:~# cd /home/root/v4l2_test
+root@salvator-x:~/v4l2_test# 
+root@salvator-x:~/v4l2_test# ./vsp-unit-test-0021.sh
+Testing WPF packing in RGB332 during stress testing: [  587.975760] ------------[ cut here ]------------
+[  587.980411] WARNING: CPU: 0 PID: 2085 at drivers/media/v4l2-core/v4l2-subdev.c:408 call_s_stream+0xd4/0xf0
+[  587.990087] Modules linked in: bluetooth ecdh_generic ecc rfkill crct10dif_ce optee_rng rng_core
+[  587.998919] CPU: 0 PID: 2085 Comm: yavta Tainted: G        W          6.7.0-rc2-arm64-renesas #1
+[  588.007713] Hardware name: Renesas Salvator-X 2nd version board based on r8a77951 (DT)
+[  588.015635] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  588.022608] pc : call_s_stream+0xd4/0xf0
+[  588.026541] lr : vsp1_pipeline_stop+0x10c/0x2a4
+[  588.031079] sp : ffff80008ab0ba60
+[  588.034396] x29: ffff80008ab0ba60 x28: ffff80008180fd68 x27: ffff0004c243a200
+[  588.041546] x26: ffff0004c277a740 x25: 0000000000000000 x24: 0000000040045613
+[  588.048696] x23: ffff0004c277ab10 x22: ffff0004c455b400 x21: 0000000000000000
+[  588.055844] x20: ffff0004c2dae880 x19: ffff0004c2e298f0 x18: 0000000000000000
+[  588.062993] x17: 0000000000000000 x16: 0000000000000000 x15: 0000ffffcb65ce2c
+[  588.070142] x14: 0000000000000000 x13: 0000000000000000 x12: 0000000000040000
+[  588.077291] x11: 0000000000000000 x10: ffff8000836e8e78 x9 : 0000000000000000
+[  588.084441] x8 : ffff0004c72f0000 x7 : 0000000000000000 x6 : 0000000000000007
+[  588.091589] x5 : 0000000000000000 x4 : ffff800085788000 x3 : ffff800080e76a28
+[  588.098738] x2 : ffff800080eb8504 x1 : 0000000000000000 x0 : 0000000000000001
+[  588.105887] Call trace:
+[  588.108336]  call_s_stream+0xd4/0xf0
+[  588.111917]  vsp1_pipeline_stop+0x10c/0x2a4
+[  588.116105]  vsp1_video_stop_streaming+0x100/0x12c
+[  588.120901]  __vb2_queue_cancel+0x2c/0x280
+[  588.125005]  vb2_core_streamoff+0x20/0xc0
+[  588.129020]  vb2_ioctl_streamoff+0x54/0x9c
+[  588.133122]  v4l_streamoff+0x20/0x28
+[  588.136704]  __video_do_ioctl+0x18c/0x3ec
+[  588.140721]  video_usercopy+0x304/0x894
+[  588.144560]  video_ioctl2+0x14/0x2c
+[  588.148051]  v4l2_ioctl+0x3c/0x58
+[  588.151371]  __arm64_sys_ioctl+0xa0/0xe0
+[  588.155302]  invoke_syscall+0x44/0x108
+[  588.159058]  el0_svc_common.constprop.0+0xb4/0xd4
+[  588.163767]  do_el0_svc+0x18/0x20
+[  588.167086]  el0_svc+0x3c/0xb8
+[  588.170150]  el0t_64_sync_handler+0xb8/0xbc
+[  588.174335]  el0t_64_sync+0x14c/0x150
+[  588.178003] irq event stamp: 36026
+[  588.181407] hardirqs last  enabled at (36025): [<ffff8000812def1c>] _raw_spin_unlock_irqrestore+0x6c/0x70
+[  588.190982] hardirqs last disabled at (36026): [<ffff8000812cc0d8>] el1_dbg+0x20/0x80
+[  588.198818] softirqs last  enabled at (36002): [<ffff80008001626c>] put_cpu_fpsimd_context+0x24/0x58
+[  588.207955] softirqs last disabled at (36000): [<ffff8000800161fc>] get_cpu_fpsimd_context+0x0/0x4c
+[  588.217006] ---[ end trace 0000000000000000 ]---
+pass
+Testing WPF packing in ARGB555 during stress testing: [  592.943739] ------------[ cut here ]------------
+[  592.948391] WARNING: CPU: 0 PID: 2265 at drivers/media/v4l2-core/v4l2-subdev.c:408 call_s_stream+0xd4/0xf0
+[  592.958068] Modules linked in: bluetooth ecdh_generic ecc rfkill crct10dif_ce optee_rng rng_core
+[  592.966901] CPU: 0 PID: 2265 Comm: yavta Tainted: G        W          6.7.0-rc2-arm64-renesas #1
+[  592.975694] Hardware name: Renesas Salvator-X 2nd version board based on r8a77951 (DT)
+[  592.983613] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  592.990581] pc : call_s_stream+0xd4/0xf0
+[  592.994512] lr : vsp1_pipeline_stop+0x10c/0x2a4
+[  592.999050] sp : ffff80008b8d3a60
+[  593.002367] x29: ffff80008b8d3a60 x28: ffff80008180fd68 x27: ffff0004c41d4c00
+[  593.009519] x26: ffff0004c277a740 x25: 0000000000000000 x24: 0000000040045613
+[  593.016668] x23: ffff0004c277ab10 x22: ffff0004c454c800 x21: 0000000000000000
+[  593.023818] x20: ffff0004c2dae880 x19: ffff0004c2e298f0 x18: 0000000000000000
+[  593.030968] x17: 0000000000000000 x16: 0000000000000000 x15: 0000ffffcfa8214c
+[  593.038118] x14: 0000000000000000 x13: 0000000000000000 x12: 0000000000040000
+[  593.045266] x11: 0000000000000000 x10: ffff8000836e8e78 x9 : 0000000000000000
+[  593.052415] x8 : ffff0004c72f1880 x7 : 0000000000000000 x6 : 0000000000000007
+[  593.059563] x5 : 0000000000000000 x4 : ffff800085788000 x3 : ffff800080e76a28
+[  593.066711] x2 : ffff800080eb8504 x1 : 0000000000000000 x0 : 0000000000000001
+[  593.073860] Call trace:
+[  593.076309]  call_s_stream+0xd4/0xf0
+[  593.079892]  vsp1_pipeline_stop+0x10c/0x2a4
+[  593.084079]  vsp1_video_stop_streaming+0x100/0x12c
+[  593.088875]  __vb2_queue_cancel+0x2c/0x280
+[  593.092980]  vb2_core_streamoff+0x20/0xc0
+[  593.096996]  vb2_ioctl_streamoff+0x54/0x9c
+[  593.101098]  v4l_streamoff+0x20/0x28
+[  593.104678]  __video_do_ioctl+0x18c/0x3ec
+[  593.108695]  video_usercopy+0x304/0x894
+[  593.112535]  video_ioctl2+0x14/0x2c
+[  593.116026]  v4l2_ioctl+0x3c/0x58
+[  593.119345]  __arm64_sys_ioctl+0xa0/0xe0
+[  593.123278]  invoke_syscall+0x44/0x108
+[  593.127035]  el0_svc_common.constprop.0+0xb4/0xd4
+[  593.131745]  do_el0_svc+0x18/0x20
+[  593.135064]  el0_svc+0x3c/0xb8
+[  593.138128]  el0t_64_sync_handler+0xb8/0xbc
+[  593.142314]  el0t_64_sync+0x14c/0x150
+[  593.145982] irq event stamp: 36002
+[  593.149386] hardirqs last  enabled at (36001): [<ffff8000812def1c>] _raw_spin_unlock_irqrestore+0x6c/0x70
+[  593.158961] hardirqs last disabled at (36002): [<ffff8000812cc0d8>] el1_dbg+0x20/0x80
+[  593.166798] softirqs last  enabled at (35978): [<ffff80008001626c>] put_cpu_fpsimd_context+0x24/0x58
+[  593.175937] softirqs last disabled at (35976): [<ffff8000800161fc>] get_cpu_fpsimd_context+0x0/0x4c
+[  593.184988] ---[ end trace 0000000000000000 ]---
+pass
+Testing WPF packing in XRGB555 during stress testing: [  598.031836] ------------[ cut here ]------------
+[  598.036487] WARNING: CPU: 0 PID: 2445 at drivers/media/v4l2-core/v4l2-subdev.c:408 call_s_stream+0xd4/0xf0
+[  598.046165] Modules linked in: bluetooth ecdh_generic ecc rfkill crct10dif_ce optee_rng rng_core
+[  598.054998] CPU: 0 PID: 2445 Comm: yavta Tainted: G        W          6.7.0-rc2-arm64-renesas #1
+[  598.063789] Hardware name: Renesas Salvator-X 2nd version board based on r8a77951 (DT)
+[  598.071708] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  598.078676] pc : call_s_stream+0xd4/0xf0
+[  598.082606] lr : vsp1_pipeline_stop+0x10c/0x2a4
+[  598.087144] sp : ffff80008cbfba60
+[  598.090462] x29: ffff80008cbfba60 x28: ffff80008180fd68 x27: ffff0004c7c65800
+[  598.097614] x26: ffff0004c277a740 x25: 0000000000000000 x24: 0000000040045613
+[  598.104764] x23: ffff0004c277ab10 x22: ffff0004c454dc00 x21: 0000000000000000
+[  598.111915] x20: ffff0004c2dae880 x19: ffff0004c2e298f0 x18: 0000000000000000
+[  598.119064] x17: 0000000000000000 x16: 0000000000000000 x15: 0000ffffd6ccecbc
+[  598.126213] x14: 0000000000000000 x13: 0000000000000000 x12: 0000000000040000
+[  598.133362] x11: 0000000000000000 x10: ffff8000836e8e78 x9 : 0000000000000000
+[  598.140512] x8 : ffff0004c2a76200 x7 : 0000000000000000 x6 : 0000000000000007
+[  598.147660] x5 : 0000000000000000 x4 : ffff800085788000 x3 : ffff800080e76a28
+[  598.154809] x2 : ffff800080eb8504 x1 : 0000000000000000 x0 : 0000000000000001
+[  598.161958] Call trace:
+[  598.164406]  call_s_stream+0xd4/0xf0
+[  598.167990]  vsp1_pipeline_stop+0x10c/0x2a4
+[  598.172178]  vsp1_video_stop_streaming+0x100/0x12c
+[  598.176975]  __vb2_queue_cancel+0x2c/0x280
+[  598.181079]  vb2_core_streamoff+0x20/0xc0
+[  598.185095]  vb2_ioctl_streamoff+0x54/0x9c
+[  598.189197]  v4l_streamoff+0x20/0x28
+[  598.192779]  __video_do_ioctl+0x18c/0x3ec
+[  598.196796]  video_usercopy+0x304/0x894
+[  598.200635]  video_ioctl2+0x14/0x2c
+[  598.204127]  v4l2_ioctl+0x3c/0x58
+[  598.207446]  __arm64_sys_ioctl+0xa0/0xe0
+[  598.211377]  invoke_syscall+0x44/0x108
+[  598.215133]  el0_svc_common.constprop.0+0xb4/0xd4
+[  598.219843]  do_el0_svc+0x18/0x20
+[  598.223163]  el0_svc+0x3c/0xb8
+[  598.226228]  el0t_64_sync_handler+0xb8/0xbc
+[  598.230413]  el0t_64_sync+0x14c/0x150
+[  598.234083] irq event stamp: 35996
+[  598.237486] hardirqs last  enabled at (35995): [<ffff8000812def1c>] _raw_spin_unlock_irqrestore+0x6c/0x70
+[  598.247060] hardirqs last disabled at (35996): [<ffff8000812cc0d8>] el1_dbg+0x20/0x80
+[  598.254898] softirqs last  enabled at (35972): [<ffff80008001626c>] put_cpu_fpsimd_context+0x24/0x58
+[  598.264037] softirqs last disabled at (35970): [<ffff8000800161fc>] get_cpu_fpsimd_context+0x0/0x4c
+[  598.273088] ---[ end trace 0000000000000000 ]---
+pass
+Testing WPF packing in RGB565 during stress testing: [  603.033380] ------------[ cut here ]------------
+[  603.038073] WARNING: CPU: 4 PID: 2625 at drivers/media/v4l2-core/v4l2-subdev.c:408 call_s_stream+0xd4/0xf0
+[  603.047765] Modules linked in: bluetooth ecdh_generic ecc rfkill crct10dif_ce optee_rng rng_core
+[  603.056640] CPU: 4 PID: 2625 Comm: yavta Tainted: G        W          6.7.0-rc2-arm64-renesas #1
+[  603.065456] Hardware name: Renesas Salvator-X 2nd version board based on r8a77951 (DT)
+[  603.073395] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  603.080377] pc : call_s_stream+0xd4/0xf0
+[  603.084322] lr : vsp1_pipeline_stop+0x10c/0x2a4
+[  603.088870] sp : ffff80008df93a60
+[  603.092195] x29: ffff80008df93a60 x28: ffff80008180fd68 x27: ffff0004c48cdc00
+[  603.099368] x26: ffff0004c277a740 x25: 0000000000000000 x24: 0000000040045613
+[  603.106535] x23: ffff0004c277ab10 x22: ffff0004c4b8b400 x21: 0000000000000000
+[  603.113706] x20: ffff0004c2dae880 x19: ffff0004c2e298f0 x18: 0000000000000000
+[  603.120878] x17: 0000000000000000 x16: 0000000000000000 x15: 0000ffffcef4557c
+[  603.128054] x14: 0000000000000000 x13: 0000000000000000 x12: 0000000000040000
+[  603.135223] x11: 0000000000000000 x10: ffff8000836e8e78 x9 : 0000000000000000
+[  603.142395] x8 : ffff0004c0910000 x7 : 0000000000000000 x6 : 0000000000000007
+[  603.149564] x5 : 0000000000000000 x4 : ffff800085788000 x3 : ffff800080e76a28
+[  603.156733] x2 : ffff800080eb8504 x1 : 0000000000000000 x0 : 0000000000000001
+[  603.163903] Call trace:
+[  603.166361]  call_s_stream+0xd4/0xf0
+[  603.169964]  vsp1_pipeline_stop+0x10c/0x2a4
+[  603.174163]  vsp1_video_stop_streaming+0x100/0x12c
+[  603.178971]  __vb2_queue_cancel+0x2c/0x280
+[  603.183087]  vb2_core_streamoff+0x20/0xc0
+[  603.187114]  vb2_ioctl_streamoff+0x54/0x9c
+[  603.191228]  v4l_streamoff+0x20/0x28
+[  603.194821]  __video_do_ioctl+0x18c/0x3ec
+[  603.198849]  video_usercopy+0x304/0x894
+[  603.202699]  video_ioctl2+0x14/0x2c
+[  603.206200]  v4l2_ioctl+0x3c/0x58
+[  603.209530]  __arm64_sys_ioctl+0xa0/0xe0
+[  603.213473]  invoke_syscall+0x44/0x108
+[  603.217243]  el0_svc_common.constprop.0+0xb4/0xd4
+[  603.221964]  do_el0_svc+0x18/0x20
+[  603.225294]  el0_svc+0x3c/0xb8
+[  603.228369]  el0t_64_sync_handler+0xb8/0xbc
+[  603.232564]  el0t_64_sync+0x14c/0x150
+[  603.236244] irq event stamp: 35980
+[  603.239656] hardirqs last  enabled at (35979): [<ffff8000812def1c>] _raw_spin_unlock_irqrestore+0x6c/0x70
+[  603.249242] hardirqs last disabled at (35980): [<ffff8000812cc0d8>] el1_dbg+0x20/0x80
+[  603.257091] softirqs last  enabled at (35958): [<ffff80008001626c>] put_cpu_fpsimd_context+0x24/0x58
+[  603.266243] softirqs last disabled at (35956): [<ffff8000800161fc>] get_cpu_fpsimd_context+0x0/0x4c
+[  603.275306] ---[ end trace 0000000000000000 ]---
+pass
+Testing WPF packing in BGR24 during stress testing: [  607.797347] ------------[ cut here ]------------
+[  607.801999] WARNING: CPU: 3 PID: 2805 at drivers/media/v4l2-core/v4l2-subdev.c:408 call_s_stream+0xd4/0xf0
+[  607.811676] Modules linked in: bluetooth ecdh_generic ecc rfkill crct10dif_ce optee_rng rng_core
+[  607.820508] CPU: 3 PID: 2805 Comm: yavta Tainted: G        W          6.7.0-rc2-arm64-renesas #1
+[  607.829301] Hardware name: Renesas Salvator-X 2nd version board based on r8a77951 (DT)
+[  607.837222] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  607.844191] pc : call_s_stream+0xd4/0xf0
+[  607.848125] lr : vsp1_pipeline_stop+0x10c/0x2a4
+[  607.852665] sp : ffff800084faba60
+[  607.855983] x29: ffff800084faba60 x28: ffff80008180fd68 x27: ffff0004c9607800
+[  607.863135] x26: ffff0004c277a740 x25: 0000000000000000 x24: 0000000040045613
+[  607.870287] x23: ffff0004c277ab10 x22: ffff0004c454ec00 x21: 0000000000000000
+[  607.877438] x20: ffff0004c2dae880 x19: ffff0004c2e298f0 x18: 0000000000000000
+[  607.884587] x17: 0000000000000000 x16: 0000000000000000 x15: 0000ffffdfb283ac
+[  607.891736] x14: 0000000000000000 x13: 0000000000000000 x12: 0000000000040000
+[  607.898886] x11: 0000000000000000 x10: ffff8000836e8e78 x9 : 0000000000000000
+[  607.906035] x8 : ffff0004c2dfc980 x7 : 0000000000000000 x6 : 0000000000000007
+[  607.913185] x5 : 0000000000000000 x4 : ffff800085788000 x3 : ffff800080e76a28
+[  607.920333] x2 : ffff800080eb8504 x1 : 0000000000000000 x0 : 0000000000000001
+[  607.927484] Call trace:
+[  607.929934]  call_s_stream+0xd4/0xf0
+[  607.933520]  vsp1_pipeline_stop+0x10c/0x2a4
+[  607.937709]  vsp1_video_stop_streaming+0x100/0x12c
+[  607.942506]  __vb2_queue_cancel+0x2c/0x280
+[  607.946610]  vb2_core_streamoff+0x20/0xc0
+[  607.950625]  vb2_ioctl_streamoff+0x54/0x9c
+[  607.954727]  v4l_streamoff+0x20/0x28
+[  607.958307]  __video_do_ioctl+0x18c/0x3ec
+[  607.962323]  video_usercopy+0x304/0x894
+[  607.966163]  video_ioctl2+0x14/0x2c
+[  607.969656]  v4l2_ioctl+0x3c/0x58
+[  607.972975]  __arm64_sys_ioctl+0xa0/0xe0
+[  607.976906]  invoke_syscall+0x44/0x108
+[  607.980663]  el0_svc_common.constprop.0+0xb4/0xd4
+[  607.985373]  do_el0_svc+0x18/0x20
+[  607.988692]  el0_svc+0x3c/0xb8
+[  607.991756]  el0t_64_sync_handler+0xb8/0xbc
+[  607.995943]  el0t_64_sync+0x14c/0x150
+[  607.999613] irq event stamp: 35880
+[  608.003016] hardirqs last  enabled at (35879): [<ffff8000812def1c>] _raw_spin_unlock_irqrestore+0x6c/0x70
+[  608.012590] hardirqs last disabled at (35880): [<ffff8000812cc0d8>] el1_dbg+0x20/0x80
+[  608.020429] softirqs last  enabled at (35858): [<ffff80008001626c>] put_cpu_fpsimd_context+0x24/0x58
+[  608.029569] softirqs last disabled at (35856): [<ffff8000800161fc>] get_cpu_fpsimd_context+0x0/0x4c
+[  608.038619] ---[ end trace 0000000000000000 ]---
+pass
+Testing WPF packing in RGB24 during stress testing: [  612.975803] ------------[ cut here ]------------
+[  612.980491] WARNING: CPU: 5 PID: 2985 at drivers/media/v4l2-core/v4l2-subdev.c:408 call_s_stream+0xd4/0xf0
+[  612.990183] Modules linked in: bluetooth ecdh_generic ecc rfkill crct10dif_ce optee_rng rng_core
+[  612.999047] CPU: 5 PID: 2985 Comm: yavta Tainted: G        W          6.7.0-rc2-arm64-renesas #1
+[  613.007849] Hardware name: Renesas Salvator-X 2nd version board based on r8a77951 (DT)
+[  613.015779] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  613.022756] pc : call_s_stream+0xd4/0xf0
+[  613.026695] lr : vsp1_pipeline_stop+0x10c/0x2a4
+[  613.031244] sp : ffff8000850eba60
+[  613.034568] x29: ffff8000850eba60 x28: ffff80008180fd68 x27: ffff0004c7c65800
+[  613.041736] x26: ffff0004c277a740 x25: 0000000000000000 x24: 0000000040045613
+[  613.048903] x23: ffff0004c277ab10 x22: ffff0004c390f400 x21: 0000000000000000
+[  613.056071] x20: ffff0004c2dae880 x19: ffff0004c2e298f0 x18: 0000000000000000
+[  613.063248] x17: 0000000000000000 x16: 0000000000000000 x15: 0000ffffc807029c
+[  613.070426] x14: 0000000000000000 x13: 0000000000000000 x12: 0000000000040000
+[  613.077600] x11: 0000000000000000 x10: ffff8000836e8e78 x9 : 0000000000000000
+[  613.084771] x8 : ffff0004d1830000 x7 : 0000000000000000 x6 : 0000000000000007
+[  613.091943] x5 : 0000000000000000 x4 : ffff800085788000 x3 : ffff800080e76a28
+[  613.099118] x2 : ffff800080eb8504 x1 : 0000000000000000 x0 : 0000000000000001
+[  613.106301] Call trace:
+[  613.108764]  call_s_stream+0xd4/0xf0
+[  613.112363]  vsp1_pipeline_stop+0x10c/0x2a4
+[  613.116569]  vsp1_video_stop_streaming+0x100/0x12c
+[  613.121380]  __vb2_queue_cancel+0x2c/0x280
+[  613.125497]  vb2_core_streamoff+0x20/0xc0
+[  613.129524]  vb2_ioctl_streamoff+0x54/0x9c
+[  613.133636]  v4l_streamoff+0x20/0x28
+[  613.137228]  __video_do_ioctl+0x18c/0x3ec
+[  613.141256]  video_usercopy+0x304/0x894
+[  613.145106]  video_ioctl2+0x14/0x2c
+[  613.148606]  v4l2_ioctl+0x3c/0x58
+[  613.151936]  __arm64_sys_ioctl+0xa0/0xe0
+[  613.155877]  invoke_syscall+0x44/0x108
+[  613.159646]  el0_svc_common.constprop.0+0xb4/0xd4
+[  613.164366]  do_el0_svc+0x18/0x20
+[  613.167697]  el0_svc+0x3c/0xb8
+[  613.170772]  el0t_64_sync_handler+0xb8/0xbc
+[  613.174968]  el0t_64_sync+0x14c/0x150
+[  613.178647] irq event stamp: 36152
+[  613.182061] hardirqs last  enabled at (36151): [<ffff8000812def1c>] _raw_spin_unlock_irqrestore+0x6c/0x70
+[  613.191648] hardirqs last disabled at (36152): [<ffff8000812cc0d8>] el1_dbg+0x20/0x80
+[  613.199497] softirqs last  enabled at (36128): [<ffff80008001626c>] put_cpu_fpsimd_context+0x24/0x58
+[  613.208648] softirqs last disabled at (36126): [<ffff8000800161fc>] get_cpu_fpsimd_context+0x0/0x4c
+[  613.217717] ---[ end trace 0000000000000000 ]---
+pass
+Testing WPF packing in ABGR32 during stress testing: [  618.471743] ------------[ cut here ]------------
+[  618.476392] WARNING: CPU: 0 PID: 3172 at drivers/media/v4l2-core/v4l2-subdev.c:408 call_s_stream+0xd4/0xf0
+[  618.486067] Modules linked in: bluetooth ecdh_generic ecc rfkill crct10dif_ce optee_rng rng_core
+[  618.494901] CPU: 0 PID: 3172 Comm: yavta Tainted: G        W          6.7.0-rc2-arm64-renesas #1
+[  618.503697] Hardware name: Renesas Salvator-X 2nd version board based on r8a77951 (DT)
+[  618.511617] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  618.518585] pc : call_s_stream+0xd4/0xf0
+[  618.522518] lr : vsp1_pipeline_stop+0x10c/0x2a4
+[  618.527055] sp : ffff80008526ba60
+[  618.530371] x29: ffff80008526ba60 x28: ffff80008180fd68 x27: ffff0004c4a78c00
+[  618.537522] x26: ffff0004c277a740 x25: 0000000000000000 x24: 0000000040045613
+[  618.544672] x23: ffff0004c277ab10 x22: ffff0004c3983000 x21: 0000000000000000
+[  618.551821] x20: ffff0004c2dae880 x19: ffff0004c2e298f0 x18: 0000000000000000
+[  618.558970] x17: 0000000000000000 x16: 0000000000000000 x15: 0000fffffdd8f3cc
+[  618.566118] x14: 0000000000000000 x13: 0000000000000000 x12: 0000000000040000
+[  618.573266] x11: 0000000000000000 x10: ffff8000836e8e78 x9 : 0000000000000000
+[  618.580414] x8 : ffff0004c2f8b100 x7 : 0000000000000000 x6 : 0000000000000007
+[  618.587563] x5 : 0000000000000000 x4 : ffff800085788000 x3 : ffff800080e76a28
+[  618.594710] x2 : ffff800080eb8504 x1 : 0000000000000000 x0 : 0000000000000001
+[  618.601858] Call trace:
+[  618.604307]  call_s_stream+0xd4/0xf0
+[  618.607889]  vsp1_pipeline_stop+0x10c/0x2a4
+[  618.612076]  vsp1_video_stop_streaming+0x100/0x12c
+[  618.616871]  __vb2_queue_cancel+0x2c/0x280
+[  618.620975]  vb2_core_streamoff+0x20/0xc0
+[  618.624989]  vb2_ioctl_streamoff+0x54/0x9c
+[  618.629090]  v4l_streamoff+0x20/0x28
+[  618.632671]  __video_do_ioctl+0x18c/0x3ec
+[  618.636687]  video_usercopy+0x304/0x894
+[  618.640526]  video_ioctl2+0x14/0x2c
+[  618.644017]  v4l2_ioctl+0x3c/0x58
+[  618.647337]  __arm64_sys_ioctl+0xa0/0xe0
+[  618.651268]  invoke_syscall+0x44/0x108
+[  618.655025]  el0_svc_common.constprop.0+0xb4/0xd4
+[  618.659733]  do_el0_svc+0x18/0x20
+[  618.663052]  el0_svc+0x3c/0xb8
+[  618.666117]  el0t_64_sync_handler+0xb8/0xbc
+[  618.670302]  el0t_64_sync+0x14c/0x150
+[  618.673972] irq event stamp: 35904
+[  618.677374] hardirqs last  enabled at (35903): [<ffff8000812def1c>] _raw_spin_unlock_irqrestore+0x6c/0x70
+[  618.686947] hardirqs last disabled at (35904): [<ffff8000812cc0d8>] el1_dbg+0x20/0x80
+[  618.694784] softirqs last  enabled at (35880): [<ffff80008001626c>] put_cpu_fpsimd_context+0x24/0x58
+[  618.703921] softirqs last disabled at (35878): [<ffff8000800161fc>] get_cpu_fpsimd_context+0x0/0x4c
+[  618.712970] ---[ end trace 0000000000000000 ]---
+pass
+Testing WPF packing in ARGB32 during stress testing: [  623.823888] ------------[ cut here ]------------
+[  623.828575] WARNING: CPU: 7 PID: 3352 at drivers/media/v4l2-core/v4l2-subdev.c:408 call_s_stream+0xd4/0xf0
+[  623.838265] Modules linked in: bluetooth ecdh_generic ecc rfkill crct10dif_ce optee_rng rng_core
+[  623.847130] CPU: 7 PID: 3352 Comm: yavta Tainted: G        W          6.7.0-rc2-arm64-renesas #1
+[  623.855931] Hardware name: Renesas Salvator-X 2nd version board based on r8a77951 (DT)
+[  623.863861] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  623.870839] pc : call_s_stream+0xd4/0xf0
+[  623.874778] lr : vsp1_pipeline_stop+0x10c/0x2a4
+[  623.879328] sp : ffff800085773a60
+[  623.882655] x29: ffff800085773a60 x28: ffff80008180fd68 x27: ffff0004c7c64e00
+[  623.889826] x26: ffff0004c277a740 x25: 0000000000000000 x24: 0000000040045613
+[  623.896998] x23: ffff0004c277ab10 x22: ffff0004c3944800 x21: 0000000000000000
+[  623.904170] x20: ffff0004c2dae880 x19: ffff0004c2e298f0 x18: 0000000000000000
+[  623.911342] x17: 0000000000000000 x16: 0000000000000000 x15: 0000fffff425287c
+[  623.918514] x14: 0000000000000000 x13: 0000000000000000 x12: 0000000000040000
+[  623.925691] x11: 0000000000000000 x10: ffff8000836e8e78 x9 : 0000000000000000
+[  623.932865] x8 : ffff0004ddcb6200 x7 : 0000000000000000 x6 : 0000000000000007
+[  623.940035] x5 : 0000000000000000 x4 : ffff800085788000 x3 : ffff800080e76a28
+[  623.947203] x2 : ffff800080eb8504 x1 : 0000000000000000 x0 : 0000000000000001
+[  623.954377] Call trace:
+[  623.956840]  call_s_stream+0xd4/0xf0
+[  623.960436]  vsp1_pipeline_stop+0x10c/0x2a4
+[  623.964636]  vsp1_video_stop_streaming+0x100/0x12c
+[  623.969449]  __vb2_queue_cancel+0x2c/0x280
+[  623.973564]  vb2_core_streamoff+0x20/0xc0
+[  623.977590]  vb2_ioctl_streamoff+0x54/0x9c
+[  623.981702]  v4l_streamoff+0x20/0x28
+[  623.985294]  __video_do_ioctl+0x18c/0x3ec
+[  623.989323]  video_usercopy+0x304/0x894
+[  623.993172]  video_ioctl2+0x14/0x2c
+[  623.996672]  v4l2_ioctl+0x3c/0x58
+[  624.000002]  __arm64_sys_ioctl+0xa0/0xe0
+[  624.003940]  invoke_syscall+0x44/0x108
+[  624.007708]  el0_svc_common.constprop.0+0xb4/0xd4
+[  624.012428]  do_el0_svc+0x18/0x20
+[  624.015761]  el0_svc+0x3c/0xb8
+[  624.018838]  el0t_64_sync_handler+0xb8/0xbc
+[  624.023038]  el0t_64_sync+0x14c/0x150
+[  624.026724] irq event stamp: 35904
+[  624.030137] hardirqs last  enabled at (35903): [<ffff8000812def1c>] _raw_spin_unlock_irqrestore+0x6c/0x70
+[  624.039730] hardirqs last disabled at (35904): [<ffff8000812cc0d8>] el1_dbg+0x20/0x80
+[  624.047592] softirqs last  enabled at (35880): [<ffff80008001626c>] put_cpu_fpsimd_context+0x24/0x58
+[  624.056745] softirqs last disabled at (35878): [<ffff8000800161fc>] get_cpu_fpsimd_context+0x0/0x4c
+[  624.065806] ---[ end trace 0000000000000000 ]---
+pass
+Testing WPF packing in XBGR32 during stress testing: [  628.359126] ------------[ cut here ]------------
+[  628.363777] WARNING: CPU: 0 PID: 3532 at drivers/media/v4l2-core/v4l2-subdev.c:408 call_s_stream+0xd4/0xf0
+[  628.373451] Modules linked in: bluetooth ecdh_generic ecc rfkill crct10dif_ce optee_rng rng_core
+[  628.382280] CPU: 0 PID: 3532 Comm: yavta Tainted: G        W          6.7.0-rc2-arm64-renesas #1
+[  628.391071] Hardware name: Renesas Salvator-X 2nd version board based on r8a77951 (DT)
+[  628.398988] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  628.405955] pc : call_s_stream+0xd4/0xf0
+[  628.409884] lr : vsp1_pipeline_stop+0x10c/0x2a4
+[  628.414421] sp : ffff800086f0ba60
+[  628.417736] x29: ffff800086f0ba60 x28: ffff80008180fd68 x27: ffff0004c7c66800
+[  628.424887] x26: ffff0004c277a740 x25: 0000000000000000 x24: 0000000040045613
+[  628.432036] x23: ffff0004c277ab10 x22: ffff0004c945ec00 x21: 0000000000000000
+[  628.439186] x20: ffff0004c2dae880 x19: ffff0004c2e298f0 x18: 0000000000000000
+[  628.446335] x17: 0000000000000000 x16: 0000000000000000 x15: 0000fffff3e5cc2c
+[  628.453484] x14: 0000000000000000 x13: 0000000000000000 x12: 0000000000040000
+[  628.460634] x11: 0000000000000000 x10: ffff8000836e8e78 x9 : 0000000000000000
+[  628.467784] x8 : ffff0004c2f88000 x7 : 0000000000000000 x6 : 0000000000000007
+[  628.474935] x5 : 0000000000000000 x4 : ffff800085788000 x3 : ffff800080e76a28
+[  628.482084] x2 : ffff800080eb8504 x1 : 0000000000000000 x0 : 0000000000000001
+[  628.489232] Call trace:
+[  628.491681]  call_s_stream+0xd4/0xf0
+[  628.495265]  vsp1_pipeline_stop+0x10c/0x2a4
+[  628.499453]  vsp1_video_stop_streaming+0x100/0x12c
+[  628.504251]  __vb2_queue_cancel+0x2c/0x280
+[  628.508354]  vb2_core_streamoff+0x20/0xc0
+[  628.512370]  vb2_ioctl_streamoff+0x54/0x9c
+[  628.516471]  v4l_streamoff+0x20/0x28
+[  628.520052]  __video_do_ioctl+0x18c/0x3ec
+[  628.524068]  video_usercopy+0x304/0x894
+[  628.527908]  video_ioctl2+0x14/0x2c
+[  628.531399]  v4l2_ioctl+0x3c/0x58
+[  628.534718]  __arm64_sys_ioctl+0xa0/0xe0
+[  628.538650]  invoke_syscall+0x44/0x108
+[  628.542407]  el0_svc_common.constprop.0+0xb4/0xd4
+[  628.547117]  do_el0_svc+0x18/0x20
+[  628.550436]  el0_svc+0x3c/0xb8
+[  628.553500]  el0t_64_sync_handler+0xb8/0xbc
+[  628.557686]  el0t_64_sync+0x14c/0x150
+[  628.561354] irq event stamp: 35918
+[  628.564757] hardirqs last  enabled at (35917): [<ffff8000812def1c>] _raw_spin_unlock_irqrestore+0x6c/0x70
+[  628.574331] hardirqs last disabled at (35918): [<ffff8000812cc0d8>] el1_dbg+0x20/0x80
+[  628.582168] softirqs last  enabled at (35894): [<ffff80008001626c>] put_cpu_fpsimd_context+0x24/0x58
+[  628.591306] softirqs last disabled at (35892): [<ffff8000800161fc>] get_cpu_fpsimd_context+0x0/0x4c
+[  628.600357] ---[ end trace 0000000000000000 ]---
+pass
+Testing WPF packing in XRGB32 during stress testing: [  633.431697] ------------[ cut here ]------------
+[  633.436349] WARNING: CPU: 0 PID: 3712 at drivers/media/v4l2-core/v4l2-subdev.c:408 call_s_stream+0xd4/0xf0
+[  633.446022] Modules linked in: bluetooth ecdh_generic ecc rfkill crct10dif_ce optee_rng rng_core
+[  633.454855] CPU: 0 PID: 3712 Comm: yavta Tainted: G        W          6.7.0-rc2-arm64-renesas #1
+[  633.463649] Hardware name: Renesas Salvator-X 2nd version board based on r8a77951 (DT)
+[  633.471569] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  633.478537] pc : call_s_stream+0xd4/0xf0
+[  633.482467] lr : vsp1_pipeline_stop+0x10c/0x2a4
+[  633.487005] sp : ffff800084fd3a60
+[  633.490321] x29: ffff800084fd3a60 x28: ffff80008180fd68 x27: ffff0004c7c65200
+[  633.497472] x26: ffff0004c277a740 x25: 0000000000000000 x24: 0000000040045613
+[  633.504622] x23: ffff0004c277ab10 x22: ffff0004c390c400 x21: 0000000000000000
+[  633.511772] x20: ffff0004c2dae880 x19: ffff0004c2e298f0 x18: 0000000000000000
+[  633.518921] x17: 0000000000000000 x16: 0000000000000000 x15: 0000ffffe09986bc
+[  633.526070] x14: 0000000000000000 x13: 0000000000000000 x12: 0000000000040000
+[  633.533218] x11: 0000000000000000 x10: ffff8000836e8e78 x9 : 0000000000000000
+[  633.540365] x8 : ffff0004c80c3100 x7 : 0000000000000000 x6 : 0000000000000007
+[  633.547514] x5 : 0000000000000000 x4 : ffff800085788000 x3 : ffff800080e76a28
+[  633.554663] x2 : ffff800080eb8504 x1 : 0000000000000000 x0 : 0000000000000001
+[  633.561811] Call trace:
+[  633.564260]  call_s_stream+0xd4/0xf0
+[  633.567841]  vsp1_pipeline_stop+0x10c/0x2a4
+[  633.572029]  vsp1_video_stop_streaming+0x100/0x12c
+[  633.576825]  __vb2_queue_cancel+0x2c/0x280
+[  633.580928]  vb2_core_streamoff+0x20/0xc0
+[  633.584943]  vb2_ioctl_streamoff+0x54/0x9c
+[  633.589044]  v4l_streamoff+0x20/0x28
+[  633.592624]  __video_do_ioctl+0x18c/0x3ec
+[  633.596641]  video_usercopy+0x304/0x894
+[  633.600480]  video_ioctl2+0x14/0x2c
+[  633.603971]  v4l2_ioctl+0x3c/0x58
+[  633.607290]  __arm64_sys_ioctl+0xa0/0xe0
+[  633.611220]  invoke_syscall+0x44/0x108
+[  633.614976]  el0_svc_common.constprop.0+0xb4/0xd4
+[  633.619685]  do_el0_svc+0x18/0x20
+[  633.623004]  el0_svc+0x3c/0xb8
+[  633.626068]  el0t_64_sync_handler+0xb8/0xbc
+[  633.630253]  el0t_64_sync+0x14c/0x150
+[  633.633920] irq event stamp: 36074
+[  633.637323] hardirqs last  enabled at (36073): [<ffff8000812def1c>] _raw_spin_unlock_irqrestore+0x6c/0x70
+[  633.646895] hardirqs last disabled at (36074): [<ffff8000812cc0d8>] el1_dbg+0x20/0x80
+[  633.654731] softirqs last  enabled at (36050): [<ffff80008001626c>] put_cpu_fpsimd_context+0x24/0x58
+[  633.663868] softirqs last disabled at (36048): [<ffff8000800161fc>] get_cpu_fpsimd_context+0x0/0x4c
+[  633.672916] ---[ end trace 0000000000000000 ]---
+pass
+./vsp-unit-test-0021.sh: line 34:  2037 Killed                  stress --cpu 8 --io 4 --vm 2 --vm-bytes 128M
+root@salvator-x:~/v4l2_test# 
+root@salvator-x:~/v4l2_test# cd ~
+root@salvator-x:~# 
+ 
+#### Result: OK ####

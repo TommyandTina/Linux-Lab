@@ -1,0 +1,220 @@
+----------- BOARD ------------
+
+root@salvator-x:~# mount -t tmpfs -o size=400M tmpfs /tmp
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/zero of=/tmp/tmp.img bs=1M count=350
+350+0 records in
+350+0 records out
+367001600 bytes (367 MB, 350 MiB) copied, 1.89786 s, 193 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# mkfs.ext3 -L storage /tmp/tmp.img
+mke2fs 1.43.5 (04-Aug-2017)
+Discarding device blocks:   1024/358400             done                            
+Creating filesystem with 358400 1k blocks and 89760 inodes
+Filesystem UUID: 987760f1-b249-4b3a-875f-842950ffb48e
+Superblock backups stored on blocks: 
+	8193, 24577, 40961, 57345, 73729, 204801, 221185
+
+Allocating group tables:  0/44     done                            
+Writing inode tables:  0/44     done                            
+Creating journal (8192 blocks): done
+Writing superblocks and filesystem accounting information:  0/44     done
+
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_mass_storage file=/tmp/tmp.img
+[  115.963818] Mass Storage Function, version: 2009/09/11
+[  115.969209] LUN: removable file: (no medium)
+[  115.973824] LUN: file: /tmp/tmp.img
+[  115.977376] Number of LUNs=1
+[  115.981180] g_mass_storage gadget.0: Mass Storage Gadget, version: 2009/09/11
+[  115.988383] g_mass_storage gadget.0: userspace failed to provide iSerialNumber
+[  115.995649] g_mass_storage gadget.0: g_mass_storage ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/state
+configured
+root@salvator-x:~# 
+---------- HOST-PC -----------
+
+dmesg
+[710275.833968] usb 1-4: new high-speed USB device number 52 using xhci_hcd
+[710275.962036] usb 1-4: device descriptor read/64, error -71
+[710276.202170] usb 1-4: device descriptor read/64, error -71
+[710276.438177] usb 1-4: new high-speed USB device number 53 using xhci_hcd
+[710276.566062] usb 1-4: device descriptor read/64, error -71
+[710276.802174] usb 1-4: device descriptor read/64, error -71
+[710276.910260] usb usb1-port4: attempt power cycle
+[710277.562142] usb 1-4: new high-speed USB device number 54 using xhci_hcd
+[710277.583535] usb 1-4: New USB device found, idVendor=0525, idProduct=a4a5, bcdDevice= 6.07
+[710277.583553] usb 1-4: New USB device strings: Mfr=3, Product=4, SerialNumber=0
+[710277.583562] usb 1-4: Product: Mass Storage Gadget
+[710277.583570] usb 1-4: Manufacturer: Linux 6.7.0-arm64-renesas with renesas_usb3
+[710277.585866] usb-storage 1-4:1.0: USB Mass Storage device detected
+[710277.590205] usb-storage 1-4:1.0: Quirks match for vid 0525 pid a4a5: 10000
+[710277.590296] scsi host2: usb-storage 1-4:1.0
+[710278.615416] scsi 2:0:0:0: Direct-Access     Linux    File-Stor Gadget 0607 PQ: 0 ANSI: 2
+[710278.616035] sd 2:0:0:0: Attached scsi generic sg0 type 0
+[710278.616571] sd 2:0:0:0: Power-on or device reset occurred
+[710278.617088] sd 2:0:0:0: [sda] 716800 512-byte logical blocks: (367 MB/350 MiB)
+[710278.724792] sd 2:0:0:0: [sda] Write Protect is off
+[710278.724796] sd 2:0:0:0: [sda] Mode Sense: 0f 00 00 00
+[710278.833498] sd 2:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[710279.264766] sd 2:0:0:0: [sda] Attached SCSI disk
+[710280.147236] audit: type=1400 audit(1705997735.981:15502): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sssd" name="/proc/660/cmdline" pid=905 comm="sssd_nss" requested_mask="r" denied_mask="r" fsuid=0 ouid=0
+[710280.149980] EXT4-fs (sda): mounting ext3 file system using the ext4 subsystem
+[710280.167734] EXT4-fs (sda): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+[710280.167743] ext3 filesystem being mounted at /media/bsp/storage supports timestamps until 2038 (0x7fffffff)
+
+df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            7,7G     0  7,7G   0% /dev
+tmpfs           1,6G  2,1M  1,6G   1% /run
+/dev/nvme0n1p2  938G  654G  237G  74% /
+tmpfs           7,7G     0  7,7G   0% /dev/shm
+tmpfs           5,0M  4,0K  5,0M   1% /run/lock
+tmpfs           7,7G     0  7,7G   0% /sys/fs/cgroup
+/dev/loop0       64M   64M     0 100% /snap/core20/2015
+/dev/loop2      106M  106M     0 100% /snap/core/16202
+/dev/loop3      128K  128K     0 100% /snap/bare/5
+/dev/loop1       64M   64M     0 100% /snap/core20/2105
+/dev/loop4       75M   75M     0 100% /snap/core22/1033
+/dev/loop8       92M   92M     0 100% /snap/gtk-common-themes/1535
+/dev/loop5      350M  350M     0 100% /snap/gnome-3-38-2004/140
+/dev/loop9       74M   74M     0 100% /snap/core22/864
+/dev/loop6      350M  350M     0 100% /snap/gnome-3-38-2004/143
+/dev/loop7      497M  497M     0 100% /snap/gnome-42-2204/141
+/dev/loop10     497M  497M     0 100% /snap/gnome-42-2204/132
+/dev/loop11      13M   13M     0 100% /snap/nmap/3152
+/dev/loop14      46M   46M     0 100% /snap/snap-store/638
+/dev/loop12      12M   12M     0 100% /snap/nmap/3077
+/dev/loop13      41M   41M     0 100% /snap/snapd/20671
+/dev/loop16      41M   41M     0 100% /snap/snapd/20290
+/dev/loop15      13M   13M     0 100% /snap/snap-store/959
+/dev/nvme0n1p1  511M  6,1M  505M   2% /boot/efi
+tmpfs           1,6G   48K  1,6G   1% /run/user/1001
+/dev/sda        329M   47K  312M   1% /media/bsp/storage
+
+dd if=/dev/urandom of=./file-300M bs=1M count=300
+300+0 records in
+300+0 records out
+314572800 bytes (315 MB, 300 MiB) copied, 1,39918 s, 225 MB/s
+
+sudo cp ./file-300M /media/bsp/storage
+
+Please plug out and plug in cable:
+
+
+dmesg
+[710285.812704] usb 1-4: USB disconnect, device number 54
+[710285.829768] blk_update_request: I/O error, dev sda, sector 72514 op 0x1:(WRITE) flags 0x4000 phys_seg 24 prio class 0
+[710285.829834] blk_update_request: I/O error, dev sda, sector 72754 op 0x1:(WRITE) flags 0x4000 phys_seg 29 prio class 0
+[710285.829868] blk_update_request: I/O error, dev sda, sector 72994 op 0x1:(WRITE) flags 0x4000 phys_seg 30 prio class 0
+[710285.829893] blk_update_request: I/O error, dev sda, sector 73234 op 0x1:(WRITE) flags 0x4000 phys_seg 30 prio class 0
+[710285.829915] blk_update_request: I/O error, dev sda, sector 73474 op 0x1:(WRITE) flags 0x4000 phys_seg 30 prio class 0
+[710285.830537] blk_update_request: I/O error, dev sda, sector 73714 op 0x1:(WRITE) flags 0x0 phys_seg 2 prio class 0
+[710285.830549] EXT4-fs warning (device sda): ext4_end_bio:344: I/O error 10 writing to inode 6121 starting block 36865)
+[710285.830560] Buffer I/O error on device sda, logical block 34817
+[710285.830566] Buffer I/O error on device sda, logical block 34818
+[710285.830570] Buffer I/O error on device sda, logical block 34819
+[710285.830574] Buffer I/O error on device sda, logical block 34820
+[710285.830582] Buffer I/O error on device sda, logical block 34821
+[710285.830586] Buffer I/O error on device sda, logical block 34822
+[710285.830590] Buffer I/O error on device sda, logical block 34823
+[710285.830594] Buffer I/O error on device sda, logical block 34824
+[710285.830599] Buffer I/O error on device sda, logical block 34825
+[710285.830603] Buffer I/O error on device sda, logical block 34826
+[710285.831476] blk_update_request: I/O error, dev sda, sector 77826 op 0x1:(WRITE) flags 0x4000 phys_seg 30 prio class 0
+[710285.831500] blk_update_request: I/O error, dev sda, sector 78066 op 0x1:(WRITE) flags 0x4000 phys_seg 30 prio class 0
+[710285.831523] blk_update_request: I/O error, dev sda, sector 78306 op 0x1:(WRITE) flags 0x4000 phys_seg 30 prio class 0
+[710285.831545] blk_update_request: I/O error, dev sda, sector 78546 op 0x1:(WRITE) flags 0x4000 phys_seg 30 prio class 0
+[710285.832204] EXT4-fs warning (device sda): ext4_end_bio:344: I/O error 10 writing to inode 6121 starting block 39937)
+[710285.833332] EXT4-fs warning (device sda): ext4_end_bio:344: I/O error 10 writing to inode 6121 starting block 40961)
+[710285.834607] EXT4-fs warning (device sda): ext4_end_bio:344: I/O error 10 writing to inode 6121 starting block 44033)
+[710285.835724] EXT4-fs warning (device sda): ext4_end_bio:344: I/O error 10 writing to inode 6121 starting block 45057)
+[710285.836828] EXT4-fs warning (device sda): ext4_end_bio:344: I/O error 10 writing to inode 6121 starting block 46085)
+[710285.838066] EXT4-fs warning (device sda): ext4_end_bio:344: I/O error 10 writing to inode 6121 starting block 47109)
+[710285.839174] EXT4-fs warning (device sda): ext4_end_bio:344: I/O error 10 writing to inode 6121 starting block 48141)
+[710285.840341] EXT4-fs warning (device sda): ext4_end_bio:344: I/O error 10 writing to inode 6121 starting block 49153)
+[710285.841441] EXT4-fs warning (device sda): ext4_end_bio:344: I/O error 10 writing to inode 6121 starting block 54281)
+[710285.945065] Buffer I/O error on dev sda, logical block 531, lost sync page write
+[710285.945072] JBD2: Error -5 detected when updating journal superblock for sda-8.
+[710285.945074] Aborting journal on device sda-8.
+[710285.945080] Buffer I/O error on dev sda, logical block 531, lost sync page write
+[710285.945083] JBD2: Error -5 detected when updating journal superblock for sda-8.
+[710285.945309] JBD2: Detected IO errors while flushing file data on sda-8
+[710286.054139] sd 2:0:0:0: [sda] Synchronizing SCSI cache
+[710286.054161] sd 2:0:0:0: [sda] Synchronize Cache(10) failed: Result: hostbyte=DID_NO_CONNECT driverbyte=DRIVER_OK
+[710288.666381] usb 2-4: new SuperSpeed USB device number 59 using xhci_hcd
+[710288.688078] usb 2-4: New USB device found, idVendor=0525, idProduct=a4a5, bcdDevice= 6.07
+[710288.688094] usb 2-4: New USB device strings: Mfr=3, Product=4, SerialNumber=0
+[710288.688101] usb 2-4: Product: Mass Storage Gadget
+[710288.688107] usb 2-4: Manufacturer: Linux 6.7.0-arm64-renesas with renesas_usb3
+[710288.691111] usb-storage 2-4:1.0: USB Mass Storage device detected
+[710288.691462] usb-storage 2-4:1.0: Quirks match for vid 0525 pid a4a5: 10000
+[710288.691593] scsi host2: usb-storage 2-4:1.0
+[710289.719318] scsi 2:0:0:0: Direct-Access     Linux    File-Stor Gadget 0607 PQ: 0 ANSI: 2
+[710289.719861] sd 2:0:0:0: Attached scsi generic sg0 type 0
+[710289.720481] sd 2:0:0:0: Power-on or device reset occurred
+[710289.721231] sd 2:0:0:0: [sda] 716800 512-byte logical blocks: (367 MB/350 MiB)
+[710289.829256] sd 2:0:0:0: [sda] Write Protect is off
+[710289.829273] sd 2:0:0:0: [sda] Mode Sense: 0f 00 00 00
+[710289.937722] sd 2:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[710290.369106] sd 2:0:0:0: [sda] Attached SCSI disk
+[710291.050070] EXT4-fs (sda): mounting ext3 file system using the ext4 subsystem
+[710291.066513] EXT4-fs (sda): recovery complete
+[710291.066516] EXT4-fs (sda): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+[710291.066524] ext3 filesystem being mounted at /media/bsp/storage supports timestamps until 2038 (0x7fffffff)
+
+df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            7,7G     0  7,7G   0% /dev
+tmpfs           1,6G  2,1M  1,6G   1% /run
+/dev/nvme0n1p2  938G  654G  237G  74% /
+tmpfs           7,7G     0  7,7G   0% /dev/shm
+tmpfs           5,0M  4,0K  5,0M   1% /run/lock
+tmpfs           7,7G     0  7,7G   0% /sys/fs/cgroup
+/dev/loop0       64M   64M     0 100% /snap/core20/2015
+/dev/loop2      106M  106M     0 100% /snap/core/16202
+/dev/loop3      128K  128K     0 100% /snap/bare/5
+/dev/loop1       64M   64M     0 100% /snap/core20/2105
+/dev/loop4       75M   75M     0 100% /snap/core22/1033
+/dev/loop8       92M   92M     0 100% /snap/gtk-common-themes/1535
+/dev/loop5      350M  350M     0 100% /snap/gnome-3-38-2004/140
+/dev/loop9       74M   74M     0 100% /snap/core22/864
+/dev/loop6      350M  350M     0 100% /snap/gnome-3-38-2004/143
+/dev/loop7      497M  497M     0 100% /snap/gnome-42-2204/141
+/dev/loop10     497M  497M     0 100% /snap/gnome-42-2204/132
+/dev/loop11      13M   13M     0 100% /snap/nmap/3152
+/dev/loop14      46M   46M     0 100% /snap/snap-store/638
+/dev/loop12      12M   12M     0 100% /snap/nmap/3077
+/dev/loop13      41M   41M     0 100% /snap/snapd/20671
+/dev/loop16      41M   41M     0 100% /snap/snapd/20290
+/dev/loop15      13M   13M     0 100% /snap/snap-store/959
+/dev/nvme0n1p1  511M  6,1M  505M   2% /boot/efi
+tmpfs           1,6G   48K  1,6G   1% /run/user/1001
+/dev/sda        329M   47K  312M   1% /media/bsp/storage
+
+sudo cp ./file-300M /media/bsp/storage
+
+md5sum ./file-300M /media/bsp/storage/file-300M
+4ea2f60a5d78775b03c2001e07c74b1d  ./file-300M
+4ea2f60a5d78775b03c2001e07c74b1d  /media/bsp/storage/file-300M
+
+sudo umount /media/bsp/storage
+
+----------- BOARD ------------
+
+root@salvator-x:~# rmmod g_mass_storage
+root@salvator-x:~# 
+root@salvator-x:~# rm -rf /tmp/tmp.img
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+[710297.051314] audit: type=1400 audit(1705997752.885:15508): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sssd" name="/proc/3644359/cmdline" pid=905 comm="sssd_nss" requested_mask="r" denied_mask="r" fsuid=0 ouid=0
+[710303.190905] usb 2-4: USB disconnect, device number 59
+[710303.213667] sd 2:0:0:0: [sda] Synchronizing SCSI cache
+[710303.213697] sd 2:0:0:0: [sda] Synchronize Cache(10) failed: Result: hostbyte=DID_NO_CONNECT driverbyte=DRIVER_OK
+
+ 
+#### Result: OK ####

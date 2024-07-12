@@ -1,0 +1,10 @@
+
+root@salvator-x:~# cat /proc/interrupts | grep mmc
+194:       2357          0          0          0          0          0          0          0     GICv2 199 Level     ee140000.mmc
+195:       1543          0          0          0          0          0          0          0     GICv2 197 Level     ee100000.mmc
+196:       1889          0          0          0          0          0          0          0     GICv2 200 Level     ee160000.mmc
+197:          0          0          0          0          0          0          0          0  gpio-rcar  12 Edge      ee100000.mmc cd
+198:          0          0          0          0          0          0          0          0  gpio-rcar  15 Edge      ee160000.mmc cd
+root@salvator-x:~# 
+ 
+#### Result: OK ####

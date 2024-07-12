@@ -1,0 +1,170 @@
+#!/usr/bin/python
+
+import sys
+import os
+sys.path.append(os.path.relpath('..'))
+sys.path.append(os.path.relpath('../common/'))
+import config
+import time
+import re
+import datetime
+import threading
+import serial
+import usb2h_fulltest
+
+MODULE_TEST = usb2h_fulltest.MODULE_TEST
+SOC = config.SOC
+
+list_TC = {\
+    10:'{}_{}_USB2_S2R_2_CN10L'.format(MODULE_TEST,SOC), \
+    11:'{}_{}_USB2_S2R_3_CN10L'.format(MODULE_TEST,SOC), \
+    12:'{}_{}_USB2_S2R_4_CN10L'.format(MODULE_TEST,SOC), \
+    13:'{}_{}_USB2_S2R_5_CN10L'.format(MODULE_TEST,SOC), \
+    14:'{}_{}_USB2_S2R_6_CN10L'.format(MODULE_TEST,SOC), \
+    15:'{}_{}_USB2_S2R_7_CN10L'.format(MODULE_TEST,SOC), \
+    16:'{}_{}_USB2_S2R_8_CN10L'.format(MODULE_TEST,SOC), \
+    17:'{}_{}_USB2_S2R_9_CN10L'.format(MODULE_TEST,SOC), \
+    18:'{}_{}_USB2_S2R_10_CN10L'.format(MODULE_TEST,SOC), \
+    20:'{}_{}_USB2_S2R_2_CN10H'.format(MODULE_TEST,SOC), \
+    21:'{}_{}_USB2_S2R_3_CN10H'.format(MODULE_TEST,SOC), \
+    22:'{}_{}_USB2_S2R_4_CN10H'.format(MODULE_TEST,SOC), \
+    23:'{}_{}_USB2_S2R_5_CN10H'.format(MODULE_TEST,SOC), \
+    24:'{}_{}_USB2_S2R_6_CN10H'.format(MODULE_TEST,SOC), \
+    25:'{}_{}_USB2_S2R_7_CN10H'.format(MODULE_TEST,SOC), \
+    26:'{}_{}_USB2_S2R_8_CN10H'.format(MODULE_TEST,SOC), \
+    27:'{}_{}_USB2_S2R_9_CN10H'.format(MODULE_TEST,SOC), \
+    28:'{}_{}_USB2_S2R_10_CN10H'.format(MODULE_TEST,SOC), \
+    30:'{}_{}_USB2_S2R_2_CN37'.format(MODULE_TEST,SOC), \
+    31:'{}_{}_USB2_S2R_3_CN37'.format(MODULE_TEST,SOC), \
+    32:'{}_{}_USB2_S2R_4_CN37'.format(MODULE_TEST,SOC), \
+    33:'{}_{}_USB2_S2R_5_CN37'.format(MODULE_TEST,SOC), \
+    34:'{}_{}_USB2_S2R_6_CN37'.format(MODULE_TEST,SOC), \
+    35:'{}_{}_USB2_S2R_7_CN37'.format(MODULE_TEST,SOC), \
+    36:'{}_{}_USB2_S2R_8_CN37'.format(MODULE_TEST,SOC), \
+    37:'{}_{}_USB2_S2R_9_CN37'.format(MODULE_TEST,SOC), \
+    38:'{}_{}_USB2_S2R_10_CN37'.format(MODULE_TEST,SOC), \
+    40:'{}_{}_USB2_S2R_2_CN9'.format(MODULE_TEST,SOC), \
+    41:'{}_{}_USB2_S2R_3_CN9'.format(MODULE_TEST,SOC), \
+    42:'{}_{}_USB2_S2R_4_CN9'.format(MODULE_TEST,SOC), \
+    43:'{}_{}_USB2_S2R_5_CN9'.format(MODULE_TEST,SOC), \
+    44:'{}_{}_USB2_S2R_6_CN9'.format(MODULE_TEST,SOC), \
+    45:'{}_{}_USB2_S2R_7_CN9'.format(MODULE_TEST,SOC), \
+    46:'{}_{}_USB2_S2R_8_CN9'.format(MODULE_TEST,SOC), \
+    47:'{}_{}_USB2_S2R_9_CN9'.format(MODULE_TEST,SOC), \
+    48:'{}_{}_USB2_S2R_10_CN9'.format(MODULE_TEST,SOC), \
+    50:'{}_{}_USB2HUB_S2R_2_CN10L'.format(MODULE_TEST,SOC), \
+    51:'{}_{}_USB2HUB_S2R_3_CN10L'.format(MODULE_TEST,SOC), \
+    52:'{}_{}_USB2HUB_S2R_4_CN10L'.format(MODULE_TEST,SOC), \
+    53:'{}_{}_USB2HUB_S2R_5_CN10L'.format(MODULE_TEST,SOC), \
+    54:'{}_{}_USB2HUB_S2R_6_CN10L'.format(MODULE_TEST,SOC), \
+    55:'{}_{}_USB2HUB_S2R_7_CN10L'.format(MODULE_TEST,SOC), \
+    56:'{}_{}_USB2HUB_S2R_8_CN10L'.format(MODULE_TEST,SOC), \
+    57:'{}_{}_USB2HUB_S2R_9_CN10L'.format(MODULE_TEST,SOC), \
+    58:'{}_{}_USB2HUB_S2R_10_CN10L'.format(MODULE_TEST,SOC), \
+    60:'{}_{}_USB2HUB_S2R_2_CN10H'.format(MODULE_TEST,SOC), \
+    61:'{}_{}_USB2HUB_S2R_3_CN10H'.format(MODULE_TEST,SOC), \
+    62:'{}_{}_USB2HUB_S2R_4_CN10H'.format(MODULE_TEST,SOC), \
+    63:'{}_{}_USB2HUB_S2R_5_CN10H'.format(MODULE_TEST,SOC), \
+    64:'{}_{}_USB2HUB_S2R_6_CN10H'.format(MODULE_TEST,SOC), \
+    65:'{}_{}_USB2HUB_S2R_7_CN10H'.format(MODULE_TEST,SOC), \
+    66:'{}_{}_USB2HUB_S2R_8_CN10H'.format(MODULE_TEST,SOC), \
+    67:'{}_{}_USB2HUB_S2R_9_CN10H'.format(MODULE_TEST,SOC), \
+    68:'{}_{}_USB2HUB_S2R_10_CN10H'.format(MODULE_TEST,SOC), \
+    70:'{}_{}_USB2HUB_S2R_2_CN37'.format(MODULE_TEST,SOC), \
+    71:'{}_{}_USB2HUB_S2R_3_CN37'.format(MODULE_TEST,SOC), \
+    72:'{}_{}_USB2HUB_S2R_4_CN37'.format(MODULE_TEST,SOC), \
+    73:'{}_{}_USB2HUB_S2R_5_CN37'.format(MODULE_TEST,SOC), \
+    74:'{}_{}_USB2HUB_S2R_6_CN37'.format(MODULE_TEST,SOC), \
+    75:'{}_{}_USB2HUB_S2R_7_CN37'.format(MODULE_TEST,SOC), \
+    76:'{}_{}_USB2HUB_S2R_8_CN37'.format(MODULE_TEST,SOC), \
+    77:'{}_{}_USB2HUB_S2R_9_CN37'.format(MODULE_TEST,SOC), \
+    78:'{}_{}_USB2HUB_S2R_10_CN37'.format(MODULE_TEST,SOC), \
+    80:'{}_{}_USB2HUB_S2R_2_CN9'.format(MODULE_TEST,SOC), \
+    81:'{}_{}_USB2HUB_S2R_3_CN9'.format(MODULE_TEST,SOC), \
+    82:'{}_{}_USB2HUB_S2R_4_CN9'.format(MODULE_TEST,SOC), \
+    83:'{}_{}_USB2HUB_S2R_5_CN9'.format(MODULE_TEST,SOC), \
+    84:'{}_{}_USB2HUB_S2R_6_CN9'.format(MODULE_TEST,SOC), \
+    85:'{}_{}_USB2HUB_S2R_7_CN9'.format(MODULE_TEST,SOC), \
+    86:'{}_{}_USB2HUB_S2R_8_CN9'.format(MODULE_TEST,SOC), \
+    87:'{}_{}_USB2HUB_S2R_9_CN9'.format(MODULE_TEST,SOC), \
+    88:'{}_{}_USB2HUB_S2R_10_CN9'.format(MODULE_TEST,SOC), \
+    90:'{}_{}_USB1_S2R_2_CN10L'.format(MODULE_TEST,SOC), \
+    91:'{}_{}_USB1_S2R_3_CN10L'.format(MODULE_TEST,SOC), \
+    92:'{}_{}_USB1_S2R_4_CN10L'.format(MODULE_TEST,SOC), \
+    93:'{}_{}_USB1_S2R_5_CN10L'.format(MODULE_TEST,SOC), \
+    94:'{}_{}_USB1_S2R_6_CN10L'.format(MODULE_TEST,SOC), \
+    95:'{}_{}_USB1_S2R_7_CN10L'.format(MODULE_TEST,SOC), \
+    96:'{}_{}_USB1_S2R_8_CN10L'.format(MODULE_TEST,SOC), \
+    97:'{}_{}_USB1_S2R_9_CN10L'.format(MODULE_TEST,SOC), \
+    98:'{}_{}_USB1_S2R_10_CN10L'.format(MODULE_TEST,SOC), \
+    100:'{}_{}_USB1_S2R_2_CN10H'.format(MODULE_TEST,SOC), \
+    101:'{}_{}_USB1_S2R_3_CN10H'.format(MODULE_TEST,SOC), \
+    102:'{}_{}_USB1_S2R_4_CN10H'.format(MODULE_TEST,SOC), \
+    103:'{}_{}_USB1_S2R_5_CN10H'.format(MODULE_TEST,SOC), \
+    104:'{}_{}_USB1_S2R_6_CN10H'.format(MODULE_TEST,SOC), \
+    105:'{}_{}_USB1_S2R_7_CN10H'.format(MODULE_TEST,SOC), \
+    106:'{}_{}_USB1_S2R_8_CN10H'.format(MODULE_TEST,SOC), \
+    107:'{}_{}_USB1_S2R_9_CN10H'.format(MODULE_TEST,SOC), \
+    108:'{}_{}_USB1_S2R_10_CN10H'.format(MODULE_TEST,SOC), \
+    110:'{}_{}_USB1_S2R_2_CN37'.format(MODULE_TEST,SOC), \
+    111:'{}_{}_USB1_S2R_3_CN37'.format(MODULE_TEST,SOC), \
+    112:'{}_{}_USB1_S2R_4_CN37'.format(MODULE_TEST,SOC), \
+    113:'{}_{}_USB1_S2R_5_CN37'.format(MODULE_TEST,SOC), \
+    114:'{}_{}_USB1_S2R_6_CN37'.format(MODULE_TEST,SOC), \
+    115:'{}_{}_USB1_S2R_7_CN37'.format(MODULE_TEST,SOC), \
+    116:'{}_{}_USB1_S2R_8_CN37'.format(MODULE_TEST,SOC), \
+    117:'{}_{}_USB1_S2R_9_CN37'.format(MODULE_TEST,SOC), \
+    118:'{}_{}_USB1_S2R_10_CN37'.format(MODULE_TEST,SOC), \
+    120:'{}_{}_USB1_S2R_2_CN9'.format(MODULE_TEST,SOC), \
+    121:'{}_{}_USB1_S2R_3_CN9'.format(MODULE_TEST,SOC), \
+    122:'{}_{}_USB1_S2R_4_CN9'.format(MODULE_TEST,SOC), \
+    123:'{}_{}_USB1_S2R_5_CN9'.format(MODULE_TEST,SOC), \
+    124:'{}_{}_USB1_S2R_6_CN9'.format(MODULE_TEST,SOC), \
+    125:'{}_{}_USB1_S2R_7_CN9'.format(MODULE_TEST,SOC), \
+    126:'{}_{}_USB1_S2R_8_CN9'.format(MODULE_TEST,SOC), \
+    127:'{}_{}_USB1_S2R_9_CN9'.format(MODULE_TEST,SOC), \
+    128:'{}_{}_USB1_S2R_10_CN9'.format(MODULE_TEST,SOC), \
+    130:'{}_{}_USB1_S2R_11'.format(MODULE_TEST,SOC), \
+    131:'{}_{}_USB1_S2R_12'.format(MODULE_TEST,SOC), \
+    132:'{}_{}_USB1_S2R_13'.format(MODULE_TEST,SOC), \
+    133:'{}_{}_USB1_S2R_14'.format(MODULE_TEST,SOC), \
+    134:'{}_{}_USB1_S2R_15'.format(MODULE_TEST,SOC), \
+    135:'{}_{}_USB1_S2R_16'.format(MODULE_TEST,SOC), \
+    136:'{}_{}_USB1_S2R_17'.format(MODULE_TEST,SOC), \
+    137:'{}_{}_USB1_S2R_18'.format(MODULE_TEST,SOC), \
+    138:'{}_{}_USB1_S2R_19'.format(MODULE_TEST,SOC), \
+    139:'{}_{}_USB1_S2R_20_1_2'.format(MODULE_TEST,SOC), \
+    140:'{}_{}_USB1_S2R_20_3_4'.format(MODULE_TEST,SOC), \
+    141:'{}_{}_S2R_21_CN10L'.format(MODULE_TEST,SOC), \
+    142:'{}_{}_S2R_22_CN10L'.format(MODULE_TEST,SOC), \
+    143:'{}_{}_S2R_23_CN10L'.format(MODULE_TEST,SOC), \
+    144:'{}_{}_S2R_24_CN10L'.format(MODULE_TEST,SOC), \
+    145:'{}_{}_S2R_25_CN10L'.format(MODULE_TEST,SOC), \
+    146:'{}_{}_S2R_26_CN10L'.format(MODULE_TEST,SOC), \
+    151:'{}_{}_S2R_21_CN10H'.format(MODULE_TEST,SOC), \
+    152:'{}_{}_S2R_22_CN10H'.format(MODULE_TEST,SOC), \
+    153:'{}_{}_S2R_23_CN10H'.format(MODULE_TEST,SOC), \
+    154:'{}_{}_S2R_24_CN10H'.format(MODULE_TEST,SOC), \
+    155:'{}_{}_S2R_25_CN10H'.format(MODULE_TEST,SOC), \
+    156:'{}_{}_S2R_26_CN10H'.format(MODULE_TEST,SOC), \
+    161:'{}_{}_S2R_21_CN37'.format(MODULE_TEST,SOC), \
+    162:'{}_{}_S2R_22_CN37'.format(MODULE_TEST,SOC), \
+    163:'{}_{}_S2R_23_CN37'.format(MODULE_TEST,SOC), \
+    164:'{}_{}_S2R_24_CN37'.format(MODULE_TEST,SOC), \
+    165:'{}_{}_S2R_25_CN37'.format(MODULE_TEST,SOC), \
+    166:'{}_{}_S2R_26_CN37'.format(MODULE_TEST,SOC), \
+    171:'{}_{}_S2R_21_CN9'.format(MODULE_TEST,SOC), \
+    172:'{}_{}_S2R_22_CN9'.format(MODULE_TEST,SOC), \
+    173:'{}_{}_S2R_23_CN9'.format(MODULE_TEST,SOC), \
+    174:'{}_{}_S2R_24_CN9'.format(MODULE_TEST,SOC), \
+    175:'{}_{}_S2R_25_CN9'.format(MODULE_TEST,SOC), \
+    176:'{}_{}_S2R_26_CN9'.format(MODULE_TEST,SOC), \
+    300:'{}_{}_PERF_1_2'.format(MODULE_TEST,SOC), \
+    301:'{}_{}_PERF_3_4'.format(MODULE_TEST,SOC), \
+    302:'{}_{}_PERF_5_6'.format(MODULE_TEST,SOC), \
+    303:'{}_{}_PERF_7_8'.format(MODULE_TEST,SOC), \
+    304:'{}_{}_PERF_9_10'.format(MODULE_TEST,SOC), \
+    305:'{}_{}_PERF_11_12'.format(MODULE_TEST,SOC), \
+    306:'{}_{}_PERF_13_14'.format(MODULE_TEST,SOC), \
+    307:'{}_{}_PERF_15_16'.format(MODULE_TEST,SOC), \
+}

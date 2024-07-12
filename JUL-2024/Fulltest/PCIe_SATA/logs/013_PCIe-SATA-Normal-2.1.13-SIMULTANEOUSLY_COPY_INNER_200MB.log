@@ -1,0 +1,776 @@
+
+root@salvator-x:~# find /sys/devices/platform/soc/fe000000.pcie/ -name sd*
+/sys/devices/platform/soc/fe000000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/ata1/host0/target0:0:0/0:0:0:0/block/sda
+/sys/devices/platform/soc/fe000000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/ata1/host0/target0:0:0/0:0:0:0/block/sda/sda2
+/sys/devices/platform/soc/fe000000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/ata1/host0/target0:0:0/0:0:0:0/block/sda/sda1
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sda2 /mnt/
+[  138.098309] EXT4-fs (sda2): mounted filesystem b6983ff4-1baa-4715-a70a-43406ca43f2f r/w with ordered data mode. Quota mode: none.
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.5724 s, 133 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.22 s, 94.5 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 588
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  590 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  591 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+42c32857413ad136c8fdf1840e9ce72f  /tmp/file1-200M
+42c32857413ad136c8fdf1840e9ce72f  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+6d654f8c7cbf0ead70bbc874c23b6d9f  /tmp/file2-200M
+6d654f8c7cbf0ead70bbc874c23b6d9f  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.5521 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.21214 s, 94.8 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 597
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  599 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  600 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+e33840bcfeb82099450b83ae0d88223e  /tmp/file1-200M
+e33840bcfeb82099450b83ae0d88223e  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+04f9927cbd7cec3b0bfeeed25643dec7  /tmp/file2-200M
+04f9927cbd7cec3b0bfeeed25643dec7  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.55497 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.2139 s, 94.7 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 606
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  608 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  609 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+600418e30b101910db017be89b61cc85  /tmp/file1-200M
+600418e30b101910db017be89b61cc85  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+b088ff7fb50d0e2433db5a95c8b021cd  /tmp/file2-200M
+b088ff7fb50d0e2433db5a95c8b021cd  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.55334 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.21478 s, 94.7 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 616
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  618 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  619 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+5f85c58caa0cbec8abfd522fb3fa8d76  /tmp/file1-200M
+5f85c58caa0cbec8abfd522fb3fa8d76  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+926828a470ce519ce86cd90447433e75  /tmp/file2-200M
+926828a470ce519ce86cd90447433e75  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.55105 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.21318 s, 94.8 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 625
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  627 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  628 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+699f7fdab3ed909d413d126fe691f19e  /tmp/file1-200M
+699f7fdab3ed909d413d126fe691f19e  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+16d60e39777aa255ffbd892eef879ce4  /tmp/file2-200M
+16d60e39777aa255ffbd892eef879ce4  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.55471 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.21178 s, 94.8 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 634
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  636 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  637 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+6119452b49433526f310efd6e00d253d  /tmp/file1-200M
+6119452b49433526f310efd6e00d253d  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+2a8cae23a696011ba5cb2d5529f448d2  /tmp/file2-200M
+2a8cae23a696011ba5cb2d5529f448d2  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.55333 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.21335 s, 94.8 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 644
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  646 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  647 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+8c55846fbf25730e904b315e7e4e6f4c  /tmp/file1-200M
+8c55846fbf25730e904b315e7e4e6f4c  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+7edd33a26814cf368de109b104eed66a  /tmp/file2-200M
+7edd33a26814cf368de109b104eed66a  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.55157 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.20989 s, 94.9 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 653
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  655 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  656 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+58ab013e093cd0525bf1c4a44312700a  /tmp/file1-200M
+58ab013e093cd0525bf1c4a44312700a  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+e9388ddf7e012b1c745e1d8a8523f8d3  /tmp/file2-200M
+e9388ddf7e012b1c745e1d8a8523f8d3  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.55116 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.21456 s, 94.7 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 662
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  664 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  665 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+2a1a89ee6dfac083a7e46f24fcbbbd66  /tmp/file1-200M
+2a1a89ee6dfac083a7e46f24fcbbbd66  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+5d4a95101daaf8f89e2e359191cd1096  /tmp/file2-200M
+5d4a95101daaf8f89e2e359191cd1096  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.55317 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.21047 s, 94.9 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 673
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  675 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  676 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+10744eb9465d32e053edd3bf6568e8a5  /tmp/file1-200M
+10744eb9465d32e053edd3bf6568e8a5  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+5d49345ca3d02cfa9d2ece68d043d2e2  /tmp/file2-200M
+5d49345ca3d02cfa9d2ece68d043d2e2  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.54957 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.21084 s, 94.9 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 682
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  684 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  685 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+7a738e7cc3a7e5303fcb9b63f535420a  /tmp/file1-200M
+7a738e7cc3a7e5303fcb9b63f535420a  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+dc8de5ebc2a7222ef64fac6c7122d0bb  /tmp/file2-200M
+dc8de5ebc2a7222ef64fac6c7122d0bb  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.55034 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.21212 s, 94.8 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 691
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  693 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  694 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+928b69546b819fa27ba95c0210583735  /tmp/file1-200M
+928b69546b819fa27ba95c0210583735  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+c8ab2b6000589a41893a861c03541762  /tmp/file2-200M
+c8ab2b6000589a41893a861c03541762  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.54899 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.21275 s, 94.8 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 701
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  703 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  704 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+fe83def4773ca693168f40461ca437e9  /tmp/file1-200M
+fe83def4773ca693168f40461ca437e9  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+d927752d4fe9b6c3b4743efcf0a32cff  /tmp/file2-200M
+d927752d4fe9b6c3b4743efcf0a32cff  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.55096 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.21054 s, 94.9 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 710
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  712 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  713 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+7d73a2665cb25becd039c3b63cf3cfed  /tmp/file1-200M
+7d73a2665cb25becd039c3b63cf3cfed  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+701f7ffe1a41ac631e6e14bb06d284dd  /tmp/file2-200M
+701f7ffe1a41ac631e6e14bb06d284dd  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.55313 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.21643 s, 94.6 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 719
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  721 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  722 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+bdea26f5422551c98c01be850351ce1c  /tmp/file1-200M
+bdea26f5422551c98c01be850351ce1c  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+d8a86f2ff5db36791cfcacee3c99fbd7  /tmp/file2-200M
+d8a86f2ff5db36791cfcacee3c99fbd7  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.54979 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.21071 s, 94.9 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 729
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  731 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  732 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+308a3fb52f799193c261a63c73cbfb3c  /tmp/file1-200M
+308a3fb52f799193c261a63c73cbfb3c  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+9277cd6097898c3dc65a1410307b67e0  /tmp/file2-200M
+9277cd6097898c3dc65a1410307b67e0  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.54917 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.21111 s, 94.8 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 738
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  740 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  741 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+b4cfbb7f546f34a80699165d1a49ac1c  /tmp/file1-200M
+b4cfbb7f546f34a80699165d1a49ac1c  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+934436c96c028dd8f494da6bd6b996a3  /tmp/file2-200M
+934436c96c028dd8f494da6bd6b996a3  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.54956 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.21766 s, 94.6 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 747
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  749 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  751 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+4d36ce3b54aa457c75b6666998086a83  /tmp/file1-200M
+4d36ce3b54aa457c75b6666998086a83  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+f286ad1454a5d12855a15683c4a0f658  /tmp/file2-200M
+f286ad1454a5d12855a15683c4a0f658  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.55176 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.21298 s, 94.8 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 757
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  759 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  760 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+aec542890445a8f83963c60c72b1c2c2  /tmp/file1-200M
+aec542890445a8f83963c60c72b1c2c2  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+b4473a2a2f87efdee86f7934edece170  /tmp/file2-200M
+b4473a2a2f87efdee86f7934edece170  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file1-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 1.55267 s, 135 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file2-200M bs=1M count=200
+200+0 records in
+200+0 records out
+209715200 bytes (210 MB, 200 MiB) copied, 2.21324 s, 94.8 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file1-200M /mnt/ & cp /mnt/file2-200M /tmp/
+[1] 766
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  768 ttySC0   00:00:00 ps
+[1]+  Done                    cp /tmp/file1-200M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# ps -a
+  PID TTY          TIME CMD
+  461 tty2     00:00:00 weston-keyboard
+  462 tty2     00:00:00 weston-desktop-
+  463 ttySC0   00:00:00 sh
+  769 ttySC0   00:00:00 ps
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file1-200M /mnt/file1-200M
+560e82cd51d79c606c490f78643f75e1  /tmp/file1-200M
+560e82cd51d79c606c490f78643f75e1  /mnt/file1-200M
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file2-200M /mnt/file2-200M
+0e61cbcfe5d15e2f0bd592c89401f7c2  /tmp/file2-200M
+0e61cbcfe5d15e2f0bd592c89401f7c2  /mnt/file2-200M
+root@salvator-x:~# 
+root@salvator-x:~# umount /mnt
+[  564.229260] EXT4-fs (sda2): unmounting filesystem b6983ff4-1baa-4715-a70a-43406ca43f2f.
+root@salvator-x:~# 
+root@salvator-x:~# rm /tmp/file1-200M ; rm /tmp/file2-200M
+root@salvator-x:~# 
+ 
+#### Result: OK ####

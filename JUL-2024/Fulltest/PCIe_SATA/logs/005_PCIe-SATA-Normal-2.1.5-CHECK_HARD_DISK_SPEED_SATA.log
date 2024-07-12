@@ -1,0 +1,8 @@
+
+root@salvator-x:~# hdparm -I /dev/sda | grep -i speed
+	   *	Gen1 signaling speed (1.5Gb/s)
+	   *	Gen2 signaling speed (3.0Gb/s)
+	   *	Gen3 signaling speed (6.0Gb/s)
+root@salvator-x:~# 
+ 
+#### Result: OK ####

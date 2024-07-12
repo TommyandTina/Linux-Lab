@@ -1,0 +1,13 @@
+
+root@salvator-x:~# dmesg | grep thermal
+[    0.045732] thermal_sys: Registered thermal governor 'power_allocator'
+[   62.707925] rcar_gen3_thermal e6198000.thermal: is using FUSE values
+[   62.719011] rcar_gen3_thermal e6198000.thermal: TSC0: Loaded 1 trip points
+[   62.730256] rcar_gen3_thermal e6198000.thermal: TSC1: Loaded 1 trip points
+[   62.741396] rcar_gen3_thermal e6198000.thermal: TSC2: Loaded 3 trip points
+[   62.943216] thermal emergency: set temperature to 110 celsius
+[   62.951267] thermal emergency: shutdown target cpus 1-7
+[   62.956495] thermal emergency: freq scaled target cpus 0
+root@salvator-x:~# 
+ 
+#### Result: NG ####

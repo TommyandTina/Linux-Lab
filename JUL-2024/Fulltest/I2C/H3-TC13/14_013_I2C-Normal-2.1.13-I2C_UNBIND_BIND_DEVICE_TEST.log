@@ -1,0 +1,110 @@
+
+root@salvator-x:~# amixer set 'DVC Out Mute' off
+Simple mixer control 'DVC Out Mute',0
+  Capabilities: pswitch
+  Playback channels: Front Left - Front Right
+  Mono:
+  Front Left: Playback [off]
+  Front Right: Playback [off]
+root@salvator-x:~# 
+root@salvator-x:~# amixer set 'DVC In Mute' off
+Simple mixer control 'DVC In Mute',0
+  Capabilities: pswitch
+  Playback channels: Front Left - Front Right
+  Mono:
+  Front Left: Playback [off]
+  Front Right: Playback [off]
+root@salvator-x:~# 
+root@salvator-x:~# amixer set "DVC Out" 20%
+Simple mixer control 'DVC Out',0
+  Capabilities: pvolume
+  Playback channels: Front Left - Front Right
+  Limits: Playback 0 - 8388607
+  Mono:
+  Front Left: Playback 1677722 [20%]
+  Front Right: Playback 1677722 [20%]
+root@salvator-x:~# 
+root@salvator-x:~# amixer set "DVC In" 50%
+Simple mixer control 'DVC In',0
+  Capabilities: cvolume
+  Capture channels: Front Left - Front Right
+  Limits: Capture 0 - 8388607
+  Front Left: Capture 4194304 [50%]
+  Front Right: Capture 4194304 [50%]
+root@salvator-x:~# 
+root@salvator-x:~# amixer set "Digital Playback Volume1" 85%
+Simple mixer control 'Digital Playback Volume1',0
+  Capabilities: volume
+  Playback channels: Front Left - Front Right
+  Capture channels: Front Left - Front Right
+  Limits: 0 - 255
+  Front Left: 217 [85%]
+  Front Right: 217 [85%]
+root@salvator-x:~# 
+root@salvator-x:~# arecord -d 10 ~/test.wav
+Recording WAVE '/home/root/test.wav' : Unsigned 8 bit, Rate 8000 Hz, Mono
+root@salvator-x:~# 
+root@salvator-x:~# cd /sys/bus/platform/drivers/i2c-rcar; find -type l
+./e6510000.i2c
+./e66d8000.i2c
+root@salvator-x:/sys/bus/platform/drivers/i2c-rcar# 
+root@salvator-x:/sys/bus/platform/drivers/i2c-rcar# cd /sys/bus/platform/drivers/rcar_sound; find -type l
+./ec500000.sound
+root@salvator-x:/sys/bus/platform/drivers/rcar_sound# 
+root@salvator-x:/sys/bus/platform/drivers/rcar_sound# cd /sys/bus/platform/drivers/asoc-audio-graph-card/
+root@salvator-x:/sys/bus/platform/drivers/asoc-audio-graph-card# 
+root@salvator-x:/sys/bus/platform/drivers/asoc-audio-graph-card# echo sound > unbind
+root@salvator-x:/sys/bus/platform/drivers/asoc-audio-graph-card# 
+root@salvator-x:/sys/bus/platform/drivers/asoc-audio-graph-card# ls -d ./sound
+ls: cannot access './sound': No such file or directory
+root@salvator-x:/sys/bus/platform/drivers/asoc-audio-graph-card# 
+root@salvator-x:/sys/bus/platform/drivers/asoc-audio-graph-card# cd /sys/bus/platform/drivers/rcar_sound
+root@salvator-x:/sys/bus/platform/drivers/rcar_sound# 
+root@salvator-x:/sys/bus/platform/drivers/rcar_sound# echo ec500000.sound > unbind
+root@salvator-x:/sys/bus/platform/drivers/rcar_sound# 
+root@salvator-x:/sys/bus/platform/drivers/rcar_sound# ls -d ec500000.sound
+ls: cannot access 'ec500000.sound': No such file or directory
+root@salvator-x:/sys/bus/platform/drivers/rcar_sound# 
+root@salvator-x:/sys/bus/platform/drivers/rcar_sound# cd /sys/bus/platform/drivers/i2c-rcar
+root@salvator-x:/sys/bus/platform/drivers/i2c-rcar# 
+root@salvator-x:/sys/bus/platform/drivers/i2c-rcar# echo e6510000.i2c > unbind
+root@salvator-x:/sys/bus/platform/drivers/i2c-rcar# 
+root@salvator-x:/sys/bus/platform/drivers/i2c-rcar# ls -d e6510000.i2c
+ls: cannot access 'e6510000.i2c': No such file or directory
+root@salvator-x:/sys/bus/platform/drivers/i2c-rcar# 
+root@salvator-x:/sys/bus/platform/drivers/i2c-rcar# cd /sys/bus/platform/drivers/i2c-rcar
+root@salvator-x:/sys/bus/platform/drivers/i2c-rcar# 
+root@salvator-x:/sys/bus/platform/drivers/i2c-rcar# echo e6510000.i2c > bind
+[  765.273379] cs2000-cp 2-004f: operating in static mode
+[  765.297077] cs2000-cp 2-004f: revision - C1
+[  765.301991] i2c-rcar e6510000.i2c: probed
+root@salvator-x:/sys/bus/platform/drivers/i2c-rcar# 
+root@salvator-x:/sys/bus/platform/drivers/i2c-rcar# ls -d e6510000.i2c
+e6510000.i2c
+root@salvator-x:/sys/bus/platform/drivers/i2c-rcar# 
+root@salvator-x:/sys/bus/platform/drivers/i2c-rcar# cd /sys/bus/platform/drivers/rcar_sound
+root@salvator-x:/sys/bus/platform/drivers/rcar_sound# 
+root@salvator-x:/sys/bus/platform/drivers/rcar_sound# echo ec500000.sound > bind
+[  770.299225] rcar_sound ec500000.sound: probed
+root@salvator-x:/sys/bus/platform/drivers/rcar_sound# 
+root@salvator-x:/sys/bus/platform/drivers/rcar_sound# ls -d ec500000.sound
+ec500000.sound
+root@salvator-x:/sys/bus/platform/drivers/rcar_sound# 
+root@salvator-x:/sys/bus/platform/drivers/rcar_sound# cd /sys/bus/platform/drivers/asoc-audio-graph-card/
+root@salvator-x:/sys/bus/platform/drivers/asoc-audio-graph-card# 
+root@salvator-x:/sys/bus/platform/drivers/asoc-audio-graph-card# echo sound > bind
+[  775.364982] hdmi-audio-codec hdmi-audio-codec.4.auto: ASoC: sink widget TX overwritten
+[  775.373089] hdmi-audio-codec hdmi-audio-codec.4.auto: ASoC: sink widget Capture overwritten
+[  775.381545] hdmi-audio-codec hdmi-audio-codec.4.auto: ASoC: source widget RX overwritten
+root@salvator-x:/sys/bus/platform/drivers/asoc-audio-graph-card# [  775.500353] rcar_sound ec500000.sound: Can't update kctrl when idle
+
+root@salvator-x:/sys/bus/platform/drivers/asoc-audio-graph-card# ls -d ./sound
+./sound
+root@salvator-x:/sys/bus/platform/drivers/asoc-audio-graph-card# 
+root@salvator-x:/sys/bus/platform/drivers/asoc-audio-graph-card# aplay ~/test.wav
+Playing WAVE '/home/root/test.wav' : Unsigned 8 bit, Rate 8000 Hz, Mono
+root@salvator-x:/sys/bus/platform/drivers/asoc-audio-graph-card# 
+root@salvator-x:/sys/bus/platform/drivers/asoc-audio-graph-card# cd ~
+root@salvator-x:~# 
+ 
+#### Result: OK ####

@@ -1,0 +1,30 @@
+#!/usr/bin/python
+
+import threading
+import serial
+import sys
+import time
+import re
+import datetime
+import os
+
+list_TC = { 1:'RCARGPIO-Normal 2.1.1-CHECK_DMESG_AFTER_START_THE_BOARD', \
+            2:'RCARGPIO-Normal 2.1.2-CHECK_INTERRUPT_AFTER_START_THE_BOARD', \
+            3:'RCARGPIO-Normal 2.1.3-CHECK_GPIO_SYSFS_LABLE_TEST', \
+            4:'RCARGPIO-Normal 2.1.4-CHECK_GPIO_SYSFS_BASE_TEST', \
+            5:'RCARGPIO-Normal 2.1.5-CHECK_GPIO_SYSFS_NGPIO_TEST', \
+            6:'RCARGPIO-Normal 2.1.6-GPIO_SD0_AFTER_S2RAM', \
+            7:'RCARGPIO-Normal 2.1.7-GPIO_PHY_ETHERNET_AFTER_S2RAM',\
+            8:'RCARGPIO-Normal 2.1.8-CHECK_GPIO_CHIP_TEST',\
+            9:'RCARGPIO-Normal 2.1.9-CHECK_GPIO_INPUT_OUTPUT',\
+            10:'RCARGPIO-Normal 2.1.10-CHECK_GPIO_INTERRUPT_COUNTER',\
+            11:'RCARGPIO-Normal 2.1.11-CHECK_GPIO_PHY_ETHERNET_INTERRUPT',\
+            12:'RCARGPIO-Normal 2.1.12-CHECK_SD0_INTERRUPT',\
+            13:'RCARGPIO-Normal 2.1.13-CHECK_SD3_INTERRUPT',\
+            14:'RCARGPIO-Normal 2.1.14-CHECK_GPIO_LEFT_BOUNDARY_MINUS_ONE',\
+            15:'RCARGPIO-Normal 2.1.15-CHECK_GPIO_LEFT_BOUNDARY',\
+            16:'RCARGPIO-Normal 2.1.16-CHECK_GPIO_LEFT_BOUNDARY_ADD_ONE',\
+            17:'RCARGPIO-Normal 2.1.17-CHECK_GPIO_RIGHT_BOUNDARY_MINUS_ONE',\
+            18:'RCARGPIO-Normal 2.1.18-CHECK_GPIO_RIGHT_BOUNDARY',\
+            19:'RCARGPIO-Normal 2.1.19-CHECK_GPIO_RIGHT_BOUNDARY_ADD_ONE'\
+} 

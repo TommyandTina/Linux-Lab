@@ -1,0 +1,11 @@
+Make sure you connected a keyboard to USB port
+
+root@salvator-x:~# dmesg | grep Keyboard
+[ 4001.921240] input: USB Keyboard as /devices/platform/soc/ee0a0000.usb/usb2/2-1/2-1:1.0/0003:04D9:A061.0001/input/input1
+[ 4001.996331] hid-generic 0003:04D9:A061.0001: input: USB HID v1.10 Keyboard [USB Keyboard] on usb-ee0a0000.usb-1/input0
+[ 4002.030144] input: USB Keyboard Consumer Control as /devices/platform/soc/ee0a0000.usb/usb2/2-1/2-1:1.1/0003:04D9:A061.0002/input/input2
+[ 4002.100870] input: USB Keyboard System Control as /devices/platform/soc/ee0a0000.usb/usb2/2-1/2-1:1.1/0003:04D9:A061.0002/input/input4
+[ 4002.113387] hid-generic 0003:04D9:A061.0002: input: USB HID v1.10 Device [USB Keyboard] on usb-ee0a0000.usb-1/input1
+root@salvator-x:~# 
+ 
+#### Result: OK ####

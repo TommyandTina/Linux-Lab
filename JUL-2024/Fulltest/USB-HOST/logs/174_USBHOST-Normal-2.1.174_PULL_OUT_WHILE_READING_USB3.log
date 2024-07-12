@@ -1,0 +1,68 @@
+
+root@salvator-x:~# find /sys/devices/platform/soc/ee000000.usb/ -name sd*
+/sys/devices/platform/soc/ee000000.usb/usb6/6-1/6-1:1.0/host2/target2:0:0/2:0:0:0/block/sdb
+/sys/devices/platform/soc/ee000000.usb/usb6/6-1/6-1:1.0/host2/target2:0:0/2:0:0:0/block/sdb/sdb1
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sdb1 /mnt
+[  776.371733] EXT4-fs (sdb1): mounted filesystem a0f764ae-8a75-41cb-a067-cb7cbed8b416 r/w with ordered data mode. Quota mode: none.
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file-300M bs=1M count=300; sync
+300+0 records in
+300+0 records out
+314572800 bytes (315 MB, 300 MiB) copied, 12.9005 s, 24.4 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# cp /mnt/file-300M /tmp
+
+Plug out usb immediately!
+
+[  792.884654] usb 6-1: USB disconnect, device number 3
+[  792.899696] blk_print_req_error: 897 callbacks suppressed
+[  792.899710] device offline error, dev sdb, sector 122156480 op 0x1:(WRITE) flags 0x9800 phys_seg 2 prio class 2
+[  792.915562] Aborting journal on device sdb1-8.
+[  792.920192] device offline error, dev sdb, sector 121899008 op 0x1:(WRITE) flags 0x9800 phys_seg 1 prio class 2
+[  792.930381] device offline error, dev sdb, sector 121899008 op 0x1:(WRITE) flags 0x9800 phys_seg 1 prio class 2
+[  792.940487] Buffer I/O error on dev sdb1, logical block 15237120, lost sync page write
+[  792.948507] JBD2: I/O error when updating journal superblock for sdb1-8.
+[  792.956723] EXT4-fs (sdb1): shut down requested (2)
+cp: error reading '/mnt/file-300M': Input/output error
+root@salvator-x:~# [  793.036544] sd 2:0:0:0: [sdb] Synchronizing SCSI cache
+[  793.041946] sd 2:0:0:0: [sdb] Synchronize Cache(10) failed: Result: hostbyte=0x01 driverbyte=DRIVER_OK
+
+root@salvator-x:~#  
+root@salvator-x:~# 
+Plug in usb!
+
+[  800.660901] usb 6-1: new SuperSpeed USB device number 4 using xhci-renesas-hcd
+[  800.696200] usb-storage 6-1:1.0: USB Mass Storage device detected
+[  800.703726] scsi host1: usb-storage 6-1:1.0
+[  801.730125] scsi 1:0:0:0: Direct-Access     SanDisk  Extreme Pro      0    PQ: 0 ANSI: 6
+[  801.742321] sd 1:0:0:0: [sda] 250085376 512-byte logical blocks: (128 GB/119 GiB)
+[  801.751491] sd 1:0:0:0: [sda] Write Protect is off
+[  801.758146] sd 1:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[  801.774730]  sda: sda1
+[  801.777905] sd 1:0:0:0: [sda] Attached SCSI removable disk
+
+root@salvator-x:~#  
+root@salvator-x:~# 
+root@salvator-x:~# find /sys/devices/platform/soc/ee000000.usb/ -name sd*
+/sys/devices/platform/soc/ee000000.usb/usb6/6-1/6-1:1.0/host1/target1:0:0/1:0:0:0/block/sda
+/sys/devices/platform/soc/ee000000.usb/usb6/6-1/6-1:1.0/host1/target1:0:0/1:0:0:0/block/sda/sda1
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sda1 /mnt
+[  805.843205] EXT4-fs (sda1): recovery complete
+[  805.848735] EXT4-fs (sda1): mounted filesystem a0f764ae-8a75-41cb-a067-cb7cbed8b416 r/w with ordered data mode. Quota mode: none.
+root@salvator-x:~# 
+root@salvator-x:~# cp /mnt/file-300M /tmp
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /mnt/file-300M /tmp/file-300M
+9c3fb7992a1dec1de6d59e3d984f94e9  /mnt/file-300M
+9c3fb7992a1dec1de6d59e3d984f94e9  /tmp/file-300M
+root@salvator-x:~# 
+root@salvator-x:~# umount /mnt
+[  816.515435] EXT4-fs (sda1): unmounting filesystem a0f764ae-8a75-41cb-a067-cb7cbed8b416.
+root@salvator-x:~# 
+root@salvator-x:~# umount /mnt
+[  818.224854] EXT4-fs (sdb1): unmounting filesystem a0f764ae-8a75-41cb-a067-cb7cbed8b416.
+root@salvator-x:~# 
+ 
+#### Result: OK ####

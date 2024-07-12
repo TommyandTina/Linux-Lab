@@ -1,0 +1,11 @@
+
+root@salvator-x:~# ifconfig | grep enp1s0
+enp1s0    Link encap:Ethernet  HWaddr 00:1b:21:80:a8:44  
+root@salvator-x:~# 
+root@salvator-x:~# ethtool enp1s0 | grep Speed -A 2
+	Speed: 1000Mb/s
+	Duplex: Full
+	Port: Twisted Pair
+root@salvator-x:~# 
+ 
+#### Result: OK ####

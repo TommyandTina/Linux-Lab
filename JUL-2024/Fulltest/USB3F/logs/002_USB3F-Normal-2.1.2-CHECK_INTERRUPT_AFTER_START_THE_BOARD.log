@@ -1,0 +1,6 @@
+
+root@salvator-x:~# cat /proc/interrupts | grep usb
+114:        207          0          0          0          0          0 GIC-0 136 Level     ee020000.usb
+root@salvator-x:~# 
+ 
+#### Result: OK ####

@@ -1,0 +1,271 @@
+
+[5]   Done                    stress-ng --cpu 4 --io 4 --vm 2 --vm-bytes 20M --timeout 5s
+root@salvator-x:~# stress-ng --cpu 4 --io 4 --vm 2 --vm-bytes 20M --timeout 5s & [Aroot@salvator-x:~# stress-ng --cpu 4 --io 4 --vm 2 --vm-bytes 20M --timeout 5s [K&
+[5] 799
+stress-ng: info:  [799] dispatching hogs: 4 cpu, 4 io, 2 vm
+root@salvator-x:~# 
+root@salvator-x:~# ~/i2c_endurance 2
+(I2C_OPEN) Success: i2c-2
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Su(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x10
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x10
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+(I2C_SLAVE) Device or re^C
+
+[5]   Done                    stress-ng --cpu 4 --io 4 --vm 2 --vm-bytes 20M --timeout 5s
+root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# ./i2c_syscall 2 0x4f 0x12
+i2c-2: addr=0x4f reg=0x12
+(I2C_OPEN) Success: i2c-2
+(I2C_SLAVE) Device or resource busy: i2c-2 slave=0x4F
+(I2C_SLAVE_FORCE) Success: i2c-2 slave=0x4F
+funcs = 0x0EFE0029
+Support functions ...
+	I2C_FUNC_I2C
+	I2C_FUNC_SMBUS_PEC
+	I2C_FUNC_SMBUS_READ_BYTE
+	I2C_FUNC_SMBUS_WRITE_BYTE
+	I2C_FUNC_SMBUS_READ_BYTE_DATA
+	I2C_FUNC_SMBUS_WRITE_BYTE_DATA
+	I2C_FUNC_SMBUS_READ_WORD_DATA
+	I2C_FUNC_SMBUS_WRITE_WORD_DATA
+	I2C_FUNC_SMBUS_PROC_CALL
+	I2C_FUNC_SMBUS_WRITE_BLOCK_DATA
+	I2C_FUNC_SMBUS_READ_I2C_BLOCK
+	I2C_FUNC_SMBUS_WRITE_I2C_BLOCK
+Read[0x12]: 0x00
+(I2C_CLOSE) Success: i2c-2
+root@salvator-x:~# 
+root@salvator-x:~# ./i2c_syscall 4 0x7f 0x0a
+i2c-4: addr=0x7f reg=0x0a
+(I2C_OPEN) Success: i2c-4
+(I2C_SLAVE_FORCE) Success: i2c-4 slave=0x7F
+funcs = 0x0EFE0029
+Support functions ...
+	I2C_FUNC_I2C
+	I2C_FUNC_SMBUS_PEC
+	I2C_FUNC_SMBUS_READ_BYTE
+	I2C_FUNC_SMBUS_WRITE_BYTE
+	I2C_FUNC_SMBUS_READ_BYTE_DATA
+	I2C_FUNC_SMBUS_WRITE_BYTE_DATA
+	I2C_FUNC_SMBUS_READ_WORD_DATA
+	I2C_FUNC_SMBUS_WRITE_WORD_DATA
+	I2C_FUNC_SMBUS_PROC_CALL
+	I2C_FUNC_SMBUS_WRITE_BLOCK_DATA
+	I2C_FUNC_SMBUS_READ_I2C_BLOCK
+	I2C_FUNC_SMBUS_WRITE_I2C_BLOCK
+Read[0x0a]: 0x00
+(I2C_CLOSE) Success: i2c-4
+root@salvator-x:~# 
+ 
+#### Result: OK ####

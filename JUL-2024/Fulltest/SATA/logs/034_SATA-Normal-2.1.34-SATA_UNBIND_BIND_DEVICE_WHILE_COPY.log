@@ -1,0 +1,139 @@
+
+root@salvator-x:~# find /sys/devices/platform/soc/ee300000.sata/ -name sd*
+/sys/devices/platform/soc/ee300000.sata/ata2/host0/target0:0:0/0:0:0:0/block/sda
+/sys/devices/platform/soc/ee300000.sata/ata2/host0/target0:0:0/0:0:0:0/block/sda/sda2
+/sys/devices/platform/soc/ee300000.sata/ata2/host0/target0:0:0/0:0:0:0/block/sda/sda1
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file-350M bs=1M count=350
+350+0 records in
+350+0 records out
+367001600 bytes (367 MB, 350 MiB) copied, 2.70783 s, 136 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sda2 /mnt/
+[  524.265282] EXT4-fs (sda2): mounting ext3 file system using the ext4 subsystem
+[  524.283275] EXT4-fs (sda2): mounted filesystem a2c57eea-25c1-4649-82f0-9ab8c84ea7cd r/w with ordered data mode. Quota mode: none.
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file-350M /mnt/ & 
+[1] 781
+root@salvator-x:~# 
+root@salvator-x:~# cd /sys/bus/platform/drivers/sata_rcar; echo ee300000.sata > unbind
+[  525.413532] device offline error, dev sda, sector 10626432 op 0x1:(WRITE) flags 0x0 phys_seg 1 prio class 2
+[  525.431328] EXT4-fs warning (device sda2): ext4_end_bio:343: I/O error 17 writing to inode 11 starting block 1328304)
+[  525.446945] Buffer I/O error on device sda2, logical block 17328
+[  525.456993] Buffer I/O error on device sda2, logical block 17329
+[  525.467001] Buffer I/O error on device sda2, logical block 17330
+[  525.476967] Buffer I/O error on device sda2, logical block 17331
+[  525.486912] Buffer I/O error on device sda2, logical block 17332
+[  525.496765] Buffer I/O error on device sda2, logical block 17333
+[  525.506532] Buffer I/O error on device sda2, logical block 17334
+[  525.516192] Buffer I/O error on device sda2, logical block 17335
+[  525.525780] Buffer I/O error on device sda2, logical block 17336
+[  525.535289] Buffer I/O error on device sda2, logical block 17337
+[  525.544778] device offline error, dev sda, sector 10758144 op 0x1:(WRITE) flags 0x0 phys_seg 3 prio class 2
+[  525.561780] EXT4-fs warning (device sda2): ext4_end_bio:343: I/O error 17 writing to inode 11 starting block 1344768)
+[  525.580579] device offline error, dev sda, sector 19662848 op 0x0:(READ) flags 0x83700 phys_seg 1 prio class 2
+[  525.591891] device offline error, dev sda, sector 10627328 op 0x1:(WRITE) flags 0x0 phys_seg 2 prio class 2
+[  525.608828] EXT4-fs warning (device sda2): ext4_end_bio:343: I/O error 17 writing to inode 11 starting block 1328416)
+[  525.626752] device offline error, dev sda, sector 19662848 op 0x0:(READ) flags 0x3000 phys_seg 1 prio class 2
+[  525.642261] device offline error, dev sda, sector 10632448 op 0x1:(WRITE) flags 0x0 phys_seg 4 prio class 2
+[  525.642331] EXT4-fs error (device sda2): ext4_wait_block_bitmap:582: comm cp: Cannot read block bitmap - block_group = 35, block_bitmap = 1146880
+[  525.652096] EXT4-fs warning (device sda2): ext4_end_bio:343: I/O error 17 writing to inode 11 starting block 1329056)
+[  525.689977] device offline error, dev sda, sector 10628096 op 0x1:(WRITE) flags 0x4000 phys_seg 4 prio class 2
+[  525.701802] device offline error, dev sda, sector 10628608 op 0x1:(WRITE) flags 0x0 phys_seg 4 prio class 2
+[  525.714510] EXT4-fs warning (device sda2): ext4_end_bio:343: I/O error 17 writing to inode 11 starting block 1328576)
+[  525.728334] device offline error, dev sda, sector 11017232 op 0x1:(WRITE) flags 0x4000 phys_seg 4 prio class 2
+[  525.741311] device offline error, dev sda, sector 11017744 op 0x1:(WRITE) flags 0x4000 phys_seg 4 prio class 2
+[  525.754709] EXT4-fs error (device sda2): ext4_wait_block_bitmap:582: comm cp: Cannot read block bitmap - block_group = 35, block_bitmap = 1146880
+[  525.755354] EXT4-fs warning (device sda2): ext4_end_bio:343: I/O error 17 writing to inode 11 starting block 1377346)
+[  525.785975] EXT4-fs warning (device sda2): ext4_end_bio:343: I/O error 17 writing to inode 11 starting block 1377984)
+[  525.812205] EXT4-fs error (device sda2): ext4_wait_block_bitmap:582: comm cp: Cannot read block bitmap - block_group = 35, block_bitmap = 1146880
+[  525.822037] EXT4-fs warning (device sda2): ext4_end_bio:343: I/O error 17 writing to inode 11 starting block 1411264)
+[  525.846147] EXT4-fs warning (device sda2): ext4_end_bio:343: I/O error 17 writing to inode 11 starting block 1441984)
+[  525.885169] EXT4-fs warning (device sda2): ext4_end_bio:343: I/O error 17 writing to inode 11 starting block 1445376)
+[  525.901196] EXT4-fs error (device sda2): ext4_wait_block_bitmap:582: comm cp: Cannot read block bitmap - block_group = 35, block_bitmap = 1146880
+[  525.901283] Buffer I/O error on dev sda2, logical block 841, lost sync page write
+[  525.938792] JBD2: I/O error when updating journal superblock for sda2-8.
+[  525.938866] EXT4-fs error (device sda2): ext4_check_bdev_write_error:224: comm cp: Error while async write back metadata
+[  525.945566] Aborting journal on device sda2-8.
+[  525.975070] Buffer I/O error on dev sda2, logical block 0, lost sync page write
+cp: error writing '/mnt/file-350M[  525.983896] EXT4-fs (sda2): I/O error while writing superblock
+[  525.983914] Buffer I/O error on dev sda2, logical block 841, lost sync page write
+': Read-only file system
+[  526.006250] JBD2: I/O error when updating journal superblock for sda2-8.
+[  526.021983] JBD2: Detected IO errors while flushing file data on sda2-8
+[  526.090629] EXT4-fs error (device sda2): ext4_wait_block_bitmap:582: comm ext4lazyinit: Cannot read block bitmap - block_group = 39, block_bitmap = 1277952
+[  526.092300] EXT4-fs (sda2): shut down requested (2)
+[  526.104790] Buffer I/O error on dev sda2, logical block 0, lost sync page write
+[  526.132424] EXT4-fs (sda2): I/O error while writing superblock
+[  526.190167] sd 0:0:0:0: [sda] Synchronizing SCSI cache
+[  526.198986] ata2.00: Entering standby power mode
+[1]+  Done(1)                 cp /tmp/file-350M /mnt/  (wd: ~)
+(wd now: /sys/bus/platform/drivers/sata_rcar)
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# 
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# pwd
+/sys/bus/platform/drivers/sata_rcar
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# 
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# cd /sys/bus/platform/drivers/sata_rcar
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# 
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# echo ee300000.sata > bind 
+[  560.382681] sata_rcar ee300000.sata: deferred probe timeout, ignoring dependency
+[  560.399898] scsi host1: sata_rcar
+[  560.410792] ata3: SATA max UDMA/133 irq 202 lpm-pol 0
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# [  560.838238] ata3: link resume succeeded after 1 retries
+[  560.946626] ata3: SATA link up 6.0 Gbps (SStatus 133 SControl 300)
+[  560.963118] ata3.00: supports DRM functions and may not be fully accessible
+[  560.978167] ata3.00: ATA-11: Samsung SSD 860 PRO 256GB, RVM01B6Q, max UDMA/133
+[  560.993485] ata3.00: 500118192 sectors, multi 1: LBA48 NCQ (depth 0/32)
+[  561.010928] ata3.00: Features: Trust Dev-Sleep
+[  561.025653] ata3.00: supports DRM functions and may not be fully accessible
+[  561.043051] ata3.00: configured for UDMA/133
+[  561.055074] scsi 1:0:0:0: Direct-Access     ATA      Samsung SSD 860  1B6Q PQ: 0 ANSI: 5
+[  561.071623] ata3.00: Enabling discard_zeroes_data
+[  561.083729] sd 1:0:0:0: [sdb] 500118192 512-byte logical blocks: (256 GB/238 GiB)
+[  561.098320] sd 1:0:0:0: [sdb] Write Protect is off
+[  561.112979] sd 1:0:0:0: [sdb] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[  561.128286] sd 1:0:0:0: [sdb] Preferred minimum I/O size 512 bytes
+[  561.143102] ata3.00: Enabling discard_zeroes_data
+[  561.153363]  sdb: sdb1 sdb2
+[  561.159958] sd 1:0:0:0: [sdb] Attached SCSI disk
+
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# ls -l
+total 0
+--w------- 1 root root 4096 Jan 17 02:42 bind
+lrwxrwxrwx 1 root root    0 Jan 17 02:42 ee300000.sata -> ../../../../devices/platform/soc/ee300000.sata
+lrwxrwxrwx 1 root root    0 Jan 17 02:41 module -> ../../../../module/sata_rcar
+--w------- 1 root root 4096 Jan 17 02:33 uevent
+--w------- 1 root root 4096 Jan 17 02:41 unbind
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# 
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# cd ~
+root@salvator-x:~# 
+root@salvator-x:~# find /sys/devices/platform/soc/ee300000.sata/ -name sd*
+/sys/devices/platform/soc/ee300000.sata/ata3/host1/target1:0:0/1:0:0:0/block/sdb
+/sys/devices/platform/soc/ee300000.sata/ata3/host1/target1:0:0/1:0:0:0/block/sdb/sdb2
+/sys/devices/platform/soc/ee300000.sata/ata3/host1/target1:0:0/1:0:0:0/block/sdb/sdb1
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file-350M bs=1M count=350
+350+0 records in
+350+0 records out
+367001600 bytes (367 MB, 350 MiB) copied, 2.70139 s, 136 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sdb2 /mnt/
+[  572.652710] EXT4-fs (sdb2): mounting ext3 file system using the ext4 subsystem
+[  572.671175] EXT4-fs (sdb2): recovery complete
+[  572.678824] EXT4-fs (sdb2): mounted filesystem a2c57eea-25c1-4649-82f0-9ab8c84ea7cd r/w with ordered data mode. Quota mode: none.
+root@salvator-x:~# 
+root@salvator-x:~# rm -rf /mnt/*; sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file-350M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file-350M /mnt/file-350M
+2b9b98611155be1057c4738cbd797b51  /tmp/file-350M
+2b9b98611155be1057c4738cbd797b51  /mnt/file-350M
+root@salvator-x:~# 
+root@salvator-x:~# umount /mnt
+[  582.308875] EXT4-fs (sdb2): unmounting filesystem a2c57eea-25c1-4649-82f0-9ab8c84ea7cd.
+root@salvator-x:~# 
+root@salvator-x:~# rm /tmp/file-350M
+root@salvator-x:~# 
+ 
+#### Result: OK ####

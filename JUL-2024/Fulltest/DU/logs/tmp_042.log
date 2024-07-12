@@ -1,0 +1,177 @@
+
+root@salvator-x:~# modetest -M rcar-du -c | grep HDMI-A-1
+114	113	connected	HDMI-A-1       	530x300		25	113
+root@salvator-x:~# 
+root@salvator-x:~# modetest -M rcar-du -e | grep 113
+113	108	none	0x00000002	0x00000007
+root@salvator-x:~# 
+root@salvator-x:~# modetest -M rcar-du -s 114@108:1920x1080@AR24
+setting mode 1920x1080-60Hz@AR24 on connectors 114, crtc 108
+[  558.154221] ------------[ cut here ]------------
+[  558.158940] WARNING: CPU: 0 PID: 582 at drivers/media/v4l2-core/v4l2-subdev.c:408 call_s_stream+0xd4/0xf0
+[  558.168527] Modules linked in: bluetooth ecdh_generic ecc rfkill crct10dif_ce optee_rng rng_core
+[  558.177358] CPU: 0 PID: 582 Comm: modetest Tainted: G        W          6.7.0-rc2-arm64-renesas #1
+[  558.186322] Hardware name: Renesas Salvator-X 2nd version board based on r8a77951 (DT)
+[  558.194240] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  558.201207] pc : call_s_stream+0xd4/0xf0
+[  558.205134] lr : vsp1_pipeline_stop+0x10c/0x2a4
+[  558.209672] sp : ffff80008574b770
+[  558.212988] x29: ffff80008574b770 x28: 0000000000000000 x27: 0000000000000000
+[  558.220139] x26: 0000000000000000 x25: ffff0004c3cb3880 x24: ffff0004c3cb3880
+[  558.227289] x23: 0000000000000000 x22: ffff0004c3cb38a8 x21: 0000000000000000
+[  558.234439] x20: ffff0004c3c9f080 x19: ffff0004c3cb28f0 x18: 0000000000000003
+[  558.241588] x17: 0000000000000000 x16: 000000000000cd03 x15: ffff8000830d79b8
+[  558.248738] x14: ffff800083074e38 x13: ffff8000830d79c0 x12: 000000000004037a
+[  558.255888] x11: 0000000000000400 x10: ffff8000836e8e78 x9 : 000000000000cd01
+[  558.263038] x8 : 0000000000000000 x7 : 0000000000000000 x6 : 0000000000000008
+[  558.270187] x5 : 0000000000000000 x4 : ffff8000857f8000 x3 : ffff800080e76a28
+[  558.277336] x2 : ffff800080eb8504 x1 : 0000000000000000 x0 : 0000000000000001
+[  558.284486] Call trace:
+[  558.286934]  call_s_stream+0xd4/0xf0
+[  558.290513]  vsp1_pipeline_stop+0x10c/0x2a4
+[  558.294699]  vsp1_du_setup_lif+0x334/0x478
+[  558.298801]  rcar_du_vsp_disable+0x1c/0x24
+[  558.302904]  rcar_du_crtc_atomic_disable+0x2f8/0x438
+[  558.307876]  disable_outputs+0x22c/0x338
+[  558.311805]  drm_atomic_helper_commit_modeset_disables+0x18/0x44
+[  558.317815]  rcar_du_atomic_commit_tail+0x90/0xd8
+[  558.322525]  commit_tail+0x9c/0x178
+[  558.326017]  drm_atomic_helper_commit+0x190/0x1a4
+[  558.330725]  drm_atomic_commit+0xa4/0x100
+[  558.334744]  drm_atomic_helper_set_config+0xd0/0x104
+[  558.339712]  drm_mode_setcrtc+0x1b8/0x6dc
+[  558.343728]  drm_ioctl_kernel+0xc4/0x174
+[  558.347657]  drm_ioctl+0x22c/0x4c0
+[  558.351062]  __arm64_sys_ioctl+0xa0/0xe0
+[  558.354992]  invoke_syscall+0x44/0x108
+[  558.358749]  el0_svc_common.constprop.0+0xb4/0xd4
+[  558.363458]  do_el0_svc+0x18/0x20
+[  558.366777]  el0_svc+0x3c/0xb8
+[  558.369841]  el0t_64_sync_handler+0xb8/0xbc
+[  558.374026]  el0t_64_sync+0x14c/0x150
+[  558.377693] irq event stamp: 24784
+[  558.381097] hardirqs last  enabled at (24783): [<ffff8000812def1c>] _raw_spin_unlock_irqrestore+0x6c/0x70
+[  558.390669] hardirqs last disabled at (24784): [<ffff8000812cc0d8>] el1_dbg+0x20/0x80
+[  558.398504] softirqs last  enabled at (24638): [<ffff800080010a84>] __do_softirq+0x494/0x4dc
+[  558.406944] softirqs last disabled at (24631): [<ffff800080015e18>] ____do_softirq+0xc/0x14
+[  558.415299] ---[ end trace 0000000000000000 ]---
+[  558.434852] vsp1 fea28000.vsp: Underrun occurred at WPF0 (total underruns 1)
+^Z
+[1]+  Stopped(SIGTSTP)        modetest -M rcar-du -s 114@108:1920x1080@AR24
+
+root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# fg
+modetest -M rcar-du -s 114@108:1920x1080@AR24
+
+[  561.106238] ------------[ cut here ]------------
+[  561.110881] WARNING: CPU: 2 PID: 582 at drivers/media/v4l2-core/v4l2-subdev.c:408 call_s_stream+0xd4/0xf0
+[  561.120464] Modules linked in: bluetooth ecdh_generic ecc rfkill crct10dif_ce optee_rng rng_core
+[  561.129295] CPU: 2 PID: 582 Comm: modetest Tainted: G        W          6.7.0-rc2-arm64-renesas #1
+[  561.138259] Hardware name: Renesas Salvator-X 2nd version board based on r8a77951 (DT)
+[  561.146178] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  561.153144] pc : call_s_stream+0xd4/0xf0
+[  561.157071] lr : vsp1_pipeline_stop+0x10c/0x2a4
+[  561.161608] sp : ffff80008574b720
+[  561.164924] x29: ffff80008574b720 x28: 0000000000000000 x27: 0000000000000000
+[  561.172077] x26: 0000000000000000 x25: ffff0004c3cb3880 x24: ffff0004c3cb3880
+[  561.179228] x23: 0000000000000000 x22: ffff0004c3cb38a8 x21: 0000000000000000
+[  561.186379] x20: ffff0004c3c9f080 x19: ffff0004c3cb28f0 x18: 0000000000000000
+[  561.193530] x17: 0000000000000001 x16: 0000000000000000 x15: 0000000000000001
+[  561.200680] x14: 0000000000000001 x13: 0000000000000002 x12: 0000000000040000
+[  561.207831] x11: 0000000000000400 x10: ffff8000836e8e78 x9 : 0000000000000000
+[  561.214982] x8 : ffff0004c2e24980 x7 : 0000000000000000 x6 : 000000000000000f
+[  561.222132] x5 : 0000000000000000 x4 : ffff8000857f8000 x3 : ffff800080e76a28
+[  561.229283] x2 : ffff800080eb8504 x1 : 0000000000000000 x0 : 0000000000000001
+[  561.236433] Call trace:
+[  561.238882]  call_s_stream+0xd4/0xf0
+[  561.242462]  vsp1_pipeline_stop+0x10c/0x2a4
+[  561.246649]  vsp1_du_setup_lif+0x334/0x478
+[  561.250750]  rcar_du_vsp_disable+0x1c/0x24
+[  561.254853]  rcar_du_crtc_atomic_disable+0x2f8/0x438
+[  561.259825]  disable_outputs+0x22c/0x338
+[  561.263753]  drm_atomic_helper_commit_modeset_disables+0x18/0x44
+[  561.269764]  rcar_du_atomic_commit_tail+0x90/0xd8
+[  561.274474]  commit_tail+0x9c/0x178
+[  561.277967]  drm_atomic_helper_commit+0x190/0x1a4
+[  561.282676]  drm_atomic_commit+0xa4/0x100
+[  561.286695]  drm_client_modeset_commit_atomic+0x220/0x28c
+[  561.292097]  drm_client_modeset_commit_locked+0x5c/0x1b4
+[  561.297412]  drm_client_modeset_commit+0x2c/0x50
+[  561.302032]  drm_fb_helper_lastclose+0x68/0xb4
+[  561.306483]  drm_fbdev_generic_client_restore+0x10/0x1c
+[  561.311712]  drm_client_dev_restore+0x80/0xd8
+[  561.316076]  drm_lastclose+0x60/0xa4
+[  561.319656]  drm_release+0x158/0x170
+[  561.323234]  __fput+0x6c/0x2b4
+[  561.326298]  ____fput+0xc/0x14
+[  561.329355]  task_work_run+0x6c/0xc0
+[  561.332937]  do_exit+0x31c/0x9e8
+[  561.336171]  do_group_exit+0x30/0x8c
+[  561.339752]  pid_child_should_wake+0x0/0x5c
+[  561.343940]  invoke_syscall+0x44/0x108
+[  561.347696]  el0_svc_common.constprop.0+0xb4/0xd4
+[  561.352406]  do_el0_svc+0x18/0x20
+[  561.355726]  el0_svc+0x3c/0xb8
+[  561.358789]  el0t_64_sync_handler+0xb8/0xbc
+[  561.362974]  el0t_64_sync+0x14c/0x150
+[  561.366641] irq event stamp: 26346
+[  561.370044] hardirqs last  enabled at (26345): [<ffff8000812def1c>] _raw_spin_unlock_irqrestore+0x6c/0x70
+[  561.379616] hardirqs last disabled at (26346): [<ffff8000812cc0d8>] el1_dbg+0x20/0x80
+[  561.387452] softirqs last  enabled at (25500): [<ffff800080010a84>] __do_softirq+0x494/0x4dc
+[  561.395892] softirqs last disabled at (25495): [<ffff800080015e18>] ____do_softirq+0xc/0x14
+[  561.404247] ---[ end trace 0000000000000000 ]---
+root@salvator-x:~# modetest -M rcar-du -s 114@108:1920x1080@AR24
+setting mode 1920x1080-60Hz@AR24 on connectors 114, crtc 108
+[  561.932115] ------------[ cut here ]------------
+[  561.936758] WARNING: CPU: 0 PID: 583 at drivers/media/v4l2-core/v4l2-subdev.c:408 call_s_stream+0xd4/0xf0
+[  561.946339] Modules linked in: bluetooth ecdh_generic ecc rfkill crct10dif_ce optee_rng rng_core
+[  561.955169] CPU: 0 PID: 583 Comm: modetest Tainted: G        W          6.7.0-rc2-arm64-renesas #1
+[  561.964131] Hardware name: Renesas Salvator-X 2nd version board based on r8a77951 (DT)
+[  561.972049] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  561.979015] pc : call_s_stream+0xd4/0xf0
+[  561.982941] lr : vsp1_pipeline_stop+0x10c/0x2a4
+[  561.987477] sp : ffff800084ebb770
+[  561.990794] x29: ffff800084ebb770 x28: 0000000000000000 x27: 0000000000000000
+[  561.997945] x26: 0000000000000000 x25: ffff0004c3cb3880 x24: ffff0004c3cb3880
+[  562.005095] x23: 0000000000000000 x22: ffff0004c3cb38a8 x21: 0000000000000000
+[  562.012246] x20: ffff0004c3c9f080 x19: ffff0004c3cb28f0 x18: 0000000000000000
+[  562.019396] x17: 0048000000000465 x16: 0441043c04650438 x15: 0000000000000001
+[  562.026546] x14: 0000000000000001 x13: 0000000000000002 x12: 0000000000040000
+[  562.033696] x11: 0000000000000400 x10: ffff8000836e8e78 x9 : 0000000000000000
+[  562.040846] x8 : ffff0004c3df4980 x7 : 0000000000000000 x6 : 000000000000000f
+[  562.047996] x5 : 0000000000000000 x4 : ffff8000857f8000 x3 : ffff800080e76a28
+[  562.055145] x2 : ffff800080eb8504 x1 : 0000000000000000 x0 : 0000000000000001
+[  562.062295] Call trace:
+[  562.064744]  call_s_stream+0xd4/0xf0
+[  562.068323]  vsp1_pipeline_stop+0x10c/0x2a4
+[  562.072509]  vsp1_du_setup_lif+0x334/0x478
+[  562.076609]  rcar_du_vsp_disable+0x1c/0x24
+[  562.080711]  rcar_du_crtc_atomic_disable+0x2f8/0x438
+[  562.085684]  disable_outputs+0x22c/0x338
+[  562.089611]  drm_atomic_helper_commit_modeset_disables+0x18/0x44
+[  562.095622]  rcar_du_atomic_commit_tail+0x90/0xd8
+[  562.100332]  commit_tail+0x9c/0x178
+[  562.103824]  drm_atomic_helper_commit+0x190/0x1a4
+[  562.108532]  drm_atomic_commit+0xa4/0x100
+[  562.112549]  drm_atomic_helper_set_config+0xd0/0x104
+[  562.117516]  drm_mode_setcrtc+0x1b8/0x6dc
+[  562.121532]  drm_ioctl_kernel+0xc4/0x174
+[  562.125460]  drm_ioctl+0x22c/0x4c0
+[  562.128865]  __arm64_sys_ioctl+0xa0/0xe0
+[  562.132795]  invoke_syscall+0x44/0x108
+[  562.136551]  el0_svc_common.constprop.0+0xb4/0xd4
+[  562.141259]  do_el0_svc+0x18/0x20
+[  562.144579]  el0_svc+0x3c/0xb8
+[  562.147641]  el0t_64_sync_handler+0xb8/0xbc
+[  562.151826]  el0t_64_sync+0x14c/0x150
+[  562.155492] irq event stamp: 24824
+[  562.158894] hardirqs last  enabled at (24823): [<ffff8000812def1c>] _raw_spin_unlock_irqrestore+0x6c/0x70
+[  562.168465] hardirqs last disabled at (24824): [<ffff8000812cc0d8>] el1_dbg+0x20/0x80
+[  562.176301] softirqs last  enabled at (23484): [<ffff80008001626c>] put_cpu_fpsimd_context+0x24/0x58
+[  562.185437] softirqs last disabled at (23482): [<ffff8000800161fc>] get_cpu_fpsimd_context+0x0/0x4c
+[  562.194486] ---[ end trace 0000000000000000 ]---
+[  562.213014] vsp1 fea28000.vsp: Underrun occurred at WPF0 (total underruns 1)
+
+
+Is the result OK? [yes/no]:

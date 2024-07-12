@@ -1,0 +1,9 @@
+
+root@salvator-x:~# insmod memd.ko
+[   73.583667] memd driver loaded
+root@salvator-x:~# 
+root@salvator-x:~# echo rd 0xe6150040 > /proc/reg
+[   74.784251]   mem read [E6150040] : 00020FDC
+root@salvator-x:~# 
+ 
+#### Result: OK ####

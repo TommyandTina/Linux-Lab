@@ -1,0 +1,57 @@
+
+root@salvator-x:~# modetest -M rcar-du -c | grep HDMI-A-1
+114	113	connected	HDMI-A-1       	530x300		25	113
+root@salvator-x:~# 
+root@salvator-x:~# modetest -M rcar-du -e | grep 113
+113	108	none	0x00000002	0x00000007
+root@salvator-x:~# 
+root@salvator-x:~# modetest -M rcar-du -p | grep -w 108
+108	132	(0,0)	(1024x768)
+57	108	132	0,0		0,0	0       	0x00000002
+root@salvator-x:~# 
+
+Please just plug in HDMI0 only, plug out all others and press any key to continue:
+
+
+------PLANE 57-------
+
+root@salvator-x:~# modetest -M rcar-du -P 57@108:800x600+20+20@RG16
+testing 800x600@RG16 overlay plane 57
+
+root@salvator-x:~# modetest -M rcar-du -P 57@108:800x600+20+20@AR15
+testing 800x600@AR15 overlay plane 57
+
+root@salvator-x:~# modetest -M rcar-du -P 57@108:800x600+20+20@XR15
+testing 800x600@XR15 overlay plane 57
+
+root@salvator-x:~# modetest -M rcar-du -P 57@108:800x600+20+20@XR24
+testing 800x600@XR24 overlay plane 57
+
+root@salvator-x:~# modetest -M rcar-du -P 57@108:800x600+20+20@AR24
+testing 800x600@AR24 overlay plane 57
+
+root@salvator-x:~# modetest -M rcar-du -P 57@108:800x600+20+20@UYVY
+testing 800x600@UYVY overlay plane 57
+
+root@salvator-x:~# modetest -M rcar-du -P 57@108:800x600+20+20@YUYV
+testing 800x600@YUYV overlay plane 57
+
+root@salvator-x:~# modetest -M rcar-du -P 57@108:800x600+20+20@NV12
+testing 800x600@NV12 overlay plane 57
+
+root@salvator-x:~# modetest -M rcar-du -P 57@108:800x600+20+20@NV21
+testing 800x600@NV21 overlay plane 57
+
+root@salvator-x:~# modetest -M rcar-du -P 57@108:800x600+20+20@NV16
+testing 800x600@NV16 overlay plane 57
+
+root@salvator-x:~# modetest -M rcar-du -P 57@108:800x600+20+20@NV61
+testing 800x600@NV61 overlay plane 57
+
+root@salvator-x:~# 
+root@salvator-x:~# 
+
+Is the result OK? [yes/no]:
+
+ 
+#### Result: OK ####

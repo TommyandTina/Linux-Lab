@@ -1,0 +1,107 @@
+
+root@salvator-x:~# find /sys/devices/platform/soc/ee0a0100.usb/ -name sd*
+/sys/devices/platform/soc/ee0a0100.usb/usb4/4-1/4-1:1.0/host2/target2:0:0/2:0:0:0/block/sdb
+/sys/devices/platform/soc/ee0a0100.usb/usb4/4-1/4-1:1.0/host2/target2:0:0/2:0:0:0/block/sdb/sdb1
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sdb1 /mnt
+[  158.294332] EXT4-fs (sdb1): mounted filesystem a0f764ae-8a75-41cb-a067-cb7cbed8b416 r/w with ordered data mode. Quota mode: none.
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file-300M bs=1M count=300; sync
+300+0 records in
+300+0 records out
+314572800 bytes (315 MB, 300 MiB) copied, 3.53774 s, 88.9 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file-300M /mnt
+
+Plug out usb immediately!
+
+[  165.120942] usb 4-1: USB disconnect, device number 3
+[  165.164211] device offline error, dev sdb, sector 296960 op 0x1:(WRITE) flags 0x4000 phys_seg 2 prio class 2
+[  165.174974] device offline error, dev sdb, sector 297200 op 0x1:(WRITE) flags 0x4000 phys_seg 2 prio class 2
+[  165.185043] device offline error, dev sdb, sector 297440 op 0x1:(WRITE) flags 0x4000 phys_seg 2 prio class 2
+[  165.195443] device offline error, dev sdb, sector 297680 op 0x1:(WRITE) flags 0x4000 phys_seg 2 prio class 2
+[  165.205386] device offline error, dev sdb, sector 297920 op 0x1:(WRITE) flags 0x4000 phys_seg 2 prio class 2
+[  165.215319] device offline error, dev sdb, sector 298160 op 0x1:(WRITE) flags 0x4000 phys_seg 2 prio class 2
+[  165.225235] device offline error, dev sdb, sector 298400 op 0x1:(WRITE) flags 0x4000 phys_seg 2 prio class 2
+[  165.235153] device offline error, dev sdb, sector 298640 op 0x1:(WRITE) flags 0x4000 phys_seg 2 prio class 2
+[  165.245067] device offline error, dev sdb, sector 298880 op 0x1:(WRITE) flags 0x4000 phys_seg 2 prio class 2
+[  165.254984] device offline error, dev sdb, sector 299120 op 0x1:(WRITE) flags 0x4000 phys_seg 2 prio class 2
+[  165.292062] EXT4-fs warning (device sdb1): ext4_end_bio:343: I/O error 17 writing to inode 12 starting block 39160)
+[  165.305566] Buffer I/O error on device sdb1, logical block 36864
+[  165.312116] Buffer I/O error on device sdb1, logical block 36865
+[  165.318196] Buffer I/O error on device sdb1, logical block 36866
+[  165.324269] Buffer I/O error on device sdb1, logical block 36867
+[  165.330335] Buffer I/O error on device sdb1, logical block 36868
+[  165.332362] EXT4-fs warning (device sdb1): ext4_end_bio:343: I/O error 17 writing to inode 12 starting block 41208)
+[  165.336391] Buffer I/O error on device sdb1, logical block 36869
+[  165.352926] Buffer I/O error on device sdb1, logical block 36870
+[  165.359009] Buffer I/O error on device sdb1, logical block 36871
+[  165.365078] Buffer I/O error on device sdb1, logical block 36872
+[  165.371143] Buffer I/O error on device sdb1, logical block 36873
+[  165.374458] EXT4-fs warning (device sdb1): ext4_end_bio:343: I/O error 17 writing to inode 12 starting block 43256)
+[  165.416155] EXT4-fs warning (device sdb1): ext4_end_bio:343: I/O error 17 writing to inode 12 starting block 45304)
+[  165.454551] EXT4-fs warning (device sdb1): ext4_end_bio:343: I/O error 17 writing to inode 12 starting block 47352)
+[  165.492972] EXT4-fs warning (device sdb1): ext4_end_bio:343: I/O error 17 writing to inode 12 starting block 49400)
+[  165.531284] EXT4-fs warning (device sdb1): ext4_end_bio:343: I/O error 17 writing to inode 12 starting block 51448)
+[  165.570696] EXT4-fs warning (device sdb1): ext4_end_bio:343: I/O error 17 writing to inode 12 starting block 53496)
+[  165.609006] EXT4-fs warning (device sdb1): ext4_end_bio:343: I/O error 17 writing to inode 12 starting block 55544)
+[  165.640741] EXT4-fs warning (device sdb1): ext4_end_bio:343: I/O error 17 writing to inode 12 starting block 57592)
+[  165.686092] Buffer I/O error on dev sdb1, logical block 15237120, lost sync page write
+[  165.694316] JBD2: I/O error when updating journal superblock for sdb1-8.
+[  165.697298] EXT4-fs error (device sdb1): ext4_check_bdev_write_error:224: comm cp: Error while async write back metadata
+[  165.701294] Aborting journal on device sdb1-8.
+[  165.718435] EXT4-fs error (device sdb1): ext4_journal_check_start:84: comm cp: Detected aborted journal
+[  165.723490] EXT4-fs error (device sdb1) in ext4_reserve_inode_write:5761: Journal has aborted
+[  165.738049] Buffer I/O error on dev sdb1, logical block 15237120, lost sync page write
+[  165.746155] JBD2: I/O error when updating journal superblock for sdb1-8.
+[  165.746444] Buffer I/O error on dev sdb1, logical block 0, lost sync page write
+[  165.760527] EXT4-fs (sdb1): I/O error while writing superblock
+[  165.761015] EXT4-fs (sdb1): previous I/O error to superblock detected
+[  165.773720] Buffer I/O error on dev sdb1, logical block 0, lost sync page write
+[  165.781390] EXT4-fs (sdb1): I/O error while writing superblock
+[  165.781470] EXT4-fs (sdb1): previous I/O error to superblock detected
+[  165.787285] EXT4-fs (sdb1): Remounting filesystem read-only
+[  165.793804] Buffer I/O error on dev sdb1, logical block 0, lost sync page write
+[  165.806744] EXT4-fs (sdb1): I/O error while writing superblock
+cp: error writing '/mnt/file-300M': Input/output error
+root@salvator-x:~# [  165.864730] sd 2:0:0:0: [sdb] Synchronizing SCSI cache
+[  165.870151] sd 2:0:0:0: [sdb] Synchronize Cache(10) failed: Result: hostbyte=0x01 driverbyte=DRIVER_OK
+
+root@salvator-x:~#  
+root@salvator-x:~# 
+Plug in usb!
+
+[  174.180659] usb 4-1: new high-speed USB device number 4 using ehci-platform
+[  174.344063] usb-storage 4-1:1.0: USB Mass Storage device detected
+[  174.351639] scsi host1: usb-storage 4-1:1.0
+[  175.363630] scsi 1:0:0:0: Direct-Access     SanDisk  Extreme Pro      0    PQ: 0 ANSI: 6
+[  175.376405] sd 1:0:0:0: [sda] 250085376 512-byte logical blocks: (128 GB/119 GiB)
+[  175.385266] sd 1:0:0:0: [sda] Write Protect is off
+[  175.391495] sd 1:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[  175.411373]  sda: sda1
+[  175.415267] sd 1:0:0:0: [sda] Attached SCSI removable disk
+
+root@salvator-x:~#  
+root@salvator-x:~# 
+root@salvator-x:~# find /sys/devices/platform/soc/ee0a0100.usb/ -name sd*
+/sys/devices/platform/soc/ee0a0100.usb/usb4/4-1/4-1:1.0/host1/target1:0:0/1:0:0:0/block/sda
+/sys/devices/platform/soc/ee0a0100.usb/usb4/4-1/4-1:1.0/host1/target1:0:0/1:0:0:0/block/sda/sda1
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sda1 /mnt
+[  179.632240] EXT4-fs (sda1): recovery complete
+[  179.636697] EXT4-fs (sda1): mounted filesystem a0f764ae-8a75-41cb-a067-cb7cbed8b416 r/w with ordered data mode. Quota mode: none.
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file-300M /mnt
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file-300M /mnt/file-300M
+14ef2b17c181f827a1fa55aca160a87f  /tmp/file-300M
+14ef2b17c181f827a1fa55aca160a87f  /mnt/file-300M
+root@salvator-x:~# 
+root@salvator-x:~# umount /mnt
+[  206.302027] EXT4-fs (sda1): unmounting filesystem a0f764ae-8a75-41cb-a067-cb7cbed8b416.
+root@salvator-x:~# 
+root@salvator-x:~# umount /mnt
+[  207.729712] EXT4-fs (sdb1): unmounting filesystem a0f764ae-8a75-41cb-a067-cb7cbed8b416.
+root@salvator-x:~# 
+ 
+#### Result: OK ####

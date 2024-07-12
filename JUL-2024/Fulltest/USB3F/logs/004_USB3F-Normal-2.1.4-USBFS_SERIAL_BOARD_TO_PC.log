@@ -1,0 +1,53 @@
+----------- BOARD ------------
+
+root@salvator-x:~# modprobe g_serial
+[   41.992959] g_serial gadget.0: Gadget Serial v2.4
+[   41.997846] g_serial gadget.0: g_serial ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/state
+not attached
+root@salvator-x:~# 
+root@salvator-x:~# mount -t debugfs none /sys/kernel/debug/
+mount: /sys/kernel/debug: none already mounted or mount point busy.
+root@salvator-x:~# 
+root@salvator-x:~# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/state
+configured
+root@salvator-x:~# 
+root@salvator-x:~# ls /dev/ttyGS0
+/dev/ttyGS0
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+[710204.460797] usb 2-4: new SuperSpeed USB device number 52 using xhci_hcd
+[710204.481491] usb 2-4: New USB device found, idVendor=0525, idProduct=a4a7, bcdDevice= 6.07
+[710204.481501] usb 2-4: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[710204.481506] usb 2-4: Product: Gadget Serial v2.4
+[710204.481511] usb 2-4: Manufacturer: Linux 6.7.0-arm64-renesas with renesas_usb3
+[710204.487918] cdc_acm 2-4:2.0: ttyACM0: USB ACM device
+
+ls /dev/ttyACM0
+/dev/ttyACM0
+
+----------- BOARD ------------
+
+root@salvator-x:~# cat > /dev/ttyGS0
+abcd...
+123456
+^C
+root@salvator-x:~# 
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+cat /dev/ttyACM0
+abcd...
+123456
+
+root@salvator-x:~# rmmod g_serial
+root@salvator-x:~# 
+ 
+#### Result: OK ####

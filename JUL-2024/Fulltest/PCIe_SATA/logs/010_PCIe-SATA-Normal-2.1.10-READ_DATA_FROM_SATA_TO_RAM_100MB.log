@@ -1,0 +1,27 @@
+
+root@salvator-x:~# find /sys/devices/platform/soc/fe000000.pcie/ -name sd*
+/sys/devices/platform/soc/fe000000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/ata1/host0/target0:0:0/0:0:0:0/block/sda
+/sys/devices/platform/soc/fe000000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/ata1/host0/target0:0:0/0:0:0:0/block/sda/sda2
+/sys/devices/platform/soc/fe000000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/ata1/host0/target0:0:0/0:0:0:0/block/sda/sda1
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sda2 /mnt/
+[   93.097936] EXT4-fs (sda2): mounted filesystem b6983ff4-1baa-4715-a70a-43406ca43f2f r/w with ordered data mode. Quota mode: none.
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/mnt/file-100M bs=1M count=100
+100+0 records in
+100+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 1.10243 s, 95.1 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# cp /mnt/file-100M /tmp/
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file-100M /mnt/file-100M
+8e156c643720eb4708f3609862d877cb  /tmp/file-100M
+8e156c643720eb4708f3609862d877cb  /mnt/file-100M
+root@salvator-x:~# 
+root@salvator-x:~# umount /mnt
+[   99.301687] EXT4-fs (sda2): unmounting filesystem b6983ff4-1baa-4715-a70a-43406ca43f2f.
+root@salvator-x:~# 
+root@salvator-x:~# rm /tmp/file-100M
+root@salvator-x:~# 
+ 
+#### Result: OK ####

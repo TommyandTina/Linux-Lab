@@ -1,0 +1,86 @@
+
+root@salvator-x:~# find /sys/devices/platform/soc/ee300000.sata/ -name sd*
+/sys/devices/platform/soc/ee300000.sata/ata1/host0/target0:0:0/0:0:0:0/block/sda
+/sys/devices/platform/soc/ee300000.sata/ata1/host0/target0:0:0/0:0:0:0/block/sda/sda2
+/sys/devices/platform/soc/ee300000.sata/ata1/host0/target0:0:0/0:0:0:0/block/sda/sda1
+root@salvator-x:~# 
+root@salvator-x:~# cd /sys/bus/platform/drivers/sata_rcar
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# 
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# ls -d ee300000.sata
+ee300000.sata
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# 
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# echo ee300000.sata > unbind
+[  487.602221] sd 0:0:0:0: [sda] Synchronizing SCSI cache
+[  487.617408] ata1.00: Entering standby power mode
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# 
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# ls -d ee300000.sata
+ls: cannot access 'ee300000.sata': No such file or directory
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# 
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# cd ~
+root@salvator-x:~# 
+root@salvator-x:~# ls /dev/sda
+ls: cannot access '/dev/sda': No such file or directory
+root@salvator-x:~# 
+root@salvator-x:~# cd /sys/bus/platform/drivers/sata_rcar
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# 
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# echo ee300000.sata > bind 
+[  495.958680] sata_rcar ee300000.sata: deferred probe timeout, ignoring dependency
+[  495.976103] scsi host0: sata_rcar
+[  495.987506] ata2: SATA max UDMA/133 irq 202 lpm-pol 0
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# [  496.414185] ata2: link resume succeeded after 1 retries
+[  496.532694] ata2: SATA link up 6.0 Gbps (SStatus 133 SControl 300)
+[  496.549140] ata2.00: supports DRM functions and may not be fully accessible
+[  496.563895] ata2.00: ATA-11: Samsung SSD 860 PRO 256GB, RVM01B6Q, max UDMA/133
+[  496.577967] ata2.00: 500118192 sectors, multi 1: LBA48 NCQ (depth 0/32)
+[  496.594528] ata2.00: Features: Trust Dev-Sleep
+[  496.608917] ata2.00: supports DRM functions and may not be fully accessible
+[  496.626725] ata2.00: configured for UDMA/133
+[  496.638255] scsi 0:0:0:0: Direct-Access     ATA      Samsung SSD 860  1B6Q PQ: 0 ANSI: 5
+[  496.654753] ata2.00: Enabling discard_zeroes_data
+[  496.666477] sd 0:0:0:0: [sda] 500118192 512-byte logical blocks: (256 GB/238 GiB)
+[  496.680956] sd 0:0:0:0: [sda] Write Protect is off
+[  496.690394] sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[  496.706406] sd 0:0:0:0: [sda] Preferred minimum I/O size 512 bytes
+[  496.717428] ata2.00: Enabling discard_zeroes_data
+[  496.727369]  sda: sda1 sda2
+[  496.733709] sd 0:0:0:0: [sda] Attached SCSI disk
+
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# ls -l
+total 0
+--w------- 1 root root 4096 Jan 17 02:41 bind
+lrwxrwxrwx 1 root root    0 Jan 17 02:41 ee300000.sata -> ../../../../devices/platform/soc/ee300000.sata
+lrwxrwxrwx 1 root root    0 Jan 17 02:41 module -> ../../../../module/sata_rcar
+--w------- 1 root root 4096 Jan 17 02:33 uevent
+--w------- 1 root root 4096 Jan 17 02:41 unbind
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# 
+root@salvator-x:/sys/bus/platform/drivers/sata_rcar# cd ~
+root@salvator-x:~# 
+root@salvator-x:~# find /sys/devices/platform/soc/ee300000.sata/ -name sd*
+/sys/devices/platform/soc/ee300000.sata/ata2/host0/target0:0:0/0:0:0:0/block/sda
+/sys/devices/platform/soc/ee300000.sata/ata2/host0/target0:0:0/0:0:0:0/block/sda/sda2
+/sys/devices/platform/soc/ee300000.sata/ata2/host0/target0:0:0/0:0:0:0/block/sda/sda1
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=/tmp/file-350M bs=1M count=350
+350+0 records in
+350+0 records out
+367001600 bytes (367 MB, 350 MiB) copied, 2.70554 s, 136 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sda2 /mnt/
+[  508.225343] EXT4-fs (sda2): mounting ext3 file system using the ext4 subsystem
+[  508.243880] EXT4-fs (sda2): mounted filesystem a2c57eea-25c1-4649-82f0-9ab8c84ea7cd r/w with ordered data mode. Quota mode: none.
+root@salvator-x:~# 
+root@salvator-x:~# rm -rf /mnt/*; sync
+root@salvator-x:~# 
+root@salvator-x:~# cp /tmp/file-350M /mnt/
+root@salvator-x:~# 
+root@salvator-x:~# md5sum /tmp/file-350M /mnt/file-350M
+8db7bbcc5a0a0a9c3b86cb8badb3edce  /tmp/file-350M
+8db7bbcc5a0a0a9c3b86cb8badb3edce  /mnt/file-350M
+root@salvator-x:~# 
+root@salvator-x:~# umount /mnt
+[  517.217470] EXT4-fs (sda2): unmounting filesystem a2c57eea-25c1-4649-82f0-9ab8c84ea7cd.
+root@salvator-x:~# 
+root@salvator-x:~# rm /tmp/file-350M
+root@salvator-x:~# 
+ 
+#### Result: OK ####

@@ -1,0 +1,1145 @@
+
+=> reset
+resetting ...
+NOTICE:  BL2: R-Car Gen3 Initial Program Loader(CA57) Rev.4.0.0
+NOTICE:  BL2: PRR is R-Car H3 Ver.3.0
+NOTICE:  BL2: Board is Salvator-XS Rev.1.0
+NOTICE:  BL2: Boot device is HyperFlash(160MHz)
+NOTICE:  BL2: LCM state is CM
+NOTICE:  AVS setting succeeded. DVFS_SetVID=0x53
+NOTICE:  BL2: DDR3200(rev.0.42)
+NOTICE:  BL2: [COLD_BOOT]
+NOTICE:  BL2: DRAM Split is 4ch(DDR f)
+NOTICE:  BL2: QoS is default setting(rev.0.11)
+NOTICE:  BL2: DRAM refresh interval 1.95 usec
+NOTICE:  BL2: Periodic Write DQ Training
+NOTICE:  BL2: CH0: 400000000 - 47fffffff, 2 GiB
+NOTICE:  BL2: CH1: 500000000 - 57fffffff, 2 GiB
+NOTICE:  BL2: CH2: 600000000 - 67fffffff, 2 GiB
+NOTICE:  BL2: CH3: 700000000 - 77fffffff, 2 GiB
+NOTICE:  BL2: FDT at 0xe6326f78
+NOTICE:  BL2: v2.9(release):9cdb21f75-dirty
+NOTICE:  BL2: Built : 15:23:32, Jun 30 2024
+NOTICE:  BL2: Normal boot
+NOTICE:  BL2: dst=0xe6326800 src=0x8180000 len=512(0x200)
+NOTICE:  BL2: dst=0x43f00000 src=0x8180400 len=6144(0x1800)
+NOTICE:  rcar_file_len: len: 0x0003e000
+NOTICE:  BL2: dst=0x44000000 src=0x81c0000 len=253952(0x3e000)
+NOTICE:  rcar_file_len: len: 0x00200000
+NOTICE:  BL2: dst=0x44100000 src=0x8200000 len=2097152(0x200000)
+NOTICE:  rcar_file_len: len: 0x00100000
+NOTICE:  BL2: dst=0x50000000 src=0x8640000 len=1048576(0x100000)
+NOTICE:  BL2: Booting BL31
+
+
+U-Boot 2020.10 (Jun 30 2024 - 15:21:36 +0000)
+
+CPU: Renesas Electronics R8A7795 rev 3.0
+Model: Renesas Salvator-X 2nd version board based on r8a77951
+DRAM:  7.9 GiB
+RAM Configuration:
+Bank #0: 0x048000000 - 0x0bfffffff, 1.9 GiB
+Bank #1: 0x500000000 - 0x57fffffff, 2 GiB
+Bank #2: 0x600000000 - 0x67fffffff, 2 GiB
+Bank #3: 0x700000000 - 0x77fffffff, 2 GiB
+
+MMC:   sd@ee100000: 0, sd@ee140000: 1, sd@ee160000: 2
+Loading Environment from MMC... OK
+In:    serial@e6e88000
+Out:   serial@e6e88000
+Err:   serial@e6e88000
+Net:   eth0: ethernet@e6800000
+Hit any key to stop autoboot:  0
+ethernet@e6800000 Waiting for PHY auto negotiation to complete......... done
+Using ethernet@e6800000 device
+TFTP from server 192.168.8.8; our IP address is 192.168.8.30
+Filename 'long.trinh-tien/E3/Image_USB3F'.
+Load address: 0x48080000
+Loading: #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #############
+         1.9 MiB/s
+done
+Bytes transferred = 33587712 (2008200 hex)
+Using ethernet@e6800000 device
+TFTP from server 192.168.8.8; our IP address is 192.168.8.30
+Filename 'h3/r8a77951-salvator-xs.dtb'.
+Load address: 0x48000000
+Loading: #######
+         2.4 MiB/s
+done
+Bytes transferred = 89641 (15e29 hex)
+Moving Image from 0x48080000 to 0x48200000, end=4a290000
+## Flattened Device Tree blob at 48000000
+   Booting using the fdt blob at 0x48000000
+   Loading Device Tree to 0000000053fe7000, end 0000000053fffe28 ... OK
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x411fd073]
+[    0.000000] Linux version 5.10.218-yocto-standard-00832-ga6b0abad730d-dirty (rvc@L410730-CL011) (aarch64-poky-linux-gcc (GCC) 13.2.0, GNU ld (GNU Binutils) 2.42.0.20240216) #5 SMP PREEMPT Tue Jul 9 15:53:41 +07 2024
+[    0.000000] Machine model: Renesas Salvator-X 2nd version board based on r8a77951
+[    0.000000] efi: UEFI not found.
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000057000000, size 16 MiB
+[    0.000000] OF: reserved mem: initialized node linux,adsp@57000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000058000000, size 384 MiB
+[    0.000000] OF: reserved mem: initialized node linux,cma@58000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000070000000, size 256 MiB
+[    0.000000] OF: reserved mem: initialized node linux,multimedia@70000000, compatible id shared-dma-pool
+[    0.000000] NUMA: No NUMA configuration found
+[    0.000000] NUMA: Faking a node at [mem 0x0000000048000000-0x000000077fffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0x77efdcb00-0x77efdefff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000048000000-0x000000007fffffff]
+[    0.000000]   DMA32    [mem 0x0000000080000000-0x00000000ffffffff]
+[    0.000000]   Normal   [mem 0x0000000100000000-0x000000077fffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000048000000-0x0000000053ffffff]
+[    0.000000]   node   0: [mem 0x0000000054000000-0x0000000056ffffff]
+[    0.000000]   node   0: [mem 0x0000000057000000-0x00000000bfffffff]
+[    0.000000]   node   0: [mem 0x0000000500000000-0x000000057fffffff]
+[    0.000000]   node   0: [mem 0x0000000600000000-0x000000067fffffff]
+[    0.000000]   node   0: [mem 0x0000000700000000-0x000000077fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000048000000-0x000000077fffffff]
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS resident on physical CPU 0x0
+[    0.000000] psci: SMC Calling Convention v1.2
+[    0.000000] percpu: Embedded 23 pages/cpu s56984 r8192 d29032 u94208
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: EL2 vector hardening
+[    0.000000] CPU features: detected: Spectre-v2
+[    0.000000] CPU features: detected: ARM errata 1165522, 1319367, or 1530923
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: detected: ARM erratum 1742098
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 2032128
+[    0.000000] Policy zone: Normal
+[    0.000000] Kernel command line: rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/long.trinh-tien/E3/rootfs_fromKien,nfsvers=4 ip=192.168.8.20 baudrate=115200
+[    0.000000] Dentry cache hash table entries: 1048576 (order: 11, 8388608 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] software IO TLB: mapped [mem 0x000000004ffe7000-0x0000000053fe7000] (64MB)
+[    0.000000] Memory: 7276660K/8257536K available (15488K kernel code, 2848K rwdata, 8208K rodata, 6144K init, 520K bss, 309132K reserved, 671744K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=8, Nodes=1
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu:     RCU event tracing is enabled.
+[    0.000000] rcu:     RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=8.
+[    0.000000]  Trampoline variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=8
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] arch_timer: cp15 timer(s) running at 8.32MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x1eb398c07, max_idle_ns: 440795202503 ns
+[    0.000003] sched_clock: 56 bits at 8MHz, resolution 120ns, wraps every 2199023255503ns
+[    0.000214] Console: colour dummy device 80x25
+[    0.000416] printk: console [tty0] enabled
+[    0.000492] Calibrating delay loop (skipped), value calculated using timer frequency.. 16.64 BogoMIPS (lpj=33280)
+[    0.000506] pid_max: default: 32768 minimum: 301
+[    0.000563] LSM: Security Framework initializing
+[    0.000646] Mount-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.000696] Mountpoint-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.002121] rcu: Hierarchical SRCU implementation.
+[    0.003711] Detected Renesas R-Car Gen3 r8a7795 ES3.0
+[    0.005833] EFI services will not be available.
+[    0.006178] smp: Bringing up secondary CPUs ...
+[    0.006625] Detected PIPT I-cache on CPU1
+[    0.006680] CPU1: Booted secondary processor 0x0000000001 [0x411fd073]
+[    0.007165] Detected PIPT I-cache on CPU2
+[    0.007191] CPU2: Booted secondary processor 0x0000000002 [0x411fd073]
+[    0.007606] Detected PIPT I-cache on CPU3
+[    0.007629] CPU3: Booted secondary processor 0x0000000003 [0x411fd073]
+[    0.008055] CPU features: detected: ARM erratum 845719
+[    0.008067] Detected VIPT I-cache on CPU4
+[    0.008113] CPU4: Booted secondary processor 0x0000000100 [0x410fd034]
+[    0.008597] Detected VIPT I-cache on CPU5
+[    0.008624] CPU5: Booted secondary processor 0x0000000101 [0x410fd034]
+[    0.009052] Detected VIPT I-cache on CPU6
+[    0.009079] CPU6: Booted secondary processor 0x0000000102 [0x410fd034]
+[    0.009513] Detected VIPT I-cache on CPU7
+[    0.009541] CPU7: Booted secondary processor 0x0000000103 [0x410fd034]
+[    0.009619] smp: Brought up 1 node, 8 CPUs
+[    0.009681] SMP: Total of 8 processors activated.
+[    0.009688] CPU features: detected: 32-bit EL0 Support
+[    0.009696] CPU features: detected: CRC32 instructions
+[    0.009703] CPU features: detected: 32-bit EL1 Support
+[    0.022747] CPU: All CPU(s) started at EL1
+[    0.022801] alternatives: patching kernel code
+[    0.023923] devtmpfs: initialized
+[    0.030448] KASLR disabled due to lack of seed
+[    0.030598] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.030619] futex hash table entries: 2048 (order: 5, 131072 bytes, linear)
+[    0.039266] pinctrl core: initialized pinctrl subsystem
+[    0.040721] DMI not present or invalid.
+[    0.041210] NET: Registered protocol family 16
+[    0.042086] DMA: preallocated 1024 KiB GFP_KERNEL pool for atomic allocations
+[    0.042269] DMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.042555] DMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.042592] audit: initializing netlink subsys (disabled)
+[    0.042767] audit: type=2000 audit(0.040:1): state=initialized audit_enabled=0 res=1
+[    0.043905] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.044408] cpuidle: using governor menu
+[    0.044549] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.044669] ASID allocator initialised with 65536 entries
+[    0.045930] Serial: AMBA PL011 UART driver
+[    0.089090] sh-pfc e6060000.pinctrl: r8a77951_pfc support registered
+[    0.103305] HugeTLB registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.103319] HugeTLB registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.103326] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.103333] HugeTLB registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.104268] cryptd: max_cpu_qlen set to 1000
+[    0.106422] ACPI: Interpreter disabled.
+[    0.110482] rcar-avs: use avs value: 0
+[    0.110499] rcar-avs: cpu@0 is running with: opp_table0
+[    0.110512] rcar-avs: cpu@1 is running with: opp_table0
+[    0.110524] rcar-avs: cpu@2 is running with: opp_table0
+[    0.110533] rcar-avs: cpu@3 is running with: opp_table0
+[    0.110611] rcar-avs: gsx@fd000000 is running with: gsx_opp_table0
+[    0.111999] iommu: Default domain type: Translated
+[    0.112565] ipmmu-vmsa e67b0000.iommu: IPMMU context 0 is reserved
+[    0.113510] vgaarb: loaded
+[    0.113718] SCSI subsystem initialized
+[    0.113947] usbcore: registered new interface driver usbfs
+[    0.113973] usbcore: registered new interface driver hub
+[    0.113996] usbcore: registered new device driver usb
+[    0.117672] i2c-sh_mobile e60b0000.i2c: I2C adapter 7, bus speed 400000 Hz
+[    0.118217] mc: Linux media interface: v0.10
+[    0.118238] videodev: Linux video capture interface: v2.00
+[    0.118287] pps_core: LinuxPPS API ver. 1 registered
+[    0.118295] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.118307] PTP clock support registered
+[    0.118471] EDAC MC: Ver: 3.0.0
+[    0.120380] FPGA manager framework
+[    0.120436] Advanced Linux Sound Architecture Driver Initialized.
+[    0.120967] clocksource: Switched to clocksource arch_sys_counter
+[    0.121115] VFS: Disk quotas dquot_6.6.0
+[    0.121156] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    0.121282] pnp: PnP ACPI: disabled
+[    0.124519] NET: Registered protocol family 2
+[    0.124913] IP idents hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.127120] tcp_listen_portaddr_hash hash table entries: 4096 (order: 4, 65536 bytes, linear)
+[    0.127194] TCP established hash table entries: 65536 (order: 7, 524288 bytes, linear)
+[    0.127478] TCP bind hash table entries: 65536 (order: 8, 1048576 bytes, linear)
+[    0.128068] TCP: Hash tables configured (established 65536 bind 65536)
+[    0.128184] UDP hash table entries: 4096 (order: 5, 131072 bytes, linear)
+[    0.128296] UDP-Lite hash table entries: 4096 (order: 5, 131072 bytes, linear)
+[    0.128510] NET: Registered protocol family 1
+[    0.128849] RPC: Registered named UNIX socket transport module.
+[    0.128858] RPC: Registered udp transport module.
+[    0.128864] RPC: Registered tcp transport module.
+[    0.128870] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.128883] PCI: CLS 0 bytes, default 64
+[    0.129781] hw perfevents: enabled with armv8_cortex_a53 PMU driver, 7 counters available
+[    0.130074] hw perfevents: enabled with armv8_cortex_a57 PMU driver, 7 counters available
+[    0.130706] kvm [1]: HYP mode not available
+[    0.133492] Initialise system trusted keyrings
+[    0.133622] workingset: timestamp_bits=42 max_order=21 bucket_order=0
+[    0.136669] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.137066] NFS: Registering the id_resolver key type
+[    0.137094] Key type id_resolver registered
+[    0.137100] Key type id_legacy registered
+[    0.137150] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    0.137159] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    0.137261] 9p: Installing v9fs 9p2000 file system support
+[    0.162696] Key type asymmetric registered
+[    0.162706] Asymmetric key parser 'x509' registered
+[    0.162735] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 243)
+[    0.162745] io scheduler mq-deadline registered
+[    0.162754] io scheduler kyber registered
+[    0.178285] gpio_rcar e6050000.gpio: driving 16 GPIOs
+[    0.178606] gpio_rcar e6051000.gpio: driving 29 GPIOs
+[    0.178881] gpio_rcar e6052000.gpio: driving 15 GPIOs
+[    0.179144] gpio_rcar e6053000.gpio: driving 16 GPIOs
+[    0.179404] gpio_rcar e6054000.gpio: driving 18 GPIOs
+[    0.179670] gpio_rcar e6055000.gpio: driving 26 GPIOs
+[    0.179942] gpio_rcar e6055400.gpio: driving 32 GPIOs
+[    0.180203] gpio_rcar e6055800.gpio: driving 4 GPIOs
+[    0.183082] rcar-pcie fe000000.pcie: host bridge /soc/pcie@fe000000 ranges:
+[    0.183110] rcar-pcie fe000000.pcie:       IO 0x00fe100000..0x00fe1fffff -> 0x0000000000
+[    0.183132] rcar-pcie fe000000.pcie:      MEM 0x00fe200000..0x00fe3fffff -> 0x00fe200000
+[    0.183150] rcar-pcie fe000000.pcie:      MEM 0x0030000000..0x0037ffffff -> 0x0030000000
+[    0.183164] rcar-pcie fe000000.pcie:      MEM 0x0038000000..0x003fffffff -> 0x0038000000
+[    0.183181] rcar-pcie fe000000.pcie:   IB MEM 0x0040000000..0x007fffffff -> 0x0040000000
+[    0.183221] rcar-pcie fe000000.pcie: no pcie3v3 regulator found
+[    0.183231] rcar-pcie fe000000.pcie: no pcie1v8 regulator found
+[    0.248683] rcar-pcie fe000000.pcie: PCIe link down
+[    0.248862] rcar-pcie ee800000.pcie: host bridge /soc/pcie@ee800000 ranges:
+[    0.248885] rcar-pcie ee800000.pcie:       IO 0x00ee900000..0x00ee9fffff -> 0x0000000000
+[    0.248905] rcar-pcie ee800000.pcie:      MEM 0x00eea00000..0x00eebfffff -> 0x00eea00000
+[    0.248923] rcar-pcie ee800000.pcie:      MEM 0x00c0000000..0x00c7ffffff -> 0x00c0000000
+[    0.248936] rcar-pcie ee800000.pcie:      MEM 0x00c8000000..0x00cfffffff -> 0x00c8000000
+[    0.248953] rcar-pcie ee800000.pcie:   IB MEM 0x0040000000..0x007fffffff -> 0x0040000000
+[    0.248999] rcar-pcie ee800000.pcie: no pcie3v3 regulator found
+[    0.249009] rcar-pcie ee800000.pcie: no pcie1v8 regulator found
+[    0.316667] rcar-pcie ee800000.pcie: PCIe link down
+[    0.319081] EINJ: ACPI disabled.
+[    0.351434] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    0.353860] SuperH (H)SCI(F) driver initialized
+[    0.354300] e6550000.serial: ttySC1 at MMIO 0xe6550000 (irq = 42, base_baud = 0) is a hscif
+[    0.354912] e6e88000.serial: ttySC0 at MMIO 0xe6e88000 (irq = 128, base_baud = 0) is a scif
+[    1.563645] printk: console [ttySC0] enabled
+[    1.568994] msm_serial: driver initialized
+[    1.579251] rcar-dw-hdmi fead0000.hdmi: Detected HDMI TX controller v2.01a with HDCP (DWC HDMI 2.0 TX PHY)
+[    1.589147] rcar-dw-hdmi fead0000.hdmi: registered DesignWare HDMI I2C bus driver
+[    1.597363] rcar-dw-hdmi feae0000.hdmi: Detected HDMI TX controller v2.01a with HDCP (DWC HDMI 2.0 TX PHY)
+[    1.607205] rcar-dw-hdmi feae0000.hdmi: registered DesignWare HDMI I2C bus driver
+[    1.622450] loop: module loaded
+[    1.626961] megasas: 07.714.04.00-rc1
+[    1.632674] scsi host0: sata_rcar
+[    1.636148] ata1: SATA max UDMA/133 irq 181
+[    1.645353] tun: Universal TUN/TAP device driver, 1.6
+[    1.651307] thunder_xcv, ver 1.0
+[    1.654561] thunder_bgx, ver 1.0
+[    1.657806] nicpf, ver 1.0
+[    1.661892] hclge is initializing
+[    1.665232] hns3: Hisilicon Ethernet Network Driver for Hip08 Family - version
+[    1.672456] hns3: Copyright (c) 2017 Huawei Corporation.
+[    1.677794] e1000: Intel(R) PRO/1000 Network Driver
+[    1.682673] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[    1.688440] e1000e: Intel(R) PRO/1000 Network Driver
+[    1.693405] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    1.699346] igb: Intel(R) Gigabit Ethernet Network Driver
+[    1.704745] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    1.710330] igbvf: Intel(R) Gigabit Virtual Function Network Driver
+[    1.716596] igbvf: Copyright (c) 2009 - 2012 Intel Corporation.
+[    1.722916] sky2: driver version 1.30
+[    1.730547] ravb e6800000.ethernet eth0: Base address at 0xe6800000, 2e:09:0a:03:83:f6, IRQ 125.
+[    1.740768] VFIO - User Level meta-driver version: 0.3
+[    1.747871] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.754412] ehci-pci: EHCI PCI platform driver
+[    1.758874] ehci-platform: EHCI generic platform driver
+[    1.764480] ehci-platform ee0a0100.usb: EHCI Host Controller
+[    1.770165] ehci-platform ee0a0100.usb: new USB bus registered, assigned bus number 1
+[    1.778092] ehci-platform ee0a0100.usb: irq 175, io mem 0xee0a0100
+[    1.796979] ehci-platform ee0a0100.usb: USB 2.0 started, EHCI 1.10
+[    1.803491] hub 1-0:1.0: USB hub found
+[    1.807261] hub 1-0:1.0: 1 port detected
+[    1.811650] ehci-platform ee0c0100.usb: EHCI Host Controller
+[    1.817324] ehci-platform ee0c0100.usb: new USB bus registered, assigned bus number 2
+[    1.825212] ehci-platform ee0c0100.usb: irq 176, io mem 0xee0c0100
+[    1.844972] ehci-platform ee0c0100.usb: USB 2.0 started, EHCI 1.10
+[    1.851438] hub 2-0:1.0: USB hub found
+[    1.855212] hub 2-0:1.0: 1 port detected
+[    1.885012] ehci-platform ee0e0100.usb: EHCI Host Controller
+[    1.890686] ehci-platform ee0e0100.usb: new USB bus registered, assigned bus number 3
+[    1.898554] ehci-platform ee0e0100.usb: irq 177, io mem 0xee0e0100
+[    1.916974] ehci-platform ee0e0100.usb: USB 2.0 started, EHCI 1.10
+[    1.923400] hub 3-0:1.0: USB hub found
+[    1.927171] hub 3-0:1.0: 1 port detected
+[    1.931524] ehci-orion: EHCI orion driver
+[    1.935764] ehci-exynos: EHCI Exynos driver
+[    1.940055] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    1.946250] ohci-pci: OHCI PCI platform driver
+[    1.950730] ohci-platform: OHCI generic platform driver
+[    1.956246] ohci-platform ee0a0000.usb: Generic Platform OHCI controller
+[    1.962960] ohci-platform ee0a0000.usb: new USB bus registered, assigned bus number 4
+[    1.970836] ohci-platform ee0a0000.usb: irq 175, io mem 0xee0a0000
+[    2.056974] ata1: link resume succeeded after 1 retries
+[    2.067233] hub 4-0:1.0: USB hub found
+[    2.071000] hub 4-0:1.0: 1 port detected
+[    2.075328] ohci-platform ee0c0000.usb: Generic Platform OHCI controller
+[    2.082042] ohci-platform ee0c0000.usb: new USB bus registered, assigned bus number 5
+[    2.089913] ohci-platform ee0c0000.usb: irq 176, io mem 0xee0c0000
+[    2.168390] ata1: SATA link down (SStatus 0 SControl 300)
+[    2.183233] hub 5-0:1.0: USB hub found
+[    2.187005] hub 5-0:1.0: 1 port detected
+[    2.191317] ohci-platform ee0e0000.usb: Generic Platform OHCI controller
+[    2.198030] ohci-platform ee0e0000.usb: new USB bus registered, assigned bus number 6
+[    2.205903] ohci-platform ee0e0000.usb: irq 177, io mem 0xee0e0000
+[    2.299209] hub 6-0:1.0: USB hub found
+[    2.302976] hub 6-0:1.0: 1 port detected
+[    2.307309] ohci-exynos: OHCI Exynos driver
+[    2.311737] usbcore: registered new interface driver usb-storage
+[    2.319386] renesas_usbhs e6590000.usb: host probed
+[    2.324278] renesas_usbhs e6590000.usb: no transceiver found
+[    2.329998] renesas_usbhs e6590000.usb: gadget probed
+[    2.335217] renesas_usbhs e6590000.usb: probed
+[    2.340096] renesas_usbhs e659c000.usb: host probed
+[    2.344987] renesas_usbhs e659c000.usb: no transceiver found
+[    2.350699] renesas_usbhs e659c000.usb: gadget probed
+[    2.355894] renesas_usbhs e659c000.usb: probed
+[    2.361510] renesas_usb3 ee020000.usb: probed with phy
+[    2.368722] i2c /dev entries driver
+[    2.383375] cs2000-cp 2-004f: revision - C1
+[    2.387616] i2c-rcar e6510000.i2c: probed
+[    2.392440] pca953x 4-0020: supply vcc not found, using dummy regulator
+[    2.399143] pca953x 4-0020: using no AI
+[    2.403798] gpio-355 (PCIE/SATA switch): hogged as output/low
+[    2.416135] i2c-rcar e66d8000.i2c: probed
+[    2.421462] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@7/endpoint on port 7
+[    2.430441] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@8/endpoint on port 8
+[    2.439423] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@a/endpoint on port 10
+[    2.448492] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@b/endpoint on port 11
+[    2.457899] adv748x 4-0070: chip found @ 0xe0 revision 2143
+[    2.511306] rcar-csi2 fea80000.csi2: 1 lanes found
+[    2.516441] rcar-csi2 feaa0000.csi2: 4 lanes found
+[    2.525906] rcar-vin e6ef0000.video: Device registered as video0
+[    2.531986] rcar-vin e6ef1000.video: Device registered as video1
+[    2.538055] rcar-vin e6ef2000.video: Device registered as video2
+[    2.544125] rcar-vin e6ef3000.video: Device registered as video3
+[    2.550189] rcar-vin e6ef4000.video: Device registered as video4
+[    2.556253] rcar-vin e6ef5000.video: Device registered as video5
+[    2.562322] rcar-vin e6ef6000.video: Device registered as video6
+[    2.568387] rcar-vin e6ef7000.video: Device registered as video7
+[    2.577078] rcar_gen3_thermal e6198000.thermal: is using pseudo fixed FUSE values
+[    2.589025] rcar_gen3_thermal e6198000.thermal: TSC0: Loaded 1 trip points
+[    2.600261] rcar_gen3_thermal e6198000.thermal: TSC1: Loaded 1 trip points
+[    2.611418] rcar_gen3_thermal e6198000.thermal: TSC2: Loaded 3 trip points
+[    2.623211] sdhci: Secure Digital Host Controller Interface driver
+[    2.629416] sdhci: Copyright(c) Pierre Ossman
+[    2.634656] renesas_sdhi_internal_dmac ee100000.mmc: Got CD GPIO
+[    2.640690] renesas_sdhi_internal_dmac ee100000.mmc: Got WP GPIO
+[    2.649463] renesas_sdhi_internal_dmac ee140000.mmc: Adding to iommu group 0
+[    2.656563] renesas_sdhi_internal_dmac ee140000.mmc: Using IPMMU context 1
+[    2.712296] renesas_sdhi_internal_dmac ee140000.mmc: mmc0 base at 0x00000000ee140000, max clock rate 200 MHz
+[    2.722827] renesas_sdhi_internal_dmac ee160000.mmc: Got CD GPIO
+[    2.728879] renesas_sdhi_internal_dmac ee160000.mmc: Got WP GPIO
+[    2.741726] Synopsys Designware Multimedia Card Interface Driver
+[    2.749016] sdhci-pltfm: SDHCI platform and OF driver helper
+[    2.757465] ledtrig-cpu: registered to indicate activity on CPUs
+[    2.764307] SMCCC: SOC_ID: ARCH_SOC_ID not implemented, skipping ....
+[    2.771302] usbcore: registered new interface driver usbhid
+[    2.776878] usbhid: USB HID core driver
+[    2.784420] optee: probing for conduit method.
+[    2.788888] optee: revision 3.22 (314ecf9d)
+[    2.789434] optee driver R-Car Rev.1.0.11
+[    2.797935] optee: dynamic shared memory is enabled
+[    2.803082] optee: initialized driver
+[    2.807192] mmc0: new HS400 MMC card at address 0001
+[    2.812901] mmcblk0: mmc0:0001 BGSD3R 29.1 GiB
+[    2.817264] rcar_sound ec500000.sound: probed
+[    2.817847] mmcblk0boot0: mmc0:0001 BGSD3R partition 1 16.0 MiB
+[    2.822544] NET: Registered protocol family 17
+[    2.828101] mmcblk0boot1: mmc0:0001 BGSD3R partition 2 16.0 MiB
+[    2.832278] 9pnet: Installing 9P2000 support
+[    2.838327] mmcblk0rpmb: mmc0:0001 BGSD3R partition 3 4.00 MiB, chardev (508:0)
+[    2.842415] Key type dns_resolver registered
+[    2.851526]  mmcblk0: p1
+[    2.854242] registered taskstats version 1
+[    2.860600] Loading compiled-in X.509 certificates
+[    2.874883] thermal emergency: set temperature to 110 celsius
+[    2.880844] thermal emergency: shutdown target cpus 1-7
+[    2.886070] thermal emergency: freq scaled target cpus 0
+[    2.891745] renesas_irqc e61c0000.interrupt-controller: driving 6 irqs
+[    2.945000] ehci-platform ee080100.usb: EHCI Host Controller
+[    2.950694] ehci-platform ee080100.usb: new USB bus registered, assigned bus number 7
+[    2.958598] ehci-platform ee080100.usb: irq 174, io mem 0xee080100
+[    2.976977] ehci-platform ee080100.usb: USB 2.0 started, EHCI 1.10
+[    2.983511] hub 7-0:1.0: USB hub found
+[    2.987284] hub 7-0:1.0: 1 port detected
+[    2.992236] ohci-platform ee080000.usb: Generic Platform OHCI controller
+[    2.998959] ohci-platform ee080000.usb: new USB bus registered, assigned bus number 8
+[    3.006839] ohci-platform ee080000.usb: irq 174, io mem 0xee080000
+[    3.103266] hub 8-0:1.0: USB hub found
+[    3.107036] hub 8-0:1.0: 1 port detected
+[    3.112079] cpu cpu0: EM: created perf domain
+[    3.116947] cpu cpu4: EM: created perf domain
+[    3.123485] renesas_sdhi_internal_dmac ee100000.mmc: Got CD GPIO
+[    3.129534] renesas_sdhi_internal_dmac ee100000.mmc: Got WP GPIO
+[    3.184525] renesas_sdhi_internal_dmac ee100000.mmc: mmc1 base at 0x00000000ee100000, max clock rate 200 MHz
+[    3.196398] renesas_sdhi_internal_dmac ee160000.mmc: Got CD GPIO
+[    3.202470] renesas_sdhi_internal_dmac ee160000.mmc: Got WP GPIO
+[    3.257463] renesas_sdhi_internal_dmac ee160000.mmc: mmc2 base at 0x00000000ee160000, max clock rate 200 MHz
+[    3.269630] hdmi-audio-codec hdmi-audio-codec.5.auto: ASoC: sink widget TX overwritten
+[    3.284177] [drm] Initialized rcar-du 1.0.0 20130110 for feb00000.display on minor 0
+[    3.291952] [drm] Device feb00000.display probed
+[    3.341419] Console: switching to colour frame buffer device 128x48
+[    3.366863] rcar-du feb00000.display: [drm] fb0: rcar-dudrmfb frame buffer device
+[    3.376862] input: keys as /devices/platform/keys/input/input0
+[    3.456441] Micrel KSZ9031 Gigabit PHY e6800000.ethernet-ffffffff:00: attached PHY driver [Micrel KSZ9031 Gigabit PHY] (mii_bus:phy_addr=e6800000.ethernet-ffffffff:00, irq=183)
+[   11.904248] ravb e6800000.ethernet eth0: Link is Up - 1Gbps/Full - flow control off
+[   11.929025] IP-Config: Guessing netmask 255.255.255.0
+[   11.934185] IP-Config: Complete:
+[   11.937498]      device=eth0, hwaddr=2e:09:0a:03:83:f6, ipaddr=192.168.8.20, mask=255.255.255.0, gw=255.255.255.255
+[   11.948127]      host=192.168.8.20, domain=, nis-domain=(none)
+[   11.954081]      bootserver=255.255.255.255, rootserver=192.168.8.8, rootpath=
+[   11.954325] clk: Disabling unused clocks
+[   11.966540] ALSA device list:
+[   11.969579]   #0: rcar-sound
+[   13.021366] VFS: Mounted root (nfs4 filesystem) on device 0:22.
+[   13.028707] devtmpfs: mounted
+[   13.034740] Freeing unused kernel memory: 6144K
+[   13.053174] Run /sbin/init as init process
+[   13.458274] systemd[1]: System time before build time, advancing clock.
+[   13.543702] systemd[1]: systemd 255.4^ running in system mode (+PAM -AUDIT -SELINUX -APPARMOR +IMA -SMACK +SECCOMP -GCRYPT -GNUTLS -OPENSSL +ACL +BLKID -CURL -ELFUTILS -FIDO2 -IDN2 -IDN -IPTC +KMOD -LIBCRYPTSETUP +LIBFDISK -PCRE2 -PWQUALITY -P11KIT -QRENCODE -TPM2 -BZIP2 -LZ4 -XZ -ZLIB +ZSTD -BPF_FRAMEWORK -XKBCOMMON +UTMP +SYSVINIT default-hierarchy=unified)
+[   13.588015] systemd[1]: Detected architecture arm64.
+
+Welcome to Poky (Yocto Project Reference Distro) 5.0 (scarthgap)!
+
+[   13.624268] systemd[1]: Hostname set to <ebisu>.
+[   13.776538] systemd-sysv-generator[329]: SysV service '/etc/init.d/umountnfs.sh' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   13.817986] systemd-sysv-generator[329]: SysV service '/etc/init.d/set_default_governor.sh' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   13.861532] systemd-sysv-generator[329]: SysV service '/etc/init.d/umountfs' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   13.902376] systemd-sysv-generator[329]: SysV service '/etc/init.d/save-rtc.sh' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   13.940396] systemd-sysv-generator[329]: SysV service '/etc/init.d/reboot' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   13.975287] systemd-sysv-generator[329]: SysV service '/etc/init.d/halt' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   14.010257] systemd-sysv-generator[329]: SysV service '/etc/init.d/sendsigs' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   14.047371] systemd-sysv-generator[329]: SysV service '/etc/init.d/single' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   14.082539] systemd-sysv-generator[329]: SysV service '/etc/init.d/pvrinit' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   14.126704] systemd-sysv-generator[329]: SysV service '/etc/init.d/dropbear' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   14.712898] systemd[1]: Binding to IPv6 address not available since kernel does not support IPv6.
+[   14.728824] systemd[1]: Binding to IPv6 address not available since kernel does not support IPv6.
+[   15.253641] systemd[1]: Queued start job for default target Graphical Interface.
+[   15.304547] systemd[1]: Created slice Slice /system/getty.
+[  OK  ] Created slice Slice /system/getty.
+[   15.331800] systemd[1]: Created slice Slice /system/modprobe.
+[  OK  ] Created slice Slice /system/modprobe.
+[   15.364200] systemd[1]: Created slice Slice /system/serial-getty.
+[  OK  ] Created slice Slice /system/serial-getty.
+[   15.394961] systemd[1]: Created slice User and Session Slice.
+[  OK  ] Created slice User and Session Slice.
+[   15.425695] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+[  OK  ] Started Dispatch Password Requests to Console Directory Watch.
+[   15.457484] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[  OK  ] Started Forward Password Requests to Wall Directory Watch.
+[   15.489407] systemd[1]: Reached target Path Units.
+[  OK  ] Reached target Path Units.
+[   15.517202] systemd[1]: Reached target Remote File Systems.
+[  OK  ] Reached target Remote File Systems.
+[   15.545185] systemd[1]: Reached target Slice Units.
+[  OK  ] Reached target Slice Units.
+[   15.573223] systemd[1]: Reached target Swaps.
+[  OK  ] Reached target Swaps.
+[   15.599553] systemd[1]: Listening on RPCbind Server Activation Socket.
+[  OK  ] Listening on RPCbind Server Activation Socket.
+[   15.629319] systemd[1]: Reached target RPC Port Mapper.
+[  OK  ] Reached target RPC Port Mapper.
+[   15.657637] systemd[1]: Listening on initctl Compatibility Named Pipe.
+[  OK  ] Listening on initctl Compatibility Named Pipe.
+[   15.687831] systemd[1]: Listening on Journal Audit Socket.
+[  OK  ] Listening on Journal Audit Socket.
+[   15.715435] systemd[1]: Listening on Journal Socket (/dev/log).
+[  OK  ] Listening on Journal Socket (/dev/log).
+[   15.746235] systemd[1]: Listening on Journal Socket.
+[  OK  ] Listening on Journal Socket.
+[   15.775735] systemd[1]: Listening on Network Service Netlink Socket.
+[  OK  ] Listening on Network Service Netlink Socket.
+[   15.810381] systemd[1]: Listening on udev Control Socket.
+[  OK  ] Listening on udev Control Socket.
+[   15.838119] systemd[1]: Listening on udev Kernel Socket.
+[  OK  ] Listening on udev Kernel Socket.
+[   15.867131] systemd[1]: Listening on User Database Manager Socket.
+[  OK  ] Listening on User Database Manager Socket.
+[   15.901889] systemd[1]: Mounting Huge Pages File System...
+         Mounting Huge Pages File System...
+[   15.930454] systemd[1]: Mounting POSIX Message Queue File System...
+         Mounting POSIX Message Queue File System...
+[   15.962323] systemd[1]: Mounting Kernel Debug File System...
+         Mounting    15.972363] systemd[1]: Kernel Trace File System was skipped because of an unmet condition check (ConditionPathExists=/sys/kernel/tracing).
+39mKernel Debug File System...
+[   16.004943] systemd[1]: Mounting Temporary Directory /tmp...
+         Mounting Temporary Directory /tmp...
+[   16.029652] systemd[1]: Create List of Static Device Nodes was skipped because of an unmet condition check (ConditionFileNotEmpty=/lib/modules/5.10.218-yocto-standard-00832-ga6b0abad730d-dirty/modules.devname).
+[   16.063235] systemd[1]: Starting Load Kernel Module configfs...
+         Starting Load Kernel Module configfs...
+[   16.090330] systemd[1]: Starting Load Kernel Module drm...
+         Starting Load Kernel Module drm...
+[   16.105453] systemd[1]: Starting Load Kernel Module fuse...
+         Starting Load Kernel Module fuse...
+[   16.127767] systemd[1]: Starting RPC Bind...
+         Starting RPC B[   16.138644] systemd[1]: File System Check on Root Device was skipped because of an unmet condition check (ConditionPathIsReadWrite=!/).
+ind...
+[   16.159773] systemd[1]: systemd-journald.service: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+[   16.179279] systemd[1]: systemd-journald.service: (This warning is only shown for the first unit using IP firewalling.)
+[   16.194057] systemd[1]: Starting Journal Service...
+         Starting Journal Service...
+[   16.209008] random: crng init done
+[   16.233383] systemd[1]: Starting Load Kernel Modules...
+         Starting Load Kernel Modules...
+[   16.256590] systemd[1]: Starting Generate network units from Kernel command line...
+         Starting Generate network units from Kernel command line...
+[   16.286573] systemd[1]: Starting Remount Root and Kernel File Systems...
+         Starting Remount Root and Kernel File Systems...
+[   16.312010] systemd[1]: Starting Create Static Device Nodes in /dev gracefully...
+[   16.313224] systemd-journald[341]: Collecting audit messages is enabled.
+         Starting Create Static Device Nodes in /dev gracefully...
+[   16.348091] systemd[1]: Starting Coldplug All udev Devices...
+         Starting Coldplug All udev Devices...
+[   16.377182] systemd[1]: Started RPC Bind.
+[  OK  ] Started RPC Bind.
+[   16.401730] systemd[1]: Mounted Huge Pages File System.
+[  OK  ] Mounted Huge Pages File System.
+[   16.421556] systemd[1]: Started Journal Service.
+[  OK  ] Started Journal Service.
+[  OK  ] Mounted POSIX Message Queue File System.
+[  OK  ] Mounted Kernel Debug File System.
+[  OK  ] Mounted Temporary Directory /tmp.
+[  OK  ] Finished Load Kernel Module configfs.
+[  OK  ] Finished Load Kernel Module drm.
+[  OK  ] Finished Load Kernel Module fuse.
+[  OK  ] Finished Load Kernel Modules.
+[FAILED] Failed to start Generate network units from Kernel command line.
+See 'systemctl status systemd-network-generator.service' for details.
+[  OK  ] Finished Remount Root and Kernel File Systems.
+[  OK  ] Finished Create Static Device Nodes in /dev gracefully.
+[  OK  ] Reached target Preparation for Network.
+         Mounting Kernel Configuration File System...
+         Starting Flush Journal to Persistent Storage...
+         Starting Apply Kernel Variables...
+         Starting Create Static Device Nodes in /dev...
+[   16.773608] systemd-journald[341]: Received client request to flush runtime journal.
+[  OK  ] Mounted Kernel Configuration File System.
+[  OK  ] Finished Flush Journal to Persistent Storage.
+[  OK  ] Finished Create Static Device Nodes in /dev.
+[  OK  ] Reached target Preparation for Local File Systems.
+         Mounting /var/volatile...
+         Starting Rule-based Manager for Device Events and Files...
+[  OK  ] Finished Apply Kernel Variables.
+[  OK  ] Mounted /var/volatile.
+         Starting Load/Save OS Random Seed...
+[  OK  ] Reached target Local File Systems.
+         Starting Create Volatile Files and Directories...
+[  OK  ] Finished Load/Save OS Random Seed.
+[  OK  ] Started Rule-based Manager for Device Events and Files.
+         Starting Network Configuration...
+[  OK  ] Finished Coldplug All udev Devices.
+         Starting User Database Manager...
+[  OK  ] Finished Create Volatile Files and Directories.
+[  OK  ] Reached target Hardware activated USB gadget.
+         Starting Network Name Resolution...
+         Starting Network Time Synchronization...
+         Starting Record System Boot/Shutdown in UTMP...
+[  OK  ] Started User Database Manager.
+[  OK  ] Finished Record System Boot/Shutdown in UTMP.
+[  OK  ] Created slice Slice /system/weston.
+         Starting Load Kernel Module fuse...
+         Starting Generate network units from Kernel command line...
+[   17.695334] rcar_sound ec500000.sound: Can't update kctrl when idle
+[  OK  ] Finished Load Kernel Module fuse.
+[FAILED] Failed to start Generate network units from Kernel command line.
+See 'systemctl status systemd-network-generator.service' for details.
+[  OK  ] Started Network Name Resolution.
+[  OK  ] Started Network Configuration.
+[  OK  ] Started Network Time Synchronization.
+[  OK  ] Reached target Network.
+[  OK  ] Reached target Host and Network Name Lookups.
+[  OK  ] Reached target System Time Set.
+         Starting Load Kernel Module fuse...
+         Starting Generate network units from Kernel command line...
+         Starting Virtual Console Setup...
+[  OK  ] Finished Load Kernel Module fuse.
+[FAILED] Failed to start Generate network units from Kernel command line.
+See 'systemctl status systemd-network-generator.service' for details.
+[  OK  ] Stopped Virtual Console Setup.
+         Starting Virtual Console Setup...
+[  OK  ] Finished Virtual Console Setup.
+[  OK  ] Reached target System Initialization.
+[  OK  ] Started Daily Cleanup of Temporary Directories.
+[  OK  ] Reached target Timer Units.
+[  OK  ] Listening on Avahi mDNS/DNS-SD Stack Activation Socket.
+[  OK  ] Listening on D-Bus System Message Bus Socket.
+[  OK  ] Listening on dropbear.socket.
+[  OK  ] Reached target Socket Units.
+[  OK  ] Reached target Basic System.
+         Starting Save/Restore Sound Card State...
+         Starting Avahi mDNS/DNS-SD Stack...
+[   18.617853] rcar_sound ec500000.sound: Can't update kctrl when idle
+         Starting D-Bus System Message Bus...
+[  OK  ] Started optee services.
+         Starting pvrinit.service...
+         Starting PowerVR consumer services...
+         Starting User Login Management...
+         Starting Permit User Sessions...
+[  OK  ] Started Xinetd A Powerful Replacement For Inetd.
+[  OK  ] Finished Save/Restore Sound Card State.
+[  OK  ] Reached target Sound Card.
+[  OK  ] Finished Permit User Sessions.
+[  OK  ] Started D-Bus System Message Bus.
+[FAILED] Failed to start pvrinit.service.
+See 'systemctl status pvrinit.service' for details.
+[FAILED] Failed to start PowerVR consumer services.
+See 'systemctl status rc.pvr.service' for details.
+[  OK  ] Started User Login Management.
+[  OK  ] Started Getty on tty1.
+[  OK  ] Started Serial Getty on ttySC0.
+[  OK  ] Reached target Login Prompts.
+         Starting set_default_governor.service...
+[  OK  ] Started Avahi mDNS/DNS-SD Stack.
+[   19.133453] rd 0-7: Disabling EAS, schedutil is mandatory
+[  OK  ] Started set_default_governor.service.
+[  OK  ] Reached target Multi-User System.
+[  OK  ] Reached target Graphical Interface.
+         Starting Record Runlevel Change in UTMP...
+[  OK  ] Started Weston Wayland Compositor.
+[  OK  ] Finished Record Runlevel Change in UTMP.
+[   19.531973] audit: type=1006 audit(1720669319.396:2): pid=521 uid=0 old-auid=4294967295 auid=0 tty=(none) old-ses=4294967295 ses=1 res=1
+
+Poky (Yocto Project Reference Distro) 5.0 ebisu ttySC0
+
+ebisu login: root
+
+WARNING: Poky is a reference Yocto Project distribution that should be used for
+testing and development purposes only. It is recommended that you create your
+own distribution for production use.
+
+root@ebisu:~# ls
+g_audio.ko  g_ether.ko  g_mass_storage.ko  g_ncm.ko      g_serial.ko  mount_sd_E3_USB3F  uio       usb3F_driver
+g_cdc.ko    g_ffs.ko    g_multi.ko         g_printer.ko  g_zero.ko    test_tool.sh       uio-test
+root@ebisu:~# rm uio-test
+root@ebisu:~# cd uio/
+root@ebisu:~/uio# ls
+insmod_uio  test_scripts_uio  uio_pdrv_genirq.ko  uio_test-gen3e_beta  uio_test-gen3e_beta.tar.bz2
+root@ebisu:~/uio# [   43.997122] SDHI0 VccQ: disabling
+[   44.000513] SDHI3 VccQ: disabling
+
+root@ebisu:~/uio#
+root@ebisu:~/uio# cat test_scripts_uio/
+cat: test_scripts_uio/: Is a directory
+root@ebisu:~/uio# cat insmod_uio
+insmod uio_pdrv_genirq.ko of_id="generic-uio"
+lsmod
+root@ebisu:~/uio# ./insmod_uio
+Module                  Size  Used by
+uio_pdrv_genirq        16384  0
+root@ebisu:~/uio# cd uio_
+uio_pdrv_genirq.ko           uio_test-gen3e_beta/         uio_test-gen3e_beta.tar.bz2
+root@ebisu:~/uio# cd uio_
+uio_pdrv_genirq.ko           uio_test-gen3e_beta/         uio_test-gen3e_beta.tar.bz2
+root@ebisu:~/uio# cd uio_test-gen3e_beta/test_scripts/
+root@ebisu:~/uio/uio_test-gen3e_beta/test_scripts# ./run_uio_normal_test.sh
+
+******* Start UIO IT Normal test ******
+
+
+***********Normal TC 01: Check UIO configs in /proc/configs.gz
+
+CONFIG_UIO=y
+# CONFIG_UIO_CIF is not set
+CONFIG_UIO_PDRV_GENIRQ=m
+# CONFIG_UIO_DMEM_GENIRQ is not set
+# CONFIG_UIO_AEC is not set
+# CONFIG_UIO_SERCOS3 is not set
+# CONFIG_UIO_PCI_GENERIC is not set
+# CONFIG_UIO_NETX is not set
+# CONFIG_UIO_PRUSS is not set
+# CONFIG_UIO_MF624 is not set
+
+***********Normal TC 02: Check UIO devices in /dev sysfs
+
+Probe UIO driver
+insmod: ERROR: could not load module uio_pdrv_genirq.ko: No such file or directory
+Show UIO devices in /dev after UIO driver probe
+
+/dev/uio0  /dev/uio1  /dev/uio2  /dev/uio3
+
+***********Normal TC 03: Check content of UIO devices in uio sysfs
+
+Read info of /sys/class/uio/uio0
+device name: imr_00
+addr: 0x00000000fe860000
+size: 0x0000000000002000
+
+Read info of /sys/class/uio/uio1
+device name: imr_01
+addr: 0x00000000fe870000
+size: 0x0000000000002000
+
+Read info of /sys/class/uio/uio2
+device name: imr_02
+addr: 0x00000000fe880000
+size: 0x0000000000002000
+
+Read info of /sys/class/uio/uio3
+device name: imr_03
+addr: 0x00000000fe890000
+size: 0x0000000000002000
+
+
+***********Normal TC 04: Check UIO unbind feature
+
+Unbind /dev/uio0 and check that the /dev/uio0 become unavailable
+
+1./dev/uio0 is available
+
+Read info of /sys/class/uio/uio0
+imr_00
+0x00000000fe860000
+0x0000000000002000
+
+2.Unbind /dev/uio0
+
+3.Verify that /dev/uio0/ become unavailable
+
+Read info of /sys/class/uio/uio0
+imr_00
+0x00000000fe860000
+0x0000000000002000
+
+***********Normal TC 05: Check UIO unbind and bind again
+
+Unbind /dev/uio0, check that /dev/uio0 become unavailable, bind again
+                   and check that device become available again\n
+1.Unbind /dev/uio0
+
+2.Verify that /dev/uio0/ becomes unavailable
+
+Read info of /sys/class/uio/uio0
+imr_00
+0x00000000fe860000
+0x0000000000002000
+
+3.Bind /dev/uio0 again
+
+4.Verify that /dev/uio0/ becomes available again
+
+Read info of /sys/class/uio/uio0
+imr_00
+0x00000000fe860000
+0x0000000000002000
+
+***********Normal TC 06: Open UIO devices
+
+Open /dev/uio0
+Open /dev/uio1
+Open /dev/uio2
+Open /dev/uio3
+
+Normal TC6: Please check the device clock status and power domain status by ICE
+
+Press any key to continue
+
+***********Normal TC 07: Close UIO devices
+
+Close /dev/uio0
+Close /dev/uio1
+Close /dev/uio2
+Close /dev/uio3
+
+Normal TC7: Please check the device clock status and power domain status by ICE
+
+Press any key to continue
+
+***********Normal TC 08: Map and unmap UIO devices
+
+Open /dev/uio0, mmap: 0x8f6a8000
+Open /dev/uio1, mmap: 0x8f6a6000
+Open /dev/uio2, mmap: 0x8f6a4000
+Open /dev/uio3, mmap: 0x8f6a2000
+Close /dev/uio0
+Close /dev/uio1
+Close /dev/uio2
+Close /dev/uio3
+
+***********Normal TC 09: Read the mapped register of UIO devices
+
+
+Read registers
+/dev/uio0: Reg 0x0 has value 0x2191
+/dev/uio1: Reg 0x0 has value 0x2191
+/dev/uio2: Reg 0x0 has value 0x2191
+/dev/uio3: Reg 0x0 has value 0x2191
+
+***********Normal TC 10: Write to the mapped register of UIO devices
+
+
+Check expected registers value after write
+/dev/uio0: 0x2000: Write 0xa, Got 0xa
+/dev/uio1: 0x2000: Write 0xa, Got 0x2191
+/dev/uio2: 0x2000: Write 0xc, Got 0x2191
+/dev/uio3: 0x2000: Write 0x9, Got 0x2191
+
+***********Normal TC 11: Check UIO interrupt in /proc/interrupts
+
+           CPU0       CPU1       CPU2       CPU3       CPU4       CPU5       CPU6       CPU7
+ 12:       2710       1964       2363       5347       3309       1804       6838       1696     GIC-0  27 Level     arch_timer
+ 14:          0          0          0          0          0          0          0          0     GIC-0 116 Level     arm-pmu
+ 15:          0          0          0          0          0          0          0          0     GIC-0 117 Level     arm-pmu
+ 16:          0          0          0          0          0          0          0          0     GIC-0 118 Level     arm-pmu
+ 17:          0          0          0          0          0          0          0          0     GIC-0 119 Level     arm-pmu
+ 18:          0          0          0          0          0          0          0          0     GIC-0 104 Level     arm-pmu
+ 19:          0          0          0          0          0          0          0          0     GIC-0 105 Level     arm-pmu
+ 20:          0          0          0          0          0          0          0          0     GIC-0 106 Level     arm-pmu
+ 21:          0          0          0          0          0          0          0          0     GIC-0 107 Level     arm-pmu
+ 22:          0          0          0          0          0          0          0          0     GIC-0  36 Level     e6050000.gpio
+ 23:          0          0          0          0          0          0          0          0     GIC-0  37 Level     e6051000.gpio
+ 24:          1          0          0          0          0          0          0          0     GIC-0  38 Level     e6052000.gpio
+ 25:          0          0          0          0          0          0          0          0     GIC-0  39 Level     e6053000.gpio
+ 26:          0          0          0          0          0          0          0          0     GIC-0  40 Level     e6054000.gpio
+ 27:          0          0          0          0          0          0          0          0     GIC-0  41 Level     e6055000.gpio
+ 28:          0          0          0          0          0          0          0          0     GIC-0  42 Level     e6055400.gpio
+ 29:          0          0          0          0          0          0          0          0     GIC-0  43 Level     e6055800.gpio
+ 30:          0          0          0          0          0          0          0          0     GIC-0  99 Level     e6198000.thermal:ch0
+ 31:          0          0          0          0          0          0          0          0     GIC-0 100 Level     e6198000.thermal:ch1
+ 33:          0          0          0          0          0          0          0          0     GIC-0  32 Level     e61c0000.interrupt-controller
+ 34:          0          0          0          0          0          0          0          0     GIC-0  33 Level     e61c0000.interrupt-controller
+ 35:          0          0          0          0          0          0          0          0     GIC-0  34 Level     e61c0000.interrupt-controller
+ 36:          0          0          0          0          0          0          0          0     GIC-0  35 Level     e61c0000.interrupt-controller
+ 37:          0          0          0          0          0          0          0          0     GIC-0  50 Level     e61c0000.interrupt-controller
+ 38:          0          0          0          0          0          0          0          0     GIC-0 193 Level     e61c0000.interrupt-controller
+ 39:        130          0          0          0          0          0          0          0     GIC-0 318 Level     e6510000.i2c
+ 40:       1191          0          0          0          0          0          0          0     GIC-0  51 Level     e66d8000.i2c
+ 41:        120          0          0          0          0          0          0          0     GIC-0 205 Level     e60b0000.i2c
+ 43:          0          0          0          0          0          0          0          0     GIC-0 139 Level     e6590000.usb
+ 44:          0          0          0          0          0          0          0          0     GIC-0  69 Level     e659c000.usb
+ 45:          0          0          0          0          0          0          0          0     GIC-0 141 Level     e65a0000.dma-controller:0, e65a0000.dma-controller:1
+ 46:          0          0          0          0          0          0          0          0     GIC-0 142 Level     e65b0000.dma-controller:0, e65b0000.dma-controller:1
+ 47:          0          0          0          0          0          0          0          0     GIC-0  66 Level     e6460000.dma-controller:0, e6460000.dma-controller:1
+ 48:          0          0          0          0          0          0          0          0     GIC-0  67 Level     e6470000.dma-controller:0, e6470000.dma-controller:1
+ 51:          0          0          0          0          0          0          0          0     GIC-0 232 Level     e6700000.dma-controller:0
+ 52:          0          0          0          0          0          0          0          0     GIC-0 233 Level     e6700000.dma-controller:1
+ 53:          0          0          0          0          0          0          0          0     GIC-0 234 Level     e6700000.dma-controller:2
+ 54:          0          0          0          0          0          0          0          0     GIC-0 235 Level     e6700000.dma-controller:3
+ 55:          0          0          0          0          0          0          0          0     GIC-0 236 Level     e6700000.dma-controller:4
+ 56:          0          0          0          0          0          0          0          0     GIC-0 237 Level     e6700000.dma-controller:5
+ 57:          0          0          0          0          0          0          0          0     GIC-0 238 Level     e6700000.dma-controller:6
+ 58:          0          0          0          0          0          0          0          0     GIC-0 239 Level     e6700000.dma-controller:7
+ 59:          0          0          0          0          0          0          0          0     GIC-0 240 Level     e6700000.dma-controller:8
+ 60:          0          0          0          0          0          0          0          0     GIC-0 241 Level     e6700000.dma-controller:9
+ 61:          0          0          0          0          0          0          0          0     GIC-0 242 Level     e6700000.dma-controller:10
+ 62:          0          0          0          0          0          0          0          0     GIC-0 243 Level     e6700000.dma-controller:11
+ 63:          0          0          0          0          0          0          0          0     GIC-0 244 Level     e6700000.dma-controller:12
+ 64:          0          0          0          0          0          0          0          0     GIC-0 245 Level     e6700000.dma-controller:13
+ 65:          0          0          0          0          0          0          0          0     GIC-0 246 Level     e6700000.dma-controller:14
+ 66:          0          0          0          0          0          0          0          0     GIC-0 247 Level     e6700000.dma-controller:15
+ 68:          0          0          0          0          0          0          0          0     GIC-0 248 Level     e7300000.dma-controller:0
+ 69:          0          0          0          0          0          0          0          0     GIC-0 249 Level     e7300000.dma-controller:1
+ 70:          0          0          0          0          0          0          0          0     GIC-0 250 Level     e7300000.dma-controller:2
+ 71:          0          0          0          0          0          0          0          0     GIC-0 251 Level     e7300000.dma-controller:3
+ 72:          0          0          0          0          0          0          0          0     GIC-0 340 Level     e7300000.dma-controller:4
+ 73:          0          0          0          0          0          0          0          0     GIC-0 341 Level     e7300000.dma-controller:5
+ 74:          0          0          0          0          0          0          0          0     GIC-0 342 Level     e7300000.dma-controller:6
+ 75:          0          0          0          0          0          0          0          0     GIC-0 343 Level     e7300000.dma-controller:7
+ 76:          0          0          0          0          0          0          0          0     GIC-0 344 Level     e7300000.dma-controller:8
+ 77:          0          0          0          0          0          0          0          0     GIC-0 345 Level     e7300000.dma-controller:9
+ 78:          0          0          0          0          0          0          0          0     GIC-0 346 Level     e7300000.dma-controller:10
+ 79:          0          0          0          0          0          0          0          0     GIC-0 347 Level     e7300000.dma-controller:11
+ 80:          0          0          0          0          0          0          0          0     GIC-0 348 Level     e7300000.dma-controller:12
+ 81:          0          0          0          0          0          0          0          0     GIC-0 349 Level     e7300000.dma-controller:13
+ 82:          0          0          0          0          0          0          0          0     GIC-0 350 Level     e7300000.dma-controller:14
+ 83:          0          0          0          0          0          0          0          0     GIC-0 351 Level     e7300000.dma-controller:15
+ 85:          0          0          0          0          0          0          0          0     GIC-0 449 Level     e7310000.dma-controller:0
+ 86:          0          0          0          0          0          0          0          0     GIC-0 450 Level     e7310000.dma-controller:1
+ 87:          0          0          0          0          0          0          0          0     GIC-0 451 Level     e7310000.dma-controller:2
+ 88:          0          0          0          0          0          0          0          0     GIC-0 452 Level     e7310000.dma-controller:3
+ 89:          0          0          0          0          0          0          0          0     GIC-0 453 Level     e7310000.dma-controller:4
+ 90:          0          0          0          0          0          0          0          0     GIC-0 454 Level     e7310000.dma-controller:5
+ 91:          0          0          0          0          0          0          0          0     GIC-0 455 Level     e7310000.dma-controller:6
+ 92:          0          0          0          0          0          0          0          0     GIC-0 456 Level     e7310000.dma-controller:7
+ 93:          0          0          0          0          0          0          0          0     GIC-0 457 Level     e7310000.dma-controller:8
+ 94:          0          0          0          0          0          0          0          0     GIC-0 458 Level     e7310000.dma-controller:9
+ 95:          0          0          0          0          0          0          0          0     GIC-0 459 Level     e7310000.dma-controller:10
+ 96:          0          0          0          0          0          0          0          0     GIC-0 460 Level     e7310000.dma-controller:11
+ 97:          0          0          0          0          0          0          0          0     GIC-0 461 Level     e7310000.dma-controller:12
+ 98:          0          0          0          0          0          0          0          0     GIC-0 462 Level     e7310000.dma-controller:13
+ 99:          0          0          0          0          0          0          0          0     GIC-0 463 Level     e7310000.dma-controller:14
+100:          0          0          0          0          0          0          0          0     GIC-0 429 Level     e7310000.dma-controller:15
+101:          0          0          0          0          0          0          0          0     GIC-0 228 Level     e67b0000.iommu
+103:      29520          0          0          0          0          0          0          0     GIC-0  71 Level     eth0:ch0:rx_be
+104:          0          0          0          0          0          0          0          0     GIC-0  72 Level     eth0:ch1:rx_nc
+121:      18448          0          0          0          0          0          0          0     GIC-0  89 Level     eth0:ch18:tx_be
+122:          0          0          0          0          0          0          0          0     GIC-0  90 Level     eth0:ch19:tx_nc
+125:          0          0          0          0          0          0          0          0     GIC-0  93 Level     eth0:ch22:multi
+127:          2          0          0          0          0          0          0          0     GIC-0  95 Level     eth0:ch24:emac
+128:       3192          0          0          0          0          0          0          0     GIC-0 196 Level     e6e88000.serial:mux
+129:          0          0          0          0          0          0          0          0     GIC-0 220 Level     rcar_vin
+130:          0          0          0          0          0          0          0          0     GIC-0 221 Level     rcar_vin
+131:          0          0          0          0          0          0          0          0     GIC-0 222 Level     rcar_vin
+132:          0          0          0          0          0          0          0          0     GIC-0 223 Level     rcar_vin
+133:          0          0          0          0          0          0          0          0     GIC-0 206 Level     rcar_vin
+134:          0          0          0          0          0          0          0          0     GIC-0 207 Level     rcar_vin
+135:          0          0          0          0          0          0          0          0     GIC-0 208 Level     rcar_vin
+136:          0          0          0          0          0          0          0          0     GIC-0 203 Level     rcar_vin
+138:          0          0          0          0          0          0          0          0     GIC-0 352 Level     ec700000.dma-controller:0
+139:          0          0          0          0          0          0          0          0     GIC-0 353 Level     ec700000.dma-controller:1
+140:          0          0          0          0          0          0          0          0     GIC-0 354 Level     ec700000.dma-controller:2
+141:          0          0          0          0          0          0          0          0     GIC-0 355 Level     ec700000.dma-controller:3
+142:          0          0          0          0          0          0          0          0     GIC-0 356 Level     ec700000.dma-controller:4
+143:          0          0          0          0          0          0          0          0     GIC-0 357 Level     ec700000.dma-controller:5
+144:          0          0          0          0          0          0          0          0     GIC-0 358 Level     ec700000.dma-controller:6
+145:          0          0          0          0          0          0          0          0     GIC-0 359 Level     ec700000.dma-controller:7
+146:          0          0          0          0          0          0          0          0     GIC-0 360 Level     ec700000.dma-controller:8
+147:          0          0          0          0          0          0          0          0     GIC-0 361 Level     ec700000.dma-controller:9
+148:          0          0          0          0          0          0          0          0     GIC-0 362 Level     ec700000.dma-controller:10
+149:          0          0          0          0          0          0          0          0     GIC-0 363 Level     ec700000.dma-controller:11
+150:          0          0          0          0          0          0          0          0     GIC-0 364 Level     ec700000.dma-controller:12
+151:          0          0          0          0          0          0          0          0     GIC-0 365 Level     ec700000.dma-controller:13
+152:          0          0          0          0          0          0          0          0     GIC-0 366 Level     ec700000.dma-controller:14
+153:          0          0          0          0          0          0          0          0     GIC-0 367 Level     ec700000.dma-controller:15
+155:          0          0          0          0          0          0          0          0     GIC-0 368 Level     ec720000.dma-controller:0
+156:          0          0          0          0          0          0          0          0     GIC-0 369 Level     ec720000.dma-controller:1
+157:          0          0          0          0          0          0          0          0     GIC-0 370 Level     ec720000.dma-controller:2
+158:          0          0          0          0          0          0          0          0     GIC-0 371 Level     ec720000.dma-controller:3
+159:          0          0          0          0          0          0          0          0     GIC-0 372 Level     ec720000.dma-controller:4
+160:          0          0          0          0          0          0          0          0     GIC-0 373 Level     ec720000.dma-controller:5
+161:          0          0          0          0          0          0          0          0     GIC-0 374 Level     ec720000.dma-controller:6
+162:          0          0          0          0          0          0          0          0     GIC-0 375 Level     ec720000.dma-controller:7
+163:          0          0          0          0          0          0          0          0     GIC-0 376 Level     ec720000.dma-controller:8
+164:          0          0          0          0          0          0          0          0     GIC-0 377 Level     ec720000.dma-controller:9
+165:          0          0          0          0          0          0          0          0     GIC-0 378 Level     ec720000.dma-controller:10
+166:          0          0          0          0          0          0          0          0     GIC-0 379 Level     ec720000.dma-controller:11
+167:          0          0          0          0          0          0          0          0     GIC-0 380 Level     ec720000.dma-controller:12
+168:          0          0          0          0          0          0          0          0     GIC-0 381 Level     ec720000.dma-controller:13
+169:          0          0          0          0          0          0          0          0     GIC-0 414 Level     ec720000.dma-controller:14
+170:          0          0          0          0          0          0          0          0     GIC-0 415 Level     ec720000.dma-controller:15
+173:          0          0          0          0          0          0          0          0     GIC-0 136 Level     ee020000.usb
+174:          0          0          0          0          0          0          0          0     GIC-0 140 Level     ee080200.usb-phy, ehci_hcd:usb7, ohci_hcd:usb8
+175:          0          0          0          0          0          0          0          0     GIC-0 144 Level     ehci_hcd:usb1, ohci_hcd:usb4
+176:          0          0          0          0          0          0          0          0     GIC-0 145 Level     ehci_hcd:usb2, ohci_hcd:usb5
+177:          0          0          0          0          0          0          0          0     GIC-0  68 Level     ee0e0200.usb-phy, ehci_hcd:usb3, ohci_hcd:usb6
+178:          0          0          0          0          0          0          0          0     GIC-0 197 Level     ee100000.mmc
+179:        343          0          0          0          0          0          0          0     GIC-0 199 Level     ee140000.mmc
+180:          0          0          0          0          0          0          0          0     GIC-0 200 Level     ee160000.mmc
+181:          0          0          0          0          0          0          0          0     GIC-0 137 Level     sata_rcar[ee300000.sata]
+183:          1          0          0          0          0          0          0          0  gpio-rcar  11 Level     e6800000.ethernet-ffffffff:00
+186:          0          0          0          0          0          0          0          0     GIC-0 402 Level     ec500000.sound
+187:          0          0          0          0          0          0          0          0     GIC-0 403 Level     ec500000.sound
+189:          0          0          0          0          0          0          0          0     GIC-0 224 Level     imr_00
+190:          0          0          0          0          0          0          0          0     GIC-0 225 Level     imr_01
+191:          0          0          0          0          0          0          0          0     GIC-0 226 Level     imr_02
+192:          0          0          0          0          0          0          0          0     GIC-0 227 Level     imr_03
+204:      85813          0          0          0          0          0          0          0     GIC-0 498 Level     fea20000.vsp
+205:          0          0          0          0          0          0          0          0     GIC-0 499 Level     fea28000.vsp
+206:          0          0          0          0          0          0          0          0     GIC-0 500 Level     fea30000.vsp
+209:          0          0          0          0          0          0          0          0     GIC-0 216 Level     rcar_csi2
+210:          0          0          0          0          0          0          0          0     GIC-0 278 Level     rcar_csi2
+211:          0          0          0          0          0          0          0          0     GIC-0 421 Level     fead0000.hdmi
+212:          0          0          0          0          0          0          0          0     GIC-0 468 Level     feae0000.hdmi
+213:        685          0          0          0          0          0          0          0     GIC-0 288 Level     feb00000.display
+214:          0          0          0          0          0          0          0          0     GIC-0 300 Level     feb00000.display
+215:          0          0          0          0          0          0          0          0     GIC-0 301 Level     feb00000.display
+216:        683          0          0          0          0          0          0          0     GIC-0 302 Level     feb00000.display
+218:          0          0          0          0          0          0          0          0     GIC-0 481 Level     ffc10000.dma-controller:0
+219:          0          0          0          0          0          0          0          0     GIC-0 482 Level     ffc10000.dma-controller:1
+220:          0          0          0          0          0          0          0          0     GIC-0 483 Level     ffc10000.dma-controller:2
+221:          0          0          0          0          0          0          0          0     GIC-0 484 Level     ffc10000.dma-controller:3
+222:          0          0          0          0          0          0          0          0     GIC-0 485 Level     ffc10000.dma-controller:4
+223:          0          0          0          0          0          0          0          0     GIC-0 486 Level     ffc10000.dma-controller:5
+224:          0          0          0          0          0          0          0          0     GIC-0 487 Level     ffc10000.dma-controller:6
+225:          0          0          0          0          0          0          0          0     GIC-0 488 Level     ffc10000.dma-controller:7
+227:          0          0          0          0          0          0          0          0     GIC-0 489 Level     ffc20000.dma-controller:0
+228:          0          0          0          0          0          0          0          0     GIC-0 490 Level     ffc20000.dma-controller:1
+229:          0          0          0          0          0          0          0          0     GIC-0 491 Level     ffc20000.dma-controller:2
+230:          0          0          0          0          0          0          0          0     GIC-0 492 Level     ffc20000.dma-controller:3
+231:          0          0          0          0          0          0          0          0     GIC-0 493 Level     ffc20000.dma-controller:4
+232:          0          0          0          0          0          0          0          0     GIC-0 494 Level     ffc20000.dma-controller:5
+233:          0          0          0          0          0          0          0          0     GIC-0 495 Level     ffc20000.dma-controller:6
+234:          0          0          0          0          0          0          0          0     GIC-0 496 Level     ffc20000.dma-controller:7
+237:          0          0          0          0          0          0          0          0     GIC-0 404 Level     ec500000.sound
+238:          0          0          0          0          0          0          0          0     GIC-0 405 Level     ec500000.sound
+245:          0          0          0          0          0          0          0          0     GIC-0 384 Level     ec500000.sound
+246:          0          0          0          0          0          0          0          0     GIC-0 385 Level     ec500000.sound
+255:          0          0          0          0          0          0          0          0      irqc   0 Level     bd9571mwv
+256:          0          0          0          0          0          0          0          0  gpio-rcar  12 Edge      ee100000.mmc cd
+257:          0          0          0          0          0          0          0          0  gpio-rcar  15 Edge      ee160000.mmc cd
+258:          0          0          0          0          0          0          0          0  gpio-rcar  17 Edge      SW4-1
+259:          0          0          0          0          0          0          0          0  gpio-rcar  20 Edge      SW4-2
+260:          0          0          0          0          0          0          0          0  gpio-rcar  22 Edge      SW4-3
+261:          0          0          0          0          0          0          0          0  gpio-rcar  23 Edge      SW4-4
+262:          0          0          0          0          0          0          0          0  gpio-rcar  11 Edge      TSW0
+263:          0          0          0          0          0          0          0          0  gpio-rcar  12 Edge      TSW1
+264:          0          0          0          0          0          0          0          0  gpio-rcar  13 Edge      TSW2
+IPI0:      1743       6455       5606       5962       4449       4822       4763       6021       Rescheduling interrupts
+IPI1:      3227       3779       4163       2879       6242       7239       5569       4784       Function call interrupts
+IPI2:         0          0          0          0          0          0          0          0       CPU stop interrupts
+IPI3:         0          0          0          0          0          0          0          0       CPU stop (for crash dump) interrupts
+IPI4:       425         37       1406        699        619         57        758        291       Timer broadcast interrupts
+IPI5:        19         31         18         23         63         54         30         41       IRQ work interrupts
+IPI6:         0          0          0          0          0          0          0          0       CPU wake-up interrupts
+Err:          0
+
+***********Normal TC 14: Check PMA get status functions when devices are opened
+
+
+***********Normal TC 14: PMA: Check get status functions
+
+/dev/uio0: Power is on. Clk is on. Software reset is off
+/dev/uio1: Power is on. Clk is on. Software reset is off
+/dev/uio2: Power is on. Clk is on. Software reset is off
+/dev/uio3: Power is on. Clk is on. Software reset is off
+
+***********Normal TC 15: Check PMA set power function
+
+/dev/uio0: Power is on. Clk is on. Software reset is off
+/dev/uio1: Power is on. Clk is on. Software reset is off
+/dev/uio2: Power is on. Clk is on. Software reset is off
+/dev/uio3: Power is on. Clk is on. Software reset is off
+
+***********Normal TC 15/16/17: PMA: Check set status functions
+
+/dev/uio0: Power is off. Clk is off. Software reset is off.
+/dev/uio1: Power is off. Clk is off. Software reset is off.
+/dev/uio2: Power is off. Clk is off. Software reset is off.
+/dev/uio3: Power is off. Clk is off. Software reset is off.
+
+TC15: Power OFF power domain. Please check the power domain status by ICE
+
+Press any key to continue
+
+
+***********Normal TC 16: Check PMA set clk function
+
+/dev/uio0: Power is on. Clk is on. Software reset is off
+/dev/uio1: Power is on. Clk is on. Software reset is off
+/dev/uio2: Power is on. Clk is on. Software reset is off
+/dev/uio3: Power is on. Clk is on. Software reset is off
+
+***********Normal TC 15/16/17: PMA: Check set status functions
+
+/dev/uio0: Power is on. Clk is off. Software reset is off.
+/dev/uio1: Power is on. Clk is off. Software reset is off.
+/dev/uio2: Power is on. Clk is off. Software reset is off.
+/dev/uio3: Power is on. Clk is off. Software reset is off.
+
+TC16: Power OFF device clock. Please check the device clock status by ICE
+
+Press any key to continue
+
+
+***********Normal TC 17: Check PMA set software reset function
+
+/dev/uio0: Power is on. Clk is on. Software reset is off
+/dev/uio1: Power is on. Clk is on. Software reset is off
+/dev/uio2: Power is on. Clk is on. Software reset is off
+/dev/uio3: Power is on. Clk is on. Software reset is off
+
+***********Normal TC 15/16/17: PMA: Check set status functions
+
+/dev/uio0: Power is on. Clk is on. Software reset is on.
+/dev/uio1: Power is on. Clk is on. Software reset is on.
+/dev/uio2: Power is on. Clk is on. Software reset is on.
+/dev/uio3: Power is on. Clk is on. Software reset is on.
+
+TC17: Turn ON device reset status. Please check the software reset status by ICE
+
+Press any key to continue
+
+
+******* end UIO IT Normal test ******
+
+root@ebisu:~/uio/uio_test-gen3e_beta/test_scripts# lsmod
+Module                  Size  Used by
+root@ebisu:~/uio/uio_test-gen3e_beta/test_scripts#

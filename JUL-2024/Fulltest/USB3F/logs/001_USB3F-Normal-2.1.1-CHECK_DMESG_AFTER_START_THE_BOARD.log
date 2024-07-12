@@ -1,0 +1,6 @@
+
+root@salvator-x:~# dmesg | grep renesas_usb3
+[    2.780075] renesas_usb3 ee020000.usb: probed with phy
+root@salvator-x:~# 
+ 
+#### Result: OK ####

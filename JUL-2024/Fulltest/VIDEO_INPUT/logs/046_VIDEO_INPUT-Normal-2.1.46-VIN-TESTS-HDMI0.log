@@ -1,0 +1,92 @@
+
+root@salvator-x:~# cd /home/root/vin-tests
+root@salvator-x:~/vin-tests# 
+root@salvator-x:~/vin-tests# ./set-edid
+EDID set successfully.
+root@salvator-x:~/vin-tests# 
+root@salvator-x:~/vin-tests# ./yavta-hdmi 0
+format: RGB888_1X24 size: 1920x1080/1920x1080 field: none/none vdev: /dev/video0
+Device /dev/video0 opened.
+Device `R_Car_VIN' on `platform:e6ef0000.video' (driver 'rcar_vin') supports video, capture, without mplanes.
+Video format set: RGB565 (50424752) 1920x1080 (stride 3840) field none buffer size 4147200
+Video format: RGB565 (50424752) 1920x1080 (stride 3840) field none buffer size 4147200
+Device /dev/video0 opened.
+Device `R_Car_VIN' on `platform:e6ef0000.video' (driver 'rcar_vin') supports video, capture, without mplanes.
+Video format: RGB565 (50424752) 1920x1080 (stride 3840) field none buffer size 4147200
+4 buffers requested.
+length: 4147200 offset: 0 timestamp type/source: mono/EoF
+Buffer 0/0 mapped at address 0xffffa108a000.
+length: 4147200 offset: 32768 timestamp type/source: mono/EoF
+Buffer 1/0 mapped at address 0xffffa0c95000.
+length: 4147200 offset: 65536 timestamp type/source: mono/EoF
+Buffer 2/0 mapped at address 0xffffa08a0000.
+length: 4147200 offset: 98304 timestamp type/source: mono/EoF
+Buffer 3/0 mapped at address 0xffffa04ab000.
+0 (0) [-] none 0 4147200 B 44.982044 44.982409 15.178 fps ts mono/EoF
+1 (1) [-] none 1 4147200 B 44.998704 45.023348 60.024 fps ts mono/EoF
+2 (2) [-] none 2 4147200 B 45.015373 45.063848 59.992 fps ts mono/EoF
+3 (3) [-] none 3 4147200 B 45.032039 45.103586 60.002 fps ts mono/EoF
+4 (0) [-] none 6 4147200 B 45.082036 45.143428 20.001 fps ts mono/EoF
+5 (1) [-] none 8 4147200 B 45.115368 45.182739 30.001 fps ts mono/EoF
+6 (2) [-] none 11 4147200 B 45.165372 45.222568 19.998 fps ts mono/EoF
+7 (3) [-] none 13 4147200 B 45.198702 45.261808 30.003 fps ts mono/EoF
+8 (0) [-] none 16 4147200 B 45.248700 45.301683 20.001 fps ts mono/EoF
+9 (1) [-] none 18 4147200 B 45.282034 45.340934 29.999 fps ts mono/EoF
+Captured 10 frames in 0.424772 seconds (23.542035 fps, 97633527.338221 B/s).
+4 buffers released.
+10
+bb2e59c12cae4adff2aeea9563b36fc0  /tmp/vin-tests/frame-000000.bin
+bb2e59c12cae4adff2aeea9563b36fc0  /tmp/vin-tests/frame-000001.bin
+bb2e59c12cae4adff2aeea9563b36fc0  /tmp/vin-tests/frame-000002.bin
+bb2e59c12cae4adff2aeea9563b36fc0  /tmp/vin-tests/frame-000003.bin
+bb2e59c12cae4adff2aeea9563b36fc0  /tmp/vin-tests/frame-000004.bin
+bb2e59c12cae4adff2aeea9563b36fc0  /tmp/vin-tests/frame-000005.bin
+bb2e59c12cae4adff2aeea9563b36fc0  /tmp/vin-tests/frame-000006.bin
+bb2e59c12cae4adff2aeea9563b36fc0  /tmp/vin-tests/frame-000007.bin
+bb2e59c12cae4adff2aeea9563b36fc0  /tmp/vin-tests/frame-000008.bin
+bb2e59c12cae4adff2aeea9563b36fc0  /tmp/vin-tests/frame-000009.bin
+0 padding bytes detected at end of line
+Image size: 1920x1080, bytes per pixel: 16, format: RGB565 (16  RGB-5-6-5)
+Writing to file `/tmp/vin-tests/frame-000000.pnm'...
+0 padding bytes detected at end of line
+Image size: 1920x1080, bytes per pixel: 16, format: RGB565 (16  RGB-5-6-5)
+Writing to file `/tmp/vin-tests/frame-000001.pnm'...
+0 padding bytes detected at end of line
+Image size: 1920x1080, bytes per pixel: 16, format: RGB565 (16  RGB-5-6-5)
+Writing to file `/tmp/vin-tests/frame-000002.pnm'...
+0 padding bytes detected at end of line
+Image size: 1920x1080, bytes per pixel: 16, format: RGB565 (16  RGB-5-6-5)
+Writing to file `/tmp/vin-tests/frame-000003.pnm'...
+0 padding bytes detected at end of line
+Image size: 1920x1080, bytes per pixel: 16, format: RGB565 (16  RGB-5-6-5)
+Writing to file `/tmp/vin-tests/frame-000004.pnm'...
+0 padding bytes detected at end of line
+Image size: 1920x1080, bytes per pixel: 16, format: RGB565 (16  RGB-5-6-5)
+Writing to file `/tmp/vin-tests/frame-000005.pnm'...
+0 padding bytes detected at end of line
+Image size: 1920x1080, bytes per pixel: 16, format: RGB565 (16  RGB-5-6-5)
+Writing to file `/tmp/vin-tests/frame-000006.pnm'...
+0 padding bytes detected at end of line
+Image size: 1920x1080, bytes per pixel: 16, format: RGB565 (16  RGB-5-6-5)
+Writing to file `/tmp/vin-tests/frame-000007.pnm'...
+0 padding bytes detected at end of line
+Image size: 1920x1080, bytes per pixel: 16, format: RGB565 (16  RGB-5-6-5)
+Writing to file `/tmp/vin-tests/frame-000008.pnm'...
+0 padding bytes detected at end of line
+Image size: 1920x1080, bytes per pixel: 16, format: RGB565 (16  RGB-5-6-5)
+Writing to file `/tmp/vin-tests/frame-000009.pnm'...
+root@salvator-x:~/vin-tests# 
+root@salvator-x:~/vin-tests# ls /tmp/vin-tests
+frame-000000.bin  frame-000002.pnm  frame-000005.png  frame-000008.bin
+frame-000000.png  frame-000003.bin  frame-000005.pnm  frame-000008.png
+frame-000000.pnm  frame-000003.png  frame-000006.bin  frame-000008.pnm
+frame-000001.bin  frame-000003.pnm  frame-000006.png  frame-000009.bin
+frame-000001.png  frame-000004.bin  frame-000006.pnm  frame-000009.png
+frame-000001.pnm  frame-000004.png  frame-000007.bin  frame-000009.pnm
+frame-000002.bin  frame-000004.pnm  frame-000007.png
+frame-000002.png  frame-000005.bin  frame-000007.pnm
+root@salvator-x:~/vin-tests# 
+root@salvator-x:~/vin-tests# cd ~
+root@salvator-x:~# 
+ 
+#### Result: OK ####

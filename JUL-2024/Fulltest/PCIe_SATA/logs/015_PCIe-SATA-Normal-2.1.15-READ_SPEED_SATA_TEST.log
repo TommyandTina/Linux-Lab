@@ -1,0 +1,15 @@
+
+root@salvator-x:~# time dd if=/dev/sda  of=/dev/zero bs=64M count=10 seek=8 ifla g=direct > read_dd.txt
+10+0 records in
+10+0 records out
+671088640 bytes (671 MB, 640 MiB) copied, 1.66873 s, 402 MB/s
+
+real	0m1.688s
+user	0m0.000s
+sys	0m0.213s
+root@salvator-x:~# 
+ 
+ SPEED = 402 MB/s
+
+ 
+#### Result: OK ####

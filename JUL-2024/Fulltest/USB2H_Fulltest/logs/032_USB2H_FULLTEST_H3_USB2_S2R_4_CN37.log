@@ -1,0 +1,952 @@
+
+
+----------Item 4----------
+
+
+Please press switch to restart board 
+
+[F 00:00:120
+[F 00:00:119
+[F 00:00:118
+NOTICE:  BL2: R-Car Gen3 Initial Program Loader(CA57) Rev.4.0.0
+NOTICE:  BL2: PRR is R-Car H3 Ver.3.0
+NOTICE:  BL2: Board is Salvator-XS Rev.1.0
+NOTICE:  BL2: Boot device is HyperFlash(160MHz)
+NOTICE:  BL2: LCM state is CM
+NOTICE:  AVS setting succeeded. DVFS_SetVID=0x53
+NOTICE:  BL2: DDR3200(rev.0.42)
+NOTICE:  BL2: [COLD_BOOT]
+NOTICE:  BL2: DRAM Split is 4ch(DDR f)
+NOTICE:  BL2: QoS is default setting(rev.0.11)
+NOTICE:  BL2: DRAM refresh interval 1.95 usec
+NOTICE:  BL2: Periodic Write DQ Training
+NOTICE:  BL2: CH0: 400000000 - 47fffffff, 2 GiB
+NOTICE:  BL2: CH1: 500000000 - 57fffffff, 2 GiB
+NOTICE:  BL2: CH2: 600000000 - 67fffffff, 2 GiB
+NOTICE:  BL2: CH3: 700000000 - 77fffffff, 2 GiB
+NOTICE:  BL2: Lossy Decomp areas
+NOTICE:       Entry 0: DCMPAREACRAx:0x80000540 DCMPAREACRBx:0x570
+NOTICE:       Entry 1: DCMPAREACRAx:0x40000000 DCMPAREACRBx:0x0
+NOTICE:       Entry 2: DCMPAREACRAx:0x20000000 DCMPAREACRBx:0x0
+NOTICE:  BL2: FDT at 0xe6327f70
+NOTICE:  BL2: v2.9(release):9cdb21f75
+NOTICE:  BL2: Built : 05:25:39, Dec 19 2023
+NOTICE:  BL2: Normal boot
+NOTICE:  BL2: dst=0xe6327800 src=0x8180000 len=512(0x200)
+NOTICE:  BL2: dst=0x43f00000 src=0x8180400 len=6144(0x1800)
+NOTICE:  rcar_file_len: len: 0x0003e000
+NOTICE:  BL2: dst=0x44000000 src=0x81c0000 len=253952(0x3e000)
+NOTICE:  rcar_file_len: len: 0x00200000
+NOTICE:  BL2: dst=0x44100000 src=0x8200000 len=2097152(0x200000)
+NOTICE:  rcar_file_len: len: 0x00100000
+NOTICE:  BL2: dst=0x50000000 src=0x8640000 len=1048576(0x100000)
+NOTICE:  BL2: Booting BL31
+
+
+U-Boot 2020.10 (Dec 19 2023 - 14:30:40 +0000)
+
+CPU: Renesas Electronics R8A7795 rev 3.0
+Model: Renesas Salvator-X 2nd version board based on r8a77951
+DRAM:  7.9 GiB
+RAM Configuration:
+Bank #0: 0x048000000 - 0x0bfffffff, 1.9 GiB
+Bank #1: 0x500000000 - 0x57fffffff, 2 GiB
+Bank #2: 0x600000000 - 0x67fffffff, 2 GiB
+Bank #3: 0x700000000 - 0x77fffffff, 2 GiB
+
+MMC:   sd@ee100000: 0, sd@ee140000: 1, sd@ee160000: 2
+Loading Environment from MMC... OK
+In:    serial@e6e88000
+Out:   serial@e6e88000
+Err:   serial@e6e88000
+Net:   eth0: ethernet@e6800000
+Hit any key to stop autoboot:  2  1  0 
+ethernet@e6800000 Waiting for PHY auto negotiation to complete.......... done
+Using ethernet@e6800000 device
+TFTP from server 192.168.10.99; our IP address is 192.168.10.167
+Filename 'traivo/H3/rootfs/boot_USB2H/Image'.
+Load address: 0x48080000
+Loading: *#################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 ################################################################
+	 4.5 MiB/s
+done
+Bytes transferred = 33376768 (1fd4a00 hex)
+Using ethernet@e6800000 device
+TFTP from server 192.168.10.99; our IP address is 192.168.10.167
+Filename 'traivo/H3/rootfs/boot_USB2H/r8a77951-salvator-xs.dtb'.
+Load address: 0x48000000
+Loading: *#######
+	 7.9 MiB/s
+done
+Bytes transferred = 90876 (162fc hex)
+Moving Image from 0x48080000 to 0x48200000, end=4a260000
+## Flattened Device Tree blob at 48000000
+   Booting using the fdt blob at 0x48000000
+   Loading Device Tree to 0000000053fe6000, end 0000000053fff2fb ... OK
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x411fd073]
+[    0.000000] Linux version 5.10.194-yocto-standard (thuan.nguyen-hong@banvien) (aarch64-poky-linux-gcc (GCC) 9.3.0, GNU ld (GNU Binutils) 2.34.0.20200220) #10 SMP PREEMPT Mon Feb 19 03:51:05 UTC 2024
+[    0.000000] Machine model: Renesas Salvator-X 2nd version board based on r8a77951
+[    0.000000] efi: UEFI not found.
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000057000000, size 16 MiB
+[    0.000000] OF: reserved mem: initialized node linux,adsp@57000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000058000000, size 384 MiB
+[    0.000000] OF: reserved mem: initialized node linux,cma@58000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000070000000, size 256 MiB
+[    0.000000] OF: reserved mem: initialized node linux,multimedia@70000000, compatible id shared-dma-pool
+[    0.000000] NUMA: No NUMA configuration found
+[    0.000000] NUMA: Faking a node at [mem 0x0000000048000000-0x000000077fffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0x77efdab00-0x77efdcfff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000048000000-0x000000007fffffff]
+[    0.000000]   DMA32    [mem 0x0000000080000000-0x00000000ffffffff]
+[    0.000000]   Normal   [mem 0x0000000100000000-0x000000077fffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000048000000-0x0000000053ffffff]
+[    0.000000]   node   0: [mem 0x0000000054000000-0x0000000056ffffff]
+[    0.000000]   node   0: [mem 0x0000000057000000-0x00000000bfffffff]
+[    0.000000]   node   0: [mem 0x0000000500000000-0x000000057fffffff]
+[    0.000000]   node   0: [mem 0x0000000600000000-0x000000067fffffff]
+[    0.000000]   node   0: [mem 0x0000000700000000-0x000000077fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000048000000-0x000000077fffffff]
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS resident on physical CPU 0x0
+[    0.000000] psci: SMC Calling Convention v1.2
+[    0.000000] percpu: Embedded 23 pages/cpu s56984 r8192 d29032 u94208
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: EL2 vector hardening
+[    0.000000] CPU features: detected: Spectre-v2
+[    0.000000] CPU features: detected: ARM errata 1165522, 1319367, or 1530923
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: detected: ARM erratum 1742098
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 2032128
+[    0.000000] Policy zone: Normal
+[    0.000000] Kernel command line: rw root=/dev/nfs nfsroot=192.168.10.99:/data/tftpboot/traivo/H3/rootfs,nfsvers=4, ip=192.168.10.167
+[    0.000000] Dentry cache hash table entries: 1048576 (order: 11, 8388608 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] software IO TLB: mapped [mem 0x000000004ffe6000-0x0000000053fe6000] (64MB)
+[    0.000000] Memory: 7276840K/8257536K available (15232K kernel code, 2834K rwdata, 8240K rodata, 6144K init, 517K bss, 308952K reserved, 671744K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=8, Nodes=1
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=8.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=8
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] arch_timer: cp15 timer(s) running at 8.32MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x1eb398c07, max_idle_ns: 440795202503 ns
+[    0.000003] sched_clock: 56 bits at 8MHz, resolution 120ns, wraps every 2199023255503ns
+[    0.000206] Console: colour dummy device 80x25
+[    0.000414] printk: console [tty0] enabled
+[    0.000487] Calibrating delay loop (skipped), value calculated using timer frequency.. 16.64 BogoMIPS (lpj=33280)
+[    0.000503] pid_max: default: 32768 minimum: 301
+[    0.000561] LSM: Security Framework initializing
+[    0.000650] Mount-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.000700] Mountpoint-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.002153] rcu: Hierarchical SRCU implementation.
+[    0.003761] Detected Renesas R-Car Gen3 r8a7795 ES3.0
+[    0.005905] EFI services will not be available.
+[    0.006247] smp: Bringing up secondary CPUs ...
+[    0.006710] Detected PIPT I-cache on CPU1
+[    0.006756] CPU1: Booted secondary processor 0x0000000001 [0x411fd073]
+[    0.007233] Detected PIPT I-cache on CPU2
+[    0.007258] CPU2: Booted secondary processor 0x0000000002 [0x411fd073]
+[    0.007678] Detected PIPT I-cache on CPU3
+[    0.007699] CPU3: Booted secondary processor 0x0000000003 [0x411fd073]
+[    0.008166] CPU features: detected: ARM erratum 845719
+[    0.008179] Detected VIPT I-cache on CPU4
+[    0.008226] CPU4: Booted secondary processor 0x0000000100 [0x410fd034]
+[    0.008711] Detected VIPT I-cache on CPU5
+[    0.008738] CPU5: Booted secondary processor 0x0000000101 [0x410fd034]
+[    0.009177] Detected VIPT I-cache on CPU6
+[    0.009204] CPU6: Booted secondary processor 0x0000000102 [0x410fd034]
+[    0.009645] Detected VIPT I-cache on CPU7
+[    0.009673] CPU7: Booted secondary processor 0x0000000103 [0x410fd034]
+[    0.009754] smp: Brought up 1 node, 8 CPUs
+[    0.009817] SMP: Total of 8 processors activated.
+[    0.009825] CPU features: detected: 32-bit EL0 Support
+[    0.009833] CPU features: detected: CRC32 instructions
+[    0.009840] CPU features: detected: 32-bit EL1 Support
+[    0.023041] CPU: All CPU(s) started at EL1
+[    0.023095] alternatives: patching kernel code
+[    0.024272] devtmpfs: initialized
+[    0.031101] KASLR disabled due to lack of seed
+[    0.031254] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.031274] futex hash table entries: 2048 (order: 5, 131072 bytes, linear)
+[    0.039937] pinctrl core: initialized pinctrl subsystem
+[    0.041423] DMI not present or invalid.
+[    0.041922] NET: Registered protocol family 16
+[    0.042853] DMA: preallocated 1024 KiB GFP_KERNEL pool for atomic allocations
+[    0.043046] DMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.043334] DMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.043374] audit: initializing netlink subsys (disabled)
+[    0.043553] audit: type=2000 audit(0.040:1): state=initialized audit_enabled=0 res=1
+[    0.044728] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.045245] cpuidle: using governor menu
+[    0.045409] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.045533] ASID allocator initialised with 65536 entries
+[    0.046826] Serial: AMBA PL011 UART driver
+[    0.089650] sh-pfc e6060000.pinctrl: r8a77951_pfc support registered
+[    0.104338] HugeTLB registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.104351] HugeTLB registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.104359] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.104366] HugeTLB registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.105328] cryptd: max_cpu_qlen set to 1000
+[    0.107597] ACPI: Interpreter disabled.
+[    0.111424] rcar-avs: use avs value: 0
+[    0.111439] rcar-avs: cpu@0 is running with: opp_table0
+[    0.111449] rcar-avs: cpu@1 is running with: opp_table0
+[    0.111460] rcar-avs: cpu@2 is running with: opp_table0
+[    0.111469] rcar-avs: cpu@3 is running with: opp_table0
+[    0.111558] rcar-avs: gsx@fd000000 is running with: gsx_opp_table0
+[    0.112967] iommu: Default domain type: Translated 
+[    0.113540] ipmmu-vmsa e67b0000.iommu: IPMMU context 0 is reserved
+[    0.114554] vgaarb: loaded
+[    0.114753] SCSI subsystem initialized
+[    0.115002] usbcore: registered new interface driver usbfs
+[    0.115032] usbcore: registered new interface driver hub
+[    0.115056] usbcore: registered new device driver usb
+[    0.118613] i2c-sh_mobile e60b0000.i2c: I2C adapter 7, bus speed 400000 Hz
+[    0.119150] mc: Linux media interface: v0.10
+[    0.119171] videodev: Linux video capture interface: v2.00
+[    0.119219] pps_core: LinuxPPS API ver. 1 registered
+[    0.119226] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.119239] PTP clock support registered
+[    0.119412] EDAC MC: Ver: 3.0.0
+[    0.121410] FPGA manager framework
+[    0.121469] Advanced Linux Sound Architecture Driver Initialized.
+[    0.122023] clocksource: Switched to clocksource arch_sys_counter
+[    0.122172] VFS: Disk quotas dquot_6.6.0
+[    0.122215] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    0.122340] pnp: PnP ACPI: disabled
+[    0.125818] NET: Registered protocol family 2
+[    0.126240] IP idents hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.128498] tcp_listen_portaddr_hash hash table entries: 4096 (order: 4, 65536 bytes, linear)
+[    0.128574] TCP established hash table entries: 65536 (order: 7, 524288 bytes, linear)
+[    0.128861] TCP bind hash table entries: 65536 (order: 8, 1048576 bytes, linear)
+[    0.129446] TCP: Hash tables configured (established 65536 bind 65536)
+[    0.129568] UDP hash table entries: 4096 (order: 5, 131072 bytes, linear)
+[    0.129682] UDP-Lite hash table entries: 4096 (order: 5, 131072 bytes, linear)
+[    0.129901] NET: Registered protocol family 1
+[    0.130259] RPC: Registered named UNIX socket transport module.
+[    0.130270] RPC: Registered udp transport module.
+[    0.130276] RPC: Registered tcp transport module.
+[    0.130281] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.130295] PCI: CLS 0 bytes, default 64
+[    0.131248] hw perfevents: enabled with armv8_cortex_a53 PMU driver, 7 counters available
+[    0.131521] hw perfevents: enabled with armv8_cortex_a57 PMU driver, 7 counters available
+[    0.132128] kvm [1]: HYP mode not available
+[    0.135030] Initialise system trusted keyrings
+[    0.135155] workingset: timestamp_bits=42 max_order=21 bucket_order=0
+[    0.138236] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.138643] NFS: Registering the id_resolver key type
+[    0.138675] Key type id_resolver registered
+[    0.138682] Key type id_legacy registered
+[    0.138735] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    0.138744] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    0.138846] 9p: Installing v9fs 9p2000 file system support
+[    0.164837] Key type asymmetric registered
+[    0.164849] Asymmetric key parser 'x509' registered
+[    0.164878] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 243)
+[    0.164888] io scheduler mq-deadline registered
+[    0.164897] io scheduler kyber registered
+[    0.181053] gpio_rcar e6050000.gpio: driving 16 GPIOs
+[    0.181376] gpio_rcar e6051000.gpio: driving 29 GPIOs
+[    0.181655] gpio_rcar e6052000.gpio: driving 15 GPIOs
+[    0.181921] gpio_rcar e6053000.gpio: driving 16 GPIOs
+[    0.182210] gpio_rcar e6054000.gpio: driving 18 GPIOs
+[    0.182479] gpio_rcar e6055000.gpio: driving 26 GPIOs
+[    0.182755] gpio_rcar e6055400.gpio: driving 32 GPIOs
+[    0.183019] gpio_rcar e6055800.gpio: driving 4 GPIOs
+[    0.185905] rcar-pcie fe000000.pcie: host bridge /soc/pcie@fe000000 ranges:
+[    0.185933] rcar-pcie fe000000.pcie:       IO 0x00fe100000..0x00fe1fffff -> 0x0000000000
+[    0.185955] rcar-pcie fe000000.pcie:      MEM 0x00fe200000..0x00fe3fffff -> 0x00fe200000
+[    0.185973] rcar-pcie fe000000.pcie:      MEM 0x0030000000..0x0037ffffff -> 0x0030000000
+[    0.185987] rcar-pcie fe000000.pcie:      MEM 0x0038000000..0x003fffffff -> 0x0038000000
+[    0.186004] rcar-pcie fe000000.pcie:   IB MEM 0x0040000000..0x007fffffff -> 0x0040000000
+[    0.186081] rcar-pcie fe000000.pcie: no pcie3v3 regulator found
+[    0.186092] rcar-pcie fe000000.pcie: no pcie1v8 regulator found
+[    0.253742] rcar-pcie fe000000.pcie: PCIe link down
+[    0.253922] rcar-pcie ee800000.pcie: host bridge /soc/pcie@ee800000 ranges:
+[    0.253948] rcar-pcie ee800000.pcie:       IO 0x00ee900000..0x00ee9fffff -> 0x0000000000
+[    0.253970] rcar-pcie ee800000.pcie:      MEM 0x00eea00000..0x00eebfffff -> 0x00eea00000
+[    0.253988] rcar-pcie ee800000.pcie:      MEM 0x00c0000000..0x00c7ffffff -> 0x00c0000000
+[    0.254003] rcar-pcie ee800000.pcie:      MEM 0x00c8000000..0x00cfffffff -> 0x00c8000000
+[    0.254035] rcar-pcie ee800000.pcie:   IB MEM 0x0040000000..0x007fffffff -> 0x0040000000
+[    0.254069] rcar-pcie ee800000.pcie: no pcie3v3 regulator found
+[    0.254079] rcar-pcie ee800000.pcie: no pcie1v8 regulator found
+[    0.414022] rcar-pcie ee800000.pcie: PCIe link down
+[    0.416497] EINJ: ACPI disabled.
+[    0.450431] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    0.452841] SuperH (H)SCI(F) driver initialized
+[    0.453281] e6550000.serial: ttySC1 at MMIO 0xe6550000 (irq = 42, base_baud = 0) is a hscif
+[    0.454050] e6e88000.serial: ttySC0 at MMIO 0xe6e88000 (irq = 128, base_baud = 0) is a scif
+[    1.658777] printk: console [ttySC0] enabled
+[    1.664196] msm_serial: driver initialized
+[    1.674530] rcar-dw-hdmi fead0000.hdmi: Detected HDMI TX controller v2.01a with HDCP (DWC HDMI 2.0 TX PHY)
+[    1.684435] rcar-dw-hdmi fead0000.hdmi: registered DesignWare HDMI I2C bus driver
+[    1.692698] rcar-dw-hdmi feae0000.hdmi: Detected HDMI TX controller v2.01a with HDCP (DWC HDMI 2.0 TX PHY)
+[    1.702561] rcar-dw-hdmi feae0000.hdmi: registered DesignWare HDMI I2C bus driver
+[    1.718070] loop: module loaded
+[    1.722643] megasas: 07.714.04.00-rc1
+[    1.728370] scsi host0: sata_rcar
+[    1.731846] ata1: SATA max UDMA/133 irq 181
+[    1.741212] tun: Universal TUN/TAP device driver, 1.6
+[    1.747172] thunder_xcv, ver 1.0
+[    1.750437] thunder_bgx, ver 1.0
+[    1.753680] nicpf, ver 1.0
+[    1.757817] hclge is initializing
+[    1.761155] hns3: Hisilicon Ethernet Network Driver for Hip08 Family - version
+[    1.768378] hns3: Copyright (c) 2017 Huawei Corporation.
+[    1.773713] e1000: Intel(R) PRO/1000 Network Driver
+[    1.778596] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[    1.784367] e1000e: Intel(R) PRO/1000 Network Driver
+[    1.789332] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    1.795272] igb: Intel(R) Gigabit Ethernet Network Driver
+[    1.800671] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    1.806257] igbvf: Intel(R) Gigabit Virtual Function Network Driver
+[    1.812524] igbvf: Copyright (c) 2009 - 2012 Intel Corporation.
+[    1.818860] sky2: driver version 1.30
+[    1.826487] ravb e6800000.ethernet eth0: Base address at 0xe6800000, 2e:09:0a:00:c3:9a, IRQ 125.
+[    1.836714] VFIO - User Level meta-driver version: 0.3
+[    1.843856] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.850401] ehci-pci: EHCI PCI platform driver
+[    1.854866] ehci-platform: EHCI generic platform driver
+[    1.860462] ehci-platform ee0a0100.usb: EHCI Host Controller
+[    1.866144] ehci-platform ee0a0100.usb: new USB bus registered, assigned bus number 1
+[    1.874057] ehci-platform ee0a0100.usb: irq 175, io mem 0xee0a0100
+[    1.894032] ehci-platform ee0a0100.usb: USB 2.0 started, EHCI 1.10
+[    1.900564] hub 1-0:1.0: USB hub found
+[    1.904337] hub 1-0:1.0: 1 port detected
+[    1.908750] ehci-platform ee0c0100.usb: EHCI Host Controller
+[    1.914425] ehci-platform ee0c0100.usb: new USB bus registered, assigned bus number 2
+[    1.922323] ehci-platform ee0c0100.usb: irq 176, io mem 0xee0c0100
+[    1.942028] ehci-platform ee0c0100.usb: USB 2.0 started, EHCI 1.10
+[    1.948576] hub 2-0:1.0: USB hub found
+[    1.952343] hub 2-0:1.0: 1 port detected
+[    1.982033] ehci-platform ee0e0100.usb: EHCI Host Controller
+[    1.987713] ehci-platform ee0e0100.usb: new USB bus registered, assigned bus number 3
+[    1.995626] ehci-platform ee0e0100.usb: irq 177, io mem 0xee0e0100
+[    2.014028] ehci-platform ee0e0100.usb: USB 2.0 started, EHCI 1.10
+[    2.020485] hub 3-0:1.0: USB hub found
+[    2.024253] hub 3-0:1.0: 1 port detected
+[    2.028630] ehci-orion: EHCI orion driver
+[    2.032913] ehci-exynos: EHCI Exynos driver
+[    2.037219] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    2.043431] ohci-pci: OHCI PCI platform driver
+[    2.047916] ohci-platform: OHCI generic platform driver
+[    2.053461] ohci-platform ee0a0000.usb: Generic Platform OHCI controller
+[    2.060181] ohci-platform ee0a0000.usb: new USB bus registered, assigned bus number 4
+[    2.068055] ohci-platform ee0a0000.usb: irq 175, io mem 0xee0a0000
+[    2.150036] ata1: link resume succeeded after 1 retries
+[    2.164316] hub 4-0:1.0: USB hub found
+[    2.168087] hub 4-0:1.0: 1 port detected
+[    2.172418] ohci-platform ee0c0000.usb: Generic Platform OHCI controller
+[    2.179132] ohci-platform ee0c0000.usb: new USB bus registered, assigned bus number 5
+[    2.187001] ohci-platform ee0c0000.usb: irq 176, io mem 0xee0c0000
+[    2.261549] ata1: SATA link down (SStatus 0 SControl 300)
+[    2.280296] hub 5-0:1.0: USB hub found
+[    2.284066] hub 5-0:1.0: 1 port detected
+[    2.288389] ohci-platform ee0e0000.usb: Generic Platform OHCI controller
+[    2.295103] ohci-platform ee0e0000.usb: new USB bus registered, assigned bus number 6
+[    2.302969] ohci-platform ee0e0000.usb: irq 177, io mem 0xee0e0000
+[    2.396288] hub 6-0:1.0: USB hub found
+[    2.400055] hub 6-0:1.0: 1 port detected
+[    2.404388] ohci-exynos: OHCI Exynos driver
+[    2.409219] xhci-hcd ee000000.usb: xHCI Host Controller
+[    2.414458] xhci-hcd ee000000.usb: new USB bus registered, assigned bus number 7
+[    2.437714] xhci-hcd ee000000.usb: hcc params 0x014051ce hci version 0x100 quirks 0x0000000000830410
+[    2.446883] xhci-hcd ee000000.usb: irq 172, io mem 0xee000000
+[    2.452746] xhci-hcd ee000000.usb: xHCI Host Controller
+[    2.457978] xhci-hcd ee000000.usb: new USB bus registered, assigned bus number 8
+[    2.465382] xhci-hcd ee000000.usb: Host supports USB 3.0 SuperSpeed
+[    2.471952] hub 7-0:1.0: USB hub found
+[    2.475722] hub 7-0:1.0: 1 port detected
+[    2.479812] usb usb8: We don't know the algorithms for LPM for this host, disabling LPM.
+[    2.488168] hub 8-0:1.0: USB hub found
+[    2.491944] hub 8-0:1.0: 1 port detected
+[    2.496744] usbcore: registered new interface driver usb-storage
+[    2.504437] renesas_usbhs e6590000.usb: host probed
+[    2.509329] renesas_usbhs e6590000.usb: no transceiver found
+[    2.515055] renesas_usbhs e6590000.usb: gadget probed
+[    2.520271] renesas_usbhs e6590000.usb: probed
+[    2.525173] renesas_usbhs e659c000.usb: host probed
+[    2.530064] renesas_usbhs e659c000.usb: no transceiver found
+[    2.535778] renesas_usbhs e659c000.usb: gadget probed
+[    2.540977] renesas_usbhs e659c000.usb: probed
+[    2.547899] i2c /dev entries driver
+[    2.562483] cs2000-cp 2-004f: revision - C1
+[    2.566726] i2c-rcar e6510000.i2c: probed
+[    2.571559] pca953x 4-0020: supply vcc not found, using dummy regulator
+[    2.578261] pca953x 4-0020: using no AI
+[    2.582906] gpio-355 (PCIE/SATA switch): hogged as output/low
+[    2.595176] i2c-rcar e66d8000.i2c: probed
+[    2.600472] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@7/endpoint on port 7
+[    2.609453] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@8/endpoint on port 8
+[    2.618425] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@a/endpoint on port 10
+[    2.627489] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@b/endpoint on port 11
+[    2.636896] adv748x 4-0070: chip found @ 0xe0 revision 2143
+[    2.690572] rcar-csi2 fea80000.csi2: 1 lanes found
+[    2.694032] usb 3-1: new high-speed USB device number 2 using ehci-platform
+[    2.695711] rcar-csi2 feaa0000.csi2: 4 lanes found
+[    2.711907] rcar-vin e6ef0000.video: Device registered as video0
+[    2.717988] rcar-vin e6ef1000.video: Device registered as video1
+[    2.724065] rcar-vin e6ef2000.video: Device registered as video2
+[    2.730147] rcar-vin e6ef3000.video: Device registered as video3
+[    2.736229] rcar-vin e6ef4000.video: Device registered as video4
+[    2.742353] rcar-vin e6ef5000.video: Device registered as video5
+[    2.748447] rcar-vin e6ef6000.video: Device registered as video6
+[    2.754525] rcar-vin e6ef7000.video: Device registered as video7
+[    2.763274] rcar_gen3_thermal e6198000.thermal: is using pseudo fixed FUSE values
+[    2.775478] rcar_gen3_thermal e6198000.thermal: TSC0: Loaded 1 trip points
+[    2.786740] rcar_gen3_thermal e6198000.thermal: TSC1: Loaded 1 trip points
+[    2.797949] rcar_gen3_thermal e6198000.thermal: TSC2: Loaded 3 trip points
+[    2.809996] sdhci: Secure Digital Host Controller Interface driver
+[    2.816221] sdhci: Copyright(c) Pierre Ossman
+[    2.821512] Synopsys Designware Multimedia Card Interface Driver
+[    2.821714] renesas_sdhi_internal_dmac ee100000.mmc: Got CD GPIO
+[    2.821774] renesas_sdhi_internal_dmac ee140000.mmc: Adding to iommu group 0
+[    2.821798] renesas_sdhi_internal_dmac ee140000.mmc: Using IPMMU context 1
+[    2.821804] renesas_sdhi_internal_dmac ee160000.mmc: Got CD GPIO
+[    2.821824] renesas_sdhi_internal_dmac ee160000.mmc: Got WP GPIO
+[    2.828960] sdhci-pltfm: SDHCI platform and OF driver helper
+[    2.833567] renesas_sdhi_internal_dmac ee100000.mmc: Got WP GPIO
+[    2.870764] renesas_sdhi_internal_dmac ee140000.mmc: mmc0 base at 0x00000000ee140000, max clock rate 200 MHz
+[    2.881660] ledtrig-cpu: registered to indicate activity on CPUs
+[    2.888688] SMCCC: SOC_ID: ARCH_SOC_ID not implemented, skipping ....
+[    2.895740] usbcore: registered new interface driver usbhid
+[    2.901343] usbhid: USB HID core driver
+[    2.906494] usb-storage 3-1:1.0: USB Mass Storage device detected
+[    2.910746] optee: probing for conduit method.
+[    2.913297] scsi host1: usb-storage 3-1:1.0
+[    2.917117] optee: revision 3.22 (314ecf9d)
+[    2.921737] optee driver R-Car Rev.1.0.11
+[    2.930205] optee: dynamic shared memory is enabled
+[    2.935420] optee: initialized driver
+[    2.952516] rcar_sound ec500000.sound: probed
+[    2.957616] NET: Registered protocol family 17
+[    2.962195] 9pnet: Installing 9P2000 support
+[    2.966518] Key type dns_resolver registered
+[    2.971078] registered taskstats version 1
+[    2.975192] Loading compiled-in X.509 certificates
+[    2.975453] mmc0: new HS400 MMC card at address 0001
+[    2.985906] mmcblk0: mmc0:0001 BGSD3R 29.1 GiB 
+[    2.989985] thermal emergency: set temperature to 110 celsius
+[    2.990872] mmcblk0boot0: mmc0:0001 BGSD3R partition 1 16.0 MiB
+[    2.996439] thermal emergency: shutdown target cpus 1-7
+[    3.002520] mmcblk0boot1: mmc0:0001 BGSD3R partition 2 16.0 MiB
+[    3.007356] thermal emergency: freq scaled target cpus 0
+[    3.007709] renesas_irqc e61c0000.interrupt-controller: driving 6 irqs
+[    3.013382] mmcblk0rpmb: mmc0:0001 BGSD3R partition 3 4.00 MiB, chardev (509:0)
+[    3.034074]  mmcblk0: p1
+[    3.062151] ehci-platform ee080100.usb: EHCI Host Controller
+[    3.067840] ehci-platform ee080100.usb: new USB bus registered, assigned bus number 9
+[    3.075738] ehci-platform ee080100.usb: irq 174, io mem 0xee080100
+[    3.094029] ehci-platform ee080100.usb: USB 2.0 started, EHCI 1.10
+[    3.100549] hub 9-0:1.0: USB hub found
+[    3.104324] hub 9-0:1.0: 1 port detected
+[    3.109712] ohci-platform ee080000.usb: Generic Platform OHCI controller
+[    3.116438] ohci-platform ee080000.usb: new USB bus registered, assigned bus number 10
+[    3.124409] ohci-platform ee080000.usb: irq 174, io mem 0xee080000
+[    3.220319] hub 10-0:1.0: USB hub found
+[    3.224181] hub 10-0:1.0: 1 port detected
+[    3.229477] cpu cpu0: EM: created perf domain
+[    3.234437] cpu cpu4: EM: created perf domain
+[    3.242273] renesas_sdhi_internal_dmac ee160000.mmc: Got CD GPIO
+[    3.245109] renesas_sdhi_internal_dmac ee100000.mmc: Got CD GPIO
+[    3.246715] [drm] Initialized rcar-du 1.0.0 20130110 for feb00000.display on minor 0
+[    3.246718] [drm] Device feb00000.display probed
+[    3.248326] renesas_sdhi_internal_dmac ee160000.mmc: Got WP GPIO
+[    3.254389] renesas_sdhi_internal_dmac ee100000.mmc: Got WP GPIO
+[    3.311444] renesas_sdhi_internal_dmac ee160000.mmc: mmc2 base at 0x00000000ee160000, max clock rate 200 MHz
+[    3.318499] Console: switching to colour frame buffer device 128x48
+[    3.326841] renesas_sdhi_internal_dmac ee100000.mmc: mmc1 base at 0x00000000ee100000, max clock rate 200 MHz
+[    3.359509] rcar-du feb00000.display: [drm] fb0: rcar-dudrmfb frame buffer device
+[    3.371899] input: keys as /devices/platform/keys/input/input0
+[    3.452940] Micrel KSZ9031 Gigabit PHY e6800000.ethernet-ffffffff:00: attached PHY driver [Micrel KSZ9031 Gigabit PHY] (mii_bus:phy_addr=e6800000.ethernet-ffffffff:00, irq=183)
+[    3.935360] scsi 1:0:0:0: Direct-Access     SanDisk  Ultra            1.00 PQ: 0 ANSI: 6
+[    3.945465] sd 1:0:0:0: [sda] 121307136 512-byte logical blocks: (62.1 GB/57.8 GiB)
+[    3.954696] sd 1:0:0:0: [sda] Write Protect is off
+[    3.960816] sd 1:0:0:0: [sda] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
+[    3.982470]  sda: sda1
+[    3.990002] sd 1:0:0:0: [sda] Attached SCSI removable disk
+[    9.984896] ravb e6800000.ethernet eth0: Link is Up - 1Gbps/Full - flow control off
+[   10.014058] IP-Config: Guessing netmask 255.255.255.0
+[   10.019222] IP-Config: Complete:
+[   10.022536]      device=eth0, hwaddr=2e:09:0a:00:c3:9a, ipaddr=192.168.10.167, mask=255.255.255.0, gw=255.255.255.255
+[   10.033343]      host=192.168.10.167, domain=, nis-domain=(none)
+[   10.039475]      bootserver=255.255.255.255, rootserver=192.168.10.99, rootpath=
+[   10.040108] ALSA device list:
+[   10.058561]   No soundcards found.
+[   11.101466] VFS: Mounted root (nfs4 filesystem) on device 0:22.
+[   11.111562] devtmpfs: mounted
+[   11.121232] Freeing unused kernel memory: 6144K
+[   11.142155] Run /sbin/init as init process
+[   11.323231] systemd[1]: System time before build time, advancing clock.
+[   11.722610] NET: Registered protocol family 10
+[   11.731471] Segment Routing with IPv6
+[   11.757060] systemd[1]: Configuration file /etc/systemd/system.conf is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   11.784102] systemd[1]: Configuration file /lib/systemd/system.conf.d/00-systemd-conf.conf is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   11.809865] systemd[1]: systemd 244 running in system mode. (+PAM -AUDIT -SELINUX +IMA -APPARMOR -SMACK +SYSVINIT +UTMP -LIBCRYPTSETUP -GCRYPT -GNUTLS +ACL +XZ -LZ4 -SECCOMP +BLKID -ELFUTILS +KMOD -IDN2 -IDN -PCRE2 default-hierarchy=hybrid)
+[   11.833439] systemd[1]: Detected architecture arm64.
+
+Welcome to [1mPoky (Yocto Project Reference Distro) 3.1.11 (dunfell)[0m!
+
+[   11.864454] systemd[1]: Set hostname to <salvator-x>.
+[   12.050077] random: crng init done
+[   12.088258] systemd[1]: Configuration file /lib/systemd/system/local-fs.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.129597] systemd[1]: Configuration file /lib/systemd/system/swap.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.157964] systemd[1]: Configuration file /lib/systemd/system/umount.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.184278] systemd[1]: Configuration file /lib/systemd/system/systemd-journald.socket is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.211439] systemd[1]: Configuration file /lib/systemd/system/systemd-journald.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.235373] systemd[1]: Configuration file /lib/systemd/system/sysinit.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.274084] systemd[1]: Configuration file /lib/systemd/system/systemd-update-utmp.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.296491] systemd[1]: Configuration file /lib/systemd/system/systemd-update-done.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.317986] systemd[1]: Configuration file /lib/systemd/system/systemd-udevd.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.337824] systemd[1]: Configuration file /lib/systemd/system/systemd-udevd-kernel.socket is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.358611] systemd[1]: Configuration file /lib/systemd/system/systemd-udevd-control.socket is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.379507] systemd[1]: Configuration file /lib/systemd/system/systemd-udev-trigger.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.400159] systemd[1]: Configuration file /lib/systemd/system/systemd-tmpfiles-setup.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.421301] systemd[1]: Configuration file /lib/systemd/system/systemd-tmpfiles-setup-dev.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.442712] systemd[1]: Configuration file /lib/systemd/system/systemd-timesyncd.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.463965] systemd[1]: Configuration file /lib/systemd/system/time-sync.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.483675] systemd[1]: Configuration file /lib/systemd/system/time-set.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.503128] systemd[1]: Configuration file /lib/systemd/system/systemd-sysusers.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.523550] systemd[1]: Configuration file /lib/systemd/system/systemd-sysctl.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.543789] systemd[1]: Configuration file /lib/systemd/system/systemd-random-seed.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.567972] systemd[1]: Configuration file /lib/systemd/system/systemd-modules-load.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.589341] systemd[1]: Configuration file /lib/systemd/system/systemd-machine-id-commit.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.611303] systemd[1]: Configuration file /lib/systemd/system/systemd-journal-flush.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.632750] systemd[1]: Configuration file /lib/systemd/system/systemd-journal-catalog-update.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.655386] systemd[1]: Configuration file /lib/systemd/system/systemd-hwdb-update.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.676325] systemd[1]: Configuration file /lib/systemd/system/systemd-ask-password-console.path is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.698226] systemd[1]: Configuration file /lib/systemd/system/systemd-ask-password-console.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.720472] systemd[1]: Configuration file /lib/systemd/system/systemd-vconsole-setup.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.741615] systemd[1]: Configuration file /lib/systemd/system/initrd-switch-root.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.762815] systemd[1]: Configuration file /lib/systemd/system/initrd-cleanup.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.783231] systemd[1]: Configuration file /lib/systemd/system/initrd.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.802862] systemd[1]: Configuration file /lib/systemd/system/rescue.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.830256] systemd[1]: Configuration file /lib/systemd/system/remote-fs.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.850358] systemd[1]: Configuration file /lib/systemd/system/remote-fs-pre.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.870658] systemd[1]: Configuration file /lib/systemd/system/graphical.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.895255] systemd[1]: Configuration file /lib/systemd/system/multi-user.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.932470] systemd[1]: Configuration file /lib/systemd/system/xinetd.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.952406] systemd[1]: Configuration file /lib/systemd/system/network.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.972320] systemd[1]: Configuration file /lib/systemd/system/network-pre.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   12.992517] systemd[1]: Configuration file /lib/systemd/system/systemd-user-sessions.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.014052] systemd[1]: Configuration file /lib/systemd/system/nss-user-lookup.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.034940] systemd[1]: Configuration file /lib/systemd/system/systemd-resolved.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.056663] systemd[1]: Configuration file /lib/systemd/system/nss-lookup.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.076594] systemd[1]: Configuration file /lib/systemd/system/systemd-networkd.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.097993] systemd[1]: Configuration file /lib/systemd/system/systemd-logind.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.119739] systemd[1]: Configuration file /lib/systemd/system/dbus.socket is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.139405] systemd[1]: Configuration file /lib/systemd/system/user.slice is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.158934] systemd[1]: Configuration file /lib/systemd/system/slices.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.178835] systemd[1]: Configuration file /lib/systemd/system/systemd-ask-password-wall.path is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.200749] systemd[1]: Configuration file /lib/systemd/system/systemd-ask-password-wall.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.222984] systemd[1]: Configuration file /lib/systemd/system/rpcbind.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.243132] systemd[1]: Configuration file /lib/systemd/system/rpcbind.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.263103] systemd[1]: Configuration file /lib/systemd/system/rpcbind.socket is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.283340] systemd[1]: Configuration file /lib/systemd/system/rc.pvr.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.302910] systemd[1]: Configuration file /lib/systemd/system/optee.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.322845] systemd[1]: Configuration file /lib/systemd/system/getty.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.345339] systemd[1]: Configuration file /lib/systemd/system/serial-getty@.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.367202] systemd[1]: Configuration file /lib/systemd/system/rc-local.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.387343] systemd[1]: Configuration file /lib/systemd/system/getty-pre.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.407704] systemd[1]: Configuration file /lib/systemd/system/getty@.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.428436] systemd[1]: Configuration file /lib/systemd/system/dbus.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.447568] systemd[1]: Configuration file /lib/systemd/system/avahi-daemon.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.468039] systemd[1]: Configuration file /lib/systemd/system/avahi-daemon.socket is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.490075] systemd[1]: Configuration file /lib/systemd/system/systemd-update-utmp-runlevel.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.512633] systemd[1]: Configuration file /lib/systemd/system/rescue.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.532375] systemd[1]: Configuration file /lib/systemd/system/initrd-parse-etc.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.553610] systemd[1]: Configuration file /lib/systemd/system/initrd-root-device.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.575126] systemd[1]: Configuration file /lib/systemd/system/basic.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.595067] systemd[1]: Configuration file /lib/systemd/system/timers.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.617657] systemd[1]: Configuration file /lib/systemd/system/systemd-tmpfiles-clean.timer is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.639185] systemd[1]: Configuration file /lib/systemd/system/systemd-tmpfiles-clean.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.660934] systemd[1]: Configuration file /lib/systemd/system/initrd-fs.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.681144] systemd[1]: Configuration file /lib/systemd/system/initrd-root-fs.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.701823] systemd[1]: Configuration file /lib/systemd/system/initrd-udevadm-cleanup-db.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.724312] systemd[1]: Configuration file /lib/systemd/system/systemd-udev-settle.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.745837] systemd[1]: Configuration file /lib/systemd/system/initrd-switch-root.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.767387] systemd[1]: Configuration file /lib/systemd/system/paths.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.787148] systemd[1]: Configuration file /lib/systemd/system/sys-kernel-debug.mount is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.808484] systemd[1]: Configuration file /lib/systemd/system/sys-kernel-config.mount is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.829915] systemd[1]: Configuration file /lib/systemd/system/sys-fs-fuse-connections.mount is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.851994] systemd[1]: Configuration file /lib/systemd/system/psplash-systemd.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.872740] systemd[1]: Configuration file /lib/systemd/system/psplash-start.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.893457] systemd[1]: Configuration file /lib/systemd/system/ldconfig.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.913718] systemd[1]: Configuration file /lib/systemd/system/kmod-static-nodes.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.935042] systemd[1]: Configuration file /lib/systemd/system/dev-mqueue.mount is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.955321] systemd[1]: Configuration file /lib/systemd/system/dev-hugepages.mount is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.975586] systemd[1]: Configuration file /lib/systemd/system/emergency.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   13.995997] systemd[1]: Configuration file /lib/systemd/system/syslog.socket is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   14.016154] systemd[1]: Configuration file /lib/systemd/system/systemd-journald-audit.socket is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   14.037764] systemd[1]: Configuration file /lib/systemd/system/systemd-journald-dev-log.socket is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   14.060074] systemd[1]: Configuration file /lib/systemd/system/sockets.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   14.094295] systemd[1]: Configuration file /lib/systemd/system/systemd-networkd.socket is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   14.115145] systemd[1]: Configuration file /lib/systemd/system/systemd-initctl.socket is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   14.136162] systemd[1]: Configuration file /lib/systemd/system/systemd-initctl.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   14.156981] systemd[1]: Configuration file /lib/systemd/system/dropbear.socket is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   14.177088] systemd[1]: Configuration file /lib/systemd/system/var-volatile-srv.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   14.198252] systemd[1]: Configuration file /lib/systemd/system/var-volatile-spool.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   14.219951] systemd[1]: Configuration file /lib/systemd/system/var-volatile-lib.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   14.241405] systemd[1]: Configuration file /lib/systemd/system/var-volatile-cache.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   14.263003] systemd[1]: Configuration file /lib/systemd/system/tmp.mount is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   14.282723] systemd[1]: Configuration file /lib/systemd/system/systemd-remount-fs.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   14.304224] systemd[1]: Configuration file /lib/systemd/system/systemd-fsck-root.service is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   14.325487] systemd[1]: Configuration file /lib/systemd/system/emergency.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   14.345779] systemd[1]: Configuration file /lib/systemd/system/local-fs-pre.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   14.366192] systemd[1]: Configuration file /lib/systemd/system/shutdown.target is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   14.387805] systemd[1]: system-getty.slice: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+[   14.402975] systemd[1]: (This warning is only shown for the first unit using IP firewalling.)
+[   14.414844] systemd[1]: Created slice system-getty.slice.
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-getty.slice[0m.
+[   14.442801] systemd[1]: Created slice system-serial\x2dgetty.slice.
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-serial\x2dgetty.slice[0m.
+[   14.470945] systemd[1]: Created slice User and Session Slice.
+[[0;32m  OK  [0m] Created slice [0;1;39mUser and Session Slice[0m.
+[   14.494337] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+[[0;32m  OK  [0m] Started [0;1;39mDispatch Password …ts to Console Directory Watch[0m.
+[   14.522254] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[[0;32m  OK  [0m] Started [0;1;39mForward Password R…uests to Wall Directory Watch[0m.
+[   14.550457] systemd[1]: Reached target Paths.
+[[0;32m  OK  [0m] Reached target [0;1;39mPaths[0m.
+[   14.574193] systemd[1]: Reached target Remote File Systems.
+[[0;32m  OK  [0m] Reached target [0;1;39mRemote File Systems[0m.
+[   14.598165] systemd[1]: Reached target Slices.
+[[0;32m  OK  [0m] Reached target [0;1;39mSlices[0m.
+[   14.622171] systemd[1]: Reached target Swap.
+[[0;32m  OK  [0m] Reached target [0;1;39mSwap[0m.
+[   14.649310] systemd[1]: Listening on RPCbind Server Activation Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mRPCbind Server Activation Socket[0m.
+[   14.678218] systemd[1]: Reached target RPC Port Mapper.
+[[0;32m  OK  [0m] Reached target [0;1;39mRPC Port Mapper[0m.
+[   14.706529] systemd[1]: Listening on initctl Compatibility Named Pipe.
+[[0;32m  OK  [0m] Listening on [0;1;39minitctl Compatibility Named Pipe[0m.
+[   14.736374] systemd[1]: Listening on Journal Audit Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mJournal Audit Socket[0m.
+[   14.763914] systemd[1]: Listening on Journal Socket (/dev/log).
+[[0;32m  OK  [0m] Listening on [0;1;39mJournal Socket (/dev/log)[0m.
+[   14.790825] systemd[1]: Listening on Journal Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mJournal Socket[0m.
+[   14.820241] systemd[1]: Listening on Network Service Netlink Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mNetwork Service Netlink Socket[0m.
+[   14.852735] systemd[1]: Listening on udev Control Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mudev Control Socket[0m.
+[   14.878654] systemd[1]: Listening on udev Kernel Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mudev Kernel Socket[0m.
+[   14.911424] systemd[1]: Mounting Huge Pages File System...
+         Mounting [0;1;39mHuge Pages File System[0m...
+[   14.943458] systemd[1]: Mounting POSIX Message Queue File System...
+         Mounting [0;1;39mPOSIX Message Queue File System[0m...
+[   14.975331] systemd[1]: Mounting Kernel Debug File System...
+         Mounting [0;1;39mKernel Debug File System[0m...
+[   15.011010] systemd[1]: Mounting Temporary Directory (/tmp)...
+         Mounting [0;1;39mTemporary Directory (/tmp)[0m...
+[   15.044524] systemd[1]: Starting Create list of static device nodes for the current kernel...
+         Starting [0;1;39mCreate list of st…odes for the current kernel[0m...
+[   15.079057] systemd[1]: Starting Start psplash boot splash screen...
+         Starting [0;1;39mStart psplash boot splash screen[0m...
+[   15.114196] systemd[1]: Starting RPC Bind...
+         Starting [0;1;39mRPC Bind[0m...
+[   15.134719] systemd[1]: Condition check resulted in File System Check on Root Device being skipped.
+[   15.150179] systemd[1]: Starting Journal Service...
+         Starting [0;1;39mJournal Service[0m...
+[   15.167776] systemd-journald[334]: Configuration file /etc/systemd/journald.conf is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   15.184291] systemd-journald[334]: Configuration file /lib/systemd/journald.conf.d/00-systemd-conf.conf is marked executable. Please remove executable permission bits. Proceeding anyway.
+[   15.215704] systemd[1]: Starting Load Kernel Modules...
+         Starting [0;1;39mLoad Kernel Modules[0m...
+[   15.239289] systemd[1]: Starting Remount Root and Kernel File Systems...
+         Starting [0;1;39mRemount Root and Kernel File Systems[0m...
+[   15.266280] systemd[1]: Starting udev Coldplug all Devices...
+         Starting [0;1;39mudev Coldplug all Devices[0m...
+[   15.289428] systemd[1]: Started Start psplash boot splash screen.
+[[0;32m  OK  [0m] Started [0;1;39mStart psplash boot splash screen[0m.
+[   15.310468] systemd[1]: Started RPC Bind.
+[[0;32m  OK  [0m] Started [0;1;39mRPC Bind[0m.
+[   15.334537] systemd[1]: Started Journal Service.
+[[0;32m  OK  [0m] Started [0;1;39mJournal Service[0m.
+[[0;32m  OK  [0m] Mounted [0;1;39mHuge Pages File System[0m.
+[[0;32m  OK  [0m] Mounted [0;1;39mPOSIX Message Queue File System[0m.
+[[0;32m  OK  [0m] Mounted [0;1;39mKernel Debug File System[0m.
+[[0;32m  OK  [0m] Mounted [0;1;39mTemporary Directory (/tmp)[0m.
+[[0;32m  OK  [0m] Started [0;1;39mCreate list of sta… nodes for the current kernel[0m.
+[[0;32m  OK  [0m] Started [0;1;39mLoad Kernel Modules[0m.
+[[0;32m  OK  [0m] Started [0;1;39mRemount Root and Kernel File Systems[0m.
+         Mounting [0;1;39mKernel Configuration File System[0m...
+[[0;32m  OK  [0m] Started [0;1;39mStart psplash-syst…progress communication helper[0m.
+         Starting [0;1;39mFlush Journal to Persistent Storage[0m...
+         Starting [0;1;39mApply Kernel Variables[0m...
+[   15.557302] systemd-journald[334]: Received client request to flush runtime journal.
+         Starting [0;1;39mCreate Static Device Nodes in /dev[0m...
+[[0;32m  OK  [0m] Mounted [0;1;39mKernel Configuration File System[0m.
+[[0;32m  OK  [0m] Started [0;1;39mFlush Journal to Persistent Storage[0m.
+[[0;32m  OK  [0m] Started [0;1;39mApply Kernel Variables[0m.
+[[0;32m  OK  [0m] Started [0;1;39mCreate Static Device Nodes in /dev[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mLocal File Systems (Pre)[0m.
+         Mounting [0;1;39m/var/volatile[0m...
+         Starting [0;1;39mudev Kernel Device Manager[0m...
+[[0;32m  OK  [0m] Started [0;1;39mudev Coldplug all Devices[0m.
+[[0;32m  OK  [0m] Mounted [0;1;39m/var/volatile[0m.
+         Starting [0;1;39mLoad/Save Random Seed[0m...
+[[0;32m  OK  [0m] Reached target [0;1;39mLocal File Systems[0m.
+         Starting [0;1;39mCreate Volatile Files and Directories[0m...
+[[0;32m  OK  [0m] Started [0;1;39mLoad/Save Random Seed[0m.
+[[0;32m  OK  [0m] Started [0;1;39mudev Kernel Device Manager[0m.
+         Starting [0;1;39mNetwork Service[0m...
+[[0;32m  OK  [0m] Started [0;1;39mCreate Volatile Files and Directories[0m.
+         Starting [0;1;39mNetwork Time Synchronization[0m...
+         Starting [0;1;39mUpdate UTMP about System Boot/Shutdown[0m...
+[[0;32m  OK  [0m] Started [0;1;39mUpdate UTMP about System Boot/Shutdown[0m.
+[[0;32m  OK  [0m] Started [0;1;39mNetwork Service[0m.
+         Starting [0;1;39mNetwork Name Resolution[0m...
+[[0;32m  OK  [0m] Started [0;1;39mNetwork Time Synchronization[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mSystem Initialization[0m.
+[[0;32m  OK  [0m] Started [0;1;39mDaily Cleanup of Temporary Directories[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mSystem Time Set[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mSystem Time Synchronized[0m.
+[   16.190313] pwm-backlight: probe of backlight failed with error -16
+[[0;32m  OK  [0m] Reached target [0;1;39mTimers[0m.
+[[0;32m  OK  [0m] Listening on [0;1;39mAvahi mDNS/DNS-SD Stack Activation Socket[0m.
+[   16.229502] at24 7-0050: supply vcc not found, using dummy regulator
+[[0;32m  OK  [0m] Listening on [0;1;39mD-Bus System Message Bus Socke[   16.243219] at24 7-0050: 128 byte br24t01 EEPROM, writable, 8 bytes/write
+t[0m.
+[[0;32m  OK  [0m] Listening on [0;1;39mdropbear.socket[0m.
+[   16.333481] renesas_usb3 ee020000.usb: probed with phy
+[[0;32m  OK  [0m] Reached target [0;1;39mSockets[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mBasic System[0m.
+[[0;32m  OK  [0m] Started [0;1;39mD-Bus Syste[   16.386017] ccree e6601000.crypto: ARM CryptoCell 630P Driver: HW version 0xAF400001/0xDCC63000, Driver version 5.0
+m Message Bus[0m.
+[[0;32m  OK  [0m] Started [0;1;39moptee services[0m.
+[   16.427294] ccree e6601000.crypto: ARM ccree device initialized
+         Starting [0;1;39mpvrinit.service[0m...
+         Starting [0;1;39mPowerVR consumer services[0m...
+         Starting [0;1;39mLogin Service[0m...
+[[0;32m  OK  [0m] Started [0;1;39mNetwork Name Resolution[0m.
+[[0;1;31mFAILED[0m] Failed to start [0;1;39mpvrinit.service[0m.
+See 'systemctl status pvrinit.service' for details.
+[[0;1;31mFAILED[0m] Failed to start [0;1;39mPowerVR consumer services[0m.
+See 'systemctl status rc.pvr.service' for details.
+[[0;1;38;5;185mDEPEND[0m] Dependency failed for [0;1;39mWeston Wayland Compositor[0m.
+[[0;32m  OK  [0m] Started [0;1;39mLogin Service[0m.
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-weston.slice[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mNetwork[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mHost and Network Name Lookups[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mHardware activated USB gadget[0m.
+         Starting [0;1;39mAvahi mDNS/DNS-SD Stack[0m...
+         Starting [0;1;39mset_default_governor.service[0m...
+         Starting [0;1;39mPermit User Sessions[0m...
+[[0;32m  OK  [0m] Started [0;1;39mXinetd A Powerful Replacement For Inetd[0m.
+[[0;32m  OK  [0m] Started [0;[   16.918345] rd 0-7: Disabling EAS, schedutil is mandatory
+1;39mPermit User Sessions[0m.
+[[0;32m  OK  [0m] Started [0;1;39mAvahi mDNS/DNS-SD Stack[0m.
+[[0;32m  OK  [0m] Started [0;1;39mset_default_governor.service[0m.
+[[0;32m  OK  [0m] Started [0;1;39mGetty on tty1[0m.
+[[0;32m  OK  [0m] Started [0;1;39mSerial Getty on ttySC0[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mLogin Prompts[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mMulti-User System[0m.
+         Starting [0;1;39mUpdate UTMP about System Runlevel Changes[0m...
+[[0;32m  OK  [0m] Started [0;1;39mUpdate UTMP about System Runlevel Changes[0m.
+
+Poky (Yocto Project Reference Distro) 3.1.11 salvator-x ttySC0
+
+salvator-x login: 
+salvator-x login: root
+[   18.871291] audit: type=1006 audit(1708653591.099:2): pid=513 uid=0 old-auid=4294967295 auid=0 tty=(none) old-ses=4294967295 ses=1 res=1
+7[r[999;999H[6n8root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# 
+----------Prepare----------
+
+
+root@salvator-x:~# find /sys/devices/platform/soc/ee0e0100.usb/ -name 'sd*'
+/sys/devices/platform/soc/ee0e0100.usb/usb3/3-1/3-1:1.0/host1/target1:0:0/1:0:0:0/block/sda
+/sys/devices/platform/soc/ee0e0100.usb/usb3/3-1/3-1:1.0/host1/target1:0:0/1:0:0:0/block/sda/sda1
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=testdata bs=10M count=5
+5+0 records in
+5+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 1.50818 s, 34.8 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# mkdir -p /mnt/usb
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sda1 /mnt/usb
+[   31.230311] EXT4-fs (sda1): mounted filesystem with ordered data mode. Opts: (null)
+root@salvator-x:~# 
+root@salvator-x:~# cp testdata /mnt/usb/
+root@salvator-x:~# 
+root@salvator-x:~# umount /mnt/usb
+root@salvator-x:~# 
+root@salvator-x:~# find /sys/devices/platform/soc/ee0e0100.usb/ -name 'sd*'
+/sys/devices/platform/soc/ee0e0100.usb/usb3/3-1/3-1:1.0/host1/target1:0:0/1:0:0:0/block/sda
+/sys/devices/platform/soc/ee0e0100.usb/usb3/3-1/3-1:1.0/host1/target1:0:0/1:0:0:0/block/sda/sda1
+root@salvator-x:~# 
+root@salvator-x:~# i2cset -f -y 7 0x30 0x20 0x0f
+root@salvator-x:~# 
+
+Switch SW23 off and input 'yes' to continue:
+[   41.950180] SDHI0 VccQ: disabling
+[   41.953570] SDHI3 VccQ: disabling
+Input 'yes' to continue: 
+
+root@salvator-x:~# echo N > /sys/module/printk/parameters/console_suspend
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sda1 /mnt/usb
+[   49.550946] EXT4-fs (sda1): mounted filesystem with ordered data mode. Opts: (null)
+root@salvator-x:~# 
+root@salvator-x:~# cp testdata /mnt/usb/testdata_from_nfs &
+[1] 538
+root@salvator-x:~# 
+root@salvator-x:~# echo mem > /sys/power/state
+[   50.962331] PM: suspend entry (deep)
+[   53.750743] Filesystems sync: 2.784 seconds
+[   53.756595] Freezing user space processes ... (elapsed 0.001 seconds) done.
+[   53.758187] OOM killer disabled.
+[   53.758190] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+[   54.199495] ravb e6800000.ethernet eth0: Link is Down
+[   54.216267] Disabling non-boot CPUs ...
+[   54.220698] CPU1: shutdown
+[   54.223422] psci: CPU1 killed (polled 0 ms)
+[   54.229244] CPU2: shutdown
+[   54.231973] psci: CPU2 killed (polled 0 ms)
+[   54.237665] CPU3: shutdown
+[   54.240406] psci: CPU3 killed (polled 0 ms)
+[   54.246321] CPU4: shutdown
+[   54.249034] psci: CPU4 killed (polled 0 ms)
+[   54.254842] CPU5: shutdown
+[   54.257553] psci: CPU5 killed (polled 0 ms)
+[   54.263168] CPU6: shutdown
+[   54.265877] psci: CPU6 killed (polled 0 ms)
+[   54.271534] CPU7: shutdown
+[   54.274335] psci: CPU7 killed (polled 0 ms)
+ 
+ Switch power switch: 
+
+NOTICE:  BL2: R-Car Gen3 Initial Program Loader(CA57) Rev.4.0.0
+NOTICE:  BL2: PRR is R-Car H3 Ver.3.0
+NOTICE:  BL2: Board is Salvator-XS Rev.1.0
+NOTICE:  BL2: Boot device is HyperFlash(160MHz)
+NOTICE:  BL2: LCM state is CM
+NOTICE:  AVS setting succeeded. DVFS_SetVID=0x53
+NOTICE:  BL2: DDR3200(rev.0.42)
+NOTICE:  BL2: [WARM_BOOT]
+NOTICE:  BL2: DRAM Split is 4ch(DDR f)
+NOTICE:  BL2: QoS is default setting(rev.0.11)
+NOTICE:  BL2: DRAM refresh interval 1.95 usec
+NOTICE:  BL2: Periodic Write DQ Training
+NOTICE:  BL2: CH0: 400000000 - 47fffffff, 2 GiB
+NOTICE:  BL2: CH1: 500000000 - 57fffffff, 2 GiB
+NOTICE:  BL2: CH2: 600000000 - 67fffffff, 2 GiB
+NOTICE:  BL2: CH3: 700000000 - 77fffffff, 2 GiB
+NOTICE:  BL2: Lossy Decomp areas
+NOTICE:       Entry 0: DCMPAREACRAx:0x80000540 DCMPAREACRBx:0x570
+NOTICE:       Entry 1: DCMPAREACRAx:0x40000000 DCMPAREACRBx:0x0
+NOTICE:       Entry 2: DCMPAREACRAx:0x20000000 DCMPAREACRBx:0x0
+NOTICE:  BL2: FDT at 0xe6327f70
+NOTICE:  BL2: v2.9(release):9cdb21f75
+NOTICE:  BL2: Built : 05:25:39, Dec 19 2023
+NOTICE:  BL2: Normal boot
+[   54.279600] Enabling non-boot CPUs ...
+[   54.283636] Detected PIPT I-cache on CPU1
+[   54.283688] CPU1: Booted secondary processor 0x0000000001 [0x411fd073]
+[   54.284150] CPU1 is up
+[   54.297201] Detected PIPT I-cache on CPU2
+[   54.297222] CPU2: Booted secondary processor 0x0000000002 [0x411fd073]
+[   54.297490] CPU2 is up
+[   54.310510] Detected PIPT I-cache on CPU3
+[   54.310532] CPU3: Booted secondary processor 0x0000000003 [0x411fd073]
+[   54.310804] CPU3 is up
+[   54.323872] Detected VIPT I-cache on CPU4
+[   54.323923] CPU4: Booted secondary processor 0x0000000100 [0x410fd034]
+[   54.324800] CPU4 is up
+[   54.337807] Detected VIPT I-cache on CPU5
+[   54.337841] CPU5: Booted secondary processor 0x0000000101 [0x410fd034]
+[   54.338433] CPU5 is up
+[   54.351434] Detected VIPT I-cache on CPU6
+[   54.351466] CPU6: Booted secondary processor 0x0000000102 [0x410fd034]
+[   54.352075] CPU6 is up
+[   54.365080] Detected VIPT I-cache on CPU7
+[   54.365113] CPU7: Booted secondary processor 0x0000000103 [0x410fd034]
+[   54.365746] CPU7 is up
+[   54.454948] xhci-hcd ee000000.usb: xHC error in resume, USBSTS 0x401, Reinit
+[   54.462013] usb usb7: root hub lost power or was reset
+[   54.467139] usb usb8: root hub lost power or was reset
+[   54.525012] Micrel KSZ9031 Gigabit PHY e6800000.ethernet-ffffffff:00: attached PHY driver [Micrel KSZ9031 Gigabit PHY] (mii_bus:phy_addr=e6800000.ethernet-ffffffff:00, irq=183)
+[   54.636012] usb usb4: root hub lost power or was reset
+[   54.641285] usb usb1: root hub lost power or was reset
+[   54.728100] usb usb5: root hub lost power or was reset
+[   54.733357] usb usb2: root hub lost power or was reset
+[   54.820094] usb usb6: root hub lost power or was reset
+[   54.825349] usb usb3: root hub lost power or was reset
+[   54.940140] usb usb10: root hub lost power or was reset
+[   54.945483] usb usb9: root hub lost power or was reset
+[   54.962120] ata1: link resume succeeded after 1 retries
+[   55.073645] ata1: SATA link down (SStatus 0 SControl 300)
+[   55.462009] usb 3-1: reset high-speed USB device number 2 using ehci-platform
+[   55.631491] OOM killer enabled.
+[   55.635352] Restarting tasks ... done.
+[1]+  Done                    cp testdata /mnt/usb/testdata_from_nfs
+[   55.641007] PM: suspend exit
+root@salvator-x:~# [   62.588202] ravb e6800000.ethernet eth0: Link is Up - 1Gbps/Full - flow control off
+
+root@salvator-x:~# echo "Wake up sucessfully"
+Wake up sucessfully
+root@salvator-x:~# 
+root@salvator-x:~# wait
+root@salvator-x:~# 
+root@salvator-x:~# sync
+root@salvator-x:~# 
+root@salvator-x:~# cmp testdata /mnt/usb/testdata_from_nfs
+root@salvator-x:~# 
+root@salvator-x:~# umount /mnt/usb
+root@salvator-x:~# 
+ 
+#### Result: OK ####

@@ -1,0 +1,7 @@
+
+root@salvator-x:~# dmesg | grep "PCI.*link"
+[    0.153515] rcar-pcie fe000000.pcie: PCIe x1: link up
+[    0.236401] rcar-pcie ee800000.pcie: PCIe link down
+root@salvator-x:~# 
+ 
+#### Result: OK ####

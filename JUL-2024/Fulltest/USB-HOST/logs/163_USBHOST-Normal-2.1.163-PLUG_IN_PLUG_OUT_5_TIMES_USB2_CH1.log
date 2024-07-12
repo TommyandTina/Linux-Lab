@@ -1,0 +1,115 @@
+
+root@salvator-x:~#  
+root@salvator-x:~# 
+------1------
+
+Please plug in USB:
+[   75.867907] usb 6-1: new SuperSpeed USB device number 3 using xhci-renesas-hcd
+[   75.905031] usb-storage 6-1:1.0: USB Mass Storage device detected
+[   75.913369] scsi host0: usb-storage 6-1:1.0
+[   76.929440] scsi 0:0:0:0: Direct-Access     SanDisk  Extreme Pro      0    PQ: 0 ANSI: 6
+[   76.942821] sd 0:0:0:0: [sda] 250085376 512-byte logical blocks: (128 GB/119 GiB)
+[   76.952229] sd 0:0:0:0: [sda] Write Protect is off
+[   76.958601] sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[   76.976692]  sda: sda1
+[   76.980761] sd 0:0:0:0: [sda] Attached SCSI removable disk
+
+root@salvator-x:~#  
+root@salvator-x:~# 
+Please plug out USB:
+[   80.795488] usb 6-1: USB disconnect, device number 3
+[   80.847553] sd 0:0:0:0: [sda] Synchronizing SCSI cache
+[   80.852962] sd 0:0:0:0: [sda] Synchronize Cache(10) failed: Result: hostbyte=0x01 driverbyte=DRIVER_OK
+
+root@salvator-x:~#  
+root@salvator-x:~# 
+------2------
+
+Please plug in USB:
+[   85.127851] usb 6-1: new SuperSpeed USB device number 4 using xhci-renesas-hcd
+[   85.162833] usb-storage 6-1:1.0: USB Mass Storage device detected
+[   85.170090] scsi host0: usb-storage 6-1:1.0
+[   86.178266] scsi 0:0:0:0: Direct-Access     SanDisk  Extreme Pro      0    PQ: 0 ANSI: 6
+[   86.190359] sd 0:0:0:0: [sda] 250085376 512-byte logical blocks: (128 GB/119 GiB)
+[   86.199160] sd 0:0:0:0: [sda] Write Protect is off
+[   86.205278] sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[   86.221113]  sda: sda1
+[   86.225393] sd 0:0:0:0: [sda] Attached SCSI removable disk
+
+root@salvator-x:~#  
+root@salvator-x:~# 
+Please plug out USB:
+[   89.555475] usb 6-1: USB disconnect, device number 4
+[   89.599604] sd 0:0:0:0: [sda] Synchronizing SCSI cache
+[   89.605000] sd 0:0:0:0: [sda] Synchronize Cache(10) failed: Result: hostbyte=0x01 driverbyte=DRIVER_OK
+
+root@salvator-x:~#  
+root@salvator-x:~# 
+------3------
+
+Please plug in USB:
+[   94.059857] usb 6-1: new SuperSpeed USB device number 5 using xhci-renesas-hcd
+[   94.094895] usb-storage 6-1:1.0: USB Mass Storage device detected
+[   94.102086] scsi host0: usb-storage 6-1:1.0
+[   95.137093] scsi 0:0:0:0: Direct-Access     SanDisk  Extreme Pro      0    PQ: 0 ANSI: 6
+[   95.149102] sd 0:0:0:0: [sda] 250085376 512-byte logical blocks: (128 GB/119 GiB)
+[   95.158221] sd 0:0:0:0: [sda] Write Protect is off
+[   95.164508] sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[   95.182826]  sda: sda1
+[   95.186408] sd 0:0:0:0: [sda] Attached SCSI removable disk
+
+root@salvator-x:~#  
+root@salvator-x:~# 
+Please plug out USB:
+[   98.687486] usb 6-1: USB disconnect, device number 5
+[   98.751492] sd 0:0:0:0: [sda] Synchronizing SCSI cache
+[   98.756928] sd 0:0:0:0: [sda] Synchronize Cache(10) failed: Result: hostbyte=0x01 driverbyte=DRIVER_OK
+
+root@salvator-x:~#  
+root@salvator-x:~# 
+------4------
+
+Please plug in USB:
+[  102.951872] usb 6-1: new SuperSpeed USB device number 6 using xhci-renesas-hcd
+[  102.988714] usb-storage 6-1:1.0: USB Mass Storage device detected
+[  102.997284] scsi host0: usb-storage 6-1:1.0
+[  104.033664] scsi 0:0:0:0: Direct-Access     SanDisk  Extreme Pro      0    PQ: 0 ANSI: 6
+[  104.047644] sd 0:0:0:0: [sda] 250085376 512-byte logical blocks: (128 GB/119 GiB)
+[  104.056794] sd 0:0:0:0: [sda] Write Protect is off
+[  104.063291] sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[  104.082266]  sda: sda1
+[  104.085660] sd 0:0:0:0: [sda] Attached SCSI removable disk
+
+root@salvator-x:~#  
+root@salvator-x:~# 
+Please plug out USB:
+[  107.167477] usb 6-1: USB disconnect, device number 6
+[  107.227701] sd 0:0:0:0: [sda] Synchronizing SCSI cache
+[  107.233110] sd 0:0:0:0: [sda] Synchronize Cache(10) failed: Result: hostbyte=0x01 driverbyte=DRIVER_OK
+
+root@salvator-x:~#  
+root@salvator-x:~# 
+------5------
+
+Please plug in USB:
+[  113.675872] usb 6-1: new SuperSpeed USB device number 7 using xhci-renesas-hcd
+[  113.710787] usb-storage 6-1:1.0: USB Mass Storage device detected
+[  113.718235] scsi host0: usb-storage 6-1:1.0
+[  114.753341] scsi 0:0:0:0: Direct-Access     SanDisk  Extreme Pro      0    PQ: 0 ANSI: 6
+[  114.766527] sd 0:0:0:0: [sda] 250085376 512-byte logical blocks: (128 GB/119 GiB)
+[  114.775630] sd 0:0:0:0: [sda] Write Protect is off
+[  114.781981] sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[  114.803219]  sda: sda1
+[  114.807112] sd 0:0:0:0: [sda] Attached SCSI removable disk
+
+root@salvator-x:~#  
+root@salvator-x:~# 
+Please plug out USB:
+[  118.375490] usb 6-1: USB disconnect, device number 7
+[  118.427603] sd 0:0:0:0: [sda] Synchronizing SCSI cache
+[  118.433062] sd 0:0:0:0: [sda] Synchronize Cache(10) failed: Result: hostbyte=0x01 driverbyte=DRIVER_OK
+
+root@salvator-x:~#  
+root@salvator-x:~# 
+ 
+#### Result: OK ####

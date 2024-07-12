@@ -1,0 +1,29 @@
+
+root@salvator-x:~# find /sys/devices/platform/soc/ee000000.usb/ -name sd*
+/sys/devices/platform/soc/ee000000.usb/usb6/6-1/6-1:1.0/host1/target1:0:0/1:0:0:0/block/sda
+/sys/devices/platform/soc/ee000000.usb/usb6/6-1/6-1:1.0/host1/target1:0:0/1:0:0:0/block/sda/sda1
+root@salvator-x:~# 
+root@salvator-x:~# mount /dev/sda1 /mnt/
+[  962.768012] EXT4-fs (sda1): mounted filesystem a0f764ae-8a75-41cb-a067-cb7cbed8b416 r/w with ordered data mode. Quota mode: none.
+root@salvator-x:~# 
+Please plug out USB:
+[  965.200521] usb 6-1: USB disconnect, device number 4
+[  965.208143] device offline error, dev sda, sector 0 op 0x1:(WRITE) flags 0x800 phys_seg 0 prio class 2
+[  965.217768] EXT4-fs (sda1): shut down requested (2)
+[  965.222779] Aborting journal on device sda1-8.
+[  965.227429] device offline error, dev sda, sector 121899008 op 0x1:(WRITE) flags 0x9800 phys_seg 1 prio class 2
+[  965.237713] device offline error, dev sda, sector 121899008 op 0x1:(WRITE) flags 0x9800 phys_seg 1 prio class 2
+[  965.247811] Buffer I/O error on dev sda1, logical block 15237120, lost sync page write
+[  965.255874] JBD2: I/O error when updating journal superblock for sda1-8.
+[  965.304831] sd 1:0:0:0: [sda] Synchronizing SCSI cache
+[  965.310329] sd 1:0:0:0: [sda] Synchronize Cache(10) failed: Result: hostbyte=0x01 driverbyte=DRIVER_OK
+
+root@salvator-x:~# ls /mnt
+[  966.333655] EXT4-fs warning (device sda1): htree_dirblock_to_tree:1082: inode #2: lblock 0: comm ls: error -5 reading directory block
+ls: reading directory '/mnt': Input/output error
+root@salvator-x:~# 
+root@salvator-x:~# umount /mnt
+[  967.290282] EXT4-fs (sda1): unmounting filesystem a0f764ae-8a75-41cb-a067-cb7cbed8b416.
+root@salvator-x:~# 
+ 
+#### Result: OK ####

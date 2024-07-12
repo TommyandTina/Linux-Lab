@@ -1,0 +1,6 @@
+
+root@salvator-x:~# cat /proc/interrupts | grep sata
+202:         58          0          0          0          0          0          0          0     GICv2 137 Level     sata_rcar[ee300000.sata]
+root@salvator-x:~# 
+ 
+#### Result: OK ####

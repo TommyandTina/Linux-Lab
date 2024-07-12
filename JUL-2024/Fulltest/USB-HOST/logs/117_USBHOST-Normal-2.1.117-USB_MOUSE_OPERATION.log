@@ -1,0 +1,542 @@
+
+root@salvator-x:~#  
+root@salvator-x:~# 
+Please do right-click, left-click, middle-click, and mouse drag when you see log as <Testing ... (interrupt to exit)>
+
+Press any key to continue...
+
+root@salvator-x:~# test_mouse=/dev/input/by-id/`ls /dev/input/by-id | grep mouse`
+root@salvator-x:~# 
+root@salvator-x:~# evtest $test_mouse
+Input driver version is 1.0.1
+Input device ID: bus 0x3 vendor 0x413c product 0x301a version 0x111
+Input device name: "PixArt Dell MS116 USB Optical Mouse"
+Supported events:
+  Event type 0 (EV_SYN)
+  Event type 1 (EV_KEY)
+    Event code 272 (BTN_LEFT)
+    Event code 273 (BTN_RIGHT)
+    Event code 274 (BTN_MIDDLE)
+  Event type 2 (EV_REL)
+    Event code 0 (REL_X)
+    Event code 1 (REL_Y)
+    Event code 8 (REL_WHEEL)
+    Event code 11 (?)
+  Event type 4 (EV_MSC)
+    Event code 4 (MSC_SCAN)
+Properties:
+Testing ... (interrupt to exit)
+Event: time 1516160536.508390, type 2 (EV_REL), code 0 (REL_X), value 1
+Event: time 1516160536.508390, -------------- SYN_REPORT ------------
+Event: time 1516160536.852496, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90001
+Event: time 1516160536.852496, type 1 (EV_KEY), code 272 (BTN_LEFT), value 1
+Event: time 1516160536.852496, -------------- SYN_REPORT ------------
+Event: time 1516160537.100491, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90001
+Event: time 1516160537.100491, type 1 (EV_KEY), code 272 (BTN_LEFT), value 0
+Event: time 1516160537.100491, -------------- SYN_REPORT ------------
+Event: time 1516160537.324495, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90002
+Event: time 1516160537.324495, type 1 (EV_KEY), code 273 (BTN_RIGHT), value 1
+Event: time 1516160537.324495, -------------- SYN_REPORT ------------
+Event: time 1516160537.444394, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90002
+Event: time 1516160537.444394, type 1 (EV_KEY), code 273 (BTN_RIGHT), value 0
+Event: time 1516160537.444394, -------------- SYN_REPORT ------------
+Event: time 1516160537.836503, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90003
+Event: time 1516160537.836503, type 1 (EV_KEY), code 274 (BTN_MIDDLE), value 1
+Event: time 1516160537.836503, -------------- SYN_REPORT ------------
+Event: time 1516160538.044505, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90003
+Event: time 1516160538.044505, type 1 (EV_KEY), code 274 (BTN_MIDDLE), value 0
+Event: time 1516160538.044505, -------------- SYN_REPORT ------------
+Event: time 1516160538.268407, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90003
+Event: time 1516160538.268407, type 1 (EV_KEY), code 274 (BTN_MIDDLE), value 1
+Event: time 1516160538.268407, -------------- SYN_REPORT ------------
+Event: time 1516160538.404412, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90003
+Event: time 1516160538.404412, type 1 (EV_KEY), code 274 (BTN_MIDDLE), value 0
+Event: time 1516160538.404412, -------------- SYN_REPORT ------------
+Event: time 1516160538.628417, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90001
+Event: time 1516160538.628417, type 1 (EV_KEY), code 272 (BTN_LEFT), value 1
+Event: time 1516160538.628417, -------------- SYN_REPORT ------------
+Event: time 1516160538.756418, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90002
+Event: time 1516160538.756418, type 1 (EV_KEY), code 273 (BTN_RIGHT), value 1
+Event: time 1516160538.756418, -------------- SYN_REPORT ------------
+Event: time 1516160538.772416, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90001
+Event: time 1516160538.772416, type 1 (EV_KEY), code 272 (BTN_LEFT), value 0
+Event: time 1516160538.772416, -------------- SYN_REPORT ------------
+Event: time 1516160538.892420, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90002
+Event: time 1516160538.892420, type 1 (EV_KEY), code 273 (BTN_RIGHT), value 0
+Event: time 1516160538.892420, -------------- SYN_REPORT ------------
+Event: time 1516160538.988420, type 2 (EV_REL), code 0 (REL_X), value -4
+Event: time 1516160538.988420, type 2 (EV_REL), code 1 (REL_Y), value -10
+Event: time 1516160538.988420, -------------- SYN_REPORT ------------
+Event: time 1516160538.996510, type 2 (EV_REL), code 0 (REL_X), value -2
+Event: time 1516160538.996510, type 2 (EV_REL), code 1 (REL_Y), value -4
+Event: time 1516160538.996510, -------------- SYN_REPORT ------------
+Event: time 1516160539.004432, type 2 (EV_REL), code 0 (REL_X), value -2
+Event: time 1516160539.004432, type 2 (EV_REL), code 1 (REL_Y), value -5
+Event: time 1516160539.004432, -------------- SYN_REPORT ------------
+Event: time 1516160539.012513, type 2 (EV_REL), code 0 (REL_X), value -3
+Event: time 1516160539.012513, type 2 (EV_REL), code 1 (REL_Y), value -6
+Event: time 1516160539.012513, -------------- SYN_REPORT ------------
+Event: time 1516160539.020421, type 2 (EV_REL), code 0 (REL_X), value -3
+Event: time 1516160539.020421, type 2 (EV_REL), code 1 (REL_Y), value -8
+Event: time 1516160539.020421, -------------- SYN_REPORT ------------
+Event: time 1516160539.028508, type 2 (EV_REL), code 0 (REL_X), value -3
+Event: time 1516160539.028508, type 2 (EV_REL), code 1 (REL_Y), value -9
+Event: time 1516160539.028508, -------------- SYN_REPORT ------------
+Event: time 1516160539.036511, type 2 (EV_REL), code 0 (REL_X), value -5
+Event: time 1516160539.036511, type 2 (EV_REL), code 1 (REL_Y), value -11
+Event: time 1516160539.036511, -------------- SYN_REPORT ------------
+Event: time 1516160539.044509, type 2 (EV_REL), code 0 (REL_X), value -7
+Event: time 1516160539.044509, type 2 (EV_REL), code 1 (REL_Y), value -11
+Event: time 1516160539.044509, -------------- SYN_REPORT ------------
+Event: time 1516160539.052439, type 2 (EV_REL), code 0 (REL_X), value -7
+Event: time 1516160539.052439, type 2 (EV_REL), code 1 (REL_Y), value -13
+Event: time 1516160539.052439, -------------- SYN_REPORT ------------
+Event: time 1516160539.060512, type 2 (EV_REL), code 0 (REL_X), value -10
+Event: time 1516160539.060512, type 2 (EV_REL), code 1 (REL_Y), value -15
+Event: time 1516160539.060512, -------------- SYN_REPORT ------------
+Event: time 1516160539.068510, type 2 (EV_REL), code 0 (REL_X), value -10
+Event: time 1516160539.068510, type 2 (EV_REL), code 1 (REL_Y), value -14
+Event: time 1516160539.068510, -------------- SYN_REPORT ------------
+Event: time 1516160539.076518, type 2 (EV_REL), code 0 (REL_X), value -12
+Event: time 1516160539.076518, type 2 (EV_REL), code 1 (REL_Y), value -16
+Event: time 1516160539.076518, -------------- SYN_REPORT ------------
+Event: time 1516160539.084506, type 2 (EV_REL), code 0 (REL_X), value -13
+Event: time 1516160539.084506, type 2 (EV_REL), code 1 (REL_Y), value -16
+Event: time 1516160539.084506, -------------- SYN_REPORT ------------
+Event: time 1516160539.092517, type 2 (EV_REL), code 0 (REL_X), value -12
+Event: time 1516160539.092517, type 2 (EV_REL), code 1 (REL_Y), value -18
+Event: time 1516160539.092517, -------------- SYN_REPORT ------------
+Event: time 1516160539.100511, type 2 (EV_REL), code 0 (REL_X), value -13
+Event: time 1516160539.100511, type 2 (EV_REL), code 1 (REL_Y), value -19
+Event: time 1516160539.100511, -------------- SYN_REPORT ------------
+Event: time 1516160539.108513, type 2 (EV_REL), code 0 (REL_X), value -11
+Event: time 1516160539.108513, type 2 (EV_REL), code 1 (REL_Y), value -19
+Event: time 1516160539.108513, -------------- SYN_REPORT ------------
+Event: time 1516160539.116421, type 2 (EV_REL), code 0 (REL_X), value -11
+Event: time 1516160539.116421, type 2 (EV_REL), code 1 (REL_Y), value -19
+Event: time 1516160539.116421, -------------- SYN_REPORT ------------
+Event: time 1516160539.124421, type 2 (EV_REL), code 0 (REL_X), value -9
+Event: time 1516160539.124421, type 2 (EV_REL), code 1 (REL_Y), value -23
+Event: time 1516160539.124421, -------------- SYN_REPORT ------------
+Event: time 1516160539.132532, type 2 (EV_REL), code 0 (REL_X), value -9
+Event: time 1516160539.132532, type 2 (EV_REL), code 1 (REL_Y), value -24
+Event: time 1516160539.132532, -------------- SYN_REPORT ------------
+Event: time 1516160539.140514, type 2 (EV_REL), code 0 (REL_X), value -9
+Event: time 1516160539.140514, type 2 (EV_REL), code 1 (REL_Y), value -24
+Event: time 1516160539.140514, -------------- SYN_REPORT ------------
+Event: time 1516160539.148510, type 2 (EV_REL), code 0 (REL_X), value -8
+Event: time 1516160539.148510, type 2 (EV_REL), code 1 (REL_Y), value -26
+Event: time 1516160539.148510, -------------- SYN_REPORT ------------
+Event: time 1516160539.156433, type 2 (EV_REL), code 0 (REL_X), value -7
+Event: time 1516160539.156433, type 2 (EV_REL), code 1 (REL_Y), value -28
+Event: time 1516160539.156433, -------------- SYN_REPORT ------------
+Event: time 1516160539.164512, type 2 (EV_REL), code 0 (REL_X), value -8
+Event: time 1516160539.164512, type 2 (EV_REL), code 1 (REL_Y), value -29
+Event: time 1516160539.164512, -------------- SYN_REPORT ------------
+Event: time 1516160539.172512, type 2 (EV_REL), code 0 (REL_X), value -6
+Event: time 1516160539.172512, type 2 (EV_REL), code 1 (REL_Y), value -30
+Event: time 1516160539.172512, -------------- SYN_REPORT ------------
+Event: time 1516160539.180518, type 2 (EV_REL), code 0 (REL_X), value -7
+Event: time 1516160539.180518, type 2 (EV_REL), code 1 (REL_Y), value -35
+Event: time 1516160539.180518, -------------- SYN_REPORT ------------
+Event: time 1516160539.188512, type 2 (EV_REL), code 0 (REL_X), value -5
+Event: time 1516160539.188512, type 2 (EV_REL), code 1 (REL_Y), value -37
+Event: time 1516160539.188512, -------------- SYN_REPORT ------------
+Event: time 1516160539.196509, type 2 (EV_REL), code 0 (REL_X), value -5
+Event: time 1516160539.196509, type 2 (EV_REL), code 1 (REL_Y), value -37
+Event: time 1516160539.196509, -------------- SYN_REPORT ------------
+Event: time 1516160539.204513, type 2 (EV_REL), code 0 (REL_X), value -4
+Event: time 1516160539.204513, type 2 (EV_REL), code 1 (REL_Y), value -43
+Event: time 1516160539.204513, -------------- SYN_REPORT ------------
+Event: time 1516160539.212512, type 2 (EV_REL), code 0 (REL_X), value -4
+Event: time 1516160539.212512, type 2 (EV_REL), code 1 (REL_Y), value -43
+Event: time 1516160539.212512, -------------- SYN_REPORT ------------
+Event: time 1516160539.220514, type 2 (EV_REL), code 0 (REL_X), value -3
+Event: time 1516160539.220514, type 2 (EV_REL), code 1 (REL_Y), value -43
+Event: time 1516160539.220514, -------------- SYN_REPORT ------------
+Event: time 1516160539.228517, type 2 (EV_REL), code 0 (REL_X), value -4
+Event: time 1516160539.228517, type 2 (EV_REL), code 1 (REL_Y), value -46
+Event: time 1516160539.228517, -------------- SYN_REPORT ------------
+Event: time 1516160539.236517, type 2 (EV_REL), code 0 (REL_X), value -5
+Event: time 1516160539.236517, type 2 (EV_REL), code 1 (REL_Y), value -44
+Event: time 1516160539.236517, -------------- SYN_REPORT ------------
+Event: time 1516160539.244517, type 2 (EV_REL), code 0 (REL_X), value -4
+Event: time 1516160539.244517, type 2 (EV_REL), code 1 (REL_Y), value -43
+Event: time 1516160539.244517, -------------- SYN_REPORT ------------
+Event: time 1516160539.252512, type 2 (EV_REL), code 0 (REL_X), value -2
+Event: time 1516160539.252512, type 2 (EV_REL), code 1 (REL_Y), value -39
+Event: time 1516160539.252512, -------------- SYN_REPORT ------------
+Event: time 1516160539.260517, type 2 (EV_REL), code 0 (REL_X), value -3
+Event: time 1516160539.260517, type 2 (EV_REL), code 1 (REL_Y), value -33
+Event: time 1516160539.260517, -------------- SYN_REPORT ------------
+Event: time 1516160539.268492, type 2 (EV_REL), code 0 (REL_X), value -2
+Event: time 1516160539.268492, type 2 (EV_REL), code 1 (REL_Y), value -29
+Event: time 1516160539.268492, -------------- SYN_REPORT ------------
+Event: time 1516160539.276512, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90001
+Event: time 1516160539.276512, type 1 (EV_KEY), code 272 (BTN_LEFT), value 1
+Event: time 1516160539.276512, type 2 (EV_REL), code 0 (REL_X), value -1
+Event: time 1516160539.276512, type 2 (EV_REL), code 1 (REL_Y), value -23
+Event: time 1516160539.276512, -------------- SYN_REPORT ------------
+Event: time 1516160539.284510, type 2 (EV_REL), code 1 (REL_Y), value -18
+Event: time 1516160539.284510, -------------- SYN_REPORT ------------
+Event: time 1516160539.292517, type 2 (EV_REL), code 1 (REL_Y), value -10
+Event: time 1516160539.292517, -------------- SYN_REPORT ------------
+Event: time 1516160539.300515, type 2 (EV_REL), code 0 (REL_X), value -1
+Event: time 1516160539.300515, type 2 (EV_REL), code 1 (REL_Y), value -5
+Event: time 1516160539.300515, -------------- SYN_REPORT ------------
+Event: time 1516160539.308513, type 2 (EV_REL), code 1 (REL_Y), value -1
+Event: time 1516160539.308513, -------------- SYN_REPORT ------------
+Event: time 1516160539.340514, type 2 (EV_REL), code 1 (REL_Y), value 4
+Event: time 1516160539.340514, -------------- SYN_REPORT ------------
+Event: time 1516160539.348515, type 2 (EV_REL), code 1 (REL_Y), value 17
+Event: time 1516160539.348515, -------------- SYN_REPORT ------------
+Event: time 1516160539.356514, type 2 (EV_REL), code 1 (REL_Y), value 19
+Event: time 1516160539.356514, -------------- SYN_REPORT ------------
+Event: time 1516160539.364521, type 2 (EV_REL), code 1 (REL_Y), value 24
+Event: time 1516160539.364521, -------------- SYN_REPORT ------------
+Event: time 1516160539.372516, type 2 (EV_REL), code 0 (REL_X), value 1
+Event: time 1516160539.372516, type 2 (EV_REL), code 1 (REL_Y), value 30
+Event: time 1516160539.372516, -------------- SYN_REPORT ------------
+Event: time 1516160539.380517, type 2 (EV_REL), code 0 (REL_X), value 3
+Event: time 1516160539.380517, type 2 (EV_REL), code 1 (REL_Y), value 35
+Event: time 1516160539.380517, -------------- SYN_REPORT ------------
+Event: time 1516160539.388522, type 2 (EV_REL), code 0 (REL_X), value 3
+Event: time 1516160539.388522, type 2 (EV_REL), code 1 (REL_Y), value 38
+Event: time 1516160539.388522, -------------- SYN_REPORT ------------
+Event: time 1516160539.396516, type 2 (EV_REL), code 0 (REL_X), value 2
+Event: time 1516160539.396516, type 2 (EV_REL), code 1 (REL_Y), value 44
+Event: time 1516160539.396516, -------------- SYN_REPORT ------------
+Event: time 1516160539.404515, type 2 (EV_REL), code 0 (REL_X), value 5
+Event: time 1516160539.404515, type 2 (EV_REL), code 1 (REL_Y), value 47
+Event: time 1516160539.404515, -------------- SYN_REPORT ------------
+Event: time 1516160539.412428, type 2 (EV_REL), code 0 (REL_X), value 6
+Event: time 1516160539.412428, type 2 (EV_REL), code 1 (REL_Y), value 53
+Event: time 1516160539.412428, -------------- SYN_REPORT ------------
+Event: time 1516160539.420426, type 2 (EV_REL), code 0 (REL_X), value 8
+Event: time 1516160539.420426, type 2 (EV_REL), code 1 (REL_Y), value 57
+Event: time 1516160539.420426, -------------- SYN_REPORT ------------
+Event: time 1516160539.428536, type 2 (EV_REL), code 0 (REL_X), value 9
+Event: time 1516160539.428536, type 2 (EV_REL), code 1 (REL_Y), value 63
+Event: time 1516160539.428536, -------------- SYN_REPORT ------------
+Event: time 1516160539.436527, type 2 (EV_REL), code 0 (REL_X), value 10
+Event: time 1516160539.436527, type 2 (EV_REL), code 1 (REL_Y), value 63
+Event: time 1516160539.436527, -------------- SYN_REPORT ------------
+Event: time 1516160539.444430, type 2 (EV_REL), code 0 (REL_X), value 12
+Event: time 1516160539.444430, type 2 (EV_REL), code 1 (REL_Y), value 69
+Event: time 1516160539.444430, -------------- SYN_REPORT ------------
+Event: time 1516160539.796532, >>>>>>>>>>>>>> SYN_DROPPED <<<<<<<<<<<<
+Event: time 1516160539.796532, -------------- SYN_REPORT ------------
+Event: time 1516160539.804526, type 2 (EV_REL), code 0 (REL_X), value 32
+Event: time 1516160539.804526, type 2 (EV_REL), code 1 (REL_Y), value -83
+Event: time 1516160539.804526, -------------- SYN_REPORT ------------
+Event: time 1516160539.812523, type 2 (EV_REL), code 0 (REL_X), value 33
+Event: time 1516160539.812523, type 2 (EV_REL), code 1 (REL_Y), value -84
+Event: time 1516160539.812523, -------------- SYN_REPORT ------------
+Event: time 1516160539.820526, type 2 (EV_REL), code 0 (REL_X), value 32
+Event: time 1516160539.820526, type 2 (EV_REL), code 1 (REL_Y), value -82
+Event: time 1516160539.820526, -------------- SYN_REPORT ------------
+Event: time 1516160539.828527, type 2 (EV_REL), code 0 (REL_X), value 32
+Event: time 1516160539.828527, type 2 (EV_REL), code 1 (REL_Y), value -79
+Event: time 1516160539.828527, -------------- SYN_REPORT ------------
+Event: time 1516160539.836530, type 2 (EV_REL), code 0 (REL_X), value 31
+Event: time 1516160539.836530, type 2 (EV_REL), code 1 (REL_Y), value -72
+Event: time 1516160539.836530, -------------- SYN_REPORT ------------
+Event: time 1516160539.844525, type 2 (EV_REL), code 0 (REL_X), value 31
+Event: time 1516160539.844525, type 2 (EV_REL), code 1 (REL_Y), value -71
+Event: time 1516160539.844525, -------------- SYN_REPORT ------------
+Event: time 1516160539.852528, type 2 (EV_REL), code 0 (REL_X), value 29
+Event: time 1516160539.852528, type 2 (EV_REL), code 1 (REL_Y), value -67
+Event: time 1516160539.852528, -------------- SYN_REPORT ------------
+Event: time 1516160539.860527, type 2 (EV_REL), code 0 (REL_X), value 25
+Event: time 1516160539.860527, type 2 (EV_REL), code 1 (REL_Y), value -60
+Event: time 1516160539.860527, -------------- SYN_REPORT ------------
+Event: time 1516160539.868523, type 2 (EV_REL), code 0 (REL_X), value 24
+Event: time 1516160539.868523, type 2 (EV_REL), code 1 (REL_Y), value -58
+Event: time 1516160539.868523, -------------- SYN_REPORT ------------
+Event: time 1516160539.876526, type 2 (EV_REL), code 0 (REL_X), value 20
+Event: time 1516160539.876526, type 2 (EV_REL), code 1 (REL_Y), value -52
+Event: time 1516160539.876526, -------------- SYN_REPORT ------------
+Event: time 1516160539.884522, type 2 (EV_REL), code 0 (REL_X), value 19
+Event: time 1516160539.884522, type 2 (EV_REL), code 1 (REL_Y), value -49
+Event: time 1516160539.884522, -------------- SYN_REPORT ------------
+Event: time 1516160539.892526, type 2 (EV_REL), code 0 (REL_X), value 15
+Event: time 1516160539.892526, type 2 (EV_REL), code 1 (REL_Y), value -42
+Event: time 1516160539.892526, -------------- SYN_REPORT ------------
+Event: time 1516160539.900515, type 2 (EV_REL), code 0 (REL_X), value 14
+Event: time 1516160539.900515, type 2 (EV_REL), code 1 (REL_Y), value -39
+Event: time 1516160539.900515, -------------- SYN_REPORT ------------
+Event: time 1516160539.908514, type 2 (EV_REL), code 0 (REL_X), value 14
+Event: time 1516160539.908514, type 2 (EV_REL), code 1 (REL_Y), value -35
+Event: time 1516160539.908514, -------------- SYN_REPORT ------------
+Event: time 1516160539.916523, type 2 (EV_REL), code 0 (REL_X), value 11
+Event: time 1516160539.916523, type 2 (EV_REL), code 1 (REL_Y), value -29
+Event: time 1516160539.916523, -------------- SYN_REPORT ------------
+Event: time 1516160539.924524, type 2 (EV_REL), code 0 (REL_X), value 11
+Event: time 1516160539.924524, type 2 (EV_REL), code 1 (REL_Y), value -25
+Event: time 1516160539.924524, -------------- SYN_REPORT ------------
+Event: time 1516160539.932525, type 2 (EV_REL), code 0 (REL_X), value 7
+Event: time 1516160539.932525, type 2 (EV_REL), code 1 (REL_Y), value -19
+Event: time 1516160539.932525, -------------- SYN_REPORT ------------
+Event: time 1516160539.940530, type 2 (EV_REL), code 0 (REL_X), value 5
+Event: time 1516160539.940530, type 2 (EV_REL), code 1 (REL_Y), value -11
+Event: time 1516160539.940530, -------------- SYN_REPORT ------------
+Event: time 1516160539.948524, type 2 (EV_REL), code 0 (REL_X), value 1
+Event: time 1516160539.948524, type 2 (EV_REL), code 1 (REL_Y), value -5
+Event: time 1516160539.948524, -------------- SYN_REPORT ------------
+Event: time 1516160539.956527, type 2 (EV_REL), code 0 (REL_X), value 1
+Event: time 1516160539.956527, type 2 (EV_REL), code 1 (REL_Y), value -1
+Event: time 1516160539.956527, -------------- SYN_REPORT ------------
+Event: time 1516160539.964533, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90001
+Event: time 1516160539.964533, type 1 (EV_KEY), code 272 (BTN_LEFT), value 1
+Event: time 1516160539.964533, -------------- SYN_REPORT ------------
+Event: time 1516160539.988438, type 2 (EV_REL), code 1 (REL_Y), value 1
+Event: time 1516160539.988438, -------------- SYN_REPORT ------------
+Event: time 1516160539.996524, type 2 (EV_REL), code 0 (REL_X), value -5
+Event: time 1516160539.996524, type 2 (EV_REL), code 1 (REL_Y), value 13
+Event: time 1516160539.996524, -------------- SYN_REPORT ------------
+Event: time 1516160540.004528, type 2 (EV_REL), code 0 (REL_X), value -6
+Event: time 1516160540.004528, type 2 (EV_REL), code 1 (REL_Y), value 16
+Event: time 1516160540.004528, -------------- SYN_REPORT ------------
+Event: time 1516160540.012524, type 2 (EV_REL), code 0 (REL_X), value -9
+Event: time 1516160540.012524, type 2 (EV_REL), code 1 (REL_Y), value 19
+Event: time 1516160540.012524, -------------- SYN_REPORT ------------
+Event: time 1516160540.020442, type 2 (EV_REL), code 0 (REL_X), value -10
+Event: time 1516160540.020442, type 2 (EV_REL), code 1 (REL_Y), value 21
+Event: time 1516160540.020442, -------------- SYN_REPORT ------------
+Event: time 1516160540.028524, type 2 (EV_REL), code 0 (REL_X), value -12
+Event: time 1516160540.028524, type 2 (EV_REL), code 1 (REL_Y), value 24
+Event: time 1516160540.028524, -------------- SYN_REPORT ------------
+Event: time 1516160540.036533, type 2 (EV_REL), code 0 (REL_X), value -17
+Event: time 1516160540.036533, type 2 (EV_REL), code 1 (REL_Y), value 28
+Event: time 1516160540.036533, -------------- SYN_REPORT ------------
+Event: time 1516160540.044543, type 2 (EV_REL), code 0 (REL_X), value -19
+Event: time 1516160540.044543, type 2 (EV_REL), code 1 (REL_Y), value 32
+Event: time 1516160540.044543, -------------- SYN_REPORT ------------
+Event: time 1516160540.052531, type 2 (EV_REL), code 0 (REL_X), value -22
+Event: time 1516160540.052531, type 2 (EV_REL), code 1 (REL_Y), value 34
+Event: time 1516160540.052531, -------------- SYN_REPORT ------------
+Event: time 1516160540.060529, type 2 (EV_REL), code 0 (REL_X), value -25
+Event: time 1516160540.060529, type 2 (EV_REL), code 1 (REL_Y), value 38
+Event: time 1516160540.060529, -------------- SYN_REPORT ------------
+Event: time 1516160540.068534, type 2 (EV_REL), code 0 (REL_X), value -28
+Event: time 1516160540.068534, type 2 (EV_REL), code 1 (REL_Y), value 39
+Event: time 1516160540.068534, -------------- SYN_REPORT ------------
+Event: time 1516160540.076550, type 2 (EV_REL), code 0 (REL_X), value -29
+Event: time 1516160540.076550, type 2 (EV_REL), code 1 (REL_Y), value 42
+Event: time 1516160540.076550, -------------- SYN_REPORT ------------
+Event: time 1516160540.084526, type 2 (EV_REL), code 0 (REL_X), value -32
+Event: time 1516160540.084526, type 2 (EV_REL), code 1 (REL_Y), value 45
+Event: time 1516160540.084526, -------------- SYN_REPORT ------------
+Event: time 1516160540.092532, type 2 (EV_REL), code 0 (REL_X), value -35
+Event: time 1516160540.092532, type 2 (EV_REL), code 1 (REL_Y), value 47
+Event: time 1516160540.428470, >>>>>>>>>>>>>> SYN_DROPPED <<<<<<<<<<<<
+Event: time 1516160540.428470, -------------- SYN_REPORT ------------
+Event: time 1516160540.436451, type 2 (EV_REL), code 0 (REL_X), value -6
+Event: time 1516160540.436451, type 2 (EV_REL), code 1 (REL_Y), value -67
+Event: time 1516160540.436451, -------------- SYN_REPORT ------------
+Event: time 1516160540.444449, type 2 (EV_REL), code 0 (REL_X), value -5
+Event: time 1516160540.444449, type 2 (EV_REL), code 1 (REL_Y), value -72
+Event: time 1516160540.444449, -------------- SYN_REPORT ------------
+Event: time 1516160540.452446, type 2 (EV_REL), code 0 (REL_X), value -4
+Event: time 1516160540.452446, type 2 (EV_REL), code 1 (REL_Y), value -73
+Event: time 1516160540.452446, -------------- SYN_REPORT ------------
+Event: time 1516160540.460448, type 2 (EV_REL), code 0 (REL_X), value -2
+Event: time 1516160540.460448, type 2 (EV_REL), code 1 (REL_Y), value -78
+Event: time 1516160540.460448, -------------- SYN_REPORT ------------
+Event: time 1516160540.468446, type 2 (EV_REL), code 1 (REL_Y), value -82
+Event: time 1516160540.468446, -------------- SYN_REPORT ------------
+Event: time 1516160540.476447, type 2 (EV_REL), code 1 (REL_Y), value -81
+Event: time 1516160540.476447, -------------- SYN_REPORT ------------
+Event: time 1516160540.484447, type 2 (EV_REL), code 0 (REL_X), value 2
+Event: time 1516160540.484447, type 2 (EV_REL), code 1 (REL_Y), value -88
+Event: time 1516160540.484447, -------------- SYN_REPORT ------------
+Event: time 1516160540.492465, type 2 (EV_REL), code 0 (REL_X), value 2
+Event: time 1516160540.492465, type 2 (EV_REL), code 1 (REL_Y), value -91
+Event: time 1516160540.492465, -------------- SYN_REPORT ------------
+Event: time 1516160540.500483, type 2 (EV_REL), code 0 (REL_X), value 4
+Event: time 1516160540.500483, type 2 (EV_REL), code 1 (REL_Y), value -93
+Event: time 1516160540.500483, -------------- SYN_REPORT ------------
+Event: time 1516160540.508548, type 2 (EV_REL), code 0 (REL_X), value 4
+Event: time 1516160540.508548, type 2 (EV_REL), code 1 (REL_Y), value -91
+Event: time 1516160540.508548, -------------- SYN_REPORT ------------
+Event: time 1516160540.516559, type 2 (EV_REL), code 0 (REL_X), value 5
+Event: time 1516160540.516559, type 2 (EV_REL), code 1 (REL_Y), value -95
+Event: time 1516160540.516559, -------------- SYN_REPORT ------------
+Event: time 1516160540.524537, type 2 (EV_REL), code 0 (REL_X), value 7
+Event: time 1516160540.524537, type 2 (EV_REL), code 1 (REL_Y), value -97
+Event: time 1516160540.524537, -------------- SYN_REPORT ------------
+Event: time 1516160540.532541, type 2 (EV_REL), code 0 (REL_X), value 8
+Event: time 1516160540.532541, type 2 (EV_REL), code 1 (REL_Y), value -91
+Event: time 1516160540.532541, -------------- SYN_REPORT ------------
+Event: time 1516160540.540548, type 2 (EV_REL), code 0 (REL_X), value 8
+Event: time 1516160540.540548, type 2 (EV_REL), code 1 (REL_Y), value -94
+Event: time 1516160540.540548, -------------- SYN_REPORT ------------
+Event: time 1516160540.548537, type 2 (EV_REL), code 0 (REL_X), value 10
+Event: time 1516160540.548537, type 2 (EV_REL), code 1 (REL_Y), value -96
+Event: time 1516160540.548537, -------------- SYN_REPORT ------------
+Event: time 1516160540.556540, type 2 (EV_REL), code 0 (REL_X), value 11
+Event: time 1516160540.556540, type 2 (EV_REL), code 1 (REL_Y), value -89
+Event: time 1516160540.556540, -------------- SYN_REPORT ------------
+Event: time 1516160540.564449, type 2 (EV_REL), code 0 (REL_X), value 13
+Event: time 1516160540.564449, type 2 (EV_REL), code 1 (REL_Y), value -90
+Event: time 1516160540.564449, -------------- SYN_REPORT ------------
+Event: time 1516160540.572539, type 2 (EV_REL), code 0 (REL_X), value 11
+Event: time 1516160540.572539, type 2 (EV_REL), code 1 (REL_Y), value -88
+Event: time 1516160540.572539, -------------- SYN_REPORT ------------
+Event: time 1516160540.580541, type 2 (EV_REL), code 0 (REL_X), value 11
+Event: time 1516160540.580541, type 2 (EV_REL), code 1 (REL_Y), value -86
+Event: time 1516160540.580541, -------------- SYN_REPORT ------------
+Event: time 1516160540.588540, type 2 (EV_REL), code 0 (REL_X), value 11
+Event: time 1516160540.588540, type 2 (EV_REL), code 1 (REL_Y), value -80
+Event: time 1516160540.588540, -------------- SYN_REPORT ------------
+Event: time 1516160540.596544, type 2 (EV_REL), code 0 (REL_X), value 12
+Event: time 1516160540.596544, type 2 (EV_REL), code 1 (REL_Y), value -79
+Event: time 1516160540.596544, -------------- SYN_REPORT ------------
+Event: time 1516160540.604540, type 2 (EV_REL), code 0 (REL_X), value 12
+Event: time 1516160540.604540, type 2 (EV_REL), code 1 (REL_Y), value -74
+Event: time 1516160540.604540, -------------- SYN_REPORT ------------
+Event: time 1516160540.612540, type 2 (EV_REL), code 0 (REL_X), value 12
+Event: time 1516160540.612540, type 2 (EV_REL), code 1 (REL_Y), value -67
+Event: time 1516160540.612540, -------------- SYN_REPORT ------------
+Event: time 1516160540.620535, type 2 (EV_REL), code 0 (REL_X), value 12
+Event: time 1516160540.620535, type 2 (EV_REL), code 1 (REL_Y), value -65
+Event: time 1516160540.620535, -------------- SYN_REPORT ------------
+Event: time 1516160540.628546, type 2 (EV_REL), code 0 (REL_X), value 11
+Event: time 1516160540.628546, type 2 (EV_REL), code 1 (REL_Y), value -59
+Event: time 1516160540.628546, -------------- SYN_REPORT ------------
+Event: time 1516160540.636535, type 2 (EV_REL), code 0 (REL_X), value 10
+Event: time 1516160540.636535, type 2 (EV_REL), code 1 (REL_Y), value -53
+Event: time 1516160540.636535, -------------- SYN_REPORT ------------
+Event: time 1516160540.644538, type 2 (EV_REL), code 0 (REL_X), value 9
+Event: time 1516160540.644538, type 2 (EV_REL), code 1 (REL_Y), value -44
+Event: time 1516160540.644538, -------------- SYN_REPORT ------------
+Event: time 1516160540.652540, type 2 (EV_REL), code 0 (REL_X), value 9
+Event: time 1516160540.652540, type 2 (EV_REL), code 1 (REL_Y), value -42
+Event: time 1516160540.652540, -------------- SYN_REPORT ------------
+Event: time 1516160540.660451, type 2 (EV_REL), code 0 (REL_X), value 9
+Event: time 1516160540.660451, type 2 (EV_REL), code 1 (REL_Y), value -35
+Event: time 1516160540.660451, -------------- SYN_REPORT ------------
+Event: time 1516160540.668542, type 2 (EV_REL), code 0 (REL_X), value 7
+Event: time 1516160540.668542, type 2 (EV_REL), code 1 (REL_Y), value -30
+Event: time 1516160540.668542, -------------- SYN_REPORT ------------
+Event: time 1516160540.676541, type 2 (EV_REL), code 0 (REL_X), value 8
+Event: time 1516160540.676541, type 2 (EV_REL), code 1 (REL_Y), value -25
+Event: time 1516160540.676541, -------------- SYN_REPORT ------------
+Event: time 1516160540.684537, type 2 (EV_REL), code 0 (REL_X), value 5
+Event: time 1516160540.684537, type 2 (EV_REL), code 1 (REL_Y), value -19
+Event: time 1516160540.684537, -------------- SYN_REPORT ------------
+Event: time 1516160540.692539, type 2 (EV_REL), code 0 (REL_X), value 4
+Event: time 1516160540.692539, type 2 (EV_REL), code 1 (REL_Y), value -10
+Event: time 1516160540.692539, -------------- SYN_REPORT ------------
+Event: time 1516160540.700467, type 2 (EV_REL), code 0 (REL_X), value 1
+Event: time 1516160540.700467, type 2 (EV_REL), code 1 (REL_Y), value -5
+Event: time 1516160540.700467, -------------- SYN_REPORT ------------
+Event: time 1516160540.708542, type 2 (EV_REL), code 0 (REL_X), value 1
+Event: time 1516160540.708542, type 2 (EV_REL), code 1 (REL_Y), value -2
+Event: time 1516160540.708542, -------------- SYN_REPORT ------------
+Event: time 1516160540.716548, type 4 (EV_MSC), code 4 (MSC_SCAN), value 90001
+Event: time 1516160540.716548, type 1 (EV_KEY), code 272 (BTN_LEFT), value 1
+Event: time 1516160540.716548, -------------- SYN_REPORT ------------
+Event: time 1516160540.748545, type 2 (EV_REL), code 0 (REL_X), value 3
+Event: time 1516160540.748545, type 2 (EV_REL), code 1 (REL_Y), value 16
+Event: time 1516160540.748545, -------------- SYN_REPORT ------------
+Event: time 1516160540.756545, type 2 (EV_REL), code 0 (REL_X), value 4
+Event: time 1516160540.756545, type 2 (EV_REL), code 1 (REL_Y), value 19
+Event: time 1516160540.756545, -------------- SYN_REPORT ------------
+Event: time 1516160540.764540, type 2 (EV_REL), code 0 (REL_X), value 4
+Event: time 1516160540.764540, type 2 (EV_REL), code 1 (REL_Y), value 23
+Event: time 1516160540.764540, -------------- SYN_REPORT ------------
+Event: time 1516160540.772546, type 2 (EV_REL), code 0 (REL_X), value 6
+Event: time 1516160541.124461, >>>>>>>>>>>>>> SYN_DROPPED <<<<<<<<<<<<
+Event: time 1516160541.124461, type 2 (EV_REL), code 1 (REL_Y), value -30
+Event: time 1516160541.124461, -------------- SYN_REPORT ------------
+Event: time 1516160541.132459, type 2 (EV_REL), code 0 (REL_X), value 9
+Event: time 1516160541.132459, type 2 (EV_REL), code 1 (REL_Y), value -33
+Event: time 1516160541.132459, -------------- SYN_REPORT ------------
+Event: time 1516160541.140459, type 2 (EV_REL), code 0 (REL_X), value 9
+Event: time 1516160541.140459, type 2 (EV_REL), code 1 (REL_Y), value -38
+Event: time 1516160541.140459, -------------- SYN_REPORT ------------
+Event: time 1516160541.148460, type 2 (EV_REL), code 0 (REL_X), value 10
+Event: time 1516160541.148460, type 2 (EV_REL), code 1 (REL_Y), value -44
+Event: time 1516160541.148460, -------------- SYN_REPORT ------------
+Event: time 1516160541.156477, type 2 (EV_REL), code 0 (REL_X), value 13
+Event: time 1516160541.156477, type 2 (EV_REL), code 1 (REL_Y), value -49
+Event: time 1516160541.156477, -------------- SYN_REPORT ------------
+Event: time 1516160541.164464, type 2 (EV_REL), code 0 (REL_X), value 19
+Event: time 1516160541.164464, type 2 (EV_REL), code 1 (REL_Y), value -55
+Event: time 1516160541.164464, -------------- SYN_REPORT ------------
+Event: time 1516160541.172462, type 2 (EV_REL), code 0 (REL_X), value 23
+Event: time 1516160541.172462, type 2 (EV_REL), code 1 (REL_Y), value -60
+Event: time 1516160541.172462, -------------- SYN_REPORT ------------
+Event: time 1516160541.180461, type 2 (EV_REL), code 0 (REL_X), value 27
+Event: time 1516160541.180461, type 2 (EV_REL), code 1 (REL_Y), value -60
+Event: time 1516160541.180461, -------------- SYN_REPORT ------------
+Event: time 1516160541.188554, type 2 (EV_REL), code 0 (REL_X), value 33
+Event: time 1516160541.188554, type 2 (EV_REL), code 1 (REL_Y), value -68
+Event: time 1516160541.188554, -------------- SYN_REPORT ------------
+Event: time 1516160541.196460, type 2 (EV_REL), code 0 (REL_X), value 35
+Event: time 1516160541.196460, type 2 (EV_REL), code 1 (REL_Y), value -72
+Event: time 1516160541.196460, -------------- SYN_REPORT ------------
+Event: time 1516160541.204461, type 2 (EV_REL), code 0 (REL_X), value 37
+Event: time 1516160541.204461, type 2 (EV_REL), code 1 (REL_Y), value -76
+Event: time 1516160541.204461, -------------- SYN_REPORT ------------
+Event: time 1516160541.212460, type 2 (EV_REL), code 0 (REL_X), value 36
+Event: time 1516160541.212460, type 2 (EV_REL), code 1 (REL_Y), value -76
+Event: time 1516160541.212460, -------------- SYN_REPORT ------------
+Event: time 1516160541.220480, type 2 (EV_REL), code 0 (REL_X), value 38
+Event: time 1516160541.220480, type 2 (EV_REL), code 1 (REL_Y), value -83
+Event: time 1516160541.220480, -------------- SYN_REPORT ------------
+Event: time 1516160541.228465, type 2 (EV_REL), code 0 (REL_X), value 41
+Event: time 1516160541.228465, type 2 (EV_REL), code 1 (REL_Y), value -86
+Event: time 1516160541.228465, -------------- SYN_REPORT ------------
+Event: time 1516160541.236463, type 2 (EV_REL), code 0 (REL_X), value 39
+Event: time 1516160541.236463, type 2 (EV_REL), code 1 (REL_Y), value -84
+Event: time 1516160541.236463, -------------- SYN_REPORT ------------
+Event: time 1516160541.244463, type 2 (EV_REL), code 0 (REL_X), value 43
+Event: time 1516160541.244463, type 2 (EV_REL), code 1 (REL_Y), value -91
+Event: time 1516160541.244463, -------------- SYN_REPORT ------------
+Event: time 1516160541.252553, type 2 (EV_REL), code 0 (REL_X), value 43
+Event: time 1516160541.252553, type 2 (EV_REL), code 1 (REL_Y), value -93
+Event: time 1516160541.252553, -------------- SYN_REPORT ------------
+Event: time 1516160541.260552, type 2 (EV_REL), code 0 (REL_X), value 46
+Event: time 1516160541.260552, type 2 (EV_REL), code 1 (REL_Y), value -95
+Event: time 1516160541.260552, -------------- SYN_REPORT ------------
+Event: time 1516160541.268566, type 2 (EV_REL), code 0 (REL_X), value 46
+Event: time 1516160541.268566, type 2 (EV_REL), code 1 (REL_Y), value -90
+Event: time 1516160541.268566, -------------- SYN_REPORT ------------^C----
+Event: time 1516160541.340463, type 2 (EV_REL), code 0 (REL_X), value 50
+Event: time 1516160541.340463, type 2 (EV_REL), code 1 (REL_Y), value -84
+Event: time 1516160541.340463, -------------- SYN_REPORT ------------
+Event: time 1516160541.348467, type 2 (EV_REL), code 0 (REL_X), value 45
+Event: time 1516160541.348467, type 2 (EV_REL), code 1 (REL_Y), value -76
+Event: time 1516160541.348467, -------------- SYN_REPORT ------------
+Event: time 1516160541.356553, type 2 (EV_REL), code 0 (REL_X), value 43
+Event: time 1516160541.356553, type 2 (EV_REL), code 1 (REL_Y), value -75
+Event: time 1516160541.356553, -------------- SYN_REPORT ------------
+Event: time 1516160541.364553, type 2 (EV_REL), code 0 (REL_X), value 38
+Event: time 1516160541.364553, type 2 (EV_REL), code 1 (REL_Y), value -71
+Event: time 1516160541.364553, -------------- SYN_REPORT ------------
+Event: time 1516160541.372563, type 2 (EV_REL), code 0 (REL_X), value 33
+Event: time 1516160541.372563, type 2 (EV_REL), code 1 (REL_Y), value -64
+Event: time 1516160541.372563, -------------- SYN_REPORT ------------
+Event: time 1516160541.380553, type 2 (EV_REL), code 0 (REL_X), value 30
+Event: time 1516160541.380553, type 2 (EV_REL), code 1 (REL_Y), value -62
+Event: time 1516160541.380553, -------------- SYN_REPORT ------------
+Event: time 1516160541.388554, type 2 (EV_REL), code 0 (REL_X), value 28
+Event: time 1516160541.388554, type 2 (EV_REL), code 1 (REL_Y), value -56
+Event: time 1516160541.388554, -------------- SYN_REPORT ------------
+Event: time 1516160541.396555, type 2 (EV_REL), code 0 (REL_X), value 24
+Event: time 1516160541.396555, type 2 (EV_REL), code 1 (REL_Y), value -49
+Event: time 1516160541.396555, -------------- SYN_REPORT ------------
+Event: time 1516160541.404563, type 2 (EV_REL), code 0 (REL_X), value 19
+Event: time 1516160541.404563, type 2 (EV_REL), code 1 (REL_Y), value -41
+Event: time 1516160541.404563, -------------- SYN_REPORT ------------
+Event: time 1516160541.412577, type 2 (EV_REL), code 0 (REL_X), value 15
+Event: time 1516160541.412577, type 2 (EV_REL), code 1 (REL_Y), value -36
+Event: time 1516160541.412577, -------------- SYN_REPORT ------------
+Event: time 1516160541.420554, type 2 (EV_REL), code 0 (REL_X), value 13
+
+root@salvator-x:~# 
+root@salvator-x:~# 
+ 
+#### Result: OK ####

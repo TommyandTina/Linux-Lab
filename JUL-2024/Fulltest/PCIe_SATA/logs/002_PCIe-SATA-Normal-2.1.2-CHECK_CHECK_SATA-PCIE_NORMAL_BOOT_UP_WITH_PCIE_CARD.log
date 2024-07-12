@@ -1,0 +1,16 @@
+
+root@salvator-x:~# dmesg | grep "PCIe.*link"
+[    0.153515] rcar-pcie fe000000.pcie: PCIe x1: link up
+[    0.236401] rcar-pcie ee800000.pcie: PCIe link down
+root@salvator-x:~# 
+root@salvator-x:~#  dmesg  | egrep "pci 0000|rcar-pci" | egrep "8086|reg"
+[    0.168091] pci 0000:01:00.0: reg 0x10: [io  0x0000-0x0007]
+[    0.168118] pci 0000:01:00.0: reg 0x14: [io  0x0000-0x0003]
+[    0.168143] pci 0000:01:00.0: reg 0x18: [io  0x0000-0x0007]
+[    0.168168] pci 0000:01:00.0: reg 0x1c: [io  0x0000-0x0003]
+[    0.168194] pci 0000:01:00.0: reg 0x20: [io  0x0000-0x001f]
+[    0.168220] pci 0000:01:00.0: reg 0x24: [mem 0x00000000-0x000001ff]
+[    0.168246] pci 0000:01:00.0: reg 0x30: [mem 0x00000000-0x0000ffff pref]
+root@salvator-x:~# 
+ 
+#### Result: OK ####

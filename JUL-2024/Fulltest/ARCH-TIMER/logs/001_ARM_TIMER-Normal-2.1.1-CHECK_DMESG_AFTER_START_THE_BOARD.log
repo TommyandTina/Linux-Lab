@@ -1,0 +1,7 @@
+
+root@salvator-x:~# dmesg | grep timer
+[    0.000000] arch_timer: cp15 timer(s) running at 8.32MHz (phys).
+[    0.003615] Calibrating delay loop (skipped), value calculated using timer frequency.. 16.64 BogoMIPS (lpj=33280)
+root@salvator-x:~# 
+ 
+#### Result: OK ####

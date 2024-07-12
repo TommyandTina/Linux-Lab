@@ -1,0 +1,5571 @@
+
+------------ BOARD -------------
+
+
+Please press switch to restart board 
+
+[F 00:00:10
+[F 00:00:09
+[F 00:00:08
+[F 00:00:07
+[F 00:00:06
+NOTICE:  BL2: R-Car Gen3 Initial Program Loader(CA53) Rev.4.0.0
+NOTICE:  BL2: PRR is R-Car E3 Ver.1.1
+NOTICE:  BL2: PLL1 nonSSCG Clock select
+NOTICE:  BL2: Board is Ebisu-4D Rev.1.0
+NOTICE:  BL2: Boot device is HyperFlash(150MHz)
+NOTICE:  BL2: LCM state is CM
+NOTICE:  BL2: DDR1856(rev.0.12)
+NOTICE:  BL2: [COLD_BOOT]
+NOTICE:  BL2: DRAM Split is OFF
+NOTICE:  BL2: QoS is default setting(rev.0.05)
+NOTICE:  BL2: DRAM refresh interval 3.9 usec
+NOTICE:  BL2: CH0: 400000000 - 47fffffff, 2 GiB
+NOTICE:  BL2: Lossy Decomp areas
+NOTICE:       Entry 0: DCMPAREACRAx:0x80000540 DCMPAREACRBx:0x570
+NOTICE:       Entry 1: DCMPAREACRAx:0x40000000 DCMPAREACRBx:0x0
+NOTICE:       Entry 2: DCMPAREACRAx:0x20000000 DCMPAREACRBx:0x0
+NOTICE:  BL2: FDT at 0xe6315d20
+NOTICE:  BL2: v2.9(release):9cdb21f75
+NOTICE:  BL2: Built : 07:51:46, Jan 13 2024
+NOTICE:  BL2: Normal boot
+NOTICE:  BL2: dst=0xe6315600 src=0x8180000 len=512(0x200)
+NOTICE:  BL2: dst=0x43f00000 src=0x8180400 len=6144(0x1800)
+NOTICE:  rcar_file_len: len: 0x0003e000
+NOTICE:  BL2: dst=0x44000000 src=0x81c0000 len=253952(0x3e000)
+NOTICE:  rcar_file_len: len: 0x00200000
+NOTICE:  BL2: dst=0x44100000 src=0x8200000 len=2097152(0x200000)
+NOTICE:  rcar_file_len: len: 0x00100000
+NOTICE:  BL2: dst=0x50000000 src=0x8640000 len=1048576(0x100000)
+NOTICE:  BL2: Booting BL31
+
+
+U-Boot 2020.10 (Dec 19 2023 - 20:14:43 +0000)
+
+CPU: Renesas Electronics R8A77990 rev 1.1
+Model: Renesas Ebisu board based on r8a77990
+DRAM:  1.9 GiB
+RAM Configuration:
+Bank #0: 0x048000000 - 0x0bfffffff, 1.9 GiB
+
+MMC:   sd@ee100000: 0, sd@ee120000: 1, sd@ee160000: 2
+Loading Environment from MMC... OK
+In:    serial@e6e88000
+Out:   serial@e6e88000
+Err:   serial@e6e88000
+Net:   eth0: ethernet@e6800000
+Hit any key to stop autoboot:  2  1  0 
+ethernet@e6800000 Waiting for PHY auto negotiation to complete.......... done
+Using ethernet@e6800000 device
+TFTP from server 192.168.10.98; our IP address is 192.168.10.106
+Filename 'BV/PT3/boot_USB3H/Image'.
+Load address: 0x48080000
+Loading: *#################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 ##############################################
+	 3.9 MiB/s
+done
+Bytes transferred = 33112576 (1f94200 hex)
+Using ethernet@e6800000 device
+TFTP from server 192.168.10.98; our IP address is 192.168.10.106
+Filename 'BV/PT3/boot_USB3H/r8a77990-ebisu-4d.dtb'.
+Load address: 0x48000000
+Loading: *####
+	 3.2 MiB/s
+done
+Bytes transferred = 56930 (de62 hex)
+Moving Image from 0x48080000 to 0x48200000, end=4a220000
+## Flattened Device Tree blob at 48000000
+   Booting using the fdt blob at 0x48000000
+   Loading Device Tree to 0000000053fef000, end 0000000053fffe61 ... OK
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
+[    0.000000] Linux version 5.10.194-yocto-standard (thuan.nguyen-hong@banvien) (aarch64-poky-linux-gcc (GCC) 9.3.0, GNU ld (GNU Binutils) 2.34.0.20200220) #13 SMP PREEMPT Sat Feb 3 10:27:40 UTC 2024
+[    0.000000] Machine model: Renesas Ebisu-4D board based on r8a77990
+[    0.000000] efi: UEFI not found.
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000057000000, size 16 MiB
+[    0.000000] OF: reserved mem: initialized node linux,adsp@57000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000058000000, size 256 MiB
+[    0.000000] OF: reserved mem: initialized node linux,cma@58000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000068000000, size 64 MiB
+[    0.000000] OF: reserved mem: initialized node linux,multimedia@68000000, compatible id shared-dma-pool
+[    0.000000] NUMA: No NUMA configuration found
+[    0.000000] NUMA: Faking a node at [mem 0x0000000048000000-0x00000000bfffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0xbfc13b00-0xbfc15fff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000048000000-0x00000000bfffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000048000000-0x0000000053ffffff]
+[    0.000000]   node   0: [mem 0x0000000054000000-0x0000000056ffffff]
+[    0.000000]   node   0: [mem 0x0000000057000000-0x00000000bfffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000048000000-0x00000000bfffffff]
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS resident on physical CPU 0x0
+[    0.000000] psci: SMC Calling Convention v1.2
+[    0.000000] percpu: Embedded 23 pages/cpu s56984 r8192 d29032 u94208
+[    0.000000] Detected VIPT I-cache on CPU0
+[    0.000000] CPU features: detected: ARM erratum 845719
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 483840
+[    0.000000] Policy zone: DMA
+[    0.000000] Kernel command line: rw root=/dev/nfs nfsroot=192.168.10.98:/data/tftpboot/BV/PT3/rootfs_E3,nfsvers=4 ip=192.168.10.106
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] Memory: 1499868K/1966080K available (15104K kernel code, 2832K rwdata, 8204K rodata, 6080K init, 519K bss, 122148K reserved, 344064K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=2.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=2
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] arch_timer: cp15 timer(s) running at 24.00MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
+[    0.000005] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
+[    0.000395] Console: colour dummy device 80x25
+[    0.000798] printk: console [tty0] enabled
+[    0.000958] Calibrating delay loop (skipped), value calculated using timer frequency.. 48.00 BogoMIPS (lpj=96000)
+[    0.000985] pid_max: default: 32768 minimum: 301
+[    0.001078] LSM: Security Framework initializing
+[    0.001171] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.001194] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.003156] rcu: Hierarchical SRCU implementation.
+[    0.005222] Detected Renesas R-Car Gen3 r8a77990 ES1.1
+[    0.007093] EFI services will not be available.
+[    0.007607] smp: Bringing up secondary CPUs ...
+[    0.008425] Detected VIPT I-cache on CPU1
+[    0.008535] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
+[    0.008694] smp: Brought up 1 node, 2 CPUs
+[    0.008744] SMP: Total of 2 processors activated.
+[    0.008758] CPU features: detected: 32-bit EL0 Support
+[    0.008772] CPU features: detected: CRC32 instructions
+[    0.008784] CPU features: detected: 32-bit EL1 Support
+[    0.019795] CPU: All CPU(s) started at EL1
+[    0.019881] alternatives: patching kernel code
+[    0.021525] devtmpfs: initialized
+[    0.030506] KASLR disabled due to lack of seed
+[    0.030829] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.030872] futex hash table entries: 512 (order: 3, 32768 bytes, linear)
+[    0.041344] pinctrl core: initialized pinctrl subsystem
+[    0.043602] DMI not present or invalid.
+[    0.044576] NET: Registered protocol family 16
+[    0.046708] DMA: preallocated 256 KiB GFP_KERNEL pool for atomic allocations
+[    0.046914] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.047087] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.047205] audit: initializing netlink subsys (disabled)
+[    0.047636] audit: type=2000 audit(0.044:1): state=initialized audit_enabled=0 res=1
+[    0.049485] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.050078] cpuidle: using governor menu
+[    0.050448] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.050574] ASID allocator initialised with 65536 entries
+[    0.052771] Serial: AMBA PL011 UART driver
+[    0.101517] sh-pfc e6060000.pinctrl: r8a77990_pfc support registered
+[    0.119808] HugeTLB registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.119861] HugeTLB registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.119874] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.119887] HugeTLB registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.121364] cryptd: max_cpu_qlen set to 1000
+[    0.124873] ACPI: Interpreter disabled.
+[    0.130747] rcar_avs_init: cannot find compatible dts node
+[    0.133894] iommu: Default domain type: Translated 
+[    0.135042] ipmmu-vmsa e67b0000.iommu: IPMMU context 0 is reserved
+[    0.137449] vgaarb: loaded
+[    0.138137] SCSI subsystem initialized
+[    0.138839] usbcore: registered new interface driver usbfs
+[    0.138898] usbcore: registered new interface driver hub
+[    0.138950] usbcore: registered new device driver usb
+[    0.142556] i2c-sh_mobile e60b0000.i2c: I2C adapter 7, bus speed 400000 Hz
+[    0.143848] mc: Linux media interface: v0.10
+[    0.143935] videodev: Linux video capture interface: v2.00
+[    0.144101] pps_core: LinuxPPS API ver. 1 registered
+[    0.144114] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.144141] PTP clock support registered
+[    0.144670] EDAC MC: Ver: 3.0.0
+[    0.148648] FPGA manager framework
+[    0.148845] Advanced Linux Sound Architecture Driver Initialized.
+[    0.150513] clocksource: Switched to clocksource arch_sys_counter
+[    0.150905] VFS: Disk quotas dquot_6.6.0
+[    0.150990] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    0.151254] pnp: PnP ACPI: disabled
+[    0.157287] NET: Registered protocol family 2
+[    0.157559] IP idents hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.158685] tcp_listen_portaddr_hash hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    0.158761] TCP established hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.158886] TCP bind hash table entries: 16384 (order: 6, 262144 bytes, linear)
+[    0.159208] TCP: Hash tables configured (established 16384 bind 16384)
+[    0.159431] UDP hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    0.159504] UDP-Lite hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    0.159786] NET: Registered protocol family 1
+[    0.160618] RPC: Registered named UNIX socket transport module.
+[    0.160660] RPC: Registered udp transport module.
+[    0.160672] RPC: Registered tcp transport module.
+[    0.160682] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.160710] PCI: CLS 0 bytes, default 64
+[    0.161868] hw perfevents: enabled with armv8_cortex_a53 PMU driver, 7 counters available
+[    0.162855] kvm [1]: HYP mode not available
+[    0.167189] Initialise system trusted keyrings
+[    0.167616] workingset: timestamp_bits=42 max_order=19 bucket_order=0
+[    0.173712] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.174835] NFS: Registering the id_resolver key type
+[    0.174932] Key type id_resolver registered
+[    0.174943] Key type id_legacy registered
+[    0.175043] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    0.175059] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    0.175381] 9p: Installing v9fs 9p2000 file system support
+[    0.212179] Key type asymmetric registered
+[    0.212238] Asymmetric key parser 'x509' registered
+[    0.212341] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 243)
+[    0.212360] io scheduler mq-deadline registered
+[    0.212378] io scheduler kyber registered
+[    0.229212] gpio_rcar e6050000.gpio: driving 18 GPIOs
+[    0.230181] gpio_rcar e6051000.gpio: driving 23 GPIOs
+[    0.231131] gpio_rcar e6052000.gpio: driving 26 GPIOs
+[    0.231948] gpio_rcar e6053000.gpio: driving 16 GPIOs
+[    0.232678] gpio_rcar e6054000.gpio: driving 11 GPIOs
+[    0.233403] gpio_rcar e6055000.gpio: driving 20 GPIOs
+[    0.234163] gpio_rcar e6055400.gpio: driving 18 GPIOs
+[    0.240308] rcar-pcie fe000000.pcie: host bridge /soc/pcie@fe000000 ranges:
+[    0.240389] rcar-pcie fe000000.pcie:       IO 0x00fe100000..0x00fe1fffff -> 0x0000000000
+[    0.240445] rcar-pcie fe000000.pcie:      MEM 0x00fe200000..0x00fe3fffff -> 0x00fe200000
+[    0.240475] rcar-pcie fe000000.pcie:      MEM 0x0030000000..0x0037ffffff -> 0x0030000000
+[    0.240503] rcar-pcie fe000000.pcie:      MEM 0x0038000000..0x003fffffff -> 0x0038000000
+[    0.240531] rcar-pcie fe000000.pcie:   IB MEM 0x0040000000..0x00bfffffff -> 0x0040000000
+[    0.240615] rcar-pcie fe000000.pcie: no pcie3v3 regulator found
+[    0.240632] rcar-pcie fe000000.pcie: no pcie1v8 regulator found
+[    0.293090] rcar-pcie fe000000.pcie: PCIe link down
+[    0.296957] EINJ: ACPI disabled.
+[    0.347709] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    0.352658] SuperH (H)SCI(F) driver initialized
+[    0.353574] e6e88000.serial: ttySC0 at MMIO 0xe6e88000 (irq = 119, base_baud = 0) is a scif
+[    1.324224] printk: console [ttySC0] enabled
+[    1.331621] msm_serial: driver initialized
+[    1.358210] loop: module loaded
+[    1.364468] megasas: 07.714.04.00-rc1
+[    1.379949] tun: Universal TUN/TAP device driver, 1.6
+[    1.387422] thunder_xcv, ver 1.0
+[    1.390788] thunder_bgx, ver 1.0
+[    1.394057] nicpf, ver 1.0
+[    1.399772] hclge is initializing
+[    1.403236] hns3: Hisilicon Ethernet Network Driver for Hip08 Family - version
+[    1.410491] hns3: Copyright (c) 2017 Huawei Corporation.
+[    1.415977] e1000: Intel(R) PRO/1000 Network Driver
+[    1.420877] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[    1.426733] e1000e: Intel(R) PRO/1000 Network Driver
+[    1.431718] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    1.437709] igb: Intel(R) Gigabit Ethernet Network Driver
+[    1.443144] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    1.448769] igbvf: Intel(R) Gigabit Virtual Function Network Driver
+[    1.455058] igbvf: Copyright (c) 2009 - 2012 Intel Corporation.
+[    1.462182] sky2: driver version 1.30
+[    1.471834] ravb e6800000.ethernet eth0: Base address at 0xe6800000, 2e:09:0a:03:87:d4, IRQ 114.
+[    1.484132] VFIO - User Level meta-driver version: 0.3
+[    1.494004] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.500670] ehci-pci: EHCI PCI platform driver
+[    1.505234] ehci-platform: EHCI generic platform driver
+[    1.511569] ehci-orion: EHCI orion driver
+[    1.516243] ehci-exynos: EHCI Exynos driver
+[    1.520858] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    1.527135] ohci-pci: OHCI PCI platform driver
+[    1.531713] ohci-platform: OHCI generic platform driver
+[    1.537910] ohci-exynos: OHCI Exynos driver
+[    1.542856] usbcore: registered new interface driver usb-storage
+[    1.552485] renesas_usbhs e6590000.usb: host probed
+[    1.557495] renesas_usbhs e6590000.usb: no transceiver found
+[    1.563369] renesas_usbhs e6590000.usb: gadget probed
+[    1.568655] renesas_usbhs e6590000.usb: probed
+[    1.578790] i2c /dev entries driver
+[    1.588539] pca953x 0-0020: supply vcc not found, using dummy regulator
+[    1.595490] pca953x 0-0020: using no AI
+[    1.603536] adv7511 0-0039: supply avdd not found, using dummy regulator
+[    1.610558] adv7511 0-0039: supply dvdd not found, using dummy regulator
+[    1.617346] adv7511 0-0039: supply pvdd not found, using dummy regulator
+[    1.624132] adv7511 0-0039: supply bgvdd not found, using dummy regulator
+[    1.630981] adv7511 0-0039: supply dvdd-3v not found, using dummy regulator
+[    1.649003] i2c-rcar e6500000.i2c: probed
+[    1.663449] cs2000-cp 3-004f: revision - C1
+[    1.667877] i2c-rcar e66d0000.i2c: probed
+[    1.674688] adv748x 0-0070: Endpoint /soc/i2c@e6500000/video-receiver@70/port@7/endpoint on port 7
+[    1.683741] adv748x 0-0070: Endpoint /soc/i2c@e6500000/video-receiver@70/port@8/endpoint on port 8
+[    1.692745] adv748x 0-0070: Endpoint /soc/i2c@e6500000/video-receiver@70/port@a/endpoint on port 10
+[    1.702905] adv748x 0-0070: chip found @ 0xe0 revision 2143
+[    1.800314] rcar-csi2 feaa0000.csi2: 2 lanes found
+[    1.810862] rcar-vin e6ef4000.video: Device registered as video0
+[    1.817071] rcar-vin e6ef5000.video: Device registered as video1
+[    1.831204] rcar_thermal e6190000.thermal: 1 sensor probed
+[    1.844887] cpu cpu0: EM: invalid perf. state: -22
+[    1.856433] sdhci: Secure Digital Host Controller Interface driver
+[    1.862776] sdhci: Copyright(c) Pierre Ossman
+[    1.868967] Synopsys Designware Multimedia Card Interface Driver
+[    1.869383] renesas_sdhi_internal_dmac ee100000.mmc: Got CD GPIO
+[    1.877951] sdhci-pltfm: SDHCI platform and OF driver helper
+[    1.882143] renesas_sdhi_internal_dmac ee120000.mmc: Got CD GPIO
+[    1.893400] ledtrig-cpu: registered to indicate activity on CPUs
+[    1.902070] SMCCC: SOC_ID: ARCH_SOC_ID not implemented, skipping ....
+[    1.902641] renesas_sdhi_internal_dmac ee100000.mmc: Got WP GPIO
+[    1.910003] usbcore: registered new interface driver usbhid
+[    1.915808] renesas_sdhi_internal_dmac ee160000.mmc: Adding to iommu group 0
+[    1.920318] usbhid: USB HID core driver
+[    1.929158] optee: probing for conduit method.
+[    1.935912] optee: revision 3.22 (314ecf9d)
+[    1.936401] optee driver R-Car Rev.1.0.11
+[    1.938902] renesas_sdhi_internal_dmac ee160000.mmc: Using IPMMU context 1
+[    1.941067] optee: dynamic shared memory is enabled
+[    1.957002] optee: initialized driver
+[    1.977257] rcar_sound ec500000.sound: probed
+[    1.983013] NET: Registered protocol family 17
+[    1.987753] 9pnet: Installing 9P2000 support
+[    1.992174] Key type dns_resolver registered
+[    1.994745] renesas_sdhi_internal_dmac ee160000.mmc: mmc0 base at 0x00000000ee160000, max clock rate 200 MHz
+[    1.997188] registered taskstats version 1
+[    2.010630] Loading compiled-in X.509 certificates
+[    2.027911] thermal emergency: set temperature to 110 celsius
+[    2.033982] thermal emergency: shutdown target cpus 1
+[    2.039154] thermal emergency: freq scaled target cpus 0
+[    2.045284] renesas_irqc e61c0000.interrupt-controller: driving 6 irqs
+[    2.106605] ehci-platform ee080100.usb: EHCI Host Controller
+[    2.112430] ehci-platform ee080100.usb: new USB bus registered, assigned bus number 1
+[    2.120543] ehci-platform ee080100.usb: irq 142, io mem 0xee080100
+[    2.129444] mmc0: new HS400 MMC card at address 0001
+[    2.135878] mmcblk0: mmc0:0001 DG4032 29.1 GiB 
+[    2.140972] mmcblk0boot0: mmc0:0001 DG4032 partition 1 4.00 MiB
+[    2.142667] ehci-platform ee080100.usb: USB 2.0 started, EHCI 1.10
+[    2.147395] mmcblk0boot1: mmc0:0001 DG4032 partition 2 4.00 MiB
+[    2.154129] hub 1-0:1.0: USB hub found
+[    2.159355] mmcblk0rpmb: mmc0:0001 DG4032 partition 3 4.00 MiB, chardev (509:0)
+[    2.162988] hub 1-0:1.0: 1 port detected
+[    2.177777] ohci-platform ee080000.usb: Generic Platform OHCI controller
+[    2.184781] ohci-platform ee080000.usb: new USB bus registered, assigned bus number 2
+[    2.192890] ohci-platform ee080000.usb: irq 142, io mem 0xee080000
+[    2.200631]  mmcblk0: p1
+[    2.289611] hub 2-0:1.0: USB hub found
+[    2.293527] hub 2-0:1.0: 1 port detected
+[    2.305138] renesas_sdhi_internal_dmac ee120000.mmc: Got CD GPIO
+[    2.308019] renesas_sdhi_internal_dmac ee100000.mmc: Got CD GPIO
+[    2.318758] renesas_sdhi_internal_dmac ee100000.mmc: Got WP GPIO
+[    2.339304] [drm] Initialized rcar-du 1.0.0 20130110 for feb00000.display on minor 0
+[    2.347289] [drm] Device feb00000.display probed
+[    2.359330] renesas_sdhi_internal_dmac ee120000.mmc: mmc2 base at 0x00000000ee120000, max clock rate 200 MHz
+[    2.371173] renesas_sdhi_internal_dmac ee100000.mmc: mmc1 base at 0x00000000ee100000, max clock rate 200 MHz
+[    2.396287] Console: switching to colour frame buffer device 128x48
+[    2.438807] rcar-du feb00000.display: [drm] fb0: rcar-dudrmfb frame buffer device
+[    2.526163] ravb e6800000.ethernet eth0: limited PHY to 100Mbit/s
+[    2.532495] Micrel KSZ9031 Gigabit PHY e6800000.ethernet-ffffffff:00: attached PHY driver [Micrel KSZ9031 Gigabit PHY] (mii_bus:phy_addr=e6800000.ethernet-ffffffff:00, irq=147)
+[    4.107915] ravb e6800000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+[    4.134564] IP-Config: Guessing netmask 255.255.255.0
+[    4.139773] IP-Config: Complete:
+[    4.143091]      device=eth0, hwaddr=2e:09:0a:03:87:d4, ipaddr=192.168.10.106, mask=255.255.255.0, gw=255.255.255.255
+[    4.153927]      host=192.168.10.106, domain=, nis-domain=(none)
+[    4.160073]      bootserver=255.255.255.255, rootserver=192.168.10.98, rootpath=
+[    4.160628] ALSA device list:
+[    4.171314]   No soundcards found.
+[    4.221011] VFS: Mounted root (nfs4 filesystem) on device 0:22.
+[    4.228736] devtmpfs: mounted
+[    4.235452] Freeing unused kernel memory: 6080K
+[    4.250641] Run /sbin/init as init process
+[    4.892190] systemd[1]: System time before build time, advancing clock.
+[    5.602597] random: crng init done
+[    7.040890] NET: Registered protocol family 10
+[    7.051304] Segment Routing with IPv6
+[    7.119580] systemd[1]: systemd 244 running in system mode. (+PAM -AUDIT -SELINUX +IMA -APPARMOR -SMACK +SYSVINIT +UTMP -LIBCRYPTSETUP -GCRYPT -GNUTLS +ACL +XZ -LZ4 -SECCOMP +BLKID -ELFUTILS +KMOD -IDN2 -IDN -PCRE2 default-hierarchy=hybrid)
+[    7.150312] systemd[1]: Detected architecture arm64.
+
+Welcome to [1mPoky (Yocto Project Reference Distro) 3.1.11 (dunfell)[0m!
+
+[    7.194132] systemd[1]: Set hostname to <ebisu>.
+[    8.473346] systemd[1]: system-getty.slice: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+[    8.494433] systemd[1]: (This warning is only shown for the first unit using IP firewalling.)
+[    8.511244] systemd[1]: Created slice system-getty.slice.
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-getty.slice[0m.
+[    8.536968] systemd[1]: Created slice system-serial\x2dgetty.slice.
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-serial\x2dgetty.slice[0m.
+[    8.564870] systemd[1]: Created slice User and Session Slice.
+[[0;32m  OK  [0m] Created slice [0;1;39mUser and Session Slice[0m.
+[    8.591474] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+[[0;32m  OK  [0m] Started [0;1;39mDispatch Password …ts to Console Directory Watch[0m.
+[    8.623386] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[[0;32m  OK  [0m] Started [0;1;39mForward Password R…uests to Wall Directory Watch[0m.
+[    8.655047] systemd[1]: Reached target Paths.
+[[0;32m  OK  [0m] Reached target [0;1;39mPaths[0m.
+[    8.678956] systemd[1]: Reached target Remote File Systems.
+[[0;32m  OK  [0m] Reached target [0;1;39mRemote File Systems[0m.
+[    8.702921] systemd[1]: Reached target Slices.
+[[0;32m  OK  [0m] Reached target [0;1;39mSlices[0m.
+[    8.726924] systemd[1]: Reached target Swap.
+[[0;32m  OK  [0m] Reached target [0;1;39mSwap[0m.
+[    8.754842] systemd[1]: Listening on RPCbind Server Activation Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mRPCbind Server Activation Socket[0m.
+[    8.782972] systemd[1]: Reached target RPC Port Mapper.
+[[0;32m  OK  [0m] Reached target [0;1;39mRPC Port Mapper[0m.
+[    8.807629] systemd[1]: Listening on initctl Compatibility Named Pipe.
+[[0;32m  OK  [0m] Listening on [0;1;39minitctl Compatibility Named Pipe[0m.
+[    8.837366] systemd[1]: Listening on Journal Audit Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mJournal Audit Socket[0m.
+[    8.864888] systemd[1]: Listening on Journal Socket (/dev/log).
+[[0;32m  OK  [0m] Listening on [0;1;39mJournal Socket (/dev/log)[0m.
+[    8.891960] systemd[1]: Listening on Journal Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mJournal Socket[0m.
+[    8.917286] systemd[1]: Listening on Network Service Netlink Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mNetwork Service Netlink Socket[0m.
+[    8.945765] systemd[1]: Listening on udev Control Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mudev Control Socket[0m.
+[    8.971683] systemd[1]: Listening on udev Kernel Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mudev Kernel Socket[0m.
+[    9.003104] systemd[1]: Mounting Huge Pages File System...
+         Mounting [0;1;39mHuge Pages File System[0m...
+[    9.034474] systemd[1]: Mounting POSIX Message Queue File System...
+         Mounting [0;1;39mPOSIX Message Queue File System[0m...
+[    9.066855] systemd[1]: Mounting Kernel Debug File System...
+         Mounting [0;1;39mKernel Debug File System[0m...
+[    9.102425] systemd[1]: Mounting Temporary Directory (/tmp)...
+         Mounting [0;1;39mTemporary Directory (/tmp)[0m...
+[    9.140011] systemd[1]: Starting Create list of static device nodes for the current kernel...
+         Starting [0;1;39mCreate list of st…odes for the current kernel[0m...
+[    9.180491] systemd[1]: Starting Start psplash boot splash screen...
+         Starting [0;1;39mStart psplash boot splash screen[0m...
+[    9.237565] systemd[1]: Starting RPC Bind...
+         Starting [0;1;39mRPC Bind[0m...
+[    9.296001] systemd[1]: Condition check resulted in File System Check on Root Device being skipped.
+[    9.329092] systemd[1]: Starting Journal Service...
+         Starting [0;1;39mJournal Service[0m...
+[    9.378911] systemd[1]: Starting Load Kernel Modules...
+         Starting [0;1;39mLoad Kernel Modules[0m...
+[    9.415899] systemd[1]: Starting Remount Root and Kernel File Systems...
+         Starting [0;1;39mRemount Root and Kernel File Systems[0m...
+[    9.464790] systemd[1]: Starting udev Coldplug all Devices...
+         Starting [0;1;39mudev Coldplug all Devices[0m...
+[    9.562191] systemd[1]: Started Start psplash boot splash screen.
+[[0;32m  OK  [0m] Started [0;1;39mStart psplash boot splash screen[0m.
+[    9.637762] systemd[1]: Started RPC Bind.
+[[0;32m  OK  [0m] Started [0;1;39mRPC Bind[0m.
+[    9.660104] systemd[1]: Mounted Huge Pages File System.
+[[0;32m  OK  [0m] Mounted [0;1;39mHuge Pages File System[0m.
+[    9.679733] systemd[1]: Started Journal Service.
+[[0;32m  OK  [0m] Started [0;1;39mJournal Service[0m.
+[[0;32m  OK  [0m] Mounted [0;1;39mPOSIX Message Queue File System[0m.
+[[0;32m  OK  [0m] Mounted [0;1;39mKernel Debug File System[0m.
+[[0;32m  OK  [0m] Mounted [0;1;39mTemporary Directory (/tmp)[0m.
+[[0;32m  OK  [0m] Started [0;1;39mCreate list of sta… nodes for the current kernel[0m.
+[[0;32m  OK  [0m] Started [0;1;39mLoad Kernel Modules[0m.
+[[0;32m  OK  [0m] Started [0;1;39mRemount Root and Kernel File Systems[0m.
+         Mounting [0;1;39mKernel Configuration File System[0m...
+[[0;32m  OK  [0m] Started [0;1;39mStart psplash-syst…progress communication helper[0m.
+         Starting [0;1;39mFlush Journal to Persistent Storage[0m...
+         Starting [0;1;39mApply Kernel Variables[0m...
+         Starting [0;1;39mCreate Static Device Nodes in /dev[0m...
+[[0;32m  OK  [0m] Mounted [0;1;39mKernel Configuration File System[0m.
+[   10.071500] systemd-journald[244]: Received client request to flush runtime journal.
+[[0;32m  OK  [0m] Started [0;1;39mFlush Journal to Persistent Storage[0m.
+[[0;32m  OK  [0m] Started [0;1;39mApply Kernel Variables[0m.
+[[0;32m  OK  [0m] Started [0;1;39mCreate Static Device Nodes in /dev[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mLocal File Systems (Pre)[0m.
+         Mounting [0;1;39m/var/volatile[0m...
+         Starting [0;1;39mudev Kernel Device Manager[0m...
+[[0;32m  OK  [0m] Mounted [0;1;39m/var/volatile[0m.
+         Starting [0;1;39mLoad/Save Random Seed[0m...
+[[0;32m  OK  [0m] Reached target [0;1;39mLocal File Systems[0m.
+         Starting [0;1;39mCreate Volatile Files and Directories[0m...
+[[0;32m  OK  [0m] Started [0;1;39mLoad/Save Random Seed[0m.
+[[0;32m  OK  [0m] Started [0;1;39mudev Kernel Device Manager[0m.
+         Starting [0;1;39mNetwork Service[0m...
+[[0;32m  OK  [0m] Started [0;1;39mudev Coldplug all Devices[0m.
+[[0;32m  OK  [0m] Started [0;1;39mCreate Volatile Files and Directories[0m.
+         Starting [0;1;39mNetwork Time Synchronization[0m...
+         Starting [0;1;39mUpdate UTMP about System Boot/Shutdown[0m...
+[[0;32m  OK  [0m] Started [0;1;39mUpdate UTMP about System Boot/Shutdown[0m.
+[[0;32m  OK  [0m] Started [0;1;39mNetwork Service[0m.
+         Starting [0;1;39mNetwork Name Resolution[0m...
+[[0;32m  OK  [0m] Started [0;1;39mNetwork Time Synchronization[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mSystem Initialization[0m.
+[[0;32m  OK  [0m] Started [0;1;39mDaily Cleanup of Temporary Directories[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mSystem Time Set[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mSystem Time Synchronized[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mTimers[0m.
+[[0;32m  OK  [0m] Listening on [0;1;39mAvahi mDNS/DNS-SD Stack Activation Socket[0m.
+[[0;32m  OK  [0m] Listening on [0;1;39mD-Bus System Message Bus Socket[0m.
+[[0;32m  OK  [0m] Listening on [0;1;39mdropbear.socket[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mSockets[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mBasic System[0m.
+[[0;32m  OK  [0m] Started [0;1;39mD-Bus System Message Bus[0m.
+[[0;32m  OK  [0m] Started [0;1;39moptee services[0m.
+         Starting [0;1;39mpvrinit.service[0m...
+         Starting [0;1;39mPowerVR consumer services[0m...
+         Starting [0;1;39mLogin Service[0m...
+[[0;32m  OK  [0m] Started [0;1;39mNetwork Name Resolution[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mNetwork[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mHost and Network Name Lookups[0m.
+         Starting [0;1;39mAvahi mDNS/DNS-SD Stack[0m...
+         Starting [0;1;39mPermit User Sessions[0m...
+[[0;32m  OK  [0m] Started [0;1;39mXinetd A Powerful Replacement For Inetd[0m.
+[[0;32m  OK  [0m] Started [0;1;39mPermit User Sessions[0m.
+[[0;32m  OK  [0m] Started [0;1;39mAvahi mDNS/DNS-SD Stack[0m.
+[[0;32m  OK  [0m] Started [0;1;39mGetty on tty1[0m.
+[[0;32m  OK  [0m] Started [0;1;39mSerial Getty on ttySC0[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mLogin Prompts[0m.
+[[0;32m  OK  [0m] Started [0;1;39mLogin Service[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mHardware activated USB gadget[0m.
+[   14.295010] CAN device driver interface
+[   14.586405] rcar_canfd e66c0000.can: can_clk rate is 20000000
+[   14.601177] rcar_canfd e66c0000.can: device registered (channel 0)
+[   14.609589] rcar_canfd e66c0000.can: global operational state (clk 0, fdmode 1)
+[   14.912153] ccree e6601000.crypto: ARM CryptoCell 630P Driver: HW version 0xAF400001/0xDCC63000, Driver version 5.0
+[   15.151547] ccree e6601000.crypto: ARM ccree device initialized
+[   15.579993] renesas_usb3 ee020000.usb: probed
+[   15.707109] xhci-hcd ee000000.usb: xHCI Host Controller
+[   15.735954] xhci-hcd ee000000.usb: new USB bus registered, assigned bus number 3
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-weston.slice[0m.
+[   15.760386] xhci-hcd ee000000.usb: hcc params 0x014051ce hci version 0x100 quirks 0x0000000000830410
+[   15.774105] xhci-hcd ee000000.usb: irq 140, io mem 0xee000000
+[   15.780520] xhci-hcd ee000000.usb: xHCI Host Controller
+[   15.785987] xhci-hcd ee000000.usb: new USB bus registered, assigned bus number 4
+[   15.804013] xhci-hcd ee000000.usb: Host supports USB 3.0 SuperSpeed
+[   15.812202] hub 3-0:1.0: USB hub found
+[   15.816290] hub 3-0:1.0: 1 port detected
+[   15.947855] usb usb4: We don't know the algorithms for LPM for this host, disabling LPM.
+[   15.984578] hub 4-0:1.0: USB hub found
+[   15.988676] hub 4-0:1.0: 1 port detected
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-systemd\x2dbacklight.slice[0m.
+         Starting [0;1;39mLoad/Save Screen …ness of backlight:backlight[0m...
+[[0;32m  OK  [0m] Started [0;1;39mLoad/Save Screen B…htness of backlight:backlight[0m.
+[   16.563175] usb 4-1: new SuperSpeed Gen 1 USB device number 2 using xhci-hcd
+[   16.621810] usb-storage 4-1:1.0: USB Mass Storage device detected
+[   16.632549] scsi host0: usb-storage 4-1:1.0
+[[0;1;31mFAILED[0m] Failed to start [0;1;39mpvrinit.service[0m.
+See 'systemctl status pvrinit.service' for details.
+[[0;1;31mFAILED[0m] Failed to start [0;1;39mPowerVR consumer services[0m.
+See 'systemctl status rc.pvr.service' for details.
+[[0;1;38;5;185mDEPEND[0m] Dependency failed for [0;1;39mWeston Wayland Compositor[0m.
+         Starting [0;1;39mset_default_governor.service[0m...
+[[0;32m  OK  [0m] Started [0;1;39mset_default_governor.service[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mMulti-User System[0m.
+         Starting [0;1;39mUpdate UTMP about System Runlevel Changes[0m...
+[[0;32m  OK  [0m] Started [0;1;39mUpdate UTMP about System Runlevel Changes[0m.
+[   17.668061] scsi 0:0:0:0: Direct-Access     SanDisk  Extreme Pro      0    PQ: 0 ANSI: 6
+[   17.683288] sd 0:0:0:0: [sda] 250085376 512-byte logical blocks: (128 GB/119 GiB)
+[   17.698449] sd 0:0:0:0: [sda] Write Protect is off
+[   17.704218] sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[   17.740267]  sda: sda1
+[   17.747222] sd 0:0:0:0: [sda] Attached SCSI removable disk
+
+Poky (Yocto Project Reference Distro) 3.1.11 ebisu ttySC0
+
+ebisu login: 
+ebisu login: root
+[   18.917571] audit: type=1006 audit(1703014375.020:2): pid=388 uid=0 old-auid=4294967295 auid=0 tty=(none) old-ses=4294967295 ses=1 res=1
+7[r[999;999H[6n8root@ebisu:~# 
+root@ebisu:~# 
+root@ebisu:~# [   35.810656] SDHI0 VccQ: disabling
+[   35.814076] SDHI1 VccQ: disabling
+
+root@ebisu:~# 
+root@ebisu:~# 
+root@ebisu:~# 
+root@ebisu:~# 
+root@ebisu:~# 
+root@ebisu:~# 
+root@ebisu:~# find /sys/devices/platform/soc/ee000000.usb/ -name 'sd*'
+/sys/devices/platform/soc/ee000000.usb/usb4/4-1/4-1:1.0/host0/target0:0:0/0:0:0:0/block/sda
+/sys/devices/platform/soc/ee000000.usb/usb4/4-1/4-1:1.0/host0/target0:0:0/0:0:0:0/block/sda/sda1
+root@ebisu:~# 
+root@ebisu:~# cd ~/usb3h_test
+root@ebisu:~/usb3h_test# 
+root@ebisu:~/usb3h_test# mkdir -p /mnt/usbfm
+root@ebisu:~/usb3h_test# 
+root@ebisu:~/usb3h_test# mount /dev/sda1 /mnt/usbfm
+mount: /mnt/usbfm: wrong fs type, bad option, bad superblock on /dev/sda1, missing codepage or helper program, or other error.
+root@ebisu:~/usb3h_test# 
+root@ebisu:~/usb3h_test# taskset -c 0 ./fm2.sh &
+[1] 401
+root@ebisu:~/usb3h_test# 
+root@ebisu:~/usb3h_test# taskset -c 1 ./fm1.sh
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.19244 s, 8.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0910179 s, 115 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.42519 s, 7.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.78816 s, 5.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.53863 s, 6.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.10136 s, 9.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.71052 s, 3.9 MB/s
+7 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.13013 s, 9.3 MB/s
+6 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.08378 s, 9.7 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.35039 s, 4.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.09519 s, 3.4 MB/s
+10 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.29519 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.88983 s, 3.6 MB/s
+12 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.0363 s, 5.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.31481 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.93584 s, 3.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.36538 s, 4.4 MB/s
+17 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.42646 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.08839 s, 5.0 MB/s
+19 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.6495 s, 6.4 MB/s
+21 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.56761 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.98816 s, 5.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.31275 s, 4.5 MB/s
+26 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.75191 s, 3.8 MB/s
+25 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05555 s, 9.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.48883 s, 4.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.07679 s, 3.4 MB/s
+30 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.19268 s, 8.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.20557 s, 3.3 MB/s
+32 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.17958 s, 4.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.22659 s, 8.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.05222 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.39293 s, 4.4 MB/s
+37 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.12965 s, 9.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.16396 s, 3.3 MB/s
+39 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.03587 s, 5.2 MB/s
+41 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.24575 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.18051 s, 4.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.15102 s, 4.9 MB/s
+45 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.01158 s, 3.5 MB/s
+46 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.16457 s, 9.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.93106 s, 5.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.95747 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.37654 s, 7.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.42847 s, 4.3 MB/s
+53 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.01654 s, 3.5 MB/s
+52 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.06833 s, 9.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.41575 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.44772 s, 4.3 MB/s
+57 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.24303 s, 8.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.98659 s, 3.5 MB/s
+59 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.19255 s, 4.8 MB/s
+61 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.26888 s, 8.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.92905 s, 3.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.40502 s, 4.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.49273 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.04796 s, 5.1 MB/s
+66 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.66393 s, 6.3 MB/s
+68 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.31503 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.93224 s, 5.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.92518 s, 5.4 MB/s
+73 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.8016 s, 3.7 MB/s
+72 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05019 s, 10.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.46583 s, 4.3 MB/s
+77 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.94363 s, 3.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.25975 s, 8.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.15191 s, 3.3 MB/s
+79 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.19321 s, 4.8 MB/s
+80 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.32714 s, 7.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.86292 s, 3.7 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.38168 s, 4.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.38639 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.15558 s, 4.9 MB/s
+86 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.71357 s, 6.1 MB/s
+88 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.33795 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.89657 s, 5.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.22464 s, 4.7 MB/s
+93 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.74162 s, 3.8 MB/s
+93 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.08422 s, 9.7 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.09314 s, 5.0 MB/s
+96 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.76869 s, 3.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05768 s, 9.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.41155 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.40508 s, 4.4 MB/s
+100 sec passed by  fm2
+99 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.08896 s, 9.6 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.30275 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.40012 s, 4.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.24702 s, 8.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.01115 s, 3.5 MB/s
+106 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.14136 s, 4.9 MB/s
+108 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.26371 s, 8.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.0323 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.38624 s, 4.4 MB/s
+111 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.45373 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.05248 s, 5.1 MB/s
+113 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.66099 s, 6.3 MB/s
+115 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.48794 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.88968 s, 5.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.18627 s, 4.8 MB/s
+120 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.85729 s, 3.7 MB/s
+120 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.14754 s, 9.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.9405 s, 5.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.20592 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.43833 s, 7.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.23552 s, 4.7 MB/s
+127 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.97006 s, 3.5 MB/s
+127 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.08407 s, 9.7 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.46751 s, 4.2 MB/s
+131 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.88821 s, 3.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.32805 s, 7.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.09542 s, 3.4 MB/s
+134 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.17131 s, 4.8 MB/s
+135 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.32705 s, 7.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.92672 s, 3.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.38883 s, 4.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.3959 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.17851 s, 4.8 MB/s
+140 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.74 s, 6.0 MB/s
+143 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.34592 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.74346 s, 6.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.331 s, 4.5 MB/s
+147 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.7682 s, 3.8 MB/s
+147 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05711 s, 9.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.36685 s, 4.4 MB/s
+151 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.92745 s, 3.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.11862 s, 9.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.28604 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.29039 s, 4.6 MB/s
+154 sec passed by  fm1
+155 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.31951 s, 7.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.11866 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.40857 s, 4.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.41595 s, 7.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.00865 s, 3.5 MB/s
+160 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.98424 s, 5.3 MB/s
+162 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.31257 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.15541 s, 4.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.0225 s, 5.2 MB/s
+167 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77518 s, 3.8 MB/s
+166 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.0656 s, 9.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.44966 s, 4.3 MB/s
+171 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.97145 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.18083 s, 8.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.2568 s, 3.2 MB/s
+173 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.23018 s, 4.7 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.31435 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.94491 s, 3.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.32343 s, 4.5 MB/s
+178 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.88613 s, 5.6 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.21897 s, 3.3 MB/s
+180 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.64668 s, 6.4 MB/s
+182 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.40375 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.97969 s, 5.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.09271 s, 5.0 MB/s
+187 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.75766 s, 3.8 MB/s
+187 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.08927 s, 9.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.03778 s, 5.1 MB/s
+190 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.03118 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.27768 s, 8.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.45824 s, 4.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.86547 s, 3.7 MB/s
+193 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05379 s, 10.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.47313 s, 4.2 MB/s
+198 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.11069 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.2086 s, 8.7 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.21691 s, 3.3 MB/s
+200 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.18174 s, 4.8 MB/s
+201 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.33101 s, 7.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.98761 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.36067 s, 4.4 MB/s
+205 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.22934 s, 8.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.16116 s, 3.3 MB/s
+207 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.04154 s, 5.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.09876 s, 9.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.22139 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.30606 s, 4.5 MB/s
+213 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.41673 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.07574 s, 5.1 MB/s
+214 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.68266 s, 6.2 MB/s
+216 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.5346 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.90033 s, 5.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.19706 s, 4.8 MB/s
+221 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.74612 s, 3.8 MB/s
+220 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.0386 s, 10.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.46087 s, 4.3 MB/s
+225 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.1606 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.28836 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.15845 s, 3.3 MB/s
+227 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.19904 s, 4.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.23736 s, 8.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.10717 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.30365 s, 4.6 MB/s
+232 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.15843 s, 9.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.12309 s, 3.4 MB/s
+234 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.1592 s, 4.9 MB/s
+236 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.39102 s, 7.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.14128 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.07514 s, 5.1 MB/s
+240 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.39885 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.94754 s, 5.4 MB/s
+241 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.7376 s, 6.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.53274 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.86862 s, 5.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.15535 s, 4.9 MB/s
+248 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.85351 s, 3.7 MB/s
+248 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.12408 s, 9.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.9536 s, 5.4 MB/s
+251 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.02949 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.22475 s, 8.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.05533 s, 5.1 MB/s
+255 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77209 s, 3.8 MB/s
+255 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.07023 s, 9.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.49533 s, 4.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.0811 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.27816 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.06477 s, 3.4 MB/s
+261 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.17757 s, 4.8 MB/s
+263 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.2201 s, 8.6 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.96238 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.36774 s, 4.4 MB/s
+267 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.3784 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.10325 s, 5.0 MB/s
+268 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.74251 s, 6.0 MB/s
+271 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.09701 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.61491 s, 6.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.06078 s, 5.1 MB/s
+275 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.10311 s, 3.4 MB/s
+275 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.26548 s, 8.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.96469 s, 5.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.82175 s, 3.7 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.11685 s, 9.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.48961 s, 4.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.14055 s, 3.3 MB/s
+283 sec passed by  fm2
+282 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05038 s, 10.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.42184 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.40787 s, 4.4 MB/s
+286 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.34858 s, 7.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.93867 s, 3.6 MB/s
+288 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.12507 s, 4.9 MB/s
+290 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.16612 s, 9.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.08094 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.34121 s, 4.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.31928 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.18372 s, 4.8 MB/s
+295 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.68199 s, 6.2 MB/s
+298 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.43088 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.93588 s, 5.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.08232 s, 5.0 MB/s
+302 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.96499 s, 3.5 MB/s
+302 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.12944 s, 9.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.07703 s, 5.0 MB/s
+306 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.92667 s, 3.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.1703 s, 9.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.37306 s, 4.4 MB/s
+310 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.05268 s, 3.4 MB/s
+309 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05661 s, 9.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.38023 s, 4.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.14304 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.16866 s, 9.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.26584 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.25558 s, 4.6 MB/s
+316 sec passed by  fm1
+317 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.30523 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.0453 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.35909 s, 4.4 MB/s
+321 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.23348 s, 8.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.06016 s, 3.4 MB/s
+322 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.07588 s, 5.1 MB/s
+325 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.35023 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.11388 s, 5.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.82368 s, 5.7 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.1561 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.49361 s, 7.0 MB/s
+330 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.77423 s, 5.9 MB/s
+332 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.19781 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.47113 s, 7.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.23125 s, 4.7 MB/s
+337 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.88453 s, 3.6 MB/s
+336 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05126 s, 10.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.48113 s, 4.2 MB/s
+341 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.0902 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.12845 s, 9.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.34128 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.30431 s, 4.6 MB/s
+343 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.29919 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.06116 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.39905 s, 4.4 MB/s
+348 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.31437 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.09952 s, 3.4 MB/s
+350 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.98926 s, 5.3 MB/s
+352 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.28225 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.13932 s, 4.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.02069 s, 5.2 MB/s
+356 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.78178 s, 3.8 MB/s
+357 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.1251 s, 9.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.12097 s, 4.9 MB/s
+360 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.02978 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.15767 s, 9.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.49637 s, 4.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.05846 s, 3.4 MB/s
+363 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05289 s, 10.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.5118 s, 4.2 MB/s
+368 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.98598 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.31171 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.06881 s, 3.4 MB/s
+370 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.15566 s, 4.9 MB/s
+371 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.33112 s, 7.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.90059 s, 3.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.31606 s, 4.5 MB/s
+375 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.34671 s, 7.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.28842 s, 3.2 MB/s
+377 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.87072 s, 5.6 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.28827 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.14569 s, 4.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.21994 s, 4.7 MB/s
+384 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.76349 s, 3.8 MB/s
+383 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05649 s, 9.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.50584 s, 4.2 MB/s
+387 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.06091 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.23964 s, 8.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.14548 s, 3.3 MB/s
+390 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.18573 s, 4.8 MB/s
+391 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.27375 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.93078 s, 3.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.39713 s, 4.4 MB/s
+395 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.14937 s, 4.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.38737 s, 3.1 MB/s
+396 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.65626 s, 6.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.4321 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.99942 s, 5.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.1832 s, 4.8 MB/s
+403 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.06672 s, 3.4 MB/s
+404 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.12484 s, 9.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.1194 s, 4.9 MB/s
+407 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.7783 s, 3.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.11022 s, 9.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.4208 s, 4.3 MB/s
+411 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.1719 s, 3.3 MB/s
+410 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05335 s, 10.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.47045 s, 4.2 MB/s
+415 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.11718 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.28321 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.14185 s, 3.3 MB/s
+417 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.11825 s, 5.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.13512 s, 9.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.09554 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.42693 s, 4.3 MB/s
+422 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.94371 s, 5.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.15032 s, 3.3 MB/s
+423 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.57718 s, 6.6 MB/s
+426 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.33185 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.09596 s, 5.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.0647 s, 5.1 MB/s
+430 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.79985 s, 3.7 MB/s
+431 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.15774 s, 9.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.97725 s, 5.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.12437 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.36229 s, 7.7 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.01202 s, 5.2 MB/s
+438 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.76494 s, 3.8 MB/s
+437 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.04252 s, 10.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.50208 s, 4.2 MB/s
+442 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.0771 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.22586 s, 8.6 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.17484 s, 3.3 MB/s
+444 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.23342 s, 4.7 MB/s
+445 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.31168 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.89159 s, 3.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.3465 s, 4.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.34748 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.17453 s, 4.8 MB/s
+451 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.74138 s, 6.0 MB/s
+453 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.42134 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.73947 s, 6.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.08067 s, 5.0 MB/s
+458 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.83006 s, 3.7 MB/s
+458 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.10735 s, 9.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.97654 s, 5.3 MB/s
+461 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77017 s, 3.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.16121 s, 9.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.22145 s, 3.3 MB/s
+464 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.25384 s, 4.7 MB/s
+465 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.3253 s, 7.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.03437 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.34249 s, 4.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.4795 s, 7.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.06441 s, 3.4 MB/s
+471 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.87179 s, 5.6 MB/s
+473 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.93155 s, 5.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.32954 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.75089 s, 6.0 MB/s
+477 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.27324 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.74185 s, 6.0 MB/s
+478 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.74356 s, 6.0 MB/s
+481 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.31363 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.68568 s, 6.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.19975 s, 4.8 MB/s
+485 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.84398 s, 3.7 MB/s
+485 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.06605 s, 9.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.527 s, 4.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.00946 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.28219 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.17347 s, 3.3 MB/s
+491 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.15824 s, 4.9 MB/s
+493 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.28463 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.98654 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.27622 s, 4.6 MB/s
+496 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.39488 s, 7.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.05146 s, 3.4 MB/s
+498 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.78809 s, 5.9 MB/s
+500 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.28501 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.13813 s, 4.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.82275 s, 5.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.10383 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.49355 s, 7.0 MB/s
+505 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.77516 s, 5.9 MB/s
+508 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.2733 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.58584 s, 6.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.29913 s, 4.6 MB/s
+512 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.85595 s, 3.7 MB/s
+512 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05461 s, 9.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.43411 s, 4.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.0474 s, 3.4 MB/s
+516 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.31524 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.02056 s, 3.5 MB/s
+518 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.20571 s, 4.8 MB/s
+520 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.23709 s, 8.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.06349 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.34288 s, 4.5 MB/s
+1+0 records in
+1+0 records out
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.18376 s, 4.8 MB/s10485760 bytes (10 MB, 10 MiB) copied, 3.35356 s, 3.1 MB/s
+
+525 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.72133 s, 6.1 MB/s
+528 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.30064 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.92412 s, 5.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.43239 s, 4.3 MB/s
+532 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.73853 s, 3.8 MB/s
+532 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.0718 s, 9.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.19183 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.44251 s, 4.3 MB/s
+536 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.22216 s, 8.6 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.07499 s, 3.4 MB/s
+538 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.14161 s, 4.9 MB/s
+540 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.30895 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.97068 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.29448 s, 4.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.30877 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.24995 s, 3.2 MB/s
+545 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.97232 s, 5.3 MB/s
+547 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.40146 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.07726 s, 5.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.95282 s, 5.4 MB/s
+551 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.07247 s, 3.4 MB/s
+552 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.24492 s, 8.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.79691 s, 5.8 MB/s
+555 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.10206 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.42026 s, 7.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.0815 s, 5.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.78173 s, 3.8 MB/s
+559 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.04736 s, 10.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.48351 s, 4.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.05164 s, 3.4 MB/s
+563 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.20605 s, 8.7 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.17771 s, 3.3 MB/s
+565 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.13338 s, 4.9 MB/s
+567 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.16644 s, 9.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.08405 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.36951 s, 4.4 MB/s
+570 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.57472 s, 6.7 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.03672 s, 3.5 MB/s
+572 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.82621 s, 5.7 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.32236 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.14994 s, 4.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.9362 s, 5.4 MB/s
+578 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.14408 s, 3.3 MB/s
+579 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.38213 s, 7.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.83003 s, 5.7 MB/s
+582 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.13675 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.53338 s, 6.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.2979 s, 4.6 MB/s
+586 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.84671 s, 3.7 MB/s
+586 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05174 s, 10.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.42351 s, 4.3 MB/s
+590 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.05492 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.12246 s, 9.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.28483 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.30208 s, 4.6 MB/s
+593 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.12137 s, 9.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.35445 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.38894 s, 4.4 MB/s
+597 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.28912 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.91841 s, 3.6 MB/s
+599 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.16087 s, 4.9 MB/s
+601 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.54237 s, 6.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.07223 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.05418 s, 5.1 MB/s
+605 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.40361 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.9526 s, 5.4 MB/s
+606 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.76655 s, 5.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.36807 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.89963 s, 5.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.16849 s, 4.8 MB/s
+613 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.7689 s, 3.8 MB/s
+613 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.13173 s, 9.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.21469 s, 4.7 MB/s
+617 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.7364 s, 3.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.25347 s, 8.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.16609 s, 3.3 MB/s
+620 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.16411 s, 4.8 MB/s
+621 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.18872 s, 8.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.08581 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.36417 s, 4.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.4512 s, 7.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.07525 s, 3.4 MB/s
+626 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.95038 s, 5.4 MB/s
+628 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.34779 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.14605 s, 4.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.05477 s, 5.1 MB/s
+633 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.92373 s, 3.6 MB/s
+633 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.1121 s, 9.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.79627 s, 5.8 MB/s
+636 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.08547 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.46705 s, 7.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.59325 s, 4.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.75581 s, 3.8 MB/s
+641 sec passed by  fm2
+640 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.07333 s, 9.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.54036 s, 4.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.17945 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.32535 s, 7.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.03555 s, 3.5 MB/s
+647 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.23997 s, 4.7 MB/s
+648 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.33198 s, 7.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.02014 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.45117 s, 4.3 MB/s
+652 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.48269 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.99371 s, 5.3 MB/s
+653 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.68455 s, 6.2 MB/s
+656 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.53897 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.85854 s, 5.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.42609 s, 4.3 MB/s
+661 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.74124 s, 3.8 MB/s
+660 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.07104 s, 9.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.56606 s, 4.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.52977 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.29248 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.1619 s, 3.3 MB/s
+667 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.31078 s, 4.5 MB/s
+668 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.16936 s, 9.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.11657 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.4567 s, 4.3 MB/s
+672 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.13524 s, 9.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.39882 s, 3.1 MB/s
+674 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.06997 s, 5.1 MB/s
+676 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.42754 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.06612 s, 5.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.98803 s, 5.3 MB/s
+681 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.78506 s, 3.8 MB/s
+680 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.07397 s, 9.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.60822 s, 4.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.81868 s, 3.7 MB/s
+685 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.24035 s, 8.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.23144 s, 3.2 MB/s
+687 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.30753 s, 4.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.304 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.05626 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.44879 s, 4.3 MB/s
+692 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.20973 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.17248 s, 4.8 MB/s
+694 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.71792 s, 6.1 MB/s
+696 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.57612 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.87282 s, 5.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.35032 s, 4.5 MB/s
+701 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.76108 s, 3.8 MB/s
+700 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.02946 s, 10.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.16591 s, 4.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.79407 s, 3.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.14954 s, 9.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.38719 s, 3.1 MB/s
+708 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.41726 s, 4.3 MB/s
+709 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.29039 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.09336 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.49228 s, 4.2 MB/s
+713 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.17184 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.24164 s, 4.7 MB/s
+714 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.71179 s, 6.1 MB/s
+717 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.58119 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.87637 s, 5.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.57759 s, 4.1 MB/s
+721 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.78074 s, 3.8 MB/s
+721 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.06551 s, 9.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.62085 s, 4.0 MB/s
+725 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.81718 s, 3.7 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.27435 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.2252 s, 3.3 MB/s
+728 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.30603 s, 4.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.2918 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.04251 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.5374 s, 4.1 MB/s
+733 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.37676 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.15345 s, 4.9 MB/s
+734 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.73485 s, 6.0 MB/s
+737 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.5976 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.87078 s, 5.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.372 s, 4.4 MB/s
+742 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.76613 s, 3.8 MB/s
+741 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.06051 s, 9.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.94005 s, 3.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.57698 s, 4.1 MB/s
+746 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.2896 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.09313 s, 3.4 MB/s
+748 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.27455 s, 4.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.23582 s, 8.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.21174 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.47413 s, 4.2 MB/s
+753 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.3293 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.15337 s, 4.9 MB/s
+755 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.70712 s, 6.1 MB/s
+757 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.2666 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.55141 s, 6.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.38156 s, 4.4 MB/s
+762 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.76988 s, 3.8 MB/s
+762 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.04761 s, 10.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.36307 s, 4.4 MB/s
+766 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77838 s, 3.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.16387 s, 9.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.37054 s, 3.1 MB/s
+768 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.39146 s, 4.4 MB/s
+770 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.30997 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.09649 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.46524 s, 4.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.29043 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.2452 s, 3.2 MB/s
+775 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.32547 s, 4.5 MB/s
+777 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.16645 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.15537 s, 4.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.33931 s, 4.5 MB/s
+782 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.7702 s, 3.8 MB/s
+781 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.08151 s, 9.7 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.61469 s, 4.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.81307 s, 3.7 MB/s
+786 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.306 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.21124 s, 3.3 MB/s
+789 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.29129 s, 4.6 MB/s
+790 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.33136 s, 7.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.00947 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.51483 s, 4.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.33017 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.11331 s, 5.0 MB/s
+795 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.66054 s, 6.3 MB/s
+798 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.58338 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.89789 s, 5.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.43001 s, 4.3 MB/s
+803 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77148 s, 3.8 MB/s
+802 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.04462 s, 10.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.59903 s, 4.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.84074 s, 3.7 MB/s
+806 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.29133 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.07728 s, 3.4 MB/s
+809 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.29094 s, 4.6 MB/s
+810 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.28235 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.08557 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.52701 s, 4.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.17549 s, 8.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.44494 s, 3.0 MB/s
+816 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.01914 s, 5.2 MB/s
+818 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.25001 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.09905 s, 5.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.42106 s, 4.3 MB/s
+823 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.75214 s, 3.8 MB/s
+822 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.07088 s, 9.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.522 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.56948 s, 4.1 MB/s
+827 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.21884 s, 8.6 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.17403 s, 3.3 MB/s
+829 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.29957 s, 4.6 MB/s
+830 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.27554 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.22282 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.5038 s, 4.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.23717 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.21874 s, 4.7 MB/s
+836 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.66034 s, 6.3 MB/s
+838 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.43481 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.95175 s, 5.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.64352 s, 4.0 MB/s
+843 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.73883 s, 3.8 MB/s
+842 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.06505 s, 9.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.5786 s, 4.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.53985 s, 3.0 MB/s
+847 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.2907 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.10133 s, 3.4 MB/s
+849 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.32138 s, 4.5 MB/s
+851 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.29326 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.03073 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.55654 s, 4.1 MB/s
+855 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.34405 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.9557 s, 5.4 MB/s
+856 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.70669 s, 6.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.61143 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.89696 s, 5.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.57901 s, 4.1 MB/s
+863 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77279 s, 3.8 MB/s
+863 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05561 s, 9.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.5492 s, 4.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.50604 s, 3.0 MB/s
+867 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.30455 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.1132 s, 3.4 MB/s
+869 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.27493 s, 4.6 MB/s
+871 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.29517 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.01083 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.57121 s, 4.1 MB/s
+875 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.53396 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.98341 s, 5.3 MB/s
+876 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.68184 s, 6.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.51261 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.95376 s, 5.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.4714 s, 4.2 MB/s
+884 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.7232 s, 3.9 MB/s
+883 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05846 s, 9.9 MB/s
+1+0 records in
+1+0 records out
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.55644 s, 2.9 MB/s
+10485760 bytes (10 MB, 10 MiB) copied, 2.56714 s, 4.1 MB/s
+887 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.28851 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.1638 s, 3.3 MB/s
+890 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.30919 s, 4.5 MB/s
+891 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.31282 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.12185 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.50723 s, 4.2 MB/s
+895 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.38844 s, 7.6 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.45421 s, 3.0 MB/s
+897 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.58824 s, 6.6 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.40766 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.14434 s, 4.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.44632 s, 4.3 MB/s
+904 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77806 s, 3.8 MB/s
+903 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.08261 s, 9.7 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.36964 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.55775 s, 4.1 MB/s
+908 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.31868 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.06266 s, 3.4 MB/s
+910 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.29428 s, 4.6 MB/s
+911 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.26347 s, 8.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.02857 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.58449 s, 4.1 MB/s
+915 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.55754 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.96894 s, 5.3 MB/s
+917 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.71624 s, 6.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.20474 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.87519 s, 5.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.37311 s, 4.4 MB/s
+924 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77432 s, 3.8 MB/s
+923 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.0726 s, 9.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.51312 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.56731 s, 4.1 MB/s
+928 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.20811 s, 8.7 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.25693 s, 3.2 MB/s
+930 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.32582 s, 4.5 MB/s
+932 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.30822 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.98618 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.53772 s, 4.1 MB/s
+936 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.45474 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.07204 s, 5.1 MB/s
+937 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.74248 s, 6.0 MB/s
+940 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.64211 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.89086 s, 5.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.60694 s, 4.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.7783 s, 3.8 MB/s
+944 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05393 s, 9.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.48365 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.58757 s, 4.1 MB/s
+948 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.28672 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.11227 s, 3.4 MB/s
+950 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.36515 s, 4.4 MB/s
+952 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.27018 s, 8.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.08695 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.49176 s, 4.2 MB/s
+956 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.4999 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.00022 s, 5.2 MB/s
+957 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.65883 s, 6.3 MB/s
+960 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.61795 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.95702 s, 5.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.82542 s, 5.7 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.28684 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.24694 s, 8.4 MB/s
+965 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.7101 s, 6.1 MB/s
+967 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.57215 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.87361 s, 5.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.67504 s, 3.9 MB/s
+972 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77144 s, 3.8 MB/s
+971 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.04464 s, 10.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.54423 s, 4.1 MB/s
+976 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.78055 s, 3.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.11088 s, 9.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.4047 s, 3.1 MB/s
+979 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.42512 s, 4.3 MB/s
+980 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.27881 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.20316 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.4317 s, 4.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.2673 s, 8.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.04838 s, 3.4 MB/s
+985 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.25592 s, 4.6 MB/s
+987 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.28925 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.18114 s, 4.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.4663 s, 4.3 MB/s
+992 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.73292 s, 3.8 MB/s
+991 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.06855 s, 9.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.50388 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.54963 s, 4.1 MB/s
+996 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.25533 s, 8.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.13072 s, 3.3 MB/s
+998 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.29335 s, 4.6 MB/s
+1000 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.33617 s, 7.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.02697 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.53093 s, 4.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.44969 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.06591 s, 5.1 MB/s
+1005 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.68269 s, 6.2 MB/s
+1008 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.5786 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.90959 s, 5.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.64476 s, 4.0 MB/s
+1013 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.75989 s, 3.8 MB/s
+1012 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.07929 s, 9.7 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.0482 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.61396 s, 4.0 MB/s
+1016 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.2858 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.13613 s, 3.3 MB/s
+1019 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.32483 s, 4.5 MB/s
+1020 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.2401 s, 8.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.20937 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.52805 s, 4.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.23565 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.16788 s, 4.8 MB/s
+1025 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.68331 s, 6.2 MB/s
+1028 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.57186 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.90082 s, 5.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.66134 s, 3.9 MB/s
+1033 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.78254 s, 3.8 MB/s
+1032 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.04194 s, 10.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.3948 s, 4.4 MB/s
+1037 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.84692 s, 3.7 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.21948 s, 8.6 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.29406 s, 3.2 MB/s
+1039 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.41413 s, 4.3 MB/s
+1040 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.26504 s, 8.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.03538 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.41693 s, 4.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.20495 s, 8.7 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.29525 s, 3.2 MB/s
+1046 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.53883 s, 6.8 MB/s
+1048 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.44589 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.07647 s, 5.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.55545 s, 4.1 MB/s
+1053 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77345 s, 3.8 MB/s
+1052 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.06142 s, 9.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.57509 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.61553 s, 4.0 MB/s
+1057 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.26914 s, 8.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.06593 s, 3.4 MB/s
+1059 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.29108 s, 4.6 MB/s
+1061 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.19801 s, 8.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.17004 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.46051 s, 4.3 MB/s
+1065 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.35667 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.11079 s, 5.0 MB/s
+1066 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.64826 s, 6.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.58349 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.96942 s, 5.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.82139 s, 5.8 MB/s
+1073 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.37474 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.21562 s, 8.6 MB/s
+1073 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.76724 s, 5.9 MB/s
+1076 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.58988 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.83904 s, 5.7 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.40919 s, 4.4 MB/s
+1081 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77133 s, 3.8 MB/s
+1080 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.07857 s, 9.7 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.57684 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.58872 s, 4.1 MB/s
+1085 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.2979 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.09485 s, 3.4 MB/s
+1087 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.32513 s, 4.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.27226 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.12609 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.51978 s, 4.2 MB/s
+1093 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.46782 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.04751 s, 5.1 MB/s
+1094 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.6603 s, 6.3 MB/s
+1096 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.35508 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.9424 s, 5.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.16857 s, 4.8 MB/s
+1101 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.78645 s, 3.8 MB/s
+1100 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.04097 s, 10.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.43095 s, 4.3 MB/s
+1105 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.78788 s, 3.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.32165 s, 7.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.12401 s, 3.4 MB/s
+1107 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.2832 s, 4.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.27303 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.21749 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.48898 s, 4.2 MB/s
+1113 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.05428 s, 5.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.30371 s, 3.2 MB/s
+1114 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.5715 s, 6.7 MB/s
+1117 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.22123 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.02385 s, 5.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.91606 s, 5.5 MB/s
+1121 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.78951 s, 3.8 MB/s
+1121 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.0546 s, 9.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.43855 s, 4.3 MB/s
+1125 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.80545 s, 3.7 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.12716 s, 9.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.44814 s, 3.0 MB/s
+1128 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.46801 s, 4.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.18326 s, 8.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.46347 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.51685 s, 4.2 MB/s
+1133 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.23012 s, 8.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.0996 s, 3.4 MB/s
+1135 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.37258 s, 4.4 MB/s
+1137 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.27769 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.17434 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.03493 s, 5.2 MB/s
+1141 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.24996 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.85766 s, 5.6 MB/s
+1142 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.64925 s, 6.4 MB/s
+1145 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.54362 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.88039 s, 5.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.43225 s, 4.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.76237 s, 3.8 MB/s
+1148 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.03513 s, 10.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.2155 s, 4.7 MB/s
+1153 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.78586 s, 3.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.17194 s, 8.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.35131 s, 3.1 MB/s
+1156 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.38001 s, 4.4 MB/s
+1157 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.23043 s, 8.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.06948 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.53646 s, 4.1 MB/s
+1161 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.22481 s, 8.6 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.27679 s, 3.2 MB/s
+1162 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.77114 s, 5.9 MB/s
+1165 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.41875 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.09336 s, 5.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.65641 s, 3.9 MB/s
+1170 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.78489 s, 3.8 MB/s
+1169 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.02637 s, 10.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.12052 s, 4.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.76423 s, 3.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.06848 s, 9.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.58118 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.57413 s, 4.1 MB/s
+1177 sec passed by  fm2
+1176 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.17455 s, 8.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.32451 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.54914 s, 4.1 MB/s
+1181 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.29048 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.05631 s, 3.4 MB/s
+1183 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.34874 s, 4.5 MB/s
+1185 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.91947 s, 5.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.32103 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.70406 s, 6.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.64074 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.88245 s, 5.6 MB/s
+1190 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.68291 s, 6.2 MB/s
+1193 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.62228 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.87216 s, 5.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.02057 s, 5.2 MB/s
+1197 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.79785 s, 3.7 MB/s
+1197 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.02695 s, 10.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.40192 s, 4.4 MB/s
+1201 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.79424 s, 3.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.10985 s, 9.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.51714 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.49798 s, 4.2 MB/s
+1204 sec passed by  fm1
+1205 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.25677 s, 8.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.33451 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.53137 s, 4.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.29299 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.04644 s, 3.4 MB/s
+1211 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.32897 s, 4.5 MB/s
+1213 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.31187 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.21922 s, 4.7 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.91596 s, 5.5 MB/s
+1217 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.19371 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.12636 s, 9.3 MB/s
+1218 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.75171 s, 6.0 MB/s
+1221 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.27202 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.23701 s, 8.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.65838 s, 3.9 MB/s
+1225 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.76389 s, 3.8 MB/s
+1224 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.03556 s, 10.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.62538 s, 4.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.80053 s, 3.7 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.22541 s, 8.6 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.30408 s, 3.2 MB/s
+1232 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.34771 s, 4.5 MB/s
+1233 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.28201 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.98802 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.46204 s, 4.3 MB/s
+1237 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.24433 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.16987 s, 4.8 MB/s
+1238 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.7059 s, 6.1 MB/s
+1241 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.4631 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.89334 s, 5.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.45037 s, 4.3 MB/s
+1245 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77309 s, 3.8 MB/s
+1245 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.02969 s, 10.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.65684 s, 3.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.78445 s, 3.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.16292 s, 9.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.39245 s, 3.1 MB/s
+1252 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.38598 s, 4.4 MB/s
+1253 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.23185 s, 8.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.27286 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.53386 s, 4.1 MB/s
+1257 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.27914 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.16346 s, 3.3 MB/s
+1259 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.32915 s, 4.5 MB/s
+1261 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.13045 s, 9.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.35108 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.44465 s, 4.3 MB/s
+1265 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.99464 s, 5.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.53943 s, 3.0 MB/s
+1266 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.59294 s, 6.6 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.50553 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.07513 s, 5.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.40376 s, 4.4 MB/s
+1273 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.79918 s, 3.7 MB/s
+1272 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.06228 s, 9.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.4735 s, 4.2 MB/s
+1277 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.7681 s, 3.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.26313 s, 8.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.27949 s, 3.2 MB/s
+1280 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.36084 s, 4.4 MB/s
+1281 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.32209 s, 7.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.07895 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.48639 s, 4.2 MB/s
+1285 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.46035 s, 7.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.37443 s, 3.1 MB/s
+1286 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.82771 s, 5.7 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.31253 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.07353 s, 5.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.67118 s, 3.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.74699 s, 3.8 MB/s
+1294 sec passed by  fm2
+1293 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05459 s, 9.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.53941 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.59341 s, 4.0 MB/s
+1297 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.25166 s, 8.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.2077 s, 3.3 MB/s
+1300 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.34136 s, 4.5 MB/s
+1301 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.29426 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.95659 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.47098 s, 4.2 MB/s
+1305 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.50192 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.98864 s, 5.3 MB/s
+1306 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.74214 s, 6.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.58981 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.88936 s, 5.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.06867 s, 5.1 MB/s
+1314 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.79081 s, 3.8 MB/s
+1313 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05739 s, 9.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.59245 s, 4.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.11891 s, 3.4 MB/s
+1318 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.30716 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.09435 s, 3.4 MB/s
+1320 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.27093 s, 4.6 MB/s
+1321 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.30593 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.03296 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.55726 s, 4.1 MB/s
+1326 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.5316 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.96165 s, 5.3 MB/s
+1327 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.76711 s, 5.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.6121 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.87899 s, 5.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.4191 s, 4.3 MB/s
+1334 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.76474 s, 3.8 MB/s
+1334 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.03661 s, 10.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.27107 s, 4.6 MB/s
+1338 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.78203 s, 3.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.07914 s, 9.7 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.58488 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.54348 s, 4.1 MB/s
+1342 sec passed by  fm2
+1341 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.17414 s, 8.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.46347 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.47967 s, 4.2 MB/s
+1345 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.28169 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.10625 s, 3.4 MB/s
+1347 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.36088 s, 4.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.20664 s, 8.7 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.12778 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.3961 s, 4.4 MB/s
+1353 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.44284 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.08254 s, 5.0 MB/s
+1354 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.68912 s, 6.2 MB/s
+1357 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.30098 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.8824 s, 5.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.66057 s, 3.9 MB/s
+1362 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.74796 s, 3.8 MB/s
+1361 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.04792 s, 10.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.625 s, 4.0 MB/s
+1366 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.85769 s, 3.7 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.28613 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.19955 s, 3.3 MB/s
+1368 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.33928 s, 4.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.25168 s, 8.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.25362 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.49558 s, 4.2 MB/s
+1373 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.77259 s, 5.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.26083 s, 3.2 MB/s
+1375 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.5694 s, 6.7 MB/s
+1377 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.27883 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.00287 s, 5.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.68437 s, 3.9 MB/s
+1382 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.76267 s, 3.8 MB/s
+1381 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.0632 s, 9.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.53808 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.55681 s, 4.1 MB/s
+1386 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.24806 s, 8.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.26217 s, 3.2 MB/s
+1388 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.30049 s, 4.6 MB/s
+1390 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.30869 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.15267 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.52516 s, 4.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.35949 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.18859 s, 4.8 MB/s
+1395 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.6927 s, 6.2 MB/s
+1398 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.22064 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.85745 s, 5.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.45323 s, 4.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77662 s, 3.8 MB/s
+1403 sec passed by  fm2
+1402 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.06189 s, 9.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.59564 s, 4.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.93514 s, 3.6 MB/s
+1406 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.28329 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.15783 s, 3.3 MB/s
+1409 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.32649 s, 4.5 MB/s
+1410 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.26154 s, 8.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.07932 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.38781 s, 4.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.63207 s, 6.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.33444 s, 3.1 MB/s
+1415 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.83239 s, 5.7 MB/s
+1418 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.31357 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.01802 s, 5.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.52613 s, 4.2 MB/s
+1423 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.75142 s, 3.8 MB/s
+1422 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.06779 s, 9.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.5409 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.58611 s, 4.1 MB/s
+1427 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.2584 s, 8.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.14153 s, 3.3 MB/s
+1429 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.33249 s, 4.5 MB/s
+1430 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.26657 s, 8.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.14933 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.48634 s, 4.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.22349 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.16417 s, 4.8 MB/s
+1436 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.66085 s, 6.3 MB/s
+1438 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.34377 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.94524 s, 5.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.39566 s, 4.4 MB/s
+1443 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.78661 s, 3.8 MB/s
+1442 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.03126 s, 10.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.29001 s, 4.6 MB/s
+1447 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77438 s, 3.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.20487 s, 8.7 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.3241 s, 3.2 MB/s
+1449 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.37187 s, 4.4 MB/s
+1451 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.3179 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.05704 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.47499 s, 4.2 MB/s
+1455 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.21599 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.19409 s, 4.8 MB/s
+1456 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.74448 s, 6.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.35563 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.86011 s, 5.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.67475 s, 3.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77537 s, 3.8 MB/s
+1463 sec passed by  fm2
+1463 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05459 s, 9.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.59743 s, 4.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.17886 s, 3.3 MB/s
+1467 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.25206 s, 8.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.16127 s, 3.3 MB/s
+1470 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.27268 s, 4.6 MB/s
+1471 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.278 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.039 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.39126 s, 4.4 MB/s
+1475 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.34293 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.17778 s, 4.8 MB/s
+1476 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.63704 s, 6.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.54735 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.00478 s, 5.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.39747 s, 4.4 MB/s
+1484 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77557 s, 3.8 MB/s
+1483 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05527 s, 9.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.6164 s, 4.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.29067 s, 3.2 MB/s
+1488 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.3154 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.1759 s, 3.3 MB/s
+1490 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.32336 s, 4.5 MB/s
+1491 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.31187 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.9936 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.54792 s, 4.1 MB/s
+1495 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.32464 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.95557 s, 5.4 MB/s
+1497 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.65929 s, 6.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.45702 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.96516 s, 5.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.3905 s, 4.4 MB/s
+1504 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.78912 s, 3.8 MB/s
+1503 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.02629 s, 10.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.16833 s, 4.8 MB/s
+1508 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.76468 s, 3.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.16683 s, 9.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.4132 s, 3.1 MB/s
+1510 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.43045 s, 4.3 MB/s
+1512 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.30475 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.1145 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.4784 s, 4.2 MB/s
+1515 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.25545 s, 8.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.13677 s, 3.3 MB/s
+1517 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.03858 s, 5.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.33137 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.08752 s, 5.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.69737 s, 3.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77058 s, 3.8 MB/s
+1524 sec passed by  fm2
+1523 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.048 s, 10.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.50189 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.55602 s, 4.1 MB/s
+1528 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.30289 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.029 s, 3.5 MB/s
+1530 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.31382 s, 4.5 MB/s
+1532 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.33843 s, 7.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.14952 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.14268 s, 4.9 MB/s
+1536 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.52616 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.99108 s, 5.3 MB/s
+1537 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.71741 s, 6.1 MB/s
+1540 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.47245 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.73223 s, 6.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.4306 s, 4.3 MB/s
+1545 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.7756 s, 3.8 MB/s
+1544 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.0639 s, 9.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.60243 s, 4.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.33038 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.19132 s, 8.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.30765 s, 3.2 MB/s
+1551 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.37448 s, 4.4 MB/s
+1552 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.30382 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.04914 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.48871 s, 4.2 MB/s
+1556 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.21322 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.13452 s, 4.9 MB/s
+1558 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.74049 s, 6.0 MB/s
+1560 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.3435 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.87888 s, 5.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.65482 s, 3.9 MB/s
+1565 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.78458 s, 3.8 MB/s
+1564 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.03793 s, 10.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.65059 s, 4.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.73768 s, 3.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.33443 s, 7.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.25801 s, 3.2 MB/s
+1571 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.2962 s, 4.6 MB/s
+1573 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.31922 s, 7.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.00671 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.52285 s, 4.2 MB/s
+1577 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.71518 s, 6.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.48634 s, 3.0 MB/s
+1578 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.59094 s, 6.6 MB/s
+1581 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.46662 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.0134 s, 5.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.66182 s, 3.9 MB/s
+1585 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.75737 s, 3.8 MB/s
+1585 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.08863 s, 9.6 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.29935 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.61041 s, 4.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.17895 s, 8.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.32876 s, 3.2 MB/s
+1592 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.37752 s, 4.4 MB/s
+1593 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.24829 s, 8.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.12488 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.42052 s, 4.3 MB/s
+1597 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.20907 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.26581 s, 4.6 MB/s
+1598 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.71512 s, 6.1 MB/s
+1601 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.61574 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.90326 s, 5.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.52871 s, 4.1 MB/s
+1606 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77433 s, 3.8 MB/s
+1605 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.03298 s, 10.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.66545 s, 3.9 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.74229 s, 3.8 MB/s
+1610 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.22823 s, 8.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.29531 s, 3.2 MB/s
+1612 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.28886 s, 4.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.29732 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.00547 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.49667 s, 4.2 MB/s
+1617 sec passed by  fm2
+1+0 records in
+1+0 records out
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.20713 s, 4.8 MB/s
+10485760 bytes (10 MB, 10 MiB) copied, 3.36445 s, 3.1 MB/s
+1619 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.67106 s, 6.3 MB/s
+1621 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.45741 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.96624 s, 5.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.42161 s, 4.3 MB/s
+1626 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.75421 s, 3.8 MB/s
+1625 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.0681 s, 9.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.60949 s, 4.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.96881 s, 3.5 MB/s
+1630 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.31845 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.1017 s, 3.4 MB/s
+1632 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.2762 s, 4.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.24374 s, 8.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.03944 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.48639 s, 4.2 MB/s
+1638 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.29106 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.10626 s, 5.0 MB/s
+1639 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.66018 s, 6.3 MB/s
+1642 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.56028 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.92037 s, 5.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.39996 s, 4.4 MB/s
+1647 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.78898 s, 3.8 MB/s
+1646 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.0712 s, 9.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.60389 s, 4.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.06393 s, 3.4 MB/s
+1650 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.24499 s, 8.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.25808 s, 3.2 MB/s
+1653 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.35974 s, 4.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.20092 s, 8.7 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.20478 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.35499 s, 4.5 MB/s
+1658 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.31555 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.12762 s, 3.4 MB/s
+1659 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.33584 s, 4.5 MB/s
+1662 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.35176 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.19053 s, 4.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.34635 s, 4.5 MB/s
+1667 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.7961 s, 3.8 MB/s
+1666 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.06567 s, 9.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.51548 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.58774 s, 4.1 MB/s
+1671 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.25743 s, 8.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.17157 s, 3.3 MB/s
+1673 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.34767 s, 4.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.34393 s, 7.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.12042 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.51519 s, 4.2 MB/s
+1678 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.46868 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.06083 s, 5.1 MB/s
+1680 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.6822 s, 6.2 MB/s
+1682 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.30546 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.91333 s, 5.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.40515 s, 4.4 MB/s
+1687 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77899 s, 3.8 MB/s
+1686 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.06616 s, 9.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.63703 s, 4.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.74887 s, 3.8 MB/s
+1691 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.31233 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.17001 s, 3.3 MB/s
+1693 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.31337 s, 4.5 MB/s
+1695 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.2652 s, 8.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.98703 s, 3.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.56361 s, 4.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.53687 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.00519 s, 5.2 MB/s
+1700 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.79097 s, 5.9 MB/s
+1703 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.27954 s, 3.2 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.22974 s, 8.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.4173 s, 4.3 MB/s
+1707 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.74024 s, 3.8 MB/s
+1707 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.04945 s, 10.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.61472 s, 4.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.3293 s, 3.1 MB/s
+1711 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.28197 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.08771 s, 3.4 MB/s
+1713 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.3412 s, 4.5 MB/s
+1715 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.31801 s, 8.0 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.06739 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.40928 s, 4.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.43205 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.10354 s, 5.0 MB/s
+1720 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.70898 s, 6.1 MB/s
+1723 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.62247 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.88577 s, 5.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.45197 s, 4.3 MB/s
+1728 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77455 s, 3.8 MB/s
+1727 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.07768 s, 9.7 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.48967 s, 3.0 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.50283 s, 4.2 MB/s
+1731 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.26226 s, 8.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.09046 s, 3.4 MB/s
+1734 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.21783 s, 4.7 MB/s
+1735 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.265 s, 8.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.18619 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.45766 s, 4.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.33933 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.20807 s, 4.7 MB/s
+1741 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.68894 s, 6.2 MB/s
+1743 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.33539 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.9053 s, 5.5 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.66593 s, 3.9 MB/s
+1748 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.76243 s, 3.8 MB/s
+1747 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.05628 s, 9.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.57308 s, 4.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.7873 s, 3.8 MB/s
+1752 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.18916 s, 8.8 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.19474 s, 3.3 MB/s
+1754 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.29059 s, 4.6 MB/s
+1755 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.29072 s, 8.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.10931 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.5294 s, 4.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.33716 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.17997 s, 4.8 MB/s
+1761 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.65991 s, 6.3 MB/s
+1763 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.34295 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.94624 s, 5.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.20738 s, 4.8 MB/s
+1768 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.77339 s, 3.8 MB/s
+1767 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.0404 s, 10.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.68397 s, 3.9 MB/s
+1772 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.78439 s, 3.8 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.24917 s, 8.4 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.35846 s, 3.1 MB/s
+1775 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.35138 s, 4.5 MB/s
+1776 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.27312 s, 8.2 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.0648 s, 3.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.4316 s, 4.3 MB/s
+1780 sec passed by  fm2
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.23955 s, 8.5 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.2704 s, 3.2 MB/s
+1781 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.37461 s, 4.4 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.26716 s, 8.3 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.37864 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.96052 s, 5.3 MB/s
+1787 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.62756 s, 2.9 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.87837 s, 5.6 MB/s
+1789 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.74294 s, 6.0 MB/s
+1791 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.38377 s, 3.1 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.22006 s, 8.6 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.70328 s, 3.9 MB/s
+1796 sec passed by  fm2
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.80033 s, 3.7 MB/s
+1795 sec passed by  fm1
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.03898 s, 10.1 MB/s
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 3.20268 s, 3.3 MB/s
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 2.61358 s, 4.0 MB/s
+1800 sec passed by  fm2
+fm2  test passed.
+
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 1.91853 s, 5.5 MB/s
+1801 sec passed by  fm1
+fm1  test passed.
+[1]+  Done                    taskset -c 0 ./fm2.sh
+root@ebisu:~/usb3h_test# 
+root@ebisu:~/usb3h_test# wait
+root@ebisu:~/usb3h_test# 
+root@ebisu:~/usb3h_test# umount /dev/sda1
+umount: /dev/sda1: not mounted.
+root@ebisu:~/usb3h_test# 
+ 
+#### Result: OK ####

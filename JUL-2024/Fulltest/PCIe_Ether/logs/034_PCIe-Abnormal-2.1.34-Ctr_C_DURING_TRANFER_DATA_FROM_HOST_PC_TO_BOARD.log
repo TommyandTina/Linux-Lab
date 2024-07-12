@@ -1,0 +1,48 @@
+
+------- Prepare data on HOST-PC ------
+
+mkdir -p /home/bsp/test_pcie
+
+dd if=/dev/urandom of=/home/bsp/test_pcie/file-350m bs=1M count=350
+350+0 records in
+350+0 records out
+367001600 bytes (367 MB, 350 MiB) copied, 1,42577 s, 257 MB/s
+
+--------- BOARD --------
+
+
+root@salvator-x:~# ifconfig | grep enp1s0
+enp1s0    Link encap:Ethernet  HWaddr 00:1b:21:80:a8:44  
+root@salvator-x:~# 
+root@salvator-x:~# ftp -n 192.168.10.98
+Connected to 192.168.10.98.
+220 Welcome to blah FTP service.
+ftp> 
+ftp> user bsp Pass1234
+331 Please specify the password.
+230 Login successful.
+ftp> 
+ftp> get /home/bsp/test_pcie/file-350m file-350m
+200 PORT command successful. Consider using PASV.
+150 Opening BINARY mode data connection for /home/bsp/test_pcie/file-350m (367001600 bytes).
+^C
+receive aborted
+waiting for remote to finish abort
+
+226 Transfer complete.
+225 No transfer to ABOR.
+ftp> 
+ftp> 
+ftp> get /home/bsp/test_pcie/file-350m file-350m
+200 PORT command successful. Consider using PASV.
+150 Opening BINARY mode data connection for /home/bsp/test_pcie/file-350m (367001600 bytes).
+WARNING! 1428069 bare linefeeds received in ASCII mode
+File may not have transferred correctly.
+226 Transfer complete.
+367001600 bytes received in 9.89 seconds (35.4 Mbytes/s)
+ftp> 
+ftp> quit
+221 Goodbye.
+root@salvator-x:~# 
+ 
+#### Result: OK ####
