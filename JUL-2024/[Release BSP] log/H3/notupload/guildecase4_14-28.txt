@@ -1,0 +1,34 @@
+Build v4_utils : 
+At 192.168.4.12
+$ source ~/thuanha/sdk/environment-setup-cortexa57-cortexa53-poky-linux
+
+Before you build this source, you should check your poky that install libmmngr, libmmngrbuf, libmedia, libv4l2 and their header files.
+If  there is no shared lib , you should build these share lib and adjust path variable to your Makefile.
+
+For v4l2-utils
+$ git clone https://git.linuxtv.org/v4l-utils.git
+$ cd v4l-utils
+$ git checkout v4l-utils-1.26.1
+$ source /path/to/your/poky
+$ meson build
+$ cd build
+$ ninja
+
+media-ctl test app, header files and sharelib will be at ~/WORK/v4l-utils/build/utils/
+
+Download v4l2-TP from sharepoint (test tool)
+
+After ninja, change Makefile of testtool you want to compile (in v4l2-TP/vsp2driver_tp-rcar-gen3/*):
+CFLAGS          +=      \
+        -I./            \
+        -I/path-to/v4l-utils/build/utils \
+
+LDFLAGS         +=      \
+        -L/path-to/v4l-utils/build/utils/media-ctl \
+
+
+----START TESTING----
+Step 1: copy v4l2_uds_tp, v4l2_lut_tp, v4l2_hgo_tp, v4l2_clu_tp, v4l2_bru_tp that you have built in previous step to /v4l2-TP/Gen3_vsp2_tp_script
+Step 2: copy file in input_image to /v4l2-TP/Gen3_vsp2_tp_script
+Step 3: chmod +x * in /v4l2-TP/Gen3_vsp2_tp_script
+Step 4: ./testVsp2driver_tp.sh

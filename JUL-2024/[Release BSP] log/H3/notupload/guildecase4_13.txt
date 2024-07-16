@@ -1,0 +1,7 @@
+----START TESTING----
+modprobe -a mmngr mmngrbuf
+Step 1: copy v4l2-TP/Gen3_vsp2_tp/vsp2_tp to /v4l2-TP/Gen3_vsp2_tp_script
+Step 2: chmod +x * 
+Step 3: ./testSusres.sh &
+Step 4: i2cset -f 7 0x30 0x20 0x0F -> turn off board
+Step 5: echo mem > /sys/power/state -> turn on board

@@ -8,6 +8,8 @@
 	cp -L from to : copy file gốc (thay vì copy symbolic link)
 	find /path/to/source/directory -name 'r8*.dtb' -exec cp {} /path/to/destination/directory \; (copy file với điều kiện; {} là placeholder đem link ở find qua; \ là dừng exec)
 	cp $(find . -name 'r8*.dtb') /path/to/destination/directory (ko nên xài khi có quá nhiều file, lệnh này ghi đè)
+	rsync -R /usr/sbin/mkfs /đường_dẫn_đích : giữ nguyên cấu trúc khi copy VD: /usr/lib/opkg/alternatives/mkfs.ext2 vào thư mục /home/user -> /home/user/usr/lib/opkg/alternatives/mkfs.ext2
+	(COPY mkfs và lsblk vào root mới - đứng ở thư mục rootfs cũ chứa lsblk : sudo rsync -Rl $(find . -name '*mkfs*' 2>/dev/null) ../../E3_full/rootfs/)
 
 -remove:
 	rm -rf:xóa sạch folder + file
@@ -139,6 +141,9 @@
 	tới cuối trang :$ hoặc ctrl + end
 	undo ctrl+u
 	search : /word		next search: n
+	tới 1 dòng bất kì : xxgg VD: 81gg
+	copy (yank) xx dòng: xxyy VD: 10yy
+	comment nhiều dòng (visual block) : ctrl+V -> tới dòng cuối muốn comment -> shift I (xóa thì ấn x) -> // hoặc # -> esc
 
 - tải package mannually bằng apt/apt-get
 	apt download htop
