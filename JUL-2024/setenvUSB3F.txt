@@ -1,6 +1,12 @@
 setenv ipaddr 192.168.8.59
 setenv serverip 192.168.8.8
 
+boot usb
+setenv usb_LONG_boot 'ext2load usb 0:1 0x48080000 Image; ext2load usb 0:1 0x48000000 ${dtb}; booti 0x48080000 - 0x48000000'
+setenv bootargs 'root=/dev/sda2 rw rootwait ignore_loglevel'
+setenv bootcmd 'usb start; run usb_LONG_boot; usb stop;'
+
+
 - set env USB3F + rootfs ebisu
 setenv LONG_bootargs 'rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/long.trinh-tien/E3/rootfs_fromKien,nfsvers=4 ip=192.168.8.20 baudrate=115200'
 setenv bootcmd 'run bootcmd_LONG_tftp'
@@ -19,3 +25,28 @@ E3_full
 setenv LONG_bootargs 'rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/long.trinh-tien/E3_full/rootfs,nfsvers=4 ip=192.168.8.20 baudrate=115200'
 setenv bootcmd 'run bootcmd_LONG_tftp'
 setenv bootcmd_LONG_tftp 'setenv bootargs ${LONG_bootargs} ; tftp 0x48080000 long.trinh-tien/E3_full/Image ; tftp 0x48000000 long.trinh-tien/E3_full/${dtb};booti 0x48080000 - 0x48000000'
+
+M3N_full
+setenv LONG_bootargs 'rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/long.trinh-tien/M3N_full/rootfs,nfsvers=4 ip=192.168.8.20 baudrate=115200'
+setenv bootcmd 'run bootcmd_LONG_tftp'
+setenv bootcmd_LONG_tftp 'setenv bootargs ${LONG_bootargs} ; tftp 0x48080000 long.trinh-tien/M3N_full/Image ; tftp 0x48000000 long.trinh-tien/M3N_full/${dtb};booti 0x48080000 - 0x48000000'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

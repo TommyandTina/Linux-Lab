@@ -194,3 +194,5 @@
 
 - Xem config của board :
 	zcat /proc/config.gz
+- Xem device tree:
+	cat /proc/device-tree/model

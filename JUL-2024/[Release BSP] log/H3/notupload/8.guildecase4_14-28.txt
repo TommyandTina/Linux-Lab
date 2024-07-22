@@ -1,3 +1,8 @@
+Note: v4l-utils
+Repo: https://git.linuxtv.org/v4l-utils.git
+Commit: 
+4aee01a027923cab1e40969f56f8ba58d3e6c0d1
+
 Build v4_utils : 
 At 192.168.4.12
 $ source ~/thuanha/sdk/environment-setup-cortexa57-cortexa53-poky-linux
@@ -28,6 +33,7 @@ LDFLAGS         +=      \
 
 
 ----START TESTING----
+Make sure v4l2_uds_tp, v4l2_lut_tp, v4l2_hgo_tp, v4l2_clu_tp, v4l2_bru_tp compile for exact target (check Makefile)
 Step 1: copy v4l2_uds_tp, v4l2_lut_tp, v4l2_hgo_tp, v4l2_clu_tp, v4l2_bru_tp that you have built in previous step to /v4l2-TP/Gen3_vsp2_tp_script
 Step 2: copy file in input_image to /v4l2-TP/Gen3_vsp2_tp_script
 Step 3: chmod +x * in /v4l2-TP/Gen3_vsp2_tp_script
