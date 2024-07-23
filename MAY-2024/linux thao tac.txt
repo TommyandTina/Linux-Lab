@@ -10,7 +10,7 @@
 	cp $(find . -name 'r8*.dtb') /path/to/destination/directory (ko nên xài khi có quá nhiều file, lệnh này ghi đè)
 	rsync -R /usr/sbin/mkfs /đường_dẫn_đích : giữ nguyên cấu trúc khi copy VD: /usr/lib/opkg/alternatives/mkfs.ext2 vào thư mục /home/user -> /home/user/usr/lib/opkg/alternatives/mkfs.ext2
 	(COPY mkfs và lsblk vào root mới - đứng ở thư mục rootfs cũ chứa lsblk : sudo rsync -Rl $(find . -name '*mkfs*' 2>/dev/null) ../../E3_full/rootfs/)
-
+	rsync -rl thì chỉ copy như 'cp' chứ không vào đúng thư mục
 -remove:
 	rm -rf:xóa sạch folder + file
 

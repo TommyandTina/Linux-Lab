@@ -1,0 +1,8747 @@
+NOTICE:  BL2: R-Car Gen3 Initial Program Loader(CA57) Rev.3.0.3
+NOTICE:  BL2: PRR is R-Car M3N Ver.1.1
+NOTICE:  BL2: Board is Salvator-XS Rev.1.0
+NOTICE:  BL2: Boot device is HyperFlash(160MHz)
+NOTICE:  BL2: LCM state is CM
+NOTICE:  AVS setting succeeded. DVFS_SetVID=0x53
+NOTICE:  BL2: DDR3200(rev.0.41)
+NOTICE:  BL2: [COLD_BOOT]
+NOTICE:  BL2: DRAM Split is OFF
+NOTICE:  BL2: QoS is default setting(rev.0.09)
+NOTICE:  BL2: DRAM refresh interval 1.95 usec
+NOTICE:  BL2: Periodic Write DQ Training
+NOTICE:  BL2: CH0: 400000000 - 47fffffff, 2 GiB
+NOTICE:  BL2: Lossy Decomp areas
+NOTICE:       Entry 0: DCMPAREACRAx:0x80000540 DCMPAREACRBx:0x570
+NOTICE:       Entry 1: DCMPAREACRAx:0x40000000 DCMPAREACRBx:0x0
+NOTICE:       Entry 2: DCMPAREACRAx:0x20000000 DCMPAREACRBx:0x0
+NOTICE:  BL2: FDT at 0xe6323c70
+NOTICE:  BL2: v2.9(release):v2.9.0
+NOTICE:  BL2: Built : 06:40:11, Jul 18 2024
+NOTICE:  BL2: Normal boot
+NOTICE:  BL2: dst=0xe6323500 src=0x8180000 len=512(0x200)
+NOTICE:  BL2: dst=0x43f00000 src=0x8180400 len=6144(0x1800)
+NOTICE:  rcar_file_len: len: 0x0003e000
+NOTICE:  BL2: dst=0x44000000 src=0x81c0000 len=253952(0x3e000)
+NOTICE:  rcar_file_len: len: 0x00200000
+NOTICE:  BL2: dst=0x44100000 src=0x8200000 len=2097152(0x200000)
+NOTICE:  rcar_file_len: len: 0x00100000
+NOTICE:  BL2: dst=0x50000000 src=0x8640000 len=1048576(0x100000)
+NOTICE:  BL2: Booting BL31
+
+
+U-Boot 2023.04 (Dec 14 2023 - 08:54:38 +0000)
+
+CPU:   Renesas Electronics R8A77965 rev 1.1
+Model: Renesas Salvator-XS board rev 1.0
+DRAM:  1.9 GiB
+Core:  83 devices, 21 uclasses, devicetree: fit
+Flash: 0 Bytes
+MMC:   mmc@ee100000: 0, mmc@ee140000: 1, mmc@ee160000: 2
+Loading Environment from MMC... OK
+In:    serial@e6e88000
+Out:   serial@e6e88000
+Err:   serial@e6e88000
+Net:   eth0: ethernet@e6800000
+Hit any key to stop autoboot:  2  0 
+=> print
+DA_bootargs=DA_bootargs=rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/m3n/rootfs,nfsvers=4 ip=192.168.8.50
+LONG_bootargs=rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/long.trinh-tien/M3N_full/rootfs,nfsvers=4 ip=192.168.8.20 baudrate=115200
+TRINH_bootargs=rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/trinh.nguyen-tan/2024/M3N/rootfs,nfsvers=4 ip=192.168.8.10
+baudrate=115200
+bootargs=root=/dev/nfs rw nfsroot=192.168.10.99:/data/tftpboot/nguyentran/m3n/rootfs,nfsvers=4 ip=192.168.10.95 rootwait
+bootargs_emmc=rw root=/dev/mmcblk0p1 rootwait
+bootargs_mmc=rw root=/dev/mmcblk0p1 rootwait
+bootargs_nfs=rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/trinh.nguyen-tan/2024/M3N/rootfs ,nfsvers=4 ip=192.168.8.10
+bootargs_sd0=rw root=/dev/mmcblk1p1 rootwait
+bootargs_vinh=rw root=/dev/nfs nfsroot=192.168.10.55:/data/tftpboot/vinhsunguyen/bsp/linux/m3n/rootfs,nfsvers=4, ip=192.168.10.155
+bootcmd=run bootcmd_LONG_tftp
+bootcmd_DA_tftp=setenv bootargs ${DA_bootargs} ; tftp 0x48080000 m3n/Image ; tftp 0x48000000 m3n/${dtb};booti 0x48080000 - 0x48000000
+bootcmd_LONG_tftp=setenv bootargs ${LONG_bootargs} ; tftp 0x48080000 long.trinh-tien/M3N_full/Image ; tftp 0x48000000 long.trinh-tien/M3N_full/${dtb};booti 0x48080000 - 0x48000000
+bootcmd_TRINH_tftpboot=setenv bootargs ${TRINH_bootargs} ; tftp 0x48080000 trinh.nguyen-tan/2024/M3N/Image; tftp 0x48000000 trinh.nguyen-tan/2024/M3N/${dtb};booti 0x48080000 - 0x48000000
+bootcmd_emmc=setenv bootargs ${bootargs_emmc};ext2load mmc 1:1 0x48080000 /boot/Image;ext2load mmc 1:1 0x48000000 /boot/${dtb};run booti_cmd
+bootcmd_mmc=setenv bootargs ${bootargs_mmc};ext2load mmc 1:1 0x48080000 /boot/Image;ext2load mmc 1:1 0x48000000 /boot/r8a77965-salvator-xs.dtb; booti 0x48080000 - 0x48000000
+bootcmd_nfs=setenv bootargs ${bootargs_nfs};tftp 0x48080000 vht/M3N/Image;tftp 0x48000000 vht/M3N/${dtb};run booti_cmd
+bootcmd_sd0=setenv bootargs ${bootargs_sd0};ext2load mmc 1:1 0x48080000 /boot/Image;ext2load mmc 1:1 0x48000000 /boot/${dtb};run booti_cmd
+bootcmd_tftp=tftp 0x48080000 HVN/QuocHB/M3N/rootfs/boot/Image;tftp 0x48000000 HVN/QuocHB/M3N/rootfs/boot/${dtb};booti 0x48080000 - 0x48000000
+bootcmd_vinh=setenv bootargs ${bootargs_vinh};tftp 0x48080000 ${vinhdir}/Img-new;tftp 0x48000000 ${vinhdir}/r8a77965-salvator-xs.dtb; run booti_cmd
+bootdelay=2
+booti_cmd=booti 0x48080000 - 0x48000000
+bootm_size=0x10000000
+dtb=r8a77965-salvator-xs.dtb
+ethact=ethernet@e6800000
+ethaddr=2E:09:0A:00:C3:8B
+fdtcontroladdr=bbede300
+fileaddr=48000000
+filesize=112e5
+ipaddr=192.168.8.59
+loadaddr=0x58000000
+netboot=tftp 0x48080000 ${tftp_path}/Image; tftp 0x48000000 ${tftp_path}/r8a77965-salvator-xs.dtb; booti 0x48080000 - 0x48000000
+nfs_rootfs=h3/rootfs 
+platform=r8a77965
+serverip=192.168.8.8
+stderr=serial@e6e88000
+stdin=serial@e6e88000
+stdout=serial@e6e88000
+tftp_dir=/data/tftpboot
+tftp_path=nguyentran/m3n
+usb_pgood_delay=2000
+usbboot=fatload usb 0:1 0x48080000 Image; fatload usb 0:1 0x48000000 r8a77965-salvator-xs.dtb; booti 0x48080000 - 0x48000000
+ver=U-Boot 2023.04 (Dec 14 2023 - 08:54:38 +0000)
+vinh_img_dir=vinhsunguyen/bsp/linux/m3n
+vinhdir=vinhsunguyen/bsp/pm-swwa/testnewswwa
+
+Environment size: 3122/131068 bytes
+=> boot
+ethernet@e6800000 Waiting for PHY auto negotiation to complete....... done
+Using ethernet@e6800000 device
+TFTP from server 192.168.8.8; our IP address is 192.168.8.59
+Filename 'long.trinh-tien/M3N_full/Image'.
+Load address: 0x48080000
+Loading: *#################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 ######################
+	 2.8 MiB/s
+done
+Bytes transferred = 33712640 (2026a00 hex)
+Using ethernet@e6800000 device
+TFTP from server 192.168.8.8; our IP address is 192.168.8.59
+Filename 'long.trinh-tien/M3N_full/r8a77965-salvator-xs.dtb'.
+Load address: 0x48000000
+Loading: *#####
+	 4.6 MiB/s
+done
+Bytes transferred = 71628 (117cc hex)
+Moving Image from 0x48080000 to 0x48200000, end=4a2b0000
+## Flattened Device Tree blob at 48000000
+   Booting using the fdt blob at 0x48000000
+Working FDT set to 48000000
+   Loading Device Tree to 0000000053feb000, end 0000000053fff7cb ... OK
+Working FDT set to 53feb000
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x411fd073]
+[    0.000000] Linux version 5.10.218-yocto-standard (oe-user@oe-host) (aarch64-poky-linux-gcc (GCC) 13.2.0, GNU ld (GNU Binutils) 2.42.0.20240216) #1 SMP PREEMPT Sat Jun 29 02:31:31 UTC 2024
+[    0.000000] Machine model: Renesas Salvator-X 2nd version board based on r8a77965
+[    0.000000] efi: UEFI not found.
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000057000000, size 16 MiB
+[    0.000000] OF: reserved mem: initialized node linux,adsp@57000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000058000000, size 384 MiB
+[    0.000000] OF: reserved mem: initialized node linux,cma@58000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000070000000, size 256 MiB
+[    0.000000] OF: reserved mem: initialized node linux,multimedia@70000000, compatible id shared-dma-pool
+[    0.000000] NUMA: No NUMA configuration found
+[    0.000000] NUMA: Faking a node at [mem 0x0000000048000000-0x00000000bfffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0xbfbfcb00-0xbfbfefff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000048000000-0x00000000bfffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000048000000-0x0000000053ffffff]
+[    0.000000]   node   0: [mem 0x0000000054000000-0x0000000056ffffff]
+[    0.000000]   node   0: [mem 0x0000000057000000-0x00000000bfffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000048000000-0x00000000bfffffff]
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] psci: SMC Calling Convention v1.2
+[    0.000000] percpu: Embedded 23 pages/cpu s56984 r8192 d29032 u94208
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: EL2 vector hardening
+[    0.000000] CPU features: detected: Spectre-v2
+[    0.000000] CPU features: detected: ARM errata 1165522, 1319367, or 1530923
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: detected: ARM erratum 1742098
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 483840
+[    0.000000] Policy zone: DMA
+[    0.000000] Kernel command line: rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/long.trinh-tien/M3N_full/rootfs,nfsvers=4 ip=192.168.8.20 baudrate=115200
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] Memory: 1171500K/1966080K available (15552K kernel code, 2842K rwdata, 8248K rodata, 6144K init, 518K bss, 122836K reserved, 671744K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=2.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=2
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] arch_timer: cp15 timer(s) running at 8.32MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x1eb398c07, max_idle_ns: 440795202503 ns
+[    0.000003] sched_clock: 56 bits at 8MHz, resolution 120ns, wraps every 2199023255503ns
+[    0.000193] Console: colour dummy device 80x25
+[    0.000382] printk: console [tty0] enabled
+[    0.000456] Calibrating delay loop (skipped), value calculated using timer frequency.. 16.64 BogoMIPS (lpj=33280)
+[    0.000472] pid_max: default: 32768 minimum: 301
+[    0.000522] LSM: Security Framework initializing
+[    0.000575] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.000595] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.001756] rcu: Hierarchical SRCU implementation.
+[    0.003054] Detected Renesas R-Car Gen3 r8a77965 ES1.1
+[    0.004498] EFI services will not be available.
+[    0.004664] smp: Bringing up secondary CPUs ...
+[    0.005124] Detected PIPT I-cache on CPU1
+[    0.005178] CPU1: Booted secondary processor 0x0000000001 [0x411fd073]
+[    0.005249] smp: Brought up 1 node, 2 CPUs
+[    0.005271] SMP: Total of 2 processors activated.
+[    0.005279] CPU features: detected: 32-bit EL0 Support
+[    0.005286] CPU features: detected: CRC32 instructions
+[    0.005293] CPU features: detected: 32-bit EL1 Support
+[    0.014913] CPU: All CPU(s) started at EL1
+[    0.014974] alternatives: patching kernel code
+[    0.015723] devtmpfs: initialized
+[    0.021019] KASLR disabled due to lack of seed
+[    0.021185] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.021208] futex hash table entries: 512 (order: 3, 32768 bytes, linear)
+[    0.029881] pinctrl core: initialized pinctrl subsystem
+[    0.031180] DMI not present or invalid.
+[    0.031659] NET: Registered protocol family 16
+[    0.032709] DMA: preallocated 256 KiB GFP_KERNEL pool for atomic allocations
+[    0.032803] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.032899] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.032947] audit: initializing netlink subsys (disabled)
+[    0.033114] audit: type=2000 audit(0.032:1): state=initialized audit_enabled=0 res=1
+[    0.034160] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.034568] cpuidle: using governor menu
+[    0.034704] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.034755] ASID allocator initialised with 65536 entries
+[    0.035921] Serial: AMBA PL011 UART driver
+[    0.070396] sh-pfc e6060000.pinctrl: r8a77965_pfc support registered
+[    0.081563] HugeTLB registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.081584] HugeTLB registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.081592] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.081599] HugeTLB registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.082511] cryptd: max_cpu_qlen set to 1000
+[    0.084474] ACPI: Interpreter disabled.
+[    0.087981] rcar_avs_init: cannot find compatible dts node
+[    0.089442] iommu: Default domain type: Translated 
+[    0.089967] ipmmu-vmsa e67b0000.iommu: IPMMU context 0 is reserved
+[    0.090855] vgaarb: loaded
+[    0.091072] SCSI subsystem initialized
+[    0.091378] usbcore: registered new interface driver usbfs
+[    0.091404] usbcore: registered new interface driver hub
+[    0.091426] usbcore: registered new device driver usb
+[    0.095242] i2c-sh_mobile e60b0000.i2c: I2C adapter 7, bus speed 400000 Hz
+[    0.095835] mc: Linux media interface: v0.10
+[    0.095863] videodev: Linux video capture interface: v2.00
+[    0.095917] pps_core: LinuxPPS API ver. 1 registered
+[    0.095925] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.095938] PTP clock support registered
+[    0.096111] EDAC MC: Ver: 3.0.0
+[    0.098126] FPGA manager framework
+[    0.098187] Advanced Linux Sound Architecture Driver Initialized.
+[    0.098742] clocksource: Switched to clocksource arch_sys_counter
+[    0.098917] VFS: Disk quotas dquot_6.6.0
+[    0.098962] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    0.099097] pnp: PnP ACPI: disabled
+[    0.102414] NET: Registered protocol family 2
+[    0.102593] IP idents hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.103386] tcp_listen_portaddr_hash hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    0.103429] TCP established hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.103508] TCP bind hash table entries: 16384 (order: 6, 262144 bytes, linear)
+[    0.103658] TCP: Hash tables configured (established 16384 bind 16384)
+[    0.103767] UDP hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    0.103807] UDP-Lite hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    0.103932] NET: Registered protocol family 1
+[    0.104320] RPC: Registered named UNIX socket transport module.
+[    0.104335] RPC: Registered udp transport module.
+[    0.104341] RPC: Registered tcp transport module.
+[    0.104346] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.104359] PCI: CLS 0 bytes, default 64
+[    0.104851] hw perfevents: enabled with armv8_cortex_a57 PMU driver, 7 counters available
+[    0.105337] kvm [1]: HYP mode not available
+[    0.107783] Initialise system trusted keyrings
+[    0.107933] workingset: timestamp_bits=42 max_order=19 bucket_order=0
+[    0.110996] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.111496] NFS: Registering the id_resolver key type
+[    0.111532] Key type id_resolver registered
+[    0.111539] Key type id_legacy registered
+[    0.111596] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    0.111606] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    0.111735] 9p: Installing v9fs 9p2000 file system support
+[    0.137128] Key type asymmetric registered
+[    0.137145] Asymmetric key parser 'x509' registered
+[    0.137183] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 243)
+[    0.137194] io scheduler mq-deadline registered
+[    0.137205] io scheduler kyber registered
+[    0.148706] gpio_rcar e6050000.gpio: driving 16 GPIOs
+[    0.149073] gpio_rcar e6051000.gpio: driving 29 GPIOs
+[    0.149365] gpio_rcar e6052000.gpio: driving 15 GPIOs
+[    0.149648] gpio_rcar e6053000.gpio: driving 16 GPIOs
+[    0.149921] gpio_rcar e6054000.gpio: driving 18 GPIOs
+[    0.150214] gpio_rcar e6055000.gpio: driving 26 GPIOs
+[    0.150490] gpio_rcar e6055400.gpio: driving 32 GPIOs
+[    0.150784] gpio_rcar e6055800.gpio: driving 4 GPIOs
+[    0.153429] rcar-pcie fe000000.pcie: host bridge /soc/pcie@fe000000 ranges:
+[    0.153463] rcar-pcie fe000000.pcie:       IO 0x00fe100000..0x00fe1fffff -> 0x0000000000
+[    0.153485] rcar-pcie fe000000.pcie:      MEM 0x00fe200000..0x00fe3fffff -> 0x00fe200000
+[    0.153503] rcar-pcie fe000000.pcie:      MEM 0x0030000000..0x0037ffffff -> 0x0030000000
+[    0.153517] rcar-pcie fe000000.pcie:      MEM 0x0038000000..0x003fffffff -> 0x0038000000
+[    0.153533] rcar-pcie fe000000.pcie:   IB MEM 0x0040000000..0x00bfffffff -> 0x0040000000
+[    0.153581] rcar-pcie fe000000.pcie: no pcie3v3 regulator found
+[    0.153592] rcar-pcie fe000000.pcie: no pcie1v8 regulator found
+[    0.222452] rcar-pcie fe000000.pcie: PCIe link down
+[    0.222651] rcar-pcie ee800000.pcie: host bridge /soc/pcie@ee800000 ranges:
+[    0.222675] rcar-pcie ee800000.pcie:       IO 0x00ee900000..0x00ee9fffff -> 0x0000000000
+[    0.222694] rcar-pcie ee800000.pcie:      MEM 0x00eea00000..0x00eebfffff -> 0x00eea00000
+[    0.222712] rcar-pcie ee800000.pcie:      MEM 0x00c0000000..0x00c7ffffff -> 0x00c0000000
+[    0.222725] rcar-pcie ee800000.pcie:      MEM 0x00c8000000..0x00cfffffff -> 0x00c8000000
+[    0.222759] rcar-pcie ee800000.pcie:   IB MEM 0x0040000000..0x00bfffffff -> 0x0040000000
+[    0.222794] rcar-pcie ee800000.pcie: no pcie3v3 regulator found
+[    0.222804] rcar-pcie ee800000.pcie: no pcie1v8 regulator found
+[    0.290442] rcar-pcie ee800000.pcie: PCIe link down
+[    0.292379] EINJ: ACPI disabled.
+[    0.321604] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    0.323797] SuperH (H)SCI(F) driver initialized
+[    0.324236] e6550000.serial: ttySC1 at MMIO 0xe6550000 (irq = 36, base_baud = 0) is a hscif
+[    0.325065] e6e88000.serial: ttySC0 at MMIO 0xe6e88000 (irq = 119, base_baud = 0) is a scif
+[    1.393768] printk: console [ttySC0] enabled
+[    1.399221] msm_serial: driver initialized
+[    1.408757] rcar-dw-hdmi fead0000.hdmi: Detected HDMI TX controller v2.01a with HDCP (DWC HDMI 2.0 TX PHY)
+[    1.418720] rcar-dw-hdmi fead0000.hdmi: registered DesignWare HDMI I2C bus driver
+[    1.432876] loop: module loaded
+[    1.437355] megasas: 07.714.04.00-rc1
+[    1.442962] scsi host0: sata_rcar
+[    1.446437] ata1: SATA max UDMA/133 irq 170
+[    1.455141] tun: Universal TUN/TAP device driver, 1.6
+[    1.461017] thunder_xcv, ver 1.0
+[    1.464281] thunder_bgx, ver 1.0
+[    1.467535] nicpf, ver 1.0
+[    1.471355] hclge is initializing
+[    1.474691] hns3: Hisilicon Ethernet Network Driver for Hip08 Family - version
+[    1.481917] hns3: Copyright (c) 2017 Huawei Corporation.
+[    1.487256] e1000: Intel(R) PRO/1000 Network Driver
+[    1.492136] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[    1.497903] e1000e: Intel(R) PRO/1000 Network Driver
+[    1.502868] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    1.508804] igb: Intel(R) Gigabit Ethernet Network Driver
+[    1.514207] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    1.519798] igbvf: Intel(R) Gigabit Virtual Function Network Driver
+[    1.526065] igbvf: Copyright (c) 2009 - 2012 Intel Corporation.
+[    1.532323] sky2: driver version 1.30
+[    1.540051] ravb e6800000.ethernet eth0: Base address at 0xe6800000, 2e:09:0a:00:c3:8b, IRQ 116.
+[    1.550258] VFIO - User Level meta-driver version: 0.3
+[    1.557178] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.563751] ehci-pci: EHCI PCI platform driver
+[    1.568226] ehci-platform: EHCI generic platform driver
+[    1.573929] ehci-platform ee0a0100.usb: EHCI Host Controller
+[    1.579614] ehci-platform ee0a0100.usb: new USB bus registered, assigned bus number 1
+[    1.587520] ehci-platform ee0a0100.usb: irq 166, io mem 0xee0a0100
+[    1.606753] ehci-platform ee0a0100.usb: USB 2.0 started, EHCI 1.10
+[    1.613325] hub 1-0:1.0: USB hub found
+[    1.617107] hub 1-0:1.0: 1 port detected
+[    1.621532] ehci-orion: EHCI orion driver
+[    1.625802] ehci-exynos: EHCI Exynos driver
+[    1.630101] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    1.636314] ohci-pci: OHCI PCI platform driver
+[    1.640808] ohci-platform: OHCI generic platform driver
+[    1.646428] ohci-platform ee0a0000.usb: Generic Platform OHCI controller
+[    1.653155] ohci-platform ee0a0000.usb: new USB bus registered, assigned bus number 2
+[    1.661053] ohci-platform ee0a0000.usb: irq 166, io mem 0xee0a0000
+[    1.757095] hub 2-0:1.0: USB hub found
+[    1.760867] hub 2-0:1.0: 1 port detected
+[    1.765242] ohci-exynos: OHCI Exynos driver
+[    1.770117] xhci-hcd ee000000.usb: xHCI Host Controller
+[    1.775372] xhci-hcd ee000000.usb: new USB bus registered, assigned bus number 3
+[    1.798639] xhci-hcd ee000000.usb: hcc params 0x014051ce hci version 0x100 quirks 0x0000000000830410
+[    1.807825] xhci-hcd ee000000.usb: irq 163, io mem 0xee000000
+[    1.813698] xhci-hcd ee000000.usb: xHCI Host Controller
+[    1.818935] xhci-hcd ee000000.usb: new USB bus registered, assigned bus number 4
+[    1.826340] xhci-hcd ee000000.usb: Host supports USB 3.0 SuperSpeed
+[    1.832983] hub 3-0:1.0: USB hub found
+[    1.836759] hub 3-0:1.0: 1 port detected
+[    1.840866] usb usb4: We don't know the algorithms for LPM for this host, disabling LPM.
+[    1.849229] hub 4-0:1.0: USB hub found
+[    1.852997] hub 4-0:1.0: 1 port detected
+[    1.857766] usbcore: registered new interface driver usb-storage
+[    1.865220] renesas_usbhs e6590000.usb: host probed
+[    1.870121] renesas_usbhs e6590000.usb: no transceiver found
+[    1.870752] ata1: link resume succeeded after 1 retries
+[    1.875856] renesas_usbhs e6590000.usb: gadget probed
+[    1.886238] renesas_usbhs e6590000.usb: probed
+[    1.892789] i2c /dev entries driver
+[    1.907367] cs2000-cp 2-004f: revision - C1
+[    1.911636] i2c-rcar e6510000.i2c: probed
+[    1.916603] pca953x 4-0020: supply vcc not found, using dummy regulator
+[    1.923315] pca953x 4-0020: using no AI
+[    1.927951] gpio-355 (PCIE/SATA switch): hogged as output/low
+[    1.940184] i2c-rcar e66d8000.i2c: probed
+[    1.945485] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@7/endpoint on port 7
+[    1.954484] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@8/endpoint on port 8
+[    1.963468] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@a/endpoint on port 10
+[    1.972539] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@b/endpoint on port 11
+[    1.981936] adv748x 4-0070: chip found @ 0xe0 revision 2143
+[    1.987251] ata1: SATA link down (SStatus 0 SControl 300)
+[    2.038539] rcar-csi2 fea80000.csi2: 1 lanes found
+[    2.043712] rcar-csi2 feaa0000.csi2: 4 lanes found
+[    2.053215] rcar-vin e6ef0000.video: Device registered as video0
+[    2.059323] rcar-vin e6ef1000.video: Device registered as video1
+[    2.065409] rcar-vin e6ef2000.video: Device registered as video2
+[    2.071603] rcar-vin e6ef3000.video: Device registered as video3
+[    2.077678] rcar-vin e6ef4000.video: Device registered as video4
+[    2.083755] rcar-vin e6ef5000.video: Device registered as video5
+[    2.089884] rcar-vin e6ef6000.video: Device registered as video6
+[    2.095956] rcar-vin e6ef7000.video: Device registered as video7
+[    2.102772] usbcore: registered new interface driver uvcvideo
+[    2.108532] USB Video Class driver (1.1.1)
+[    2.114554] rcar_gen3_thermal e6198000.thermal: is using pseudo fixed FUSE values
+[    2.126625] rcar_gen3_thermal e6198000.thermal: TSC0: Loaded 1 trip points
+[    2.137937] rcar_gen3_thermal e6198000.thermal: TSC1: Loaded 1 trip points
+[    2.149155] rcar_gen3_thermal e6198000.thermal: TSC2: Loaded 3 trip points
+[    2.160626] sdhci: Secure Digital Host Controller Interface driver
+[    2.166854] sdhci: Copyright(c) Pierre Ossman
+[    2.172138] renesas_sdhi_internal_dmac ee100000.mmc: Got CD GPIO
+[    2.178182] renesas_sdhi_internal_dmac ee100000.mmc: Got WP GPIO
+[    2.187368] renesas_sdhi_internal_dmac ee140000.mmc: Adding to iommu group 0
+[    2.194460] renesas_sdhi_internal_dmac ee140000.mmc: Using IPMMU context 1
+[    2.250246] renesas_sdhi_internal_dmac ee140000.mmc: mmc0 base at 0x00000000ee140000, max clock rate 200 MHz
+[    2.260828] renesas_sdhi_internal_dmac ee160000.mmc: Got CD GPIO
+[    2.266968] renesas_sdhi_internal_dmac ee160000.mmc: Got WP GPIO
+[    2.275342] Synopsys Designware Multimedia Card Interface Driver
+[    2.282405] sdhci-pltfm: SDHCI platform and OF driver helper
+[    2.289579] ledtrig-cpu: registered to indicate activity on CPUs
+[    2.296290] SMCCC: SOC_ID: ARCH_SOC_ID not implemented, skipping ....
+[    2.303302] usbcore: registered new interface driver usbhid
+[    2.308886] usbhid: USB HID core driver
+[    2.315743] optee: probing for conduit method.
+[    2.320226] optee: revision 3.17 (f9e55014)
+[    2.320416] optee driver R-Car Rev.1.0.11
+[    2.328790] optee: dynamic shared memory is enabled
+[    2.334177] optee: initialized driver
+[    2.343893] mmc0: new HS400 MMC card at address 0001
+[    2.349553] mmcblk0: mmc0:0001 BGSD3R 29.1 GiB 
+[    2.354475] mmcblk0boot0: mmc0:0001 BGSD3R partition 1 16.0 MiB
+[    2.360753] mmcblk0boot1: mmc0:0001 BGSD3R partition 2 16.0 MiB
+[    2.366906] mmcblk0rpmb: mmc0:0001 BGSD3R partition 3 4.00 MiB, chardev (509:0)
+[    2.375558]  mmcblk0: p1
+[    2.381370] rcar_sound ec500000.sound: probed
+[    2.386572] rcar_adsp_sound adsp_sound: probed
+[    2.391428] NET: Registered protocol family 17
+[    2.396022] 9pnet: Installing 9P2000 support
+[    2.400356] Key type dns_resolver registered
+[    2.404885] registered taskstats version 1
+[    2.409002] Loading compiled-in X.509 certificates
+[    2.422280] thermal emergency: set temperature to 110 celsius
+[    2.428176] thermal emergency: shutdown target cpus 1
+[    2.433235] thermal emergency: freq scaled target cpus 0
+[    2.438979] renesas_irqc e61c0000.interrupt-controller: driving 6 irqs
+[    2.486772] ehci-platform ee080100.usb: EHCI Host Controller
+[    2.492472] ehci-platform ee080100.usb: new USB bus registered, assigned bus number 5
+[    2.500368] ehci-platform ee080100.usb: irq 165, io mem 0xee080100
+[    2.518753] ehci-platform ee080100.usb: USB 2.0 started, EHCI 1.10
+[    2.525336] hub 5-0:1.0: USB hub found
+[    2.529113] hub 5-0:1.0: 1 port detected
+[    2.534499] ohci-platform ee080000.usb: Generic Platform OHCI controller
+[    2.541251] ohci-platform ee080000.usb: new USB bus registered, assigned bus number 6
+[    2.549169] ohci-platform ee080000.usb: irq 165, io mem 0xee080000
+[    2.645285] hub 6-0:1.0: USB hub found
+[    2.649065] hub 6-0:1.0: 1 port detected
+[    2.654453] cpu cpu0: EM: created perf domain
+[    2.660900] renesas_sdhi_internal_dmac ee100000.mmc: Got CD GPIO
+[    2.666976] renesas_sdhi_internal_dmac ee100000.mmc: Got WP GPIO
+[    2.721929] renesas_sdhi_internal_dmac ee100000.mmc: mmc1 base at 0x00000000ee100000, max clock rate 200 MHz
+[    2.734305] renesas_sdhi_internal_dmac ee160000.mmc: Got CD GPIO
+[    2.740453] renesas_sdhi_internal_dmac ee160000.mmc: Got WP GPIO
+[    2.795392] renesas_sdhi_internal_dmac ee160000.mmc: mmc2 base at 0x00000000ee160000, max clock rate 200 MHz
+[    2.815134] [drm] Initialized rcar-du 1.0.0 20130110 for feb00000.display on minor 0
+[    2.822993] [drm] Device feb00000.display probed
+[    2.865483] Console: switching to colour frame buffer device 128x48
+[    2.890444] rcar-du feb00000.display: [drm] fb0: rcar-dudrmfb frame buffer device
+[    2.900102] input: keys as /devices/platform/keys/input/input0
+[    2.974198] Micrel KSZ9031 Gigabit PHY e6800000.ethernet-ffffffff:00: attached PHY driver [Micrel KSZ9031 Gigabit PHY] (mii_bus:phy_addr=e6800000.ethernet-ffffffff:00, irq=172)
+[    9.524620] ravb e6800000.ethernet eth0: Link is Up - 1Gbps/Full - flow control off
+[    9.550794] IP-Config: Guessing netmask 255.255.255.0
+[    9.555930] IP-Config: Complete:
+[    9.559229]      device=eth0, hwaddr=2e:09:0a:00:c3:8b, ipaddr=192.168.8.20, mask=255.255.255.0, gw=255.255.255.255
+[    9.569774]      host=192.168.8.20, domain=, nis-domain=(none)
+[    9.575710]      bootserver=255.255.255.255, rootserver=192.168.8.8, rootpath=
+[    9.575931] clk: Disabling unused clocks
+[    9.587917] ALSA device list:
+[    9.590962]   #0: rcar-sound
+[   10.653923] VFS: Mounted root (nfs4 filesystem) on device 0:22.
+[   10.660668] devtmpfs: mounted
+[   10.666982] Freeing unused kernel memory: 6144K
+[   10.682902] Run /sbin/init as init process
+[   11.685717] systemd[1]: System time before build time, advancing clock.
+[   11.805136] NET: Registered protocol family 10
+[   11.811179] Segment Routing with IPv6
+[   11.866787] random: crng init done
+[   11.874856] systemd[1]: systemd 255.4^ running in system mode (+PAM -AUDIT -SELINUX -APPARMOR +IMA -SMACK +SECCOMP -GCRYPT -GNUTLS -OPENSSL +ACL +BLKID -CURL -ELFUTILS -FIDO2 -IDN2 -IDN -IPTC +KMOD -LIBCRYPTSETUP +LIBFDISK -PCRE2 -PWQUALITY -P11KIT -QRENCODE -TPM2 -BZIP2 -LZ4 -XZ -ZLIB +ZSTD -BPF_FRAMEWORK -XKBCOMMON +UTMP +SYSVINIT default-hierarchy=unified)
+[   11.910103] systemd[1]: Detected architecture arm64.
+
+Welcome to Poky (Yocto Project Reference Distro) 5.0 (scarthgap)!
+
+[   11.936541] systemd[1]: Hostname set to <salvator-x>.
+[   12.161271] systemd-sysv-generator[269]: SysV service '/etc/init.d/umountnfs.sh' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   12.201759] systemd-sysv-generator[269]: SysV service '/etc/init.d/set_default_governor.sh' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   12.240185] systemd-sysv-generator[269]: SysV service '/etc/init.d/umountfs' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   12.277222] systemd-sysv-generator[269]: SysV service '/etc/init.d/save-rtc.sh' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   12.313124] systemd-sysv-generator[269]: SysV service '/etc/init.d/reboot' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   12.347077] systemd-sysv-generator[269]: SysV service '/etc/init.d/halt' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   12.381003] systemd-sysv-generator[269]: SysV service '/etc/init.d/sendsigs' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   12.415973] systemd-sysv-generator[269]: SysV service '/etc/init.d/single' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   12.450227] systemd-sysv-generator[269]: SysV service '/etc/init.d/pvrinit' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   12.487324] systemd-sysv-generator[269]: SysV service '/etc/init.d/dropbear' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   13.014943] systemd[1]: Queued start job for default target Graphical Interface.
+[   13.059134] systemd[1]: Created slice Slice /system/getty.
+[  OK  ] Created slice Slice /system/getty.
+[   13.084528] systemd[1]: Created slice Slice /system/modprobe.
+[  OK  ] Created slice Slice /system/modprobe.
+[   13.108661] systemd[1]: Created slice Slice /system/serial-getty.
+[  OK  ] Created slice Slice /system/serial-getty.
+[   13.132033] systemd[1]: Created slice User and Session Slice.
+[  OK  ] Created slice User and Session Slice.
+[   13.155187] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+[  OK  ] Started Dispatch Password Requests to Console Directory Watch.
+[   13.183353] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[  OK  ] Started Forward Password Requests to Wall Directory Watch.
+[   13.211175] systemd[1]: Reached target Path Units.
+[  OK  ] Reached target Path Units.
+[   13.235003] systemd[1]: Reached target Remote File Systems.
+[  OK  ] Reached target Remote File Systems.
+[   13.258966] systemd[1]: Reached target Slice Units.
+[  OK  ] Reached target Slice Units.
+[   13.282979] systemd[1]: Reached target Swaps.
+[  OK  ] Reached target Swaps.
+[   13.308859] systemd[1]: Listening on RPCbind Server Activation Socket.
+[  OK  ] Listening on RPCbind Server Activation Socket.
+[   13.335057] systemd[1]: Reached target RPC Port Mapper.
+[  OK  ] Reached target RPC Port Mapper.
+[   13.361764] systemd[1]: Listening on Syslog Socket.
+[  OK  ] Listening on Syslog Socket.
+[   13.383439] systemd[1]: Listening on initctl Compatibility Named Pipe.
+[  OK  ] Listening on initctl Compatibility Named Pipe.
+[   13.412677] systemd[1]: Listening on Journal Audit Socket.
+[  OK  ] Listening on Journal Audit Socket.
+[   13.435896] systemd[1]: Listening on Journal Socket (/dev/log).
+[  OK  ] Listening on Journal Socket (/dev/log).
+[   13.460002] systemd[1]: Listening on Journal Socket.
+[  OK  ] Listening on Journal Socket.
+[   13.484698] systemd[1]: Listening on Network Service Netlink Socket.
+[  OK  ] Listening on Network Service Netlink Socket.
+[   13.513791] systemd[1]: Listening on udev Control Socket.
+[  OK  ] Listening on udev Control Socket.
+[   13.539826] systemd[1]: Listening on udev Kernel Socket.
+[  OK  ] Listening on udev Kernel Socket.
+[   13.564359] systemd[1]: Listening on User Database Manager Socket.
+[  OK  ] Listening on User Database Manager Socket.
+[   13.599379] systemd[1]: Mounting Huge Pages File System...
+         Mounting Huge Pages File System...
+[   13.628460] systemd[1]: Mounting POSIX Message Queue File System...
+         Mounting POSIX Message Queue File System...
+[   13.654057] systemd[1]: Mounting Kernel Debug File System...
+         Mountin[   13.661366] systemd[1]: Kernel Trace File System was skipped because of an unmet condition check (ConditionPathExists=/sys/kernel/tracing).
+g Kernel Debug File System...
+[   13.682332] systemd[1]: Mounting Temporary Directory /tmp...
+         Mounting Temporary Directory /tmp...
+[   13.708016] systemd[1]: Create List of Static Device Nodes was skipped because of an unmet condition check (ConditionFileNotEmpty=/lib/modules/5.10.218-yocto-standard/modules.devname).
+[   13.731327] systemd[1]: Starting Load Kernel Module configfs...
+         Starting Load Kernel Module configfs...
+[   13.758613] systemd[1]: Starting Load Kernel Module drm...
+         Starting Load Kernel Module drm...
+[   13.783388] systemd[1]: Starting Load Kernel Module fuse...
+         Starting Load Kernel Module fuse...
+[   13.816772] systemd[1]: Starting RPC Bind...
+         Starting RPC Bind...
+[   13.835687] systemd[1]: File System Check on Root Device was skipped because of an unmet condition check (ConditionPathIsReadWrite=!/).
+[   13.851462] systemd[1]: systemd-journald.service: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+[   13.866761] systemd[1]: systemd-journald.service: (This warning is only shown for the first unit using IP firewalling.)
+[   13.890706] systemd[1]: Starting Journal Service...
+         Starting Journal Service...
+[   13.943614] systemd[1]: Starting Load Kernel Modules...
+         Starting Load Kernel Modules...
+[   13.969181] systemd[1]: Starting Generate network units from Kernel command line...
+         Starting Generate network units from Kernel command line...
+[   13.994122] systemd[1]: Starting Remount Root and Kernel File Systems...
+         Starting Remount Root and Kernel File Systems...
+[   14.034046] systemd[1]: Starting Create Static Device Nodes in /dev gracefully...
+         Starting Create Static Device Nodes in /dev gracefully...
+[   14.106051] systemd[1]: Starting Coldplug All udev Devices...
+         Starting Coldplug All udev Devices...
+[   14.142319] systemd[1]: Started RPC Bind.
+[  OK  ] Started RPC Bind.
+[   14.154426] systemd-journald[280]: Collecting audit messages is enabled.
+[   14.165146] systemd[1]: Mounted Huge Pages File System.
+[  OK  ] Mounted Huge Pages File System.
+[   14.186111] systemd[1]: Mounted POSIX Message Queue File System.
+[   14.193141] vspm: loading out-of-tree module taints kernel.
+[  OK  ] Mounted POSIX Message Queue File System.
+[   14.231131] systemd[1]: Mounted Kernel Debug File System.
+[  OK  ] Mounted Kernel Debug File System.
+[   14.256803] systemd[1]: Mounted Temporary Directory /tmp.
+[  OK  ] Mounted Temporary Directory /tmp.
+[   14.283582] systemd[1]: modprobe@configfs.service: Deactivated successfully.
+[   14.295058] systemd[1]: Finished Load Kernel Module configfs.
+[  OK  ] Finished Load Kernel Module configfs.
+[   14.320005] systemd[1]: Started Journal Service.
+[  OK  ] Started Journal Service.
+[  OK  ] Finished Load Kernel Module drm.
+[  OK  ] Finished Load Kernel Module fuse.
+[  OK  ] Finished Load Kernel Modules.
+[FAILED] Failed to start Generate network units from Kernel command line.
+See 'systemctl status systemd-network-generator.service' for details.
+[  OK  ] Finished Remount Root and Kernel File Systems.
+[  OK  ] Finished Create Static Device Nodes in /dev gracefully.
+[  OK  ] Reached target Preparation for Network.
+         Mounting Kernel Configuration File System...
+         Starting Flush Journal to Persistent Storage...
+         Starting Apply Kernel Variables...
+         Starting Creat[   14.589220] systemd-journald[280]: Received client request to flush runtime journal.
+e Static Device Nodes in /dev...
+[  OK  ] Mounted Kernel Configuration File System.
+[  OK  ] Finished Flush Journal to Persistent Storage.
+[  OK  ] Finished Create Static Device Nodes in /dev.
+[  OK  ] Finished Apply Kernel Variables.
+[  OK  ] Reached target Preparation for Local File Systems.
+         Mounting /var/volatile...
+         Starting Rule-based Manager for Device Events and Files...
+[  OK  ] Mounted /var/volatile.
+         Starting Load/Save OS Random Seed...
+[  OK  ] Reached target Local File Systems.
+         Starting Create Volatile Files and Directories...
+[  OK  ] Finished Load/Save OS Random Seed.
+[  OK  ] Started Rule-based Manager for Device Events and Files.
+         Starting Network Configuration...
+         Starting User Database Manager...
+[  OK  ] Finished Create Volatile Files and Directories.
+         Starting Network Name Resolution...
+         Starting Network Time Synchronization...
+         Starting Record System Boot/Shutdown in UTMP...
+[  OK  ] Started User Database Manager.
+[  OK  ] Finished Record System Boot/Shutdown in UTMP.
+[  OK  ] Finished Coldplug All udev Devices.
+[   15.661726] ravb_streaming/searching for ravb interface
+[   15.695232] ravb_streaming/init: start(eth0)
+[  OK  ] Started Network Name Resolution.
+[  OK  ] Started Network Configuration.
+[  OK  ] Started Network Time Synchronization.
+[   16.019351] ravb_streaming/init: success
+[   16.088159] ravb-mch ec5a0100.avb-mch: probe: start
+[   16.138546] ravb-mch ec5a0100.avb-mch: probe: success
+[  OK  ] Reached target Network.
+[  OK  ] Reached target Host and Network Name Lookups.
+[  OK  ] Reached target System Initialization.
+[  OK  ] Started Daily Cleanup of Temporary Directories.
+[  OK  ] Reached target System Time Set.
+[  OK  ] Reached target Timer Units.
+[  OK  ] Listening on Avahi mDNS/DNS-SD Stack Activation Socket.
+[  OK  ] Listening on D-Bus System Message Bus Socket.
+[  OK  ] Listening on dropbear.socket.
+[  OK  ] Reached target Socket Units.
+[  OK  ] Reached target Basic System.
+         Starting Avahi mDNS/DNS-SD Stack...
+[  OK  ] Started Kernel Logging Service.
+[  OK  ] Started System Logging Service.
+         Starting D-Bus System Message Bus...
+[  OK  ] Started optee services.
+         Starting pvrinit.service...
+         Starting PowerVR consumer services...
+         Starting User Login Management...
+         Starting Permit User Sessions...
+[  OK  ] Started D-Bus System Message Bus.
+[  OK  ] Finished Permit User Sessions.
+[  OK  ] Started Getty on tty1.
+[  OK  ] Started Serial Getty on ttySC0.
+[  OK  ] Reached target Login Prompts.
+[  OK  ] Started Avahi mDNS/DNS-SD Stack.
+[   17.212677] PVR_K:  393: Read BVNC 15.5.1.64 from HW device registers
+[   17.222884] PVR_K:  393: RGX Device registered with BVNC 15.5.1.64
+[   17.240729] pvrsrvkm fd000000.gsx: Found 4 OPP points.
+[   17.246694] pvrsrvkm fd000000.gsx: opp[1/4]: (200000000 Hz, 830000 uV)
+[   17.264163] pvrsrvkm fd000000.gsx: opp[2/4]: (300000000 Hz, 830000 uV)
+[   17.276732] pvrsrvkm fd000000.gsx: opp[3/4]: (400000000 Hz, 830000 uV)
+[   17.287895] pvrsrvkm fd000000.gsx: opp[4/4]: (600000000 Hz, 830000 uV)
+[   17.298587] DVFS : Changed GPU clock to 600000000 [Hz]
+[   17.320442] PVR_K:  393: RGX Firmware image 'rgx.fw.15.5.1.64' loaded
+[  OK  ] Reached target Hardware activated USB gadget.
+[   17.366461] PVR_K:  393: Shader binary image 'rgx.sh.15.5.1.64' loaded
+[   17.379207] [drm] Initialized pvr 1.15.6052913 20170530 for fd000000.gsx on minor 1
+[  OK  ] Started User Login Management.
+[   17.589389] adsp ec800000.adsp: assigned reserved memory node linux,adsp@57000000
+[   17.616563] adsp ec800000.adsp: virt_addr=000000000a83a499 phy_addr=0x57000000 size=16777216
+[   17.626634] XF-IPC: ADSP rate set to 532480000
+[   17.675501] XF-FW: received firmware (202922 bytes)
+[   17.681172] XF-IPC: fill firmware area: 57100000[200884]
+[   17.688408] XF-IPC: fill firmware area: ece80000[1992]
+[   17.695424] XF: proxy-0 debug interface created
+[  OK  ] Started pvrinit.service.
+         Starting set_default_governor.service...
+[   17.791641] XF-IPC: DSP start-up sequence completed
+[   17.815555] XF: Xtensa DSP Proxy driver registered
+[   17.821046] XF: client-1 created: 00000000de18dda6
+[  OK  ] Finished PowerVR consumer services.
+[   17.852035] ADSP base thread has been started.
+[   17.857464] ADSP base was created
+[  OK  ] Started set_default_governor.service.
+[  OK  ] Created slice Slice /system/weston.
+[  OK  ] Reached target Multi-User System.
+[  OK  ] Reached target Graphical Interface.
+         Starting Record Runlevel Change in UTMP...
+[  OK  ] Started Weston Wayland Compositor.
+[  OK  ] Finished Record Runlevel Change in UTMP.
+[   18.785698] audit: type=1006 audit(1721716872.319:2): pid=487 uid=0 old-auid=4294967295 auid=0 tty=(none) old-ses=4294967295 ses=1 res=1
+
+Poky (Yocto Project Reference Distro) 5.0 salvator-x ttySC0
+
+salvator-x login: root
+
+WARNING: Poky is a reference Yocto Project distribution that should be used for
+testing and development purposes only. It is recommended that you create your
+own distribution for production use.
+root@salvator-x:~# modprobe -a mmngr mmngrbuf
+[  67.127960] rgnmm_drv mmngr: assigned reserved memory node linux,multimedia@70000000
+
+root@salvator-x:~/v4l2-TP/v4l2_measure# 
+root@salvator-x:~/v4l2-TP/v4l2_measure# 
+root@salvator-x:~/v4l2-TP/v4l2_measure# cd .. 
+root@salvator-x:~/v4l2-TP# cd v Gen3_vsp2_tp
+root@salvator-x:~/v4l2-TP/Gen3_vsp2_tp# ./vsp2_tp tt media 1 "->" tt all f &     root@salvator-x:~/v4l2-TP/Gen3_vsp2_tp# ./vsp2_tp tt media 1 "->" tt all f &    tt media 1 "->" tt all f &   
+root@salvator-x:~/v4l2-TP/Gen3_vsp2_tp# ./vsp2_tp tt media 1 "->" tt all f &   
+root@salvator-x:~/v4l2-TP/Gen3_vsp2_tp# ./vsp2_tp tt media 1 "->" tt all f &                                          ./vsp2_tp tt media 1 "->" tt all f &
+vsp2_tp         vsp2_tp.log     vsp2_tp_m3      vsp2_tp_m3.log
+root@salvator-x:~/v4l2-TP/Gen3_vsp2_tp# ./vsp2_tp tt media 1 "->" tt all f &_m3 tt media 1 "->" tt all
+[1] 25925
+root@salvator-x:~/v4l2-TP/Gen3_vsp2_tp# 
+## ./vsp2_tp_m3 for M3 start ( Build : Jul 22 2024 04:52:34 ) ...
+
+
+
+driver name is [fe960000.vsp]
+
+
+
+- dev rpf.0   = /dev/video8
+
+- dev rpf.1   = /dev/video9
+
+- dev rpf.2   = /dev/video10
+
+- dev rpf.3   = /dev/video11
+
+- dev rpf.4   = /dev/video12
+
+- dev wpf.0   = /dev/video13
+
+
+
+- bru   = /dev/v4l-subdev6
+
+- lut   = /dev/v4l-subdev7
+
+- clu   = /dev/v4l-subdev8
+
+- hgo   = /dev/v4l-subdev9
+
+- rpf.0 = /dev/v4l-subdev10
+
+- rpf.1 = /dev/v4l-subdev11
+
+- rpf.2 = /dev/v4l-subdev12
+
+- rpf.3 = /dev/v4l-subdev13
+
+- rpf.4 = /dev/v4l-subdev14
+
+- wpf.0 = /dev/v4l-subdev15
+
+
+## change media ##
+
+  soc:vsp2@vspmvspb0  ->  fe960000.vsp
+
+
+## success ##
+
+
+@@@ force mode @@@
+
+[R] ---------------------------------------------
+
+[R] tt all / start Tue Jul 23 08:47:46 2024
+
+[R] Current Media : [ fe960000.vsp ]
+
+[R] ---------------------------------------------
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = rpf
+
+@@ ----------------------------------------------
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_420sp.yuv
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   38.67 ms
+
+   > ProcessingTime =    1.49 ms
+
+     WaitTime       =    1.32 ms
+
+     DevOpenTime    =    0.91 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    2.99 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.46 ms
+
+     OtherTime      =    5.40 ms
+
+----------------------
+
+[R] 1.1.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   19.26 ms
+
+   > ProcessingTime =    1.45 ms
+
+     WaitTime       =    1.28 ms
+
+     DevOpenTime    =    0.94 ms
+
+     DevCloseTime   =    0.41 ms
+
+     ReadTime       =    4.37 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =    6.91 ms
+
+     OtherTime      =    5.18 ms
+
+----------------------
+
+[R] 1.1.1.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.88 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.96 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    3.62 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.81 ms
+
+     OtherTime      =    5.58 ms
+
+----------------------
+
+[R] 1.1.1.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.46 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.71 ms
+
+     DevCloseTime   =    0.52 ms
+
+     ReadTime       =    3.44 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.78 ms
+
+     OtherTime      =    5.54 ms
+
+----------------------
+
+[R] 1.1.1.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.63 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.88 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    3.50 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.80 ms
+
+     OtherTime      =    5.55 ms
+
+----------------------
+
+[R] 1.1.1.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.6
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.63 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.73 ms
+
+     DevCloseTime   =    0.52 ms
+
+     ReadTime       =    3.60 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.79 ms
+
+     OtherTime      =    5.52 ms
+
+----------------------
+
+[R] 1.1.1.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.7
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.72 ms
+
+   > ProcessingTime =    1.46 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.88 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.53 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.80 ms
+
+     OtherTime      =    5.61 ms
+
+----------------------
+
+[R] 1.1.1.7	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.8
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   32.66 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    0.94 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    3.48 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   20.62 ms
+
+     OtherTime      =    5.71 ms
+
+----------------------
+
+[R] 1.1.1.8	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.9
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   32.78 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.87 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.52 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   20.65 ms
+
+     OtherTime      =    5.82 ms
+
+----------------------
+
+[R] 1.1.1.9	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.10
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   40.27 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.28 ms
+
+     DevOpenTime    =    0.94 ms
+
+     DevCloseTime   =    0.45 ms
+
+     ReadTime       =    3.60 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.47 ms
+
+     OtherTime      =    6.35 ms
+
+----------------------
+
+[R] 1.1.1.10	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.11
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   40.31 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.88 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.59 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.49 ms
+
+     OtherTime      =    6.43 ms
+
+----------------------
+
+[R] 1.1.1.11	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.12
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   40.27 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    0.83 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    3.60 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.45 ms
+
+     OtherTime      =    6.48 ms
+
+----------------------
+
+[R] 1.1.1.12	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.13
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   40.15 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    0.85 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.50 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.48 ms
+
+     OtherTime      =    6.42 ms
+
+----------------------
+
+[R] 1.1.1.13	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.14
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   39.84 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.71 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.42 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.45 ms
+
+     OtherTime      =    6.35 ms
+
+----------------------
+
+[R] 1.1.1.14	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.15
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   40.22 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.89 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.50 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.48 ms
+
+     OtherTime      =    6.45 ms
+
+----------------------
+
+[R] 1.1.1.15	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.16
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.43 ms
+
+   > ProcessingTime =    1.50 ms
+
+     WaitTime       =    1.28 ms
+
+     DevOpenTime    =    0.74 ms
+
+     DevCloseTime   =    0.41 ms
+
+     ReadTime       =    3.42 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.79 ms
+
+     OtherTime      =    5.58 ms
+
+----------------------
+
+[R] 1.1.1.16	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.17
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.75 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.99 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.49 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.82 ms
+
+     OtherTime      =    5.55 ms
+
+----------------------
+
+[R] 1.1.1.17	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.18
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.58 ms
+
+   > ProcessingTime =    1.46 ms
+
+     WaitTime       =    1.28 ms
+
+     DevOpenTime    =    0.97 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    3.42 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.79 ms
+
+     OtherTime      =    5.51 ms
+
+----------------------
+
+[R] 1.1.1.18	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.19
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.78 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.27 ms
+
+     DevOpenTime    =    0.88 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.48 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.93 ms
+
+     OtherTime      =    5.58 ms
+
+----------------------
+
+[R] 1.1.1.19	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.20
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   22.18 ms
+
+   > ProcessingTime =    1.50 ms
+
+     WaitTime       =    1.28 ms
+
+     DevOpenTime    =    0.99 ms
+
+     DevCloseTime   =    0.41 ms
+
+     ReadTime       =    3.41 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   10.38 ms
+
+     OtherTime      =    5.48 ms
+
+----------------------
+
+[R] 1.1.1.20	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.21
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   22.33 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    0.93 ms
+
+     DevCloseTime   =    0.44 ms
+
+     ReadTime       =    3.59 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   10.37 ms
+
+     OtherTime      =    5.52 ms
+
+----------------------
+
+[R] 1.1.1.21	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.22
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.70 ms
+
+   > ProcessingTime =    1.50 ms
+
+     WaitTime       =    1.32 ms
+
+     DevOpenTime    =    0.95 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.45 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.80 ms
+
+     OtherTime      =    5.57 ms
+
+----------------------
+
+[R] 1.1.1.22	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.23
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.95 ms
+
+   > ProcessingTime =    1.49 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    0.88 ms
+
+     DevCloseTime   =    0.44 ms
+
+     ReadTime       =    3.58 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.75 ms
+
+     OtherTime      =    5.82 ms
+
+----------------------
+
+[R] 1.1.1.23	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.24
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   22.17 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.92 ms
+
+     DevCloseTime   =    0.41 ms
+
+     ReadTime       =    3.45 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   10.38 ms
+
+     OtherTime      =    5.54 ms
+
+----------------------
+
+[R] 1.1.1.24	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.25
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   22.41 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.88 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    3.65 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   10.39 ms
+
+     OtherTime      =    5.58 ms
+
+----------------------
+
+[R] 1.1.1.25	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.26
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.91 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    1.09 ms
+
+     DevCloseTime   =    0.45 ms
+
+     ReadTime       =    3.45 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.79 ms
+
+     OtherTime      =    5.64 ms
+
+----------------------
+
+[R] 1.1.1.26	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.27
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.86 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.86 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.60 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.82 ms
+
+     OtherTime      =    5.67 ms
+
+----------------------
+
+[R] 1.1.1.27	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.28
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   32.93 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.99 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.44 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   20.63 ms
+
+     OtherTime      =    5.95 ms
+
+----------------------
+
+[R] 1.1.1.28	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.29
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   32.97 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.85 ms
+
+     DevCloseTime   =    0.41 ms
+
+     ReadTime       =    3.65 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   20.64 ms
+
+     OtherTime      =    5.95 ms
+
+----------------------
+
+[R] 1.1.1.29	[ OK ]
+
+## success ##
+
+
+@@ SUCCESS !! / test name = rpf
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = wpf
+
+@@ ----------------------------------------------
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_420sp.yuv
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   37.20 ms
+
+   > ProcessingTime =    1.45 ms
+
+     WaitTime       =    1.28 ms
+
+     DevOpenTime    =    0.94 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    1.68 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.46 ms
+
+     OtherTime      =    5.24 ms
+
+----------------------
+
+[R] 1.1.2.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   18.21 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    0.86 ms
+
+     DevCloseTime   =    0.41 ms
+
+     ReadTime       =    3.48 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =    6.89 ms
+
+     OtherTime      =    5.08 ms
+
+----------------------
+
+[R] 1.1.2.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.52 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.71 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    3.60 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.80 ms
+
+     OtherTime      =    5.50 ms
+
+----------------------
+
+[R] 1.1.2.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.69 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.88 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.51 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.81 ms
+
+     OtherTime      =    5.59 ms
+
+----------------------
+
+[R] 1.1.2.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.74 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.98 ms
+
+     DevCloseTime   =    0.52 ms
+
+     ReadTime       =    3.50 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.79 ms
+
+     OtherTime      =    5.48 ms
+
+----------------------
+
+[R] 1.1.2.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.6
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.91 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.88 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.64 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.80 ms
+
+     OtherTime      =    5.68 ms
+
+----------------------
+
+[R] 1.1.2.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.7
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.45 ms
+
+   > ProcessingTime =    1.50 ms
+
+     WaitTime       =    1.32 ms
+
+     DevOpenTime    =    0.82 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    3.45 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.78 ms
+
+     OtherTime      =    5.47 ms
+
+----------------------
+
+[R] 1.1.2.7	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.8
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   32.77 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.89 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    3.54 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   20.64 ms
+
+     OtherTime      =    5.80 ms
+
+----------------------
+
+[R] 1.1.2.8	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.9
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   32.80 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.97 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.48 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   20.65 ms
+
+     OtherTime      =    5.80 ms
+
+----------------------
+
+[R] 1.1.2.9	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.10
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   40.38 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    0.99 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    3.61 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.49 ms
+
+     OtherTime      =    6.40 ms
+
+----------------------
+
+[R] 1.1.2.10	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.11
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   40.05 ms
+
+   > ProcessingTime =    1.45 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.94 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.40 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.47 ms
+
+     OtherTime      =    6.35 ms
+
+----------------------
+
+[R] 1.1.2.11	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.12
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   40.24 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.95 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    3.52 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.49 ms
+
+     OtherTime      =    6.39 ms
+
+----------------------
+
+[R] 1.1.2.12	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.13
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   40.42 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.96 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    3.63 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.47 ms
+
+     OtherTime      =    6.46 ms
+
+----------------------
+
+[R] 1.1.2.13	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.14
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   40.09 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.75 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    3.50 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.52 ms
+
+     OtherTime      =    6.42 ms
+
+----------------------
+
+[R] 1.1.2.14	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.15
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   39.95 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.28 ms
+
+     DevOpenTime    =    0.70 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.50 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.46 ms
+
+     OtherTime      =    6.39 ms
+
+----------------------
+
+[R] 1.1.2.15	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.16
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.82 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.28 ms
+
+     DevOpenTime    =    0.86 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.61 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.82 ms
+
+     OtherTime      =    5.64 ms
+
+----------------------
+
+[R] 1.1.2.16	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.17
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.96 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.97 ms
+
+     DevCloseTime   =    0.53 ms
+
+     ReadTime       =    3.58 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.80 ms
+
+     OtherTime      =    5.62 ms
+
+----------------------
+
+[R] 1.1.2.17	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.18
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.61 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    0.86 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.47 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.80 ms
+
+     OtherTime      =    5.56 ms
+
+----------------------
+
+[R] 1.1.2.18	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.19
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.49 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.71 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    3.60 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.80 ms
+
+     OtherTime      =    5.50 ms
+
+----------------------
+
+[R] 1.1.2.19	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.20
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   22.07 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    0.86 ms
+
+     DevCloseTime   =    0.47 ms
+
+     ReadTime       =    3.40 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   10.34 ms
+
+     OtherTime      =    5.52 ms
+
+----------------------
+
+[R] 1.1.2.20	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.21
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   22.17 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.94 ms
+
+     DevCloseTime   =    0.41 ms
+
+     ReadTime       =    3.48 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   10.38 ms
+
+     OtherTime      =    5.48 ms
+
+----------------------
+
+[R] 1.1.2.21	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.22
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.61 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.28 ms
+
+     DevOpenTime    =    0.75 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.56 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.80 ms
+
+     OtherTime      =    5.59 ms
+
+----------------------
+
+[R] 1.1.2.22	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.23
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.65 ms
+
+   > ProcessingTime =    1.47 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.82 ms
+
+     DevCloseTime   =    0.41 ms
+
+     ReadTime       =    3.59 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.80 ms
+
+     OtherTime      =    5.55 ms
+
+----------------------
+
+[R] 1.1.2.23	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.24
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   22.13 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.86 ms
+
+     DevCloseTime   =    0.41 ms
+
+     ReadTime       =    3.41 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   10.38 ms
+
+     OtherTime      =    5.58 ms
+
+----------------------
+
+[R] 1.1.2.24	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.25
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   22.10 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.83 ms
+
+     DevCloseTime   =    0.41 ms
+
+     ReadTime       =    3.50 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   10.30 ms
+
+     OtherTime      =    5.56 ms
+
+----------------------
+
+[R] 1.1.2.25	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.26
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.79 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.86 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.48 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.82 ms
+
+     OtherTime      =    5.72 ms
+
+----------------------
+
+[R] 1.1.2.26	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.27
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   25.45 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.70 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    3.44 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.75 ms
+
+     OtherTime      =    5.66 ms
+
+----------------------
+
+[R] 1.1.2.27	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.28
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   33.38 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.97 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.63 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   20.63 ms
+
+     OtherTime      =    6.24 ms
+
+----------------------
+
+[R] 1.1.2.28	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.29
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   32.93 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.94 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.55 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   20.62 ms
+
+     OtherTime      =    5.91 ms
+
+----------------------
+
+[R] 1.1.2.29	[ OK ]
+
+## success ##
+
+
+@@ SUCCESS !! / test name = wpf
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = uds
+
+@@ ----------------------------------------------
+
+[R] 1.3.1.1	[ SKIP ]( uds case 1 )( Device name is nothing. )
+
+[R] 1.3.1.2	[ SKIP ]( uds case 2 )( Device name is nothing. )
+
+[R] 1.3.2.1	[ SKIP ]( uds case 3 )( Device name is nothing. )
+
+## success ##
+
+
+@@ SUCCESS !! / test name = uds
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = bru
+
+@@ ----------------------------------------------
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.2.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   45.20 ms
+
+   > ProcessingTime =    1.61 ms
+
+     WaitTime       =    1.38 ms
+
+     DevOpenTime    =    1.00 ms
+
+     DevCloseTime   =    0.51 ms
+
+     ReadTime       =    6.14 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.50 ms
+
+     OtherTime      =    8.43 ms
+
+----------------------
+
+[R] 1.2.2.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.2.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   43.75 ms
+
+   > ProcessingTime =    1.59 ms
+
+     WaitTime       =    1.35 ms
+
+     DevOpenTime    =    1.02 ms
+
+     DevCloseTime   =    0.49 ms
+
+     ReadTime       =    4.87 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.47 ms
+
+     OtherTime      =    8.31 ms
+
+----------------------
+
+[R] 1.2.2.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.3.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   43.68 ms
+
+   > ProcessingTime =    1.60 ms
+
+     WaitTime       =    1.35 ms
+
+     DevOpenTime    =    0.83 ms
+
+     DevCloseTime   =    0.51 ms
+
+     ReadTime       =    4.94 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.47 ms
+
+     OtherTime      =    8.34 ms
+
+----------------------
+
+[R] 1.2.3.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.3.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   43.68 ms
+
+   > ProcessingTime =    1.60 ms
+
+     WaitTime       =    1.36 ms
+
+     DevOpenTime    =    0.83 ms
+
+     DevCloseTime   =    0.50 ms
+
+     ReadTime       =    4.83 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.50 ms
+
+     OtherTime      =    8.41 ms
+
+----------------------
+
+[R] 1.2.3.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.4.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_420sp.yuv
+
+Input  File = 640_480_420sp.yuv
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   23.57 ms
+
+   > ProcessingTime =    1.58 ms
+
+     WaitTime       =    1.35 ms
+
+     DevOpenTime    =    1.02 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    3.48 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   10.37 ms
+
+     OtherTime      =    6.63 ms
+
+----------------------
+
+[R] 1.2.4.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.4.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_420sp.yuv
+
+Input  File = 640_480_420sp.yuv
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   22.51 ms
+
+   > ProcessingTime =    1.60 ms
+
+     WaitTime       =    1.35 ms
+
+     DevOpenTime    =    0.94 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    2.43 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   10.41 ms
+
+     OtherTime      =    6.66 ms
+
+----------------------
+
+[R] 1.2.4.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.4.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_420sp.yuv
+
+Input  File = 640_480_420sp.yuv
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   22.51 ms
+
+   > ProcessingTime =    1.58 ms
+
+     WaitTime       =    1.35 ms
+
+     DevOpenTime    =    1.00 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    2.44 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   10.38 ms
+
+     OtherTime      =    6.63 ms
+
+----------------------
+
+[R] 1.2.4.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.5.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x80#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   45.03 ms
+
+   > ProcessingTime =    1.61 ms
+
+     WaitTime       =    1.39 ms
+
+     DevOpenTime    =    0.95 ms
+
+     DevCloseTime   =    0.50 ms
+
+     ReadTime       =    6.11 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.51 ms
+
+     OtherTime      =    8.34 ms
+
+----------------------
+
+[R] 1.2.5.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.5.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_xFF#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   44.95 ms
+
+   > ProcessingTime =    1.58 ms
+
+     WaitTime       =    1.35 ms
+
+     DevOpenTime    =    1.03 ms
+
+     DevCloseTime   =    0.51 ms
+
+     ReadTime       =    5.96 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.48 ms
+
+     OtherTime      =    8.40 ms
+
+----------------------
+
+[R] 1.2.5.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.5.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x00#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   44.82 ms
+
+   > ProcessingTime =    1.60 ms
+
+     WaitTime       =    1.37 ms
+
+     DevOpenTime    =    0.96 ms
+
+     DevCloseTime   =    0.50 ms
+
+     ReadTime       =    5.99 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.42 ms
+
+     OtherTime      =    8.35 ms
+
+----------------------
+
+[R] 1.2.5.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.5.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x80#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  129.06 ms
+
+   > ProcessingTime =    1.78 ms
+
+     WaitTime       =    1.54 ms
+
+     DevOpenTime    =    0.90 ms
+
+     DevCloseTime   =    0.60 ms
+
+     ReadTime       =    4.91 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.36 ms
+
+     OtherTime      =   93.50 ms
+
+----------------------
+
+[R] 1.2.5.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.5.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_xFF#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  129.10 ms
+
+   > ProcessingTime =    1.59 ms
+
+     WaitTime       =    1.35 ms
+
+     DevOpenTime    =    1.07 ms
+
+     DevCloseTime   =    0.50 ms
+
+     ReadTime       =    4.93 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.46 ms
+
+     OtherTime      =   93.55 ms
+
+----------------------
+
+[R] 1.2.5.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.5.6
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x00#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  128.67 ms
+
+   > ProcessingTime =    1.59 ms
+
+     WaitTime       =    1.36 ms
+
+     DevOpenTime    =    0.80 ms
+
+     DevCloseTime   =    0.51 ms
+
+     ReadTime       =    5.04 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.38 ms
+
+     OtherTime      =   93.34 ms
+
+----------------------
+
+[R] 1.2.5.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.6.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x80#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   43.73 ms
+
+   > ProcessingTime =    1.59 ms
+
+     WaitTime       =    1.34 ms
+
+     DevOpenTime    =    0.83 ms
+
+     DevCloseTime   =    0.51 ms
+
+     ReadTime       =    4.88 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.49 ms
+
+     OtherTime      =    8.43 ms
+
+----------------------
+
+[R] 1.2.6.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.6.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x80#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   43.94 ms
+
+   > ProcessingTime =    1.61 ms
+
+     WaitTime       =    1.36 ms
+
+     DevOpenTime    =    1.05 ms
+
+     DevCloseTime   =    0.50 ms
+
+     ReadTime       =    4.98 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.46 ms
+
+     OtherTime      =    8.34 ms
+
+----------------------
+
+[R] 1.2.6.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.6.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x00#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   43.90 ms
+
+   > ProcessingTime =    1.61 ms
+
+     WaitTime       =    1.36 ms
+
+     DevOpenTime    =    0.84 ms
+
+     DevCloseTime   =    0.49 ms
+
+     ReadTime       =    5.03 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.49 ms
+
+     OtherTime      =    8.44 ms
+
+----------------------
+
+[R] 1.2.6.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.6.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x80#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  128.78 ms
+
+   > ProcessingTime =    1.59 ms
+
+     WaitTime       =    1.35 ms
+
+     DevOpenTime    =    1.05 ms
+
+     DevCloseTime   =    0.51 ms
+
+     ReadTime       =    4.77 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.38 ms
+
+     OtherTime      =   93.49 ms
+
+----------------------
+
+[R] 1.2.6.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.6.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x80#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  129.06 ms
+
+   > ProcessingTime =    1.59 ms
+
+     WaitTime       =    1.35 ms
+
+     DevOpenTime    =    0.94 ms
+
+     DevCloseTime   =    0.51 ms
+
+     ReadTime       =    5.10 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.38 ms
+
+     OtherTime      =   93.55 ms
+
+----------------------
+
+[R] 1.2.6.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.6.6
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x00#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  128.92 ms
+
+   > ProcessingTime =    1.59 ms
+
+     WaitTime       =    1.36 ms
+
+     DevOpenTime    =    1.05 ms
+
+     DevCloseTime   =    0.49 ms
+
+     ReadTime       =    5.03 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.38 ms
+
+     OtherTime      =   93.37 ms
+
+----------------------
+
+[R] 1.2.6.6	[ OK ]
+
+## success ##
+
+
+@@ SUCCESS !! / test name = bru
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = mbru
+
+@@ ----------------------------------------------
+
+@@ ----------------------------------------------
+
+@@ MBRU = 1.2.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   40.61 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.89 ms
+
+     DevCloseTime   =    0.45 ms
+
+     ReadTime       =    3.52 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.49 ms
+
+     OtherTime      =    6.77 ms
+
+----------------------
+
+[R] 1.2.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ MBRU = 1.2.1.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 800_600_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   45.36 ms
+
+   > ProcessingTime =    1.60 ms
+
+     WaitTime       =    1.36 ms
+
+     DevOpenTime    =    0.81 ms
+
+     DevCloseTime   =    0.50 ms
+
+     ReadTime       =    6.66 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.41 ms
+
+     OtherTime      =    8.39 ms
+
+----------------------
+
+[R] 1.2.1.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ MBRU = 1.2.1.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video10
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 800_600_ARGB32.argb
+
+Input  File = 640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   48.68 ms
+
+   > ProcessingTime =    1.83 ms
+
+     WaitTime       =    1.47 ms
+
+     DevOpenTime    =    1.09 ms
+
+     DevCloseTime   =    0.61 ms
+
+     ReadTime       =    7.10 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.43 ms
+
+     OtherTime      =   10.63 ms
+
+----------------------
+
+[R] 1.2.1.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ MBRU = 1.2.1.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video10
+
+device open = /dev/video11
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 800_600_ARGB32.argb
+
+Input  File = 640_480_ARGB32.argb
+
+Input  File = 400_200_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   51.66 ms
+
+   > ProcessingTime =    2.01 ms
+
+     WaitTime       =    1.57 ms
+
+     DevOpenTime    =    0.97 ms
+
+     DevCloseTime   =    0.64 ms
+
+     ReadTime       =    8.62 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.41 ms
+
+     OtherTime      =   12.00 ms
+
+----------------------
+
+[R] 1.2.1.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ MBRU = 1.2.1.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video10
+
+device open = /dev/video11
+
+device open = /dev/video12
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 800_600_ARGB32.argb
+
+Input  File = 640_480_ARGB32.argb
+
+Input  File = 400_200_ARGB32.argb
+
+Input  File = 100_50_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   53.54 ms
+
+   > ProcessingTime =    2.16 ms
+
+     WaitTime       =    1.75 ms
+
+     DevOpenTime    =    1.10 ms
+
+     DevCloseTime   =    0.81 ms
+
+     ReadTime       =    9.03 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.45 ms
+
+     OtherTime      =   13.00 ms
+
+----------------------
+
+[R] 1.2.1.5	[ OK ]
+
+## success ##
+
+
+@@ SUCCESS !! / test name = mbru
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = lut
+
+@@ ----------------------------------------------
+
+@@ ----------------------------------------------
+
+@@ LUT = 1.5.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   40.96 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    0.96 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    3.61 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.48 ms
+
+     OtherTime      =    7.01 ms
+
+----------------------
+
+[R] 1.5.1.1	[ OK ]
+
+## success ##
+
+
+@@ SUCCESS !! / test name = lut
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = hgo
+
+@@ ----------------------------------------------
+
+@@ ----------------------------------------------
+
+@@ HGO = 1.6.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   40.94 ms
+
+   > ProcessingTime =    1.49 ms
+
+     WaitTime       =    1.31 ms
+
+     DevOpenTime    =    0.91 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    3.46 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.49 ms
+
+     OtherTime      =    7.18 ms
+
+----------------------
+
+[R] 1.6.1.1	[ OK ]
+
+## success ##
+
+
+@@ SUCCESS !! / test name = hgo
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = clu
+
+@@ ----------------------------------------------
+
+@@ ----------------------------------------------
+
+@@ CLU = 1.5.2.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   41.14 ms
+
+   > ProcessingTime =    1.52 ms
+
+     WaitTime       =    1.34 ms
+
+     DevOpenTime    =    0.72 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.68 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.47 ms
+
+     OtherTime      =    7.32 ms
+
+----------------------
+
+[R] 1.5.2.1	[ OK ]
+
+## success ##
+
+
+@@ SUCCESS !! / test name = clu
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = hgt
+
+@@ ----------------------------------------------
+
+[R] 1.6.2.1	[ SKIP ]( hgt case 1 )( Device name is nothing. )
+
+## success ##
+
+
+@@ SUCCESS !! / test name = hgt
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = seq
+
+@@ ----------------------------------------------
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.1.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.1.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.1.7.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+error : VIDIOC_STREAMON
+
+error : v4l2func_streamCtrl() / line = 743
+
+## ERROR!! / errno = 22 (Invalid argument), file = usrCmd/csTotalTest/testSeq.c, line = 371
+
+
+-------------------------
+
+reqErrno = 22
+
+cmpErrno = 22
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.1.7.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.1.2.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.1.2.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.1.3.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.1.3.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.1.4.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.1.4.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.1.5.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+error : v4l2func_queryBuf() / line = 404
+
+## ERROR!! / errno = 22 (Invalid argument), file = usrCmd/csTotalTest/testSeq.c, line = 363
+
+
+-------------------------
+
+reqErrno = 22
+
+cmpErrno = 22
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.1.5.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.1.6.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+error : v4l2func_enqueBuf() / line = 473
+
+## ERROR!! / errno = 22 (Invalid argument), file = usrCmd/csTotalTest/testSeq.c, line = 367
+
+
+-------------------------
+
+reqErrno = 22
+
+cmpErrno = 22
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.1.6.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.1.8.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+error : v4l2func_dequeBuf() / line = 663
+
+## ERROR!! / errno = 22 (Invalid argument), file = usrCmd/csTotalTest/testSeq.c, line = 375
+
+
+-------------------------
+
+reqErrno = 22
+
+cmpErrno = 22
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.1.8.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.1.9.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.1.9.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.2.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.2.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.2.2.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+error : v4l2func_onlySetFmt() / line = 991
+
+## ERROR!! / errno = 16 (Device or resource busy), file = usrCmd/csTotalTest/testSeq.c, line = 351
+
+
+-------------------------
+
+reqErrno = 16
+
+cmpErrno = 16
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.2.2.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.2.3.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.2.3.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.2.4.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.2.4.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.2.5.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.2.5.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.2.6.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.2.6.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.2.7.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.2.7.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.2.8.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+error : v4l2func_dequeBuf() / line = 663
+
+## ERROR!! / errno = 22 (Invalid argument), file = usrCmd/csTotalTest/testSeq.c, line = 375
+
+
+-------------------------
+
+reqErrno = 22
+
+cmpErrno = 22
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.2.8.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.2.9.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.2.9.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.3.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.3.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.3.2.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+error : v4l2func_onlySetFmt() / line = 991
+
+## ERROR!! / errno = 16 (Device or resource busy), file = usrCmd/csTotalTest/testSeq.c, line = 351
+
+
+-------------------------
+
+reqErrno = 16
+
+cmpErrno = 16
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.3.2.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.3.3.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.3.3.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.3.4.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.3.4.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.3.5.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.3.5.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.3.6.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+error : v4l2func_enqueBuf() / line = 473
+
+## ERROR!! / errno = 22 (Invalid argument), file = usrCmd/csTotalTest/testSeq.c, line = 367
+
+
+-------------------------
+
+reqErrno = 22
+
+cmpErrno = 22
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.3.6.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.3.7.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.3.7.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.3.8.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+error : v4l2func_dequeBuf() / line = 663
+
+## ERROR!! / errno = 22 (Invalid argument), file = usrCmd/csTotalTest/testSeq.c, line = 375
+
+
+-------------------------
+
+reqErrno = 22
+
+cmpErrno = 22
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.3.8.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.3.9.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.3.9.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.4.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.4.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.4.2.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+error : v4l2func_onlySetFmt() / line = 991
+
+## ERROR!! / errno = 16 (Device or resource busy), file = usrCmd/csTotalTest/testSeq.c, line = 351
+
+
+-------------------------
+
+reqErrno = 16
+
+cmpErrno = 16
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.4.2.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.4.3.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.4.3.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.4.4.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+error : v4l2func_requestBuf() / line = 306
+
+## ERROR!! / errno = 16 (Device or resource busy), file = usrCmd/csTotalTest/testSeq.c, line = 359
+
+
+-------------------------
+
+reqErrno = 16
+
+cmpErrno = 16
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.4.4.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.4.5.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.4.5.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.4.6.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.4.6.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.4.9.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.4.9.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.5.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.5.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.5.2.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+error : v4l2func_onlySetFmt() / line = 991
+
+## ERROR!! / errno = 16 (Device or resource busy), file = usrCmd/csTotalTest/testSeq.c, line = 351
+
+
+-------------------------
+
+reqErrno = 16
+
+cmpErrno = 16
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.5.2.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.5.3.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.5.3.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.5.4.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+error : v4l2func_requestBuf() / line = 306
+
+## ERROR!! / errno = 16 (Device or resource busy), file = usrCmd/csTotalTest/testSeq.c, line = 359
+
+
+-------------------------
+
+reqErrno = 16
+
+cmpErrno = 16
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.5.4.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.5.5.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.5.5.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.5.6.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+error : v4l2func_enqueBuf() / line = 473
+
+## ERROR!! / errno = 22 (Invalid argument), file = usrCmd/csTotalTest/testSeq.c, line = 367
+
+
+-------------------------
+
+reqErrno = 22
+
+cmpErrno = 22
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.5.6.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.5.8.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.5.8.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.5.9.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+
+-------------------------
+
+reqErrno = 0
+
+cmpErrno = 0
+
+-------------------------
+
+SUCCESS!
+
+
+[R] 2.5.9.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.4.7.1
+
+@@ ----------------------------------------------
+
+[R] 2.4.7.1	[ SKIP ]( seq case 43 )( This is not able to exec "all". )
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.4.8.1
+
+@@ ----------------------------------------------
+
+[R] 2.4.8.1	[ SKIP ]( seq case 44 )( This is not able to exec "all". )
+
+@@ ----------------------------------------------
+
+@@ Sequence Test = 2.5.7.1
+
+@@ ----------------------------------------------
+
+[R] 2.5.7.1	[ SKIP ]( seq case 45 )( This is not able to exec "all". )
+
+## success ##
+
+
+@@ SUCCESS !! / test name = seq
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = seq2
+
+@@ ----------------------------------------------
+
+@@ ----------------------------------------------
+
+@@ Sequence Test 2 = 2.1.10.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 640_480_ARGB32.argb
+
+Output File = nothing
+
+[R] 2.1.10.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test 2 = 2.2.10.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 640_480_ARGB32.argb
+
+Output File = nothing
+
+[R] 2.2.10.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test 2 = 2.3.10.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 640_480_ARGB32.argb
+
+Output File = nothing
+
+[R] 2.3.10.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test 2 = 2.4.10.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 640_480_ARGB32.argb
+
+Output File = nothing
+
+[R] 2.4.10.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test 2 = 2.5.10.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 640_480_ARGB32.argb
+
+Output File = nothing
+
+[R] 2.5.10.1	[ OK ]
+
+## success ##
+
+
+@@ SUCCESS !! / test name = seq2
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = seq3
+
+@@ ----------------------------------------------
+
+@@ ----------------------------------------------
+
+@@ Sequence Test 3 = 2.1.11.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+[R] 2.1.11.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test 3 = 2.2.11.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+[R] 2.2.11.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test 3 = 2.3.11.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+[R] 2.3.11.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test 3 = 2.4.11.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+[R] 2.4.11.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Sequence Test 3 = 2.5.11.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+[R] 2.5.11.1	[ OK ]
+
+## success ##
+
+
+@@ SUCCESS !! / test name = seq3
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = param1
+
+@@ ----------------------------------------------
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.6
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.7
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.7	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.8
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.8	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.9
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.9	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.10
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.10	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.11
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.11	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.12
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.12	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.13
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.13	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.14
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.14	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.15
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.15	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.16
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.16	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.17
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.17	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.18
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.18	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.19
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.19	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.20
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.20	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.21
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.21	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.22
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.22	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.23
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.23	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.24
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.24	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.25
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.25	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.26
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.26	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.27
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.27	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.28
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.28	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.1.29
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.1.1.29	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.6
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.7
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.7	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.8
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.8	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.9
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.9	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.10
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.10	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.11
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.11	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.12
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.12	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.13
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.13	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.14
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.14	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.15
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.15	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.16
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.16	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.17
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.17	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.18
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.18	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.19
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.19	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.20
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.20	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.21
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.21	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.22
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.22	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.23
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.23	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.24
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.24	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.25
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.25	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.26
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.26	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.27
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.27	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.28
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.28	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.1.2.29
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.1.2.29	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.2.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.2.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.2.1.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.2.1.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.2.1.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.2.1.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.2.1.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.2.1.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.2.1.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.2.1.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.2.1.6
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.2.1.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.2.1.7
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.2.1.7	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.2.1.8
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.2.1.8	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.2.2.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.2.2.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.2.2.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.2.2.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.2.2.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.2.2.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.2.2.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.2.2.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.2.2.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.2.2.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.2.2.6
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.2.2.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.2.2.7
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.2.2.7	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.2.2.8
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.2.2.8	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.3.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.3.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.3.1.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.3.1.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.3.1.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.3.1.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.3.1.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.3.1.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.3.1.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.3.1.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.3.1.6
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.3.1.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.3.1.7
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.3.1.7	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.3.2.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.3.2.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.3.2.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.3.2.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.3.2.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.3.2.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.3.2.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.3.2.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.3.2.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.3.2.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.3.2.6
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.3.2.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 1 = 3.3.2.7
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.3.2.7	[ OK ]
+
+## success ##
+
+
+@@ SUCCESS !! / test name = param1
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = param2
+
+@@ ----------------------------------------------
+
+@@ ----------------------------------------------
+
+@@ Param Test 2 = 3.4.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+device open = /dev/video9
+
+error : VIDIOC_STREAMON
+
+error : v4l2func_streamCtrl() / line = 743
+
+Input  File = 1280_720_420sp.yuv
+
+[R] 3.4.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 2 = 3.4.1.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+device open = /dev/video10
+
+[ 7662.585061] vsp2:25925: rpf setting error !!
+error : VIDIOC_STREAMON
+
+error : v4l2func_streamCtrl() / line = 743
+
+Input  File = 1280_720_420sp.yuv
+
+[R] 3.4.1.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 2 = 3.4.1.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+device open = /dev/video11
+
+[ 7662.792673] vsp2:25925: rpf setting error !!
+error : VIDIOC_STREAMON
+
+error : v4l2func_streamCtrl() / line = 743
+
+Input  File = 1280_720_420sp.yuv
+
+[R] 3.4.1.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 2 = 3.5.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+[R] 3.5.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 2 = 3.5.2.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+[R] 3.5.2.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 2 = 3.5.3.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+[R] 3.5.3.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 2 = 3.5.4.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+[R] 3.5.4.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 2 = 3.5.4.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+[R] 3.5.4.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 2 = 3.5.4.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+[R] 3.5.4.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 2 = 3.5.4.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+[R] 3.5.4.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 2 = 3.6.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+[R] 3.6.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 2 = 3.6.1.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+[R] 3.6.1.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 2 = 3.6.1.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+[R] 3.6.1.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 2 = 3.6.2.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video10
+
+device open = /dev/video11
+
+device open = /dev/video12
+
+device open = /dev/video13
+
+error : VIDIOC_STREAMON
+
+error : v4l2func_streamCtrl() / line = 743
+
+## ERROR!! / errno = 32 (Broken pipe), file = usrCmd/csTotalTest/testParam2.c, line = 488
+
+[R] 3.6.2.1	[ OK ]
+
+## success ##
+
+
+@@ SUCCESS !! / test name = param2
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = param2uds
+
+@@ ----------------------------------------------
+
+[R] 3.7.1.1	[ SKIP ]( param2uds case 1 )( Device name is nothing. )
+
+[R] 3.7.2.1	[ SKIP ]( param2uds case 2 )( Device name is nothing. )
+
+## success ##
+
+
+@@ SUCCESS !! / test name = param2uds
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = param3
+
+@@ ----------------------------------------------
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.1.1
+
+@@ ----------------------------------------------
+
+[R] 3.10.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.1.2
+
+@@ ----------------------------------------------
+
+[R] 3.10.1.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.1.3
+
+@@ ----------------------------------------------
+
+[R] 3.10.1.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.1.4
+
+@@ ----------------------------------------------
+
+[R] 3.10.1.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.1.5
+
+@@ ----------------------------------------------
+
+[R] 3.10.1.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.1.6
+
+@@ ----------------------------------------------
+
+[R] 3.10.1.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.1.7
+
+@@ ----------------------------------------------
+
+[R] 3.10.1.7	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.1.8
+
+@@ ----------------------------------------------
+
+[R] 3.10.1.8	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.2.1
+
+@@ ----------------------------------------------
+
+[R] 3.10.2.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.2.2
+
+@@ ----------------------------------------------
+
+[R] 3.10.2.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.2.3
+
+@@ ----------------------------------------------
+
+[R] 3.10.2.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.2.4
+
+@@ ----------------------------------------------
+
+[R] 3.10.2.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.2.5
+
+@@ ----------------------------------------------
+
+[R] 3.10.2.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.2.6
+
+@@ ----------------------------------------------
+
+[R] 3.10.2.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.2.7
+
+@@ ----------------------------------------------
+
+[R] 3.10.2.7	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.2.8
+
+@@ ----------------------------------------------
+
+[R] 3.10.2.8	[ OK ]
+
+[R] 3.10.3.1	[ SKIP ]( param3 case 17 )( Device name is nothing. )
+
+[R] 3.10.3.2	[ SKIP ]( param3 case 18 )( Device name is nothing. )
+
+[R] 3.10.3.3	[ SKIP ]( param3 case 19 )( Device name is nothing. )
+
+[R] 3.10.3.4	[ SKIP ]( param3 case 20 )( Device name is nothing. )
+
+[R] 3.10.3.5	[ SKIP ]( param3 case 21 )( Device name is nothing. )
+
+[R] 3.10.3.6	[ SKIP ]( param3 case 22 )( Device name is nothing. )
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.4.1
+
+@@ ----------------------------------------------
+
+[R] 3.10.4.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.4.2
+
+@@ ----------------------------------------------
+
+[R] 3.10.4.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.4.3
+
+@@ ----------------------------------------------
+
+[R] 3.10.4.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.4.4
+
+@@ ----------------------------------------------
+
+[R] 3.10.4.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.4.5
+
+@@ ----------------------------------------------
+
+[R] 3.10.4.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.4.6
+
+@@ ----------------------------------------------
+
+[R] 3.10.4.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.4.7
+
+@@ ----------------------------------------------
+
+[R] 3.10.4.7	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.4.8
+
+@@ ----------------------------------------------
+
+[R] 3.10.4.8	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.4.9
+
+@@ ----------------------------------------------
+
+[R] 3.10.4.9	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.4.10
+
+@@ ----------------------------------------------
+
+[R] 3.10.4.10	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.4.11
+
+@@ ----------------------------------------------
+
+[R] 3.10.4.11	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.4.12
+
+@@ ----------------------------------------------
+
+[R] 3.10.4.12	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.4.13
+
+@@ ----------------------------------------------
+
+[R] 3.10.4.13	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.4.14
+
+@@ ----------------------------------------------
+
+[R] 3.10.4.14	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.4.15
+
+@@ ----------------------------------------------
+
+[R] 3.10.4.15	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.5.1
+
+@@ ----------------------------------------------
+
+[R] 3.10.5.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.5.2
+
+@@ ----------------------------------------------
+
+[R] 3.10.5.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.5.3
+
+@@ ----------------------------------------------
+
+[R] 3.10.5.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.5.4
+
+@@ ----------------------------------------------
+
+[R] 3.10.5.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.5.5
+
+@@ ----------------------------------------------
+
+[R] 3.10.5.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.5.6
+
+@@ ----------------------------------------------
+
+[R] 3.10.5.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.5.7
+
+@@ ----------------------------------------------
+
+[R] 3.10.5.7	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.6.1
+
+@@ ----------------------------------------------
+
+[R] 3.10.6.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.6.2
+
+@@ ----------------------------------------------
+
+[R] 3.10.6.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.6.3
+
+@@ ----------------------------------------------
+
+[R] 3.10.6.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.6.4
+
+@@ ----------------------------------------------
+
+[R] 3.10.6.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.6.5
+
+@@ ----------------------------------------------
+
+[R] 3.10.6.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.6.6
+
+@@ ----------------------------------------------
+
+[R] 3.10.6.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.10.6.7
+
+@@ ----------------------------------------------
+
+[R] 3.10.6.7	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.1.1
+
+@@ ----------------------------------------------
+
+[R] 3.11.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.1.2
+
+@@ ----------------------------------------------
+
+[R] 3.11.1.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.1.3
+
+@@ ----------------------------------------------
+
+[R] 3.11.1.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.1.4
+
+@@ ----------------------------------------------
+
+[R] 3.11.1.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.1.5
+
+@@ ----------------------------------------------
+
+[R] 3.11.1.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.1.6
+
+@@ ----------------------------------------------
+
+[R] 3.11.1.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.1.7
+
+@@ ----------------------------------------------
+
+[R] 3.11.1.7	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.1.8
+
+@@ ----------------------------------------------
+
+[R] 3.11.1.8	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.1.9
+
+@@ ----------------------------------------------
+
+[R] 3.11.1.9	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.1.10
+
+@@ ----------------------------------------------
+
+[R] 3.11.1.10	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.2.1
+
+@@ ----------------------------------------------
+
+[R] 3.11.2.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.2.2
+
+@@ ----------------------------------------------
+
+[R] 3.11.2.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.2.3
+
+@@ ----------------------------------------------
+
+[R] 3.11.2.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.2.4
+
+@@ ----------------------------------------------
+
+[R] 3.11.2.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.2.5
+
+@@ ----------------------------------------------
+
+[R] 3.11.2.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.2.6
+
+@@ ----------------------------------------------
+
+[R] 3.11.2.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.2.7
+
+@@ ----------------------------------------------
+
+[R] 3.11.2.7	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.2.8
+
+@@ ----------------------------------------------
+
+[R] 3.11.2.8	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.2.9
+
+@@ ----------------------------------------------
+
+[R] 3.11.2.9	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.2.10
+
+@@ ----------------------------------------------
+
+[R] 3.11.2.10	[ OK ]
+
+[R] 3.11.3.1	[ SKIP ]( param3 case 72 )( Device name is nothing. )
+
+[R] 3.11.3.2	[ SKIP ]( param3 case 73 )( Device name is nothing. )
+
+[R] 3.11.3.9	[ SKIP ]( param3 case 74 )( Device name is nothing. )
+
+[R] 3.11.3.10	[ SKIP ]( param3 case 75 )( Device name is nothing. )
+
+[R] 3.11.3.3	[ SKIP ]( param3 case 76 )( Device name is nothing. )
+
+[R] 3.11.3.11	[ SKIP ]( param3 case 77 )( Device name is nothing. )
+
+[R] 3.11.3.12	[ SKIP ]( param3 case 78 )( Device name is nothing. )
+
+[R] 3.11.3.4	[ SKIP ]( param3 case 79 )( Device name is nothing. )
+
+[R] 3.11.3.5	[ SKIP ]( param3 case 80 )( Device name is nothing. )
+
+[R] 3.11.3.6	[ SKIP ]( param3 case 81 )( Device name is nothing. )
+
+[R] 3.11.3.13	[ SKIP ]( param3 case 82 )( Device name is nothing. )
+
+[R] 3.11.3.14	[ SKIP ]( param3 case 83 )( Device name is nothing. )
+
+[R] 3.11.3.7	[ SKIP ]( param3 case 84 )( Device name is nothing. )
+
+[R] 3.11.3.15	[ SKIP ]( param3 case 85 )( Device name is nothing. )
+
+[R] 3.11.3.16	[ SKIP ]( param3 case 86 )( Device name is nothing. )
+
+[R] 3.11.3.8	[ SKIP ]( param3 case 87 )( Device name is nothing. )
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.1
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.2
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.3
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.4
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.5
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.6
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.7
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.7	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.8
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.8	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.9
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.9	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.10
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.10	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.11
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.11	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.12
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.12	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.13
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.13	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.14
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.14	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.15
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.15	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.16
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.16	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.17
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.17	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.18
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.18	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.19
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.19	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.20
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.20	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.21
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.21	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.22
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.22	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.23
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.23	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.24
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.24	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.25
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.25	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.26
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.26	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.27
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.27	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.28
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.28	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.29
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.29	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.30
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.30	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.31
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.31	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.32
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.32	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.33
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.33	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.34
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.34	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.35
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.35	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.36
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.36	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.37
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.37	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.38
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.38	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.39
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.39	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.40
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.40	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.41
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.41	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.42
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.42	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.43
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.43	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.44
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.44	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.45
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.45	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.46
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.46	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.47
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.47	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.4.48
+
+@@ ----------------------------------------------
+
+[R] 3.11.4.48	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.5.1
+
+@@ ----------------------------------------------
+
+[R] 3.11.5.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.5.2
+
+@@ ----------------------------------------------
+
+[R] 3.11.5.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.5.3
+
+@@ ----------------------------------------------
+
+[R] 3.11.5.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.5.4
+
+@@ ----------------------------------------------
+
+[R] 3.11.5.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.5.5
+
+@@ ----------------------------------------------
+
+[R] 3.11.5.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.5.6
+
+@@ ----------------------------------------------
+
+[R] 3.11.5.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.5.7
+
+@@ ----------------------------------------------
+
+[R] 3.11.5.7	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.5.8
+
+@@ ----------------------------------------------
+
+[R] 3.11.5.8	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.5.9
+
+@@ ----------------------------------------------
+
+[R] 3.11.5.9	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.5.10
+
+@@ ----------------------------------------------
+
+[R] 3.11.5.10	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.6.1
+
+@@ ----------------------------------------------
+
+[R] 3.11.6.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.6.2
+
+@@ ----------------------------------------------
+
+[R] 3.11.6.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.6.3
+
+@@ ----------------------------------------------
+
+[R] 3.11.6.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.6.4
+
+@@ ----------------------------------------------
+
+[R] 3.11.6.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.6.5
+
+@@ ----------------------------------------------
+
+[R] 3.11.6.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.6.6
+
+@@ ----------------------------------------------
+
+[R] 3.11.6.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.6.7
+
+@@ ----------------------------------------------
+
+[R] 3.11.6.7	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.6.8
+
+@@ ----------------------------------------------
+
+[R] 3.11.6.8	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.6.9
+
+@@ ----------------------------------------------
+
+[R] 3.11.6.9	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 3 = 3.11.6.10
+
+@@ ----------------------------------------------
+
+[R] 3.11.6.10	[ OK ]
+
+## success ##
+
+
+@@ SUCCESS !! / test name = param3
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = param4
+
+@@ ----------------------------------------------
+
+@@ ----------------------------------------------
+
+@@ Param Test 4 = 3.13.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+[R] 3.13.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 4 = 3.13.1.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video9
+
+[R] 3.13.1.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 4 = 3.13.1.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video10
+
+[R] 3.13.1.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 4 = 3.13.1.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video11
+
+[R] 3.13.1.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 4 = 3.13.1.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video12
+
+[R] 3.13.1.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param Test 4 = 3.13.2.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video13
+
+[R] 3.13.2.1	[ OK ]
+
+## success ##
+
+
+@@ SUCCESS !! / test name = param4
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = param5
+
+@@ ----------------------------------------------
+
+[R] 3.14.1.1	[ SKIP ]( param5 case 1 )( Device name is nothing. )
+
+@@ ----------------------------------------------
+
+@@ Param Test 5 = 3.14.1.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input01 File = 1280_720_420sp.yuv
+
+Input02 File = 640_480_420sp.yuv
+
+Output  File = nothing
+
+
+----------------------
+
+TotalTime           =   24.28 ms
+
+   > ProcessingTime =    1.62 ms
+
+     WaitTime       =    1.35 ms
+
+     DevOpenTime    =    0.85 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    2.70 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   10.38 ms
+
+     OtherTime      =    8.25 ms
+
+----------------------
+
+[R] 3.14.1.2	[ OK ]
+
+[R] 3.14.2.1	[ SKIP ]( param5 case 3 )( Device name is nothing. )
+
+@@ ----------------------------------------------
+
+@@ Param Test 5 = 3.14.2.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input01 File = 1280_720_420sp.yuv
+
+Input02 File = 640_480_420sp.yuv
+
+Output  File = nothing
+
+
+----------------------
+
+TotalTime           =   47.49 ms
+
+   > ProcessingTime =    1.92 ms
+
+     WaitTime       =    1.33 ms
+
+     DevOpenTime    =    1.80 ms
+
+     DevCloseTime   =    1.08 ms
+
+     ReadTime       =    4.55 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   10.38 ms
+
+     OtherTime      =   27.77 ms
+
+----------------------
+
+[R] 3.14.2.2	[ OK ]
+
+## success ##
+
+
+@@ SUCCESS !! / test name = param5
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = param5wcfd
+
+@@ ----------------------------------------------
+
+@@ ----------------------------------------------
+
+@@ Param5 (wait change fd) = 3.15.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_420sp.yuv
+
+Output File = nothing
+
+[R] 3.15.1.1	[ OK ]
+
+## success ##
+
+
+@@ SUCCESS !! / test name = param5wcfd
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = param5_2
+
+@@ ----------------------------------------------
+
+@@ ----------------------------------------------
+
+@@ Param5 ( YUVP, ARGB555 ) = 3.16.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_YUV420.yuvp
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  157.54 ms
+
+   > ProcessingTime =    1.51 ms
+
+     WaitTime       =    1.31 ms
+
+     DevOpenTime    =    0.95 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =  121.89 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.41 ms
+
+     OtherTime      =    5.35 ms
+
+----------------------
+
+[R] 3.16.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param5 ( YUVP, ARGB555 ) = 3.16.1.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_YVU420.yvup
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  158.48 ms
+
+   > ProcessingTime =    1.50 ms
+
+     WaitTime       =    1.32 ms
+
+     DevOpenTime    =    0.86 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =  122.10 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.46 ms
+
+     OtherTime      =    6.12 ms
+
+----------------------
+
+[R] 3.16.1.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param5 ( YUVP, ARGB555 ) = 3.16.1.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_YUV422.yuvp
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  197.88 ms
+
+   > ProcessingTime =    1.45 ms
+
+     WaitTime       =    1.28 ms
+
+     DevOpenTime    =    0.99 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =  162.05 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.40 ms
+
+     OtherTime      =    5.56 ms
+
+----------------------
+
+[R] 3.16.1.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param5 ( YUVP, ARGB555 ) = 3.16.1.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_YVU422.yvup
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  197.61 ms
+
+   > ProcessingTime =    1.49 ms
+
+     WaitTime       =    1.32 ms
+
+     DevOpenTime    =    0.76 ms
+
+     DevCloseTime   =    0.44 ms
+
+     ReadTime       =  161.90 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.43 ms
+
+     OtherTime      =    5.60 ms
+
+----------------------
+
+[R] 3.16.1.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param5 ( YUVP, ARGB555 ) = 3.16.1.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_YUV444.yuvp
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  278.73 ms
+
+   > ProcessingTime =    1.50 ms
+
+     WaitTime       =    1.31 ms
+
+     DevOpenTime    =    0.73 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =  242.99 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.45 ms
+
+     OtherTime      =    5.63 ms
+
+----------------------
+
+[R] 3.16.1.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param5 ( YUVP, ARGB555 ) = 3.16.1.6
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_YVU444.yvup
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  277.45 ms
+
+   > ProcessingTime =    1.50 ms
+
+     WaitTime       =    1.31 ms
+
+     DevOpenTime    =    0.83 ms
+
+     DevCloseTime   =    0.45 ms
+
+     ReadTime       =  241.46 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.39 ms
+
+     OtherTime      =    5.83 ms
+
+----------------------
+
+[R] 3.16.1.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Param5 ( YUVP, ARGB555 ) = 3.17.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = make image
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   42.95 ms
+
+   > ProcessingTime =    1.58 ms
+
+     WaitTime       =    1.36 ms
+
+     DevOpenTime    =    0.95 ms
+
+     DevCloseTime   =    0.49 ms
+
+     ReadTime       =    4.24 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   27.49 ms
+
+     OtherTime      =    8.18 ms
+
+----------------------
+
+[R] 3.17.1.1	[ OK ]
+
+## success ##
+
+
+@@ SUCCESS !! / test name = param5_2
+
+
+
+@@ ----------------------------------------------
+
+@@ test name = measure
+
+@@ ----------------------------------------------
+
+@@ ----------------------------------------------
+
+@@ Time Performance Test = 6.1.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video10
+
+device open = /dev/video11
+
+device open = /dev/video12
+
+device open = /dev/video13
+
+
+----------------------
+
+maxTime   =    6.84 ms
+
+minTime   =    6.49 ms
+
+avrTime   =    6.67 ms
+
+totalTime = 33375.99 ms
+
+----------------------
+
+[R] 6.1.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Time Performance Test = 6.1.1.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video10
+
+device open = /dev/video11
+
+device open = /dev/video12
+
+device open = /dev/video13
+
+
+----------------------
+
+maxTime   =    3.74 ms
+
+minTime   =    3.34 ms
+
+avrTime   =    3.52 ms
+
+totalTime = 17583.66 ms
+
+----------------------
+
+[R] 6.1.1.2	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Time Performance Test = 6.1.1.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video10
+
+device open = /dev/video11
+
+device open = /dev/video12
+
+device open = /dev/video13
+
+
+----------------------
+
+maxTime   =    6.90 ms
+
+minTime   =    6.50 ms
+
+avrTime   =    6.70 ms
+
+totalTime = 33522.31 ms
+
+----------------------
+
+[R] 6.1.1.3	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Time Performance Test = 6.1.1.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video10
+
+device open = /dev/video11
+
+device open = /dev/video12
+
+device open = /dev/video13
+
+
+----------------------
+
+maxTime   =    3.68 ms
+
+minTime   =    3.35 ms
+
+avrTime   =    3.53 ms
+
+totalTime = 17658.75 ms
+
+----------------------
+
+[R] 6.1.1.4	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Time Performance Test = 6.1.1.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video10
+
+device open = /dev/video11
+
+device open = /dev/video12
+
+device open = /dev/video13
+
+
+----------------------
+
+maxTime   =    7.48 ms
+
+minTime   =    6.54 ms
+
+avrTime   =    6.75 ms
+
+totalTime = 33727.33 ms
+
+----------------------
+
+[R] 6.1.1.5	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Time Performance Test = 6.1.1.6
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video10
+
+device open = /dev/video11
+
+device open = /dev/video12
+
+device open = /dev/video13
+
+
+----------------------
+
+maxTime   =    3.75 ms
+
+minTime   =    3.39 ms
+
+avrTime   =    3.59 ms
+
+totalTime = 17932.54 ms
+
+----------------------
+
+[R] 6.1.1.6	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Time Performance Test = 6.2.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+
+----------------------
+
+maxTime   =    0.03 ms
+
+minTime   =    0.00 ms
+
+avrTime   =    0.00 ms
+
+totalTime =   19.27 ms
+
+----------------------
+
+[R] 6.2.1.1	[ OK ]
+
+@@ ----------------------------------------------
+
+@@ Time Performance Test = 6.2.1.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+
+----------------------
+
+maxTime   =    3.15 ms
+
+minTime   =    2.82 ms
+
+avrTime   =    2.83 ms
+
+totalTime = 14174.03 ms
+
+----------------------
+
+[R] 6.2.1.2	[ OK ]
+
+## success ##
+
+
+@@ SUCCESS !! / test name = measure
+
+[R] ---------------------------------------------
+
+[R] tt all / end Tue Jul 23 08:52:01 2024
+
+[R] ---------------------------------------------
+
+
+
+@@ all test result @@
+
+000 : o :    rpf
+
+001 : o :    wpf
+
+002 : o :    uds
+
+003 : o :    bru
+
+004 : o :   mbru
+
+005 : o :    lut
+
+006 : o :    hgo
+
+007 : o :    clu
+
+008 : o :    hgt
+
+009 : o :    seq
+
+010 : o :   seq2
+
+011 : o :   seq3
+
+012 : o : param1
+
+013 : o : param2
+
+014 : o : param2uds
+
+015 : o : param3
+
+016 : o : param4
+
+017 : o : param5
+
+018 : o : param5wcfd
+
+019 : o : param5_2
+
+020 : o : measure
+
+---
+
+## success ##
+
+
+
+## ./vsp2_tp_m3 end !!
+
+
