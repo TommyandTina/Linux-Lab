@@ -1,0 +1,10 @@
+----START TESTING----
+Make sure vsp2_tp is built for your board target
+modprobe -a mmngr mmngrbuf
+Step 1: ./vsp2_tp tt media 1 "->" tt seq case 43 
+Step 2: modprobe -r vsp2 
+Step 3: modprobe vsp2
+Step 4: ./vsp2_tp tt media 1 "->" tt seq case 44    (after 10s send interrupt - Ctrl + C)
+Step 5: modprobe -r vsp2
+Step 6: modprobe vsp2
+Step 7: ./vsp2_tp tt media 1 "->" tt seq case 45

@@ -1,0 +1,41 @@
+Read 8.guildecase4_14-28.txt to get v4-utils before doing next steps
+
+----START TESTING----
+No 1~8
+Make sure vsp2_tp is built for your board
+modprobe -a mmngr mmngrbuf
+Step 1: edit Makefile( make sure mediactl.h is in CFLAGS dir)
+
+CFLAGS		+=	\
+	-I./		\
+	-I/home/rvc/thuanha/v4l-utils/build/utils \
+
+LDFLAGS 	+=	\
+	-L/home/rvc/thuanha/v4l-utils/build/utils/media-ctl \
+
+Step 2: edit in v4l2_*_tp.c in ../v4l2_measure, add 4th argument is 0
+Example:
+FROM
+	if (v4l2_subdev_set_selection(brupad.ppad2->entity, &rect,
+		brupad.ppad2->index, V4L2_SEL_TGT_COMPOSE,
+		V4L2_SUBDEV_FORMAT_ACTIVE) != 0) {
+		printf("Error : v4l2_subdev_set_selection(bru pad 2)\n");
+		return -1;
+	}
+TO
+	if (v4l2_subdev_set_selection(brupad.ppad2->entity, &rect,
+		brupad.ppad2->index,0, V4L2_SEL_TGT_COMPOSE,
+		V4L2_SUBDEV_FORMAT_ACTIVE) != 0) {
+		printf("Error : v4l2_subdev_set_selection(bru pad 2)\n");
+		return -1;
+	}
+Step 3: change FROM  #include <mediactl/mediactl.h> to  #include <media-ctl/mediactl.h>
+Step 4: make m3 (for e3,m3,m3n) or make (for h3)
+Step 5: ./v4l2_measure_m3_e3 u > kekka_uds.txt
+Step 6: ./v4l2_measure_m3_e3 l > kekka_lut.txt
+Step 7: ./v4l2_measure_m3_e3 c > kekka_clu.txt
+Step 8: ./v4l2_measure_m3_e3 h > kekka_hgo.txt
+
+NO.9
+Keep going from NO.8
+Step 9: ./vsp2_tp tt media 1 "->" tt all f &

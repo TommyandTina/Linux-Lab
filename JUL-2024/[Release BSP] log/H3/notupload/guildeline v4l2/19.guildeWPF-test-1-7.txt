@@ -1,0 +1,11 @@
+----START TESTING----
+Make sure v4l2_wpf_cmps_tp is built for your board
+modprobe -a mmngr mmngrbuf
+Step 1:	chmod 777 * 		->	./v4l2_wpf_cmps_tp
+Step 2: ./v4l2_wpf_cmps_tp 1
+Step 3: ./v4l2_wpf_cmps_tp 2
+Step 4: ./v4l2_wpf_cmps_tp 3
+Step 5: ./v4l2_wpf_cmps_tp 4
+Step 6: ./v4l2_wpf_cmps_tp 5
+Step 7: ./v4l2_wpf_cmps_tp 6
+Step 8: ./v4l2_wpf_cmps_tp 7

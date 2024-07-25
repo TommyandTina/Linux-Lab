@@ -1,7 +1,0 @@
-----START TESTING----
-modprobe -a mmngr mmngrbuf
-Step 1: modprobe vspm_if
-Step 2: Copy testDoubleExec.sh, execVsp2UsecaseAll.sh, execVspmtpLoop.sh to Gen3_vsp2_tp
-Step 3: change ./vspm_tp -> vspm_tp in execVspmtpLoop.sh
-Step 4: If you are using M3, change media 3 to media 2 in execVsp2UsecaseAll.sh and testDoubleExec.sh. Delete 4 line for only H3 in testDoubleExec.sh (need to read notes in japanese T.T)
-Step 5: ./testDoubleExec.sh

@@ -31,6 +31,10 @@ setenv LONG_bootargs 'rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/long.trinh-
 setenv bootcmd 'run bootcmd_LONG_tftp'
 setenv bootcmd_LONG_tftp 'setenv bootargs ${LONG_bootargs} ; tftp 0x48080000 long.trinh-tien/M3N_full/Image ; tftp 0x48000000 long.trinh-tien/M3N_full/${dtb};booti 0x48080000 - 0x48000000'
 
+M3_full
+setenv LONG_bootargs 'rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/long.trinh-tien/M3_full/rootfs,nfsvers=4 ip=192.168.8.20 baudrate=115200'
+setenv bootcmd 'run bootcmd_LONG_tftp'
+setenv bootcmd_LONG_tftp 'setenv bootargs ${LONG_bootargs} ; tftp 0x48080000 long.trinh-tien/M3_full/Image ; tftp 0x48000000 long.trinh-tien/M3_full/${dtb};booti 0x48080000 - 0x48000000'
 
 
 

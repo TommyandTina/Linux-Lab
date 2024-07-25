@@ -1,6 +1,0 @@
-----START TESTING----
-Make sure vsp2_tp is built for your board
-modprobe -a mmngr mmngrbuf
-Step 1: Change media 3 -> 2 if not using H3 in test7111_stress.mac
-Step 2: ./vsp2_tp
-Step 3: mac run test7111_stress.mac

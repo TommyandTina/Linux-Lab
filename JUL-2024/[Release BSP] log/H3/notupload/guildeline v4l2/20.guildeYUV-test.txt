@@ -1,0 +1,3 @@
+----START TESTING----
+modprobe -a mmngr mmngrbuf
+Step 1:	chmod 777 * 		->	./v4l2_tp_yvu

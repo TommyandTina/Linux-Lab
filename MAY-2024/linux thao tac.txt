@@ -144,6 +144,7 @@
 	tới 1 dòng bất kì : xxgg VD: 81gg
 	copy (yank) xx dòng: xxyy VD: 10yy
 	comment nhiều dòng (visual block) : ctrl+V -> tới dòng cuối muốn comment -> shift I (xóa thì ấn x) -> // hoặc # -> esc
+	
 
 - tải package mannually bằng apt/apt-get
 	apt download htop
@@ -196,3 +197,7 @@
 	zcat /proc/config.gz
 - Xem device tree:
 	cat /proc/device-tree/model
+
+- Xem thời gian hoạt động của máy:
+	linux: uptime
+	Window: bật event viewer (eventvwr) chọn Windows Logs -> System -> Filter Current Log -> Chỗ <All Event IDs> đổi thành: 6005(bật),6006(tắt),6013(uptime),6009,6008

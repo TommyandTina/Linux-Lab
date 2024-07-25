@@ -1,0 +1,1868 @@
+NOTICE:  BL2: R-Car Gen3 Initial Program Loader(CA53) Rev.4.0.0
+NOTICE:  BL2: PRR is R-Car E3 Ver.1.1
+NOTICE:  BL2: PLL1 nonSSCG Clock select
+NOTICE:  BL2: Board is Ebisu-4D Rev.1.0
+NOTICE:  BL2: Boot device is HyperFlash(150MHz)
+NOTICE:  BL2: LCM state is CM
+NOTICE:  BL2: DDR1856(rev.0.12)
+NOTICE:  BL2: [COLD_BOOT]
+NOTICE:  BL2: DRAM Split is OFF
+NOTICE:  BL2: QoS is default setting(rev.0.05)
+NOTICE:  BL2: DRAM refresh interval 3.9 usec
+NOTICE:  BL2: CH0: 400000000 - 47fffffff, 2 GiB
+NOTICE:  BL2: Lossy Decomp areas
+NOTICE:       Entry 0: DCMPAREACRAx:0x80000540 DCMPAREACRBx:0x570
+NOTICE:       Entry 1: DCMPAREACRAx:0x40000000 DCMPAREACRBx:0x0
+NOTICE:       Entry 2: DCMPAREACRAx:0x20000000 DCMPAREACRBx:0x0
+NOTICE:  BL2: FDT at 0xe6316d28
+NOTICE:  BL2: v2.9(release):9cdb21f75-dirty
+NOTICE:  BL2: Built : 03:15:36, Jul 23 2024
+NOTICE:  BL2: Normal boot
+NOTICE:  BL2: dst=0xe6316600 src=0x8180000 len=512(0x200)
+NOTICE:  BL2: dst=0x43f00000 src=0x8180400 len=6144(0x1800)
+NOTICE:  rcar_file_len: len: 0x0003e000
+NOTICE:  BL2: dst=0x44000000 src=0x81c0000 len=253952(0x3e000)
+NOTICE:  rcar_file_len: len: 0x00200000
+NOTICE:  BL2: dst=0x44100000 src=0x8200000 len=2097152(0x200000)
+NOTICE:  rcar_file_len: len: 0x00100000
+NOTICE:  BL2: dst=0x50000000 src=0x8640000 len=1048576(0x100000)
+NOTICE:  BL2: Booting BL31
+
+
+U-Boot 2020.10 (Jul 23 2024 - 03:16:10 +0000)
+
+CPU: Renesas Electronics R8A77990 rev 1.1
+Model: Renesas Ebisu board based on r8a77990
+DRAM:  1.9 GiB
+RAM Configuration:
+Bank #0: 0x048000000 - 0x0bfffffff, 1.9 GiB
+
+MMC:   sd@ee100000: 0, sd@ee120000: 1, sd@ee160000: 2
+Loading Environment from MMC... OK
+In:    serial@e6e88000
+Out:   serial@e6e88000
+Err:   serial@e6e88000
+Net:   eth0: ethernet@e6800000
+Hit any key to stop autoboot:  0
+=> pr
+LONG_bootargs=rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/long.trinh-tien/E3_full/rootfs,nfsvers=4 ip=192.168.8.30 baudrate=115200
+baudrate=115200
+bootargs=root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/HVN/QuocHB/E3/rootfs,nfsvers=4 ip=192.168.8.31
+bootcmd=run bootcmd_LONG_tftp
+bootcmd_LONG_tftp=setenv bootargs ${LONG_bootargs} ; tftp 0x48080000 long.trinh-tien/E3_full/Image ; tftp 0x48000000 long.trinh-tien/E3_full/${dtb};booti 0x48080000 - 0x48000000
+bootcmd_tftp=tftp 0x48080000 HVN/QuocHB/E3/rootfs/boot/Image;tftp 0x48000000 HVN/QuocHB/E3/rootfs/boot/${dtb};booti 0x48080000 - 0x48000000
+bootdelay=2
+bootm_size=0x10000000
+dtb=r8a77990-ebisu-4d.dtb
+ethact=ethernet@e6800000
+ethaddr=2E:09:0A:03:87:D5
+fdtcontroladdr=bbf26f80
+fileaddr=48080000
+filesize=2005200
+ip_dyn=no
+ipaddr=192.168.8.31
+loadaddr=0x58000000
+netboot=tftp 0x48080000 ${tftp_path}/Image; tftp 0x48000000 ${tftp_path}/r8a77990-ebisu-4d.dtb; booti 0x48080000 - 0x48000000
+platform=r8a77990
+serverip=192.168.8.8
+stderr=serial@e6e88000
+stdin=serial@e6e88000
+stdout=serial@e6e88000
+tftp_path=nguyentran/e3
+usb_boot=usb start;load usb 0:1 0x48080000 /boot/Image; load usb 0:1 0x48000000 /boot/r8a77990-ebisu-4d.dtb; booti 0x48080000 - 0x48000000
+usb_pgood_delay=2000
+usbboot=fatload usb 0:1 0x48080000 Image; fatload usb 0:1 0x48000000 r8a77990-ebisu-4d.dtb; booti 0x48080000 - 0x48000000
+ver=U-Boot 2020.10 (Jul 23 2024 - 03:16:10 +0000)
+
+Environment size: 1408/131068 bytes
+=> boot
+ethernet@e6800000 Waiting for PHY auto negotiation to complete.......... done
+Using ethernet@e6800000 device
+TFTP from server 192.168.8.8; our IP address is 192.168.8.31
+Filename 'long.trinh-tien/E3_full/Image'.
+Load address: 0x48080000
+Loading: #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         ######################
+         2.7 MiB/s
+done
+Bytes transferred = 33712640 (2026a00 hex)
+Using ethernet@e6800000 device
+TFTP from server 192.168.8.8; our IP address is 192.168.8.31
+Filename 'long.trinh-tien/E3_full/r8a77990-ebisu-4d.dtb'.
+Load address: 0x48000000
+Loading: ####
+         3.9 MiB/s
+done
+Bytes transferred = 56930 (de62 hex)
+Moving Image from 0x48080000 to 0x48200000, end=4a2b0000
+## Flattened Device Tree blob at 48000000
+   Booting using the fdt blob at 0x48000000
+   Loading Device Tree to 0000000053fef000, end 0000000053fffe61 ... OK
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
+[    0.000000] Linux version 5.10.218-yocto-standard (oe-user@oe-host) (aarch64-poky-linux-gcc (GCC) 13.2.0, GNU ld (GNU Binutils) 2.42.0.20240216) #1 SMP PREEMPT Tue Jul 23 02:15:48 UTC 2024
+[    0.000000] Machine model: Renesas Ebisu-4D board based on r8a77990
+[    0.000000] efi: UEFI not found.
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000057000000, size 16 MiB
+[    0.000000] OF: reserved mem: initialized node linux,adsp@57000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000058000000, size 256 MiB
+[    0.000000] OF: reserved mem: initialized node linux,cma@58000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000068000000, size 64 MiB
+[    0.000000] OF: reserved mem: initialized node linux,multimedia@68000000, compatible id shared-dma-pool
+[    0.000000] NUMA: No NUMA configuration found
+[    0.000000] NUMA: Faking a node at [mem 0x0000000048000000-0x00000000bfffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0xbfc12b00-0xbfc14fff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000048000000-0x00000000bfffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000048000000-0x0000000053ffffff]
+[    0.000000]   node   0: [mem 0x0000000054000000-0x0000000056ffffff]
+[    0.000000]   node   0: [mem 0x0000000057000000-0x00000000bfffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000048000000-0x00000000bfffffff]
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS resident on physical CPU 0x0
+[    0.000000] psci: SMC Calling Convention v1.2
+[    0.000000] percpu: Embedded 23 pages/cpu s56984 r8192 d29032 u94208
+[    0.000000] Detected VIPT I-cache on CPU0
+[    0.000000] CPU features: detected: ARM erratum 845719
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 483840
+[    0.000000] Policy zone: DMA
+[    0.000000] Kernel command line: rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/long.trinh-tien/E3_full/rootfs,nfsvers=4 ip=192.168.8.30 baudrate=115200
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] Memory: 1499288K/1966080K available (15552K kernel code, 2842K rwdata, 8248K rodata, 6144K init, 518K bss, 122728K reserved, 344064K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu:     RCU event tracing is enabled.
+[    0.000000] rcu:     RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=2.
+[    0.000000]  Trampoline variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=2
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] arch_timer: cp15 timer(s) running at 24.00MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
+[    0.000006] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
+[    0.000399] Console: colour dummy device 80x25
+[    0.000777] printk: console [tty0] enabled
+[    0.000952] Calibrating delay loop (skipped), value calculated using timer frequency.. 48.00 BogoMIPS (lpj=96000)
+[    0.000982] pid_max: default: 32768 minimum: 301
+[    0.001072] LSM: Security Framework initializing
+[    0.001157] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.001179] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.003107] rcu: Hierarchical SRCU implementation.
+[    0.005133] Detected Renesas R-Car Gen3 r8a77990 ES1.1
+[    0.007047] EFI services will not be available.
+[    0.007549] smp: Bringing up secondary CPUs ...
+[    0.008293] Detected VIPT I-cache on CPU1
+[    0.008410] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
+[    0.008567] smp: Brought up 1 node, 2 CPUs
+[    0.008613] SMP: Total of 2 processors activated.
+[    0.008628] CPU features: detected: 32-bit EL0 Support
+[    0.008641] CPU features: detected: CRC32 instructions
+[    0.008654] CPU features: detected: 32-bit EL1 Support
+[    0.019711] CPU: All CPU(s) started at EL1
+[    0.019794] alternatives: patching kernel code
+[    0.021399] devtmpfs: initialized
+[    0.030165] KASLR disabled due to lack of seed
+[    0.030478] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.030519] futex hash table entries: 512 (order: 3, 32768 bytes, linear)
+[    0.041125] pinctrl core: initialized pinctrl subsystem
+[    0.043348] DMI not present or invalid.
+[    0.044282] NET: Registered protocol family 16
+[    0.046306] DMA: preallocated 256 KiB GFP_KERNEL pool for atomic allocations
+[    0.046513] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.046684] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.046804] audit: initializing netlink subsys (disabled)
+[    0.047206] audit: type=2000 audit(0.044:1): state=initialized audit_enabled=0 res=1
+[    0.049026] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.049608] cpuidle: using governor menu
+[    0.049929] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.050046] ASID allocator initialised with 65536 entries
+[    0.052121] Serial: AMBA PL011 UART driver
+[    0.101713] sh-pfc e6060000.pinctrl: r8a77990_pfc support registered
+[    0.120014] HugeTLB registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.120063] HugeTLB registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.120075] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.120087] HugeTLB registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.121484] cryptd: max_cpu_qlen set to 1000
+[    0.124869] ACPI: Interpreter disabled.
+[    0.130879] rcar_avs_init: cannot find compatible dts node
+[    0.133932] iommu: Default domain type: Translated
+[    0.135105] ipmmu-vmsa e67b0000.iommu: IPMMU context 0 is reserved
+[    0.137614] vgaarb: loaded
+[    0.138228] SCSI subsystem initialized
+[    0.138876] usbcore: registered new interface driver usbfs
+[    0.138929] usbcore: registered new interface driver hub
+[    0.138979] usbcore: registered new device driver usb
+[    0.142446] i2c-sh_mobile e60b0000.i2c: I2C adapter 7, bus speed 400000 Hz
+[    0.143658] mc: Linux media interface: v0.10
+[    0.143721] videodev: Linux video capture interface: v2.00
+[    0.143851] pps_core: LinuxPPS API ver. 1 registered
+[    0.143862] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.143885] PTP clock support registered
+[    0.144349] EDAC MC: Ver: 3.0.0
+[    0.148281] FPGA manager framework
+[    0.148468] Advanced Linux Sound Architecture Driver Initialized.
+[    0.149916] clocksource: Switched to clocksource arch_sys_counter
+[    0.150333] VFS: Disk quotas dquot_6.6.0
+[    0.150413] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    0.150672] pnp: PnP ACPI: disabled
+[    0.156376] NET: Registered protocol family 2
+[    0.156641] IP idents hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.157766] tcp_listen_portaddr_hash hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    0.157833] TCP established hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.158085] TCP bind hash table entries: 16384 (order: 6, 262144 bytes, linear)
+[    0.158412] TCP: Hash tables configured (established 16384 bind 16384)
+[    0.158631] UDP hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    0.158695] UDP-Lite hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    0.158995] NET: Registered protocol family 1
+[    0.159825] RPC: Registered named UNIX socket transport module.
+[    0.159863] RPC: Registered udp transport module.
+[    0.159874] RPC: Registered tcp transport module.
+[    0.159884] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.159911] PCI: CLS 0 bytes, default 64
+[    0.161012] hw perfevents: enabled with armv8_cortex_a53 PMU driver, 7 counters available
+[    0.162021] kvm [1]: HYP mode not available
+[    0.166141] Initialise system trusted keyrings
+[    0.166544] workingset: timestamp_bits=42 max_order=19 bucket_order=0
+[    0.172410] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.173368] NFS: Registering the id_resolver key type
+[    0.173454] Key type id_resolver registered
+[    0.173464] Key type id_legacy registered
+[    0.173569] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    0.173586] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    0.173953] 9p: Installing v9fs 9p2000 file system support
+[    0.210737] Key type asymmetric registered
+[    0.210787] Asymmetric key parser 'x509' registered
+[    0.210891] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 243)
+[    0.210910] io scheduler mq-deadline registered
+[    0.210927] io scheduler kyber registered
+[    0.227891] gpio_rcar e6050000.gpio: driving 18 GPIOs
+[    0.228779] gpio_rcar e6051000.gpio: driving 23 GPIOs
+[    0.229548] gpio_rcar e6052000.gpio: driving 26 GPIOs
+[    0.230431] gpio_rcar e6053000.gpio: driving 16 GPIOs
+[    0.231196] gpio_rcar e6054000.gpio: driving 11 GPIOs
+[    0.231912] gpio_rcar e6055000.gpio: driving 20 GPIOs
+[    0.232633] gpio_rcar e6055400.gpio: driving 18 GPIOs
+[    0.238876] rcar-pcie fe000000.pcie: host bridge /soc/pcie@fe000000 ranges:
+[    0.238951] rcar-pcie fe000000.pcie:       IO 0x00fe100000..0x00fe1fffff -> 0x0000000000
+[    0.238987] rcar-pcie fe000000.pcie:      MEM 0x00fe200000..0x00fe3fffff -> 0x00fe200000
+[    0.239014] rcar-pcie fe000000.pcie:      MEM 0x0030000000..0x0037ffffff -> 0x0030000000
+[    0.239036] rcar-pcie fe000000.pcie:      MEM 0x0038000000..0x003fffffff -> 0x0038000000
+[    0.239062] rcar-pcie fe000000.pcie:   IB MEM 0x0040000000..0x00bfffffff -> 0x0040000000
+[    0.239148] rcar-pcie fe000000.pcie: no pcie3v3 regulator found
+[    0.239164] rcar-pcie fe000000.pcie: no pcie1v8 regulator found
+[    0.291585] rcar-pcie fe000000.pcie: PCIe link down
+[    0.295571] EINJ: ACPI disabled.
+[    0.345297] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    0.350358] SuperH (H)SCI(F) driver initialized
+[    0.351275] e6e88000.serial: ttySC0 at MMIO 0xe6e88000 (irq = 119, base_baud = 0) is a scif
+[    1.323428] printk: console [ttySC0] enabled
+[    1.330790] msm_serial: driver initialized
+[    1.357090] loop: module loaded
+[    1.363398] megasas: 07.714.04.00-rc1
+[    1.378994] tun: Universal TUN/TAP device driver, 1.6
+[    1.386379] thunder_xcv, ver 1.0
+[    1.389734] thunder_bgx, ver 1.0
+[    1.393039] nicpf, ver 1.0
+[    1.398732] hclge is initializing
+[    1.402201] hns3: Hisilicon Ethernet Network Driver for Hip08 Family - version
+[    1.409460] hns3: Copyright (c) 2017 Huawei Corporation.
+[    1.414963] e1000: Intel(R) PRO/1000 Network Driver
+[    1.419865] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[    1.425692] e1000e: Intel(R) PRO/1000 Network Driver
+[    1.430673] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    1.436646] igb: Intel(R) Gigabit Ethernet Network Driver
+[    1.442072] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    1.447693] igbvf: Intel(R) Gigabit Virtual Function Network Driver
+[    1.453980] igbvf: Copyright (c) 2009 - 2012 Intel Corporation.
+[    1.461172] sky2: driver version 1.30
+[    1.470760] ravb e6800000.ethernet eth0: Base address at 0xe6800000, 2e:09:0a:03:87:d5, IRQ 114.
+[    1.482941] VFIO - User Level meta-driver version: 0.3
+[    1.492752] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.499420] ehci-pci: EHCI PCI platform driver
+[    1.503972] ehci-platform: EHCI generic platform driver
+[    1.510310] ehci-orion: EHCI orion driver
+[    1.514907] ehci-exynos: EHCI Exynos driver
+[    1.519484] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    1.525756] ohci-pci: OHCI PCI platform driver
+[    1.530323] ohci-platform: OHCI generic platform driver
+[    1.536540] ohci-exynos: OHCI Exynos driver
+[    1.542600] xhci-hcd ee000000.usb: xHCI Host Controller
+[    1.547966] xhci-hcd ee000000.usb: new USB bus registered, assigned bus number 1
+[    1.570360] xhci-hcd ee000000.usb: hcc params 0x014051ce hci version 0x100 quirks 0x0000000000830410
+[    1.579607] xhci-hcd ee000000.usb: irq 140, io mem 0xee000000
+[    1.585611] xhci-hcd ee000000.usb: xHCI Host Controller
+[    1.590874] xhci-hcd ee000000.usb: new USB bus registered, assigned bus number 2
+[    1.598312] xhci-hcd ee000000.usb: Host supports USB 3.0 SuperSpeed
+[    1.605510] hub 1-0:1.0: USB hub found
+[    1.609338] hub 1-0:1.0: 1 port detected
+[    1.613666] usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+[    1.622477] hub 2-0:1.0: USB hub found
+[    1.626295] hub 2-0:1.0: 1 port detected
+[    1.632187] usbcore: registered new interface driver usb-storage
+[    1.642155] renesas_usbhs e6590000.usb: host probed
+[    1.647109] renesas_usbhs e6590000.usb: no transceiver found
+[    1.652968] renesas_usbhs e6590000.usb: gadget probed
+[    1.658237] renesas_usbhs e6590000.usb: probed
+[    1.668344] i2c /dev entries driver
+[    1.678582] pca953x 0-0020: supply vcc not found, using dummy regulator
+[    1.685488] pca953x 0-0020: using no AI
+[    1.693534] adv7511 0-0039: supply avdd not found, using dummy regulator
+[    1.700560] adv7511 0-0039: supply dvdd not found, using dummy regulator
+[    1.707606] adv7511 0-0039: supply pvdd not found, using dummy regulator
+[    1.714389] adv7511 0-0039: supply bgvdd not found, using dummy regulator
+[    1.721250] adv7511 0-0039: supply dvdd-3v not found, using dummy regulator
+[    1.739286] i2c-rcar e6500000.i2c: probed
+[    1.754051] cs2000-cp 3-004f: revision - C1
+[    1.758664] i2c-rcar e66d0000.i2c: probed
+[    1.765434] adv748x 0-0070: Endpoint /soc/i2c@e6500000/video-receiver@70/port@7/endpoint on port 7
+[    1.774831] adv748x 0-0070: Endpoint /soc/i2c@e6500000/video-receiver@70/port@8/endpoint on port 8
+[    1.783848] adv748x 0-0070: Endpoint /soc/i2c@e6500000/video-receiver@70/port@a/endpoint on port 10
+[    1.794078] adv748x 0-0070: chip found @ 0xe0 revision 2143
+[    1.891486] rcar-csi2 feaa0000.csi2: 2 lanes found
+[    1.902371] rcar-vin e6ef4000.video: Device registered as video0
+[    1.908590] rcar-vin e6ef5000.video: Device registered as video1
+[    1.916033] usbcore: registered new interface driver uvcvideo
+[    1.922103] USB Video Class driver (1.1.1)
+[    1.933032] rcar_thermal e6190000.thermal: 1 sensor probed
+[    1.947023] cpu cpu0: EM: invalid perf. state: -22
+[    1.958684] sdhci: Secure Digital Host Controller Interface driver
+[    1.964971] sdhci: Copyright(c) Pierre Ossman
+[    1.972037] renesas_sdhi_internal_dmac ee100000.mmc: Got CD GPIO
+[    1.978195] renesas_sdhi_internal_dmac ee100000.mmc: Got WP GPIO
+[    1.987574] renesas_sdhi_internal_dmac ee120000.mmc: Got CD GPIO
+[    1.999291] renesas_sdhi_internal_dmac ee160000.mmc: Adding to iommu group 0
+[    2.006562] renesas_sdhi_internal_dmac ee160000.mmc: Using IPMMU context 1
+[    2.062204] renesas_sdhi_internal_dmac ee160000.mmc: mmc0 base at 0x00000000ee160000, max clock rate 200 MHz
+[    2.074213] Synopsys Designware Multimedia Card Interface Driver
+[    2.084594] sdhci-pltfm: SDHCI platform and OF driver helper
+[    2.095170] ledtrig-cpu: registered to indicate activity on CPUs
+[    2.104225] SMCCC: SOC_ID: ARCH_SOC_ID not implemented, skipping ....
+[    2.112691] usbcore: registered new interface driver usbhid
+[    2.118429] usbhid: USB HID core driver
+[    2.132020] optee: probing for conduit method.
+[    2.136640] optee: revision 3.22 (314ecf9d)
+[    2.137150] optee driver R-Car Rev.1.0.11
+[    2.146092] optee: dynamic shared memory is enabled
+[    2.151785] optee: initialized driver
+[    2.172137] rcar_sound ec500000.sound: probed
+[    2.178294] rcar_adsp_sound adsp_sound: probed
+[    2.184083] NET: Registered protocol family 17
+[    2.188907] 9pnet: Installing 9P2000 support
+[    2.193431] Key type dns_resolver registered
+[    2.198592] mmc0: new HS400 MMC card at address 0001
+[    2.198676] registered taskstats version 1
+[    2.204795] mmcblk0: mmc0:0001 DG4032 29.1 GiB
+[    2.207808] Loading compiled-in X.509 certificates
+[    2.212792] mmcblk0boot0: mmc0:0001 DG4032 partition 1 4.00 MiB
+[    2.223818] mmcblk0boot1: mmc0:0001 DG4032 partition 2 4.00 MiB
+[    2.230319] thermal emergency: set temperature to 110 celsius
+[    2.230325] mmcblk0rpmb: mmc0:0001 DG4032 partition 3 4.00 MiB, chardev (509:0)
+[    2.243933] thermal emergency: shutdown target cpus 1
+[    2.249172] thermal emergency: freq scaled target cpus 0
+[    2.255358] renesas_irqc e61c0000.interrupt-controller: driving 6 irqs
+[    2.291961]  mmcblk0: p1 p2
+[    2.318014] ehci-platform ee080100.usb: EHCI Host Controller
+[    2.323789] ehci-platform ee080100.usb: new USB bus registered, assigned bus number 3
+[    2.331823] ehci-platform ee080100.usb: irq 142, io mem 0xee080100
+[    2.353929] ehci-platform ee080100.usb: USB 2.0 started, EHCI 1.10
+[    2.361359] hub 3-0:1.0: USB hub found
+[    2.365247] hub 3-0:1.0: 1 port detected
+[    2.372712] ohci-platform ee080000.usb: Generic Platform OHCI controller
+[    2.379545] ohci-platform ee080000.usb: new USB bus registered, assigned bus number 4
+[    2.387632] ohci-platform ee080000.usb: irq 142, io mem 0xee080000
+[    2.481135] hub 4-0:1.0: USB hub found
+[    2.485009] hub 4-0:1.0: 1 port detected
+[    2.494054] renesas_sdhi_internal_dmac ee100000.mmc: Got CD GPIO
+[    2.500170] renesas_sdhi_internal_dmac ee100000.mmc: Got WP GPIO
+[    2.556077] renesas_sdhi_internal_dmac ee100000.mmc: mmc1 base at 0x00000000ee100000, max clock rate 200 MHz
+[    2.571064] renesas_sdhi_internal_dmac ee120000.mmc: Got CD GPIO
+[    2.626926] renesas_sdhi_internal_dmac ee120000.mmc: mmc2 base at 0x00000000ee120000, max clock rate 200 MHz
+[    2.663054] [drm] Initialized rcar-du 1.0.0 20130110 for feb00000.display on minor 0
+[    2.671010] [drm] Device feb00000.display probed
+[    2.722457] Console: switching to colour frame buffer device 128x48
+[    2.744893] rcar-du feb00000.display: [drm] fb0: rcar-dudrmfb frame buffer device
+[    2.825340] ravb e6800000.ethernet eth0: limited PHY to 100Mbit/s
+[    2.831699] Micrel KSZ9031 Gigabit PHY e6800000.ethernet-ffffffff:00: attached PHY driver [Micrel KSZ9031 Gigabit PHY] (mii_bus:phy_addr=e6800000.ethernet-ffffffff:00, irq=147)
+[    4.462064] ravb e6800000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+[    4.489933] IP-Config: Guessing netmask 255.255.255.0
+[    4.495137] IP-Config: Complete:
+[    4.498463]      device=eth0, hwaddr=2e:09:0a:03:87:d5, ipaddr=192.168.8.30, mask=255.255.255.0, gw=255.255.255.255
+[    4.509124]      host=192.168.8.30, domain=, nis-domain=(none)
+[    4.515109]      bootserver=255.255.255.255, rootserver=192.168.8.8, rootpath=
+[    4.515396] clk: Disabling unused clocks
+[    4.527349] ALSA device list:
+[    4.530443]   #0: rcar-sound
+[    4.565860] VFS: Mounted root (nfs4 filesystem) on device 0:22.
+[    4.573520] devtmpfs: mounted
+[    4.579875] Freeing unused kernel memory: 6144K
+[    4.590016] Run /sbin/init as init process
+[    5.599614] systemd[1]: System time before build time, advancing clock.
+[    5.751395] NET: Registered protocol family 10
+[    5.761589] Segment Routing with IPv6
+[    5.848583] systemd[1]: systemd 255.4^ running in system mode (+PAM -AUDIT -SELINUX -APPARMOR +IMA -SMACK +SECCOMP -GCRYPT -GNUTLS -OPENSSL +ACL +BLKID -CURL -ELFUTILS -FIDO2 -IDN2 -IDN -IPTC +KMOD -LIBCRYPTSETUP +LIBFDISK -PCRE2 -PWQUALITY -P11KIT -QRENCODE -TPM2 -BZIP2 -LZ4 -XZ -ZLIB +ZSTD -BPF_FRAMEWORK -XKBCOMMON +UTMP +SYSVINIT default-hierarchy=unified)
+[    5.893293] systemd[1]: Detected architecture arm64.
+
+Welcome to Poky (Yocto Project Reference Distro) 5.0 (scarthgap)!
+
+[    5.929367] systemd[1]: Hostname set to <ebisu>.
+[    6.086003] random: crng init done
+[    6.295056] systemd-sysv-generator[237]: SysV service '/etc/init.d/umountnfs.sh' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[    6.356964] systemd-sysv-generator[237]: SysV service '/etc/init.d/set_default_governor.sh' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[    6.414084] systemd-sysv-generator[237]: SysV service '/etc/init.d/umountfs' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[    6.466308] systemd-sysv-generator[237]: SysV service '/etc/init.d/save-rtc.sh' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[    6.513617] systemd-sysv-generator[237]: SysV service '/etc/init.d/reboot' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[    6.557667] systemd-sysv-generator[237]: SysV service '/etc/init.d/halt' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[    6.601997] systemd-sysv-generator[237]: SysV service '/etc/init.d/sendsigs' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[    6.648767] systemd-sysv-generator[237]: SysV service '/etc/init.d/single' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[    6.694137] systemd-sysv-generator[237]: SysV service '/etc/init.d/pvrinit' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[    6.747182] systemd-sysv-generator[237]: SysV service '/etc/init.d/dropbear' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[    7.804473] systemd[1]: Queued start job for default target Graphical Interface.
+[    7.869730] systemd[1]: Created slice Slice /system/getty.
+[  OK  ] Created slice Slice /system/getty.
+[    7.901519] systemd[1]: Created slice Slice /system/modprobe.
+[  OK  ] Created slice Slice /system/modprobe.
+[    7.934234] systemd[1]: Created slice Slice /system/serial-getty.
+[  OK  ] Created slice Slice /system/serial-getty.
+[    7.964726] systemd[1]: Created slice User and Session Slice.
+[  OK  ] Created slice User and Session Slice.
+[    7.995134] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+[  OK  ] Started Dispatch Password Requests to Console Directory Watch.
+[    8.030963] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[  OK  ] Started Forward Password Requests to Wall Directory Watch.
+[    8.062703] systemd[1]: Reached target Path Units.
+[  OK  ] Reached target Path Units.
+[    8.090448] systemd[1]: Reached target Remote File Systems.
+[  OK  ] Reached target Remote File Systems.
+[    8.118438] systemd[1]: Reached target Slice Units.
+[  OK  ] Reached target Slice Units.
+[    8.146491] systemd[1]: Reached target Swaps.
+[  OK  ] Reached target Swaps.
+[    8.177357] systemd[1]: Listening on RPCbind Server Activation Socket.
+[  OK  ] Listening on RPCbind Server Activation Socket.
+[    8.210443] systemd[1]: Reached target RPC Port Mapper.
+[  OK  ] Reached target RPC Port Mapper.
+[    8.243316] systemd[1]: Listening on Syslog Socket.
+[  OK  ] Listening on Syslog Socket.
+[    8.271150] systemd[1]: Listening on initctl Compatibility Named Pipe.
+[  OK  ] Listening on initctl Compatibility Named Pipe.
+[    8.305736] systemd[1]: Listening on Journal Audit Socket.
+[  OK  ] Listening on Journal Audit Socket.
+[    8.331782] systemd[1]: Listening on Journal Socket (/dev/log).
+[  OK  ] Listening on Journal Socket (/dev/log).
+[    8.359863] systemd[1]: Listening on Journal Socket.
+[  OK  ] Listening on Journal Socket.
+[    8.389140] systemd[1]: Listening on Network Service Netlink Socket.
+[  OK  ] Listening on Network Service Netlink Socket.
+[    8.423492] systemd[1]: Listening on udev Control Socket.
+[  OK  ] Listening on udev Control Socket.
+[    8.451629] systemd[1]: Listening on udev Kernel Socket.
+[  OK  ] Listening on udev Kernel Socket.
+[    8.480858] systemd[1]: Listening on User Database Manager Socket.
+[  OK  ] Listening on User Database Manager Socket.
+[    8.523466] systemd[1]: Mounting Huge Pages File System...
+         Mounting Huge Pages File System...
+[    8.557433] systemd[1]: Mounting POSIX Message Queue File System...
+         Mounting POSIX Message Queue File System...
+[    8.601319] systemd[1]: Mounting Kernel Debug File System...
+         Mounting Kernel Debug File System...
+[    8.635753] systemd[1]: Kernel Trace File System was skipped because of an unmet condition check (ConditionPathExists=/sys/kernel/tracing).
+[    8.668151] systemd[1]: Mounting Temporary Directory /tmp...
+         Mounting Temporary Directory /tmp...
+[    8.696757] systemd[1]: Create List of Static Device Nodes was skipped because of an unmet condition check (ConditionFileNotEmpty=/lib/modules/5.10.218-yocto-standard/modules.devname).
+[    8.729266] systemd[1]: Starting Load Kernel Module configfs...
+         Starting Load Kernel Module configfs...
+[    8.762363] systemd[1]: Starting Load Kernel Module drm...
+         Starting Load Kernel Module drm...
+[    8.820741] systemd[1]: Starting Load Kernel Module fuse...
+         Starting Load Kernel Module fuse...
+[    8.859838] systemd[1]: Starting RPC Bind...
+         Starting RPC B[    8.869494] systemd[1]: File System Check on Root Device was skipped because of an unmet condition check (ConditionPathIsReadWrite=!/).
+ind...
+[    8.890837] systemd[1]: systemd-journald.service: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+[    8.909737] systemd[1]: systemd-journald.service: (This warning is only shown for the first unit using IP firewalling.)
+[    8.946706] systemd[1]: Starting Journal Service...
+         Starting Journal Service...
+[    9.041790] systemd[1]: Starting Load Kernel Modules...
+         Starting Load Kernel Modules...
+[    9.144472] systemd[1]: Starting Generate network units from Kernel command line...
+         Starting Generate network units from Kernel command line...
+[    9.195295] systemd-journald[248]: Collecting audit messages is enabled.
+[    9.238236] systemd[1]: Starting Remount Root and Kernel File Systems...
+         Starting Remount Root and Kernel File Systems...
+[    9.287734] systemd[1]: Starting Create Static Device Nodes in /dev gracefully...
+[    9.358225] vspm: loading out-of-tree module taints kernel.
+         Starting Create Static Device Nodes in /dev gracefully...
+[    9.435943] systemd[1]: Starting Coldplug All udev Devices...
+         Starting Coldplug All udev Devices...
+[    9.496546] systemd[1]: Started RPC Bind.
+[  OK  ] Started RPC Bind.
+[    9.527708] systemd[1]: Started Journal Service.
+[  OK  ] Started Journal Service.
+[  OK  ] Mounted Huge Pages File System.
+[  OK  ] Mounted POSIX Message Queue File System.
+[  OK  ] Mounted Kernel Debug File System.
+[  OK  ] Mounted Temporary Directory /tmp.
+[  OK  ] Finished Load Kernel Module configfs.
+[  OK  ] Finished Load Kernel Module drm.
+[  OK  ] Finished Load Kernel Module fuse.
+[  OK  ] Finished Load Kernel Modules.
+[FAILED] Failed to start Generate network units from Kernel command line.
+See 'systemctl status systemd-network-generator.service' for details.
+[  OK  ] Finished Remount Root and Kernel File Systems.
+[  OK  ] Reached target Preparation for Network.
+         Mounting Kernel Configuration File System...
+         Starting Flush Journal to Persistent Storage...
+         Starting Apply Kernel Variables...
+[  OK  ] Finished Create Static Device Nodes in /dev gracefully.
+         Starting Create Static Device Nodes in /dev...
+[  OK  ] Mounted Kernel Configuration File System.
+[   10.166303] systemd-journald[248]: Received client request to flush runtime journal.
+[  OK  ] Finished Flush Journal to Persistent Storage.
+[  OK  ] Finished Create Static Device Nodes in /dev.
+[  OK  ] Finished Apply Kernel Variables.
+[  OK  ] Reached target Preparation for Local File Systems.
+         Mounting /var/volatile...
+         Starting Rule-based Manager for Device Events and Files...
+[  OK  ] Mounted /var/volatile.
+         Starting Load/Save OS Random Seed...
+[  OK  ] Reached target Local File Systems.
+         Starting Create Volatile Files and Directories...
+[  OK  ] Finished Load/Save OS Random Seed.
+[  OK  ] Started Rule-based Manager for Device Events and Files.
+         Starting Network Configuration...
+         Starting User Database Manager...
+[  OK  ] Finished Create Volatile Files and Directories.
+         Starting Network Name Resolution...
+         Starting Network Time Synchronization...
+         Starting Record System Boot/Shutdown in UTMP...
+[  OK  ] Finished Coldplug All udev Devices.
+[  OK  ] Started User Database Manager.
+[  OK  ] Finished Record System Boot/Shutdown in UTMP.
+[   12.637149] ravb_streaming/searching for ravb interface
+[   12.762057] ravb_streaming/init: start(eth0)
+[   13.358415] ravb_streaming/init: success
+[  OK  ] Started Network Configuration.
+[  OK  ] Started Network Name Resolution.
+[   13.556546] ravb-mch ec5a0100.avb-mch: probe: start
+[  OK  ] Started Network Time Synchronization.
+[   13.795388] ravb-mch ec5a0100.avb-mch: probe: success
+[  OK  ] Reached target Network.
+[  OK  ] Reached target Host and Network Name Lookups.
+[  OK  ] Reached target System Initialization.
+[  OK  ] Started Daily Cleanup of Temporary Directories.
+[  OK  ] Reached target System Time Set.
+[  OK  ] Reached target Timer Units.
+[  OK  ] Listening on Avahi mDNS/DNS-SD Stack Activation Socket.
+[  OK  ] Listening on D-Bus System Message Bus Socket.
+[  OK  ] Listening on dropbear.socket.
+[  OK  ] Reached target Socket Units.
+[  OK  ] Reached target Basic System.
+         Starting Avahi mDNS/DNS-SD Stack...
+[  OK  ] Started Kernel Logging Service.
+[  OK  ] Started System Logging Service.
+         Starting D-Bus System Message Bus...
+[  OK  ] Started optee services.
+         Starting pvrinit.service...
+         Starting PowerVR consumer services...
+         Starting User Login Management...
+         Starting Permit User Sessions...
+[  OK  ] Finished Permit User Sessions.
+[  OK  ] Started D-Bus System Message Bus.
+[  OK  ] Started Getty on tty1.
+[  OK  ] Started Serial Getty on ttySC0.
+[  OK  ] Reached target Login Prompts.
+[  OK  ] Started Avahi mDNS/DNS-SD Stack.
+[   15.644643] PVR_K:  365: Read BVNC 22.67.54.30 from HW device registers
+[   15.662330] PVR_K:  365: RGX Device registered with BVNC 22.67.54.30
+[   15.684034] pvrsrvkm fd000000.gsx: Found 2 OPP points.
+[   15.695270] pvrsrvkm fd000000.gsx: opp[1/2]: (300000000 Hz, 820000 uV)
+[   15.713864] pvrsrvkm fd000000.gsx: opp[2/2]: (600000000 Hz, 820000 uV)
+[   15.782324] PVR_K:  365: RGX Firmware image 'rgx.fw.22.67.54.30' loaded
+[  OK  ] Started User Login Management.
+[   15.861245] PVR_K:  365: Shader binary image 'rgx.sh.22.67.54.30' loaded
+[   15.876544] [drm] Initialized pvr 1.15.6052913 20170530 for fd000000.gsx on minor 1
+[  OK  ] Started pvrinit.service.
+         Starting set_default_governor.service...
+[  OK  ] Finished PowerVR consumer services.
+[  OK  ] Started set_default_governor.service.
+[  OK  ] Reached target Multi-User System.
+[  OK  ] Reached target Graphical Interface.
+         Starting Record Runlevel Change in UTMP...
+[  OK  ] Finished Record Runlevel Change in UTMP.
+[   17.025834] adsp ec800000.adsp: assigned reserved memory node linux,adsp@57000000
+[   17.108021] adsp ec800000.adsp: virt_addr=0000000028ef79bc phy_addr=0x57000000 size=16777216
+[   17.223394] XF-IPC: ADSP rate set to 533333333
+[   17.280464] XF-FW: received firmware (202922 bytes)
+[   17.293287] XF-IPC: fill firmware area: 57100000[200884]
+[   17.319569] XF-IPC: fill firmware area: ece80000[1992]
+[   17.326383] XF: proxy-0 debug interface created
+[   17.335524] XF-IPC: DSP start-up sequence completed
+[   17.379276] XF: Xtensa DSP Proxy driver registered
+[   17.389022] XF: client-1 created: 00000000c8b0f3d2
+[   17.407727] ADSP base thread has been started.
+[   17.429576] ADSP base was created
+
+Poky (Yocto Project Reference Distro) 5.0 ebisu ttySC0
+
+ebisu login: [   18.510461] rcar_sound ec500000.sound: Can't update kctrl when idle
+[   18.899248] rcar_sound ec500000.sound: Can't update kctrl when idle
+[   18.961082] audit: type=1006 audit(1721791893.003:2): pid=437 uid=0 old-auid=4294967295 auid=0 tty=(none) old-ses=4294967295 ses=1 res=1
+root
+
+WARNING: Poky is a reference Yocto Project distribution that should be used for
+testing and development purposes only. It is recommended that you create your
+own distribution for production use.
+
+root@ebisu:~# modprobe -a mmngr mmngrbuf
+[   27.718172] rgnmm_drv mmngr: assigned reserved memory node linux,multimedia@68000000
+root@ebisu:~# [   35.809979] SDHI0 VccQ: disabling
+[   35.813343] SDHI1 VccQ: disabling
+
+root@ebisu:~/v4l2-TP/Gen3_vsp2_tp# modprobe -a mmngr mmngrbuf
+root@ebisu:~/v4l2-TP/Gen3_vsp2_tp# vi ../Gen3_vsp2_tp_script/test4311.sh
+root@ebisu:~/v4l2-TP/Gen3_vsp2_tp# ../Gen3_vsp2_tp_script/test4311.sh
+MemTotal:        1849496 kB
+MemFree:         1518516 kB
+MemAvailable:    1604060 kB
+Buffers:               0 kB
+Cached:           151756 kB
+SwapCached:            0 kB
+Active:            27624 kB
+Inactive:         154504 kB
+Active(anon):        564 kB
+Inactive(anon):    39648 kB
+Active(file):      27060 kB
+Inactive(file):   114856 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:                 0 kB
+Writeback:             0 kB
+AnonPages:         30372 kB
+Mapped:            28488 kB
+Shmem:              9840 kB
+KReclaimable:      11160 kB
+Slab:              41156 kB
+SReclaimable:      11160 kB
+SUnreclaim:        29996 kB
+KernelStack:        3216 kB
+PageTables:         1632 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:      924748 kB
+Committed_AS:      57464 kB
+VmallocTotal:   135290159040 kB
+VmallocUsed:        6988 kB
+VmallocChunk:          0 kB
+Percpu:              568 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:      2048 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+FileHugePages:         0 kB
+FilePmdMapped:         0 kB
+CmaTotal:         344064 kB
+CmaFree:          256972 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+0001：insmod  rmmod
+0002：insmod  rmmod
+0003：insmod  rmmod
+0004：insmod  rmmod
+0005：insmod  rmmod
+0006：insmod  rmmod
+0007：insmod  rmmod
+0008：insmod  rmmod
+0009：insmod  rmmod
+0010：insmod  rmmod
+0011：insmod  rmmod
+0012：insmod  rmmod
+0013：insmod  rmmod
+0014：insmod  rmmod
+0015：insmod  rmmod
+0016：insmod  rmmod
+0017：insmod  rmmod
+0018：insmod  rmmod
+0019：insmod  rmmod
+0020：insmod  rmmod
+0021：insmod  rmmod
+0022：insmod  rmmod
+0023：insmod  rmmod
+0024：insmod  rmmod
+0025：insmod  rmmod
+0026：insmod  rmmod
+0027：insmod  rmmod
+0028：insmod  rmmod
+0029：insmod  rmmod
+0030：insmod  rmmod
+0031：insmod  rmmod
+0032：insmod  rmmod
+0033：insmod  rmmod
+0034：insmod  rmmod
+0035：insmod  rmmod
+0036：insmod  rmmod
+0037：insmod  rmmod
+0038：insmod  rmmod
+0039：insmod  rmmod
+0040：insmod  rmmod
+0041：insmod  rmmod
+0042：insmod  rmmod
+0043：insmod  rmmod
+0044：insmod  rmmod
+0045：insmod  rmmod
+0046：insmod  rmmod
+0047：insmod  rmmod
+0048：insmod  rmmod
+0049：insmod  rmmod
+0050：insmod  rmmod
+0051：insmod  rmmod
+0052：insmod  rmmod
+0053：insmod  rmmod
+0054：insmod  rmmod
+0055：insmod  rmmod
+0056：insmod  rmmod
+0057：insmod  rmmod
+0058：insmod  rmmod
+0059：insmod  rmmod
+0060：insmod  rmmod
+0061：insmod  rmmod
+0062：insmod  rmmod
+0063：insmod  rmmod
+0064：insmod  rmmod
+0065：insmod  rmmod
+0066：insmod  rmmod
+0067：insmod  rmmod
+0068：insmod  rmmod
+0069：insmod  rmmod
+0070：insmod  rmmod
+0071：insmod  rmmod
+0072：insmod  rmmod
+0073：insmod  rmmod
+0074：insmod  rmmod
+0075：insmod  rmmod
+0076：insmod  rmmod
+0077：insmod  rmmod
+0078：insmod  rmmod
+0079：insmod  rmmod
+0080：insmod  rmmod
+0081：insmod  rmmod
+0082：insmod  rmmod
+0083：insmod  rmmod
+0084：insmod  rmmod
+0085：insmod  rmmod
+0086：insmod  rmmod
+0087：insmod  rmmod
+0088：insmod  rmmod
+0089：insmod  rmmod
+0090：insmod  rmmod
+0091：insmod  rmmod
+0092：insmod  rmmod
+0093：insmod  rmmod
+0094：insmod  rmmod
+0095：insmod  rmmod
+0096：insmod  rmmod
+0097：insmod  rmmod
+0098：insmod  rmmod
+0099：insmod  rmmod
+0100：insmod  rmmod
+0101：insmod  rmmod
+0102：insmod  rmmod
+0103：insmod  rmmod
+0104：insmod  rmmod
+0105：insmod  rmmod
+0106：insmod  rmmod
+0107：insmod  rmmod
+0108：insmod  rmmod
+0109：insmod  rmmod
+0110：insmod  rmmod
+0111：insmod  rmmod
+0112：insmod  rmmod
+0113：insmod  rmmod
+0114：insmod  rmmod
+0115：insmod  rmmod
+0116：insmod  rmmod
+0117：insmod  rmmod
+0118：insmod  rmmod
+0119：insmod  rmmod
+0120：insmod  rmmod
+0121：insmod  rmmod
+0122：insmod  rmmod
+0123：insmod  rmmod
+0124：insmod  rmmod
+0125：insmod  rmmod
+0126：insmod  rmmod
+0127：insmod  rmmod
+0128：insmod  rmmod
+0129：insmod  rmmod
+0130：insmod  rmmod
+0131：insmod  rmmod
+0132：insmod  rmmod
+0133：insmod  rmmod
+0134：insmod  rmmod
+0135：insmod  rmmod
+0136：insmod  rmmod
+0137：insmod  rmmod
+0138：insmod  rmmod
+0139：insmod  rmmod
+0140：insmod  rmmod
+0141：insmod  rmmod
+0142：insmod  rmmod
+0143：insmod  rmmod
+0144：insmod  rmmod
+0145：insmod  rmmod
+0146：insmod  rmmod
+0147：insmod  rmmod
+0148：insmod  rmmod
+0149：insmod  rmmod
+0150：insmod  rmmod
+0151：insmod  rmmod
+0152：insmod  rmmod
+0153：insmod  rmmod
+0154：insmod  rmmod
+0155：insmod  rmmod
+0156：insmod  rmmod
+0157：insmod  rmmod
+0158：insmod  rmmod
+0159：insmod  rmmod
+0160：insmod  rmmod
+0161：insmod  rmmod
+0162：insmod  rmmod
+0163：insmod  rmmod
+0164：insmod  rmmod
+0165：insmod  rmmod
+0166：insmod  rmmod
+0167：insmod  rmmod
+0168：insmod  rmmod
+0169：insmod  rmmod
+0170：insmod  rmmod
+0171：insmod  rmmod
+0172：insmod  rmmod
+0173：insmod  rmmod
+0174：insmod  rmmod
+0175：insmod  rmmod
+0176：insmod  rmmod
+0177：insmod  rmmod
+0178：insmod  rmmod
+0179：insmod  rmmod
+0180：insmod  rmmod
+0181：insmod  rmmod
+0182：insmod  rmmod
+0183：insmod  rmmod
+0184：insmod  rmmod
+0185：insmod  rmmod
+0186：insmod  rmmod
+0187：insmod  rmmod
+0188：insmod  rmmod
+0189：insmod  rmmod
+0190：insmod  rmmod
+0191：insmod  rmmod
+0192：insmod  rmmod
+0193：insmod  rmmod
+0194：insmod  rmmod
+0195：insmod  rmmod
+0196：insmod  rmmod
+0197：insmod  rmmod
+0198：insmod  rmmod
+0199：insmod  rmmod
+0200：insmod  rmmod
+0201：insmod  rmmod
+0202：insmod  rmmod
+0203：insmod  rmmod
+0204：insmod  rmmod
+0205：insmod  rmmod
+0206：insmod  rmmod
+0207：insmod  rmmod
+0208：insmod  rmmod
+0209：insmod  rmmod
+0210：insmod  rmmod
+0211：insmod  rmmod
+0212：insmod  rmmod
+0213：insmod  rmmod
+0214：insmod  rmmod
+0215：insmod  rmmod
+0216：insmod  rmmod
+0217：insmod  rmmod
+0218：insmod  rmmod
+0219：insmod  rmmod
+0220：insmod  rmmod
+0221：insmod  rmmod
+0222：insmod  rmmod
+0223：insmod  rmmod
+0224：insmod  rmmod
+0225：insmod  rmmod
+0226：insmod  rmmod
+0227：insmod  rmmod
+0228：insmod  rmmod
+0229：insmod  rmmod
+0230：insmod  rmmod
+0231：insmod  rmmod
+0232：insmod  rmmod
+0233：insmod  rmmod
+0234：insmod  rmmod
+0235：insmod  rmmod
+0236：insmod  rmmod
+0237：insmod  rmmod
+0238：insmod  rmmod
+0239：insmod  rmmod
+0240：insmod  rmmod
+0241：insmod  rmmod
+0242：insmod  rmmod
+0243：insmod  rmmod
+0244：insmod  rmmod
+0245：insmod  rmmod
+0246：insmod  rmmod
+0247：insmod  rmmod
+0248：insmod  rmmod
+0249：insmod  rmmod
+0250：insmod  rmmod
+0251：insmod  rmmod
+0252：insmod  rmmod
+0253：insmod  rmmod
+0254：insmod  rmmod
+0255：insmod  rmmod
+0256：insmod  rmmod
+0257：insmod  rmmod
+0258：insmod  rmmod
+0259：insmod  rmmod
+0260：insmod  rmmod
+0261：insmod  rmmod
+0262：insmod  rmmod
+0263：insmod  rmmod
+0264：insmod  rmmod
+0265：insmod  rmmod
+0266：insmod  rmmod
+0267：insmod  rmmod
+0268：insmod  rmmod
+0269：insmod  rmmod
+0270：insmod  rmmod
+0271：insmod  rmmod
+0272：insmod  rmmod
+0273：insmod  rmmod
+0274：insmod  rmmod
+0275：insmod  rmmod
+0276：insmod  rmmod
+0277：insmod  rmmod
+0278：insmod  rmmod
+0279：insmod  rmmod
+0280：insmod  rmmod
+0281：insmod  rmmod
+0282：insmod  rmmod
+0283：insmod  rmmod
+0284：insmod  rmmod
+0285：insmod  rmmod
+0286：insmod  rmmod
+0287：insmod  rmmod
+0288：insmod  rmmod
+0289：insmod  rmmod
+0290：insmod  rmmod
+0291：insmod  rmmod
+0292：insmod  rmmod
+0293：insmod  rmmod
+0294：insmod  rmmod
+0295：insmod  rmmod
+0296：insmod  rmmod
+0297：insmod  rmmod
+0298：insmod  rmmod
+0299：insmod  rmmod
+0300：insmod  rmmod
+0301：insmod  rmmod
+0302：insmod  rmmod
+0303：insmod  rmmod
+0304：insmod  rmmod
+0305：insmod  rmmod
+0306：insmod  rmmod
+0307：insmod  rmmod
+0308：insmod  rmmod
+0309：insmod  rmmod
+0310：insmod  rmmod
+0311：insmod  rmmod
+0312：insmod  rmmod
+0313：insmod  rmmod
+0314：insmod  rmmod
+0315：insmod  rmmod
+0316：insmod  rmmod
+0317：insmod  rmmod
+0318：insmod  rmmod
+0319：insmod  rmmod
+0320：insmod  rmmod
+0321：insmod  rmmod
+0322：insmod  rmmod
+0323：insmod  rmmod
+0324：insmod  rmmod
+0325：insmod  rmmod
+0326：insmod  rmmod
+0327：insmod  rmmod
+0328：insmod  rmmod
+0329：insmod  rmmod
+0330：insmod  rmmod
+0331：insmod  rmmod
+0332：insmod  rmmod
+0333：insmod  rmmod
+0334：insmod  rmmod
+0335：insmod  rmmod
+0336：insmod  rmmod
+0337：insmod  rmmod
+0338：insmod  rmmod
+0339：insmod  rmmod
+0340：insmod  rmmod
+0341：insmod  rmmod
+0342：insmod  rmmod
+0343：insmod  rmmod
+0344：insmod  rmmod
+0345：insmod  rmmod
+0346：insmod  rmmod
+0347：insmod  rmmod
+0348：insmod  rmmod
+0349：insmod  rmmod
+0350：insmod  rmmod
+0351：insmod  rmmod
+0352：insmod  rmmod
+0353：insmod  rmmod
+0354：insmod  rmmod
+0355：insmod  rmmod
+0356：insmod  rmmod
+0357：insmod  rmmod
+0358：insmod  rmmod
+0359：insmod  rmmod
+0360：insmod  rmmod
+0361：insmod  rmmod
+0362：insmod  rmmod
+0363：insmod  rmmod
+0364：insmod  rmmod
+0365：insmod  rmmod
+0366：insmod  rmmod
+0367：insmod  rmmod
+0368：insmod  rmmod
+0369：insmod  rmmod
+0370：insmod  rmmod
+0371：insmod  rmmod
+0372：insmod  rmmod
+0373：insmod  rmmod
+0374：insmod  rmmod
+0375：insmod  rmmod
+0376：insmod  rmmod
+0377：insmod  rmmod
+0378：insmod  rmmod
+0379：insmod  rmmod
+0380：insmod  rmmod
+0381：insmod  rmmod
+0382：insmod  rmmod
+0383：insmod  rmmod
+0384：insmod  rmmod
+0385：insmod  rmmod
+0386：insmod  rmmod
+0387：insmod  rmmod
+0388：insmod  rmmod
+0389：insmod  rmmod
+0390：insmod  rmmod
+0391：insmod  rmmod
+0392：insmod  rmmod
+0393：insmod  rmmod
+0394：insmod  rmmod
+0395：insmod  rmmod
+0396：insmod  rmmod
+0397：insmod  rmmod
+0398：insmod  rmmod
+0399：insmod  rmmod
+0400：insmod  rmmod
+0401：insmod  rmmod
+0402：insmod  rmmod
+0403：insmod  rmmod
+0404：insmod  rmmod
+0405：insmod  rmmod
+0406：insmod  rmmod
+0407：insmod  rmmod
+0408：insmod  rmmod
+0409：insmod  rmmod
+0410：insmod  rmmod
+0411：insmod  rmmod
+0412：insmod  rmmod
+0413：insmod  rmmod
+0414：insmod  rmmod
+0415：insmod  rmmod
+0416：insmod  rmmod
+0417：insmod  rmmod
+0418：insmod  rmmod
+0419：insmod  rmmod
+0420：insmod  rmmod
+0421：insmod  rmmod
+0422：insmod  rmmod
+0423：insmod  rmmod
+0424：insmod  rmmod
+0425：insmod  rmmod
+0426：insmod  rmmod
+0427：insmod  rmmod
+0428：insmod  rmmod
+0429：insmod  rmmod
+0430：insmod  rmmod
+0431：insmod  rmmod
+0432：insmod  rmmod
+0433：insmod  rmmod
+0434：insmod  rmmod
+0435：insmod  rmmod
+0436：insmod  rmmod
+0437：insmod  rmmod
+0438：insmod  rmmod
+0439：insmod  rmmod
+0440：insmod  rmmod
+0441：insmod  rmmod
+0442：insmod  rmmod
+0443：insmod  rmmod
+0444：insmod  rmmod
+0445：insmod  rmmod
+0446：insmod  rmmod
+0447：insmod  rmmod
+0448：insmod  rmmod
+0449：insmod  rmmod
+0450：insmod  rmmod
+0451：insmod  rmmod
+0452：insmod  rmmod
+0453：insmod  rmmod
+0454：insmod  rmmod
+0455：insmod  rmmod
+0456：insmod  rmmod
+0457：insmod  rmmod
+0458：insmod  rmmod
+0459：insmod  rmmod
+0460：insmod  rmmod
+0461：insmod  rmmod
+0462：insmod  rmmod
+0463：insmod  rmmod
+0464：insmod  rmmod
+0465：insmod  rmmod
+0466：insmod  rmmod
+0467：insmod  rmmod
+0468：insmod  rmmod
+0469：insmod  rmmod
+0470：insmod  rmmod
+0471：insmod  rmmod
+0472：insmod  rmmod
+0473：insmod  rmmod
+0474：insmod  rmmod
+0475：insmod  rmmod
+0476：insmod  rmmod
+0477：insmod  rmmod
+0478：insmod  rmmod
+0479：insmod  rmmod
+0480：insmod  rmmod
+0481：insmod  rmmod
+0482：insmod  rmmod
+0483：insmod  rmmod
+0484：insmod  rmmod
+0485：insmod  rmmod
+0486：insmod  rmmod
+0487：insmod  rmmod
+0488：insmod  rmmod
+0489：insmod  rmmod
+0490：insmod  rmmod
+0491：insmod  rmmod
+0492：insmod  rmmod
+0493：insmod  rmmod
+0494：insmod  rmmod
+0495：insmod  rmmod
+0496：insmod  rmmod
+0497：insmod  rmmod
+0498：insmod  rmmod
+0499：insmod  rmmod
+0500：insmod  rmmod
+0501：insmod  rmmod
+0502：insmod  rmmod
+0503：insmod  rmmod
+0504：insmod  rmmod
+0505：insmod  rmmod
+0506：insmod  rmmod
+0507：insmod  rmmod
+0508：insmod  rmmod
+0509：insmod  rmmod
+0510：insmod  rmmod
+0511：insmod  rmmod
+0512：insmod  rmmod
+0513：insmod  rmmod
+0514：insmod  rmmod
+0515：insmod  rmmod
+0516：insmod  rmmod
+0517：insmod  rmmod
+0518：insmod  rmmod
+0519：insmod  rmmod
+0520：insmod  rmmod
+0521：insmod  rmmod
+0522：insmod  rmmod
+0523：insmod  rmmod
+0524：insmod  rmmod
+0525：insmod  rmmod
+0526：insmod  rmmod
+0527：insmod  rmmod
+0528：insmod  rmmod
+0529：insmod  rmmod
+0530：insmod  rmmod
+0531：insmod  rmmod
+0532：insmod  rmmod
+0533：insmod  rmmod
+0534：insmod  rmmod
+0535：insmod  rmmod
+0536：insmod  rmmod
+0537：insmod  rmmod
+0538：insmod  rmmod
+0539：insmod  rmmod
+0540：insmod  rmmod
+0541：insmod  rmmod
+0542：insmod  rmmod
+0543：insmod  rmmod
+0544：insmod  rmmod
+0545：insmod  rmmod
+0546：insmod  rmmod
+0547：insmod  rmmod
+0548：insmod  rmmod
+0549：insmod  rmmod
+0550：insmod  rmmod
+0551：insmod  rmmod
+0552：insmod  rmmod
+0553：insmod  rmmod
+0554：insmod  rmmod
+0555：insmod  rmmod
+0556：insmod  rmmod
+0557：insmod  rmmod
+0558：insmod  rmmod
+0559：insmod  rmmod
+0560：insmod  rmmod
+0561：insmod  rmmod
+0562：insmod  rmmod
+0563：insmod  rmmod
+0564：insmod  rmmod
+0565：insmod  rmmod
+0566：insmod  rmmod
+0567：insmod  rmmod
+0568：insmod  rmmod
+0569：insmod  rmmod
+0570：insmod  rmmod
+0571：insmod  rmmod
+0572：insmod  rmmod
+0573：insmod  rmmod
+0574：insmod  rmmod
+0575：insmod  rmmod
+0576：insmod  rmmod
+0577：insmod  rmmod
+0578：insmod  rmmod
+0579：insmod  rmmod
+0580：insmod  rmmod
+0581：insmod  rmmod
+0582：insmod  rmmod
+0583：insmod  rmmod
+0584：insmod  rmmod
+0585：insmod  rmmod
+0586：insmod  rmmod
+0587：insmod  rmmod
+0588：insmod  rmmod
+0589：insmod  rmmod
+0590：insmod  rmmod
+0591：insmod  rmmod
+0592：insmod  rmmod
+0593：insmod  rmmod
+0594：insmod  rmmod
+0595：insmod  rmmod
+0596：insmod  rmmod
+0597：insmod  rmmod
+0598：insmod  rmmod
+0599：insmod  rmmod
+0600：insmod  rmmod
+0601：insmod  rmmod
+0602：insmod  rmmod
+0603：insmod  rmmod
+0604：insmod  rmmod
+0605：insmod  rmmod
+0606：insmod  rmmod
+0607：insmod  rmmod
+0608：insmod  rmmod
+0609：insmod  rmmod
+0610：insmod  rmmod
+0611：insmod  rmmod
+0612：insmod  rmmod
+0613：insmod  rmmod
+0614：insmod  rmmod
+0615：insmod  rmmod
+0616：insmod  rmmod
+0617：insmod  rmmod
+0618：insmod  rmmod
+0619：insmod  rmmod
+0620：insmod  rmmod
+0621：insmod  rmmod
+0622：insmod  rmmod
+0623：insmod  rmmod
+0624：insmod  rmmod
+0625：insmod  rmmod
+0626：insmod  rmmod
+0627：insmod  rmmod
+0628：insmod  rmmod
+0629：insmod  rmmod
+0630：insmod  rmmod
+0631：insmod  rmmod
+0632：insmod  rmmod
+0633：insmod  rmmod
+0634：insmod  rmmod
+0635：insmod  rmmod
+0636：insmod  rmmod
+0637：insmod  rmmod
+0638：insmod  rmmod
+0639：insmod  rmmod
+0640：insmod  rmmod
+0641：insmod  rmmod
+0642：insmod  rmmod
+0643：insmod  rmmod
+0644：insmod  rmmod
+0645：insmod  rmmod
+0646：insmod  rmmod
+0647：insmod  rmmod
+0648：insmod  rmmod
+0649：insmod  rmmod
+0650：insmod  rmmod
+0651：insmod  rmmod
+0652：insmod  rmmod
+0653：insmod  rmmod
+0654：insmod  rmmod
+0655：insmod  rmmod
+0656：insmod  rmmod
+0657：insmod  rmmod
+0658：insmod  rmmod
+0659：insmod  rmmod
+0660：insmod  rmmod
+0661：insmod  rmmod
+0662：insmod  rmmod
+0663：insmod  rmmod
+0664：insmod  rmmod
+0665：insmod  rmmod
+0666：insmod  rmmod
+0667：insmod  rmmod
+0668：insmod  rmmod
+0669：insmod  rmmod
+0670：insmod  rmmod
+0671：insmod  rmmod
+0672：insmod  rmmod
+0673：insmod  rmmod
+0674：insmod  rmmod
+0675：insmod  rmmod
+0676：insmod  rmmod
+0677：insmod  rmmod
+0678：insmod  rmmod
+0679：insmod  rmmod
+0680：insmod  rmmod
+0681：insmod  rmmod
+0682：insmod  rmmod
+0683：insmod  rmmod
+0684：insmod  rmmod
+0685：insmod  rmmod
+0686：insmod  rmmod
+0687：insmod  rmmod
+0688：insmod  rmmod
+0689：insmod  rmmod
+0690：insmod  rmmod
+0691：insmod  rmmod
+0692：insmod  rmmod
+0693：insmod  rmmod
+0694：insmod  rmmod
+0695：insmod  rmmod
+0696：insmod  rmmod
+0697：insmod  rmmod
+0698：insmod  rmmod
+0699：insmod  rmmod
+0700：insmod  rmmod
+0701：insmod  rmmod
+0702：insmod  rmmod
+0703：insmod  rmmod
+0704：insmod  rmmod
+0705：insmod  rmmod
+0706：insmod  rmmod
+0707：insmod  rmmod
+0708：insmod  rmmod
+0709：insmod  rmmod
+0710：insmod  rmmod
+0711：insmod  rmmod
+0712：insmod  rmmod
+0713：insmod  rmmod
+0714：insmod  rmmod
+0715：insmod  rmmod
+0716：insmod  rmmod
+0717：insmod  rmmod
+0718：insmod  rmmod
+0719：insmod  rmmod
+0720：insmod  rmmod
+0721：insmod  rmmod
+0722：insmod  rmmod
+0723：insmod  rmmod
+0724：insmod  rmmod
+0725：insmod  rmmod
+0726：insmod  rmmod
+0727：insmod  rmmod
+0728：insmod  rmmod
+0729：insmod  rmmod
+0730：insmod  rmmod
+0731：insmod  rmmod
+0732：insmod  rmmod
+0733：insmod  rmmod
+0734：insmod  rmmod
+0735：insmod  rmmod
+0736：insmod  rmmod
+0737：insmod  rmmod
+0738：insmod  rmmod
+0739：insmod  rmmod
+0740：insmod  rmmod
+0741：insmod  rmmod
+0742：insmod  rmmod
+0743：insmod  rmmod
+0744：insmod  rmmod
+0745：insmod  rmmod
+0746：insmod  rmmod
+0747：insmod  rmmod
+0748：insmod  rmmod
+0749：insmod  rmmod
+0750：insmod  rmmod
+0751：insmod  rmmod
+0752：insmod  rmmod
+0753：insmod  rmmod
+0754：insmod  rmmod
+0755：insmod  rmmod
+0756：insmod  rmmod
+0757：insmod  rmmod
+0758：insmod  rmmod
+0759：insmod  rmmod
+0760：insmod  rmmod
+0761：insmod  rmmod
+0762：insmod  rmmod
+0763：insmod  rmmod
+0764：insmod  rmmod
+0765：insmod  rmmod
+0766：insmod  rmmod
+0767：insmod  rmmod
+0768：insmod  rmmod
+0769：insmod  rmmod
+0770：insmod  rmmod
+0771：insmod  rmmod
+0772：insmod  rmmod
+0773：insmod  rmmod
+0774：insmod  rmmod
+0775：insmod  rmmod
+0776：insmod  rmmod
+0777：insmod  rmmod
+0778：insmod  rmmod
+0779：insmod  rmmod
+0780：insmod  rmmod
+0781：insmod  rmmod
+0782：insmod  rmmod
+0783：insmod  rmmod
+0784：insmod  rmmod
+0785：insmod  rmmod
+0786：insmod  rmmod
+0787：insmod  rmmod
+0788：insmod  rmmod
+0789：insmod  rmmod
+0790：insmod  rmmod
+0791：insmod  rmmod
+0792：insmod  rmmod
+0793：insmod  rmmod
+0794：insmod  rmmod
+0795：insmod  rmmod
+0796：insmod  rmmod
+0797：insmod  rmmod
+0798：insmod  rmmod
+0799：insmod  rmmod
+0800：insmod  rmmod
+0801：insmod  rmmod
+0802：insmod  rmmod
+0803：insmod  rmmod
+0804：insmod  rmmod
+0805：insmod  rmmod
+0806：insmod  rmmod
+0807：insmod  rmmod
+0808：insmod  rmmod
+0809：insmod  rmmod
+0810：insmod  rmmod
+0811：insmod  rmmod
+0812：insmod  rmmod
+0813：insmod  rmmod
+0814：insmod  rmmod
+0815：insmod  rmmod
+0816：insmod  rmmod
+0817：insmod  rmmod
+0818：insmod  rmmod
+0819：insmod  rmmod
+0820：insmod  rmmod
+0821：insmod  rmmod
+0822：insmod  rmmod
+0823：insmod  rmmod
+0824：insmod  rmmod
+0825：insmod  rmmod
+0826：insmod  rmmod
+0827：insmod  rmmod
+0828：insmod  rmmod
+0829：insmod  rmmod
+0830：insmod  rmmod
+0831：insmod  rmmod
+0832：insmod  rmmod
+0833：insmod  rmmod
+0834：insmod  rmmod
+0835：insmod  rmmod
+0836：insmod  rmmod
+0837：insmod  rmmod
+0838：insmod  rmmod
+0839：insmod  rmmod
+0840：insmod  rmmod
+0841：insmod  rmmod
+0842：insmod  rmmod
+0843：insmod  rmmod
+0844：insmod  rmmod
+0845：insmod  rmmod
+0846：insmod  rmmod
+0847：insmod  rmmod
+0848：insmod  rmmod
+0849：insmod  rmmod
+0850：insmod  rmmod
+0851：insmod  rmmod
+0852：insmod  rmmod
+0853：insmod  rmmod
+0854：insmod  rmmod
+0855：insmod  rmmod
+0856：insmod  rmmod
+0857：insmod  rmmod
+0858：insmod  rmmod
+0859：insmod  rmmod
+0860：insmod  rmmod
+0861：insmod  rmmod
+0862：insmod  rmmod
+0863：insmod  rmmod
+0864：insmod  rmmod
+0865：insmod  rmmod
+0866：insmod  rmmod
+0867：insmod  rmmod
+0868：insmod  rmmod
+0869：insmod  rmmod
+0870：insmod  rmmod
+0871：insmod  rmmod
+0872：insmod  rmmod
+0873：insmod  rmmod
+0874：insmod  rmmod
+0875：insmod  rmmod
+0876：insmod  rmmod
+0877：insmod  rmmod
+0878：insmod  rmmod
+0879：insmod  rmmod
+0880：insmod  rmmod
+0881：insmod  rmmod
+0882：insmod  rmmod
+0883：insmod  rmmod
+0884：insmod  rmmod
+0885：insmod  rmmod
+0886：insmod  rmmod
+0887：insmod  rmmod
+0888：insmod  rmmod
+0889：insmod  rmmod
+0890：insmod  rmmod
+0891：insmod  rmmod
+0892：insmod  rmmod
+0893：insmod  rmmod
+0894：insmod  rmmod
+0895：insmod  rmmod
+0896：insmod  rmmod
+0897：insmod  rmmod
+0898：insmod  rmmod
+0899：insmod  rmmod
+0900：insmod  rmmod
+0901：insmod  rmmod
+0902：insmod  rmmod
+0903：insmod  rmmod
+0904：insmod  rmmod
+0905：insmod  rmmod
+0906：insmod  rmmod
+0907：insmod  rmmod
+0908：insmod  rmmod
+0909：insmod  rmmod
+0910：insmod  rmmod
+0911：insmod  rmmod
+0912：insmod  rmmod
+0913：insmod  rmmod
+0914：insmod  rmmod
+0915：insmod  rmmod
+0916：insmod  rmmod
+0917：insmod  rmmod
+0918：insmod  rmmod
+0919：insmod  rmmod
+0920：insmod  rmmod
+0921：insmod  rmmod
+0922：insmod  rmmod
+0923：insmod  rmmod
+0924：insmod  rmmod
+0925：insmod  rmmod
+0926：insmod  rmmod
+0927：insmod  rmmod
+0928：insmod  rmmod
+0929：insmod  rmmod
+0930：insmod  rmmod
+0931：insmod  rmmod
+0932：insmod  rmmod
+0933：insmod  rmmod
+0934：insmod  rmmod
+0935：insmod  rmmod
+0936：insmod  rmmod
+0937：insmod  rmmod
+0938：insmod  rmmod
+0939：insmod  rmmod
+0940：insmod  rmmod
+0941：insmod  rmmod
+0942：insmod  rmmod
+0943：insmod  rmmod
+0944：insmod  rmmod
+0945：insmod  rmmod
+0946：insmod  rmmod
+0947：insmod  rmmod
+0948：insmod  rmmod
+0949：insmod  rmmod
+0950：insmod  rmmod
+0951：insmod  rmmod
+0952：insmod  rmmod
+0953：insmod  rmmod
+0954：insmod  rmmod
+0955：insmod  rmmod
+0956：insmod  rmmod
+0957：insmod  rmmod
+0958：insmod  rmmod
+0959：insmod  rmmod
+0960：insmod  rmmod
+0961：insmod  rmmod
+0962：insmod  rmmod
+0963：insmod  rmmod
+0964：insmod  rmmod
+0965：insmod  rmmod
+0966：insmod  rmmod
+0967：insmod  rmmod
+0968：insmod  rmmod
+0969：insmod  rmmod
+0970：insmod  rmmod
+0971：insmod  rmmod
+0972：insmod  rmmod
+0973：insmod  rmmod
+0974：insmod  rmmod
+0975：insmod  rmmod
+0976：insmod  rmmod
+0977：insmod  rmmod
+0978：insmod  rmmod
+0979：insmod  rmmod
+0980：insmod  rmmod
+0981：insmod  rmmod
+0982：insmod  rmmod
+0983：insmod  rmmod
+0984：insmod  rmmod
+0985：insmod  rmmod
+0986：insmod  rmmod
+0987：insmod  rmmod
+0988：insmod  rmmod
+0989：insmod  rmmod
+0990：insmod  rmmod
+0991：insmod  rmmod
+0992：insmod  rmmod
+0993：insmod  rmmod
+0994：insmod  rmmod
+0995：insmod  rmmod
+0996：insmod  rmmod
+0997：insmod  rmmod
+0998：insmod  rmmod
+0999：insmod  rmmod
+1000：insmod  rmmod
+1001：insmod  rmmod
+1002：insmod  rmmod
+1003：insmod  rmmod
+1004：insmod  rmmod
+1005：insmod  rmmod
+1006：insmod  rmmod
+1007：insmod  rmmod
+1008：insmod  rmmod
+1009：insmod  rmmod
+1010：insmod  rmmod
+1011：insmod  rmmod
+1012：insmod  rmmod
+1013：insmod  rmmod
+1014：insmod  rmmod
+1015：insmod  rmmod
+1016：insmod  rmmod
+1017：insmod  rmmod
+1018：insmod  rmmod
+1019：insmod  rmmod
+1020：insmod  rmmod
+1021：insmod  rmmod
+1022：insmod  rmmod
+1023：insmod  rmmod
+1024：insmod  rmmod
+1025：insmod  rmmod
+1026：insmod  rmmod
+1027：insmod  rmmod
+1028：insmod  rmmod
+1029：insmod  rmmod
+1030：insmod  rmmod
+1031：insmod  rmmod
+1032：insmod  rmmod
+1033：insmod  rmmod
+1034：insmod  rmmod
+1035：insmod  rmmod
+1036：insmod  rmmod
+1037：insmod  rmmod
+1038：insmod  rmmod
+1039：insmod  rmmod
+1040：insmod  rmmod
+1041：insmod  rmmod
+1042：insmod  rmmod
+1043：insmod  rmmod
+1044：insmod  rmmod
+1045：insmod  rmmod
+1046：insmod  rmmod
+1047：insmod  rmmod
+1048：insmod  rmmod
+1049：insmod  rmmod
+1050：insmod  rmmod
+MemTotal:        1849496 kB
+MemFree:         1494816 kB
+MemAvailable:    1580512 kB
+Buffers:               0 kB
+Cached:           166664 kB
+SwapCached:            0 kB
+Active:            28748 kB
+Inactive:         174544 kB
+Active(anon):       1624 kB
+Inactive(anon):    59676 kB
+Active(file):      27124 kB
+Inactive(file):   114868 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:                 0 kB
+Writeback:             0 kB
+AnonPages:         36632 kB
+Mapped:            36612 kB
+Shmem:             24672 kB
+KReclaimable:      11308 kB
+Slab:              41988 kB
+SReclaimable:      11308 kB
+SUnreclaim:        30680 kB
+KernelStack:        3504 kB
+PageTables:         2692 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:      924748 kB
+Committed_AS:     122756 kB
+VmallocTotal:   135290159040 kB
+VmallocUsed:        7116 kB
+VmallocChunk:          0 kB
+Percpu:              568 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:      2048 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+FileHugePages:         0 kB
+FilePmdMapped:         0 kB
+CmaTotal:         344064 kB
+CmaFree:          257408 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+MemTotal:        1849496 kB
+MemFree:         1502152 kB
+MemAvailable:    1587912 kB
+Buffers:               0 kB
+Cached:           166628 kB
+SwapCached:            0 kB
+Active:            28696 kB
+Inactive:         168520 kB
+Active(anon):       1568 kB
+Inactive(anon):    53584 kB
+Active(file):      27128 kB
+Inactive(file):   114936 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:                 0 kB
+Writeback:             0 kB
+AnonPages:         30504 kB
+Mapped:            36344 kB
+Shmem:             24564 kB
+KReclaimable:      11292 kB
+Slab:              41736 kB
+SReclaimable:      11292 kB
+SUnreclaim:        30444 kB
+KernelStack:        3280 kB
+PageTables:         1740 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:      924748 kB
+Committed_AS:      80644 kB
+VmallocTotal:   135290159040 kB
+VmallocUsed:        6892 kB
+VmallocChunk:          0 kB
+Percpu:              568 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:      2048 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+FileHugePages:         0 kB
+FilePmdMapped:         0 kB
+CmaTotal:         344064 kB
+CmaFree:          257608 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+root@ebisu:~/v4l2-TP/Gen3_vsp2_tp#
