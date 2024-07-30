@@ -1,0 +1,11 @@
+----START TESTING----
+Case 1-4,8-11
+Check vsp2 (may be miss after running case 12)
+modprobe -a mmngr mmngrbuf
+Step 1: ./vsp2_tp 
+Step 2: mac run test_loop.mac
+
+Case 12
+modprobe -a mmngr mmngrbuf
+Step 1: ../Gen3_vsp2_tp_script/test4311.sh
+Step 2: modprobe vsp2                       (turn it on again for another case)

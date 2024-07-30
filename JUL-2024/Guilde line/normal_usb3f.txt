@@ -1,0 +1,477 @@
+1		"Turn on the power of the board
+# dmesg | grep renesas_usb3"
+
+
+2	"Loading the kernel module of the gadget preferentially loads the channel of the USB 2.0 function. Before loading the gadget on the left it is necessary to load another gadget as a dummy.
+
+H3 loads two, the other board loads one.
+Example)
+In the case of H3
+$ insmod g_audio.ko
+$ insmod g_printer.ko
+
+In the case of other boards (such as M3/M3N/E3)
+$ insmod g_printer.ko
+
+"	"Connect USB HOST PC with the cable and run the following command
+[H3/M3/M3N]
+# cat /proc/interrupts  | grep -e ee020000.usb
+# insmod g_ncm.ko
+[H3/M3/M3N]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# cat /proc/interrupts  | grep -e ee020000.usb
+[E3] 
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# cat /proc/interrupts  | grep -e ee020000.usb"
+
+
+3	The same condition as item number 2.	"Connect USB HOST PC with the cable and run the following command
+(""192.168.7.3"" and ""usb0"" depends on the environment)
+# insmod g_ncm.ko
+[H3/M3/M3N]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[E3]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device
+
+[Board]
+# ifconfig usb0 192.168.7.2 up
+[HOST PC]
+# sudo ifconfig usb0 192.168.7.3 up
+[Board]
+# ping -c 4 192.168.7.3"
+
+
+4	After executing the above Item no.	"Connect USB HOST PC with the cable and run the following command
+(""192.168.7.3"" and ""usb0"" depends on the environment)
+[Board]
+# ifconfig usb0 192.168.7.2 up
+[Host PC]
+# sudo  ifconfig usb0 192.168.7.3 up
+# ping -c 4 192.168.7.2"
+
+
+5	After executing the above Item no.	"Connect USB HOST PC with the cable and run the following command
+(""192.168.7.3"" and ""usb0"" depends on the environment)
+[HOST PC]
+# sudo ifconfig usb0 192.168.7.3 up
+# iperf3 -s
+[Board]
+# iperf3 -c 192.168.7.3"
+
+
+6	After executing the above Item no.	"Connect USB HOST PC with the cable and run the following command
+(""192.168.7.3"" and ""usb0"" depends on the environment)
+[Board]
+# ifconfig usb0 192.168.7.2 up
+[HOST PC]
+# sudo ifconfig usb0 192.168.7.3 up
+[Board]
+# iperf3 -s
+[HOST PC]
+# iperf3 -c 192.168.7.2"
+
+
+7	The same condition as item number 2.	"Connect USB HOST PC with the cable and run the following command
+# insmod g_serial.ko
+[H3/M3/M3N]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[E3]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device
+
+# stty -echo < /dev/ttyGS0
+# cat > /dev/ttyGS0
+[HOST PC]
+# sudo chmod 777 /dev/ttyACM0
+# sudo cat /dev/ttyACM0
+[Board]
+Input some characters
+ex.)
+123
+456"
+
+
+8	After executing the above Item no.	"Connect USB HOST PC with the cable and run the following commands.
+[HOST PC]
+# sudo chmod 777 /dev/ttyACM0
+# sudo cat > /dev/ttyACM0
+[Board]
+# cat /dev/ttyGS0
+[HOST PC]
+Input some characters
+ex.)
+123
+456"
+
+
+9	"1. The same condition as item number 2.
+However, load a gadget for dummy different from the test target.
+g_audio.ko, g_serial.ko, etc.
+
+2. Prepare text data of the following sizes on Board and Host PC.
+-16bytes"	"Connect USB HOST PC with the cable and run the following command
+# insmod g_printer.ko
+[H3/M3/M3N]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[E3]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[HOST PC]
+# sudo chmod 777 /dev/usb/lp0
+# sudo cat /dev/usb/lp0
+[Board]
+# echo ""$(<16bytes.txt)"" > /dev/g_printer0 
+[HOST PC]
+Ctrl+C"
+
+
+10	After executing the above Item no.	"Connect USB HOST PC with the cable and run the following commands.
+[HOST PC]
+# sudo chmod 777 /dev/usb/lp0
+[Board]
+# cat /dev/g_printer0
+[HOST PC]
+# echo ""$(<16bytes.txt)"" > /dev/usb/lp0
+[Board]
+Ctrl+C
+# rmmod g_printer.ko"
+
+
+11	"Refer to 4.Test Applications.
+
+Run the following commands.
+[Host]
+sudo rmmod usbtest
+case: bulk transfer
+  sudo modprobe usbtest 
+case: isochronous transfer
+  sudo modprobe usbtest alt=1
+case: interrupt transfer
+  sudo modprobe usbtest alt=2"	"Connect USB HOST PC with the cable and run the following command
+# insmod g_zero.ko ctrl_maxpacket=64 autoconfig=0
+[H3/M3/M3N]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[E3]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device
+
+[Host PC]
+# sudo cat /proc/bus/usb/devices
+# sudo ./testusb -a -t 14 -c 100 -s 256 -v 1"
+
+
+12		"After executing the above Item no.
+Connect USB HOST PC with the cable and run the following command
+[Host PC]
+# sudo cat /proc/bus/usb/devices
+# sudo ./testusb -a -t 10"
+
+
+13		"Connect USB HOST PC with the cable and run the following command
+# insmod g_zero.ko bulk_maxpacket=512  autoconfig=0
+[H3/M3/M3N]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[E3]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[Host PC]
+# sudo cat /proc/bus/usb/devices
+# sudo ./testusb -a -t 1"
+
+
+14		"Connect USB HOST PC with the cable and run the following command
+After executing the above Item no.
+[Host PC]
+# sudo cat /proc/bus/usb/devices
+# sudo ./testusb -a -t 2"
+
+
+15		"Connect USB HOST PC with the cable and run the following command
+# insmod g_zero.ko int_in=1 int_out=2 int_maxpacket=64 autoconfig=0
+[H3/M3/M3N]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[E3]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[Host PC]
+# sudo cat /proc/bus/usb/devices
+# sudo ./testusb -a -t 25  -s 64 -c 1"
+
+
+16		"Connect USB HOST PC with the cable and run the following command
+After executing the above Item no.
+[Host PC]
+# sudo cat /proc/bus/usb/devices
+# sudo ./testusb -a -t 26  -s 64 -c 1"
+
+
+17	"1. Prepare a storage partition under tmpfs
+ex：
+# mount -t tmpfs -o size=400m tmpfs /tmp
+# dd if=/dev/zero of=/tmp/tmp.img bs=1M count=350
+# mkfs.ext3 -L storage /tmp/tmp.img
+
+・Prepare a data file of 10MB at host PC.
+ex： dd if=/dev/urandom of=file-10m bs=1M count=10
+
+・Prepare a data file of 300MB at host PC
+ex： dd if=/dev/urandom of=file-300m bs=1M count=300
+
+・Prepare a data file of 10MB at the storage
+ex： dd if=/dev/urandom of=/media/storage/file-10m bs=1M count=10
+
+・ Prepare a data file of 300MB at the storage
+ex： dd if=/dev/urandom of=/media/storage/file-300m bs=1M count=300
+
+4. Load the gadget mass_storage module
+# insmod g_mass_storage.ko file=/tmp/tmp.img
+[H3/M3/M3N]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[E3]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device
+5.Connect the board and the host PC via usb-cable.
+
+6.Make sure that usb-device is recognized at host PC.
+# mkdir -p /media/storage
+# mount /dev/sdb /media/storage"	"1. Copy a data file from PC
+# cp file-10m /media/storage
+
+2. Check the data file that is copied.
+# cmp /media/storage/file-10m file-10m"
+
+
+18		"1. Copy a data file from PC
+# cp file-300m /media/storage
+
+2. Check the data file that is copied.
+# cmp /media/storage/file-300m file-300m"
+
+
+19		"1. Copy a data file from the storage
+# cp /media/storage/file-10m ./
+
+2. Check the data file that is copied.
+# cmp file-10m /media/storage/file-10m"
+
+
+20		"1. Copy a data file from the storage
+# cp /media/storage/file-300m ./
+
+2. Check the data file that is copied.
+# cmp file-300m /media/storage/file-300m"
+
+
+21	-	"Connect the device、and execute the bind/unbind command 5 times （1-9 is arbitrary）.
+# insmod g_ncm.ko
+[H3/M3/M3N]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[E3]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[Host]
+# sudo chmod 666 /sys/bus/usb/drivers/usb/unbind
+# sudo chmod 666 /sys/bus/usb/drivers/usb/bind
+# echo 1-9 > /sys/bus/usb/drivers/usb/unbind
+# echo 1-9 > /sys/bus/usb/drivers/usb/bind
+# sleep 4"
+
+
+22		"Connect device with the HUB、and execute bind/unbind command 5 times（1-9.1 is arbitrary）.
+# insmod g_ncm.ko
+[H3/M3/M3N]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[E3]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[Host]
+# sudo chmod 666 /sys/bus/usb/drivers/hub/unbind
+# sudo chmod 666 /sys/bus/usb/drivers/hub/bind
+# echo 1-9.1 > /sys/bus/usb/drivers/hub/unbind
+# echo 1-9.1 > /sys/bus/usb/drivers/hub/bind
+# sleep 4"
+
+
+23	-	"1. Load the g_ncm module
+# insmod g_ncm.ko
+[H3/M3/M3N]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[E3]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device
+2. Enable the g_ncm usb0 up.
+# ifconfig usb0 192.168.1.1 up
+[Host PC]
+# sudo ifconfig usb0 192.168.1.2 up
+[Board]
+3.Unbind the device by the following command.
+# echo ee020000.usb > /sys/bus/platform/drivers/renesas_usb3/unbind
+4. Re-bind the device.
+# echo ee020000.usb > /sys/bus/platform/drivers/renesas_usb3/bind
+5. Send data to HOST PC again to make sure that the driver works normally.
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# ifconfig usb0 192.168.1.1 up
+[Host PC]
+# sudo ifconfig usb0 192.168.1.2 up
+[Board]
+# ping -c 20 192.168.1.2"
+
+
+24	-	"1. Load the g_ncm module
+# insmod g_ncm.ko
+[H3/M3/M3N]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[E3]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device
+2. Enable the g_ncm usb0 up, then transfer data to Host PC.
+# ifconfig usb0 192.168.1.1 up
+[Host PC]
+# sudo ifconfig usb0 192.168.1.2 up
+[Board]
+# ping -c 30 192.168.1.2 &
+3.Unbind the device by the following command.
+# cd /sys/bus/platform/drivers/renesas_usb3;echo ee020000.usb  > unbind
+4. Re-bind the device.
+# cd /sys/bus/platform/d rivers/renesas_usb3;echo ee020000.usb > bind
+5. Send data to HOST PC again to make sure that the driver works normally.
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# ifconfig usb0 192.168.1.1 up
+[Host PC]
+# sudo ifconfig usb0 192.168.1.2 up
+[Board]
+# ping -c 20 192.168.1.2"
+
+
+25	-	"[H3/M3/M3N]
+1. run the following command.
+# insmod memd.ko
+2. module install and enable b_device.
+# insmod  g_serial.ko
+[H3/M3/M3N]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[E3]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device
+
+3.run the following command
+# echo rd 0xe6150048 > /proc/reg"
+26	"[Board]
+
+
+1.Run the following commands.
+# dd if=/dev/zero of=/tmp/tmp.img bs=1M count=350
+# mkfs.ext3 -L storage /tmp/tmp.img
+# insmod g_mass_storage.ko file=/tmp/tmp.img
+[H3/M3/M3N]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[E3]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device"	"1.Clear previous warning
+# echo scan  > /sys/kernel/debug/kmemleak
+# echo clear > /sys/kernel/debug/kmemleak
+
+2. Test execution
+[Host]
+# mkdir ~/mnt_usb
+# mount /dev/sdx ~/mnt_usb
+# dd if=/dev/urandom of=~/mnt_usb/file-10m bs=1M count=10
+# dd if=~/mnt_usb/file-10m of=~/file-10m_from_usb bs=1M count=10
+# umount ~/mnt_usb
+3. Memory leak check
+# echo scan > /sys/kernel/debug/kmemleak
+
+4. Check memory leak details
+# cat /sys/kernel/debug/kmemleak
+"
+
+
+27	Same as above.Evaluate at the same time	Same as above.Evaluate at the same time
+
+
+28	"Evaluation board requires two.
+
+Add external firmware. (r8a779x_usb3_v3.dlmem)
+<*> xHCI HCD (USB3.0) support
+<*> Renesas USB3.0 Peripheral Controller"	"Connect the evaluation board(A)  CN11  - evaluation board(B)CN11.
+1. Input in console while usb cable disconnected.
+
+2. board(A) disable xhci. (%d is change by the connection ch with the target device)
+# echo 'ee000000.usb' > /sys/bus/platform/drivers/xhci-hcd/unbind
+
+3. board(A) run the following command.
+# dd if=/dev/zero of=/tmp/tmp.img bs=1M count=350
+# mkfs.ext3 -L storage /tmp/tmp.img
+# insmod g_mass_storage.ko file=/tmp/tmp.img
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[E3]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device
+
+4. USB cable connect.
+
+5.  board(B) run the following command. 
+# dd if=/dev/zero of=/dev/sda bs=32M count=1 oflag=direct
+# dd if=/dev/sda of=/dev/null bs=32M count=1 iflag=direct
+
+6. USB Cable disconnect.
+
+7. board(A) run the following command.
+# echo 0 > /sys/kernel/debug/ee020000.usb/b_device
+# echo 'ee000000.usb' > /sys/bus/platform/drivers/xhci-hcd/bind
+
+9. board(B) disable xhci. (%d is change by the connection ch with the target device)
+# echo 'ee000000.usb' > /sys/bus/platform/drivers/xhci-hcd/unbind
+
+10. board(B) run the following command.
+# dd if=/dev/zero of=/tmp/tmp.img bs=1M count=350
+# mkfs.ext3 -L storage /tmp/tmp.img
+# insmod g_mass_storage.ko file=/tmp/tmp.img
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[E3]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device
+
+11. USB cable connect.
+
+12. board(A) run the following command. 
+# dd if=/dev/zero of=/dev/sda bs=32M count=1 oflag=direct
+# dd if=/dev/sda of=/dev/null bs=32M count=1 iflag=direct"
+
+
+29	"Start with ""CONFIG_DEBUG_LIST"" defined Linux .
+[Board]
+1.Run the following commands.
+# dd if=/dev/zero of=/tmp/tmp.img bs=1M count=350
+# mkfs.ext3 -L storage /tmp/tmp.img
+# insmod g_mass_storage.ko file=/tmp/tmp.img
+[H3/M3/M3N]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+[E3]
+# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device"	"1.Clear previous warning
+# echo scan  > /sys/kernel/debug/kmemleak
+# echo clear > /sys/kernel/debug/kmemleak
+
+2. Test execution
+[Host]
+# mkdir ~/mnt_usb
+# mount /dev/sdx ~/mnt_usb
+# dd if=/dev/urandom of=~/mnt_usb/file-10m bs=1M count=10
+# dd if=~/mnt_usb/file-10m of=~/file-10m_from_usb bs=1M count=10
+# umount ~/mnt_usb
+3. Memory leak check
+# echo scan > /sys/kernel/debug/kmemleak
+
+4. Check memory leak details
+# cat /sys/kernel/debug/kmemleak
+"
+
+
+30	"Enable IPMMU.
+Same procedure as Normal no. 18 and 20
+-host PC -> g_mass_storage 300MB
+-g_mass_storage -> host PC 300MB
+"	Same procedure as Normal no. 18 and 20

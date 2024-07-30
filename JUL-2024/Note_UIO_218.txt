@@ -1,0 +1,7 @@
+Only for 5.10.218 yocto release kernel
+
+change to
+# CONFIG_DEBUG_SPINLOCK is not set
+
+from
+CONFIG_DEBUG_SPINLOCK=y

@@ -144,7 +144,7 @@
 	tới 1 dòng bất kì : xxgg VD: 81gg
 	copy (yank) xx dòng: xxyy VD: 10yy
 	comment nhiều dòng (visual block) : ctrl+V -> tới dòng cuối muốn comment -> shift I (xóa thì ấn x) -> // hoặc # -> esc
-	
+	Tìm nhanh từ tiếp theo *, tìm nhanh từ trước đó #
 
 - tải package mannually bằng apt/apt-get
 	apt download htop
@@ -164,6 +164,8 @@
 
 - find 
 	find . -type f/d -name '*pattern*'
+	Xóa hết trừ những thư mục ... : find /path/to/directory -mindepth 1 -maxdepth 1 ! -name 'bin' ! -name 'boot' ! -name 'dev' ! -name 'etc' ! -name 'home' ! -name 'lib' ! -name 'media' ! -name 'mnt' ! -name 'proc' ! -name 'root' ! -name 'run' ! -name 'sbin' ! -name 'srv' ! -name 'sys' ! -name 'tmp' ! -name 'usr' ! -name 'var' -exec rm -rf {} \;
+
 
 - dùng locate tìm
 	locate pattern (chưa test kỹ)
@@ -201,3 +203,17 @@
 - Xem thời gian hoạt động của máy:
 	linux: uptime
 	Window: bật event viewer (eventvwr) chọn Windows Logs -> System -> Filter Current Log -> Chỗ <All Event IDs> đổi thành: 6005(bật),6006(tắt),6013(uptime),6009,6008
+
+- Xóa dấu vân tay fingerprint ssh :
+	ssh-keygen -f "/home/rvc/.ssh/known_hosts" -R "192.168.8.20"
+
+- Quét ip
+	nmap -sn 192.168.8.0/24
+- Thoát ssh đang bị lag
+	Enter -> ~ -> .
+
+- yocto 
+	xem thông tin về các phiên bản có trong recipe - trước khi build (inside bblayers.conf) : bitbake-layers show-recipes wayland-protocols. Sau khi build : bitbake -s wayland-protocols
+	Chọn version mong muốn: conf/local.conf	: PREFERRED_VERSION_wayland-protocols = "1.33" (đảm bảo đã thêm layer đó vào bblayers.conf)
+	IMAGE_INSTALL:remove = "kernel-module-cmemdrv"
+	IMAGE_INSTALL += "util-linux usbutils e2fsprogs iperf3 linuxptp gcc make binutils trace-cmd"

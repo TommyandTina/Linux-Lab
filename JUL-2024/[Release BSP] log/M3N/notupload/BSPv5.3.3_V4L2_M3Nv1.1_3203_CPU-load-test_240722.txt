@@ -759,9 +759,10 @@ tt uds all
 tt hgt all
 
 sys top -n1
-root@salvator-x:~/v4l2-TP/Gen3_vsp2_tp# ./vsp2_tp_m3
 
-## ./vsp2_tp_m3 for M3 start ( Build : Jul 22 2024 04:52:34 ) ...
+root@salvator-x:~/v4l2-TP/Gen3_vsp2_tp# ./vsp2_tp
+
+## ./vsp2_tp for M3 start ( Build : Jul 22 2024 04:52:34 ) ...
 
 
 >
@@ -784,39 +785,40 @@ MACRO> sys ./stress --cpu 4 --timeout 120 &
 
 MACRO> sys top -n1
 
-sh: line 1: ./stress: No such file or directory
-Mem: 626652K used, 1222736K free, 24748K shrd, 0K buff, 182388K cached
-CPU:   0% usr   4% sys   0% nic  95% idle   0% io   0% irq   0% sirq
-Load average: 0.00 0.00 0.00 1/229 44437
+stress: info: [514] dispatching hogs: 4 cpu, 0 io, 0 vm, 0 hdd
+Mem: 216560K used, 1632828K free, 10308K shrd, 0K buff, 67072K cached
+CPU: 100% usr   0% sys   0% nic   0% idle   0% io   0% irq   0% sirq
+Load average: 0.17 0.12 0.05 5/263 519
   PID  PPID USER     STAT   VSZ %VSZ %CPU COMMAND
-44437 44434 root     R     3492   0%   5% top -n1
-  276     1 root     S     103m   6%   0% /usr/lib/systemd/systemd-journald
-  334     1 systemd- S    89188   5%   0% /usr/lib/systemd/systemd-timesyncd
-  489   433 root     S    31856   2%   0% /usr/bin/weston --idle-time=0 --log=/var/log/weston.log
-  310     1 root     S    23468   1%   0% /usr/lib/systemd/systemd-udevd
-  488   433 root     S    19796   1%   0% (sd-pam)
-  482   479 root     S    19268   1%   0% (sd-pam)
-  490   489 root     S    19068   1%   0% /usr/libexec/weston-keyboard
-    1     0 root     S    18532   1%   0% {systemd} /sbin/init
-  479     1 root     S    17440   1%   0% /usr/lib/systemd/systemd --user
-  491   489 root     S    17416   1%   0% /usr/libexec/weston-desktop-shell
-  330     1 systemd- S    16724   1%   0% /usr/lib/systemd/systemd-networkd
-44424   331 root     S    15428   1%   0% systemd-userwork: waiting...
-44426   331 root     S    15428   1%   0% systemd-userwork: waiting...
-44425   331 root     S    15428   1%   0% systemd-userwork: waiting...
-  376     1 root     S    15424   1%   0% /usr/lib/systemd/systemd-logind
-  333     1 systemd- S    15380   1%   0% /usr/lib/systemd/systemd-resolved
-  331     1 root     S    14908   1%   0% /usr/lib/systemd/systemd-userdbd
-  368     1 avahi    S     7416   0%   0% avahi-daemon: running [salvator-x-2.local]
-  378   368 avahi    S     7416   0%   0% avahi-daemon: chroot helper
-  371     1 messageb S     6984   0%   0% /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-
-  394     1 root     S     6624   0%   0% /bin/login --
-  392     1 root     S     5260   0%   0% /sbin/agetty -o -p -- \u --noclear - linux
-  433     1 root     S     4676   0%   0% weston-launch -- --idle-time=0 --log=/var/log/weston.log
-  275     1 rpc      S     4644   0%   0% /usr/sbin/rpcbind -w -f
-  492   394 root     S     4428   0%   0% -sh
-  369     1 root     S     3492   0%   0% /usr/sbin/klogd -n
-  370     1 root     S     3492   0%   0% /usr/sbin/syslogd -n
+  517   514 root     R     2860   0%  24% ./stress --cpu 4 --timeout 120
+  515   514 root     R     2860   0%  24% ./stress --cpu 4 --timeout 120
+  516   514 root     R     2860   0%  24% ./stress --cpu 4 --timeout 120
+  518   514 root     R     2860   0%  24% ./stress --cpu 4 --timeout 120
+  519   512 root     R     3492   0%   5% top -n1
+  499   486 root     S     128m   7%   0% /usr/bin/weston --idle-time=0 --log=/var/log/weston.log
+  372     1 systemd- S    89188   5%   0% /usr/lib/systemd/systemd-timesyncd
+  320     1 root     S    23656   1%   0% /usr/lib/systemd/systemd-udevd
+  287     1 root     S    23424   1%   0% /usr/lib/systemd/systemd-journald
+  498   486 root     S    19796   1%   0% (sd-pam)
+  493   492 root     S    19268   1%   0% (sd-pam)
+  500   499 root     S    19068   1%   0% /usr/libexec/weston-keyboard
+    1     0 root     S    18664   1%   0% {systemd} /sbin/init
+  501   499 root     S    18632   1%   0% /usr/libexec/weston-desktop-shell
+  492     1 root     S    17440   1%   0% /usr/lib/systemd/systemd --user
+  331     1 systemd- S    16592   1%   0% /usr/lib/systemd/systemd-networkd
+  342   333 root     S    15868   1%   0% systemd-userwork: waiting...
+  341   333 root     S    15868   1%   0% systemd-userwork: waiting...
+  343   333 root     S    15868   1%   0% systemd-userwork: waiting...
+  370     1 systemd- S    15380   1%   0% /usr/lib/systemd/systemd-resolved
+  396     1 root     S    15280   1%   0% /usr/lib/systemd/systemd-logind
+  333     1 root     S    14908   1%   0% /usr/lib/systemd/systemd-userdbd
+  388     1 avahi    S     7416   0%   0% avahi-daemon: running [salvator-x-2.local]
+  400   388 avahi    S     7416   0%   0% avahi-daemon: chroot helper
+  392     1 messageb S     6984   0%   0% /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-ac
+  415     1 root     S     6624   0%   0% /bin/login --
+  486     1 root     S     4676   0%   0% weston-launch -- --idle-time=0 --log=/var/log/weston.log
+  286     1 rpc      S     4644   0%   0% /usr/sbin/rpcbind -w -f
+  503   415 root     S     4184   0%   0% -sh
 ## success ##
 
 
@@ -824,12 +826,49 @@ MACRO>
 
 MACRO> tt media 1
 
-Error : media_device_enumerate()
+
+driver name is [fe960000.vsp]
+
+
+
+- dev rpf.0   = /dev/video8
+
+- dev rpf.1   = /dev/video9
+
+- dev rpf.2   = /dev/video10
+
+- dev rpf.3   = /dev/video11
+
+- dev rpf.4   = /dev/video12
+
+- dev wpf.0   = /dev/video13
+
+
+
+- bru   = /dev/v4l-subdev6
+
+- lut   = /dev/v4l-subdev7
+
+- clu   = /dev/v4l-subdev8
+
+- hgo   = /dev/v4l-subdev9
+
+- rpf.0 = /dev/v4l-subdev10
+
+- rpf.1 = /dev/v4l-subdev11
+
+- rpf.2 = /dev/v4l-subdev12
+
+- rpf.3 = /dev/v4l-subdev13
+
+- rpf.4 = /dev/v4l-subdev14
+
+- wpf.0 = /dev/v4l-subdev15
 
 
 ## change media ##
 
-  soc:vsp2@vspmvspb0  ->
+  soc:vsp2@vspmvspb0  ->  fe960000.vsp
 
 
 ## success ##
@@ -837,217 +876,3461 @@ Error : media_device_enumerate()
 
 MACRO> tt rpf all
 
-[R] 1.1.1.1     [ SKIP ]( rpf case 1 )( Device name is nothing. )
+@@ ----------------------------------------------
 
-[R] 1.1.1.2     [ SKIP ]( rpf case 2 )( Device name is nothing. )
+@@ RPF = 1.1.1.1
 
-[R] 1.1.1.3     [ SKIP ]( rpf case 3 )( Device name is nothing. )
+@@ ----------------------------------------------
 
-[R] 1.1.1.4     [ SKIP ]( rpf case 4 )( Device name is nothing. )
+device open = /dev/video8
 
-[R] 1.1.1.5     [ SKIP ]( rpf case 5 )( Device name is nothing. )
+device open = /dev/video13
 
-[R] 1.1.1.6     [ SKIP ]( rpf case 6 )( Device name is nothing. )
+Input  File = 1280_720_420sp.yuv
 
-[R] 1.1.1.7     [ SKIP ]( rpf case 7 )( Device name is nothing. )
+Output File = nothing
 
-[R] 1.1.1.8     [ SKIP ]( rpf case 8 )( Device name is nothing. )
 
-[R] 1.1.1.9     [ SKIP ]( rpf case 9 )( Device name is nothing. )
+----------------------
 
-[R] 1.1.1.10    [ SKIP ]( rpf case 10 )( Device name is nothing. )
+TotalTime           =  242.57 ms
 
-[R] 1.1.1.11    [ SKIP ]( rpf case 11 )( Device name is nothing. )
+   > ProcessingTime =    1.48 ms
 
-[R] 1.1.1.12    [ SKIP ]( rpf case 12 )( Device name is nothing. )
+     WaitTime       =    1.30 ms
 
-[R] 1.1.1.13    [ SKIP ]( rpf case 13 )( Device name is nothing. )
+     DevOpenTime    =    5.80 ms
 
-[R] 1.1.1.14    [ SKIP ]( rpf case 14 )( Device name is nothing. )
+     DevCloseTime   =    0.50 ms
 
-[R] 1.1.1.15    [ SKIP ]( rpf case 15 )( Device name is nothing. )
+     ReadTime       =  132.39 ms
 
-[R] 1.1.1.16    [ SKIP ]( rpf case 16 )( Device name is nothing. )
+     WriteTime      =    0.00 ms
 
-[R] 1.1.1.17    [ SKIP ]( rpf case 17 )( Device name is nothing. )
+     CheckSumTime   =   83.43 ms
 
-[R] 1.1.1.18    [ SKIP ]( rpf case 18 )( Device name is nothing. )
+     OtherTime      =   18.98 ms
 
-[R] 1.1.1.19    [ SKIP ]( rpf case 19 )( Device name is nothing. )
+----------------------
 
-[R] 1.1.1.20    [ SKIP ]( rpf case 20 )( Device name is nothing. )
+[R] 1.1.1.1     [ OK ]
 
-[R] 1.1.1.21    [ SKIP ]( rpf case 21 )( Device name is nothing. )
+@@ ----------------------------------------------
 
-[R] 1.1.1.22    [ SKIP ]( rpf case 22 )( Device name is nothing. )
+@@ RPF = 1.1.1.2
 
-[R] 1.1.1.23    [ SKIP ]( rpf case 23 )( Device name is nothing. )
+@@ ----------------------------------------------
 
-[R] 1.1.1.24    [ SKIP ]( rpf case 24 )( Device name is nothing. )
+device open = /dev/video8
 
-[R] 1.1.1.25    [ SKIP ]( rpf case 25 )( Device name is nothing. )
+device open = /dev/video13
 
-[R] 1.1.1.26    [ SKIP ]( rpf case 26 )( Device name is nothing. )
+Input  File = 1280_720_ARGB32.argb
 
-[R] 1.1.1.27    [ SKIP ]( rpf case 27 )( Device name is nothing. )
+Output File = nothing
 
-[R] 1.1.1.28    [ SKIP ]( rpf case 28 )( Device name is nothing. )
 
-[R] 1.1.1.29    [ SKIP ]( rpf case 29 )( Device name is nothing. )
+----------------------
+
+TotalTime           =  367.51 ms
+
+   > ProcessingTime =    1.48 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    6.85 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =  332.52 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =    6.92 ms
+
+     OtherTime      =   19.26 ms
+
+----------------------
+
+[R] 1.1.1.2     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   59.85 ms
+
+   > ProcessingTime =   11.45 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    6.99 ms
+
+     DevCloseTime   =    0.49 ms
+
+     ReadTime       =    5.19 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   21.73 ms
+
+     OtherTime      =   14.01 ms
+
+----------------------
+
+[R] 1.1.1.3     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   67.51 ms
+
+   > ProcessingTime =   13.02 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    6.82 ms
+
+     DevCloseTime   =    0.44 ms
+
+     ReadTime       =    3.59 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   29.77 ms
+
+     OtherTime      =   13.87 ms
+
+----------------------
+
+[R] 1.1.1.4     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   59.02 ms
+
+   > ProcessingTime =    9.20 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.97 ms
+
+     DevCloseTime   =    3.58 ms
+
+     ReadTime       =    3.55 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   21.76 ms
+
+     OtherTime      =   13.96 ms
+
+----------------------
+
+[R] 1.1.1.5     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.6
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   52.56 ms
+
+   > ProcessingTime =    5.22 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    7.57 ms
+
+     DevCloseTime   =    0.47 ms
+
+     ReadTime       =    3.49 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   21.81 ms
+
+     OtherTime      =   13.99 ms
+
+----------------------
+
+[R] 1.1.1.6     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.7
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   55.54 ms
+
+   > ProcessingTime =    9.18 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.70 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    3.55 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   21.77 ms
+
+     OtherTime      =   13.85 ms
+
+----------------------
+
+[R] 1.1.1.7     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.8
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   71.81 ms
+
+   > ProcessingTime =    9.13 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.79 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    3.55 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   36.59 ms
+
+     OtherTime      =   15.28 ms
+
+----------------------
+
+[R] 1.1.1.8     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.9
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   87.37 ms
+
+   > ProcessingTime =    9.11 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.61 ms
+
+     DevCloseTime   =    0.44 ms
+
+     ReadTime       =    3.58 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   48.56 ms
+
+     OtherTime      =   19.06 ms
+
+----------------------
+
+[R] 1.1.1.9     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.10
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  111.86 ms
+
+   > ProcessingTime =    8.55 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    6.91 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.61 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   75.41 ms
+
+     OtherTime      =   16.96 ms
+
+----------------------
+
+[R] 1.1.1.10    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.11
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  103.67 ms
+
+   > ProcessingTime =    4.44 ms
+
+     WaitTime       =    1.31 ms
+
+     DevOpenTime    =    6.73 ms
+
+     DevCloseTime   =    0.45 ms
+
+     ReadTime       =    3.68 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   71.42 ms
+
+     OtherTime      =   16.95 ms
+
+----------------------
+
+[R] 1.1.1.11    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.12
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   79.23 ms
+
+   > ProcessingTime =    8.58 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.70 ms
+
+     DevCloseTime   =    0.49 ms
+
+     ReadTime       =    3.52 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   51.46 ms
+
+     OtherTime      =    8.48 ms
+
+----------------------
+
+[R] 1.1.1.12    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.13
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   88.14 ms
+
+   > ProcessingTime =   12.41 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    7.13 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    3.54 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   47.44 ms
+
+     OtherTime      =   17.14 ms
+
+----------------------
+
+[R] 1.1.1.13    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.14
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  106.68 ms
+
+   > ProcessingTime =   12.38 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.65 ms
+
+     DevCloseTime   =    3.39 ms
+
+     ReadTime       =    3.56 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   67.42 ms
+
+     OtherTime      =   13.28 ms
+
+----------------------
+
+[R] 1.1.1.14    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.15
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   80.75 ms
+
+   > ProcessingTime =    4.52 ms
+
+     WaitTime       =    1.26 ms
+
+     DevOpenTime    =    7.60 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    3.55 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   51.49 ms
+
+     OtherTime      =   13.10 ms
+
+----------------------
+
+[R] 1.1.1.15    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.16
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   75.44 ms
+
+   > ProcessingTime =    9.12 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    6.53 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.56 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   37.75 ms
+
+     OtherTime      =   18.05 ms
+
+----------------------
+
+[R] 1.1.1.16    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.17
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   59.66 ms
+
+   > ProcessingTime =    9.10 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.75 ms
+
+     DevCloseTime   =    0.44 ms
+
+     ReadTime       =    3.57 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   25.77 ms
+
+     OtherTime      =   14.04 ms
+
+----------------------
+
+[R] 1.1.1.17    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.18
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   63.66 ms
+
+   > ProcessingTime =    9.07 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    6.75 ms
+
+     DevCloseTime   =    0.44 ms
+
+     ReadTime       =    3.58 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   33.76 ms
+
+     OtherTime      =   10.05 ms
+
+----------------------
+
+[R] 1.1.1.18    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.19
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   67.65 ms
+
+   > ProcessingTime =    5.18 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.75 ms
+
+     DevCloseTime   =    0.45 ms
+
+     ReadTime       =    3.50 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   29.75 ms
+
+     OtherTime      =   22.02 ms
+
+----------------------
+
+[R] 1.1.1.19    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.20
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   51.53 ms
+
+   > ProcessingTime =    9.00 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    6.76 ms
+
+     DevCloseTime   =    0.47 ms
+
+     ReadTime       =    3.66 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   18.32 ms
+
+     OtherTime      =   13.31 ms
+
+----------------------
+
+[R] 1.1.1.20    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.21
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   55.15 ms
+
+   > ProcessingTime =    9.17 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    6.89 ms
+
+     DevCloseTime   =    0.43 ms
+
+     ReadTime       =    3.53 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   22.33 ms
+
+     OtherTime      =   12.78 ms
+
+----------------------
+
+[R] 1.1.1.21    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.22
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   52.36 ms
+
+   > ProcessingTime =    9.14 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    7.38 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    3.61 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   21.75 ms
+
+     OtherTime      =   10.00 ms
+
+----------------------
+
+[R] 1.1.1.22    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.23
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   55.75 ms
+
+   > ProcessingTime =    5.16 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.68 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    3.51 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   25.75 ms
+
+     OtherTime      =   14.17 ms
+
+----------------------
+
+[R] 1.1.1.23    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.24
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   55.52 ms
+
+   > ProcessingTime =    5.10 ms
+
+     WaitTime       =    1.26 ms
+
+     DevOpenTime    =    6.58 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    3.57 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   30.47 ms
+
+     OtherTime      =    9.32 ms
+
+----------------------
+
+[R] 1.1.1.24    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.25
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   43.95 ms
+
+   > ProcessingTime =    9.20 ms
+
+     WaitTime       =    1.26 ms
+
+     DevOpenTime    =    6.72 ms
+
+     DevCloseTime   =    0.50 ms
+
+     ReadTime       =    3.53 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   18.35 ms
+
+     OtherTime      =    5.65 ms
+
+----------------------
+
+[R] 1.1.1.25    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.26
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   62.75 ms
+
+   > ProcessingTime =   13.04 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    6.44 ms
+
+     DevCloseTime   =    0.47 ms
+
+     ReadTime       =    3.58 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   25.77 ms
+
+     OtherTime      =   13.45 ms
+
+----------------------
+
+[R] 1.1.1.26    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.27
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   60.30 ms
+
+   > ProcessingTime =    9.14 ms
+
+     WaitTime       =    1.26 ms
+
+     DevOpenTime    =    7.32 ms
+
+     DevCloseTime   =    0.47 ms
+
+     ReadTime       =    3.43 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   25.77 ms
+
+     OtherTime      =   14.16 ms
+
+----------------------
+
+[R] 1.1.1.27    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.28
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   70.25 ms
+
+   > ProcessingTime =   12.84 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.69 ms
+
+     DevCloseTime   =    0.49 ms
+
+     ReadTime       =    3.58 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   40.62 ms
+
+     OtherTime      =    6.03 ms
+
+----------------------
+
+[R] 1.1.1.28    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ RPF = 1.1.1.29
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   69.11 ms
+
+   > ProcessingTime =    4.87 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    8.08 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    3.58 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   36.69 ms
+
+     OtherTime      =   15.41 ms
+
+----------------------
+
+[R] 1.1.1.29    [ OK ]
 
 ## success ##
 
 
 MACRO> tt wpf all
 
-[R] 1.1.2.1     [ SKIP ]( wpf case 1 )( Device name is nothing. )
+@@ ----------------------------------------------
 
-[R] 1.1.2.2     [ SKIP ]( wpf case 2 )( Device name is nothing. )
+@@ WPF = 1.1.2.1
 
-[R] 1.1.2.3     [ SKIP ]( wpf case 3 )( Device name is nothing. )
+@@ ----------------------------------------------
 
-[R] 1.1.2.4     [ SKIP ]( wpf case 4 )( Device name is nothing. )
+device open = /dev/video8
 
-[R] 1.1.2.5     [ SKIP ]( wpf case 5 )( Device name is nothing. )
+device open = /dev/video13
 
-[R] 1.1.2.6     [ SKIP ]( wpf case 6 )( Device name is nothing. )
+Input  File = 1280_720_420sp.yuv
 
-[R] 1.1.2.7     [ SKIP ]( wpf case 7 )( Device name is nothing. )
+Output File = nothing
 
-[R] 1.1.2.8     [ SKIP ]( wpf case 8 )( Device name is nothing. )
 
-[R] 1.1.2.9     [ SKIP ]( wpf case 9 )( Device name is nothing. )
+----------------------
 
-[R] 1.1.2.10    [ SKIP ]( wpf case 10 )( Device name is nothing. )
+TotalTime           =   83.41 ms
 
-[R] 1.1.2.11    [ SKIP ]( wpf case 11 )( Device name is nothing. )
+   > ProcessingTime =    1.45 ms
 
-[R] 1.1.2.12    [ SKIP ]( wpf case 12 )( Device name is nothing. )
+     WaitTime       =    1.26 ms
 
-[R] 1.1.2.13    [ SKIP ]( wpf case 13 )( Device name is nothing. )
+     DevOpenTime    =    6.52 ms
 
-[R] 1.1.2.14    [ SKIP ]( wpf case 14 )( Device name is nothing. )
+     DevCloseTime   =    0.48 ms
 
-[R] 1.1.2.15    [ SKIP ]( wpf case 15 )( Device name is nothing. )
+     ReadTime       =    2.86 ms
 
-[R] 1.1.2.16    [ SKIP ]( wpf case 16 )( Device name is nothing. )
+     WriteTime      =    0.00 ms
 
-[R] 1.1.2.17    [ SKIP ]( wpf case 17 )( Device name is nothing. )
+     CheckSumTime   =   59.49 ms
 
-[R] 1.1.2.18    [ SKIP ]( wpf case 18 )( Device name is nothing. )
+     OtherTime      =   12.62 ms
 
-[R] 1.1.2.19    [ SKIP ]( wpf case 19 )( Device name is nothing. )
+----------------------
 
-[R] 1.1.2.20    [ SKIP ]( wpf case 20 )( Device name is nothing. )
+[R] 1.1.2.1     [ OK ]
 
-[R] 1.1.2.21    [ SKIP ]( wpf case 21 )( Device name is nothing. )
+@@ ----------------------------------------------
 
-[R] 1.1.2.22    [ SKIP ]( wpf case 22 )( Device name is nothing. )
+@@ WPF = 1.1.2.2
 
-[R] 1.1.2.23    [ SKIP ]( wpf case 23 )( Device name is nothing. )
+@@ ----------------------------------------------
 
-[R] 1.1.2.24    [ SKIP ]( wpf case 24 )( Device name is nothing. )
+device open = /dev/video8
 
-[R] 1.1.2.25    [ SKIP ]( wpf case 25 )( Device name is nothing. )
+device open = /dev/video13
 
-[R] 1.1.2.26    [ SKIP ]( wpf case 26 )( Device name is nothing. )
+Input  File = 1280_720_ARGB32.argb
 
-[R] 1.1.2.27    [ SKIP ]( wpf case 27 )( Device name is nothing. )
+Output File = nothing
 
-[R] 1.1.2.28    [ SKIP ]( wpf case 28 )( Device name is nothing. )
 
-[R] 1.1.2.29    [ SKIP ]( wpf case 29 )( Device name is nothing. )
+----------------------
+
+TotalTime           =   51.56 ms
+
+   > ProcessingTime =    5.68 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.76 ms
+
+     DevCloseTime   =    0.44 ms
+
+     ReadTime       =    3.33 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   22.94 ms
+
+     OtherTime      =   12.40 ms
+
+----------------------
+
+[R] 1.1.2.2     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   51.80 ms
+
+   > ProcessingTime =    9.38 ms
+
+     WaitTime       =    1.26 ms
+
+     DevOpenTime    =    6.88 ms
+
+     DevCloseTime   =    0.47 ms
+
+     ReadTime       =    3.40 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   21.77 ms
+
+     OtherTime      =    9.90 ms
+
+----------------------
+
+[R] 1.1.2.3     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   59.67 ms
+
+   > ProcessingTime =    5.33 ms
+
+     WaitTime       =    1.26 ms
+
+     DevOpenTime    =    6.74 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    3.38 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   29.80 ms
+
+     OtherTime      =   13.95 ms
+
+----------------------
+
+[R] 1.1.2.4     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   59.42 ms
+
+   > ProcessingTime =    5.37 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    6.73 ms
+
+     DevCloseTime   =    0.45 ms
+
+     ReadTime       =    3.40 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   29.77 ms
+
+     OtherTime      =   13.70 ms
+
+----------------------
+
+[R] 1.1.2.5     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.6
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   63.26 ms
+
+   > ProcessingTime =    5.31 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.97 ms
+
+     DevCloseTime   =    0.44 ms
+
+     ReadTime       =    3.38 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   25.75 ms
+
+     OtherTime      =   21.41 ms
+
+----------------------
+
+[R] 1.1.2.6     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.7
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   68.05 ms
+
+   > ProcessingTime =    5.29 ms
+
+     WaitTime       =    1.26 ms
+
+     DevOpenTime    =    7.36 ms
+
+     DevCloseTime   =    0.44 ms
+
+     ReadTime       =    3.45 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   29.82 ms
+
+     OtherTime      =   21.69 ms
+
+----------------------
+
+[R] 1.1.2.7     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.8
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   87.74 ms
+
+   > ProcessingTime =    5.18 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.99 ms
+
+     DevCloseTime   =    0.45 ms
+
+     ReadTime       =    3.39 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   52.59 ms
+
+     OtherTime      =   19.13 ms
+
+----------------------
+
+[R] 1.1.2.8     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.9
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   66.41 ms
+
+   > ProcessingTime =    9.19 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    6.91 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    3.43 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   40.58 ms
+
+     OtherTime      =    5.80 ms
+
+----------------------
+
+[R] 1.1.2.9     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.10
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  108.14 ms
+
+   > ProcessingTime =   12.65 ms
+
+     WaitTime       =    1.29 ms
+
+     DevOpenTime    =    4.14 ms
+
+     DevCloseTime   =    3.49 ms
+
+     ReadTime       =    3.44 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   67.44 ms
+
+     OtherTime      =   16.99 ms
+
+----------------------
+
+[R] 1.1.2.10    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.11
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   85.96 ms
+
+   > ProcessingTime =   12.48 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    7.64 ms
+
+     DevCloseTime   =    0.50 ms
+
+     ReadTime       =    3.46 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   55.40 ms
+
+     OtherTime      =    6.49 ms
+
+----------------------
+
+[R] 1.1.2.11    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.12
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  105.80 ms
+
+   > ProcessingTime =   12.48 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    5.33 ms
+
+     DevCloseTime   =    0.44 ms
+
+     ReadTime       =    3.46 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   67.42 ms
+
+     OtherTime      =   16.66 ms
+
+----------------------
+
+[R] 1.1.2.12    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.13
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   84.32 ms
+
+   > ProcessingTime =   12.55 ms
+
+     WaitTime       =    1.26 ms
+
+     DevOpenTime    =    7.18 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    3.42 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   47.42 ms
+
+     OtherTime      =   13.27 ms
+
+----------------------
+
+[R] 1.1.2.13    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.14
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   81.05 ms
+
+   > ProcessingTime =    7.56 ms
+
+     WaitTime       =    1.26 ms
+
+     DevOpenTime    =    6.55 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    4.58 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   55.42 ms
+
+     OtherTime      =    6.44 ms
+
+----------------------
+
+[R] 1.1.2.14    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.15
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   82.29 ms
+
+   > ProcessingTime =   12.48 ms
+
+     WaitTime       =    1.26 ms
+
+     DevOpenTime    =    5.18 ms
+
+     DevCloseTime   =    0.47 ms
+
+     ReadTime       =    3.50 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   47.43 ms
+
+     OtherTime      =   13.23 ms
+
+----------------------
+
+[R] 1.1.2.15    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.16
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   55.62 ms
+
+   > ProcessingTime =    5.15 ms
+
+     WaitTime       =    1.26 ms
+
+     DevOpenTime    =    6.55 ms
+
+     DevCloseTime   =    0.49 ms
+
+     ReadTime       =    3.56 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   25.82 ms
+
+     OtherTime      =   14.05 ms
+
+----------------------
+
+[R] 1.1.2.16    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.17
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   58.68 ms
+
+   > ProcessingTime =    5.18 ms
+
+     WaitTime       =    1.26 ms
+
+     DevOpenTime    =    6.60 ms
+
+     DevCloseTime   =    3.60 ms
+
+     ReadTime       =    3.57 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   25.82 ms
+
+     OtherTime      =   13.90 ms
+
+----------------------
+
+[R] 1.1.2.17    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.18
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   72.36 ms
+
+   > ProcessingTime =    5.16 ms
+
+     WaitTime       =    1.26 ms
+
+     DevOpenTime    =    7.57 ms
+
+     DevCloseTime   =    0.44 ms
+
+     ReadTime       =    3.59 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   25.80 ms
+
+     OtherTime      =   29.79 ms
+
+----------------------
+
+[R] 1.1.2.18    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.19
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   63.74 ms
+
+   > ProcessingTime =    5.25 ms
+
+     WaitTime       =    1.30 ms
+
+     DevOpenTime    =    6.88 ms
+
+     DevCloseTime   =    0.42 ms
+
+     ReadTime       =    3.49 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   33.84 ms
+
+     OtherTime      =   13.86 ms
+
+----------------------
+
+[R] 1.1.2.19    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.20
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   55.90 ms
+
+   > ProcessingTime =    9.10 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.78 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    3.58 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   30.36 ms
+
+     OtherTime      =    5.59 ms
+
+----------------------
+
+[R] 1.1.2.20    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.21
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   55.32 ms
+
+   > ProcessingTime =    5.12 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.57 ms
+
+     DevCloseTime   =    0.47 ms
+
+     ReadTime       =    3.58 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   22.34 ms
+
+     OtherTime      =   17.25 ms
+
+----------------------
+
+[R] 1.1.2.21    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.22
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   55.40 ms
+
+   > ProcessingTime =   12.97 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.88 ms
+
+     DevCloseTime   =    0.49 ms
+
+     ReadTime       =    3.58 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   25.75 ms
+
+     OtherTime      =    5.73 ms
+
+----------------------
+
+[R] 1.1.2.22    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.23
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   59.95 ms
+
+   > ProcessingTime =   17.07 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    7.13 ms
+
+     DevCloseTime   =    0.47 ms
+
+     ReadTime       =    3.57 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   17.77 ms
+
+     OtherTime      =   13.93 ms
+
+----------------------
+
+[R] 1.1.2.23    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.24
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   40.02 ms
+
+   > ProcessingTime =    5.09 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.82 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    3.55 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   18.39 ms
+
+     OtherTime      =    5.68 ms
+
+----------------------
+
+[R] 1.1.2.24    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.25
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   39.70 ms
+
+   > ProcessingTime =    5.11 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.47 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    3.55 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   18.41 ms
+
+     OtherTime      =    5.67 ms
+
+----------------------
+
+[R] 1.1.2.25    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.26
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   59.40 ms
+
+   > ProcessingTime =   12.86 ms
+
+     WaitTime       =    1.26 ms
+
+     DevOpenTime    =    6.45 ms
+
+     DevCloseTime   =    0.47 ms
+
+     ReadTime       =    3.60 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   17.78 ms
+
+     OtherTime      =   18.24 ms
+
+----------------------
+
+[R] 1.1.2.26    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.27
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   51.65 ms
+
+   > ProcessingTime =    4.99 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.68 ms
+
+     DevCloseTime   =    0.49 ms
+
+     ReadTime       =    3.58 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   21.81 ms
+
+     OtherTime      =   14.10 ms
+
+----------------------
+
+[R] 1.1.2.27    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.28
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   71.84 ms
+
+   > ProcessingTime =    8.90 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.70 ms
+
+     DevCloseTime   =    0.48 ms
+
+     ReadTime       =    3.57 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   36.60 ms
+
+     OtherTime      =   15.60 ms
+
+----------------------
+
+[R] 1.1.2.28    [ OK ]
+
+@@ ----------------------------------------------
+
+@@ WPF = 1.1.2.29
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   67.40 ms
+
+   > ProcessingTime =    8.91 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.47 ms
+
+     DevCloseTime   =    0.47 ms
+
+     ReadTime       =    3.58 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   36.62 ms
+
+     OtherTime      =   11.34 ms
+
+----------------------
+
+[R] 1.1.2.29    [ OK ]
 
 ## success ##
 
 
 MACRO> tt mbru all
 
-[R] 1.2.1.1     [ SKIP ]( mbru case 1 )( Device name is nothing. )
+@@ ----------------------------------------------
 
-[R] 1.2.1.2     [ SKIP ]( mbru case 2 )( Device name is nothing. )
+@@ MBRU = 1.2.1.1
 
-[R] 1.2.1.3     [ SKIP ]( mbru case 3 )( Device name is nothing. )
+@@ ----------------------------------------------
 
-[R] 1.2.1.4     [ SKIP ]( mbru case 4 )( Device name is nothing. )
+device open = /dev/video8
 
-[R] 1.2.1.5     [ SKIP ]( mbru case 5 )( Device name is nothing. )
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   87.08 ms
+
+   > ProcessingTime =    8.17 ms
+
+     WaitTime       =    1.25 ms
+
+     DevOpenTime    =    6.02 ms
+
+     DevCloseTime   =    0.49 ms
+
+     ReadTime       =    3.59 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   51.45 ms
+
+     OtherTime      =   17.34 ms
+
+----------------------
+
+[R] 1.2.1.1     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ MBRU = 1.2.1.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 800_600_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  247.62 ms
+
+   > ProcessingTime =    1.56 ms
+
+     WaitTime       =    1.32 ms
+
+     DevOpenTime    =    6.00 ms
+
+     DevCloseTime   =    0.56 ms
+
+     ReadTime       =  186.79 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   35.47 ms
+
+     OtherTime      =   17.24 ms
+
+----------------------
+
+[R] 1.2.1.2     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ MBRU = 1.2.1.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video10
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 800_600_ARGB32.argb
+
+Input  File = 640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  263.37 ms
+
+   > ProcessingTime =    1.80 ms
+
+     WaitTime       =    1.49 ms
+
+     DevOpenTime    =    5.45 ms
+
+     DevCloseTime   =    0.66 ms
+
+     ReadTime       =  142.19 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   95.43 ms
+
+     OtherTime      =   17.84 ms
+
+----------------------
+
+[R] 1.2.1.3     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ MBRU = 1.2.1.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video10
+
+device open = /dev/video11
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 800_600_ARGB32.argb
+
+Input  File = 640_480_ARGB32.argb
+
+Input  File = 400_200_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  138.10 ms
+
+   > ProcessingTime =    1.94 ms
+
+     WaitTime       =    1.55 ms
+
+     DevOpenTime    =    5.14 ms
+
+     DevCloseTime   =    0.74 ms
+
+     ReadTime       =   61.42 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   51.52 ms
+
+     OtherTime      =   17.34 ms
+
+----------------------
+
+[R] 1.2.1.4     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ MBRU = 1.2.1.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video10
+
+device open = /dev/video11
+
+device open = /dev/video12
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 800_600_ARGB32.argb
+
+Input  File = 640_480_ARGB32.argb
+
+Input  File = 400_200_ARGB32.argb
+
+Input  File = 100_50_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  121.70 ms
+
+   > ProcessingTime =    2.07 ms
+
+     WaitTime       =    1.62 ms
+
+     DevOpenTime    =    6.11 ms
+
+     DevCloseTime   =    0.85 ms
+
+     ReadTime       =   39.77 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   59.43 ms
+
+     OtherTime      =   13.47 ms
+
+----------------------
+
+[R] 1.2.1.5     [ OK ]
 
 ## success ##
 
 
 MACRO> tt bru all
 
-[R] 1.2.2.1     [ SKIP ]( bru case 1 )( Device name is nothing. )
+@@ ----------------------------------------------
 
-[R] 1.2.2.2     [ SKIP ]( bru case 2 )( Device name is nothing. )
+@@ BRU = 1.2.2.1
 
-[R] 1.2.3.1     [ SKIP ]( bru case 3 )( Device name is nothing. )
+@@ ----------------------------------------------
 
-[R] 1.2.3.2     [ SKIP ]( bru case 4 )( Device name is nothing. )
+device open = /dev/video8
 
-[R] 1.2.4.1     [ SKIP ]( bru case 5 )( Device name is nothing. )
+device open = /dev/video9
 
-[R] 1.2.4.2     [ SKIP ]( bru case 6 )( Device name is nothing. )
+device open = /dev/video13
 
-[R] 1.2.4.3     [ SKIP ]( bru case 7 )( Device name is nothing. )
+Input  File = 1280_720_ARGB32.argb
 
-[R] 1.2.5.1     [ SKIP ]( bru case 8 )( Device name is nothing. )
+Input  File = 640_480_ARGB32.argb
 
-[R] 1.2.5.2     [ SKIP ]( bru case 9 )( Device name is nothing. )
+Output File = nothing
 
-[R] 1.2.5.3     [ SKIP ]( bru case 10 )( Device name is nothing. )
 
-[R] 1.2.5.4     [ SKIP ]( bru case 11 )( Device name is nothing. )
+----------------------
 
-[R] 1.2.5.5     [ SKIP ]( bru case 12 )( Device name is nothing. )
+TotalTime           =   83.94 ms
 
-[R] 1.2.5.6     [ SKIP ]( bru case 13 )( Device name is nothing. )
+   > ProcessingTime =    8.22 ms
 
-[R] 1.2.6.1     [ SKIP ]( bru case 14 )( Device name is nothing. )
+     WaitTime       =    1.31 ms
 
-[R] 1.2.6.2     [ SKIP ]( bru case 15 )( Device name is nothing. )
+     DevOpenTime    =    7.79 ms
 
-[R] 1.2.6.3     [ SKIP ]( bru case 16 )( Device name is nothing. )
+     DevCloseTime   =    1.48 ms
 
-[R] 1.2.6.4     [ SKIP ]( bru case 17 )( Device name is nothing. )
+     ReadTime       =    6.35 ms
 
-[R] 1.2.6.5     [ SKIP ]( bru case 18 )( Device name is nothing. )
+     WriteTime      =    0.00 ms
 
-[R] 1.2.6.6     [ SKIP ]( bru case 19 )( Device name is nothing. )
+     CheckSumTime   =   51.46 ms
+
+     OtherTime      =    8.63 ms
+
+----------------------
+
+[R] 1.2.2.1     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.2.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   89.15 ms
+
+   > ProcessingTime =    1.58 ms
+
+     WaitTime       =    1.32 ms
+
+     DevOpenTime    =    7.52 ms
+
+     DevCloseTime   =    0.57 ms
+
+     ReadTime       =   14.26 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   47.46 ms
+
+     OtherTime      =   17.76 ms
+
+----------------------
+
+[R] 1.2.2.2     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.3.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   95.57 ms
+
+   > ProcessingTime =   12.16 ms
+
+     WaitTime       =    1.32 ms
+
+     DevOpenTime    =    6.02 ms
+
+     DevCloseTime   =    0.57 ms
+
+     ReadTime       =   14.31 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   47.45 ms
+
+     OtherTime      =   15.05 ms
+
+----------------------
+
+[R] 1.2.3.1     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.3.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = 640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   86.22 ms
+
+   > ProcessingTime =    8.18 ms
+
+     WaitTime       =    1.32 ms
+
+     DevOpenTime    =    6.08 ms
+
+     DevCloseTime   =    1.51 ms
+
+     ReadTime       =   10.39 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   51.44 ms
+
+     OtherTime      =    8.62 ms
+
+----------------------
+
+[R] 1.2.3.2     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.4.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_420sp.yuv
+
+Input  File = 640_480_420sp.yuv
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  104.47 ms
+
+   > ProcessingTime =    1.57 ms
+
+     WaitTime       =    1.33 ms
+
+     DevOpenTime    =    7.57 ms
+
+     DevCloseTime   =    0.57 ms
+
+     ReadTime       =   53.26 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   18.32 ms
+
+     OtherTime      =   23.18 ms
+
+----------------------
+
+[R] 1.2.4.1     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.4.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_420sp.yuv
+
+Input  File = 640_480_420sp.yuv
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   49.52 ms
+
+   > ProcessingTime =    1.57 ms
+
+     WaitTime       =    1.32 ms
+
+     DevOpenTime    =    6.70 ms
+
+     DevCloseTime   =    0.51 ms
+
+     ReadTime       =    3.44 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   30.41 ms
+
+     OtherTime      =    6.88 ms
+
+----------------------
+
+[R] 1.2.4.2     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.4.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_420sp.yuv
+
+Input  File = 640_480_420sp.yuv
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   49.86 ms
+
+   > ProcessingTime =    1.57 ms
+
+     WaitTime       =    1.32 ms
+
+     DevOpenTime    =    4.84 ms
+
+     DevCloseTime   =    0.57 ms
+
+     ReadTime       =    2.32 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   26.36 ms
+
+     OtherTime      =   14.20 ms
+
+----------------------
+
+[R] 1.2.4.3     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.5.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x80#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  250.68 ms
+
+   > ProcessingTime =    1.62 ms
+
+     WaitTime       =    1.38 ms
+
+     DevOpenTime    =    6.61 ms
+
+     DevCloseTime   =    7.07 ms
+
+     ReadTime       =  126.80 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   87.47 ms
+
+     OtherTime      =   21.11 ms
+
+----------------------
+
+[R] 1.2.5.1     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.5.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_xFF#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  251.70 ms
+
+   > ProcessingTime =    1.57 ms
+
+     WaitTime       =    1.32 ms
+
+     DevOpenTime    =    7.56 ms
+
+     DevCloseTime   =    3.34 ms
+
+     ReadTime       =  127.06 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   87.43 ms
+
+     OtherTime      =   24.74 ms
+
+----------------------
+
+[R] 1.2.5.2     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.5.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x00#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  239.56 ms
+
+   > ProcessingTime =    1.57 ms
+
+     WaitTime       =    1.32 ms
+
+     DevOpenTime    =    7.52 ms
+
+     DevCloseTime   =    7.51 ms
+
+     ReadTime       =  134.85 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   79.46 ms
+
+     OtherTime      =    8.65 ms
+
+----------------------
+
+[R] 1.2.5.3     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.5.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x80#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  329.29 ms
+
+   > ProcessingTime =   17.80 ms
+
+     WaitTime       =    1.36 ms
+
+     DevOpenTime    =    7.59 ms
+
+     DevCloseTime   =    0.59 ms
+
+     ReadTime       =   19.61 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   51.39 ms
+
+     OtherTime      =  232.30 ms
+
+----------------------
+
+[R] 1.2.5.4     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.5.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_xFF#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  290.54 ms
+
+   > ProcessingTime =    1.53 ms
+
+     WaitTime       =    1.32 ms
+
+     DevOpenTime    =    6.00 ms
+
+     DevCloseTime   =    0.57 ms
+
+     ReadTime       =   11.94 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   67.41 ms
+
+     OtherTime      =  203.08 ms
+
+----------------------
+
+[R] 1.2.5.5     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.5.6
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x00#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  296.65 ms
+
+   > ProcessingTime =    1.62 ms
+
+     WaitTime       =    1.37 ms
+
+     DevOpenTime    =    7.10 ms
+
+     DevCloseTime   =    0.58 ms
+
+     ReadTime       =   15.67 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   51.39 ms
+
+     OtherTime      =  220.28 ms
+
+----------------------
+
+[R] 1.2.5.6     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.6.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x80#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  114.80 ms
+
+   > ProcessingTime =   12.10 ms
+
+     WaitTime       =    1.36 ms
+
+     DevOpenTime    =    6.13 ms
+
+     DevCloseTime   =    0.51 ms
+
+     ReadTime       =    6.38 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   79.42 ms
+
+     OtherTime      =   10.26 ms
+
+----------------------
+
+[R] 1.2.6.1     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.6.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x80#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  112.45 ms
+
+   > ProcessingTime =    1.63 ms
+
+     WaitTime       =    1.37 ms
+
+     DevOpenTime    =    7.00 ms
+
+     DevCloseTime   =    0.51 ms
+
+     ReadTime       =   10.29 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   79.45 ms
+
+     OtherTime      =   13.57 ms
+
+----------------------
+
+[R] 1.2.6.2     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.6.3
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x00#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   83.72 ms
+
+   > ProcessingTime =    8.23 ms
+
+     WaitTime       =    1.32 ms
+
+     DevOpenTime    =    6.17 ms
+
+     DevCloseTime   =    0.58 ms
+
+     ReadTime       =    6.29 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   47.45 ms
+
+     OtherTime      =   14.99 ms
+
+----------------------
+
+[R] 1.2.6.3     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.6.4
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x80#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  339.50 ms
+
+   > ProcessingTime =    1.61 ms
+
+     WaitTime       =    1.37 ms
+
+     DevOpenTime    =    6.09 ms
+
+     DevCloseTime   =    0.53 ms
+
+     ReadTime       =   10.46 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   71.38 ms
+
+     OtherTime      =  249.44 ms
+
+----------------------
+
+[R] 1.2.6.4     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.6.5
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x80#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  318.38 ms
+
+   > ProcessingTime =   10.84 ms
+
+     WaitTime       =    1.32 ms
+
+     DevOpenTime    =    6.24 ms
+
+     DevCloseTime   =    1.74 ms
+
+     ReadTime       =   10.43 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   71.39 ms
+
+     OtherTime      =  217.75 ms
+
+----------------------
+
+[R] 1.2.6.5     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ BRU = 1.2.6.6
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video9
+
+device open = /dev/video13
+
+Input  File = 1280_720_ARGB32.argb
+
+Input  File = alpha_x00#640_480_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  333.17 ms
+
+   > ProcessingTime =    7.20 ms
+
+     WaitTime       =    1.36 ms
+
+     DevOpenTime    =    7.51 ms
+
+     DevCloseTime   =    0.59 ms
+
+     ReadTime       =   14.41 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   59.40 ms
+
+     OtherTime      =  244.07 ms
+
+----------------------
+
+[R] 1.2.6.6     [ OK ]
 
 ## success ##
 
 
 MACRO> tt lut all
 
-[R] 1.5.1.1     [ SKIP ]( lut case 1 )( Device name is nothing. )
+@@ ----------------------------------------------
 
-## success ##
+@@ LUT = 1.5.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+MMI open: No such file or directory
+mmngr_alloc_in_user() Failed!! / ercd = 0xffffffff ( -1 )
+
+## ERROR!! / errno = 2 (No such file or directory), file = usrCmd/csTotalTest/testLut.c, line = 102
+
+MMI GET: Bad file descriptor
+mmngr_free_in_user() Failed!! / ercd = 0xfffffffe ( -2 )
+
+## ERROR!! / errno = 9 (Bad file descriptor), file = usrCmd/csTotalTest/testLut.c, line = 263
+
+## ERROR!! / errno = 0 (Success), file = usrCmd/csTotalTest/testLut.c, line = 271
+
+[R] 1.5.1.1     [ ERROR !! ]( lut case 1 )
+
+## ERROR !! ##
 
 
 MACRO> tt clu all
 
-[R] 1.5.2.1     [ SKIP ]( clu case 1 )( Device name is nothing. )
+@@ ----------------------------------------------
 
-## success ##
+@@ CLU = 1.5.2.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+MMI open: No such file or directory
+mmngr_alloc_in_user() Failed!! / ercd = 0xffffffff ( -1 )
+
+## ERROR!! / errno = 2 (No such file or directory), file = usrCmd/csTotalTest/testClu.c, line = 105
+
+MMI GET: Bad file descriptor
+mmngr_free_in_user() Failed!! / ercd = 0xfffffffe ( -2 )
+
+## ERROR!! / errno = 9 (Bad file descriptor), file = usrCmd/csTotalTest/testClu.c, line = 266
+
+## ERROR!! / errno = 0 (Success), file = usrCmd/csTotalTest/testClu.c, line = 274
+
+[R] 1.5.2.1     [ ERROR !! ]( clu case 1 )
+
+## ERROR !! ##
 
 
 MACRO> tt hgo all
 
-[R] 1.6.1.1     [ SKIP ]( hgo case 1 )( Device name is nothing. )
+@@ ----------------------------------------------
 
-## success ##
+@@ HGO = 1.6.1.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video8
+
+device open = /dev/video13
+
+MMI open: No such file or directory
+mmngr_alloc_in_user() Failed!! / ercd = 0xffffffff ( -1 )
+
+## ERROR!! / errno = 2 (No such file or directory), file = usrCmd/csTotalTest/testHgo.c, line = 107
+
+MMI GET: Bad file descriptor
+mmngr_free_in_user() Failed!! / ercd = 0xfffffffe ( -2 )
+
+## ERROR!! / errno = 9 (Bad file descriptor), file = usrCmd/csTotalTest/testHgo.c, line = 278
+
+MMI GET: Bad file descriptor
+mmngr_free_in_user() Failed!! / ercd = 0xfffffffe ( -2 )
+
+## ERROR!! / errno = 9 (Bad file descriptor), file = usrCmd/csTotalTest/testHgo.c, line = 279
+
+## ERROR!! / errno = 0 (Success), file = usrCmd/csTotalTest/testHgo.c, line = 287
+
+[R] 1.6.1.1     [ ERROR !! ]( hgo case 1 )
+
+## ERROR !! ##
 
 
 MACRO> tt media 2
 
-Error : media_device_enumerate()
+
+driver name is [fe9a0000.vsp]
+
+
+
+- dev rpf.0   = /dev/video14
+
+- dev wpf.0   = /dev/video15
+
+
+
+- lut   = /dev/v4l-subdev16
+
+- clu   = /dev/v4l-subdev17
+
+- hgo   = /dev/v4l-subdev18
+
+- hgt   = /dev/v4l-subdev19
+
+- rpf.0 = /dev/v4l-subdev20
+
+- uds.0 = /dev/v4l-subdev21
+
+- wpf.0 = /dev/v4l-subdev22
 
 
 ## change media ##
 
-    ->
+  fe960000.vsp  ->  fe9a0000.vsp
 
 
 ## success ##
@@ -1055,57 +4338,196 @@ Error : media_device_enumerate()
 
 MACRO> tt uds all
 
-[R] 1.3.1.1     [ SKIP ]( uds case 1 )( Device name is nothing. )
+@@ ----------------------------------------------
 
-[R] 1.3.1.2     [ SKIP ]( uds case 2 )( Device name is nothing. )
+@@ UDS = 1.3.1.1
 
-[R] 1.3.2.1     [ SKIP ]( uds case 3 )( Device name is nothing. )
+@@ ----------------------------------------------
+
+device open = /dev/video14
+
+device open = /dev/video15
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =  203.56 ms
+
+   > ProcessingTime =   14.19 ms
+
+     WaitTime       =    3.57 ms
+
+     DevOpenTime    =    5.88 ms
+
+     DevCloseTime   =    0.52 ms
+
+     ReadTime       =    3.62 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =  165.62 ms
+
+     OtherTime      =   13.72 ms
+
+----------------------
+
+[R] 1.3.1.1     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ UDS = 1.3.1.2
+
+@@ ----------------------------------------------
+
+device open = /dev/video14
+
+device open = /dev/video15
+
+Input  File = 64_64_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   22.92 ms
+
+   > ProcessingTime =    0.32 ms
+
+     WaitTime       =    0.16 ms
+
+     DevOpenTime    =    6.04 ms
+
+     DevCloseTime   =    0.39 ms
+
+     ReadTime       =   12.55 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =    0.56 ms
+
+     OtherTime      =    3.07 ms
+
+----------------------
+
+[R] 1.3.1.2     [ OK ]
+
+@@ ----------------------------------------------
+
+@@ UDS = 1.3.2.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video14
+
+device open = /dev/video15
+
+Input  File = 1280_720_ARGB32.argb
+
+Output File = nothing
+
+
+----------------------
+
+TotalTime           =   47.50 ms
+
+   > ProcessingTime =    9.64 ms
+
+     WaitTime       =    1.34 ms
+
+     DevOpenTime    =    6.74 ms
+
+     DevCloseTime   =    0.47 ms
+
+     ReadTime       =    3.52 ms
+
+     WriteTime      =    0.00 ms
+
+     CheckSumTime   =   13.24 ms
+
+     OtherTime      =   13.89 ms
+
+----------------------
+
+[R] 1.3.2.1     [ OK ]
 
 ## success ##
 
 
 MACRO> tt hgt all
 
-[R] 1.6.2.1     [ SKIP ]( hgt case 1 )( Device name is nothing. )
+@@ ----------------------------------------------
 
-## success ##
+@@ HGT = 1.6.2.1
+
+@@ ----------------------------------------------
+
+device open = /dev/video14
+
+device open = /dev/video15
+
+MMI open: No such file or directory
+mmngr_alloc_in_user() Failed!! / ercd = 0xffffffff ( -1 )
+
+## ERROR!! / errno = 2 (No such file or directory), file = usrCmd/csTotalTest/testHgt.c, line = 107
+
+MMI GET: Bad file descriptor
+mmngr_free_in_user() Failed!! / ercd = 0xfffffffe ( -2 )
+
+## ERROR!! / errno = 9 (Bad file descriptor), file = usrCmd/csTotalTest/testHgt.c, line = 309
+
+MMI GET: Bad file descriptor
+mmngr_free_in_user() Failed!! / ercd = 0xfffffffe ( -2 )
+
+## ERROR!! / errno = 9 (Bad file descriptor), file = usrCmd/csTotalTest/testHgt.c, line = 310
+
+## ERROR!! / errno = 0 (Success), file = usrCmd/csTotalTest/testHgt.c, line = 318
+
+[R] 1.6.2.1     [ ERROR !! ]( hgt case 1 )
+
+## ERROR !! ##
 
 
 MACRO>
 
 MACRO> sys top -n1
-Mem: 626588K used, 1222800K free, 24748K shrd, 0K buff, 182388K cached
-CPU:   0% usr   4% sys   0% nic  95% idle   0% io   0% irq   0% sirq
-Load average: 0.00 0.00 0.00 1/229 44439
+Mem: 229928K used, 1619460K free, 10308K shrd, 0K buff, 79504K cached
+CPU:  92% usr   8% sys   0% nic   0% idle   0% io   0% irq   0% sirq
+Load average: 2.18 0.64 0.22 5/264 611
   PID  PPID USER     STAT   VSZ %VSZ %CPU COMMAND
-44439 44434 root     R     3492   0%   5% top -n1
-  276     1 root     S     103m   6%   0% /usr/lib/systemd/systemd-journald
-  334     1 systemd- S    89188   5%   0% /usr/lib/systemd/systemd-timesyncd
-  489   433 root     S    31856   2%   0% /usr/bin/weston --idle-time=0 --log=/var/log/weston.log
-  310     1 root     S    23468   1%   0% /usr/lib/systemd/systemd-udevd
-  488   433 root     S    19796   1%   0% (sd-pam)
-  482   479 root     S    19268   1%   0% (sd-pam)
-  490   489 root     S    19068   1%   0% /usr/libexec/weston-keyboard
-    1     0 root     S    18532   1%   0% {systemd} /sbin/init
-  479     1 root     S    17440   1%   0% /usr/lib/systemd/systemd --user
-  491   489 root     S    17416   1%   0% /usr/libexec/weston-desktop-shell
-  330     1 systemd- S    16724   1%   0% /usr/lib/systemd/systemd-networkd
-44424   331 root     S    15428   1%   0% systemd-userwork: waiting...
-44426   331 root     S    15428   1%   0% systemd-userwork: waiting...
-44425   331 root     S    15428   1%   0% systemd-userwork: waiting...
-  376     1 root     S    15424   1%   0% /usr/lib/systemd/systemd-logind
-  333     1 systemd- S    15380   1%   0% /usr/lib/systemd/systemd-resolved
-  331     1 root     S    14908   1%   0% /usr/lib/systemd/systemd-userdbd
-  368     1 avahi    S     7416   0%   0% avahi-daemon: running [salvator-x-2.local]
-  378   368 avahi    S     7416   0%   0% avahi-daemon: chroot helper
-  371     1 messageb S     6984   0%   0% /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-
-  394     1 root     S     6624   0%   0% /bin/login --
-  392     1 root     S     5260   0%   0% /sbin/agetty -o -p -- \u --noclear - linux
-  433     1 root     S     4676   0%   0% weston-launch -- --idle-time=0 --log=/var/log/weston.log
-  275     1 rpc      S     4644   0%   0% /usr/sbin/rpcbind -w -f
-  492   394 root     S     4428   0%   0% -sh
-  369     1 root     S     3492   0%   0% /usr/sbin/klogd -n
-  370     1 root     S     3492   0%   0% /usr/sbin/syslogd -n
+  518   514 root     R     2860   0%  24% ./stress --cpu 4 --timeout 120
+  515   514 root     R     2860   0%  24% ./stress --cpu 4 --timeout 120
+  516   514 root     R     2860   0%  20% ./stress --cpu 4 --timeout 120
+  517   514 root     R     2860   0%  20% ./stress --cpu 4 --timeout 120
+  611   512 root     R     3492   0%   4% top -n1
+  499   486 root     S     128m   7%   0% /usr/bin/weston --idle-time=0 --log=/var/log/weston.log
+  372     1 systemd- S    89188   5%   0% /usr/lib/systemd/systemd-timesyncd
+  320     1 root     S    23656   1%   0% /usr/lib/systemd/systemd-udevd
+  287     1 root     S    23424   1%   0% /usr/lib/systemd/systemd-journald
+  498   486 root     S    19796   1%   0% (sd-pam)
+  493   492 root     S    19268   1%   0% (sd-pam)
+  500   499 root     S    19068   1%   0% /usr/libexec/weston-keyboard
+    1     0 root     S    18664   1%   0% {systemd} /sbin/init
+  501   499 root     S    18632   1%   0% /usr/libexec/weston-desktop-shell
+  492     1 root     S    17440   1%   0% /usr/lib/systemd/systemd --user
+  331     1 systemd- S    16592   1%   0% /usr/lib/systemd/systemd-networkd
+  342   333 root     S    15868   1%   0% systemd-userwork: waiting...
+  341   333 root     S    15868   1%   0% systemd-userwork: waiting...
+  343   333 root     S    15868   1%   0% systemd-userwork: waiting...
+  370     1 systemd- S    15380   1%   0% /usr/lib/systemd/systemd-resolved
+  396     1 root     S    15280   1%   0% /usr/lib/systemd/systemd-logind
+  333     1 root     S    14908   1%   0% /usr/lib/systemd/systemd-userdbd
+  388     1 avahi    S     7416   0%   0% avahi-daemon: running [salvator-x-2.local]
+  400   388 avahi    S     7416   0%   0% avahi-daemon: chroot helper
+  392     1 messageb S     6984   0%   0% /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-ac
+  415     1 root     S     6624   0%   0% /bin/login --
+  486     1 root     S     4676   0%   0% weston-launch -- --idle-time=0 --log=/var/log/weston.log
+  286     1 rpc      S     4644   0%   0% /usr/sbin/rpcbind -w -f
+  503   415 root     S     4184   0%   0% -sh
 ## success ##
 
 
@@ -1116,4 +4538,3 @@ Load average: 0.00 0.00 0.00 1/229 44439
 ## ===================
 
 >
-

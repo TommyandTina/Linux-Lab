@@ -1,0 +1,17 @@
+----START TESTING----
+! Check IPL : does it have Loosy compresss ?, more detail see MMP_MMNGR renesas documentation
+*/
+NOTICE:  BL2: Lossy Decomp areas
+NOTICE:       Entry 0: DCMPAREACRAx:0x80000540 DCMPAREACRBx:0x570
+NOTICE:       Entry 1: DCMPAREACRAx:0x40000000 DCMPAREACRBx:0x0
+NOTICE:       Entry 2: DCMPAREACRAx:0x20000000 DCMPAREACRBx:0x0
+/*
+Make sure vsp2_tp is built for your board target
+modprobe -a mmngr mmngrbuf
+Step 1: copy Gen3_vsp2_tp_macro/* and Gen3_vsp2_tp_data/* to /v4l2-TP/Gen3_vsp2_tp
+Step 2: chmod +x * 
+Step 3: ./vsp2_tp
+Step 4: mac run totalTest.mac
+Step 5: Wait for 10-15min
+
+Use teraterm to save log due to long execution

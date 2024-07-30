@@ -1,9 +1,0 @@
-----START TESTING----
-Case 12
-modprobe -a mmngr mmngrbuf
-Step 1: ../Gen3_vsp2_tp_script/test4311.sh
-
-Case 1-4,8-11
-modprobe -a mmngr mmngrbuf
-Step 1: ./vsp2_tp 
-Step 2: mac run test_loop.mac

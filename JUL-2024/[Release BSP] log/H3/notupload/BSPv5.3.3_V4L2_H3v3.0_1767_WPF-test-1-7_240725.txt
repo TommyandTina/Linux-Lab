@@ -796,3 +796,55 @@ own distribution for production use.
 root@salvator-x:~# modprobe -a mmngr mmngrbuf
 [   56.076108] rgnmm_drv mmngr: assigned reserved memory node linux,multimedia@70000000
 root@salvator-x:~#
+
+root@salvator-x:~/v4l2-TP/Gen3_vsp2_tp#
+root@salvator-x:~/v4l2-TP/Gen3_vsp2_tp# cd ../wpf-compose-IT/
+root@salvator-x:~/v4l2-TP/wpf-compose-IT# ./v4l2_wpf_cmps_tp
+-sh: ./v4l2_wpf_cmps_tp: Permission denied
+root@salvator-x:~/v4l2-TP/wpf-compose-IT# ls
+Makefile            v4l2_wpf_cmps_tp.o       v4l2_wpf_cmps_tp_cmn.o      v4l2_wpf_cmps_tp_yuvp422.o
+v4l2_wpf_cmps_tp    v4l2_wpf_cmps_tp_argb.c  v4l2_wpf_cmps_tp_error.c    v4l2_wpf_cmps_tp_yuvsp420.c
+v4l2_wpf_cmps_tp.c  v4l2_wpf_cmps_tp_argb.o  v4l2_wpf_cmps_tp_error.o    v4l2_wpf_cmps_tp_yuvsp420.o
+v4l2_wpf_cmps_tp.h  v4l2_wpf_cmps_tp_cmn.c   v4l2_wpf_cmps_tp_yuvp422.c
+root@salvator-x:~/v4l2-TP/wpf-compose-IT# chmod 777 *
+root@salvator-x:~/v4l2-TP/wpf-compose-IT# ./v4l2_wpf_cmps_tp
+----------------------------------
+ Usage : ./v4l2_wpf_cmps_tp 'test case'
+    test case
+        1: use MMAP,   format ARGB8888
+        2: use DMABUF, format ARGB8888
+        3: use MMAP,   format YUV422 planar
+        4: use DMABUF, format YUV422 planar
+        5: use MMAP,   format YUV420 semi planar
+        6: use DMABUF, format YUV420 semi planar
+        7: check error case
+----------------------------------
+root@salvator-x:~/v4l2-TP/wpf-compose-IT# ./v4l2_wpf_cmps_tp 1
+wpf compose test
+test case 1 : use MMAP,   format ARGB8888
+wpf compose test OK.
+root@salvator-x:~/v4l2-TP/wpf-compose-IT# ./v4l2_wpf_cmps_tp 2
+wpf compose test
+test case 2 : use DMABUF, format ARGB8888
+wpf compose test OK.
+root@salvator-x:~/v4l2-TP/wpf-compose-IT# ./v4l2_wpf_cmps_tp 3
+wpf compose test
+test case 3 : use MMAP,   format YUV422 planar
+wpf compose test OK.
+root@salvator-x:~/v4l2-TP/wpf-compose-IT# ./v4l2_wpf_cmps_tp 4
+wpf compose test
+test case 4 : use DMABUF, format YUV422 planar
+wpf compose test OK.
+root@salvator-x:~/v4l2-TP/wpf-compose-IT# ./v4l2_wpf_cmps_tp 5
+wpf compose test
+test case 5 : use MMAP,   format YUV420 semi planar
+wpf compose test OK.
+root@salvator-x:~/v4l2-TP/wpf-compose-IT# ./v4l2_wpf_cmps_tp 6
+wpf compose test
+test case 6 : use DMABUF, format YUV420 semi planar
+wpf compose test OK.
+root@salvator-x:~/v4l2-TP/wpf-compose-IT# ./v4l2_wpf_cmps_tp 7
+wpf compose test
+test case 7 : check error case
+wpf compose test OK.
+root@salvator-x:~/v4l2-TP/wpf-compose-IT#

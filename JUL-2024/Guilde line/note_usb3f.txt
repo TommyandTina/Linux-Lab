@@ -1,0 +1,23 @@
+memd.ko : build chung với kernel
+Case 11-16 (g_zero speed test using usbtest driver with ./testusb)
+https://linux-usb.vger.kernel.narkive.com/LPojznsa/testusb-on-a-hid-device
+To test speed, usbtest module must know exact vendor and product id
+---------ON HOST-PC-----------
+Step : usb-devices |grep Gadget -n4
+-> Get Vendor and prodID
+Step : sudo rmmod usbtest
+Step : sudo modprobe usbtest vendor=0x0525 product=0xa4a0		(we already have (+alt) test, check dmesg)
+Step : dmesg |tail
+	Make sure these line appear :
+		[100189.896183] usbtest 1-2:3.0: Linux gadget zero
+		[100189.896188] usbtest 1-2:3.0: high-speed {control in/out bulk-in bulk-out} tests (+alt)
+		[100189.896226] usbcore: registered new interface driver usbtest
+	NOT THESE LINE:
+		[99736.183371] usbtest 1-2:3.0: couldn't get endpoints, -22
+		[99736.183376] usbtest: probe of 1-2:3.0 failed with error -22
+Step : ./testusb -a -t 14 -c 100 -s 256 -v 1 (or another command with testusb)
+
+Ở case 2.1.28 Role-swap, nếu ta xài defconfig thì lúc này CONFIG_USB_RENESAS_USB3 sẽ không có sẳn trong Image (thành module)
+	<M> xHCI HCD (USB3.0 ) support
+dẫn tới ta không modprobe dummy driver được (modprobe g_printer -> g_ncm) vì lúc này chỉ có USB2 interface
+cần insmod 
