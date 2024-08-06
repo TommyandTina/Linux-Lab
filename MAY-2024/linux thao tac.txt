@@ -78,6 +78,7 @@
 	Ấn 'ps' (xem process của user chạy) 'ps -x' (process + command liên quan tới user) 'ps -u' (nhiều thông tin hơn)
 	Hoặc ấn 'top' để xem toàn bộ process đang chạy
 	Lấy PID và ấn 'kill -9 PID' là kill được 
+	Kill hết background : kill $(jobs -p)
 
 - Mount 1 folder từ máy khác trong lan vào máy mình
 	Install sshfs
@@ -145,6 +146,7 @@
 	copy (yank) xx dòng: xxyy VD: 10yy
 	comment nhiều dòng (visual block) : ctrl+V -> tới dòng cuối muốn comment -> shift I (xóa thì ấn x) -> // hoặc # -> esc
 	Tìm nhanh từ tiếp theo *, tìm nhanh từ trước đó #
+	replace : :%s#rmmod sata_rcar.ko#rmmod ~/sata_rcar.ko#g hoặc :%s/rmmod sata_rcar.ko/rmmod ~sata_rcar.ko/g
 
 - tải package mannually bằng apt/apt-get
 	apt download htop
@@ -190,6 +192,7 @@
 		make -j16 modules LOCALVERSION=-yocto-standard
 	Để xóa phần random_number thì tắt (comment)
 		LOCALVERSION_AUTO=y
+	https://stackoverflow.com/questions/19333918/dont-add-to-linux-kernel-version
 
 - Xem dung lượng cả ổ cứng :
 	df -h .
@@ -217,3 +220,18 @@
 	Chọn version mong muốn: conf/local.conf	: PREFERRED_VERSION_wayland-protocols = "1.33" (đảm bảo đã thêm layer đó vào bblayers.conf)
 	IMAGE_INSTALL:remove = "kernel-module-cmemdrv"
 	IMAGE_INSTALL += "util-linux usbutils e2fsprogs iperf3 linuxptp gcc make binutils trace-cmd"
+
+- thêm file này vào cuối file kia:
+	cat file2 >> file1  (1 dấu > là ghi đè)
+	cat file2 | tee -a file1
+
+- Bind / unbind bằng 1 command : echo Pass1234 | sudo -S tee /sys/bus/usb/drivers/usb/bind <<< "2-2"
+
+- python
+	kill process trên os.system: echo Pass1234 | sudo -S pkill iperf3
+	Kiểm tra 1 từ có xuất hiện hay không : tee vào LOG_FILE xong check_log
+	Chạy 1 lệnh background và in kết quả vào file:  iperf3 -s > iperf3_result.txt &
+	#Ctrl + C
+    		a.send('\x03')
+  	#Ctrl + z
+    		a.send('\x1A')

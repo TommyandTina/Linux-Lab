@@ -1,0 +1,53 @@
+!!! Chỉ hoạt động trên H3/M3N
+Config
+	CONFIG_BLK_DEV_SR=y
+	CONFIG_ISO9660_FS=y
+	CONFIG_JOLIET=y
+
+CONFIG_DEBUG_KMEMLEAK=y
+CONFIG_DEBUG_KMEMLEAK_MEM_POOL_SIZE=16000
+CONFIG_DEBUG_KMEMLEAK_AUTO_SCAN=y
+
+	CONFIG_PROVE_LOCKING=y
+	CONFIG_DEBUG_ATOMIC_SLEEP=y
+CONFIG_DEBUG_RT_MUTEXES=y
+CONFIG_DEBUG_SPINLOCK=y
+CONFIG_DEBUG_MUTEXES=y
+CONFIG_DEBUG_WW_MUTEX_SLOWPATH=y
+CONFIG_DEBUG_RWSEMS=y
+CONFIG_DEBUG_LOCK_ALLOC=y
+CONFIG_LOCKDEP=y
+CONFIG_LOCKDEP_BITS=15
+CONFIG_LOCKDEP_CHAINS_BITS=16
+CONFIG_LOCKDEP_STACK_TRACE_BITS=19
+CONFIG_LOCKDEP_STACK_TRACE_HASH_BITS=14
+CONFIG_LOCKDEP_CIRCULAR_QUEUE_BITS=12
+
+CONFIG_TRACE_IRQFLAGS=y
+CONFIG_STACKTRACE=y
+
+S2R trên H3/M3N
+SATA_RCAR=m
+rvc@L410730-CL011:~/banvien_stuff/testtool/TestTools/sata$ cat testing-note.txt
+
+-Format , partion ssd before testing
+
+- Change in 'hdd_ctrl_z.sh'
+"pid=$(ps aux | grep -w 'dd' | grep ${DST_FILE} | awk '{print $2}')"
+to "pid=$(ps | grep -w 'dd' | grep ${DST_FILE} | awk '{print $2}')"
+because ps version BusyBox v1.31.1 in rootfs did not have aux aruguments
+
+- Copy these files from poky to rootfs (rootfs_wt_yocto):
+expect                          -> /usr/bin
+libtcl8.6.so.0          -> /usr/lib
+libexpect5.45.so    -> /usr/lib
+tcl8.6                          -> /usr/lib
+tcl8                            -> /usr/lib
+
+mkfs.ext4               -> /home/root/
+
+Setup để nhận sata
+Please set SW12-pin7 = Off(1).
+
+S2R như đã note trên config, đối với salavator Xs thì phải chuyển thành module với SATA_RCAR
+Nếu chưa module install thì phải đổi path insmod tới file sata_rcar.ko
