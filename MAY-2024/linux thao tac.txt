@@ -228,6 +228,7 @@
 - Bind / unbind bằng 1 command : echo Pass1234 | sudo -S tee /sys/bus/usb/drivers/usb/bind <<< "2-2"
 
 - python
+	Kill hết job nhỏ : a.send('kill $(jobs -p)')
 	kill process trên os.system: echo Pass1234 | sudo -S pkill iperf3
 	Kiểm tra 1 từ có xuất hiện hay không : tee vào LOG_FILE xong check_log
 	Chạy 1 lệnh background và in kết quả vào file:  iperf3 -s > iperf3_result.txt &
@@ -235,3 +236,15 @@
     		a.send('\x03')
   	#Ctrl + z
     		a.send('\x1A')
+	Đổi text hex thành int
+		BIT28_CHECK = int(TMP.split()[len(TMP.split())-1],16)
+	Check bit thứ 28
+		if((BIT28_CHECK & (1 << 28)) == 1):
+			return False
+			
+- Truy cập ssh thông qua 2 máy : 
+	ssh -J <user>@<hostB> <user>@<hostC>
+	Xài trong vscode như trên, còn trong mobaxterm thì host B sẽ nhập trong jump host ở configuration
+	
+- ghi thông tin vào dmesg:
+	echo "Hello, dmesg!" | sudo tee /dev/kmsg
