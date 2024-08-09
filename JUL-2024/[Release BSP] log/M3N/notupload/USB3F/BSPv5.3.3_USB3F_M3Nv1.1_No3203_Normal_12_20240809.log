@@ -1,0 +1,25 @@
+----------- BOARD ------------
+
+root@salvator-x:~# modprobe g_zero
+[  135.741756] zero gadget: Gadget Zero, version: Cinco de Mayo 2008
+[  135.748033] zero gadget: zero ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s tate
+configured
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+lsusb | grep Gadget
+Bus 002 Device 041: ID 0525:a4a0 Netchip Technology, Inc. Linux-USB "Gadget Zero"
+
+sudo /home/rvc/banvien_stuff/testusb -D /proc/bus/usb/002/041 -t 10
+/home/rvc/banvien_stuff/testusb: /proc/bus/usb/002/041 may see only control tests
+?? speed	/proc/bus/usb/002/041	0
+/proc/bus/usb/002/041 test 10,    1.454199 secs
+----------- BOARD ------------
+
+root@salvator-x:~# rmmod g_zero
+root@salvator-x:~# 
+ 
+#### Result: OK ####

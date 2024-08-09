@@ -1,0 +1,37 @@
+----------- BOARD ------------
+
+root@salvator-x:~# modprobe usb_f_ss_lb bulk_maxpacket=512; modprobe g_zero
+[  145.473825] zero gadget: Gadget Zero, version: Cinco de Mayo 2008
+[  145.480110] zero gadget: zero ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s tate
+configured
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+lsusb | grep Gadget
+Bus 002 Device 043: ID 0525:a4a0 Netchip Technology, Inc. Linux-USB "Gadget Zero"
+
+sudo /home/rvc/banvien_stuff/testusb -D /proc/bus/usb/002/043 -t 2
+/home/rvc/banvien_stuff/testusb: /proc/bus/usb/002/043 may see only control tests
+?? speed	/proc/bus/usb/002/043	0
+/proc/bus/usb/002/043 test 2,    0.040032 secs
+----------- BOARD ------------
+
+root@salvator-x:~# rmmod g_zero
+root@salvator-x:~# Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "../common/conserial.py", line 81, in run
+    _bytes_to_read = self.serial.inWaiting()
+  File "/usr/local/lib/python2.7/dist-packages/serial/serialutil.py", line 594, in inWaiting
+    return self.in_waiting
+  File "/usr/local/lib/python2.7/dist-packages/serial/serialposix.py", line 549, in in_waiting
+    s = fcntl.ioctl(self.fd, TIOCINQ, TIOCM_zero_str)
+IOError: [Errno 9] Bad file descriptor
+
+
+ 
+#### Result: OK ####

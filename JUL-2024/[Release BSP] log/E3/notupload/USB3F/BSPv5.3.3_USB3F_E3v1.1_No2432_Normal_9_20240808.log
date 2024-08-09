@@ -1,0 +1,99 @@
+
+root@ebisu:~# modprobe -r g_printer
+root@ebisu:~# 
+root@ebisu:~# lsmod
+Module                  Size  Used by
+crct10dif_ce           20480  1
+ccree                 159744  0
+rcar_canfd             28672  0
+gpio_bd9571mwv         16384  0
+can_dev                36864  1 rcar_canfd
+authenc                16384  1 ccree
+libdes                 24576  1 ccree
+pwm_bl                 16384  0
+optee_rng              16384  0
+rng_core               24576  1 optee_rng
+cfg80211              872448  0
+rfkill                 36864  2 cfg80211
+uio_pdrv_genirq        16384  0
+fuse                  143360  1
+ipv6                  577536  12
+root@ebisu:~# 
+root@ebisu:~# modprobe g_ncm
+[  462.530344] using random self ethernet address
+[  462.537148] using random host ethernet address
+[  462.547568] usb0: HOST MAC fe:3f:82:ac:cf:d0
+[  462.554447] usb0: MAC d2:13:2a:40:91:74
+[  462.560852] g_ncm gadget: NCM Gadget
+[  462.576339] g_ncm gadget: g_ncm ready
+root@ebisu:~# 
+root@ebisu:~# modprobe g_printer
+[  463.719875] printer gadget: printer ready
+root@ebisu:~# [  464.123142] printer gadget: Using interface 0
+
+root@ebisu:~# rmmod g_printer
+root@ebisu:~# 
+root@ebisu:~# modprobe g_printer
+[  464.897950] printer gadget: printer ready
+root@ebisu:~# [  465.284699] printer gadget: Using interface 0
+
+root@ebisu:~# dmesg | grep renesas_usb3
+[    4.371463] renesas_usb3 ee020000.usb: probed
+root@ebisu:~# ----------- BOARD ------------
+
+root@ebisu:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s 
+tate
+root@ebisu
+root@ebisu:~# 
+root@ebisu:~# ls /dev/g_printer0
+root@ebisu
+root@ebisu:~# 
+root@ebisu:~# dd if=/dev/urandom of=16byte.txt bs=1 count=16
+16+0 records in
+16+0 records out
+root@ebisu, 0.00564212 s, 2.8 kB/s
+root@ebisu:~# 
+root@ebisu:~# echo "$(<16byte.txt)"
+root@ebisu4
+root@ebisu:~# 
+root@ebisu:~# echo "$(<16byte.txt)" >/dev/g_printer0
+root@ebisu:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+[68982.763868] usblp0: removed
+[68982.765303] usblp 2-2:1.0: usblp0: USB Bidirectional printer dev 36 if 0 alt 0 proto 2 vid 0x0525 pid 0xA4A8
+
+ls /dev/usb/lp*
+/dev/usb/lp0
+sudo chmod 777 /dev/usb/lp0
+
+�����-��J�Z�F'4
+
+sudo cat /dev/usb/lp0
+root@ebisu
+root@ebisu:~# rmmod g_printer
+root@ebisup0: Input/output error
+root@ebisu:~# 
+root@ebisu:~# lsmod
+Module                  Size  Used by
+g_ncm                  16384  0
+crct10dif_ce           20480  1
+ccree                 159744  0
+rcar_canfd             28672  0
+gpio_bd9571mwv         16384  0
+can_dev                36864  1 rcar_canfd
+authenc                16384  1 ccree
+libdes                 24576  1 ccree
+pwm_bl                 16384  0
+optee_rng              16384  0
+rng_core               24576  1 optee_rng
+cfg80211              872448  0
+rfkill                 36864  2 cfg80211
+uio_pdrv_genirq        16384  0
+fuse                  143360  1
+root@ebisu       577536  12
+root@ebisu:~# 
+ 
+#### Result: OK ####

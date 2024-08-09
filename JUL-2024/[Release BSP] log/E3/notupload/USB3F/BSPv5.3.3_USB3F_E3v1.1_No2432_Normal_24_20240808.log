@@ -1,0 +1,161 @@
+----------- BOARD ------------
+
+root@ebisu:~# modprobe g_ncm
+[ 1006.688845] using random self ethernet address
+[ 1006.695182] using random host ethernet address
+[ 1006.713382] usb0: HOST MAC 96:12:c5:b1:85:8d
+[ 1006.720232] usb0: MAC ea:c5:aa:0f:14:4f
+[ 1006.732128] g_ncm gadget: NCM Gadget
+[ 1006.743606] g_ncm gadget: g_ncm ready
+root@ebisu:~# 
+root@ebisu:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s 
+tate
+root@ebisu
+root@ebisu:~# 
+root@ebisu:~# ip a |grep usb
+root@ebisuDCAST,MULTICAST> mtu 1500 qdisc noop qlen 1000
+root@ebisu:~# 
+root@ebisu:~# ifconfig usb0 192.168.0.2 up
+root@ebisu:~# 
+
+---------- HOST-PC -----------
+[69520.601980] cdc_ncm 2-2:1.0 enx9612c5b1858d: renamed from usb0
+dmesg 2>&1 |grep 'renamed from usb0'
+
+sudo ifconfig enx9612c5b1858d 192.168.0.3 up
+enx00e0006095bd: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.8.8  netmask 255.255.255.0  broadcast 192.168.8.255
+        ether 00:e0:00:60:95:bd  txqueuelen 1000  (Ethernet)
+        RX packets 4802371  bytes 504618274 (504.6 MB)
+        RX errors 0  dropped 77262  overruns 0  frame 0
+        TX packets 6238600  bytes 8737444689 (8.7 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enx9612c5b1858d: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.3  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::1a5a:5968:8db2:457c  prefixlen 64  scopeid 0x20<link>
+        ether 96:12:c5:b1:85:8d  txqueuelen 1000  (Ethernet)
+        RX packets 1  bytes 76 (76.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2  bytes 443 (443.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 180041  bytes 55428785 (55.4 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 180041  bytes 55428785 (55.4 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp59s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.4.12  netmask 255.255.248.0  broadcast 192.168.7.255
+        inet6 fe80::2885:7f4a:87f8:ff15  prefixlen 64  scopeid 0x20<link>
+        ether 38:ba:f8:7b:f4:c6  txqueuelen 1000  (Ethernet)
+        RX packets 1994427  bytes 2205580331 (2.2 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 814387  bytes 350578416 (350.5 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+
+---------- BOARD -----------
+root@ebisu
+root@ebisu:~# ping -c 30 192.168.0.3 > PINGLOG.txt &
+root@ebisu
+root@ebisu:~# 
+root@ebisu:~# echo ee020000.usb > /sys/bus/platform/drivers/renesas_usb3/un 
+bind
+root@ebisu:~# ping: sendto: Network is unreachable
+root@ebisu
+[1]+  Done(1)                 ping -c 30 192.168.0.3 > PINGLOG.txt
+root@ebisu:~# echo ee020000.usb > /sys/bus/platform/drivers/renesas_usb3/bi 
+nd
+[ 1012.704089] using random self ethernet address
+[ 1012.710586] using random host ethernet address
+[ 1012.723743] usb0: HOST MAC 6e:97:e9:59:cc:7f
+[ 1012.730115] usb0: MAC fa:4d:7f:d8:d8:fe
+root@ebisug_ncm gadget: NCM Gadget
+root@ebisug_ncm gadget: g_ncm ready
+[ 1012.754438] renesas_usb3 ee020000.usb: probed
+root@ebisu:~# 
+root@ebisu:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s 
+tate
+not attached
+root@ebisu:~# 
+root@ebisu:~# mount -t debugfs none /sys/kernel/debug/
+root@ebisunel/debug: none already mounted or mount point busy.
+root@ebisu may have more information after failed mount system call.
+root@ebisu:~# 
+root@ebisu:~# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+root@ebisu:~# 
+root@ebisu:~# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device
+root@ebisu:~# 
+root@ebisu:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s 
+tate
+configured
+root@ebisu:~# 
+root@ebisu:~# ifconfig usb0 192.168.0.2 up
+root@ebisu:~# 
+
+---------- HOST-PC -----------
+[69529.771363] cdc_ncm 2-2:1.0 enx6e97e959cc7f: renamed from usb0
+[69531.611077] cdc_ncm 2-2:1.0 enx6e97e959cc7f: renamed from usb0
+
+sudo ifconfig enx6e97e959cc7f 192.168.0.3 up
+enx00e0006095bd: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.8.8  netmask 255.255.255.0  broadcast 192.168.8.255
+        ether 00:e0:00:60:95:bd  txqueuelen 1000  (Ethernet)
+        RX packets 4822640  bytes 505800656 (505.8 MB)
+        RX errors 0  dropped 77283  overruns 0  frame 0
+        TX packets 6259954  bytes 8769120802 (8.7 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enx6e97e959cc7f: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.3  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::3741:41:21da:5bb7  prefixlen 64  scopeid 0x20<link>
+        ether 6e:97:e9:59:cc:7f  txqueuelen 1000  (Ethernet)
+        RX packets 1  bytes 76 (76.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2  bytes 443 (443.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 180743  bytes 55689853 (55.6 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 180743  bytes 55689853 (55.6 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp59s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.4.12  netmask 255.255.248.0  broadcast 192.168.7.255
+        inet6 fe80::2885:7f4a:87f8:ff15  prefixlen 64  scopeid 0x20<link>
+        ether 38:ba:f8:7b:f4:c6  txqueuelen 1000  (Ethernet)
+        RX packets 1994982  bytes 2205644169 (2.2 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 815103  bytes 350893690 (350.8 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+root@ebisu
+
+
+---------- BOARD -----------
+
+root@ebisu:~# ping -c 5 192.168.0.3
+PING 192.168.0.3 (192.168.0.3): 56 data bytes
+64 bytes from 192.168.0.3: seq=0 ttl=64 time=5.125 ms
+64 bytes from 192.168.0.3: seq=1 ttl=64 time=3.341 ms
+64 bytes from 192.168.0.3: seq=2 ttl=64 time=2.969 ms
+64 bytes from 192.168.0.3: seq=3 ttl=64 time=2.483 ms
+root@ebisu92.168.0.3: seq=4 ttl=64 time=2.801 ms
+root@ebisu
+root@ebisu ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max = 2.483/3.343/5.125 ms
+root@ebisu:~# 
+root@ebisu:~# rmmod g_ncm
+root@ebisu:~# 
+ 
+#### Result: OK ####

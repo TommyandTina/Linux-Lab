@@ -1,0 +1,100 @@
+----------- BOARD ------------
+
+root@ebisu:~# modprobe g_ncm
+[  779.059843] using random self ethernet address
+[  779.064675] using random host ethernet address
+[  779.080835] usb0: HOST MAC c6:ef:61:2b:87:12
+[  779.089579] usb0: MAC 6e:64:78:b4:08:16
+[  779.094297] g_ncm gadget: NCM Gadget
+[  779.098258] g_ncm gadget: g_ncm ready
+root@ebisu:~# 
+root@ebisu:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s 
+tate
+root@ebisu
+root@ebisu:~# 
+root@ebisu:~# mount -t debugfs none /sys/kernel/debug/
+mount: /sys/kernel/debug: none already mounted or mount point busy.
+root@ebisu may have more information after failed mount system call.
+root@ebisu:~# 
+root@ebisu:~# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+root@ebisu:~# 
+root@ebisu:~# echo 2 > /sys/kernel/debug/usb/ee020000.usb/b_device
+root@ebisu:~# 
+root@ebisu:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s 
+root@ebisu
+root@ebisu
+root@ebisu:~# 
+root@ebisu:~# ip a |grep usb
+root@ebisuCAST,MULTICAST> mtu 1500 qdisc noop qlen 1000
+root@ebisu:~# 
+root@ebisu:~# ifconfig usb0 192.168.0.2 up
+root@ebisu:~# 
+
+---------- HOST-PC -----------
+[70908.189105] cdc_ncm 2-1.1:1.0 enxc6ef612b8712: renamed from usb0
+dmesg 2>&1 |grep 'renamed from usb0'
+
+sudo ifconfig enxc6ef612b8712 192.168.0.3 up
+enx00e0006095bd: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.8.8  netmask 255.255.255.0  broadcast 192.168.8.255
+        ether 00:e0:00:60:95:bd  txqueuelen 1000  (Ethernet)
+        RX packets 5137098  bytes 539999106 (539.9 MB)
+        RX errors 0  dropped 80039  overruns 0  frame 0
+        TX packets 6690061  bytes 9367880771 (9.3 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enxc6ef612b8712: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.3  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::7ea4:92d4:aafb:acac  prefixlen 64  scopeid 0x20<link>
+        ether c6:ef:61:2b:87:12  txqueuelen 1000  (Ethernet)
+        RX packets 1  bytes 76 (76.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 3  bytes 553 (553.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 188451  bytes 58263959 (58.2 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 188451  bytes 58263959 (58.2 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp59s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.4.12  netmask 255.255.248.0  broadcast 192.168.7.255
+        inet6 fe80::2885:7f4a:87f8:ff15  prefixlen 64  scopeid 0x20<link>
+        ether 38:ba:f8:7b:f4:c6  txqueuelen 1000  (Ethernet)
+        RX packets 2016464  bytes 2208114512 (2.2 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 841142  bytes 356564086 (356.5 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+
+---------- HOST-PC -----------
+echo 2-1.1 | sudo tee /sys/bus/usb/drivers/usb/unbind > /dev/null
+[70911.844620] cdc_ncm 2-1.1:1.0 enxc6ef612b8712: unregister 'cdc_ncm' usb-0000:00:14.0-1.1, CDC NCM
+echo 2-1.1 | sudo tee /sys/bus/usb/drivers/usb/bind > /dev/null
+[70911.947705] cdc_ncm 2-1.1:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-1.1, CDC NCM, c6:ef:61:2b:87:12
+echo 2-1.1 | sudo tee /sys/bus/usb/drivers/usb/unbind > /dev/null
+[70912.195080] cdc_ncm 2-1.1:1.0 enxc6ef612b8712: unregister 'cdc_ncm' usb-0000:00:14.0-1.1, CDC NCM
+echo 2-1.1 | sudo tee /sys/bus/usb/drivers/usb/bind > /dev/null
+[70912.374368] cdc_ncm 2-1.1:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-1.1, CDC NCM, c6:ef:61:2b:87:12
+echo 2-1.1 | sudo tee /sys/bus/usb/drivers/usb/unbind > /dev/null
+[70912.591193] cdc_ncm 2-1.1:1.0 enxc6ef612b8712: unregister 'cdc_ncm' usb-0000:00:14.0-1.1, CDC NCM
+echo 2-1.1 | sudo tee /sys/bus/usb/drivers/usb/bind > /dev/null
+[70912.774338] cdc_ncm 2-1.1:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-1.1, CDC NCM, c6:ef:61:2b:87:12
+echo 2-1.1 | sudo tee /sys/bus/usb/drivers/usb/unbind > /dev/null
+[70913.007263] cdc_ncm 2-1.1:1.0 enxc6ef612b8712: unregister 'cdc_ncm' usb-0000:00:14.0-1.1, CDC NCM
+echo 2-1.1 | sudo tee /sys/bus/usb/drivers/usb/bind > /dev/null
+[70913.173894] cdc_ncm 2-1.1:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-1.1, CDC NCM, c6:ef:61:2b:87:12
+echo 2-1.1 | sudo tee /sys/bus/usb/drivers/usb/unbind > /dev/null
+[70913.415590] cdc_ncm 2-1.1:1.0 enxc6ef612b8712: unregister 'cdc_ncm' usb-0000:00:14.0-1.1, CDC NCM
+echo 2-1.1 | sudo tee /sys/bus/usb/drivers/usb/bind > /dev/null
+root@ebisucdc_ncm 2-1.1:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-1.1, CDC NCM, c6:ef:61:2b:87:12
+root@ebisu
+root@ebisu:~# rmmod g_ncm
+root@ebisu:~# 
+ 
+#### Result: OK ####

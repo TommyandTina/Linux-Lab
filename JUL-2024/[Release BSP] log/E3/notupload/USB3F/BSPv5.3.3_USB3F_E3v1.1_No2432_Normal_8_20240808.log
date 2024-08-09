@@ -1,0 +1,48 @@
+----------- BOARD ------------
+
+root@ebisu:~# modprobe g_serial
+root@ebisu:~# 
+root@ebisu:~# rmmod g_serial
+root@ebisu:~# 
+root@ebisu:~# modprobe g_serial
+[   68.700077] g_serial gadget: Gadget Serial v2.4
+[   68.706673] g_serial gadget: g_serial ready
+root@ebisu:~# 
+root@ebisu:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s 
+tate
+root@ebisu
+root@ebisu:~# 
+root@ebisu:~# ls /dev/ttyGS0
+root@ebisu
+root@ebisu:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+[67954.307662] usb 2-2: new SuperSpeed USB device number 11 using xhci_hcd
+[67954.328613] usb 2-2: New USB device found, idVendor=0525, idProduct=a4a7, bcdDevice= 5.10
+[67954.328630] usb 2-2: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[67954.328638] usb 2-2: Product: Gadget Serial v2.4
+[67954.328644] usb 2-2: Manufacturer: Linux 5.10.218-yocto-standard with renesas_usb3
+[67954.366602] cdc_acm 2-2:2.0: ttyACM0: USB ACM device
+[67954.366975] usbcore: registered new interface driver cdc_acm
+[67954.366978] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+
+ls /dev/ttyACM0
+/dev/ttyACM0
+
+
+---------- HOST-PC -----------
+
+echo 'Test transferring data from HOST to BOARD via usb serial' > /dev/ttyACM0
+
+----------- BOARD ------------
+root@ebisu
+root@ebisu:~# cat /dev/ttyGS0
+Test transferring data from HOST to BOARD via usb serial
+root@ebisu
+root@ebisu:~# 
+root@ebisu:~# rmmod g_serial
+root@ebisu:~# 
+ 
+#### Result: OK ####

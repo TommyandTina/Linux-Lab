@@ -1,0 +1,119 @@
+----------- BOARD ------------
+
+root@ebisu:~# mount -t tmpfs -o size=400M tmpfs /tmp
+root@ebisu:~# 
+root@ebisu:~# dd if=/dev/zero of=/tmp/tmp.img bs=1M count=350
+350+0 records in
+350+0 records out
+367001600 bytes (367 MB, 350 MiB) copied, 3.51665 s, 104 MB/s
+root@ebisu:~# 
+root@ebisu:~# mkfs.ext3 -L storage /tmp/tmp.img
+mke2fs 1.47.0 (5-Feb-2023)
+Discarding device blocks:      0/358400             done                            
+Creating filesystem with 358400 1k blocks and 89760 inodes
+Filesystem UUID: 05834b5a-b2fa-4d5b-9efa-4d77186ff129
+Superblock backups stored on blocks: 
+	8193, 24577, 40961, 57345, 73729, 204801, 221185
+
+Allocating group tables:  0/44     done                            
+Writing inode tables:  0/44     done                            
+Creating journal (8192 blocks): done
+Writing superblocks and filesystem accounting information:  0/44     done
+
+root@ebisu:~# 
+root@ebisu:~# modprobe g_mass_storage file=/tmp/tmp.img
+[  134.523904] Mass Storage Function, version: 2009/09/11
+[  134.529611] LUN: removable file: (no medium)
+[  134.535116] LUN: file: /tmp/tmp.img
+[  134.539126] Number of LUNs=1
+[  134.546068] g_mass_storage gadget: Mass Storage Gadget, version: 2009/09/11
+[  134.553951] g_mass_storage gadget: userspace failed to provide iSerialNumber
+[  134.561713] g_mass_storage gadget: g_mass_storage ready
+root@ebisu:~# 
+root@ebisu:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s 
+tate
+root@ebisu
+root@ebisu:~# 
+---------- HOST-PC -----------
+
+dmesg
+[68020.148585] usb 2-2: new SuperSpeed USB device number 15 using xhci_hcd
+[68020.170170] usb 2-2: New USB device found, idVendor=0525, idProduct=a4a5, bcdDevice= 5.10
+[68020.170175] usb 2-2: New USB device strings: Mfr=3, Product=4, SerialNumber=0
+[68020.170176] usb 2-2: Product: Mass Storage Gadget
+[68020.170178] usb 2-2: Manufacturer: Linux 5.10.218-yocto-standard with renesas_usb3
+[68020.172352] usb-storage 2-2:1.0: USB Mass Storage device detected
+[68020.172595] usb-storage 2-2:1.0: Quirks match for vid 0525 pid a4a5: 10000
+[68020.172666] scsi host1: usb-storage 2-2:1.0
+[68021.190037] scsi 1:0:0:0: Direct-Access     Linux    File-Stor Gadget 0510 PQ: 0 ANSI: 2
+[68021.190822] sd 1:0:0:0: Attached scsi generic sg1 type 0
+[68021.191514] sd 1:0:0:0: Power-on or device reset occurred
+[68021.192441] sd 1:0:0:0: [sdb] 716800 512-byte logical blocks: (367 MB/350 MiB)
+[68021.298488] sd 1:0:0:0: [sdb] Write Protect is off
+[68021.298492] sd 1:0:0:0: [sdb] Mode Sense: 0f 00 00 00
+[68021.406141] sd 1:0:0:0: [sdb] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[68021.837943] sd 1:0:0:0: [sdb] Attached SCSI disk
+[68022.169372] EXT4-fs (sdb): mounting ext3 file system using the ext4 subsystem
+[68022.177026] EXT4-fs (sdb): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+
+df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            3,8G     0  3,8G   0% /dev
+tmpfs           784M  2,4M  781M   1% /run
+/dev/nvme0n1p4  458G  383G   52G  89% /
+tmpfs           3,9G     0  3,9G   0% /dev/shm
+tmpfs           5,0M  8,0K  5,0M   1% /run/lock
+tmpfs           3,9G     0  3,9G   0% /sys/fs/cgroup
+/dev/loop0      128K  128K     0 100% /snap/bare/5
+/dev/loop3      384K  384K     0 100% /snap/device-tree-compiler/91
+/dev/loop2       64M   64M     0 100% /snap/core20/2182
+/dev/loop1       64M   64M     0 100% /snap/core20/2318
+/dev/loop4      506M  506M     0 100% /snap/gnome-42-2204/176
+/dev/loop5       75M   75M     0 100% /snap/core22/1439
+/dev/loop6       12M   12M     0 100% /snap/nmap/3470
+/dev/loop7      350M  350M     0 100% /snap/gnome-3-38-2004/143
+/dev/loop12      12M   12M     0 100% /snap/nmap/3514
+/dev/loop17     347M  347M     0 100% /snap/gnome-3-38-2004/119
+/dev/loop9       13M   13M     0 100% /snap/snap-store/1113
+/dev/loop18      56M   56M     0 100% /snap/core18/2829
+/dev/loop10      39M   39M     0 100% /snap/snapd/21759
+/dev/loop14     9,8M  9,8M     0 100% /snap/htop/4407
+/dev/loop16     497M  497M     0 100% /snap/gnome-42-2204/141
+/dev/loop11      41M   41M     0 100% /snap/snapd/20290
+/dev/loop8       75M   75M     0 100% /snap/core22/1380
+/dev/loop13      13M   13M     0 100% /snap/snap-store/959
+/dev/loop15      92M   92M     0 100% /snap/gtk-common-themes/1535
+/dev/nvme0n1p1  3,7G  210M  3,3G   6% /boot
+/dev/nvme0n1p2  3,9G  6,1M  3,9G   1% /boot/efi
+tmpfs           784M   24K  784M   1% /run/user/1000
+/dev/sdb        318M   47K  301M   1% /media/rvc/storage
+
+sudo dd if=/dev/urandom of=/media/rvc/storage/file-300M bs=1M count=300
+300+0 records in
+300+0 records out
+314572800 bytes (315 MB, 300 MiB) copied, 1,60745 s, 196 MB/s
+
+sudo cp /media/rvc/storage/file-300M ./
+
+md5sum ./file-300M /media/rvc/storage/file-300M
+c3b8b42a49104e0a94061dd83244ac6f  ./file-300M
+c3b8b42a49104e0a94061dd83244ac6f  /media/rvc/storage/file-300M
+
+sudo umount /media/rvc/storage
+
+----------- BOARD ------------
+root@ebisu
+root@ebisu:~# rmmod g_mass_storage
+root@ebisu:~# 
+root@ebisu:~# rm -rf /tmp/tmp.img
+root@ebisu:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+[68032.249391] usb 2-2: USB disconnect, device number 15
+[68032.292660] sd 1:0:0:0: [sdb] Synchronizing SCSI cache
+[68032.292715] sd 1:0:0:0: [sdb] Synchronize Cache(10) failed: Result: hostbyte=DID_NO_CONNECT driverbyte=DRIVER_OK
+
+ 
+#### Result: OK ####

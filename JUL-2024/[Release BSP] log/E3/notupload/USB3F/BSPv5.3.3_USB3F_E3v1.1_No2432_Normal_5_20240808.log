@@ -1,0 +1,119 @@
+----------- BOARD ------------
+
+root@ebisu:~# modprobe g_ncm
+[  328.841273] using random self ethernet address
+[  328.848488] using random host ethernet address
+[  328.869491] usb0: HOST MAC 4e:bf:dd:91:b0:c5
+[  328.889187] usb0: MAC ae:b6:2d:6b:79:b8
+[  328.898145] g_ncm gadget: NCM Gadget
+[  328.908293] g_ncm gadget: g_ncm ready
+root@ebisu:~# 
+root@ebisu:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s 
+tate
+root@ebisu
+root@ebisu:~# 
+root@ebisu:~# ip a |grep usb
+root@ebisuCAST,MULTICAST> mtu 1500 qdisc noop qlen 1000
+root@ebisu:~# 
+root@ebisu:~# ifconfig usb0 192.168.0.2 up
+root@ebisu:~# 
+
+---------- HOST-PC -----------
+[68214.612268] cdc_ncm 2-2:1.0 enx4ebfdd91b0c5: renamed from usb0
+dmesg 2>&1 |grep 'renamed from usb0'
+
+sudo ifconfig enx4ebfdd91b0c5 192.168.0.3 up
+enx00e0006095bd: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.8.8  netmask 255.255.255.0  broadcast 192.168.8.255
+        ether 00:e0:00:60:95:bd  txqueuelen 1000  (Ethernet)
+        RX packets 4090475  bytes 431602831 (431.6 MB)
+        RX errors 0  dropped 74650  overruns 0  frame 0
+        TX packets 5344399  bytes 7490866565 (7.4 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enx4ebfdd91b0c5: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.3  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::b61c:385:9efd:fdd  prefixlen 64  scopeid 0x20<link>
+        ether 4e:bf:dd:91:b0:c5  txqueuelen 1000  (Ethernet)
+        RX packets 2  bytes 152 (152.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2  bytes 443 (443.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 146803  bytes 44908707 (44.9 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 146803  bytes 44908707 (44.9 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp59s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.4.12  netmask 255.255.248.0  broadcast 192.168.7.255
+        inet6 fe80::2885:7f4a:87f8:ff15  prefixlen 64  scopeid 0x20<link>
+        ether 38:ba:f8:7b:f4:c6  txqueuelen 1000  (Ethernet)
+        RX packets 1769359  bytes 1927668336 (1.9 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 734450  bytes 332459274 (332.4 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+
+---------- BOARD -----------
+root@ebisu
+root@ebisu:~# iperf3 -c 192.168.0.3
+Connecting to host 192.168.0.3, port 5201
+[  5] local 192.168.0.2 port 59196 connected to 192.168.0.3 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec  11.4 MBytes  95.3 Mbits/sec    0    187 KBytes       
+[  5]   1.00-2.00   sec  10.9 MBytes  91.3 Mbits/sec    0    187 KBytes       
+[  5]   2.00-3.00   sec  11.2 MBytes  94.3 Mbits/sec    0    187 KBytes       
+[  5]   3.00-4.00   sec  11.0 MBytes  92.3 Mbits/sec    0    187 KBytes       
+[  5]   4.00-5.00   sec  12.1 MBytes   102 Mbits/sec    0    242 KBytes       
+[  5]   5.00-6.00   sec  11.9 MBytes  99.6 Mbits/sec    0    242 KBytes       
+[  5]   6.00-7.00   sec  12.1 MBytes   102 Mbits/sec    0    242 KBytes       
+[  5]   7.00-8.00   sec  12.4 MBytes   104 Mbits/sec    0    242 KBytes       
+[  5]   8.00-9.00   sec  11.9 MBytes  99.6 Mbits/sec    0    242 KBytes       
+[  5]   9.00-10.05  sec  11.6 MBytes  93.4 Mbits/sec    0    242 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.05  sec   118 MBytes  98.1 Mbits/sec    0             sender
+[  5]   0.00-10.09  sec   118 MBytes  97.7 Mbits/sec                  receiver
+
+root@ebisu
+root@ebisu:~# sh: 1: : not found
+iperf3: interrupt - the server has terminated
+
+
+---------- HOST-PC -----------
+iperf3 -s &
+-----------------------------------------------------------
+Server listening on 5201
+-----------------------------------------------------------
+Accepted connection from 192.168.0.2, port 59192
+[ 10] local 192.168.0.3 port 5201 connected to 192.168.0.2 port 59196
+[ ID] Interval           Transfer     Bitrate
+[ 10]   0.00-1.00   sec  10.9 MBytes  91.2 Mbits/sec                  
+[ 10]   1.00-2.00   sec  11.3 MBytes  94.6 Mbits/sec                  
+[ 10]   2.00-3.00   sec  11.3 MBytes  95.1 Mbits/sec                  
+[ 10]   3.00-4.00   sec  11.1 MBytes  92.7 Mbits/sec                  
+[ 10]   4.00-5.00   sec  12.2 MBytes   102 Mbits/sec                  
+[ 10]   5.00-6.00   sec  11.9 MBytes  99.5 Mbits/sec                  
+[ 10]   6.00-7.00   sec  12.3 MBytes   103 Mbits/sec                  
+[ 10]   7.00-8.00   sec  12.4 MBytes   104 Mbits/sec                  
+[ 10]   8.00-9.00   sec  12.2 MBytes   102 Mbits/sec                  
+[ 10]   9.00-10.00  sec  11.4 MBytes  95.8 Mbits/sec                  
+[ 10]  10.00-10.09  sec   652 KBytes  60.9 Mbits/sec                  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate
+[ 10]   0.00-10.09  sec   118 MBytes  97.7 Mbits/sec                  receiver
+-----------------------------------------------------------
+Server listening on 5201
+-----------------------------------------------------------
+
+root@ebisu
+root@ebisu:~# rmmod g_ncm
+root@ebisu:~# 
+ 
+#### Result: OK ####

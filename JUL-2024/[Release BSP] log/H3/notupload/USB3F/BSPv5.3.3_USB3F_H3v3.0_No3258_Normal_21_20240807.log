@@ -1,0 +1,122 @@
+----------- BOARD ------------
+
+root@salvator-x:~# modprobe g_ncm
+[ 4015.755041] using random self ethernet address
+[ 4015.761184] using random host ethernet address
+[ 4015.770372] usb0: HOST MAC 5e:38:d9:b2:4b:f2
+[ 4015.776438] usb0: MAC 16:c8:36:a6:d5:3a
+[ 4015.782226] g_ncm gadget: NCM Gadget
+[ 4015.786438] g_ncm gadget: g_ncm ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/state
+configured
+root@salvator-x:~# 
+root@salvator-x:~# ip a |grep usb
+20: usb0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop qlen 1000
+root@salvator-x:~# 
+root@salvator-x:~# ifconfig usb0 192.168.0.2 up
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+[17374.338716] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: renamed from usb0
+dmesg 2>&1 |grep 'renamed from usb0'
+
+sudo ifconfig enx5e38d9b24bf2 192.168.0.3 up
+enx00e0006095bd: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.8.8  netmask 255.255.255.0  broadcast 192.168.8.255
+        inet6 fe80::2e0:ff:fe60:95bd  prefixlen 64  scopeid 0x20<link>
+        ether 00:e0:00:60:95:bd  txqueuelen 1000  (Ethernet)
+        RX packets 5871656  bytes 634443474 (634.4 MB)
+        RX errors 0  dropped 17154  overruns 0  frame 0
+        TX packets 7291748  bytes 10101612499 (10.1 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enx5e38d9b24bf2: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 192.168.0.3  netmask 255.255.255.0  broadcast 192.168.0.255
+        ether 5e:38:d9:b2:4b:f2  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 167478  bytes 62733781 (62.7 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 167478  bytes 62733781 (62.7 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp59s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.4.12  netmask 255.255.248.0  broadcast 192.168.7.255
+        inet6 fe80::2885:7f4a:87f8:ff15  prefixlen 64  scopeid 0x20<link>
+        ether 38:ba:f8:7b:f4:c6  txqueuelen 1000  (Ethernet)
+        RX packets 1858197  bytes 2231403135 (2.2 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 705270  bytes 143123952 (143.1 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+
+---------- HOST-PC -----------
+echo 2-2 | sudo tee /sys/bus/usb/drivers/usb/unbind > /dev/null
+[17376.995139] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+echo 2-2 | sudo tee /sys/bus/usb/drivers/usb/bind > /dev/null
+[17376.995139] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.104031] cdc_ncm 2-2:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-2, CDC NCM, 5e:38:d9:b2:4b:f2
+echo 2-2 | sudo tee /sys/bus/usb/drivers/usb/unbind > /dev/null
+[17376.995139] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.219832] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+echo 2-2 | sudo tee /sys/bus/usb/drivers/usb/bind > /dev/null
+[17376.995139] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.104031] cdc_ncm 2-2:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-2, CDC NCM, 5e:38:d9:b2:4b:f2
+[17377.219832] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.399790] cdc_ncm 2-2:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-2, CDC NCM, 5e:38:d9:b2:4b:f2
+echo 2-2 | sudo tee /sys/bus/usb/drivers/usb/unbind > /dev/null
+[17376.995139] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.219832] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.537250] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+echo 2-2 | sudo tee /sys/bus/usb/drivers/usb/bind > /dev/null
+[17376.995139] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.104031] cdc_ncm 2-2:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-2, CDC NCM, 5e:38:d9:b2:4b:f2
+[17377.219832] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.399790] cdc_ncm 2-2:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-2, CDC NCM, 5e:38:d9:b2:4b:f2
+[17377.537250] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.800843] cdc_ncm 2-2:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-2, CDC NCM, 5e:38:d9:b2:4b:f2
+echo 2-2 | sudo tee /sys/bus/usb/drivers/usb/unbind > /dev/null
+[17376.995139] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.219832] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.537250] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.919066] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+echo 2-2 | sudo tee /sys/bus/usb/drivers/usb/bind > /dev/null
+[17376.995139] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.104031] cdc_ncm 2-2:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-2, CDC NCM, 5e:38:d9:b2:4b:f2
+[17377.219832] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.399790] cdc_ncm 2-2:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-2, CDC NCM, 5e:38:d9:b2:4b:f2
+[17377.537250] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.800843] cdc_ncm 2-2:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-2, CDC NCM, 5e:38:d9:b2:4b:f2
+[17377.919066] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17378.175626] cdc_ncm 2-2:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-2, CDC NCM, 5e:38:d9:b2:4b:f2
+echo 2-2 | sudo tee /sys/bus/usb/drivers/usb/unbind > /dev/null
+[17376.995139] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.219832] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.537250] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.919066] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17378.283645] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+echo 2-2 | sudo tee /sys/bus/usb/drivers/usb/bind > /dev/null
+[17376.995139] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.104031] cdc_ncm 2-2:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-2, CDC NCM, 5e:38:d9:b2:4b:f2
+[17377.219832] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.399790] cdc_ncm 2-2:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-2, CDC NCM, 5e:38:d9:b2:4b:f2
+[17377.537250] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17377.800843] cdc_ncm 2-2:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-2, CDC NCM, 5e:38:d9:b2:4b:f2
+[17377.919066] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17378.175626] cdc_ncm 2-2:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-2, CDC NCM, 5e:38:d9:b2:4b:f2
+[17378.283645] cdc_ncm 2-2:1.0 enx5e38d9b24bf2: unregister 'cdc_ncm' usb-0000:00:14.0-2, CDC NCM
+[17378.553793] cdc_ncm 2-2:1.0 usb0: register 'cdc_ncm' at usb-0000:00:14.0-2, CDC NCM, 5e:38:d9:b2:4b:f2
+
+root@salvator-x:~# rmmod g_ncm
+root@salvator-x:~# 
+ 
+#### Result: OK ####

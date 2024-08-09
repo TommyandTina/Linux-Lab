@@ -1,0 +1,34 @@
+----------- BOARD ------------
+
+root@salvator-x:~# modprobe g_serial
+[  417.897690] g_serial gadget: Gadget Serial v2.4
+[  417.904257] g_serial gadget: g_serial ready
+root@salvator-x:~# 
+root@salvator-x:~# insmod memd.ko
+[  418.895871] memd: loading out-of-tree module taints kernel.
+[  418.905337] memd driver loaded
+root@salvator-x:~# 
+root@salvator-x:~# echo rd  0xe6150048 > /proc/reg
+[  420.092673]   mem read [E6150048] : 0BFFA3DF
+root@salvator-x:~# Our mem is:
+0b1011111111111010001111011111
+
+root@salvator-x:~# rmmod g_serial
+root@salvator-x:~# 
+root@salvator-x:~# rmmod memd
+[  421.253576] driver unloaded
+root@salvator-x:~# Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "../common/conserial.py", line 81, in run
+    _bytes_to_read = self.serial.inWaiting()
+  File "/usr/local/lib/python2.7/dist-packages/serial/serialutil.py", line 594, in inWaiting
+    return self.in_waiting
+  File "/usr/local/lib/python2.7/dist-packages/serial/serialposix.py", line 549, in in_waiting
+    s = fcntl.ioctl(self.fd, TIOCINQ, TIOCM_zero_str)
+IOError: [Errno 9] Bad file descriptor
+
+
+ 
+#### Result: OK ####

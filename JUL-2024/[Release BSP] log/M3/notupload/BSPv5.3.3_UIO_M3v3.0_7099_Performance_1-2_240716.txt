@@ -1,5 +1,5 @@
 
-root@ebisu:~/uio/uio_test-gen3e_beta/test_scripts#          Stopping Session c2 of User root...
+root@salvator-x:~/uio/uio_test-gen3e_beta/test_scripts#          Stopping Session c2 of User root...
 [  OK  ] Removed slice Slice /system/modprobe.
 [  OK  ] Removed slice Slice /system/weston.
 [  OK  ] Stopped target Graphical Interface.
@@ -559,7 +559,7 @@ Starting kernel ...
 
 Welcome to Poky (Yocto Project Reference Distro) 5.0 (scarthgap)!
 
-[   11.836788] systemd[1]: Hostname set to <ebisu>.
+[   11.836788] systemd[1]: Hostname set to <salvator-x>.
 [   11.991940] systemd-sysv-generator[292]: SysV service '/etc/init.d/umountnfs.sh' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
 [   12.042994] systemd-sysv-generator[292]: SysV service '/etc/init.d/set_default_governor.sh' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
 [   12.099681] systemd-sysv-generator[292]: SysV service '/etc/init.d/umountfs' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
@@ -747,9 +747,9 @@ See 'systemctl status rc.pvr.service' for details.
 [  OK  ] Finished Record Runlevel Change in UTMP.
 [   17.644626] audit: type=1006 audit(1721110863.181:2): pid=472 uid=0 old-auid=4294967295 auid=0 tty=(none) old-ses=4294967295 ses=1 res=1
 
-Poky (Yocto Project Reference Distro) 5.0 ebisu ttySC0
+Poky (Yocto Project Reference Distro) 5.0 salvator-x ttySC0
 
-ebisu login: [   39.910092] SDHI0 VccQ: disabling
+salvator-x login: [   39.910092] SDHI0 VccQ: disabling
 [   39.913488] SDHI3 VccQ: disabling
 root
 
@@ -758,8 +758,8 @@ testing and development purposes only. It is recommended that you create your
 own distribution for production use.
 
 [   45.703312] audit: type=1006 audit(1721110891.241:3): pid=487 uid=0 old-auid=4294967295 auid=0 tty=(none) old-ses=4294967295 ses=2 res=1
-root@ebisu:~# cd uio/uio_test-gen3e_beta/test_scripts/
-root@ebisu:~/uio/uio_test-gen3e_beta/test_scripts# ./run_uio_performance_test.sh
+root@salvator-x:~# cd uio/uio_test-gen3e_beta/test_scripts/
+root@salvator-x:~/uio/uio_test-gen3e_beta/test_scripts# ./run_uio_performance_test.sh
 
 ******* Start UIO IT Performance test ******
 
@@ -862,12 +862,10 @@ root@ebisu:~/uio/uio_test-gen3e_beta/test_scripts# ./run_uio_performance_test.sh
 
 0
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -875,12 +873,10 @@ imr_00
 
 1
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -888,12 +884,10 @@ imr_00
 
 2
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -901,12 +895,10 @@ imr_00
 
 3
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -914,12 +906,10 @@ imr_00
 
 4
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -927,12 +917,10 @@ imr_00
 
 5
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -940,12 +928,10 @@ imr_00
 
 6
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -953,12 +939,10 @@ imr_00
 
 7
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -966,12 +950,10 @@ imr_00
 
 8
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -979,12 +961,10 @@ imr_00
 
 9
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -992,12 +972,10 @@ imr_00
 
 10
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1005,12 +983,10 @@ imr_00
 
 11
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1018,12 +994,10 @@ imr_00
 
 12
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1031,12 +1005,10 @@ imr_00
 
 13
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1044,12 +1016,10 @@ imr_00
 
 14
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1057,12 +1027,10 @@ imr_00
 
 15
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1070,12 +1038,10 @@ imr_00
 
 16
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1083,12 +1049,10 @@ imr_00
 
 17
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1096,12 +1060,10 @@ imr_00
 
 18
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1109,12 +1071,10 @@ imr_00
 
 19
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1122,12 +1082,10 @@ imr_00
 
 20
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1135,12 +1093,10 @@ imr_00
 
 21
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1148,12 +1104,10 @@ imr_00
 
 22
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1161,12 +1115,10 @@ imr_00
 
 23
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1174,12 +1126,10 @@ imr_00
 
 24
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1187,12 +1137,10 @@ imr_00
 
 25
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1200,12 +1148,10 @@ imr_00
 
 26
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1213,12 +1159,10 @@ imr_00
 
 27
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1226,12 +1170,10 @@ imr_00
 
 28
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1239,12 +1181,10 @@ imr_00
 
 29
 
-./run_uio_performance_test.sh: line 12: echo: write error: No such device
 Read info of /sys/class/uio/uio0
-imr_00
-0x00000000fe860000
-0x0000000000002000
-./run_uio_performance_test.sh: line 18: echo: write error: No such device
+cat: /sys/class/uio/uio0/name: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/addr: No such file or directory
+cat: /sys/class/uio/uio0/maps/map0/size: No such file or directory
 Read info of /sys/class/uio/uio0
 imr_00
 0x00000000fe860000
@@ -1252,4 +1192,5 @@ imr_00
 
 ******* End UIO IT Performance test ******
 
-root@ebisu:~/uio/uio_test-gen3e_beta/test_scripts#
+rmmod: ERROR: could not remove module uio_pdrv_genirq: Device or resource busy
+root@salvator-x:~/uio/uio_test-gen3e_beta/test_scripts#

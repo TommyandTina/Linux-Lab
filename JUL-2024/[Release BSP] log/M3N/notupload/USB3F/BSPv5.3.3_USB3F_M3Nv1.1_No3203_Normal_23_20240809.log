@@ -1,0 +1,155 @@
+----------- BOARD ------------
+
+root@salvator-x:~# modprobe g_ncm
+root@salvator-x:~# 
+root@salvator-x:~# rmmod g_ncm
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_ncm
+[  408.807057] using random self ethernet address
+[  408.812370] using random host ethernet address
+[  408.819973] usb0: HOST MAC c2:73:30:d8:53:a2
+[  408.825070] usb0: MAC e6:da:28:27:b4:30
+[  408.829800] g_ncm gadget: NCM Gadget
+[  408.834928] g_ncm gadget: g_ncm ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s tate
+configured
+root@salvator-x:~# 
+root@salvator-x:~# ip a |grep usb
+11: usb0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop qlen 1000
+root@salvator-x:~# 
+root@salvator-x:~# ifconfig usb0 192.168.0.2 up
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+[14783.885757] cdc_ncm 2-1.4:1.0 enxc27330d853a2: renamed from usb0
+dmesg 2>&1 |grep 'renamed from usb0'
+
+sudo ifconfig enxc27330d853a2 192.168.0.3 up
+enx00e0006095bd: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.8.8  netmask 255.255.255.0  broadcast 192.168.8.255
+        ether 00:e0:00:60:95:bd  txqueuelen 1000  (Ethernet)
+        RX packets 3444034  bytes 427978390 (427.9 MB)
+        RX errors 0  dropped 14777  overruns 0  frame 0
+        TX packets 5051028  bytes 6839998725 (6.8 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enxc27330d853a2: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.3  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::1a55:8b20:6193:cdf  prefixlen 64  scopeid 0x20<link>
+        ether c2:73:30:d8:53:a2  txqueuelen 1000  (Ethernet)
+        RX packets 1  bytes 76 (76.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2  bytes 443 (443.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 239801  bytes 77768214 (77.7 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 239801  bytes 77768214 (77.7 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp59s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.4.12  netmask 255.255.248.0  broadcast 192.168.7.255
+        inet6 fe80::2885:7f4a:87f8:ff15  prefixlen 64  scopeid 0x20<link>
+        ether 38:ba:f8:7b:f4:c6  txqueuelen 1000  (Ethernet)
+        RX packets 1557304  bytes 1565909952 (1.5 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2321884  bytes 2732685335 (2.7 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+
+---------- BOARD -----------
+
+root@salvator-x:~# echo Nothing
+Nothing
+root@salvator-x:~# 
+root@salvator-x:~# echo ee020000.usb > /sys/bus/platform/drivers/renesas_usb3/un bind
+root@salvator-x:~# 
+root@salvator-x:~# echo ee020000.usb > /sys/bus/platform/drivers/renesas_usb3/bi nd
+[  414.499148] using random self ethernet address
+[  414.504342] using random host ethernet address
+[  414.520492] usb0: HOST MAC 0e:1f:a6:b0:a7:0c
+[  414.529260] usb0: MAC 32:de:00:27:ed:6d
+[  414.535784] g_ncm gadget: NCM Gadget
+[  414.540716] g_ncm gadget: g_ncm ready
+[  414.549313] renesas_usb3 ee020000.usb: probed with phy
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s tate
+not attached
+root@salvator-x:~# 
+root@salvator-x:~# mount -t debugfs none /sys/kernel/debug/
+mount: /sys/kernel/debug: none already mounted or mount point busy.
+       dmesg(1) may have more information after failed mount system call.
+root@salvator-x:~# 
+root@salvator-x:~# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s tate
+configured
+root@salvator-x:~# 
+root@salvator-x:~# ifconfig usb0 192.168.0.2 up
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+[14792.716541] cdc_ncm 2-1.4:1.0 enx0e1fa6b0a70c: renamed from usb0
+
+sudo ifconfig enx0e1fa6b0a70c 192.168.0.3 up
+enx00e0006095bd: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.8.8  netmask 255.255.255.0  broadcast 192.168.8.255
+        ether 00:e0:00:60:95:bd  txqueuelen 1000  (Ethernet)
+        RX packets 3446570  bytes 428613574 (428.6 MB)
+        RX errors 0  dropped 14786  overruns 0  frame 0
+        TX packets 5053540  bytes 6840698639 (6.8 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enx0e1fa6b0a70c: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.3  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::8e9a:e072:8ba9:ac67  prefixlen 64  scopeid 0x20<link>
+        ether 0e:1f:a6:b0:a7:0c  txqueuelen 1000  (Ethernet)
+        RX packets 1  bytes 76 (76.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2  bytes 443 (443.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 240263  bytes 78141742 (78.1 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 240263  bytes 78141742 (78.1 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp59s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.4.12  netmask 255.255.248.0  broadcast 192.168.7.255
+        inet6 fe80::2885:7f4a:87f8:ff15  prefixlen 64  scopeid 0x20<link>
+        ether 38:ba:f8:7b:f4:c6  txqueuelen 1000  (Ethernet)
+        RX packets 1557615  bytes 1565954855 (1.5 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2322290  bytes 2732978091 (2.7 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+
+---------- BOARD -----------
+
+root@salvator-x:~# ping -c 5 192.168.0.3
+PING 192.168.0.3 (192.168.0.3): 56 data bytes
+64 bytes from 192.168.0.3: seq=0 ttl=64 time=6.233 ms
+64 bytes from 192.168.0.3: seq=1 ttl=64 time=2.093 ms
+64 bytes from 192.168.0.3: seq=2 ttl=64 time=2.041 ms
+64 bytes from 192.168.0.3: seq=3 ttl=64 time=1.826 ms
+64 bytes from 192.168.0.3: seq=4 ttl=64 time=2.020 ms
+
+--- 192.168.0.3 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max = 1.826/2.842/6.233 ms
+root@salvator-x:~# 
+root@salvator-x:~# rmmod g_ncm
+root@salvator-x:~# 
+ 
+#### Result: OK ####

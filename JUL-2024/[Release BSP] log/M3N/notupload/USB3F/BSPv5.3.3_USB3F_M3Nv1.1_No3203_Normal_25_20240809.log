@@ -1,0 +1,22 @@
+----------- BOARD ------------
+
+root@salvator-x:~# modprobe g_serial
+[  445.870729] g_serial gadget: Gadget Serial v2.4
+[  445.875890] g_serial gadget: g_serial ready
+root@salvator-x:~# 
+root@salvator-x:~# insmod memd.ko
+[  447.047739] memd: loading out-of-tree module taints kernel.
+[  447.055763] memd driver loaded
+root@salvator-x:~# 
+root@salvator-x:~# echo rd  0xe6150048 > /proc/reg
+[  448.263099]   mem read [E6150048] : 2FFFA3DF
+root@salvator-x:~# Our mem is:
+0b101111111111111010001111011111
+
+root@salvator-x:~# rmmod g_serial
+root@salvator-x:~# 
+root@salvator-x:~# rmmod memd
+[  449.412824] driver unloaded
+root@salvator-x:~# 
+ 
+#### Result: OK ####

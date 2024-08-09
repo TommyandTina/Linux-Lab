@@ -1,0 +1,24 @@
+----------- BOARD ------------
+
+root@ebisu:~# modprobe g_serial
+[ 2130.653804] g_serial gadget: Gadget Serial v2.4
+[ 2130.658856] g_serial gadget: g_serial ready
+root@ebisu:~# 
+root@ebisu:~# insmod memd.ko
+insmod: ERROR: could not insert module memd.ko: File exists
+root@ebisu:~# 
+root@ebisu:~# rmmod memd.ko
+[ 2132.407074] driver unloaded
+root@ebisu:~# 
+root@ebisu:~# insmod memd.ko
+[ 2133.091539] memd driver loaded
+root@ebisu:~# 
+root@ebisu:~# echo rd  0xe6150048 > /proc/reg
+[ 2134.317072]   mem read [E6150048] : 3FFF93DF
+root@ebisu:~# Our mem is:
+0b111111111111111001001111011111
+
+root@ebisu:~# rmmod g_serial
+root@ebisu:~# 
+ 
+#### Result: OK ####

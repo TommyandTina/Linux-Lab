@@ -1,0 +1,164 @@
+----------- BOARD ------------
+
+root@salvator-x:~# mount -t tmpfs -o size=400M tmpfs /tmp
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/zero of=/tmp/tmp.img bs=1M count=350
+350+0 records in
+350+0 records out
+367001600 bytes (367 MB, 350 MiB) copied, 1.68991 s, 217 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# mkfs.ext3 -L storage /tmp/tmp.img
+mke2fs 1.47.0 (5-Feb-2023)
+Discarding device blocks:      0/358400             done                            
+Creating filesystem with 358400 1k blocks and 89760 inodes
+Filesystem UUID: 69eb683a-5d6e-442b-8a3d-8be1297ceafd
+Superblock backups stored on blocks: 
+	8193, 24577, 40961, 57345, 73729, 204801, 221185
+
+Allocating group tables:  0/44     done                            
+Writing inode tables:  0/44     done                            
+Creating journal (8192 blocks): done
+Writing superblocks and filesystem accounting information:  0/44     done
+
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_mass_storage file=/tmp/tmp.img
+root@salvator-x:~# 
+root@salvator-x:~# rmmod g_mass_storage
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_mass_storage file=/tmp/tmp.img
+[  511.174139] Mass Storage Function, version: 2009/09/11
+[  511.179689] LUN: removable file: (no medium)
+[  511.184729] LUN: file: /tmp/tmp.img
+[  511.189488] Number of LUNs=1
+[  511.193180] g_mass_storage gadget: Mass Storage Gadget, version: 2009/09/11
+[  511.200246] g_mass_storage gadget: userspace failed to provide iSerialNumber
+[  511.207404] g_mass_storage gadget: g_mass_storage ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s tate
+configured
+root@salvator-x:~# 
+root@salvator-x:~# echo scan  > /sys/kernel/debug/kmemleak
+root@salvator-x:~# 
+root@salvator-x:~# echo clear > /sys/kernel/debug/kmemleak
+root@salvator-x:~# 
+---------- HOST-PC -----------
+
+dmesg
+[77742.022540] usb 2-1.4: USB disconnect, device number 101
+[77742.022994] blk_update_request: I/O error, dev sdc, sector 0 op 0x1:(WRITE) flags 0x800 phys_seg 0 prio class 0
+[77742.224418] sd 2:0:0:0: [sdc] Synchronizing SCSI cache
+[77742.224461] sd 2:0:0:0: [sdc] Synchronize Cache(10) failed: Result: hostbyte=DID_NO_CONNECT driverbyte=DRIVER_OK
+[77743.120385] usb 2-1.4: new SuperSpeed USB device number 102 using xhci_hcd
+[77743.141135] usb 2-1.4: New USB device found, idVendor=0525, idProduct=a4a5, bcdDevice= 5.10
+[77743.141143] usb 2-1.4: New USB device strings: Mfr=3, Product=4, SerialNumber=0
+[77743.141147] usb 2-1.4: Product: Mass Storage Gadget
+[77743.141151] usb 2-1.4: Manufacturer: Linux 5.10.218-yocto-standard with renesas_usb3
+[77743.145797] usb-storage 2-1.4:1.0: USB Mass Storage device detected
+[77743.145921] usb-storage 2-1.4:1.0: Quirks match for vid 0525 pid a4a5: 10000
+[77743.149383] scsi host3: usb-storage 2-1.4:1.0
+[77744.164994] scsi 3:0:0:0: Direct-Access     Linux    File-Stor Gadget 0510 PQ: 0 ANSI: 2
+[77744.165562] sd 3:0:0:0: Attached scsi generic sg2 type 0
+[77744.165676] sd 3:0:0:0: Power-on or device reset occurred
+[77744.166037] sd 3:0:0:0: [sdd] 716800 512-byte logical blocks: (367 MB/350 MiB)
+[77744.274079] sd 3:0:0:0: [sdd] Write Protect is off
+[77744.274086] sd 3:0:0:0: [sdd] Mode Sense: 0f 00 00 00
+[77744.382063] sd 3:0:0:0: [sdd] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[77744.814074] sd 3:0:0:0: [sdd] Attached SCSI disk
+
+df -h
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+loop0         7:0    0     4K  1 loop /snap/bare/5
+loop1         7:1    0    64M  1 loop /snap/core20/2318
+loop2         7:2    0  63,9M  1 loop /snap/core20/2182
+loop3         7:3    0   292K  1 loop /snap/device-tree-compiler/91
+loop4         7:4    0 505,1M  1 loop /snap/gnome-42-2204/176
+loop5         7:5    0  74,2M  1 loop /snap/core22/1439
+loop6         7:6    0  11,9M  1 loop /snap/nmap/3470
+loop7         7:7    0 349,7M  1 loop /snap/gnome-3-38-2004/143
+loop8         7:8    0  74,2M  1 loop /snap/core22/1380
+loop9         7:9    0  12,9M  1 loop /snap/snap-store/1113
+loop10        7:10   0  38,8M  1 loop /snap/snapd/21759
+loop11        7:11   0  40,9M  1 loop /snap/snapd/20290
+loop12        7:12   0  11,9M  1 loop /snap/nmap/3514
+loop13        7:13   0  12,3M  1 loop /snap/snap-store/959
+loop14        7:14   0   9,7M  1 loop /snap/htop/4407
+loop15        7:15   0  91,7M  1 loop /snap/gtk-common-themes/1535
+loop16        7:16   0   497M  1 loop /snap/gnome-42-2204/141
+loop17        7:17   0 346,3M  1 loop /snap/gnome-3-38-2004/119
+loop18        7:18   0  55,7M  1 loop /snap/core18/2829
+sdb           8:16   0   350M  0 disk /media/rvc/storage
+sdd           8:48   0   350M  0 disk 
+nvme0n1     259:0    0   477G  0 disk 
+├─nvme0n1p1 259:1    0   3,8G  0 part /boot
+├─nvme0n1p2 259:2    0   3,8G  0 part /boot/efi
+├─nvme0n1p3 259:3    0   3,8G  0 part [SWAP]
+└─nvme0n1p4 259:4    0 465,5G  0 part /
+
+sudo mount /dev/sdd /media/test_USB3F
+
+df -h
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+loop0         7:0    0     4K  1 loop /snap/bare/5
+loop1         7:1    0    64M  1 loop /snap/core20/2318
+loop2         7:2    0  63,9M  1 loop /snap/core20/2182
+loop3         7:3    0   292K  1 loop /snap/device-tree-compiler/91
+loop4         7:4    0 505,1M  1 loop /snap/gnome-42-2204/176
+loop5         7:5    0  74,2M  1 loop /snap/core22/1439
+loop6         7:6    0  11,9M  1 loop /snap/nmap/3470
+loop7         7:7    0 349,7M  1 loop /snap/gnome-3-38-2004/143
+loop8         7:8    0  74,2M  1 loop /snap/core22/1380
+loop9         7:9    0  12,9M  1 loop /snap/snap-store/1113
+loop10        7:10   0  38,8M  1 loop /snap/snapd/21759
+loop11        7:11   0  40,9M  1 loop /snap/snapd/20290
+loop12        7:12   0  11,9M  1 loop /snap/nmap/3514
+loop13        7:13   0  12,3M  1 loop /snap/snap-store/959
+loop14        7:14   0   9,7M  1 loop /snap/htop/4407
+loop15        7:15   0  91,7M  1 loop /snap/gtk-common-themes/1535
+loop16        7:16   0   497M  1 loop /snap/gnome-42-2204/141
+loop17        7:17   0 346,3M  1 loop /snap/gnome-3-38-2004/119
+loop18        7:18   0  55,7M  1 loop /snap/core18/2829
+sdb           8:16   0   350M  0 disk /media/rvc/storage
+sdd           8:48   0   350M  0 disk /media/test_USB3F
+nvme0n1     259:0    0   477G  0 disk 
+├─nvme0n1p1 259:1    0   3,8G  0 part /boot
+├─nvme0n1p2 259:2    0   3,8G  0 part /boot/efi
+├─nvme0n1p3 259:3    0   3,8G  0 part [SWAP]
+└─nvme0n1p4 259:4    0 465,5G  0 part /
+
+dd if=/dev/urandom of=./file-10M bs=1M count=10
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0,0824243 s, 127 MB/s
+
+sudo cp ./file-10M /media/test_USB3F
+
+md5sum ./file-10M /media/test_USB3F/file-10M
+6d4e6ac92b752fb39511370eaa387a75  ./file-10M
+6d4e6ac92b752fb39511370eaa387a75  /media/test_USB3F/file-10M
+
+sudo umount /media/test_USB3F
+
+----------- BOARD ------------
+
+root@salvator-x:~# rmmod g_mass_storage
+root@salvator-x:~# 
+root@salvator-x:~# rm -rf /tmp/tmp.img
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+[77760.400783] EXT4-fs error (device sdc): __ext4_find_entry:1682: inode #2: comm gvfsd-trash: reading directory lblock 0
+[77760.401505] EXT4-fs error (device sdc): __ext4_find_entry:1682: inode #2: comm gvfsd-trash: reading directory lblock 0
+[77760.920705] usb 2-1.4: USB disconnect, device number 102
+[77761.008621] sd 3:0:0:0: [sdd] Synchronizing SCSI cache
+[77761.008669] sd 3:0:0:0: [sdd] Synchronize Cache(10) failed: Result: hostbyte=DID_NO_CONNECT driverbyte=DRIVER_OK
+BOARD
+echo scan  > /sys/kernel/debug/kmemleak
+
+root@salvator-x:~# echo scan > /sys/kernel/debug/kmemleak
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/kernel/debug/kmemleak
+root@salvator-x:~# 
+ 
+#### Result: OK ####

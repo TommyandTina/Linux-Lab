@@ -1,0 +1,102 @@
+
+root@salvator-x:~# modprobe -r g_printer
+root@salvator-x:~# 
+root@salvator-x:~# lsmod
+Module                  Size  Used by
+g_ncm                  16384  0
+g_audio                16384  0
+crct10dif_ce           20480  1
+dw_hdmi_cec            16384  0
+ccree                 159744  0
+max9611                16384  0
+gpio_bd9571mwv         16384  0
+at24                   24576  0
+authenc                16384  1 ccree
+libdes                 24576  1 ccree
+optee_rng              16384  0
+pwm_bl                 16384  0
+rng_core               24576  1 optee_rng
+cfg80211              872448  0
+rfkill                 36864  2 cfg80211
+uio_pdrv_genirq        16384  0
+fuse                  143360  1
+ipv6                  577536  24
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_printer
+[  261.092520] printer gadget: printer ready
+root@salvator-x:~# 
+root@salvator-x:~# [  261.384266] printer gadget: Using interface 0
+rmmod g_printer
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_printer
+[  262.268362] printer gadget: printer ready
+root@salvator-x:~# 
+root@salvator-x:~# [  262.564954] printer gadget: Using interface 0
+dmesg | grep renesas_usb3
+[    3.996181] renesas_usb3 ee020000.usb: probed with phy
+root@salvator-x:~# ----------- BOARD ------------
+
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/state
+configured
+root@salvator-x:~# 
+root@salvator-x:~# ls /dev/g_printer0
+/dev/g_printer0
+root@salvator-x:~# 
+root@salvator-x:~# cat /dev/g_printer0 > board_log.txt &
+[1] 770
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+
+ls /dev/usb/lp*
+/dev/usb/lp0
+sudo chmod 777 /dev/usb/lp0
+
+16+0 records in
+16+0 records out
+16 bytes copied, 0,000616284 s, 26,0 kB/s
+wÝ>ïø‰YóÛÛ'yñÛ—i
+dd if=/dev/urandom of=16byte.txt bs=1 count=16
+
+echo "$(<16byte.txt)" > /dev/usb/lp0
+
+cat 16byte.txt
+----------- BOARD ------------
+
+root@salvator-x:~# kill $(jobs -p)
+root@salvator-x:~# 
+[1]+  Terminated              cat /dev/g_printer0 > board_log.txt
+root@salvator-x:~# cat board_log.txt
+wÝ>ïø‰YóÛÛ'yñÛ—iroot@salvator-x:~# 
+root@salvator-x:~# rmmod g_printer
+root@salvator-x:~# 
+root@salvator-x:~# lsmod
+Module                  Size  Used by
+g_ncm                  16384  0
+g_audio                16384  0
+crct10dif_ce           20480  1
+dw_hdmi_cec            16384  0
+ccree                 159744  0
+max9611                16384  0
+gpio_bd9571mwv         16384  0
+at24                   24576  0
+authenc                16384  1 ccree
+libdes                 24576  1 ccree
+optee_rng              16384  0
+pwm_bl                 16384  0
+rng_core               24576  1 optee_rng
+cfg80211              872448  0
+rfkill                 36864  2 cfg80211
+uio_pdrv_genirq        16384  0
+fuse                  143360  1
+ipv6                  577536  24
+root@salvator-x:~# 
+root@salvator-x:~# modprobe -r g_ncm
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_printer
+[  269.640710] printer gadget: printer ready
+root@salvator-x:~# 
+ 
+#### Result: OK ####

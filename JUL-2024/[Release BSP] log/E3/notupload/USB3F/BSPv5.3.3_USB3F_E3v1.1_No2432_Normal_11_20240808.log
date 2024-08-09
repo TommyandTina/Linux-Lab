@@ -1,0 +1,26 @@
+----------- BOARD ------------
+
+root@ebisu:~# modprobe g_zero
+[  265.916818] zero gadget: Gadget Zero, version: Cinco de Mayo 2008
+[  265.926213] zero gadget: zero ready
+root@ebisu:~# 
+root@ebisu:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s 
+tate
+root@ebisu
+root@ebisu:~# 
+
+---------- HOST-PC -----------
+
+lsusb | grep Gadget
+Bus 002 Device 017: ID 0525:a4a0 Netchip Technology, Inc. Linux-USB "Gadget Zero"
+
+sudo /home/rvc/banvien_stuff/testusb -D /proc/bus/usb/002/017 -t14 -c 100 -s 256 -v 1
+/home/rvc/banvien_stuff/testusb: /proc/bus/usb/002/017 may see only control tests
+?? speed	/proc/bus/usb/002/017	0
+/proc/bus/usb/002/017 test 14,    0.010274 secs
+----------- BOARD ------------
+root@ebisu
+root@ebisu:~# rmmod g_zero
+root@ebisu:~# 
+ 
+#### Result: OK ####

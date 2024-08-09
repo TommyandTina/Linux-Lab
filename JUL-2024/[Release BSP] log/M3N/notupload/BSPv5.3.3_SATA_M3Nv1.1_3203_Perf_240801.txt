@@ -1,0 +1,1382 @@
+NOTICE:  BL2: R-Car Gen3 Initial Program Loader(CA57) Rev.4.0.0
+NOTICE:  BL2: PRR is R-Car M3N Ver.1.1
+NOTICE:  BL2: Board is Salvator-XS Rev.1.0
+NOTICE:  BL2: Boot device is HyperFlash(160MHz)
+NOTICE:  BL2: LCM state is CM
+NOTICE:  AVS setting succeeded. DVFS_SetVID=0x53
+NOTICE:  BL2: DDR3200(rev.0.42)
+NOTICE:  BL2: [COLD_BOOT]
+NOTICE:  BL2: DRAM Split is OFF
+NOTICE:  BL2: QoS is default setting(rev.0.09)
+NOTICE:  BL2: DRAM refresh interval 1.95 usec
+NOTICE:  BL2: Periodic Write DQ Training
+NOTICE:  BL2: CH0: 400000000 - 47fffffff, 2 GiB
+NOTICE:  BL2: Lossy Decomp areas
+NOTICE:       Entry 0: DCMPAREACRAx:0x80000540 DCMPAREACRBx:0x570
+NOTICE:       Entry 1: DCMPAREACRAx:0x40000000 DCMPAREACRBx:0x0
+NOTICE:       Entry 2: DCMPAREACRAx:0x20000000 DCMPAREACRBx:0x0
+NOTICE:  BL2: FDT at 0xe6324d70
+NOTICE:  BL2: v2.9(release):9cdb21f75
+NOTICE:  BL2: Built : 19:03:18, Dec 19 2023
+NOTICE:  BL2: Normal boot
+NOTICE:  BL2: dst=0xe6324600 src=0x8180000 len=512(0x200)
+NOTICE:  BL2: dst=0x43f00000 src=0x8180400 len=6144(0x1800)
+NOTICE:  rcar_file_len: len: 0x0003e000
+NOTICE:  BL2: dst=0x44000000 src=0x81c0000 len=253952(0x3e000)
+NOTICE:  rcar_file_len: len: 0x00200000
+NOTICE:  BL2: dst=0x44100000 src=0x8200000 len=2097152(0x200000)
+NOTICE:  rcar_file_len: len: 0x00100000
+NOTICE:  BL2: dst=0x50000000 src=0x8640000 len=1048576(0x100000)
+NOTICE:  BL2: Booting BL31
+
+
+U-Boot 2020.10 (Dec 19 2023 - 19:03:55 +0000)
+
+CPU: Renesas Electronics R8A77965 rev 1.1
+Model: Renesas Salvator-X 2nd version board based on r8a77965
+DRAM:  1.9 GiB
+RAM Configuration:
+Bank #0: 0x048000000 - 0x0bfffffff, 1.9 GiB
+
+MMC:   sd@ee100000: 0, sd@ee140000: 1, sd@ee160000: 2
+Loading Environment from MMC... OK
+In:    serial@e6e88000
+Out:   serial@e6e88000
+Err:   serial@e6e88000
+Net:   eth0: ethernet@e6800000
+Hit any key to stop autoboot:  0
+=> pr
+DA_bootargs=rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/da.trinh-xuan/m3n/rootfs,nfsvers=4 ip=192.168.8.50
+LONG_bootargs=rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/long.trinh-tien/rootfs_wt_yocto,nfsvers=4 ip=192.168.8.20 baudrate=115200
+TRINH_bootargs=rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/trinh.nguyen-tan/2024/M3N/rootfs,nfsvers=4 ip=192.168.8.10
+baudrate=115200
+bootargs=rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/long.trinh-tien/rootfs_wt_yocto,nfsvers=4 ip=192.168.8.20 baudrate=115200
+bootargs_mmc=rw root=/dev/mmcblk1p1 rootwait
+bootargs_t=rw root=/dev/mmcblk0p1 rootwait
+bootcmd=run bootcmd_LONG_tftp
+bootcmd_DA_tftp=setenv bootargs ${DA_bootargs} ; tftp 0x48080000 da.trinh-xuan/m3n/Image; tftp 0x48000000 da.trinh-xuan/m3n/${dtb};booti 0x48080000 - 0x48000000
+bootcmd_LONG_tftp=setenv bootargs ${LONG_bootargs} ; tftp 0x48080000 long.trinh-tien/Image_sata ; tftp 0x48000000 long.trinh-tien/M3N_full/${dtb};booti 0x48080000 - 0x48000000
+bootcmd_TRINH_tftp=setenv bootargs ${TRINH_bootargs} ; tftp 0x48080000 trinh.nguyen-tan/2024/H3/Image ; tftp 0x48000000 trinh.nguyen-tan/2024/M3N/${dtb};booti 0x48080000 - 0x48000000
+bootcmd_mmc=ext2load mmc 0:1 0x48080000 /Image;ext2load mmc 0:1 0x48000000 /r8a77965-salvator-xs.dtb; booti 0x48080000 - 0x48000000
+bootcmd_tftp=tftp 0x48080000 HVN/QuocHB/M3N/rootfs/boot/Image;tftp 0x48000000 HVN/QuocHB/M3N/rootfs/boot/${dtb};booti 0x48080000 - 0x48000000
+bootcmd_vinh=setenv bootargs ${bootargs_vinh};tftp 0x48080000 ${vinhdir}/Image_rpm_testing;tftp 0x48000000 ${vinhdir}/swwa-test-m3n.dtb;booti 0x48080000 - 0x48000000
+bootdelay=2
+bootm_size=0x10000000
+dtb=r8a77965-salvator-xs.dtb
+ethact=ethernet@e6800000
+ethaddr=2E:09:0A:00:C3:8B
+fdtcontroladdr=bbef0820
+fileaddr=48080000
+filesize=281c200
+ipaddr=192.168.8.59
+loadaddr=0x58000000
+netboot=tftp 0x48080000 ${tftp_path}/Image; tftp 0x48000000 ${tftp_path}/r8a77965-salvator-xs.dtb; booti 0x48080000 - 0x48000000
+platform=r8a77965
+serverip=192.168.8.8
+stderr=serial@e6e88000
+stdin=serial@e6e88000
+stdout=serial@e6e88000
+tftp_path=uyen.vo-ngoc/rel24_1st/M3N
+ver=U-Boot 2020.10 (Dec 19 2023 - 19:03:55 +0000)
+vinhdir=vinhsunguyen/bsp/pm-swwa/final
+
+Environment size: 2166/131068 bytes
+=> edit bootcmd_LONG_tftp
+edit: setenv bootargs ${LONG_bootargs} ; tftp 0x48080000 long.trinh-tien/Image_no_sata_rcar ; tftp 0x48000000 long.trinh-tien/=> boot
+Using ethernet@e6800000 device
+TFTP from server 192.168.8.8; our IP address is 192.168.8.59
+Filename 'long.trinh-tien/Image_no_sata_rcar'.
+Load address: 0x48080000
+Loading: *
+TFTP error: 'File not found' (1)
+Not retrying...
+Using ethernet@e6800000 device
+TFTP from server 192.168.8.8; our IP address is 192.168.8.59
+Filename 'long.trinh-tien/M3N_full/r8a77965-salvator-xs.dtb'.
+Load address: 0x48000000
+Loading: #####
+         4 MiB/s
+done
+Bytes transferred = 71628 (117cc hex)
+Bad Linux ARM64 Image magic!
+=> setenv bootargs ${LONG_bootargs} ; tftp 0x48080000 long.trinh-tien/Image_no_sata_rcar_s2r ; tftp 0x48000000 long.trinh-tienUsing ethernet@e6800000 device000 - 0x48000000
+TFTP from server 192.168.8.8; our IP address is 192.168.8.59
+Filename 'long.trinh-tien/Image_no_sata_rcar_s2r'.
+Load address: 0x48080000
+Loading: #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #####
+         4.9 MiB/s
+done
+Bytes transferred = 42056192 (281ba00 hex)
+Using ethernet@e6800000 device
+TFTP from server 192.168.8.8; our IP address is 192.168.8.59
+Filename 'long.trinh-tien/M3N_full/r8a77965-salvator-xs.dtb'.
+Load address: 0x48000000
+Loading: #####
+         4 MiB/s
+done
+Bytes transferred = 71628 (117cc hex)
+Moving Image from 0x48080000 to 0x48200000, end=4bac0000
+## Flattened Device Tree blob at 48000000
+   Booting using the fdt blob at 0x48000000
+   Loading Device Tree to 0000000053feb000, end 0000000053fff7cb ... OK
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x411fd073]
+[    0.000000] Linux version 5.10.218-yocto-standard (long.trinh-tien@banvien) (aarch64-poky-linux-gcc (GCC) 13.2.0, GNU ld (GNU Binutils) 2.42.0.20240216) #12 SMP PREEMPT Thu Aug 1 09:28:53 UTC 2024
+[    0.000000] Machine model: Renesas Salvator-X 2nd version board based on r8a77965
+[    0.000000] efi: UEFI not found.
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000057000000, size 16 MiB
+[    0.000000] OF: reserved mem: initialized node linux,adsp@57000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000058000000, size 384 MiB
+[    0.000000] OF: reserved mem: initialized node linux,cma@58000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000070000000, size 256 MiB
+[    0.000000] OF: reserved mem: initialized node linux,multimedia@70000000, compatible id shared-dma-pool
+[    0.000000] NUMA: No NUMA configuration found
+[    0.000000] NUMA: Faking a node at [mem 0x0000000048000000-0x00000000bfffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0xbfbefa00-0xbfbf1fff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000048000000-0x00000000bfffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000048000000-0x0000000053ffffff]
+[    0.000000]   node   0: [mem 0x0000000054000000-0x0000000056ffffff]
+[    0.000000]   node   0: [mem 0x0000000057000000-0x00000000bfffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000048000000-0x00000000bfffffff]
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS resident on physical CPU 0x0
+[    0.000000] psci: SMC Calling Convention v1.2
+[    0.000000] percpu: Embedded 33 pages/cpu s96592 r8192 d30384 u135168
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: EL2 vector hardening
+[    0.000000] CPU features: detected: Spectre-v2
+[    0.000000] CPU features: detected: ARM errata 1165522, 1319367, or 1530923
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: detected: ARM erratum 1742098
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 483840
+[    0.000000] Policy zone: DMA
+[    0.000000] Kernel command line: rw root=/dev/nfs nfsroot=192.168.8.8:/tftpboot/long.trinh-tien/rootfs_wt_yocto,nfsvers=4 ip=192.168.8.20 baudrate=115200
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] Memory: 1146728K/1966080K available (18240K kernel code, 4206K rwdata, 9232K rodata, 9280K init, 16987K bss, 147608K reserved, 671744K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+[    0.000000] ftrace: allocating 59284 entries in 232 pages
+[    0.000000] ftrace: allocated 232 pages with 4 groups
+[    0.000000] Running RCU self tests
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu:     RCU event tracing is enabled.
+[    0.000000] rcu:     RCU lockdep checking is enabled.
+[    0.000000] rcu:     RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=2.
+[    0.000000]  Trampoline variant of Tasks RCU enabled.
+[    0.000000]  Rude variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=2
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] arch_timer: cp15 timer(s) running at 8.32MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x1eb398c07, max_idle_ns: 440795202503 ns
+[    0.000004] sched_clock: 56 bits at 8MHz, resolution 120ns, wraps every 2199023255503ns
+[    0.000388] Console: colour dummy device 80x25
+[    0.002302] printk: console [tty0] enabled
+[    0.002348] Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
+[    0.002395] ... MAX_LOCKDEP_SUBCLASSES:  8
+[    0.002425] ... MAX_LOCK_DEPTH:          48
+[    0.002454] ... MAX_LOCKDEP_KEYS:        8192
+[    0.002485] ... CLASSHASH_SIZE:          4096
+[    0.002515] ... MAX_LOCKDEP_ENTRIES:     32768
+[    0.002545] ... MAX_LOCKDEP_CHAINS:      65536
+[    0.002575] ... CHAINHASH_SIZE:          32768
+[    0.002606]  memory used by lock dependency info: 6365 kB
+[    0.002641]  memory used for stack traces: 4224 kB
+[    0.002672]  per task-struct memory footprint: 1920 bytes
+[    0.002858] Calibrating delay loop (skipped), value calculated using timer frequency.. 16.64 BogoMIPS (lpj=33280)
+[    0.002931] pid_max: default: 32768 minimum: 301
+[    0.003223] LSM: Security Framework initializing
+[    0.003442] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.003506] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.009193] rcu: Hierarchical SRCU implementation.
+[    0.011240] Detected Renesas R-Car Gen3 r8a77965 ES1.1
+[    0.013449] EFI services will not be available.
+[    0.014068] smp: Bringing up secondary CPUs ...
+[    0.015828] Detected PIPT I-cache on CPU1
+[    0.015905] CPU1: Booted secondary processor 0x0000000001 [0x411fd073]
+[    0.016516] smp: Brought up 1 node, 2 CPUs
+[    0.016620] SMP: Total of 2 processors activated.
+[    0.016657] CPU features: detected: 32-bit EL0 Support
+[    0.016695] CPU features: detected: CRC32 instructions
+[    0.016733] CPU features: detected: 32-bit EL1 Support
+[    0.037643] CPU: All CPU(s) started at EL1
+[    0.037767] alternatives: patching kernel code
+[    0.040602] devtmpfs: initialized
+[    0.115323] KASLR disabled due to lack of seed
+[    0.117103] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.117200] futex hash table entries: 512 (order: 4, 65536 bytes, linear)
+[    0.127481] pinctrl core: initialized pinctrl subsystem
+[    0.133115] DMI not present or invalid.
+[    0.134817] NET: Registered protocol family 16
+[    0.138845] DMA: preallocated 256 KiB GFP_KERNEL pool for atomic allocations
+[    0.139130] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.139465] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.139694] audit: initializing netlink subsys (disabled)
+[    0.140260] audit: type=2000 audit(0.136:1): state=initialized audit_enabled=0 res=1
+[    0.144474] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.146547] cpuidle: using governor menu
+[    0.147286] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.147456] ASID allocator initialised with 65536 entries
+[    0.152356] Serial: AMBA PL011 UART driver
+[    0.343675] sh-pfc e6060000.pinctrl: r8a77965_pfc support registered
+[    0.422759] HugeTLB registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.422823] HugeTLB registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.422868] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.422914] HugeTLB registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.428241] cryptd: max_cpu_qlen set to 1000
+[    0.437087] ACPI: Interpreter disabled.
+[    0.449397] rcar_avs_init: cannot find compatible dts node
+[    0.456861] iommu: Default domain type: Translated
+[    0.458091] ipmmu-vmsa e67b0000.iommu: IPMMU context 0 is reserved
+[    0.463566] vgaarb: loaded
+[    0.465465] SCSI subsystem initialized
+[    0.467214] usbcore: registered new interface driver usbfs
+[    0.467436] usbcore: registered new interface driver hub
+[    0.467606] usbcore: registered new device driver usb
+[    0.485403] i2c-sh_mobile e60b0000.i2c: I2C adapter 7, bus speed 400000 Hz
+[    0.488037] mc: Linux media interface: v0.10
+[    0.488204] videodev: Linux video capture interface: v2.00
+[    0.488613] pps_core: LinuxPPS API ver. 1 registered
+[    0.488656] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.488763] PTP clock support registered
+[    0.489446] EDAC MC: Ver: 3.0.0
+[    0.496108] FPGA manager framework
+[    0.496615] Advanced Linux Sound Architecture Driver Initialized.
+[    0.499891] clocksource: Switched to clocksource arch_sys_counter
+[    1.210305] VFS: Disk quotas dquot_6.6.0
+[    1.210541] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    1.211676] pnp: PnP ACPI: disabled
+[    1.236120] NET: Registered protocol family 2
+[    1.236527] IP idents hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    1.238827] tcp_listen_portaddr_hash hash table entries: 1024 (order: 4, 81920 bytes, linear)
+[    1.239096] TCP established hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    1.239450] TCP bind hash table entries: 16384 (order: 8, 1179648 bytes, linear)
+[    1.241658] TCP: Hash tables configured (established 16384 bind 16384)
+[    1.242120] UDP hash table entries: 1024 (order: 5, 163840 bytes, linear)
+[    1.242508] UDP-Lite hash table entries: 1024 (order: 5, 163840 bytes, linear)
+[    1.243269] NET: Registered protocol family 1
+[    1.245484] RPC: Registered named UNIX socket transport module.
+[    1.245556] RPC: Registered udp transport module.
+[    1.245593] RPC: Registered tcp transport module.
+[    1.245629] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    1.245687] PCI: CLS 0 bytes, default 64
+[    1.247656] hw perfevents: enabled with armv8_cortex_a57 PMU driver, 7 counters available
+[    1.248734] kvm [1]: HYP mode not available
+[    1.260999] Initialise system trusted keyrings
+[    1.261578] workingset: timestamp_bits=42 max_order=19 bucket_order=0
+[    1.301898] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    1.305097] NFS: Registering the id_resolver key type
+[    1.305235] Key type id_resolver registered
+[    1.305290] Key type id_legacy registered
+[    1.305788] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    1.305868] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    1.306449] 9p: Installing v9fs 9p2000 file system support
+[    1.333736] Key type asymmetric registered
+[    1.333843] Asymmetric key parser 'x509' registered
+[    1.334015] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 243)
+[    1.334091] io scheduler mq-deadline registered
+[    1.334132] io scheduler kyber registered
+[    1.386192] gpio_rcar e6050000.gpio: driving 16 GPIOs
+[    1.388224] gpio_rcar e6051000.gpio: driving 29 GPIOs
+[    1.390005] gpio_rcar e6052000.gpio: driving 15 GPIOs
+[    1.391771] gpio_rcar e6053000.gpio: driving 16 GPIOs
+[    1.393577] gpio_rcar e6054000.gpio: driving 18 GPIOs
+[    1.395280] gpio_rcar e6055000.gpio: driving 26 GPIOs
+[    1.397073] gpio_rcar e6055400.gpio: driving 32 GPIOs
+[    1.398814] gpio_rcar e6055800.gpio: driving 4 GPIOs
+[    1.411084] rcar-pcie fe000000.pcie: host bridge /soc/pcie@fe000000 ranges:
+[    1.411214] rcar-pcie fe000000.pcie:       IO 0x00fe100000..0x00fe1fffff -> 0x0000000000
+[    1.411373] rcar-pcie fe000000.pcie:      MEM 0x00fe200000..0x00fe3fffff -> 0x00fe200000
+[    1.411482] rcar-pcie fe000000.pcie:      MEM 0x0030000000..0x0037ffffff -> 0x0030000000
+[    1.411569] rcar-pcie fe000000.pcie:      MEM 0x0038000000..0x003fffffff -> 0x0038000000
+[    1.411677] rcar-pcie fe000000.pcie:   IB MEM 0x0040000000..0x00bfffffff -> 0x0040000000
+[    1.411838] rcar-pcie fe000000.pcie: no pcie3v3 regulator found
+[    1.412275] rcar-pcie fe000000.pcie: no pcie1v8 regulator found
+[    1.479642] rcar-pcie fe000000.pcie: PCIe link down
+[    1.481020] rcar-pcie ee800000.pcie: host bridge /soc/pcie@ee800000 ranges:
+[    1.481137] rcar-pcie ee800000.pcie:       IO 0x00ee900000..0x00ee9fffff -> 0x0000000000
+[    1.481257] rcar-pcie ee800000.pcie:      MEM 0x00eea00000..0x00eebfffff -> 0x00eea00000
+[    1.481366] rcar-pcie ee800000.pcie:      MEM 0x00c0000000..0x00c7ffffff -> 0x00c0000000
+[    1.481453] rcar-pcie ee800000.pcie:      MEM 0x00c8000000..0x00cfffffff -> 0x00c8000000
+[    1.481551] rcar-pcie ee800000.pcie:   IB MEM 0x0040000000..0x00bfffffff -> 0x0040000000
+[    1.481698] rcar-pcie ee800000.pcie: no pcie3v3 regulator found
+[    1.481762] rcar-pcie ee800000.pcie: no pcie1v8 regulator found
+[    1.639899] rcar-pcie ee800000.pcie: PCIe link down
+[    1.649057] EINJ: ACPI disabled.
+[    1.791277] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    1.802246] SuperH (H)SCI(F) driver initialized
+[    1.803707] e6550000.serial: ttySC1 at MMIO 0xe6550000 (irq = 36, base_baud = 0) is a hscif
+[    1.808394] e6e88000.serial: ttySC0 at MMIO 0xe6e88000 (irq = 119, base_baud = 0) is a scif
+[    2.959798] printk: console [ttySC0] enabled
+[    2.969340] msm_serial: driver initialized
+[    2.991959] rcar-dw-hdmi fead0000.hdmi: Detected HDMI TX controller v2.01a with HDCP (DWC HDMI 2.0 TX PHY)
+[    3.002846] rcar-dw-hdmi fead0000.hdmi: registered DesignWare HDMI I2C bus driver
+[    3.050313] loop: module loaded
+[    3.058140] megasas: 07.714.04.00-rc1
+[    3.085429] tun: Universal TUN/TAP device driver, 1.6
+[    3.093591] thunder_xcv, ver 1.0
+[    3.097723] thunder_bgx, ver 1.0
+[    3.101182] nicpf, ver 1.0
+[    3.108755] hclge is initializing
+[    3.112293] hns3: Hisilicon Ethernet Network Driver for Hip08 Family - version
+[    3.119578] hns3: Copyright (c) 2017 Huawei Corporation.
+[    3.125159] e1000: Intel(R) PRO/1000 Network Driver
+[    3.130091] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[    3.136050] e1000e: Intel(R) PRO/1000 Network Driver
+[    3.141057] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    3.147180] igb: Intel(R) Gigabit Ethernet Network Driver
+[    3.152627] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    3.158354] igbvf: Intel(R) Gigabit Virtual Function Network Driver
+[    3.164668] igbvf: Copyright (c) 2009 - 2012 Intel Corporation.
+[    3.172127] sky2: driver version 1.30
+[    3.193077] ravb e6800000.ethernet eth0: Base address at 0xe6800000, 2e:09:0a:00:c3:8b, IRQ 116.
+[    3.207459] VFIO - User Level meta-driver version: 0.3
+[    3.219983] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    3.226584] ehci-pci: EHCI PCI platform driver
+[    3.231176] ehci-platform: EHCI generic platform driver
+[    3.238751] ehci-platform ee0a0100.usb: EHCI Host Controller
+[    3.244685] ehci-platform ee0a0100.usb: new USB bus registered, assigned bus number 1
+[    3.253003] ehci-platform ee0a0100.usb: irq 166, io mem 0xee0a0100
+[    3.271926] ehci-platform ee0a0100.usb: USB 2.0 started, EHCI 1.10
+[    3.281269] hub 1-0:1.0: USB hub found
+[    3.285284] hub 1-0:1.0: 1 port detected
+[    3.292453] ehci-orion: EHCI orion driver
+[    3.297258] ehci-exynos: EHCI Exynos driver
+[    3.301943] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    3.308252] ohci-pci: OHCI PCI platform driver
+[    3.313073] ohci-platform: OHCI generic platform driver
+[    3.320271] ohci-platform ee0a0000.usb: Generic Platform OHCI controller
+[    3.327165] ohci-platform ee0a0000.usb: new USB bus registered, assigned bus number 2
+[    3.335333] ohci-platform ee0a0000.usb: irq 166, io mem 0xee0a0000
+[    3.432307] hub 2-0:1.0: USB hub found
+[    3.436236] hub 2-0:1.0: 1 port detected
+[    3.442853] ohci-exynos: OHCI Exynos driver
+[    3.449234] xhci-hcd ee000000.usb: xHCI Host Controller
+[    3.454619] xhci-hcd ee000000.usb: new USB bus registered, assigned bus number 3
+[    3.478673] xhci-hcd ee000000.usb: hcc params 0x014051ce hci version 0x100 quirks 0x0000000000830410
+[    3.488026] xhci-hcd ee000000.usb: irq 163, io mem 0xee000000
+[    3.494618] xhci-hcd ee000000.usb: xHCI Host Controller
+[    3.499950] xhci-hcd ee000000.usb: new USB bus registered, assigned bus number 4
+[    3.507447] xhci-hcd ee000000.usb: Host supports USB 3.0 SuperSpeed
+[    3.515994] hub 3-0:1.0: USB hub found
+[    3.520040] hub 3-0:1.0: 1 port detected
+[    3.525452] usb usb4: We don't know the algorithms for LPM for this host, disabling LPM.
+[    3.535917] hub 4-0:1.0: USB hub found
+[    3.539811] hub 4-0:1.0: 1 port detected
+[    3.547513] usbcore: registered new interface driver usb-storage
+[    3.559486] renesas_usbhs e6590000.usb: host probed
+[    3.564541] renesas_usbhs e6590000.usb: no transceiver found
+[    3.571100] renesas_usbhs e6590000.usb: gadget probed
+[    3.576606] renesas_usbhs e6590000.usb: probed
+[    3.591449] i2c /dev entries driver
+[    3.625351] cs2000-cp 2-004f: revision - C1
+[    3.629925] i2c-rcar e6510000.i2c: probed
+[    3.639126] pca953x 4-0020: supply vcc not found, using dummy regulator
+[    3.646775] pca953x 4-0020: using no AI
+[    3.652642] gpio-355 (PCIE/SATA switch): hogged as output/low
+[    3.671287] i2c-rcar e66d8000.i2c: probed
+[    3.679850] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@7/endpoint on port 7
+[    3.689224] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@8/endpoint on port 8
+[    3.698625] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@a/endpoint on port 10
+[    3.707789] adv748x 4-0070: Endpoint /soc/i2c@e66d8000/video-receiver@70/port@b/endpoint on port 11
+[    3.717721] adv748x 4-0070: chip found @ 0xe0 revision 2143
+[    3.793088] rcar-csi2 fea80000.csi2: 1 lanes found
+[    3.799853] rcar-csi2 feaa0000.csi2: 4 lanes found
+[    3.828312] rcar-vin e6ef0000.video: Device registered as video0
+[    3.834871] rcar-vin e6ef1000.video: Device registered as video1
+[    3.841669] rcar-vin e6ef2000.video: Device registered as video2
+[    3.848455] rcar-vin e6ef3000.video: Device registered as video3
+[    3.854971] rcar-vin e6ef4000.video: Device registered as video4
+[    3.861503] rcar-vin e6ef5000.video: Device registered as video5
+[    3.868034] rcar-vin e6ef6000.video: Device registered as video6
+[    3.874515] rcar-vin e6ef7000.video: Device registered as video7
+[    3.889825] rcar_gen3_thermal e6198000.thermal: is using pseudo fixed FUSE values
+[    3.902478] rcar_gen3_thermal e6198000.thermal: TSC0: Loaded 1 trip points
+[    3.914384] rcar_gen3_thermal e6198000.thermal: TSC1: Loaded 1 trip points
+[    3.926200] rcar_gen3_thermal e6198000.thermal: TSC2: Loaded 3 trip points
+[    3.952448] sdhci: Secure Digital Host Controller Interface driver
+[    3.958776] sdhci: Copyright(c) Pierre Ossman
+[    3.966627] renesas_sdhi_internal_dmac ee100000.mmc: Got CD GPIO
+[    3.972818] renesas_sdhi_internal_dmac ee100000.mmc: Got WP GPIO
+[    3.986513] renesas_sdhi_internal_dmac ee140000.mmc: Adding to iommu group 0
+[    3.994092] renesas_sdhi_internal_dmac ee140000.mmc: Using IPMMU context 1
+[    4.053073] renesas_sdhi_internal_dmac ee140000.mmc: mmc0 base at 0x00000000ee140000, max clock rate 200 MHz
+[    4.066779] renesas_sdhi_internal_dmac ee160000.mmc: Got CD GPIO
+[    4.072980] renesas_sdhi_internal_dmac ee160000.mmc: Got WP GPIO
+[    4.082276] Synopsys Designware Multimedia Card Interface Driver
+[    4.092758] sdhci-pltfm: SDHCI platform and OF driver helper
+[    4.104659] ledtrig-cpu: registered to indicate activity on CPUs
+[    4.113826] SMCCC: SOC_ID: ARCH_SOC_ID not implemented, skipping ....
+[    4.124008] usbcore: registered new interface driver usbhid
+[    4.129698] usbhid: USB HID core driver
+[    4.142909] mmc0: new HS400 MMC card at address 0001
+[    4.151272] optee: probing for conduit method.
+[    4.151312] mmcblk0: mmc0:0001 BGSD3R 29.1 GiB
+[    4.155941] optee: revision 3.22 (314ecf9d)
+[    4.161712] optee driver R-Car Rev.1.0.11
+[    4.162194] mmcblk0boot0: mmc0:0001 BGSD3R partition 1 16.0 MiB
+[    4.166770] optee: dynamic shared memory is enabled
+[    4.171387] mmcblk0boot1: mmc0:0001 BGSD3R partition 2 16.0 MiB
+[    4.177299] optee: initialized driver
+[    4.181687] mmcblk0rpmb: mmc0:0001 BGSD3R partition 3 4.00 MiB, chardev (508:0)
+[    4.203662]  mmcblk0: p1
+[    4.219346] rcar_sound ec500000.sound: probed
+[    4.227247] NET: Registered protocol family 17
+[    4.232406] 9pnet: Installing 9P2000 support
+[    4.236996] Key type dns_resolver registered
+[    4.242179] registered taskstats version 1
+[    4.246365] Loading compiled-in X.509 certificates
+[    4.252313] kmemleak: Kernel memory leak detector initialized (mem pool available: 14934)
+[    4.252319] kmemleak: Automatic memory scanning thread started
+[    4.335663] thermal emergency: set temperature to 110 celsius
+[    4.341753] thermal emergency: shutdown target cpus 1
+[    4.346881] thermal emergency: freq scaled target cpus 0
+[    4.354279] renesas_irqc e61c0000.interrupt-controller: driving 6 irqs
+[    4.436208] ehci-platform ee080100.usb: EHCI Host Controller
+[    4.442189] ehci-platform ee080100.usb: new USB bus registered, assigned bus number 5
+[    4.450406] ehci-platform ee080100.usb: irq 165, io mem 0xee080100
+[    4.471912] ehci-platform ee080100.usb: USB 2.0 started, EHCI 1.10
+[    4.481181] hub 5-0:1.0: USB hub found
+[    4.485216] hub 5-0:1.0: 1 port detected
+[    4.494780] ohci-platform ee080000.usb: Generic Platform OHCI controller
+[    4.501792] ohci-platform ee080000.usb: new USB bus registered, assigned bus number 6
+[    4.509995] ohci-platform ee080000.usb: irq 165, io mem 0xee080000
+[    4.608500] hub 6-0:1.0: USB hub found
+[    4.612438] hub 6-0:1.0: 1 port detected
+[    4.626914] cpu cpu0: EM: created perf domain
+[    4.638295] renesas_sdhi_internal_dmac ee100000.mmc: Got CD GPIO
+[    4.644527] renesas_sdhi_internal_dmac ee100000.mmc: Got WP GPIO
+[    4.702296] renesas_sdhi_internal_dmac ee100000.mmc: mmc1 base at 0x00000000ee100000, max clock rate 200 MHz
+[    4.720363] renesas_sdhi_internal_dmac ee160000.mmc: Got CD GPIO
+[    4.726664] renesas_sdhi_internal_dmac ee160000.mmc: Got WP GPIO
+[    4.781953] renesas_sdhi_internal_dmac ee160000.mmc: mmc2 base at 0x00000000ee160000, max clock rate 200 MHz
+[    4.813272] [drm] Initialized rcar-du 1.0.0 20130110 for feb00000.display on minor 0
+[    4.821595] [drm] Device feb00000.display probed
+[    4.871130] Console: switching to colour frame buffer device 128x48
+[    4.895008] rcar-du feb00000.display: [drm] fb0: rcar-dudrmfb frame buffer device
+[    4.921136] input: keys as /devices/platform/keys/input/input0
+[    5.016556] Micrel KSZ9031 Gigabit PHY e6800000.ethernet-ffffffff:00: attached PHY driver [Micrel KSZ9031 Gigabit PHY] (mii_bus:phy_addr=e6800000.ethernet-ffffffff:00, irq=172)
+[   11.567712] ravb e6800000.ethernet eth0: Link is Up - 1Gbps/Full - flow control off
+[   11.596018] IP-Config: Guessing netmask 255.255.255.0
+[   11.601334] IP-Config: Complete:
+[   11.604746]      device=eth0, hwaddr=2e:09:0a:00:c3:8b, ipaddr=192.168.8.20, mask=255.255.255.0, gw=255.255.255.255
+[   11.615505]      host=192.168.8.20, domain=, nis-domain=(none)
+[   11.621565]      bootserver=255.255.255.255, rootserver=192.168.8.8, rootpath=
+[   11.623226] clk: Disabling unused clocks
+[   11.637335] ALSA device list:
+[   11.640706]   No soundcards found.
+[   12.724872] VFS: Mounted root (nfs4 filesystem) on device 0:23.
+[   12.733678] devtmpfs: mounted
+[   12.785531] Freeing unused kernel memory: 9280K
+[   12.796089] Run /sbin/init as init process
+[   13.854239] systemd[1]: System time before build time, advancing clock.
+[   14.565126] random: crng init done
+[   15.595575] NET: Registered protocol family 10
+[   15.606228] Segment Routing with IPv6
+[   15.710196] systemd[1]: systemd 255.4^ running in system mode (+PAM -AUDIT -SELINUX -APPARMOR +IMA -SMACK +SECCOMP -GCRYPT -GNUTLS -OPENSSL +ACL +BLKID -CURL -ELFUTILS -FIDO2 -IDN2 -IDN -IPTC +KMOD -LIBCRYPTSETUP +LIBFDISK -PCRE2 -PWQUALITY -P11KIT -QRENCODE -TPM2 -BZIP2 -LZ4 -XZ -ZLIB +ZSTD -BPF_FRAMEWORK -XKBCOMMON +UTMP +SYSVINIT default-hierarchy=unified)
+[   15.745225] systemd[1]: Detected architecture arm64.
+
+Welcome to Poky (Yocto Project Reference Distro) 5.0 (scarthgap)!
+
+[   15.791213] systemd[1]: Hostname set to <salvator-x>.
+[   16.270898] systemd-sysv-generator[266]: SysV service '/etc/init.d/umountnfs.sh' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   16.319485] systemd-sysv-generator[266]: SysV service '/etc/init.d/set_default_governor.sh' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   16.360911] systemd-sysv-generator[266]: SysV service '/etc/init.d/umountfs' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   16.401051] systemd-sysv-generator[266]: SysV service '/etc/init.d/save-rtc.sh' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   16.439727] systemd-sysv-generator[266]: SysV service '/etc/init.d/reboot' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   16.474745] systemd-sysv-generator[266]: SysV service '/etc/init.d/halt' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   16.510621] systemd-sysv-generator[266]: SysV service '/etc/init.d/sendsigs' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   16.547680] systemd-sysv-generator[266]: SysV service '/etc/init.d/single' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
+[   17.405780] systemd[1]: Queued start job for default target Multi-User System.
+[   17.493199] systemd[1]: Created slice Slice /system/getty.
+[  OK  ] Created slice Slice /system/getty.
+[   17.521960] systemd[1]: Created slice Slice /system/modprobe.
+[  OK  ] Created slice Slice /system/modprobe.
+[   17.563330] systemd[1]: Created slice Slice /system/serial-getty.
+[  OK  ] Created slice Slice /system/serial-getty.
+[   17.594306] systemd[1]: Created slice User and Session Slice.
+[  OK  ] Created slice User and Session Slice.
+[   17.618318] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+[  OK  ] Started Dispatch Password Requests to Console Directory Watch.
+[   17.649606] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[  OK  ] Started Forward Password Requests to Wall Directory Watch.
+[   17.676403] systemd[1]: Reached target Path Units.
+[  OK  ] Reached target Path Units.
+[   17.696258] systemd[1]: Reached target Remote File Systems.
+[  OK  ] Reached target Remote File Systems.
+[   17.720513] systemd[1]: Reached target Slice Units.
+[  OK  ] Reached target Slice Units.
+[   17.744568] systemd[1]: Reached target Swaps.
+[  OK  ] Reached target Swaps.
+[   17.779323] systemd[1]: Listening on Syslog Socket.
+[  OK  ] Listening on Syslog Socket.
+[   17.811577] systemd[1]: Listening on initctl Compatibility Named Pipe.
+[  OK  ] Listening on initctl Compatibility Named Pipe.
+[   17.848192] systemd[1]: Listening on Journal Audit Socket.
+[  OK  ] Listening on Journal Audit Socket.
+[   17.876792] systemd[1]: Listening on Journal Socket (/dev/log).
+[  OK  ] Listening on Journal Socket (/dev/log).
+[   17.909626] systemd[1]: Listening on Journal Socket.
+[  OK  ] Listening on Journal Socket.
+[   17.938258] systemd[1]: Listening on Network Service Netlink Socket.
+[  OK  ] Listening on Network Service Netlink Socket.
+[   17.975209] systemd[1]: Listening on udev Control Socket.
+[  OK  ] Listening on udev Control Socket.
+[   18.004760] systemd[1]: Listening on udev Kernel Socket.
+[  OK  ] Listening on udev Kernel Socket.
+[   18.034429] systemd[1]: Listening on User Database Manager Socket.
+[  OK  ] Listening on User Database Manager Socket.
+[   18.095067] systemd[1]: Mounting Huge Pages File System...
+         Mounting Huge Pages File System...
+[   18.132620] systemd[1]: Mounting POSIX Message Queue File System...
+         Mounting POSIX Message Queue File System...
+[   18.169454] systemd[1]: Mounting Kernel Debug File System...
+         Mounting Kernel Debug File System...
+[   18.222132] systemd[1]: Mounting Kernel Trace File System...
+         Mounting Kernel Trace File System...
+[   18.296398] systemd[1]: Mounting Temporary Directory /tmp...
+         Mounting Temporary Directory /tmp...
+[   18.341025] systemd[1]: Starting Create List of Static Device Nodes...
+         Starting Create List of Static Device Nodes...
+[   18.385884] systemd[1]: Starting Load Kernel Module configfs...
+         Starting Load Kernel Module configfs...
+[   18.430087] systemd[1]: Starting Load Kernel Module drm...
+         Starting Load Kernel Module drm...
+[   18.475408] systemd[1]: Starting Load Kernel Module fuse...
+         Starting Load Kernel Module fuse...
+[   18.497693] systemd[1]: File System Check on Root Device was skipped because of an unmet condition check (ConditionPathIsReadWrite=!/).
+[   18.513253] systemd[1]: systemd-journald.service: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+[   18.528011] systemd[1]: systemd-journald.service: (This warning is only shown for the first unit using IP firewalling.)
+[   18.566730] systemd[1]: Starting Journal Service...
+         Starting Journal Service...
+[   18.805441] systemd[1]: Starting Load Kernel Modules...
+         Starting Load Kernel Modules...
+[   18.923409] fuse: init (API version 7.32)
+[   18.954907] systemd[1]: Starting Generate network units from Kernel command line...
+         Starting Generate network units from Kernel command line...
+[   19.030013] systemd[1]: Starting Remount Root and Kernel File Systems...
+         Starting Remount Root and Kernel File Systems...
+[   19.053537] systemd-journald[279]: Collecting audit messages is enabled.
+[   19.115038] systemd[1]: Starting Coldplug All udev Devices...
+         Starting Coldplug All udev Devices...
+[   19.243209] systemd[1]: Mounted Huge Pages File System.
+[  OK  ] Mounted Huge Pages File System.
+[   19.306362] systemd[1]: Mounted POSIX Message Queue File System.
+[  OK  ] Mounted POSIX Message Queue File System.
+[   19.362212] systemd[1]: Mounted Kernel Debug File System.
+[  OK  ] Mounted Kernel Debug File System.
+[   19.408878] systemd[1]: Mounted Kernel Trace File System.
+[  OK  ] Mounted Kernel Trace File System.
+[   19.465616] systemd[1]: Mounted Temporary Directory /tmp.
+[  OK  ] Mounted Temporary Directory /tmp.
+[   19.547340] systemd[1]: Finished Create List of Static Device Nodes.
+[  OK  ] Finished Create List of Static Device Nodes.
+[   19.611553] systemd[1]: modprobe@configfs.service: Deactivated successfully.
+[   19.662785] systemd[1]: Finished Load Kernel Module configfs.
+[  OK  ] Finished Load Kernel Module configfs.
+[   19.694843] systemd[1]: modprobe@drm.service: Deactivated successfully.
+[   19.720360] systemd[1]: Finished Load Kernel Module drm.
+[  OK  ] Finished Load Kernel Module drm.
+[   19.753386] systemd[1]: modprobe@fuse.service: Deactivated successfully.
+[   19.775333] systemd[1]: Finished Load Kernel Module fuse.
+[  OK  ] Finished Load Kernel Module fuse.
+[   19.812866] systemd[1]: Finished Load Kernel Modules.
+[  OK  ] Finished Load Kernel Modules.
+[   19.846054] systemd[1]: systemd-network-generator.service: Main process exited, code=exited, status=1/FAILURE
+[   19.870936] systemd[1]: systemd-network-generator.service: Failed with result 'exit-code'.
+[   19.886735] systemd[1]: Failed to start Generate network units from Kernel command line.
+[FAILED] Failed to start Generate network units from Kernel command line.
+See 'systemctl status systemd-network-generator.service' for details.
+[   19.925797] systemd[1]: Started Journal Service.
+[  OK  ] Started Journal Service.
+[  OK  ] Finished Remount Root and Kernel File Systems.
+[  OK  ] Reached target Preparation for Network.
+         Mounting FUSE Control File System...
+         Mounting Kernel Configuration File System...
+         Starting Flush Journal to Persistent Storage...
+         Starting Apply Kernel Variables...
+         Starting Create Static Device Nodes in /dev gracefully...
+[  OK  ] Mounted FUSE Control File System.
+[  OK  ] Mounted Kernel Configuration File System.
+[   20.549950] systemd-journald[279]: Received client request to flush runtime journal.
+[  OK  ] Finished Flush Journal to Persistent Storage.
+[  OK  ] Finished Apply Kernel Variables.
+[  OK  ] Finished Create Static Device Nodes in /dev gracefully.
+         Starting Create Static Device Nodes in /dev...
+[  OK  ] Finished Create Static Device Nodes in /dev.
+[  OK  ] Reached target Preparation for Local File Systems.
+         Mounting /var/volatile...
+         Starting Rule-based Manager for Device Events and Files...
+[  OK  ] Mounted /var/volatile.
+         Starting Load/Save OS Random Seed...
+[  OK  ] Reached target Local File Systems.
+         Starting Create Volatile Files and Directories...
+[  OK  ] Finished Load/Save OS Random Seed.
+[  OK  ] Started Rule-based Manager for Device Events and Files.
+         Starting Network Configuration...
+         Starting User Database Manager...
+[  OK  ] Started User Database Manager.
+[  OK  ] Finished Create Volatile Files and Directories.
+         Starting Network Name Resolution...
+         Starting Network Time Synchronization...
+         Starting Record System Boot/Shutdown in UTMP...
+[  OK  ] Finished Record System Boot/Shutdown in UTMP.
+[  OK  ] Listening on Load/Save RF Kill Switch Status /dev/rfkill Watch.
+[  OK  ] Started Network Time Synchronization.
+[  OK  ] Reached target System Time Set.
+[  OK  ] Started Network Name Resolution.
+[  OK  ] Reached target Host and Network Name Lookups.
+[   25.242421] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+[   25.389849] cfg80211: Loaded X.509 cert 'wens: 61c038651aabdcf94bd0ac7ff06c7248db18c600'
+[   25.400974] cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+[   25.412748] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
+[   25.422854] cfg80211: failed to load regulatory.db
+[  OK  ] Started Network Configuration.
+[  OK  ] Reached target Network.
+[  OK  ] Finished Coldplug All udev Devices.
+[  OK  ] Reached target System Initialization.
+[  OK  ] Started Daily Cleanup of Temporary Directories.
+[  OK  ] Reached target Timer Units.
+[  OK  ] Listening on D-Bus System Message Bus Socket.
+[  OK  ] Reached target Socket Units.
+[  OK  ] Reached target Basic System.
+[  OK  ] Started Kernel Logging Service.
+[  OK  ] Started System Logging Service.
+         Starting D-Bus System Message Bus...
+[  OK  ] Started optee services.
+         Starting set_default_governor.service...
+         Starting User Login Management...
+         Starting Permit User Sessions...
+[  OK  ] Started D-Bus System Message Bus.
+[  OK  ] Finished Permit User Sessions.
+[  OK  ] Started Getty on tty1.
+[  OK  ] Started Serial Getty on ttySC0.
+[  OK  ] Reached target Login Prompts.
+[  OK  ] Started set_default_governor.service.
+[  OK  ] Started User Login Management.
+[  OK  ] Reached target Multi-User System.
+         Starting Record Runlevel Change in UTMP...
+[  OK  ] Finished Record Runlevel Change in UTMP.
+
+Poky (Yocto Project Reference Distro) 5.0 salvator-x ttySC0
+
+salvator-x login: [   30.378598] pwm-backlight: probe of backlight failed with error -16
+[   30.922083] at24 7-0050: supply vcc not found, using dummy regulator
+[   30.943023] at24 7-0050: 128 byte br24t01 EEPROM, writable, 8 bytes/write
+[   31.612921] ccree e6601000.crypto: ARM CryptoCell 630P Driver: HW version 0xAF400001/0xDCC63000, Driver version 5.0
+[   31.948966] ccree e6601000.crypto: ARM ccree device initialized
+root
+
+WARNING: Poky is a reference Yocto Project distribution that should be used for
+testing and development purposes only. It is recommended that you create your
+own distribution for production use.
+
+[   34.879789] audit: type=1006 audit(1723116862.701:2): pid=454 uid=0 old-auid=4294967295 auid=0 tty=(none) old-ses=4294967295 ses=1 res=1
+root@salvator-x:~#
+root@salvator-x:~/sata/sata-test-script/scripts# ./sata_pfm_rw.sh
+
+3.1 Performance Test No.1
+
+Read Performance:
+
+for (( c=1; c<=5; c++ )); do time dd iflag=direct if=/dev/sda1 of=/dev/null bs=1M count=1024 skip=1000; done
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.27206 s, 251 MB/s
+
+real    0m4.286s
+user    0m0.000s
+sys     0m0.211s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.25844 s, 252 MB/s
+
+real    0m4.269s
+user    0m0.000s
+sys     0m0.208s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.25713 s, 252 MB/s
+
+real    0m4.268s
+user    0m0.005s
+sys     0m0.203s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.26461 s, 252 MB/s
+
+real    0m4.277s
+user    0m0.000s
+sys     0m0.204s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.26341 s, 252 MB/s
+
+real    0m4.277s
+user    0m0.000s
+sys     0m0.207s
+
+Write Performance:
+
+for (( c=1; c<=5; c++ )); do time dd oflag=direct if=/dev/zero of=/dev/sda1 bs=1M count=1024 seek=1000; done
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.94746 s, 217 MB/s
+
+real    0m4.959s
+user    0m0.014s
+sys     0m0.476s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 5.05104 s, 213 MB/s
+
+real    0m5.064s
+user    0m0.015s
+sys     0m0.536s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 5.04721 s, 213 MB/s
+
+real    0m5.059s
+user    0m0.007s
+sys     0m0.540s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 5.03183 s, 213 MB/s
+
+real    0m5.043s
+user    0m0.000s
+sys     0m0.553s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 5.02712 s, 214 MB/s
+
+real    0m5.039s
+user    0m0.003s
+sys     0m0.543s
+
+Target performance value
+ Read  : 221 MB/s
+ write : 185 MB/s
+----- Finish -----
+root@salvator-x:~/sata/sata-test-script/scripts# time dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000 & top -b -d 1 -n 10 > aaa.txt^C
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 2
+TC 2
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 2
+TC 2
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 2
+TC 2
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 2
+TC 2
+root@salvator-x:~/sata/sata-test-script/scripts# time dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000 & top -b -d 1 -n 10 > aaa.txt
+[1] 619
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.30701 s, 249 MB/s
+
+real    0m4.329s
+user    0m0.000s
+sys     0m0.207s
+[1]+  Done                    time dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000
+root@salvator-x:~/sata/sata-test-script/scripts# time dd oflag=direct if=/dev/zero of=/dev/sda bs=1M count=1024 seek=1000 & top -b -d 1 -n 10 > bbb.txt
+[1] 622
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.97145 s, 216 MB/s
+
+real    0m4.990s
+user    0m0.004s
+sys     0m0.50[  407.784421]  sda: sda1
+2s
+[1]+  Done                    time dd oflag=direct if=/dev/zero of=/dev/sda bs=1M count=1024 seek=1000
+root@salvator-x:~/sata/sata-test-script/scripts# grep dd aaa.txt
+  620   619 root     D     3304   0%   3% dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000
+  357     1 messageb S     6984   0%   0% /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    2     0 root     SW       0   0%   0% [kthreadd]
+  255     2 root     IW<      0   0%   0% [ipv6_addrconf]
+  620   619 root     D     3304   0%   2% dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000
+  357     1 messageb S     6984   0%   0% /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    2     0 root     SW       0   0%   0% [kthreadd]
+  255     2 root     IW<      0   0%   0% [ipv6_addrconf]
+  620   619 root     D     3304   0%   2% dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000
+  357     1 messageb S     6984   0%   0% /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    2     0 root     SW       0   0%   0% [kthreadd]
+  255     2 root     IW<      0   0%   0% [ipv6_addrconf]
+  620   619 root     D     3304   0%   2% dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000
+  357     1 messageb S     6984   0%   0% /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    2     0 root     SW       0   0%   0% [kthreadd]
+  255     2 root     IW<      0   0%   0% [ipv6_addrconf]
+  357     1 messageb S     6984   0%   0% /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    2     0 root     SW       0   0%   0% [kthreadd]
+  255     2 root     IW<      0   0%   0% [ipv6_addrconf]
+  357     1 messageb S     6984   0%   0% /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    2     0 root     SW       0   0%   0% [kthreadd]
+  255     2 root     IW<      0   0%   0% [ipv6_addrconf]
+  357     1 messageb S     6984   0%   0% /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    2     0 root     SW       0   0%   0% [kthreadd]
+  255     2 root     IW<      0   0%   0% [ipv6_addrconf]
+  357     1 messageb S     6984   0%   0% /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    2     0 root     SW       0   0%   0% [kthreadd]
+  255     2 root     IW<      0   0%   0% [ipv6_addrconf]
+  357     1 messageb S     6984   0%   0% /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    2     0 root     SW       0   0%   0% [kthreadd]
+  255     2 root     IW<      0   0%   0% [ipv6_addrconf]
+  357     1 messageb S     6984   0%   0% /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    2     0 root     SW       0   0%   0% [kthreadd]
+  255     2 root     IW<      0   0%   0% [ipv6_addrconf]
+root@salvator-x:~/sata/sata-test-script/scripts# grep "dd iflag=direct" aaa.txt
+  620   619 root     D     3304   0%   3% dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000
+  620   619 root     D     3304   0%   2% dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000
+  620   619 root     D     3304   0%   2% dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000
+  620   619 root     D     3304   0%   2% dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000
+root@salvator-x:~/sata/sata-test-script/scripts# grep "dd oflag=direct" bbb.txt
+  624   622 root     D     3304   0%   6% dd oflag=direct if=/dev/zero of=/dev/sda bs=1M count=1024 seek=1000
+  624   622 root     D     3304   0%   5% dd oflag=direct if=/dev/zero of=/dev/sda bs=1M count=1024 seek=1000
+  624   622 root     D     3304   0%   5% dd oflag=direct if=/dev/zero of=/dev/sda bs=1M count=1024 seek=1000
+  624   622 root     D     3304   0%   5% dd oflag=direct if=/dev/zero of=/dev/sda bs=1M count=1024 seek=1000
+  624   622 root     D     3304   0%   5% dd oflag=direct if=/dev/zero of=/dev/sda bs=1M count=1024 seek=1000
+root@salvator-x:~/sata/sata-test-script/scripts#
+root@salvator-x:~/sata/sata-test-script/scripts#
+root@salvator-x:~/sata/sata-test-script/scripts#
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 3
+TC 3
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 3
+TC 3
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 3
+TC 3
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 3
+TC 3
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 3
+TC 3
+root@salvator-x:~/sata/sata-test-script/scripts# ls
+aaa.txt                            sata_boundary.sh    sata_format.sh      sata_normal_26_28.sh  sata_pfm_qos.sh  trace.dat
+bbb.txt                            sata_common.func    sata_init.sh        sata_normal_27.sh     sata_pfm_rw.sh
+h3_Ver30_infotainment_v02_195.csv  sata_cpuload.sh     sata_module.sh      sata_pfm_irq.sh       sata_s2r.sh
+sata_abnormal.sh                   sata_durability.sh  sata_normal_1-2.sh  sata_pfm_onece.sh     sata_smp.sh
+root@salvator-x:~/sata/sata-test-script/scripts# cd ..
+root@salvator-x:~/sata/sata-test-script# ls
+data  onepass  scripts
+root@salvator-x:~/sata/sata-test-script# cd data/
+root@salvator-x:~/sata/sata-test-script/data# ls
+f128m.txt
+root@salvator-x:~/sata/sata-test-script/data# cd ..
+root@salvator-x:~/sata/sata-test-script# ls
+data  onepass  scripts
+root@salvator-x:~/sata/sata-test-script# cd ..
+root@salvator-x:~/sata# ls
+sata-TP_v2.7.zip  sata-test  sata-test-script  sata-test-script.zip  test_app_sata  test_app_sata.zip  testing-note.txt
+root@salvator-x:~/sata# cd test_app_sata
+root@salvator-x:~/sata/test_app_sata# ls
+expect  libexpect5.45.so  libtcl8.6.so  libtcl8.6.so.0  tcl8  tcl8.6
+root@salvator-x:~/sata/test_app_sata# cd ..
+root@salvator-x:~/sata# cd sata-test
+root@salvator-x:~/sata/sata-test# ls
+onepass  scripts
+root@salvator-x:~/sata/sata-test# cd scripts/
+root@salvator-x:~/sata/sata-test/scripts# ls
+sata_abnormal.sh  sata_cpuload.sh     sata_init.sh        sata_normal_26_28.sh  sata_pfm_onece.sh  sata_s2r.sh
+sata_boundary.sh  sata_durability.sh  sata_module.sh      sata_normal_27.sh     sata_pfm_qos.sh    sata_smp.sh
+sata_common.func  sata_format.sh      sata_normal_1-2.sh  sata_pfm_irq.sh       sata_pfm_rw.sh
+root@salvator-x:~/sata/sata-test/scripts# cd ..
+root@salvator-x:~/sata/sata-test# cd ..
+root@salvator-x:~/sata# cd ..
+root@salvator-x:~# find . -name 'h3_Ver30_infotainment_v02_195.csv'
+./rch3m3m3ne3d3_linux_qos_v310/Reference/h3_Ver30_infotainment_v02_195.csv
+./sata/sata-test-script/scripts/h3_Ver30_infotainment_v02_195.csv
+root@salvator-x:~# cd rch3m3m3ne3d3_linux_qos_v310/Reference/
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# ls
+d3_Ver10_default_setting_v01.csv          h3_Ver30_default_setting_v02_390.csv     m3_Ver30_integrated_cockpit_v01_390.csv
+e3_Ver1x_cluster_v02_390.csv              h3_Ver30_infotainment_v02_195.csv        m3n_Ver1x_cluster_v03_195.csv
+e3_Ver1x_cluster_v02_780.csv              h3_Ver30_infotainment_v02_390.csv        m3n_Ver1x_cluster_v03_390.csv
+e3_Ver1x_default_setting_v03_390.csv      h3_Ver30_integrated_cockpit_v02_195.csv  m3n_Ver1x_default_setting_v04_195.csv
+e3_Ver1x_default_setting_v03_780.csv      h3_Ver30_integrated_cockpit_v02_390.csv  m3n_Ver1x_default_setting_v04_390.csv
+e3_Ver1x_meter_and_hud_v02_390.csv        m3_Ver30_cluster_v01_195.csv             m3n_Ver1x_infotainment_fhd_v04_195.csv
+e3_Ver1x_meter_and_hud_v02_780.csv        m3_Ver30_cluster_v01_390.csv             m3n_Ver1x_infotainment_fhd_v04_390.csv
+e3_Ver1x_meter_video_and_map_v02_390.csv  m3_Ver30_default_setting_v01_195.csv     m3n_Ver1x_infotainment_hd_v04_195.csv
+e3_Ver1x_meter_video_and_map_v02_780.csv  m3_Ver30_default_setting_v01_390.csv     m3n_Ver1x_infotainment_hd_v04_390.csv
+h3_Ver30_cluster_v01_195.csv              m3_Ver30_infotainment_v01_195.csv        qos_tp
+h3_Ver30_cluster_v01_390.csv              m3_Ver30_infotainment_v01_390.csv
+h3_Ver30_default_setting_v02_195.csv      m3_Ver30_integrated_cockpit_v01_195.csv
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# cp m3n_Ver1x_infotainment_hd_v04_* ../../
+.bash_history                          iperf3_result.txt                      trace.dat
+16byte.txt                             memd.ko                                uio/
+Image                                  memd3.ko                               uio_pdrv_genirq.ko
+MMP_1_Pass_Test                        memd_usb3f.ko                          uio_pdrv_genirq_3.ko
+PINGLOG.txt                            qos.ko                                 v4l2-TP/
+RenesasElectronics_1280x720_60fps.mp4  r8a77951-salvator-xs.dtb               xhci-hcd.ko
+Wayland-test.sh                        rch3m3m3ne3d3_linux_qos_v310/          xhci-pci.ko
+board_log.txt                          renesas_usb3.ko                        xhci-plat-hcd.ko
+gstreamer-test-gen3_v3.sh              sata/
+gstreamer-test-gen3_v4.sh              sata_rcar.ko
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# cp m3n_Ver1x_infotainment_hd_v04_* ../../sata/sata-test-script/
+data/    onepass/ scripts/
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# cp m3n_Ver1x_infotainment_hd_v04_* ../../sata/sata-test-script/scripts/
+aaa.txt                            sata_durability.sh                 sata_pfm_irq.sh
+bbb.txt                            sata_format.sh                     sata_pfm_onece.sh
+h3_Ver30_infotainment_v02_195.csv  sata_init.sh                       sata_pfm_qos.sh
+sata_abnormal.sh                   sata_module.sh                     sata_pfm_rw.sh
+sata_boundary.sh                   sata_normal_1-2.sh                 sata_s2r.sh
+sata_common.func                   sata_normal_26_28.sh               sata_smp.sh
+sata_cpuload.sh                    sata_normal_27.sh                  trace.dat
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# cp m3n_Ver1x_infotainment_hd_v04_* ../../sata/sata-test-script/scripts/
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# ./sata_pfm_qos.sh -xs m3n_Ver1x_
+m3n_Ver1x_cluster_v03_195.csv           m3n_Ver1x_default_setting_v04_390.csv   m3n_Ver1x_infotainment_hd_v04_195.csv
+m3n_Ver1x_cluster_v03_390.csv           m3n_Ver1x_infotainment_fhd_v04_195.csv  m3n_Ver1x_infotainment_hd_v04_390.csv
+m3n_Ver1x_default_setting_v04_195.csv   m3n_Ver1x_infotainment_fhd_v04_390.csv
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# ./sata_pfm_qos.sh -xs m3n_Ver1x_^C
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# cd
+root@salvator-x:~# cd sata/sata-test-script/scripts/
+root@salvator-x:~/sata/sata-test-script/scripts# ./sata_pfm_qos.sh -xs m3n_Ver1x_infotainment_hd_v04_195.csv
+Initialize for Salvator-XS
+i2cset -y -f 4 0x20 0x02 0x00
+i2cset -y -f 4 0x20 0x03 0x7f
+i2cset -y -f 4 0x20 0x01 0x7f
+lsmod | grep sata_rcar
+sata_rcar              20480  0
+sata_rcar.ko is already installed
+sleep 3
+
+3.1 Performance Test No.3
+
+modprobe qos
+[  918.148348] qos: loading out-of-tree module taints kernel.
+[  918.161105] QoS: install v2.07
+[  918.171664] QoS Driver is Successfully loaded
+qos_tp setall m3n_Ver1x_infotainment_hd_v04_195.csv
+QoS : setall success!
+qos_tp switch
+Read Performance:
+
+for (( c=1; c<=5; c++ )); do time dd iflag=direct if=/dev/sda1 of=/dev/null bs=1M count=1024 skip=1000; done
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.26877 s, 252 MB/s
+
+real    0m4.293s
+user    0m0.004s
+sys     0m0.217s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.22962 s, 254 MB/s
+
+real    0m4.240s
+user    0m0.011s
+sys     0m0.197s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.26723 s, 252 MB/s
+
+real    0m4.278s
+user    0m0.002s
+sys     0m0.206s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.26713 s, 252 MB/s
+
+real    0m4.278s
+user    0m0.000s
+sys     0m0.208s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.26391 s, 252 MB/s
+
+real    0m4.278s
+user    0m0.005s
+sys     0m0.203s
+
+Write Performance:
+
+for (( c=1; c<=5; c++ )); do time dd oflag=direct if=/dev/zero of=/dev/sda1 bs=1M count=1024 seek=1000; done
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.9299 s, 218 MB/s
+
+real    0m4.941s
+user    0m0.000s
+sys     0m0.488s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 5.01702 s, 214 MB/s
+
+real    0m5.029s
+user    0m0.008s
+sys     0m0.548s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 5.02703 s, 214 MB/s
+
+real    0m5.039s
+user    0m0.002s
+sys     0m0.550s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 5.03616 s, 213 MB/s
+
+real    0m5.048s
+user    0m0.007s
+sys     0m0.547s
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 5.04637 s, 213 MB/s
+
+real    0m5.058s
+user    0m0.001s
+sys     0m0.543s
+
+Target performance value
+ Read  : 221 MB/s
+ write : 185 MB/s
+----- Finish -----
+root@salvator-x:~/sata/sata-test-script/scripts# ./sata_pfm_qos.sh -xs m3n_Ver1x_infotainment_hd_v04_
+m3n_Ver1x_infotainment_hd_v04_195.csv  m3n_Ver1x_infotainment_hd_v04_390.csv
+root@salvator-x:~/sata/sata-test-script/scripts# ./sata_pfm_qos.sh -xs m3n_Ver1x_infotainment_hd_v04_390.csv
+Initialize for Salvator-XS
+i2cset -y -f 4 0x20 0x02 0x00
+i2cset -y -f 4 0x20 0x03 0x7f
+i2cset -y -f 4 0x20 0x01 0x7f
+lsmod | grep sata_rcar
+sata_rcar              20480  0
+sata_rcar.ko is already installed
+sleep 3
+
+3.1 Performance Test No.3
+
+modprobe qos
+insmod: ERROR: could not insert module /home/root/qos.ko: File exists
+Error: modprobe qos fail
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 4
+TC 4
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 4
+TC 4
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 4
+TC 4
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 4
+TC 4
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 4
+TC 4
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 4
+TC 4
+root@salvator-x:~/sata/sata-test-script/scripts# time dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000 & top -b -d 1 -n 10 > aaa.txt
+[1] 706
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.29249 s, 250 MB/s
+
+real    0m4.313s
+user    0m0.005s
+sys     0m0.207s
+[1]+  Done                    time dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000
+root@salvator-x:~/sata/sata-test-script/scripts# time dd oflag=direct if=/dev/zero of=/dev/sda bs=1M count=1024 seek=1000 & top -b -d 1 -n 10 > bbb.txt
+[1] 709
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.96043 s, 216 MB/s
+[ 1019.818367]  sda: sda1
+
+real    0m4.975s
+user    0m0.007s
+sys     0m0.493s
+[1]+  Done                    time dd oflag=direct if=/dev/zero of=/dev/sda bs=1M count=1024 seek=1000
+root@salvator-x:~/sata/sata-test-script/scripts# grep iflag aaa.txt
+  708   706 root     D     3304   0%   3% dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000
+  708   706 root     D     3304   0%   2% dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000
+  708   706 root     D     3304   0%   2% dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000
+  708   706 root     R     3304   0%   2% dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000
+root@salvator-x:~/sata/sata-test-script/scripts# grep iflag aaa.txt
+  708   706 root     D     3304   0%   3% dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000
+  708   706 root     D     3304   0%   2% dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000
+  708   706 root     D     3304   0%   2% dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000
+  708   706 root     R     3304   0%   2% dd iflag=direct if=/dev/sda of=/dev/null bs=1M count=1024 skip=1000
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 5
+TC 5
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 5
+TC 5
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 5
+TC 5
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 5
+TC 5
+root@salvator-x:~/sata/sata-test-script/scripts# echo TC 5
+TC 5
+root@salvator-x:~/sata/sata-test-script/scripts# ./sata_init.sh
+i2cset -y -f 4 0x20 0x02 0x00
+i2cset -y -f 4 0x20 0x03 0x7f
+i2cset -y -f 4 0x20 0x01 0x7f
+lsmod | grep sata_rcar
+sata_rcar              20480  0
+sata_rcar.ko is already installed
+root@salvator-x:~/sata/sata-test-script/scripts# trace-cmd record -p function_graph -l sata_rcar_interrupt ./sata_pfm_irq.sh
+  plugin 'function_graph'
+
+3.1 Performance Test No.5
+
+dd iflag=direct if=/dev/sda1 of=/dev/null bs=1M count=100 skip=1000
+100+0 records in
+100+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.427602 s, 245 MB/s
+dd oflag=direct if=/dev/zero of=/dev/sda1 bs=1M count=100 seek=1000
+100+0 records in
+100+0 records out
+104857600 bytes (105 MB, 100 MiB) copied, 0.486411 s, 216 MB/s
+
+----- Finish -----
+CPU0 data recorded at offset=0x1b8000
+    3142 bytes in size (16384 uncompressed)
+CPU1 data recorded at offset=0x1b9000
+    0 bytes in size (0 uncompressed)
+root@salvator-x:~/sata/sata-test-script/scripts# trace-cmd report
+cpus=2
+          <idle>-0     [000]  1059.220609: funcgraph_entry:      + 86.658 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.224930: funcgraph_entry:      + 63.341 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.229114: funcgraph_entry:      + 60.697 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.233280: funcgraph_entry:      + 61.298 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.237446: funcgraph_entry:      + 63.702 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.241636: funcgraph_entry:      + 63.582 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.245790: funcgraph_entry:      + 60.457 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.249929: funcgraph_entry:      + 60.216 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.254064: funcgraph_entry:      + 59.976 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.258198: funcgraph_entry:      + 59.976 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.262331: funcgraph_entry:      + 59.255 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.266470: funcgraph_entry:      + 59.856 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.270603: funcgraph_entry:      + 59.856 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.274782: funcgraph_entry:      + 59.134 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.278955: funcgraph_entry:      + 60.577 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.283093: funcgraph_entry:      + 60.217 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.287235: funcgraph_entry:      + 59.856 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.291368: funcgraph_entry:      + 59.375 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.295502: funcgraph_entry:      + 59.495 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.299632: funcgraph_entry:      + 59.495 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.303765: funcgraph_entry:      + 59.255 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.307901: funcgraph_entry:      + 59.375 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.312034: funcgraph_entry:      + 59.976 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.316168: funcgraph_entry:      + 59.616 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.320299: funcgraph_entry:      + 59.616 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.324432: funcgraph_entry:      + 59.375 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.328566: funcgraph_entry:      + 59.496 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.332697: funcgraph_entry:      + 60.096 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.336831: funcgraph_entry:      + 59.615 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.340962: funcgraph_entry:      + 59.375 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.345095: funcgraph_entry:      + 59.495 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.349229: funcgraph_entry:      + 59.375 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.353362: funcgraph_entry:      + 59.255 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.357496: funcgraph_entry:      + 62.621 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.361651: funcgraph_entry:      + 61.419 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.365790: funcgraph_entry:      + 60.577 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.369925: funcgraph_entry:      + 59.856 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.374057: funcgraph_entry:      + 59.976 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.378190: funcgraph_entry:      + 59.976 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.382323: funcgraph_entry:      + 59.616 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.386473: funcgraph_entry:      + 59.615 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.390606: funcgraph_entry:      + 59.255 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.394784: funcgraph_entry:      + 59.375 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.398947: funcgraph_entry:      + 59.976 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.403093: funcgraph_entry:      + 59.735 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.407232: funcgraph_entry:      + 59.134 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.411361: funcgraph_entry:      + 59.375 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.415491: funcgraph_entry:      + 59.495 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.419633: funcgraph_entry:      + 59.856 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.423766: funcgraph_entry:      + 59.616 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.427901: funcgraph_entry:      + 59.736 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.432033: funcgraph_entry:      + 59.615 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.436174: funcgraph_entry:      + 59.615 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.440305: funcgraph_entry:      + 59.375 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.444435: funcgraph_entry:      + 59.615 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.448573: funcgraph_entry:      + 59.495 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.452725: funcgraph_entry:      + 59.976 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.456864: funcgraph_entry:      + 59.856 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.460995: funcgraph_entry:      + 59.255 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.465128: funcgraph_entry:      + 59.495 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.469274: funcgraph_entry:      + 59.856 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.473411: funcgraph_entry:      + 59.616 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.477543: funcgraph_entry:      + 59.495 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.481675: funcgraph_entry:      + 59.375 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.485805: funcgraph_entry:      + 59.976 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.489939: funcgraph_entry:      + 59.495 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.494071: funcgraph_entry:      + 59.856 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.498206: funcgraph_entry:      + 59.495 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.502340: funcgraph_entry:      + 59.375 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.506475: funcgraph_entry:      + 59.255 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.510604: funcgraph_entry:      + 59.135 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.514781: funcgraph_entry:      + 59.735 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.518939: funcgraph_entry:      + 59.736 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.523078: funcgraph_entry:      + 59.736 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.527215: funcgraph_entry:      + 59.495 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.531347: funcgraph_entry:      + 59.255 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.535477: funcgraph_entry:      + 59.375 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.539610: funcgraph_entry:      + 59.134 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.543742: funcgraph_entry:      + 59.375 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.547877: funcgraph_entry:      + 59.375 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.552009: funcgraph_entry:      + 59.615 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.556140: funcgraph_entry:      + 59.736 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.560272: funcgraph_entry:      + 59.976 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.564408: funcgraph_entry:      + 59.135 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.568543: funcgraph_entry:      + 59.495 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.572675: funcgraph_entry:      + 59.375 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.576807: funcgraph_entry:      + 59.375 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.580938: funcgraph_entry:      + 59.496 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.585069: funcgraph_entry:      + 59.495 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.589204: funcgraph_entry:      + 59.375 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.593337: funcgraph_entry:      + 59.495 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.597471: funcgraph_entry:      + 59.495 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.601601: funcgraph_entry:      + 59.495 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.605733: funcgraph_entry:      + 58.895 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.609869: funcgraph_entry:      + 59.375 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.614001: funcgraph_entry:      + 59.135 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.618130: funcgraph_entry:      + 59.736 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.622261: funcgraph_entry:      + 59.616 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.626396: funcgraph_entry:      + 59.496 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.630529: funcgraph_entry:      + 59.615 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.651513: funcgraph_entry:      + 24.639 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.656471: funcgraph_entry:      + 18.029 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.661341: funcgraph_entry:      + 17.067 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.666183: funcgraph_entry:      + 15.264 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.671013: funcgraph_entry:      + 15.505 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.675847: funcgraph_entry:      + 13.822 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.680676: funcgraph_entry:      + 15.145 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.685504: funcgraph_entry:      + 14.784 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.690325: funcgraph_entry:      + 13.701 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.695140: funcgraph_entry:      + 15.024 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.699951: funcgraph_entry:      + 13.942 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.704768: funcgraph_entry:      + 14.904 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.709578: funcgraph_entry:      + 14.783 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.714383: funcgraph_entry:      + 17.908 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.719246: funcgraph_entry:      + 13.702 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.724067: funcgraph_entry:      + 15.504 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.728881: funcgraph_entry:      + 14.663 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.733684: funcgraph_entry:      + 13.221 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.738485: funcgraph_entry:      + 14.303 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.743329: funcgraph_entry:      + 13.462 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.748125: funcgraph_entry:      + 15.986 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.752951: funcgraph_entry:      + 15.625 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.757755: funcgraph_entry:      + 13.461 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.762555: funcgraph_entry:      + 14.062 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.767443: funcgraph_entry:      + 15.024 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.772258: funcgraph_entry:      + 13.341 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.777069: funcgraph_entry:      + 14.423 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.781871: funcgraph_entry:      + 14.423 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.786691: funcgraph_entry:      + 15.024 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.791528: funcgraph_entry:      + 13.341 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.796329: funcgraph_entry:      + 12.380 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.801131: funcgraph_entry:      + 13.702 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.805929: funcgraph_entry:      + 13.342 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.810731: funcgraph_entry:      + 14.423 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.815570: funcgraph_entry:      + 15.986 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.820382: funcgraph_entry:      + 14.183 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.825194: funcgraph_entry:      + 13.341 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.829999: funcgraph_entry:      + 13.942 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.834804: funcgraph_entry:      + 13.582 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.839643: funcgraph_entry:      + 14.303 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.844443: funcgraph_entry:      + 14.423 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.849266: funcgraph_entry:      + 14.062 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.854071: funcgraph_entry:      + 15.024 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.858882: funcgraph_entry:      + 14.904 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.863725: funcgraph_entry:      + 15.144 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.868544: funcgraph_entry:      + 13.822 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.873355: funcgraph_entry:      + 15.024 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.878163: funcgraph_entry:      + 13.462 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.882969: funcgraph_entry:      + 14.423 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.887784: funcgraph_entry:      + 14.183 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.892594: funcgraph_entry:      + 13.581 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.897394: funcgraph_entry:      + 14.183 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.902216: funcgraph_entry:      + 13.822 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.907023: funcgraph_entry:      + 13.221 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.911829: funcgraph_entry:      + 13.942 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.916632: funcgraph_entry:      + 13.942 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.921429: funcgraph_entry:      + 13.581 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.926238: funcgraph_entry:      + 13.221 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.931041: funcgraph_entry:      + 14.062 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.935848: funcgraph_entry:      + 13.582 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.940650: funcgraph_entry:      + 14.423 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.945454: funcgraph_entry:      + 14.183 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.950253: funcgraph_entry:      + 13.221 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.955056: funcgraph_entry:      + 13.461 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.959872: funcgraph_entry:      + 13.702 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.964681: funcgraph_entry:      + 14.063 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.969488: funcgraph_entry:      + 13.942 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.974305: funcgraph_entry:      + 14.784 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.979111: funcgraph_entry:      + 14.784 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.983917: funcgraph_entry:      + 13.101 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.988728: funcgraph_entry:      + 14.062 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.993538: funcgraph_entry:      + 15.986 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1059.998337: funcgraph_entry:      + 13.701 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.003158: funcgraph_entry:      + 13.942 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.007964: funcgraph_entry:      + 14.183 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.012764: funcgraph_entry:      + 14.303 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.017569: funcgraph_entry:      + 14.543 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.022371: funcgraph_entry:      + 14.062 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.027219: funcgraph_entry:      + 13.823 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.032025: funcgraph_entry:      + 15.144 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.036824: funcgraph_entry:      + 13.942 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.041629: funcgraph_entry:      + 13.221 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.046430: funcgraph_entry:      + 13.942 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.051270: funcgraph_entry:      + 13.582 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.056070: funcgraph_entry:      + 14.903 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.060875: funcgraph_entry:      + 12.259 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.065667: funcgraph_entry:      + 13.581 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.070470: funcgraph_entry:      + 12.620 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.075301: funcgraph_entry:      + 14.543 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.080111: funcgraph_entry:      + 13.582 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.084927: funcgraph_entry:      + 13.342 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.089734: funcgraph_entry:      + 13.582 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.094540: funcgraph_entry:      + 13.943 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.099374: funcgraph_entry:      + 13.942 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.104177: funcgraph_entry:      + 14.784 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.108984: funcgraph_entry:      + 13.341 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.113779: funcgraph_entry:      + 14.062 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.118575: funcgraph_entry:      + 14.063 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.123412: funcgraph_entry:      + 14.664 us  |  sata_rcar_interrupt();
+          <idle>-0     [000]  1060.128216: funcgraph_entry:      + 12.861 us  |  sata_rcar_interrupt();
+root@salvator-x:~/sata/sata-test-script/scripts#

@@ -1,0 +1,49 @@
+----------- BOARD ------------
+
+root@salvator-x:~# modprobe g_serial
+[   85.761454] g_serial gadget: Gadget Serial v2.4
+[   85.766662] g_serial gadget: g_serial ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/state
+configured
+root@salvator-x:~# 
+root@salvator-x:~# ls /dev/ttyGS0
+/dev/ttyGS0
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+[76733.124815] usb 2-1.4: new SuperSpeed USB device number 72 using xhci_hcd
+[76733.150205] usb 2-1.4: New USB device found, idVendor=0525, idProduct=a4a7, bcdDevice= 5.10
+[76733.150224] usb 2-1.4: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[76733.150233] usb 2-1.4: Product: Gadget Serial v2.4
+[76733.150240] usb 2-1.4: Manufacturer: Linux 5.10.218-yocto-standard with renesas_usb3
+[76733.155396] cdc_acm 2-1.4:2.0: ttyACM0: USB ACM device
+[76734.598967] cp210x ttyUSB1: usb_serial_generic_read_bulk_callback - urb stopped: -32
+[76734.599289] cp210x ttyUSB1: usb_serial_generic_read_bulk_callback - urb stopped: -32
+[76734.709227] usb 1-1.2: USB disconnect, device number 27
+[76734.709450] cp210x ttyUSB1: failed set request 0x7 status: -19
+[76734.709471] cp210x ttyUSB1: failed set request 0x12 status: -19
+[76734.709482] cp210x ttyUSB1: failed set request 0x0 status: -19
+[76734.709953] cp210x ttyUSB1: cp210x converter now disconnected from ttyUSB1
+[76734.710021] cp210x 1-1.2:1.0: device disconnected
+
+ls /dev/ttyACM0
+/dev/ttyACM0
+
+
+---------- HOST-PC -----------
+
+echo 'Test transferring data from HOST to BOARD via usb serial' > /dev/ttyACM0
+
+----------- BOARD ------------
+
+root@salvator-x:~# cat /dev/ttyGS0
+Test transferring data from HOST to BOARD via usb serial
+^C
+root@salvator-x:~# 
+root@salvator-x:~# rmmod g_serial
+root@salvator-x:~# 
+ 
+#### Result: OK ####

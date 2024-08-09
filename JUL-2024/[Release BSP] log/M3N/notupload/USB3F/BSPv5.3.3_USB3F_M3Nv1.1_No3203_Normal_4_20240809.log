@@ -1,0 +1,88 @@
+----------- BOARD ------------
+
+root@salvator-x:~# modprobe g_ncm
+[  166.238134] using random self ethernet address
+[  166.242692] using random host ethernet address
+[  166.254619] usb0: HOST MAC ea:1f:cd:8a:07:0c
+[  166.259738] usb0: MAC c2:1f:bd:70:8f:68
+[  166.264859] g_ncm gadget: NCM Gadget
+[  166.269502] g_ncm gadget: g_ncm ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s tate
+configured
+root@salvator-x:~# 
+root@salvator-x:~# ip a |grep usb
+4: usb0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop qlen 1000
+root@salvator-x:~# 
+root@salvator-x:~# ifconfig usb0 192.168.0.2 up
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+[14541.342426] cdc_ncm 2-2:1.0 enxea1fcd8a070c: renamed from usb0
+dmesg 2>&1 |grep 'renamed from usb0'
+
+sudo ifconfig enxea1fcd8a070c 192.168.0.3 up
+enx00e0006095bd: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.8.8  netmask 255.255.255.0  broadcast 192.168.8.255
+        ether 00:e0:00:60:95:bd  txqueuelen 1000  (Ethernet)
+        RX packets 3415835  bytes 421110868 (421.1 MB)
+        RX errors 0  dropped 14535  overruns 0  frame 0
+        TX packets 5022341  bytes 6829133820 (6.8 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enxea1fcd8a070c: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.3  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::cd2f:3279:2af8:392e  prefixlen 64  scopeid 0x20<link>
+        ether ea:1f:cd:8a:07:0c  txqueuelen 1000  (Ethernet)
+        RX packets 2  bytes 148 (148.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 3  bytes 553 (553.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 230485  bytes 73592811 (73.5 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 230485  bytes 73592811 (73.5 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp59s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.4.12  netmask 255.255.248.0  broadcast 192.168.7.255
+        inet6 fe80::2885:7f4a:87f8:ff15  prefixlen 64  scopeid 0x20<link>
+        ether 38:ba:f8:7b:f4:c6  txqueuelen 1000  (Ethernet)
+        RX packets 1548481  bytes 1564580906 (1.5 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2310940  bytes 2726998969 (2.7 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+PING 192.168.0.2 (192.168.0.2) 56(84) bytes of data.
+64 bytes from 192.168.0.2: icmp_seq=1 ttl=64 time=3.56 ms
+64 bytes from 192.168.0.2: icmp_seq=2 ttl=64 time=2.05 ms
+64 bytes from 192.168.0.2: icmp_seq=3 ttl=64 time=2.58 ms
+64 bytes from 192.168.0.2: icmp_seq=4 ttl=64 time=1.97 ms
+
+--- 192.168.0.2 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3005ms
+rtt min/avg/max/mdev = 1.974/2.538/3.556/0.631 ms
+
+
+---------- HOST-PC -----------
+
+root@salvator-x:~# rmmod g_ncm
+root@salvator-x:~# Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "../common/conserial.py", line 81, in run
+    _bytes_to_read = self.serial.inWaiting()
+  File "/usr/local/lib/python2.7/dist-packages/serial/serialutil.py", line 594, in inWaiting
+    return self.in_waiting
+  File "/usr/local/lib/python2.7/dist-packages/serial/serialposix.py", line 549, in in_waiting
+    s = fcntl.ioctl(self.fd, TIOCINQ, TIOCM_zero_str)
+IOError: [Errno 9] Bad file descriptor
+
+
+ 
+#### Result: OK ####

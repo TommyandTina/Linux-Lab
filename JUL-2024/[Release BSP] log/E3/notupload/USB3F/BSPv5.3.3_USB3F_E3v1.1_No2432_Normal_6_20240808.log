@@ -1,0 +1,112 @@
+----------- BOARD ------------
+
+root@ebisu:~# modprobe g_ncm
+[  345.098309] using random self ethernet address
+[  345.106295] using random host ethernet address
+[  345.118857] usb0: HOST MAC 26:11:d2:9a:50:cf
+[  345.125758] usb0: MAC a2:1c:33:94:d1:db
+[  345.132472] g_ncm gadget: NCM Gadget
+[  345.138545] g_ncm gadget: g_ncm ready
+root@ebisu:~# 
+root@ebisu:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s 
+tate
+root@ebisu
+root@ebisu:~# 
+root@ebisu:~# ip a |grep usb
+root@ebisuCAST,MULTICAST> mtu 1500 qdisc noop qlen 1000
+root@ebisu:~# 
+root@ebisu:~# ifconfig usb0 192.168.0.2 up
+root@ebisu:~# 
+
+---------- HOST-PC -----------
+[68230.850388] cdc_ncm 2-2:1.0 enx2611d29a50cf: renamed from usb0
+dmesg 2>&1 |grep 'renamed from usb0'
+
+sudo ifconfig enx2611d29a50cf 192.168.0.3 up
+enx00e0006095bd: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.8.8  netmask 255.255.255.0  broadcast 192.168.8.255
+        ether 00:e0:00:60:95:bd  txqueuelen 1000  (Ethernet)
+        RX packets 4090998  bytes 431703815 (431.7 MB)
+        RX errors 0  dropped 74682  overruns 0  frame 0
+        TX packets 5345298  bytes 7491974197 (7.4 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enx2611d29a50cf: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.3  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::e312:1e20:8bcb:324f  prefixlen 64  scopeid 0x20<link>
+        ether 26:11:d2:9a:50:cf  txqueuelen 1000  (Ethernet)
+        RX packets 1  bytes 76 (76.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2  bytes 443 (443.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 147508  bytes 45165813 (45.1 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 147508  bytes 45165813 (45.1 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp59s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.4.12  netmask 255.255.248.0  broadcast 192.168.7.255
+        inet6 fe80::2885:7f4a:87f8:ff15  prefixlen 64  scopeid 0x20<link>
+        ether 38:ba:f8:7b:f4:c6  txqueuelen 1000  (Ethernet)
+        RX packets 1769961  bytes 1927739704 (1.9 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 735150  bytes 332767917 (332.7 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+
+---------- BOARD -----------
+root@ebisu
+root@ebisu:~# kill $(jobs -p)
+root@ebisull [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
+root@ebisu:~# 
+root@ebisu:~# iperf3 -s > iperf3_result.txt &
+root@ebisu
+root@ebisu:~# 
+root@ebisu:~# echo WAIT 10S
+root@ebisu
+root@ebisu:~# 
+root@ebisu:~# cat iperf3_result.txt
+root@ebisu:~# 
+root@ebisu:~# kill $(jobs -p)
+root@ebisupt - the server has terminated
+root@ebisu:~# 
+
+---------- HOST-PC -----------
+iperf3 -c 192.168.0.2 -u -b 300M > iperf3_result.txt &
+Connecting to host 192.168.0.2, port 5201
+[ 10] local 192.168.0.3 port 50353 connected to 192.168.0.2 port 5201
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[ 10]   0.00-1.00   sec  35.7 MBytes   300 Mbits/sec  25883  
+[ 10]   1.00-2.00   sec  35.8 MBytes   300 Mbits/sec  25892  
+[ 10]   2.00-3.00   sec  35.8 MBytes   300 Mbits/sec  25899  
+[ 10]   3.00-4.00   sec  35.8 MBytes   300 Mbits/sec  25899  
+[ 10]   4.00-5.00   sec  35.8 MBytes   300 Mbits/sec  25897  
+[ 10]   5.00-6.00   sec  35.8 MBytes   300 Mbits/sec  25897  
+[ 10]   6.00-7.00   sec  35.8 MBytes   300 Mbits/sec  25897  
+[ 10]   7.00-8.00   sec  35.8 MBytes   300 Mbits/sec  25904  
+[ 10]   8.00-9.00   sec  35.8 MBytes   300 Mbits/sec  25894  
+[ 10]   9.00-10.00  sec  35.8 MBytes   300 Mbits/sec  25897  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[ 10]   0.00-10.00  sec   358 MBytes   300 Mbits/sec  0.000 ms  0/258959 (0%)  sender
+[ 10]   0.00-10.22  sec   103 MBytes  84.1 Mbits/sec  0.370 ms  184526/258773 (71%)  receiver
+
+iperf Done.
+
+^C
+root@ebisu               iperf3 -s > iperf3_result.txt
+root@ebisu:~# 
+root@ebisu:~# 
+root@ebisu:~# kill $(jobs -p)
+root@ebisull [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
+root@ebisu:~# 
+root@ebisu:~# rmmod g_ncm
+root@ebisu:~# 
+ 
+#### Result: OK ####
