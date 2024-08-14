@@ -1,106 +1,3 @@
-reboot
-root@salvator-x:~#          ▒[  OK  ] Removed slice Slice /system/modprobe.
-[  OK  ] Stopped target Multi-User System.
-[  OK  ] Stopped target Login Prompts.
-[  OK  ] Stopped target Host and Network Name Lookups.
-[  OK  ] Stopped target Sound Card.
-[  OK  ] Stopped target System Time Set.
-[  OK  ] Stopped target Timer Units.
-[  OK  ] Stopped Daily Cleanup of Temporary Directories.
-[  OK  ] Stopped target Hardware activated USB gadget.
-[  OK  ] Closed Load/Save RF Kill Switch Status /dev/rfkill Watch.
-         Stopping Kernel Logging Service...
-         Stopping System Logging Service...
-         Stopping Getty on tty1...
-         Stopping optee services...
-         Stopping Serial Getty on ttySC0...
-         Stopping set_default_governor.service...
-         Stopping Load/Save OS Random Seed...
-[  OK  ] Stopped Kernel Logging Service.
-[  OK  ] Stopped System Logging Service.
-[  OK  ] Stopped Getty on tty1.
-[  OK  ] Stopped Serial Getty on ttySC0.
-[  OK  ] Stopped set_default_governor.service.
-[  OK  ] Stopped optee services.
-[  OK  ] Stopped Load/Save OS Random Seed.
-[  OK  ] Stopped Session c1 of User root.
-[  OK  ] Removed slice Slice /system/getty.
-[  OK  ] Removed slice Slice /system/serial-getty.
-         Stopping User Login Management...
-         Stopping Permit User Sessions...
-         Stopping User Manager for UID 0...
-[  OK  ] Stopped User Login Management.
-[  OK  ] Stopped User Manager for UID 0.
-[  OK  ] Stopped Permit User Sessions.
-[  OK  ] Stopped target Network.
-[  OK  ] Stopped target Remote File Systems.
-         Stopping Network Configuration...
-         Stopping User Runtime Directory /run/user/0...
-[  OK  ] Stopped Network Configuration.
-[  OK  ] Stopped target Preparation for Network.
-[  OK  ] Unmounted /run/user/0.
-[  OK  ] Stopped User Runtime Directory /run/user/0.
-[  OK  ] Removed slice User Slice of UID 0.
-         Stopping D-Bus System Message Bus...
-[  OK  ] Stopped D-Bus System Message Bus.
-[  OK  ] Stopped target Basic System.
-[  OK  ] Stopped target Path Units.
-[  OK  ] Stopped Dispatch Password Requests to Console Directory Watch.
-[  OK  ] Stopped Forward Password Requests to Wall Directory Watch.
-[  OK  ] Stopped target Slice Units.
-[  OK  ] Removed slice User and Session Slice.
-[  OK  ] Stopped target Socket Units.
-[  OK  ] Closed D-Bus System Message Bus Socket.
-[  OK  ] Stopped target System Initialization.
-[  OK  ] Closed Syslog Socket.
-[  OK  ] Closed Network Service Netlink Socket.
-         Stopping Network Name Resolution...
-         Stopping Network Time Synchronization...
-         Stopping Record System Boot/Shutdown in UTMP...
-[  OK  ] Stopped Network Name Resolution.
-[  OK  ] Stopped Network Time Synchronization.
-[  OK  ] Stopped Apply Kernel Variables.
-[  OK  ] Stopped Load Kernel Modules.
-[  OK  ] Stopped Record System Boot/Shutdown in UTMP.
-[  OK  ] Stopped Create Volatile Files and Directories.
-[  OK  ] Stopped target Local File Systems.
-         Unmounting Temporary Directory /tmp...
-         Unmounting /var/volatile...
-[FAILED] Failed unmounting Temporary Directory /tmp.
-[  OK  ] Unmounted /var/volatile.
-[  OK  ] Stopped target Preparation for Local File Systems.
-[  OK  ] Stopped target Swaps.
-[  OK  ] Reached target Unmount All Filesystems.
-[  OK  ] Stopped Remount Root and Kernel File Systems.
-[  OK  ] Stopped Create Static Device Nodes in /dev.
-[  OK  ] Stopped Create Static Device Nodes in /dev gracefully.
-[  OK  ] Reached target System Shutdown.
-[  OK  ] Reached target Late Shutdown Services.
-[  OK  ] Finished System Reboot.
-[  OK  ] Reached target System Reboot.
-[  983.347963] watchdog: watchdog0: watchdog did not stop!
-[  983.392265] systemd-shutdown[1]: Using hardware watchdog 'Renesas WDT Watchdog', version 0, device /dev/watchdog0
-[  983.402762] systemd-shutdown[1]: Watchdog running with a timeout of 1min.
-[  983.626905] systemd-shutdown[1]: Syncing filesystems and block devices.
-[  983.635485] systemd-shutdown[1]: Sending SIGTERM to remaining processes...
-[  983.771218] systemd-journald[348]: Received SIGTERM from PID 1 (systemd-shutdow).
-[  983.784049] audit: type=1335 audit(1723190394.512:3): pid=348 uid=0 auid=4294967295 tty=(none) ses=4294967295 comm="systemd-journal" exe="/usr/lib/systemd/systemd-journald" nl-mcgrp=1 op=disconnect res=1
-[  983.796647] systemd-shutdown[1]: Sending SIGKILL to remaining processes...
-[  983.927953] systemd-shutdown[1]: Unmounting file systems.
-[  983.942447] (sd-umount)[685]: Unmounting '/tmp'.
-[  983.954247] systemd-shutdown[1]: All filesystems unmounted.
-[  983.959929] systemd-shutdown[1]: Deactivating swaps.
-[  983.965128] systemd-shutdown[1]: All swaps deactivated.
-[  983.970459] systemd-shutdown[1]: Detaching loop devices.
-[  983.990735] systemd-shutdown[1]: All loop devices detached.
-[  983.997599] systemd-shutdown[1]: Stopping MD devices.
-[  984.010911] systemd-shutdown[1]: All MD devices stopped.
-[  984.016351] systemd-shutdown[1]: Detaching DM devices.
-[  984.027139] systemd-shutdown[1]: All DM devices detached.
-[  984.032637] systemd-shutdown[1]: All filesystems, swaps, loop devices, MD devices and DM devices detached.
-[  984.052250] systemd-shutdown[1]: Syncing filesystems and block devices.
-[  984.060213] systemd-shutdown[1]: Rebooting.
-[  984.110487] reboot: Restarting system
 NOTICE:  BL2: R-Car Gen3 Initial Program Loader(CA57) Rev.4.0.0
 NOTICE:  BL2: PRR is R-Car H3 Ver.3.0
 NOTICE:  BL2: Board is Salvator-XS Rev.1.0
@@ -833,7 +730,25 @@ own distribution for production use.
 [  116.307827] audit: type=1006 audit(1723190630.006:2): pid=557 uid=0 old-auid=4294967295 auid=0 tty=(none) old-ses=4294967295 ses=1 res=1
 root@salvator-x:~#
 ------------------------ H3 as BOARD A ---------------------------------
-
+[  814.101257] audit: type=1006 audit(1723188708.497:2): pid=454 uid=0 old-auid=4294967295 auid=0 tty=(none) old-ses=4294967295 ses=1 res=1
+root@salvator-x:~# insmod renesas_usb3.ko
+[  814.520637] renesas_usb3 ee020000.usb: probed with phy
+root@salvator-x:~# insmod xhci-hcd.ko
+root@salvator-x:~# insmod[   44.005491] SDHI0 VccQ: disabling
+[  814.009032] SDHI3 VccQ: disabling
+ xhci-plat-hcd.ko
+[  815.602054] xhci-hcd ee000000.usb: xHCI Host Controller
+[  815.608156] xhci-hcd ee000000.usb: new USB bus registered, assigned bus number 5
+[  815.622283] xhci-hcd ee000000.usb: hcc params 0x014051ce hci version 0x100 quirks 0x0000000000830410
+[  815.629059] xhci-hcd ee000000.usb: irq 163, io mem 0xee000000
+[  815.634733] xhci-hcd ee000000.usb: xHCI Host Controller
+[  815.647195] xhci-hcd ee000000.usb: new USB bus registered, assigned bus number 6
+[  816.602054] xhci-hcd ee000000.usb: Host supports USB 3.0 SuperSpeed
+[  816.608156] hub 5-0:1.0: USB hub found
+[  816.622283] hub 5-0:1.0: 1 port detected
+[  816.629059] usb usb6: We don't know the algorithms for LPM for this host, disabling LPM.
+[  816.634733] hub 6-0:1.0: USB hub found
+[  816.647195] hub 6-0:1.0: 1 port detected
 root@salvator-x:~# echo 'ee000000.usb' > /sys/bus/platform/drivers/xhci-hcd/unbind
 [  817.602054] xhci-hcd ee000000.usb: remove, state 4
 [  817.608156] usb usb10: USB disconnect, device number 1
@@ -935,18 +850,8 @@ root@salvator-x:~# insmod[   44.005491] SDHI0 VccQ: disabling
 [   47.521121] usb usb6: We don't know the algorithms for LPM for this host, disabling LPM.
 [   47.533449] hub 6-0:1.0: USB hub found
 [   47.537532] hub 6-0:1.0: 1 port detected
-root@salvator-x:~# [   47.689259] usb usb6-port1: config error
-
 root@salvator-x:~#
 root@salvator-x:~#
-root@salvator-x:~# [   51.768477] usb usb6-port1: Cannot enable. Maybe the USB cable is bad?
-[   51.775425] usb usb6-port1: config error
-[   55.852225] usb usb6-port1: Cannot enable. Maybe the USB cable is bad?
-[   56.003896] usb usb6-port1: config error
-[   60.084038] usb usb6-port1: Cannot enable. Maybe the USB cable is bad?
-[   60.090978] usb usb6-port1: config error
-[   64.168041] usb usb6-port1: Cannot enable. Maybe the USB cable is bad?
-[   64.315907] usb usb6-port1: config error
 echo 'ee000000.usb' > /sys/bus/platform/drivers/xhci-hcd/unbind[   68.392106] usb usb6-port1: Cannot enable. Maybe the USB cable is bad?
 [   68.399045] usb usb6-port1: config error
 

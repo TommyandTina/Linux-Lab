@@ -1,8 +1,3 @@
-
-Please press switch to restart board 
-
-[F 00:00:120
-[F 00:00:119
 NOTICE:  BL2: R-Car Gen3 Initial Program Loader(CA57) Rev.4.0.0
 NOTICE:  BL2: PRR is R-Car M3N Ver.1.1
 NOTICE:  BL2: Board is Salvator-XS Rev.1.0
@@ -49,13 +44,13 @@ In:    serial@e6e88000
 Out:   serial@e6e88000
 Err:   serial@e6e88000
 Net:   eth0: ethernet@e6800000
-Hit any key to stop autoboot:  2  1  0 
+Hit any key to stop autoboot:  2  1  0 
 ethernet@e6800000 Waiting for PHY auto negotiation to complete............... done
 Using ethernet@e6800000 device
 TFTP from server 192.168.8.8; our IP address is 192.168.8.31
 Filename 'long.trinh-tien/Image_USB3F_memleak_deadlock_2'.
 Load address: 0x48080000
-Loading: *#################################################################
+Loading: *#################################################################
 	 #################################################################
 	 #################################################################
 	 #################################################################
@@ -106,7 +101,7 @@ Using ethernet@e6800000 device
 TFTP from server 192.168.8.8; our IP address is 192.168.8.31
 Filename 'long.trinh-tien/M3N_full/r8a77965-salvator-xs.dtb'.
 Load address: 0x48000000
-Loading: *#####
+Loading: *#####
 	 2.7 MiB/s
 done
 Bytes transferred = 71628 (117cc hex)
@@ -473,8 +468,9 @@ Starting kernel ...
 [   14.341600] systemd[1]: systemd 255.4^ running in system mode (+PAM -AUDIT -SELINUX -APPARMOR +IMA -SMACK +SECCOMP -GCRYPT -GNUTLS -OPENSSL +ACL +BLKID -CURL -ELFUTILS -FIDO2 -IDN2 -IDN -IPTC +KMOD -LIBCRYPTSETUP +LIBFDISK -PCRE2 -PWQUALITY -P11KIT -QRENCODE -TPM2 -BZIP2 -LZ4 -XZ -ZLIB +ZSTD -BPF_FRAMEWORK -XKBCOMMON +UTMP +SYSVINIT default-hierarchy=unified)
 [   14.376196] systemd[1]: Detected architecture arm64.
 
-Welcome to [1mPoky (Yocto Project Reference Distro) 5.0 (scarthgap)[0m!
-
+Welcome to [1mPoky (Yocto Project Reference Distro) 5.0 (scarthgap)!
+
+
 [   14.423756] systemd[1]: Hostname set to <salvator-x>.
 [   14.836393] systemd-sysv-generator[268]: SysV service '/etc/init.d/umountnfs.sh' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
 [   14.882963] systemd-sysv-generator[268]: SysV service '/etc/init.d/set_default_governor.sh' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
@@ -486,174 +482,285 @@ Welcome to [1mPoky (Yocto Project Reference Distro) 5.0 (scarthgap)[0m!
 [   15.108160] systemd-sysv-generator[268]: SysV service '/etc/init.d/single' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
 [   15.979875] systemd[1]: Queued start job for default target Multi-User System.
 [   16.064405] systemd[1]: Created slice Slice /system/getty.
-[[0;32m  OK  [0m] Created slice [0;1;39mSlice /system/getty[0m.
+[  OK  ] Created slice Slice /system/getty.
+
 [   16.094104] systemd[1]: Created slice Slice /system/modprobe.
-[[0;32m  OK  [0m] Created slice [0;1;39mSlice /system/modprobe[0m.
+[  OK  ] Created slice Slice /system/modprobe.
+
 [   16.127308] systemd[1]: Created slice Slice /system/serial-getty.
-[[0;32m  OK  [0m] Created slice [0;1;39mSlice /system/serial-getty[0m.
+[  OK  ] Created slice Slice /system/serial-getty.
+
 [   16.163285] systemd[1]: Created slice User and Session Slice.
-[[0;32m  OK  [0m] Created slice [0;1;39mUser and Session Slice[0m.
+[  OK  ] Created slice User and Session Slice.
+
 [   16.190544] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
-[[0;32m  OK  [0m] Started [0;1;39mDispatch Password Requests to Console Directory Watch[0m.
+[  OK  ] Started Dispatch Password Requests to Console Directory Watch.
+
 [   16.218310] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
-[[0;32m  OK  [0m] Started [0;1;39mForward Password Requests to Wall Directory Watch[0m.
+[  OK  ] Started Forward Password Requests to Wall Directory Watch.
+
 [   16.245156] systemd[1]: Reached target Path Units.
-[[0;32m  OK  [0m] Reached target [0;1;39mPath Units[0m.
+[  OK  ] Reached target Path Units.
+
 [   16.265018] systemd[1]: Reached target Remote File Systems.
-[[0;32m  OK  [0m] Reached target [0;1;39mRemote File Systems[0m.
+[  OK  ] Reached target Remote File Systems.
+
 [   16.289254] systemd[1]: Reached target Slice Units.
-[[0;32m  OK  [0m] Reached target [0;1;39mSlice Units[0m.
+[  OK  ] Reached target Slice Units.
+
 [   16.313331] systemd[1]: Reached target Swaps.
-[[0;32m  OK  [0m] Reached target [0;1;39mSwaps[0m.
+[  OK  ] Reached target Swaps.
+
 [   16.349120] systemd[1]: Listening on Syslog Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39mSyslog Socket[0m.
+[  OK  ] Listening on Syslog Socket.
+
 [   16.375921] systemd[1]: Listening on initctl Compatibility Named Pipe.
-[[0;32m  OK  [0m] Listening on [0;1;39minitctl Compatibility Named Pipe[0m.
+[  OK  ] Listening on initctl Compatibility Named Pipe.
+
 [   16.411437] systemd[1]: Listening on Journal Audit Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39mJournal Audit Socket[0m.
+[  OK  ] Listening on Journal Audit Socket.
+
 [   16.436943] systemd[1]: Listening on Journal Socket (/dev/log).
-[[0;32m  OK  [0m] Listening on [0;1;39mJournal Socket (/dev/log)[0m.
+[  OK  ] Listening on Journal Socket (/dev/log).
+
 [   16.465988] systemd[1]: Listening on Journal Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39mJournal Socket[0m.
+[  OK  ] Listening on Journal Socket.
+
 [   16.494780] systemd[1]: Listening on Network Service Netlink Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39mNetwork Service Netlink Socket[0m.
+[  OK  ] Listening on Network Service Netlink Socket.
+
 [   16.533140] systemd[1]: Listening on udev Control Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39mudev Control Socket[0m.
+[  OK  ] Listening on udev Control Socket.
+
 [   16.560987] systemd[1]: Listening on udev Kernel Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39mudev Kernel Socket[0m.
+[  OK  ] Listening on udev Kernel Socket.
+
 [   16.591161] systemd[1]: Listening on User Database Manager Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39mUser Database Manager Socket[0m.
+[  OK  ] Listening on User Database Manager Socket.
+
 [   16.649718] systemd[1]: Mounting Huge Pages File System...
-         Mounting [0;1;39mHuge Pages File System[0m...
+         Mounting Huge Pages File System...
+
 [   16.690033] systemd[1]: Mounting POSIX Message Queue File System...
-         Mounting [0;1;39mPOSIX Message Queue File System[0m...
+         Mounting POSIX Message Queue File System...
+
 [   16.743129] systemd[1]: Mounting Kernel Debug File System...
-         Mounting [0;1;39mKernel Debug File System[0m...
+         Mounting Kernel Debug File System...
+
 [   16.791467] systemd[1]: Mounting Kernel Trace File System...
-         Mounting [0;1;39mKernel Trace File System[0m...
+         Mounting Kernel Trace File System...
+
 [   16.849951] systemd[1]: Mounting Temporary Directory /tmp...
-         Mounting [0;1;39mTemporary Directory /tmp[0m...
+         Mounting Temporary Directory /tmp...
+
 [   16.891823] systemd[1]: Starting Create List of Static Device Nodes...
-         Starting [0;1;39mCreate List of Static Device Nodes[0m...
+         Starting Create List of Static Device Nodes...
+
 [   16.914247] systemd[1]: Starting Load Kernel Module configfs...
-         Starting [0;1;39mLoad Kernel Module configfs[0m...
+         Starting Load Kernel Module configfs...
+
 [   16.953258] systemd[1]: Starting Load Kernel Module drm...
-         Starting [0;1;39mLoad Kernel Module drm[0m...
+         Starting Load Kernel Module drm...
+
 [   16.990740] systemd[1]: Starting Load Kernel Module fuse...
-         Starting [0;1;39mLoad Kernel Module fuse[0m...
+         Starting Load Kernel Module fuse...
+
 [   17.010528] systemd[1]: File System Check on Root Device was skipped because of an unmet condition check (ConditionPathIsReadWrite=!/).
 [   17.035546] systemd[1]: systemd-journald.service: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
 [   17.050439] systemd[1]: systemd-journald.service: (This warning is only shown for the first unit using IP firewalling.)
 [   17.082576] systemd[1]: Starting Journal Service...
-         Starting [0;1;39mJournal Service[0m...
+         Starting Journal Service...
+
 [   17.152434] systemd[1]: Starting Load Kernel Modules...
-         Starting [0;1;39mLoad Kernel Modules[0m...
+         Starting Load Kernel Modules...
+
 [   17.226703] systemd[1]: Starting Generate network units from Kernel command line...
-         Starting [0;1;39mGenerate network units from Kernel command line[0m...
+         Starting Generate network units from Kernel command line...
+
 [   17.307811] systemd[1]: Starting Remount Root and Kernel File Systems...
-         Starting [0;1;39mRemount Root and Kernel File Systems[0m...
+         Starting Remount Root and Kernel File Systems...
+
 [   17.443116] systemd-journald[280]: Collecting audit messages is enabled.
 [   17.449087] systemd[1]: Starting Coldplug All udev Devices...
-         Starting [0;1;39mColdplug All udev Devices[0m...
+         Starting Coldplug All udev Devices...
+
 [   17.471388] fuse: init (API version 7.32)
 [   17.510146] systemd[1]: Mounted Huge Pages File System.
-[[0;32m  OK  [0m] Mounted [0;1;39mHuge Pages File System[0m.
+[  OK  ] Mounted Huge Pages File System.
+
 [   17.536881] systemd[1]: Mounted POSIX Message Queue File System.
-[[0;32m  OK  [0m] Mounted [0;1;39mPOSIX Message Queue File System[0m.
+[  OK  ] Mounted POSIX Message Queue File System.
+
 [   17.575718] systemd[1]: Mounted Kernel Debug File System.
-[[0;32m  OK  [0m] Mounted [0;1;39mKernel Debug File System[0m.
+[  OK  ] Mounted Kernel Debug File System.
+
 [   17.719946] systemd[1]: Mounted Kernel Trace File System.
-[[0;32m  OK  [0m] Mounted [0;1;39mKernel Trace File System[0m.
+[  OK  ] Mounted Kernel Trace File System.
+
 [   17.784762] systemd[1]: Mounted Temporary Directory /tmp.
-[[0;32m  OK  [0m] Mounted [0;1;39mTemporary Directory /tmp[0m.
+[  OK  ] Mounted Temporary Directory /tmp.
+
 [   17.831886] systemd[1]: Finished Create List of Static Device Nodes.
-[[0;32m  OK  [0m] Finished [0;1;39mCreate List of Static Device Nodes[0m.
+[  OK  ] Finished Create List of Static Device Nodes.
+
 [   17.872045] systemd[1]: modprobe@configfs.service: Deactivated successfully.
 [   17.911976] systemd[1]: Finished Load Kernel Module configfs.
-[[0;32m  OK  [0m] Finished [0;1;39mLoad Kernel Module configfs[0m.
+[  OK  ] Finished Load Kernel Module configfs.
+
 [   17.967166] systemd[1]: Started Journal Service.
-[[0;32m  OK  [0m] Started [0;1;39mJournal Service[0m.
-[[0;32m  OK  [0m] Finished [0;1;39mLoad Kernel Module drm[0m.
-[[0;32m  OK  [0m] Finished [0;1;39mLoad Kernel Module fuse[0m.
-[[0;32m  OK  [0m] Finished [0;1;39mLoad Kernel Modules[0m.
-[[0;1;31mFAILED[0m] Failed to start [0;1;39mGenerate network units from Kernel command line[0m.
-See 'systemctl status systemd-network-generator.service' for details.
-[[0;32m  OK  [0m] Finished [0;1;39mRemount Root and Kernel File Systems[0m.
-[[0;32m  OK  [0m] Reached target [0;1;39mPreparation for Network[0m.
-         Mounting [0;1;39mFUSE Control File System[0m...
-         Mounting [0;1;39mKernel Configuration File System[0m...
-         Starting [0;1;39mFlush Journal to Persistent Storage[0m...
-         Starting [0;1;39mApply Kernel Variables[0m...
-         Starting [0;1;39mCreate Static Device Nodes in /dev gracefully[0m...
-[[0;32m  OK  [0m] Mounted [0;1;39mFUSE Control File System[0m.
-[[0;32m  OK  [0m] Mounted [0;1;39mKernel Configuration File System[0m.
+[  OK  ] Started Journal Service.
+
+[  OK  ] Finished Load Kernel Module drm.
+
+[  OK  ] Finished Load Kernel Module fuse.
+
+[  OK  ] Finished Load Kernel Modules.
+
+[[0;1;31mFAILED] Failed to start Generate network units from Kernel command line.
+
+See 'systemctl status systemd-network-generator.service' for details.
+
+[  OK  ] Finished Remount Root and Kernel File Systems.
+
+[  OK  ] Reached target Preparation for Network.
+
+         Mounting FUSE Control File System...
+
+         Mounting Kernel Configuration File System...
+
+         Starting Flush Journal to Persistent Storage...
+
+         Starting Apply Kernel Variables...
+
+         Starting Create Static Device Nodes in /dev gracefully...
+
+[  OK  ] Mounted FUSE Control File System.
+
+[  OK  ] Mounted Kernel Configuration File System.
+
 [   18.810435] systemd-journald[280]: Received client request to flush runtime journal.
-[[0;32m  OK  [0m] Finished [0;1;39mFlush Journal to Persistent Storage[0m.
-[[0;32m  OK  [0m] Finished [0;1;39mApply Kernel Variables[0m.
-[[0;32m  OK  [0m] Finished [0;1;39mCreate Static Device Nodes in /dev gracefully[0m.
-         Starting [0;1;39mCreate Static Device Nodes in /dev[0m...
-[[0;32m  OK  [0m] Finished [0;1;39mCreate Static Device Nodes in /dev[0m.
-[[0;32m  OK  [0m] Reached target [0;1;39mPreparation for Local File Systems[0m.
-         Mounting [0;1;39m/var/volatile[0m...
-         Starting [0;1;39mRule-based Manager for Device Events and Files[0m...
-[[0;32m  OK  [0m] Mounted [0;1;39m/var/volatile[0m.
-         Starting [0;1;39mLoad/Save OS Random Seed[0m...
-[[0;32m  OK  [0m] Reached target [0;1;39mLocal File Systems[0m.
-         Starting [0;1;39mCreate Volatile Files and Directories[0m...
-[[0;32m  OK  [0m] Started [0;1;39mRule-based Manager for Device Events and Files[0m.
-         Starting [0;1;39mNetwork Configuration[0m...
-         Starting [0;1;39mUser Database Manager[0m...
-[[0;32m  OK  [0m] Finished [0;1;39mCreate Volatile Files and Directories[0m.
-         Starting [0;1;39mNetwork Name Resolution[0m...
-         Starting [0;1;39mNetwork Time Synchronization[0m...
-         Starting [0;1;39mRecord System Boot/Shutdown in UTMP[0m...
-[[0;32m  OK  [0m] Started [0;1;39mUser Database Manager[0m.
-[[0;32m  OK  [0m] Finished [0;1;39mRecord System Boot/Shutdown in UTMP[0m.
-[[0;32m  OK  [0m] Listening on [0;1;39mLoad/Save RF Kill Switch Status /dev/rfkill Watch[0m.
+[  OK  ] Finished Flush Journal to Persistent Storage.
+
+[  OK  ] Finished Apply Kernel Variables.
+
+[  OK  ] Finished Create Static Device Nodes in /dev gracefully.
+
+         Starting Create Static Device Nodes in /dev...
+
+[  OK  ] Finished Create Static Device Nodes in /dev.
+
+[  OK  ] Reached target Preparation for Local File Systems.
+
+         Mounting /var/volatile...
+
+         Starting Rule-based Manager for Device Events and Files...
+
+[  OK  ] Mounted /var/volatile.
+
+         Starting Load/Save OS Random Seed...
+
+[  OK  ] Reached target Local File Systems.
+
+         Starting Create Volatile Files and Directories...
+
+[  OK  ] Started Rule-based Manager for Device Events and Files.
+
+         Starting Network Configuration...
+
+         Starting User Database Manager...
+
+[  OK  ] Finished Create Volatile Files and Directories.
+
+         Starting Network Name Resolution...
+
+         Starting Network Time Synchronization...
+
+         Starting Record System Boot/Shutdown in UTMP...
+
+[  OK  ] Started User Database Manager.
+
+[  OK  ] Finished Record System Boot/Shutdown in UTMP.
+
+[  OK  ] Listening on Load/Save RF Kill Switch Status /dev/rfkill Watch.
+
 [   21.988839] random: crng init done
-[[0;32m  OK  [0m] Finished [0;1;39mLoad/Save OS Random Seed[0m.
-[[0;32m  OK  [0m] Started [0;1;39mNetwork Time Synchronization[0m.
-[[0;32m  OK  [0m] Reached target [0;1;39mSystem Time Set[0m.
-[[0;32m  OK  [0m] Started [0;1;39mNetwork Name Resolution[0m.
-[[0;32m  OK  [0m] Reached target [0;1;39mHost and Network Name Lookups[0m.
+[  OK  ] Finished Load/Save OS Random Seed.
+
+[  OK  ] Started Network Time Synchronization.
+
+[  OK  ] Reached target System Time Set.
+
+[  OK  ] Started Network Name Resolution.
+
+[  OK  ] Reached target Host and Network Name Lookups.
+
 [   23.319234] cfg80211: Loading compiled-in X.509 certificates for regulatory database
 [   23.464457] cfg80211: Loaded X.509 cert 'wens: 61c038651aabdcf94bd0ac7ff06c7248db18c600'
 [   23.482125] cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
 [   23.500855] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
 [   23.518932] cfg80211: failed to load regulatory.db
-[[0;32m  OK  [0m] Started [0;1;39mNetwork Configuration[0m.
-[[0;32m  OK  [0m] Reached target [0;1;39mNetwork[0m.
-[[0;32m  OK  [0m] Finished [0;1;39mColdplug All udev Devices[0m.
-[[0;32m  OK  [0m] Reached target [0;1;39mSystem Initialization[0m.
-[[0;32m  OK  [0m] Started [0;1;39mDaily Cleanup of Temporary Directories[0m.
-[[0;32m  OK  [0m] Reached target [0;1;39mTimer Units[0m.
-[[0;32m  OK  [0m] Listening on [0;1;39mD-Bus System Message Bus Socket[0m.
-[[0;32m  OK  [0m] Reached target [0;1;39mSocket Units[0m.
-[[0;32m  OK  [0m] Reached target [0;1;39mBasic System[0m.
-[[0;32m  OK  [0m] Started [0;1;39mKernel Logging Service[0m.
-[[0;32m  OK  [0m] Started [0;1;39mSystem Logging Service[0m.
-         Starting [0;1;39mD-Bus System Message Bus[0m...
-[[0;32m  OK  [0m] Started [0;1;39moptee services[0m.
-         Starting [0;1;39mset_default_governor.service[0m...
-         Starting [0;1;39mUser Login Management[0m...
-         Starting [0;1;39mPermit User Sessions[0m...
-[[0;32m  OK  [0m] Started [0;1;39mD-Bus System Message Bus[0m.
-[[0;32m  OK  [0m] Finished [0;1;39mPermit User Sessions[0m.
-[[0;32m  OK  [0m] Started [0;1;39mGetty on tty1[0m.
-[[0;32m  OK  [0m] Started [0;1;39mSerial Getty on ttySC0[0m.
-[[0;32m  OK  [0m] Reached target [0;1;39mLogin Prompts[0m.
-[[0;32m  OK  [0m] Started [0;1;39mset_default_governor.service[0m.
-[[0;32m  OK  [0m] Started [0;1;39mUser Login Management[0m.
-[[0;32m  OK  [0m] Reached target [0;1;39mMulti-User System[0m.
-         Starting [0;1;39mRecord Runlevel Change in UTMP[0m...
-[[0;32m  OK  [0m] Finished [0;1;39mRecord Runlevel Change in UTMP[0m.
-
+[  OK  ] Started Network Configuration.
+
+[  OK  ] Reached target Network.
+
+[  OK  ] Finished Coldplug All udev Devices.
+
+[  OK  ] Reached target System Initialization.
+
+[  OK  ] Started Daily Cleanup of Temporary Directories.
+
+[  OK  ] Reached target Timer Units.
+
+[  OK  ] Listening on D-Bus System Message Bus Socket.
+
+[  OK  ] Reached target Socket Units.
+
+[  OK  ] Reached target Basic System.
+
+[  OK  ] Started Kernel Logging Service.
+
+[  OK  ] Started System Logging Service.
+
+         Starting D-Bus System Message Bus...
+
+[  OK  ] Started optee services.
+
+         Starting set_default_governor.service...
+
+         Starting User Login Management...
+
+         Starting Permit User Sessions...
+
+[  OK  ] Started D-Bus System Message Bus.
+
+[  OK  ] Finished Permit User Sessions.
+
+[  OK  ] Started Getty on tty1.
+
+[  OK  ] Started Serial Getty on ttySC0.
+
+[  OK  ] Reached target Login Prompts.
+
+[  OK  ] Started set_default_governor.service.
+
+[  OK  ] Started User Login Management.
+
+[  OK  ] Reached target Multi-User System.
+
+         Starting Record Runlevel Change in UTMP...
+
+[  OK  ] Finished Record Runlevel Change in UTMP.
+
+
+
 Poky (Yocto Project Reference Distro) 5.0 salvator-x ttySC0
 
 salvator-x login: [   27.631056] pwm-backlight: probe of backlight failed with error -16
-
+
+
 salvator-x login: [   28.107079] at24 7-0050: supply vcc not found, using dummy regulator
-root
+root
+
 [   28.275154] at24 7-0050: 128 byte br24t01 EEPROM, writable, 8 bytes/write
 
 WARNING: Poky is a reference Yocto Project distribution that should be used for
@@ -666,7 +773,7 @@ own distribution for production use.
 
 
 
-7[r[999;999H[6nroot@salvator-x:~# 
+root@salvator-x:~# 
 root@salvator-x:~# 
 root@salvator-x:~# 
 root@salvator-x:~# 

@@ -1,7 +1,3 @@
-
-Please press switch to restart board 
-
-[F 00:00:120
 NOTICE:  BL2: R-Car Gen3 Initial Program Loader(CA53) Rev.4.0.0
 NOTICE:  BL2: PRR is R-Car E3 Ver.1.1
 NOTICE:  BL2: PLL1 nonSSCG Clock select
@@ -43,13 +39,13 @@ In:    serial@e6e88000
 Out:   serial@e6e88000
 Err:   serial@e6e88000
 Net:   eth0: ethernet@e6800000
-Hit any key to stop autoboot:  2  1  0 
+Hit any key to stop autoboot:  2  1  0 
 ethernet@e6800000 Waiting for PHY auto negotiation to complete.......... done
 Using ethernet@e6800000 device
 TFTP from server 192.168.8.8; our IP address is 192.168.8.31
 Filename 'long.trinh-tien/Image_USB3F_memleak_deadlock_2'.
 Load address: 0x48080000
-Loading: *#################################################################
+Loading: *#################################################################
 	 #################################################################
 	 #################################################################
 	 #################################################################
@@ -100,7 +96,7 @@ Using ethernet@e6800000 device
 TFTP from server 192.168.8.8; our IP address is 192.168.8.31
 Filename 'long.trinh-tien/E3_full/r8a77990-ebisu-4d.dtb'.
 Load address: 0x48000000
-Loading: *####
+Loading: *####
 	 2.9 MiB/s
 done
 Bytes transferred = 56930 (de62 hex)
@@ -426,7 +422,7 @@ Starting kernel ...
 [   12.067036] systemd[1]: systemd 255.4^ running in system mode (+PAM -AUDIT -SELINUX -APPARMOR +IMA -SMACK +SECCOMP -GCRYPT -GNUTLS -OPENSSL +ACL +BLKID -CURL -ELFUTILS -FIDO2 -IDN2 -IDN -IPTC +KMOD -LIBCRYPTSETUP +LIBFDISK -PCRE2 -PWQUALITY -P11KIT -QRENCODE -TPM2 -BZIP2 -LZ4 -XZ -ZLIB +ZSTD -BPF_FRAMEWORK -XKBCOMMON +UTMP +SYSVINIT default-hierarchy=unified)
 [   12.108906] systemd[1]: Detected architecture arm64.
 
-Welcome to [1mPoky (Yocto Project Reference Distro) 5.0 (scarthgap)[0m!
+Welcome to [1mPoky (Yocto Project Reference Distro) 5.0 (scarthgap)!
 
 
 [   12.182268] systemd[1]: Hostname set to <ebisu>.
@@ -441,290 +437,290 @@ Welcome to [1mPoky (Yocto Project Reference Distro) 5.0 (scarthgap)[0m!
 [   13.604713] systemd-sysv-generator[238]: SysV service '/etc/init.d/single' lacks a native systemd unit file. ~ Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it safe, robust and future-proof. ! This compatibility logic is deprecated, expect removal soon. !
 [   15.477019] systemd[1]: Queued start job for default target Multi-User System.
 [   15.657224] systemd[1]: Created slice Slice /system/getty.
-[[0;32m  OK  [0m] Created slice [0;1;39mSlice /system/getty[0m.
+[  OK  ] Created slice Slice /system/getty.
 
 [   15.699101] systemd[1]: Created slice Slice /system/modprobe.
-[[0;32m  OK  [0m] Created slice [0;1;39mSlice /system/modprobe[0m.
+[  OK  ] Created slice Slice /system/modprobe.
 
 [   15.743409] systemd[1]: Created slice Slice /system/serial-getty.
-[[0;32m  OK  [0m] Created slice [0;1;39mSlice /system/serial-getty[0m.
+[  OK  ] Created slice Slice /system/serial-getty.
 
 [   15.780777] systemd[1]: Created slice User and Session Slice.
-[[0;32m  OK  [0m] Created slice [0;1;39mUser and Session Slice[0m.
+[  OK  ] Created slice User and Session Slice.
 
 [   15.812630] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
-[[0;32m  OK  [0m] Started [0;1;39mDispatch Password Requests to Console Directory Watch[0m.
+[  OK  ] Started Dispatch Password Requests to Console Directory Watch.
 
 [   15.838674] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
-[[0;32m  OK  [0m] Started [0;1;39mForward Password Requests to Wall Directory Watch[0m.
+[  OK  ] Started Forward Password Requests to Wall Directory Watch.
 
 [   15.870687] systemd[1]: Reached target Path Units.
-[[0;32m  OK  [0m] Reached target [0;1;39mPath Units[0m.
+[  OK  ] Reached target Path Units.
 
 [   15.898710] systemd[1]: Reached target Remote File Systems.
-[[0;32m  OK  [0m] Reached target [0;1;39mRemote File Systems[0m.
+[  OK  ] Reached target Remote File Systems.
 
 [   15.926578] systemd[1]: Reached target Slice Units.
-[[0;32m  OK  [0m] Reached target [0;1;39mSlice Units[0m.
+[  OK  ] Reached target Slice Units.
 
 [   15.954613] systemd[1]: Reached target Swaps.
-[[0;32m  OK  [0m] Reached target [0;1;39mSwaps[0m.
+[  OK  ] Reached target Swaps.
 
 [   15.997368] systemd[1]: Listening on Syslog Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39mSyslog Socket[0m.
+[  OK  ] Listening on Syslog Socket.
 
 [   16.031266] systemd[1]: Listening on initctl Compatibility Named Pipe.
-[[0;32m  OK  [0m] Listening on [0;1;39minitctl Compatibility Named Pipe[0m.
+[  OK  ] Listening on initctl Compatibility Named Pipe.
 
 [   16.074006] systemd[1]: Listening on Journal Audit Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39mJournal Audit Socket[0m.
+[  OK  ] Listening on Journal Audit Socket.
 
 [   16.106800] systemd[1]: Listening on Journal Socket (/dev/log).
-[[0;32m  OK  [0m] Listening on [0;1;39mJournal Socket (/dev/log)[0m.
+[  OK  ] Listening on Journal Socket (/dev/log).
 
 [   16.143930] systemd[1]: Listening on Journal Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39mJournal Socket[0m.
+[  OK  ] Listening on Journal Socket.
 
 [   16.178099] systemd[1]: Listening on Network Service Netlink Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39mNetwork Service Netlink Socket[0m.
+[  OK  ] Listening on Network Service Netlink Socket.
 
 [   16.225208] systemd[1]: Listening on udev Control Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39mudev Control Socket[0m.
+[  OK  ] Listening on udev Control Socket.
 
 [   16.258740] systemd[1]: Listening on udev Kernel Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39mudev Kernel Socket[0m.
+[  OK  ] Listening on udev Kernel Socket.
 
 [   16.293146] systemd[1]: Listening on User Database Manager Socket.
-[[0;32m  OK  [0m] Listening on [0;1;39mUser Database Manager Socket[0m.
+[  OK  ] Listening on User Database Manager Socket.
 
 [   16.367775] systemd[1]: Mounting Huge Pages File System...
-         Mounting [0;1;39mHuge Pages File System[0m...
+         Mounting Huge Pages File System...
 
 [   16.421419] systemd[1]: Mounting POSIX Message Queue File System...
-         Mounting [0;1;39mPOSIX Message Queue File System[0m...
+         Mounting POSIX Message Queue File System...
 
 [   16.500640] systemd[1]: Mounting Kernel Debug File System...
-         Mounting [0;1;39mKernel Debug File System[0m...
+         Mounting Kernel Debug File System...
 
 [   16.559528] systemd[1]: Mounting Kernel Trace File System...
-         Mounting [0;1;39mKernel Trace File System[0m...
+         Mounting Kernel Trace File System...
 
 [   16.690399] systemd[1]: Mounting Temporary Directory /tmp...
-         Mounting [0;1;39mTemporary Directory /tmp[0m...
+         Mounting Temporary Directory /tmp...
 
 [   16.788370] systemd[1]: Starting Create List of Static Device Nodes...
-         Starting [0;1;39mCreate List of Static Device Nodes[0m...
+         Starting Create List of Static Device Nodes...
 
 [   16.938257] systemd[1]: Starting Load Kernel Module configfs...
-         Starting [0;1;39mLoad Kernel Module configfs[0m...
+         Starting Load Kernel Module configfs...
 
 [   17.018439] systemd[1]: Starting Load Kernel Module drm...
-         Starting [0;1;39mLoad Kernel Module drm[0m...
+         Starting Load Kernel Module drm...
 
 [   17.101790] systemd[1]: Starting Load Kernel Module fuse...
-         Starting [0;1;39mLoad Kernel Module fuse[0m...
+         Starting Load Kernel Module fuse...
 
 [   17.128726] systemd[1]: File System Check on Root Device was skipped because of an unmet condition check (ConditionPathIsReadWrite=!/).
 [   17.160094] systemd[1]: systemd-journald.service: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
 [   17.179486] systemd[1]: systemd-journald.service: (This warning is only shown for the first unit using IP firewalling.)
 [   17.220829] systemd[1]: Starting Journal Service...
-         Starting [0;1;39mJournal Service[0m...
+         Starting Journal Service...
 
 [   17.337418] systemd[1]: Starting Load Kernel Modules...
-         Starting [0;1;39mLoad Kernel Modules[0m...
+         Starting Load Kernel Modules...
 
 [   17.484311] systemd[1]: Starting Generate network units from Kernel command line...
-         Starting [0;1;39mGenerate network units from Kernel command line[0m...
+         Starting Generate network units from Kernel command line...
 
 [   17.780417] systemd[1]: Starting Remount Root and Kernel File Systems...
-         Starting [0;1;39mRemount Root and Kernel File Systems[0m...
+         Starting Remount Root and Kernel File Systems...
 
 [   17.931113] systemd[1]: Starting Coldplug All udev Devices...
-         Starting [0;1;39mColdplug All udev Devices[0m...
+         Starting Coldplug All udev Devices...
 
 [   18.071870] fuse: init (API version 7.32)
 [   18.094723] systemd[1]: Mounted Huge Pages File System.
-[[0;32m  OK  [0m] Mounted [0;1;39mHuge Pages File System[0m.
+[  OK  ] Mounted Huge Pages File System.
 
 [   18.232955] systemd[1]: Mounted POSIX Message Queue File System.
 [   18.298654] systemd-journald[250]: Collecting audit messages is enabled.
-[[0;32m  OK  [0m] Mounted [0;1;39mPOSIX Message Queue File System[0m.
+[  OK  ] Mounted POSIX Message Queue File System.
 
 [   18.348915] systemd[1]: Mounted Kernel Debug File System.
-[[0;32m  OK  [0m] Mounted [0;1;39mKernel Debug File System[0m.
+[  OK  ] Mounted Kernel Debug File System.
 
 [   18.493302] systemd[1]: Mounted Kernel Trace File System.
-[[0;32m  OK  [0m] Mounted [0;1;39mKernel Trace File System[0m.
+[  OK  ] Mounted Kernel Trace File System.
 
 [   18.545464] systemd[1]: Mounted Temporary Directory /tmp.
-[[0;32m  OK  [0m] Mounted [0;1;39mTemporary Directory /tmp[0m.
+[  OK  ] Mounted Temporary Directory /tmp.
 
 [   18.690543] systemd[1]: Finished Create List of Static Device Nodes.
-[[0;32m  OK  [0m] Finished [0;1;39mCreate List of Static Device Nodes[0m.
+[  OK  ] Finished Create List of Static Device Nodes.
 
 [   18.824960] systemd[1]: modprobe@configfs.service: Deactivated successfully.
 [   18.903878] systemd[1]: Finished Load Kernel Module configfs.
-[[0;32m  OK  [0m] Finished [0;1;39mLoad Kernel Module configfs[0m.
+[  OK  ] Finished Load Kernel Module configfs.
 
 [   18.953849] systemd[1]: modprobe@drm.service: Deactivated successfully.
 [   19.031033] systemd[1]: Finished Load Kernel Module drm.
-[[0;32m  OK  [0m] Finished [0;1;39mLoad Kernel Module drm[0m.
+[  OK  ] Finished Load Kernel Module drm.
 
 [   19.078570] systemd[1]: modprobe@fuse.service: Deactivated successfully.
 [   19.120996] systemd[1]: Finished Load Kernel Module fuse.
-[[0;32m  OK  [0m] Finished [0;1;39mLoad Kernel Module fuse[0m.
+[  OK  ] Finished Load Kernel Module fuse.
 
 [   19.186747] systemd[1]: Finished Load Kernel Modules.
-[[0;32m  OK  [0m] Finished [0;1;39mLoad Kernel Modules[0m.
+[  OK  ] Finished Load Kernel Modules.
 
 [   19.247452] systemd[1]: systemd-network-generator.service: Main process exited, code=exited, status=1/FAILURE
 [   19.281524] systemd[1]: systemd-network-generator.service: Failed with result 'exit-code'.
 [   19.303108] systemd[1]: Failed to start Generate network units from Kernel command line.
-[[0;1;31mFAILED[0m] Failed to start [0;1;39mGenerate network units from Kernel command line[0m.
+[  FAILED  ] Failed to start Generate network units from Kernel command line.
 
 See 'systemctl status systemd-network-generator.service' for details.
 
 [   19.370346] systemd[1]: Reached target Preparation for Network.
-[[0;32m  OK  [0m] Reached target [0;1;39mPreparation for Network[0m.
+[  OK  ] Reached target Preparation for Network.
 
 [   19.442141] systemd[1]: Mounting FUSE Control File System...
-         Mounting [0;1;39mFUSE Control File System[0m...
+         Mounting FUSE Control File System...
 
 [   19.604379] systemd[1]: Mounting Kernel Configuration File System...
-         Mounting [0;1;39mKernel Configuration File System[0m...
+         Mounting Kernel Configuration File System...
 
 [   19.873777] systemd[1]: Starting Apply Kernel Variables...
-         Starting [0;1;39mApply Kernel Variables[0m...
+         Starting Apply Kernel Variables...
 
 [   20.018698] systemd[1]: Starting Create Static Device Nodes in /dev gracefully...
-         Starting [0;1;39mCreate Static Device Nodes in /dev gracefully[0m...
+         Starting Create Static Device Nodes in /dev gracefully...
 
 [   20.103974] systemd[1]: Started Journal Service.
-[[0;32m  OK  [0m] Started [0;1;39mJournal Service[0m.
+[  OK  ] Started Journal Service.
 
-[[0;32m  OK  [0m] Finished [0;1;39mRemount Root and Kernel File Systems[0m.
+[  OK  ] Finished Remount Root and Kernel File Systems.
 
-[[0;32m  OK  [0m] Mounted [0;1;39mFUSE Control File System[0m.
+[  OK  ] Mounted FUSE Control File System.
 
-[[0;32m  OK  [0m] Mounted [0;1;39mKernel Configuration File System[0m.
+[  OK  ] Mounted Kernel Configuration File System.
 
-         Starting [0;1;39mFlush Journal to Persistent Storage[0m...
+         Starting Flush Journal to Persistent Storage...
 
-[[0;32m  OK  [0m] Finished [0;1;39mApply Kernel Variables[0m.
+[  OK  ] Finished Apply Kernel Variables.
 
-[[0;32m  OK  [0m] Finished [0;1;39mCreate Static Device Nodes in /dev gracefully[0m.
+[  OK  ] Finished Create Static Device Nodes in /dev gracefully.
 
-         Starting [0;1;39mCreate Static Device Nodes in /dev[0m...
+         Starting Create Static Device Nodes in /dev...
 
 [   21.551263] systemd-journald[250]: Received client request to flush runtime journal.
-[[0;32m  OK  [0m] Finished [0;1;39mFlush Journal to Persistent Storage[0m.
+[  OK  ] Finished Flush Journal to Persistent Storage.
 
-[[0;32m  OK  [0m] Finished [0;1;39mCreate Static Device Nodes in /dev[0m.
+[  OK  ] Finished Create Static Device Nodes in /dev.
 
-[[0;32m  OK  [0m] Reached target [0;1;39mPreparation for Local File Systems[0m.
+[  OK  ] Reached target Preparation for Local File Systems.
 
-         Mounting [0;1;39m/var/volatile[0m...
+         Mounting /var/volatile...
 
-         Starting [0;1;39mRule-based Manager for Device Events and Files[0m...
+         Starting Rule-based Manager for Device Events and Files...
 
-[[0;32m  OK  [0m] Mounted [0;1;39m/var/volatile[0m.
+[  OK  ] Mounted /var/volatile.
 
-         Starting [0;1;39mLoad/Save OS Random Seed[0m...
+         Starting Load/Save OS Random Seed...
 
-[[0;32m  OK  [0m] Reached target [0;1;39mLocal File Systems[0m.
+[  OK  ] Reached target Local File Systems.
 
-         Starting [0;1;39mCreate Volatile Files and Directories[0m...
+         Starting Create Volatile Files and Directories...
 
-[[0;32m  OK  [0m] Started [0;1;39mRule-based Manager for Device Events and Files[0m.
+[  OK  ] Started Rule-based Manager for Device Events and Files.
 
-         Starting root@ebisu Configuration[0m...
+         Starting root@ebisu Configuration...
 root@ebisu
-root@ebisung [0;1;39mUser Database Manager[0m...
+root@ebisung User Database Manager...
 root@ebisu
 root@ebisurandom: crng init done
-root@ebisu[0m] Finished [0;1;39mLoad/Save OS Random Seed[0m.
+root@ebisu] Finished Load/Save OS Random Seed.
 root@ebisu
-root@ebisu[0m] Finished [0;1;39mCreate Volatile Files and Directories[0m.
+root@ebisu] Finished Create Volatile Files and Directories.
 
-         Starting [0;1;39mNetwork Name Resolution[0m...
+         Starting Network Name Resolution...
 
-         Starting [0;1;39mNetwork Time Synchronization[0m...
+         Starting Network Time Synchronization...
 
-         Starting [0;1;39mRecord System Boot/Shutdown in UTMP[0m...
+         Starting Record System Boot/Shutdown in UTMP...
 
-[[0;32m  OK  [0m] Started [0;1;39mUser Database Manager[0m.
+[  OK  ] Started User Database Manager.
 
-[[0;32m  OK  [0m] Finished [0;1;39mRecord System Boot/Shutdown in UTMP[0m.
+[  OK  ] Finished Record System Boot/Shutdown in UTMP.
 
-[[0;32m  OK  [0m] Started [0;1;39mNetwork Name Resolution[0m.
+[  OK  ] Started Network Name Resolution.
 
-[[0;32m  OK  [0m] Reached target [0;1;39mHost and Network Name Lookups[0m.
+[  OK  ] Reached target Host and Network Name Lookups.
 
-[[0;32m  OK  [0m] Listening on [0;1;39mLoad/Save RF Kill Switch Status /dev/rfkill Watch[0m.
+[  OK  ] Listening on Load/Save RF Kill Switch Status /dev/rfkill Watch.
 root@ebisu
-root@ebisu[0m] Started [0;1;39mNetwork Time Synchronization[0m.
+root@ebisu] Started Network Time Synchronization.
 
-root@ebisu[0m] Reached target [0;1;39mSystem Time Set[0m.
+root@ebisu] Reached target System Time Set.
 root@ebisu
 [   30.837192] cfg80211: Loading compiled-in X.509 certificates for regulatory database
 root@ebisucfg80211: Loaded X.509 cert 'wens: 61c038651aabdcf94bd0ac7ff06c7248db18c600'
 [   31.119734] cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
 [   31.160490] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
 [   31.211697] cfg80211: failed to load regulatory.db
-[[0m[0;31m*     [0m] (1 of 2) A start job is running for… All udev Devices (16s / no limit)
+[			 ] (1 of 2) A start job is running for… All udev Devices (16s / no limit)
 
-M
-[K[[0;32m  OK  [0m] Started [0;1;39mNetwork Configuration[0m.
+M
+[  OK  ] Started Network Configuration.
 
-[K[[0;32m  OK  [0m] Reached target [0;1;39mNetwork[0m.
+[  OK  ] Reached target Network.
 
-[[0;32m  OK  [0m] Finished [0;1;39mColdplug All udev Devices[0m.
+[  OK  ] Finished Coldplug All udev Devices.
 
-[[0;32m  OK  [0m] Reached target [0;1;39mSystem Initialization[0m.
+[  OK  ] Reached target System Initialization.
 
-[[0;32m  OK  [0m] Started [0;1;39mDaily Cleanup of Temporary Directories[0m.
+[  OK  ] Started Daily Cleanup of Temporary Directories.
 
-[[0;32m  OK  [0m] Reached target [0;1;39mTimer Units[0m.
+[  OK  ] Reached target Timer Units.
 
-[[0;32m  OK  [0m] Listening on [0;1;39mD-Bus System Message Bus Socket[0m.
+[  OK  ] Listening on D-Bus System Message Bus Socket.
 
-[[0;32m  OK  [0m] Reached target [0;1;39mSocket Units[0m.
+[  OK  ] Reached target Socket Units.
 
-[[0;32m  OK  [0m] Reached target [0;1;39mBasic System[0m.
+[  OK  ] Reached target Basic System.
 
-[[0;32m  OK  [0m] Started [0;1;39mKernel Logging Service[0m.
+[  OK  ] Started Kernel Logging Service.
 
-[[0;32m  OK  [0m] Started [0;1;39mSystem Logging Service[0m.
+[  OK  ] Started System Logging Service.
 
-         Starting [0;1;39mD-Bus System Message Bus[0m...
+         Starting D-Bus System Message Bus...
 
-[[0;32m  OK  [0m] Started [0;1;39moptee services[0m.
+[  OK  ] Started optee services.
 
-         Starting [0;1;39mset_default_governor.service[0m...
+         Starting set_default_governor.service...
 
-         Starting [0;1;39mUser Login Management[0m...
+         Starting User Login Management...
 
-         Starting [0;1;39mPermit User Sessions[0m...
+         Starting Permit User Sessions...
 
-[[0;32m  OK  [0m] Started [0;1;39mD-Bus System Message Bus[0m.
+[  OK  ] Started D-Bus System Message Bus.
 
-[[0;32m  OK  [0m] Finished [0;1;39mPermit User Sessions[0m.
+[  OK  ] Finished Permit User Sessions.
 
-[[0;32m  OK  [0m] Started [0;1;39mGetty on tty1[0m.
+[  OK  ] Started Getty on tty1.
 
-[[0;32m  OK  [0m] Started [0;1;39mSerial Getty on ttySC0[0m.
+[  OK  ] Started Serial Getty on ttySC0.
 
-[[0;32m  OK  [0m] Reached target [0;1;39mLogin Prompts[0m.
+[  OK  ] Reached target Login Prompts.
 
-[[0;32m  OK  [0m] Started [0;1;39mset_default_governor.service[0m.
+[  OK  ] Started set_default_governor.service.
 
-[[0;32m  OK  [0m] Started [0;1;39mUser Login Management[0m.
+[  OK  ] Started User Login Management.
 
-[[0;32m  OK  [0m] Reached target [0;1;39mMulti-User System[0m.
+[  OK  ] Reached target Multi-User System.
 
-         Starting [0;1;39mRecord Runlevel Change in UTMP[0m...
+         Starting Record Runlevel Change in UTMP...
 
-[[0;32m  OK  [0m] Finished [0;1;39mRecord Runlevel Change in UTMP[0m.
+[  OK  ] Finished Record Runlevel Change in UTMP.
 
 
 
@@ -751,7 +747,7 @@ own distribution for production use.
 [   43.203620] rcar_canfd e66c0000.can: global operational state (clk 0, fdmode 1)
 [   44.570293] ccree e6601000.crypto: ARM CryptoCell 630P Driver: HW version 0xAF400001/0xDCC63000, Driver version 5.0
 [   44.978596] ccree e6601000.crypto: ARM ccree device initialized
-7[r[999;999H[6nroot@ebisu:~# 
+root@ebisu:~# 
 root@ebisu:~# 
 root@ebisu:~# 
 root@ebisu:~# 
@@ -782,5 +778,5 @@ root@ebisu:~#
 root@ebisu:~# dmesg | grep renesas_usb3
 [    4.371386] renesas_usb3 ee020000.usb: probed
 root@ebisu:~# 
- 
+
 #### Result: OK ####
