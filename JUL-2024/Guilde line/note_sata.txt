@@ -51,3 +51,6 @@ Please set SW12-pin7 = Off(1).
 
 S2R như đã note trên config, đối với salavator Xs thì phải chuyển thành module với SATA_RCAR
 Nếu chưa module install thì phải đổi path insmod tới file sata_rcar.ko
+
+Sửa file vi ./sata_common.func
+	Sửa lại đường dẫn insmod

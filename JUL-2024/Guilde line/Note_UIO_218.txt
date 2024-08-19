@@ -5,3 +5,10 @@ change to
 
 from
 CONFIG_DEBUG_SPINLOCK=y
+
+Các file 
+ thay trong file 'run_uio_performance_test.sh' thành 
+	echo fe860000.imrlx4_imr0 > /sys/bus/platform/drivers/uio_pdrv_genirq/unbind
+	echo fe860000.imrlx4_imr0 > /sys/bus/platform/drivers/uio_pdrv_genirq/bind
+	
+Trong ~/uio/uio_test-gen3e_beta/testapp  : compile lại cho đúng board, sửa trong file {board}.c để đổi /dev/imr0 thành /dev/uio0

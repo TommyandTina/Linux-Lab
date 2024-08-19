@@ -108,6 +108,7 @@
 	ack -g "name_file"
 	grep -Rnw '/path/to/somewhere/' -e 'pattern' (-r or -R is recursive ; use -R to search entirely; -n is 
 		line number; -w stands for match the whole word.
+	grep -rn "sata" .
 
 - Kiểm tra các file .pc khi sử dụng poky cross toolchains (đôi khi nó include 1 package mà máy ta không có -> lỗi)
 	Xóa file hoặc unset PKG_CONFIG_PATH
@@ -241,6 +242,14 @@
 	Check bit thứ 28
 		if((BIT28_CHECK & (1 << 28)) == 1):
 			return False
+	+ Check log của board:
+		    a.buff=""
+			a.send('echo rd  0xe6150048 > /proc/reg')
+			with open(LOG_FILE, 'w') as log_file:
+				log_file.write(a.buff) #để ghi
+				print(log_file.read()) #để đọc
+			TMP = check_log(LOG_FILE,'mem read')
+	Đọc output ko cần hàm check_log : os.popen(command).read()
 			
 - Truy cập ssh thông qua 2 máy : 
 	ssh -J <user>@<hostB> <user>@<hostC>
@@ -248,3 +257,11 @@
 	
 - ghi thông tin vào dmesg:
 	echo "Hello, dmesg!" | sudo tee /dev/kmsg
+
+- Đổi tên rootfs cho giống với config.PLATFORM
+	sudo nano /etc/hostname
+	sudo nano /etc/hosts
+	
+- Thêm vào bootargs:
+	quiet loglevel=1 : giảm log
+	
