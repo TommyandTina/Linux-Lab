@@ -7,7 +7,7 @@ from
 CONFIG_DEBUG_SPINLOCK=y
 
 Các file 
- thay trong file 'run_uio_performance_test.sh' thành 
+ thay trong file 'run_uio_performance_test.sh', 'run_uio_normal_test.sh' thành 
 	echo fe860000.imrlx4_imr0 > /sys/bus/platform/drivers/uio_pdrv_genirq/unbind
 	echo fe860000.imrlx4_imr0 > /sys/bus/platform/drivers/uio_pdrv_genirq/bind
 	

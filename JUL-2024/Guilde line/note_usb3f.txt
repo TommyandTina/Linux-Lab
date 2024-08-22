@@ -133,3 +133,8 @@ Check : dmesg |grep ipmmu
 
 Perf 3.1.11
 Process_name là file-storage
+
+usb2f:
+	sửa usbf.py usb2f_node = "e6590000.usb" thành usb2f_node = "e659c000.usb" nếu sử dụng CN37
+	Nếu xài CN9 thì chỉnh IS_CN9 về True trong 000.py
+	Với case SD thì đổi mmcblk2p1 thành mmcblk1p1 nếu sử dụng Cổng SD số 1 trong usbf.py

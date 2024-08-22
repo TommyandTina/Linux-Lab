@@ -31,10 +31,10 @@ TO
 	}
 Step 3: change FROM  #include <mediactl/mediactl.h> to  #include <media-ctl/mediactl.h>
 Step 4: make m3 (for e3,m3,m3n) or make (for h3)
-Step 5: ./v4l2_measure_m3_e3 u > kekka_uds.txt
-Step 6: ./v4l2_measure_m3_e3 l > kekka_lut.txt
-Step 7: ./v4l2_measure_m3_e3 c > kekka_clu.txt
-Step 8: ./v4l2_measure_m3_e3 h > kekka_hgo.txt
+Step 5: ./v4l2_measure_m3_e3 u > kekka_uds.txt && cat kekka_uds.txt
+Step 6: ./v4l2_measure_m3_e3 l > kekka_lut.txt && cat kekka_lut.txt
+Step 7: ./v4l2_measure_m3_e3 c > kekka_clu.txt && cat kekka_clu.txt
+Step 8: ./v4l2_measure_m3_e3 h > kekka_hgo.txt && cat kekka_hgo.txt
 
 NO.9
 Keep going from NO.8
