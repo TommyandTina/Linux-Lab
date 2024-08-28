@@ -97,7 +97,7 @@
 
 -Nén và giải nén zip
 	zip -r name.zip folder
-	unzip name.zip
+	unzip name.zip -d /path/dir
 	tar -cf folder (nén tar.gz)
 	tar -xf folder.tar.gz (giải nén)
 
@@ -264,4 +264,8 @@
 	
 - Thêm vào bootargs:
 	quiet loglevel=1 : giảm log
+	
+- Tìm file mới sinh ra có dung lượng lớn:
+	find /path/to/directory -type f -mtime -7 -exec du -h {} + | sort -hr
+	find . -type d -mtime -7 -exec du -sh {} \; | sort -hr
 	

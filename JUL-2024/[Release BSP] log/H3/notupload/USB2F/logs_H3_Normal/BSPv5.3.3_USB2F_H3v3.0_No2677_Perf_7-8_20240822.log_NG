@@ -1,0 +1,128 @@
+
+root@salvator-x:~# cd
+root@salvator-x:~# 
+root@salvator-x:~# insmod qos.ko
+[  537.017359] qos: loading out-of-tree module taints kernel.
+[  537.025055] QoS: install v2.07
+[  537.035220] QoS Driver is Successfully loaded
+root@salvator-x:~# 
+root@salvator-x:~# cd rch3m3m3ne3d3_linux_qos_v310/Reference
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# 
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# qos_tp setall h3_Ver30_infotainment_v02_195.csv
+QoS : setall success!
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# 
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# qos_tp switch
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# 
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# cd
+root@salvator-x:~# 
+----------- BOARD ------------
+
+root@salvator-x:~# mount -t tmpfs -o size=700M tmpfs /tmp
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/zero of=/tmp/tmp.img bs=1M count=650
+650+0 records in
+650+0 records out
+681574400 bytes (682 MB, 650 MiB) copied, 3.14081 s, 217 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# mkfs.ext3 -L storage /tmp/tmp.img
+mke2fs 1.47.0 (5-Feb-2023)
+Discarding device blocks:      0/166400             done                            
+Creating filesystem with 166400 4k blocks and 41664 inodes
+Filesystem UUID: 241c6480-8876-4855-84b3-f4dd2ed85739
+Superblock backups stored on blocks: 
+	32768, 98304, 163840
+
+Allocating group tables: 0/6   done                            
+Writing inode tables: 0/6   done                            
+Creating journal (4096 blocks): done
+Writing superblocks and filesystem accounting information: 0/6   done
+
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_mass_storage file=/tmp/tmp.img
+[  547.232665] Mass Storage Function, version: 2009/09/11
+[  547.238174] LUN: removable file: (no medium)
+[  547.243253] LUN: file: /tmp/tmp.img
+[  547.247120] Number of LUNs=1
+[  547.250420] g_mass_storage gadget: Mass Storage Gadget, version: 2009/09/11
+[  547.257496] g_mass_storage gadget: userspace failed to provide iSerialNumber
+[  547.265301] g_mass_storage gadget: g_mass_storage ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/e6590000.usb/udc/e6590000.usb/state
+configured
+root@salvator-x:~# 
+---------- HOST-PC -----------
+
+dmesg
+[100320.846518] usb 1-1.3: new high-speed USB device number 107 using xhci_hcd
+[100320.949432] usb 1-1.3: New USB device found, idVendor=0525, idProduct=a4a5, bcdDevice= 5.10
+[100320.949456] usb 1-1.3: New USB device strings: Mfr=3, Product=4, SerialNumber=0
+[100320.949467] usb 1-1.3: Product: Mass Storage Gadget
+[100320.949475] usb 1-1.3: Manufacturer: Linux 5.10.218-yocto-standard with renesas_usbhs_udc
+[100320.952501] usb-storage 1-1.3:1.0: USB Mass Storage device detected
+[100320.953013] usb-storage 1-1.3:1.0: Quirks match for vid 0525 pid a4a5: 10000
+[100320.953253] scsi host2: usb-storage 1-1.3:1.0
+[100321.963678] scsi 2:0:0:0: Direct-Access     Linux    File-Stor Gadget 0510 PQ: 0 ANSI: 2
+[100321.964492] sd 2:0:0:0: Attached scsi generic sg1 type 0
+[100321.965120] sd 2:0:0:0: Power-on or device reset occurred
+[100321.966062] sd 2:0:0:0: [sdc] 1331200 512-byte logical blocks: (682 MB/650 MiB)
+[100322.071168] sd 2:0:0:0: [sdc] Write Protect is off
+[100322.071174] sd 2:0:0:0: [sdc] Mode Sense: 0f 00 00 00
+[100322.179162] sd 2:0:0:0: [sdc] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[100322.611534] sd 2:0:0:0: [sdc] Attached SCSI disk
+[100322.939685] EXT4-fs (sdc): mounting ext3 file system using the ext4 subsystem
+[100322.948210] EXT4-fs (sdc): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+
+df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            3,8G     0  3,8G   0% /dev
+tmpfs           784M  2,4M  781M   1% /run
+/dev/nvme0n1p4  458G  306G  129G  71% /
+tmpfs           3,9G     0  3,9G   0% /dev/shm
+tmpfs           5,0M  8,0K  5,0M   1% /run/lock
+tmpfs           3,9G     0  3,9G   0% /sys/fs/cgroup
+/dev/loop0      128K  128K     0 100% /snap/bare/5
+/dev/loop3       64M   64M     0 100% /snap/core20/2182
+/dev/loop1       56M   56M     0 100% /snap/core18/2829
+/dev/loop2       64M   64M     0 100% /snap/core20/2318
+/dev/loop4       75M   75M     0 100% /snap/core22/1439
+/dev/loop5       75M   75M     0 100% /snap/core22/1380
+/dev/loop8      506M  506M     0 100% /snap/gnome-42-2204/176
+/dev/loop12      12M   12M     0 100% /snap/nmap/3470
+/dev/loop10      92M   92M     0 100% /snap/gtk-common-themes/1535
+/dev/loop11     350M  350M     0 100% /snap/gnome-3-38-2004/143
+/dev/loop7      497M  497M     0 100% /snap/gnome-42-2204/141
+/dev/loop6      384K  384K     0 100% /snap/device-tree-compiler/91
+/dev/loop9      9,8M  9,8M     0 100% /snap/htop/4407
+/dev/loop14      41M   41M     0 100% /snap/snapd/20290
+/dev/loop17      13M   13M     0 100% /snap/snap-store/1113
+/dev/loop13     347M  347M     0 100% /snap/gnome-3-38-2004/119
+/dev/loop15      13M   13M     0 100% /snap/snap-store/959
+/dev/loop16      12M   12M     0 100% /snap/nmap/3514
+/dev/loop18      39M   39M     0 100% /snap/snapd/21759
+/dev/nvme0n1p1  3,7G  210M  3,3G   6% /boot
+/dev/nvme0n1p2  3,9G  6,1M  3,9G   1% /boot/efi
+tmpfs           784M   28K  784M   1% /run/user/1000
+/dev/sdb        968M  601M  317M  66% /home/rvc/mnt/usb
+/dev/sdc        624M   44K  591M   1% /media/rvc/storage
+
+sudo umount /media/rvc/storage
+
+----------- BOARD ------------
+
+root@salvator-x:~# rmmod g_mass_storage
+root@salvator-x:~# 
+root@salvator-x:~# rm -rf /tmp/tmp.img
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+[100326.765736] usb 1-1.3: USB disconnect, device number 107
+[100326.830518] sd 2:0:0:0: [sdc] Synchronizing SCSI cache
+[100326.830587] sd 2:0:0:0: [sdc] Synchronize Cache(10) failed: Result: hostbyte=DID_NO_CONNECT driverbyte=DRIVER_OK
+
+root@salvator-x:~# rmmod qos
+[  554.385245] QoS Driver is unloaded
+root@salvator-x:~# 
+ 
+#### Result: OK ####

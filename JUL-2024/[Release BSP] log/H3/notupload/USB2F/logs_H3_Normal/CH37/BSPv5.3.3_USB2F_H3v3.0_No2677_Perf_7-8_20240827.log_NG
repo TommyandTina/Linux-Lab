@@ -1,0 +1,140 @@
+
+root@salvator-x:~# cd
+root@salvator-x:~# 
+root@salvator-x:~# insmod qos.ko
+insmod: ERROR: could not insert module qos.ko: File exists
+root@salvator-x:~# 
+root@salvator-x:~# cd rch3m3m3ne3d3_linux_qos_v310/Reference
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# 
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# qos_tp setall h3_Ver30 _infotainment_v02_195.csv
+QoS : setall success!
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# 
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# qos_tp switch
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# 
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# cd
+root@salvator-x:~# 
+----------- BOARD ------------
+
+root@salvator-x:~# mount -t tmpfs -o size=700M tmpfs /tmp
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/zero of=/tmp/tmp.img bs=1M count=650
+650+0 records in
+650+0 records out
+681574400 bytes (682 MB, 650 MiB) copied, 3.14508 s, 217 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# mkfs.ext3 -L storage /tmp/tmp.img
+mke2fs 1.47.0 (5-Feb-2023)
+Discarding device blocks:      0/166400             done                            
+Creating filesystem with 166400 4k blocks and 41664 inodes
+Filesystem UUID: 2be6bb03-341d-4395-ab3a-b95f1c7b5926
+Superblock backups stored on blocks: 
+	32768, 98304, 163840
+
+Allocating group tables: 0/6   done                            
+Writing inode tables: 0/6   done                            
+Creating journal (4096 blocks): done
+Writing superblocks and filesystem accounting information: 0/6   done
+
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_mass_storage file=/tmp/tmp.img
+[ 3215.853024] Mass Storage Function, version: 2009/09/11
+[ 3215.860628] LUN: removable file: (no medium)
+[ 3215.867873] LUN: file: /tmp/tmp.img
+[ 3215.871953] Number of LUNs=1
+[ 3215.876448] g_mass_storage gadget: Mass Storage Gadget, version: 2009/09/11
+[ 3215.884088] g_mass_storage gadget: userspace failed to provide iSerialNumber
+[ 3215.891726] g_mass_storage gadget: g_mass_storage ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/e659c000.usb/udc/e659c000.usb/s tate
+configured
+root@salvator-x:~# 
+---------- HOST-PC -----------
+
+dmesg
+[95096.159143] usb 1-2: new high-speed USB device number 75 using xhci_hcd
+[95096.308476] usb 1-2: New USB device found, idVendor=0525, idProduct=a4a5, bcdDevice= 5.10
+[95096.308494] usb 1-2: New USB device strings: Mfr=3, Product=4, SerialNumber=0
+[95096.308502] usb 1-2: Product: Mass Storage Gadget
+[95096.308509] usb 1-2: Manufacturer: Linux 5.10.218-yocto-standard with renesas_usbhs_udc
+[95096.311036] usb-storage 1-2:1.0: USB Mass Storage device detected
+[95096.311530] usb-storage 1-2:1.0: Quirks match for vid 0525 pid a4a5: 10000
+[95096.311720] scsi host12: usb-storage 1-2:1.0
+[95097.328195] scsi 12:0:0:0: Direct-Access     Linux    File-Stor Gadget 0510 PQ: 0 ANSI: 2
+[95097.329187] sd 12:0:0:0: Attached scsi generic sg1 type 0
+[95097.329869] sd 12:0:0:0: Power-on or device reset occurred
+[95097.330938] sd 12:0:0:0: [sdm] 1331200 512-byte logical blocks: (682 MB/650 MiB)
+[95097.438831] sd 12:0:0:0: [sdm] Write Protect is off
+[95097.438836] sd 12:0:0:0: [sdm] Mode Sense: 0f 00 00 00
+[95097.547307] sd 12:0:0:0: [sdm] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[95097.983345] sd 12:0:0:0: [sdm] Attached SCSI disk
+[95098.744490] EXT4-fs (sdm): mounting ext3 file system using the ext4 subsystem
+[95098.752484] EXT4-fs (sdm): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+
+df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            3,8G     0  3,8G   0% /dev
+tmpfs           784M  2,4M  781M   1% /run
+/dev/nvme0n1p4  458G  310G  124G  72% /
+tmpfs           3,9G     0  3,9G   0% /dev/shm
+tmpfs           5,0M  4,0K  5,0M   1% /run/lock
+tmpfs           3,9G     0  3,9G   0% /sys/fs/cgroup
+/dev/loop0      128K  128K     0 100% /snap/bare/5
+/dev/loop2       75M   75M     0 100% /snap/core22/1439
+/dev/loop3       12M   12M     0 100% /snap/nmap/3514
+/dev/loop1       64M   64M     0 100% /snap/core20/2182
+/dev/loop6      384K  384K     0 100% /snap/device-tree-compiler/91
+/dev/loop5       92M   92M     0 100% /snap/gtk-common-themes/1535
+/dev/loop4      350M  350M     0 100% /snap/gnome-3-38-2004/143
+/dev/loop10     9,8M  9,8M     0 100% /snap/htop/4407
+/dev/loop7       12M   12M     0 100% /snap/nmap/3470
+/dev/loop9      347M  347M     0 100% /snap/gnome-3-38-2004/119
+/dev/loop13      75M   75M     0 100% /snap/core22/1564
+/dev/loop11      64M   64M     0 100% /snap/core20/2318
+/dev/loop12     497M  497M     0 100% /snap/gnome-42-2204/141
+/dev/loop14      56M   56M     0 100% /snap/core18/2829
+/dev/loop8      506M  506M     0 100% /snap/gnome-42-2204/176
+/dev/loop15      13M   13M     0 100% /snap/snap-store/959
+/dev/loop17      13M   13M     0 100% /snap/snap-store/1113
+/dev/loop18      41M   41M     0 100% /snap/snapd/20290
+/dev/loop16      39M   39M     0 100% /snap/snapd/21759
+/dev/nvme0n1p1  3,7G  210M  3,3G   6% /boot
+/dev/nvme0n1p2  3,9G  6,1M  3,9G   1% /boot/efi
+tmpfs           784M   28K  784M   1% /run/user/1000
+/dev/sdi        318M  101M  201M  34% /media/test_USB2F
+/dev/sdm        624M   44K  591M   1% /media/rvc/storage
+
+sudo time dd if=/dev/zero of=./file-600M bs=600M count=1 oflag=direct
+1+0 records in
+1+0 records out
+629145600 bytes (629 MB, 600 MiB) copied, 0,779388 s, 807 MB/s
+0.00user 0.76system 0:00.88elapsed 86%CPU (0avgtext+0avgdata 616768maxresident)k
+24inputs+1228800outputs (0major+153690minor)pagefaults 0swaps
+
+-------------- READ --------------
+sudo time dd if=./file-600M of=/media/rvc/storage/file-600M_from_nfs bs=1M count=600 oflag=direct
+28311552 bytes (28 MB, 27 MiB) copied, 1 s, 28,2 MB/s54525952 bytes (55 MB, 52 MiB) copied, 2 s, 26,7 MB/s79691776 bytes (80 MB, 76 MiB) copied, 3 s, 26,4 MB/s104857600 bytes (105 MB, 100 MiB) copied, 4 s, 26,0 MB/s128974848 bytes (129 MB, 123 MiB) copied, 5 s, 25,6 MB/s152043520 bytes (152 MB, 145 MiB) copied, 6 s, 25,2 MB/s175112192 bytes (175 MB, 167 MiB) copied, 7 s, 25,0 MB/s199229440 bytes (199 MB, 190 MiB) copied, 8 s, 24,9 MB/s223346688 bytes (223 MB, 213 MiB) copied, 9 s, 24,8 MB/s247463936 bytes (247 MB, 236 MiB) copied, 10 s, 24,6 MB/s270532608 bytes (271 MB, 258 MiB) copied, 11 s, 24,5 MB/s293601280 bytes (294 MB, 280 MiB) copied, 12 s, 24,4 MB/s317718528 bytes (318 MB, 303 MiB) copied, 13 s, 24,4 MB/s340787200 bytes (341 MB, 325 MiB) copied, 14 s, 24,3 MB/s365953024 bytes (366 MB, 349 MiB) copied, 15 s, 24,3 MB/s390070272 bytes (390 MB, 372 MiB) copied, 16 s, 24,3 MB/s413138944 bytes (413 MB, 394 MiB) copied, 17 s, 24,3 MB/s438304768 bytes (438 MB, 418 MiB) copied, 18 s, 24,3 MB/s464519168 bytes (465 MB, 443 MiB) copied, 19 s, 24,4 MB/s490733568 bytes (491 MB, 468 MiB) copied, 20 s, 24,5 MB/s515899392 bytes (516 MB, 492 MiB) copied, 21 s, 24,5 MB/s540016640 bytes (540 MB, 515 MiB) copied, 22 s, 24,5 MB/s564133888 bytes (564 MB, 538 MiB) copied, 23 s, 24,5 MB/s589299712 bytes (589 MB, 562 MiB) copied, 24 s, 24,5 MB/s613416960 bytes (613 MB, 585 MiB) copied, 25 s, 24,5 MB/s
+600+0 records in
+600+0 records out
+629145600 bytes (629 MB, 600 MiB) copied, 25,6851 s, 24,5 MB/s
+0.00user 1.70system 0:25.68elapsed 6%CPU (0avgtext+0avgdata 3592maxresident)k
+8inputs+1228800outputs (0major+351minor)pagefaults 0swaps
+
+SPEED = 24.5 MB/s
+
+-------------- WRITE --------------
+sudo time dd if=/media/rvc/storage/file-600M_from_nfs of=./file-600M_from_usb bs=1M count=600 iflag=direct
+28311552 bytes (28 MB, 27 MiB) copied, 1 s, 27,5 MB/s55574528 bytes (56 MB, 53 MiB) copied, 2 s, 27,7 MB/s83886080 bytes (84 MB, 80 MiB) copied, 3 s, 27,7 MB/s113246208 bytes (113 MB, 108 MiB) copied, 4 s, 28,1 MB/s144703488 bytes (145 MB, 138 MiB) copied, 5 s, 28,8 MB/s174063616 bytes (174 MB, 166 MiB) copied, 6 s, 28,9 MB/s201326592 bytes (201 MB, 192 MiB) copied, 7 s, 28,7 MB/s228589568 bytes (229 MB, 218 MiB) copied, 8 s, 28,6 MB/s256901120 bytes (257 MB, 245 MiB) copied, 9 s, 28,5 MB/s285212672 bytes (285 MB, 272 MiB) copied, 10 s, 28,4 MB/s313524224 bytes (314 MB, 299 MiB) copied, 11 s, 28,5 MB/s341835776 bytes (342 MB, 326 MiB) copied, 12 s, 28,4 MB/s370147328 bytes (370 MB, 353 MiB) copied, 13 s, 28,4 MB/s399507456 bytes (400 MB, 381 MiB) copied, 14 s, 28,5 MB/s425721856 bytes (426 MB, 406 MiB) copied, 15 s, 28,3 MB/s451936256 bytes (452 MB, 431 MiB) copied, 16 s, 28,2 MB/s480247808 bytes (480 MB, 458 MiB) copied, 17 s, 28,2 MB/s509607936 bytes (510 MB, 486 MiB) copied, 18 s, 28,3 MB/s538968064 bytes (539 MB, 514 MiB) copied, 19 s, 28,4 MB/s571473920 bytes (571 MB, 545 MiB) copied, 20 s, 28,5 MB/s597688320 bytes (598 MB, 570 MiB) copied, 21 s, 28,4 MB/s629145600 bytes (629 MB, 600 MiB) copied, 22 s, 28,6 MB/s
+600+0 records in
+600+0 records out
+629145600 bytes (629 MB, 600 MiB) copied, 22,0517 s, 28,5 MB/s
+0.00user 1.80system 0:22.12elapsed 8%CPU (0avgtext+0avgdata 3560maxresident)k
+1228808inputs+1228800outputs (0major+350minor)pagefaults 0swaps
+
+SPEED = 28.6 MB/s
+Read speed
+24.5
+Write speed
+28.6
+
+ 
+#### Result: NG ####

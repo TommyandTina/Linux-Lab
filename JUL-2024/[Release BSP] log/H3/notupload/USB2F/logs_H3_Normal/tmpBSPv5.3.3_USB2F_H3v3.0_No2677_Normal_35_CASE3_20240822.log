@@ -1,0 +1,179 @@
+----------- CASE 3 ------------
+----------- BOARD ------------
+
+root@salvator-x:~# mount -t tmpfs -o size=400M tmpfs /tmp
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/zero of=/tmp/tmp.img bs=1M count=350
+350+0 records in
+350+0 records out
+367001600 bytes (367 MB, 350 MiB) copied, 1.79548 s, 204 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# mkfs.ext3 -L storage /tmp/tmp.img
+mke2fs 1.47.0 (5-Feb-2023)
+Discarding device blocks:      0/358400             done                            
+Creating filesystem with 358400 1k blocks and 89760 inodes
+Filesystem UUID: 84584613-9fb6-4d85-a28b-7656da77cebb
+Superblock backups stored on blocks: 
+	8193, 24577, 40961, 57345, 73729, 204801, 221185
+
+Allocating group tables:  0/44     done                            
+Writing inode tables:  0/44     done                            
+Creating journal (8192 blocks): done
+Writing superblocks and filesystem accounting information:  0/44     done
+
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_multi file=/tmp/tmp.img
+[   73.367031] using random self ethernet address
+[   73.371807] using random host ethernet address
+[   73.378653] Mass Storage Function, version: 2009/09/11
+[   73.384044] LUN: removable file: (no medium)
+[   73.389395] LUN: file: /tmp/tmp.img
+[   73.393188] Number of LUNs=1
+[   73.403378] usb0: HOST MAC 9e:1a:5c:a5:2b:98
+[   73.408039] usb0: MAC 06:67:30:2d:cc:88
+[   73.414205] g_multi gadget: Multifunction Composite Gadget
+[   73.419859] g_multi gadget: userspace failed to provide iSerialNumber
+[   73.426422] g_multi gadget: g_multi ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/e659c000.usb/udc/e659c000.usb/s 
+tate
+configured
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+
+sudo ifconfig usb0 192.168.11.2 up
+
+----------- BOARD ------------
+
+root@salvator-x:~# ifconfig usb0 192.168.11.1 up
+root@salvator-x:~# 
+root@salvator-x:~# ping -c 4 192.168.11.2 -s 128
+PING 192.168.11.2 (192.168.11.2): 128 data bytes
+136 bytes from 192.168.11.2: seq=0 ttl=64 time=1.570 ms
+136 bytes from 192.168.11.2: seq=1 ttl=64 time=0.450 ms
+136 bytes from 192.168.11.2: seq=2 ttl=64 time=2.069 ms
+136 bytes from 192.168.11.2: seq=3 ttl=64 time=1.031 ms
+
+--- 192.168.11.2 ping statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max = 0.450/1.280/2.069 ms
+root@salvator-x:~# 
+root@salvator-x:~# cat /proc/interrupts | grep -e e646 > before_usb_dmac10_int.t 
+xt
+root@salvator-x:~# 
+---------- HOST-PC -----------
+
+dmesg
+[89216.848910] usb 1-1.3: new high-speed USB device number 86 using xhci_hcd
+[89216.949995] usb 1-1.3: New USB device found, idVendor=1d6b, idProduct=0104, bcdDevice= 5.10
+[89216.950014] usb 1-1.3: New USB device strings: Mfr=3, Product=4, SerialNumber=0
+[89216.950022] usb 1-1.3: Product: Multifunction Composite Gadget
+[89216.950028] usb 1-1.3: Manufacturer: Linux 5.10.218-yocto-standard with renesas_usbhs_udc
+[89216.959785] rndis_host 1-1.3:1.0 usb0: register 'rndis_host' at usb-0000:00:14.0-1.3, RNDIS device, 8e:89:d5:88:d1:02
+[89216.960740] cdc_acm 1-1.3:1.2: ttyACM0: USB ACM device
+[89216.961333] usb-storage 1-1.3:1.4: USB Mass Storage device detected
+[89216.977033] scsi host2: usb-storage 1-1.3:1.4
+[89217.982058] scsi 2:0:0:0: Direct-Access     Linux    File-Stor Gadget 0510 PQ: 0 ANSI: 2
+[89217.982339] sd 2:0:0:0: Attached scsi generic sg1 type 0
+[89217.983203] sd 2:0:0:0: Power-on or device reset occurred
+[89217.983466] sd 2:0:0:0: [sdc] 716800 512-byte logical blocks: (367 MB/350 MiB)
+[89218.087719] sd 2:0:0:0: [sdc] Write Protect is off
+[89218.087724] sd 2:0:0:0: [sdc] Mode Sense: 0f 00 00 00
+[89218.195747] sd 2:0:0:0: [sdc] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[89218.627742] sd 2:0:0:0: [sdc] Attached SCSI disk
+[89218.960197] EXT4-fs (sdc): mounting ext3 file system using the ext4 subsystem
+[89218.968899] EXT4-fs (sdc): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+
+df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            3,8G     0  3,8G   0% /dev
+tmpfs           784M  2,4M  781M   1% /run
+/dev/nvme0n1p4  458G  302G  133G  70% /
+tmpfs           3,9G     0  3,9G   0% /dev/shm
+tmpfs           5,0M   12K  5,0M   1% /run/lock
+tmpfs           3,9G     0  3,9G   0% /sys/fs/cgroup
+/dev/loop0      128K  128K     0 100% /snap/bare/5
+/dev/loop3       64M   64M     0 100% /snap/core20/2182
+/dev/loop1       56M   56M     0 100% /snap/core18/2829
+/dev/loop2       64M   64M     0 100% /snap/core20/2318
+/dev/loop4       75M   75M     0 100% /snap/core22/1439
+/dev/loop5       75M   75M     0 100% /snap/core22/1380
+/dev/loop8      506M  506M     0 100% /snap/gnome-42-2204/176
+/dev/loop12      12M   12M     0 100% /snap/nmap/3470
+/dev/loop10      92M   92M     0 100% /snap/gtk-common-themes/1535
+/dev/loop11     350M  350M     0 100% /snap/gnome-3-38-2004/143
+/dev/loop7      497M  497M     0 100% /snap/gnome-42-2204/141
+/dev/loop6      384K  384K     0 100% /snap/device-tree-compiler/91
+/dev/loop9      9,8M  9,8M     0 100% /snap/htop/4407
+/dev/loop14      41M   41M     0 100% /snap/snapd/20290
+/dev/loop17      13M   13M     0 100% /snap/snap-store/1113
+/dev/loop13     347M  347M     0 100% /snap/gnome-3-38-2004/119
+/dev/loop15      13M   13M     0 100% /snap/snap-store/959
+/dev/loop16      12M   12M     0 100% /snap/nmap/3514
+/dev/loop18      39M   39M     0 100% /snap/snapd/21759
+/dev/nvme0n1p1  3,7G  210M  3,3G   6% /boot
+/dev/nvme0n1p2  3,9G  6,1M  3,9G   1% /boot/efi
+tmpfs           784M   28K  784M   1% /run/user/1000
+/dev/sdb        968M  601M  317M  66% /home/rvc/mnt/usb
+/dev/sdc        318M   47K  301M   1% /media/rvc/storage
+
+sudo time dd if=/dev/urandom of=/media/rvc/storage/file-10M bs=10M count=1 oflag=direct
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0,0601726 s, 174 MB/s
+0.00user 0.06system 0:00.06elapsed 100%CPU (0avgtext+0avgdata 12796maxresident)k
+2inputs+20480outputs (0major+2654minor)pagefaults 0swaps
+
+sudo time dd if=/media/rvc/storage/file-10M of=./file-10M_from_board bs=10M iflag=direct
+1+0 records in
+1+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0,938847 s, 11,2 MB/s
+0.00user 0.04system 0:00.94elapsed 4%CPU (0avgtext+0avgdata 12824maxresident)k
+20480inputs+20480outputs (0major+2654minor)pagefaults 0swaps
+
+
+---------- BOARD -----------
+
+
+root@salvator-x:~# ping -c 4 192.168.11.2 -s 128
+PING 192.168.11.2 (192.168.11.2): 128 data bytes
+136 bytes from 192.168.11.2: seq=0 ttl=64 time=0.665 ms
+136 bytes from 192.168.11.2: seq=1 ttl=64 time=0.737 ms
+136 bytes from 192.168.11.2: seq=2 ttl=64 time=0.760 ms
+136 bytes from 192.168.11.2: seq=3 ttl=64 time=0.730 ms
+
+--- 192.168.11.2 ping statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max = 0.665/0.723/0.760 ms
+root@salvator-x:~# 
+root@salvator-x:~# cat /proc/interrupts | grep -e e646 > after_usb_dmac10_int.tx 
+t
+root@salvator-x:~# 
+root@salvator-x:~# cat before_usb_dmac10_int.txt
+ 47:        390          0          0          0          0          0          0          0     GIC-0  66 Level     e6460000.dma-controller:0, e6460000.dma-controller:1
+root@salvator-x:~# 
+root@salvator-x:~# cat after_usb_dmac10_int.txt
+ 47:       1895          0          0          0          0          0          0          0     GIC-0  66 Level     e6460000.dma-controller:0, e6460000.dma-controller:1
+root@salvator-x:~# cmp /media/rvc/storage/file-10M ./file-10M_from_board
+
+sudo umount /media/rvc/storage
+
+----------- BOARD ------------
+
+root@salvator-x:~# rmmod g_multi
+root@salvator-x:~# 
+root@salvator-x:~# rm -rf /tmp/tmp.img
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+[89234.285654] usb 1-1.3: USB disconnect, device number 86
+[89234.285842] rndis_host 1-1.3:1.0 usb0: unregister 'rndis_host' usb-0000:00:14.0-1.3, RNDIS device
+[89234.329129] sd 2:0:0:0: [sdc] Synchronizing SCSI cache
+[89234.329178] sd 2:0:0:0: [sdc] Synchronize Cache(10) failed: Result: hostbyte=DID_NO_CONNECT driverbyte=DRIVER_OK
+
+ 
+#### Result: OK ####
