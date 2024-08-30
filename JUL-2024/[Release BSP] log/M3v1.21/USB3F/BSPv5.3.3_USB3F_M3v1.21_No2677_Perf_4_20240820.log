@@ -1,0 +1,131 @@
+----------- BOARD ------------
+
+root@salvator-x:~# modprobe g_ncm
+[  631.103589] using random self ethernet address
+[  631.110553] using random host ethernet address
+[  631.120878] usb0: HOST MAC e6:66:b2:bd:8a:d4
+[  631.125928] usb0: MAC 06:f9:80:70:78:4c
+[  631.130669] g_ncm gadget: NCM Gadget
+[  631.135016] g_ncm gadget: g_ncm ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/state
+configured
+root@salvator-x:~# 
+root@salvator-x:~# ip a |grep usb
+4: usb0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop qlen 1000
+root@salvator-x:~# 
+root@salvator-x:~# ifconfig usb0 192.168.0.2 up
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+[710858.824227] cdc_ncm 2-2:1.0 enxe666b2bd8ad4: renamed from usb0
+dmesg 2>&1 |grep 'renamed from usb0'
+
+sudo ifconfig enxe666b2bd8ad4 192.168.0.3 up
+enx00e0006095bd: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.8.8  netmask 255.255.255.0  broadcast 192.168.8.255
+        ether 00:e0:00:60:95:bd  txqueuelen 1000  (Ethernet)
+        RX packets 66583248  bytes 25130727993 (25.1 GB)
+        RX errors 0  dropped 1354338  overruns 0  frame 0
+        TX packets 70251723  bytes 91080998091 (91.0 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enxe666b2bd8ad4: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.3  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::b199:a383:d7f3:56c2  prefixlen 64  scopeid 0x20<link>
+        ether e6:66:b2:bd:8a:d4  txqueuelen 1000  (Ethernet)
+        RX packets 2  bytes 152 (152.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2  bytes 443 (443.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 2133925  bytes 635396722 (635.3 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2133925  bytes 635396722 (635.3 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp59s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.4.12  netmask 255.255.248.0  broadcast 192.168.7.255
+        inet6 fe80::2885:7f4a:87f8:ff15  prefixlen 64  scopeid 0x20<link>
+        ether 38:ba:f8:7b:f4:c6  txqueuelen 1000  (Ethernet)
+        RX packets 13728282  bytes 13345372932 (13.3 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 10088289  bytes 8451001559 (8.4 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+
+---------- BOARD -----------
+
+root@salvator-x:~# kill $(jobs -p)
+kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
+root@salvator-x:~# 
+root@salvator-x:~# iperf3 -s > iperf3_result.txt &
+[1] 808
+root@salvator-x:~# 
+root@salvator-x:~# echo WAIT 10S
+WAIT 10S
+root@salvator-x:~# 
+root@salvator-x:~# cat iperf3_result.txt
+-----------------------------------------------------------
+Server listening on 5201 (test #1)
+-----------------------------------------------------------
+Accepted connection from 192.168.0.3, port 38140
+[  5] local 192.168.0.2 port 5201 connected to 192.168.0.3 port 38877
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-1.00   sec  16.2 MBytes   136 Mbits/sec  0.069 ms  14017/25727 (54%)  
+[  5]   1.00-2.00   sec  16.2 MBytes   136 Mbits/sec  0.069 ms  14163/25861 (55%)  
+[  5]   2.00-3.00   sec  15.8 MBytes   133 Mbits/sec  0.195 ms  14366/25808 (56%)  
+[  5]   3.00-4.00   sec  15.2 MBytes   127 Mbits/sec  0.130 ms  15050/26026 (58%)  
+[  5]   4.00-5.00   sec  15.4 MBytes   129 Mbits/sec  0.101 ms  14719/25852 (57%)  
+[  5]   5.00-6.00   sec  21.5 MBytes   180 Mbits/sec  0.097 ms  10340/25905 (40%)  
+[  5]   6.00-7.00   sec  15.8 MBytes   133 Mbits/sec  0.367 ms  14373/25825 (56%)  
+[  5]   7.00-8.00   sec  16.0 MBytes   134 Mbits/sec  0.122 ms  14371/25930 (55%)  
+[  5]   8.00-9.00   sec  15.7 MBytes   132 Mbits/sec  0.134 ms  14545/25903 (56%)  
+[  5]   9.00-10.00  sec  15.4 MBytes   129 Mbits/sec  0.177 ms  14768/25931 (57%)  
+[  5]  10.00-10.00  sec  1.41 KBytes  6.17 Mbits/sec  0.326 ms  0/1 (0%)  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-10.00  sec   163 MBytes   137 Mbits/sec  0.326 ms  140712/258769 (54%)  receiver
+root@salvator-x:~# 
+root@salvator-x:~# kill $(jobs -p)
+iperf3: interrupt - the server has terminated
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+iperf3 -c 192.168.0.2 -u -b 300M > iperf3_result.txt &
+Connecting to host 192.168.0.2, port 5201
+[ 10] local 192.168.0.3 port 38877 connected to 192.168.0.2 port 5201
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[ 10]   0.00-1.00   sec  35.7 MBytes   300 Mbits/sec  25885  
+[ 10]   1.00-2.00   sec  35.8 MBytes   300 Mbits/sec  25898  
+[ 10]   2.00-3.00   sec  35.8 MBytes   300 Mbits/sec  25890  
+[ 10]   3.00-4.00   sec  35.8 MBytes   300 Mbits/sec  25898  
+[ 10]   4.00-5.00   sec  35.8 MBytes   300 Mbits/sec  25897  
+[ 10]   5.00-6.00   sec  35.8 MBytes   300 Mbits/sec  25899  
+[ 10]   6.00-7.00   sec  35.8 MBytes   300 Mbits/sec  25897  
+[ 10]   7.00-8.00   sec  35.8 MBytes   300 Mbits/sec  25899  
+[ 10]   8.00-9.00   sec  35.8 MBytes   300 Mbits/sec  25897  
+[ 10]   9.00-10.00  sec  35.8 MBytes   300 Mbits/sec  25910  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[ 10]   0.00-10.00  sec   358 MBytes   300 Mbits/sec  0.000 ms  0/258970 (0%)  sender
+[ 10]   0.00-10.00  sec   163 MBytes   137 Mbits/sec  0.326 ms  140712/258769 (54%)  receiver
+
+iperf Done.
+
+^C
+[1]+  Done(1)                 iperf3 -s > iperf3_result.txt
+root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# kill $(jobs -p)
+kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
+root@salvator-x:~# 
+root@salvator-x:~# rmmod g_ncm
+root@salvator-x:~# 
+ 
+#### Result: OK ####

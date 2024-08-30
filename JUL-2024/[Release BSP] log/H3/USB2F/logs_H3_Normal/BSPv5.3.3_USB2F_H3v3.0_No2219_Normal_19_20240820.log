@@ -770,22 +770,24 @@ root@salvator-x:~#
 ----------- BOARD ------------
 
 root@salvator-x:~# modprobe usb_f_ss_lb bulk_maxpacket=512; modprobe g_zero
-[  188.855054] zero gadget: Gadget Zero, version: Cinco de Mayo 2008
-[  188.861398] zero gadget: zero ready
+[ 2378.866389] zero gadget: Gadget Zero, version: Cinco de Mayo 2008
+[ 2378.872847] zero gadget: zero ready
 root@salvator-x:~# 
-root@salvator-x:~# cat /sys/devices/platform/soc/e659c000.usb/udc/e659c000.usb/state
+root@salvator-x:~# cat /sys/devices/platform/soc/e6590000.usb/udc/e6590000.usb/state
 configured
 root@salvator-x:~# 
 
 ---------- HOST-PC -----------
+mount: /proc/bus/usb: mount(2) system call failed: No space left on device.
 
 lsusb | grep Gadget
-Bus 001 Device 096: ID 0525:a4a0 Netchip Technology, Inc. Linux-USB "Gadget Zero"
+Bus 001 Device 068: ID 0525:a4a0 Netchip Technology, Inc. Linux-USB "Gadget Zero"
+rvc@Long_Trinh_Da:~/banvien_stuff$ sudo rmmod usbtest
+rvc@Long_Trinh_Da:~/banvien_stuff$ sudo modprobe usbtest alt=2
+rvc@Long_Trinh_Da:~/banvien_stuff$ sudo ./testusb -a -t 25  -s 64 -c 1
+high speed      /dev/bus/usb/001/013    0
+/dev/bus/usb/001/013 test 25,    0.000920 secs
 
-sudo /home/rvc/banvien_stuff/testusb -D /proc/bus/usb/001/096 -t 2
-/home/rvc/banvien_stuff/testusb: /proc/bus/usb/001/096 may see only control tests
-high speed	/proc/bus/usb/001/096	0
-/proc/bus/usb/001/096 test 2,    0.058305 secs
 ----------- BOARD ------------
 
 root@salvator-x:~# rmmod g_zero

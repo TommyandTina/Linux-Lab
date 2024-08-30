@@ -1,0 +1,1076 @@
+
+----------- BOARD ------------
+
+root@salvator-x:~# mount -t tmpfs -o size=700M tmpfs /tmp
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/zero of=/tmp/tmp.img bs=1M count=650
+650+0 records in
+650+0 records out
+681574400 bytes (682 MB, 650 MiB) copied, 3.24756 s, 210 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# mkfs.ext3 -L storage /tmp/tmp.img
+mke2fs 1.47.0 (5-Feb-2023)
+Discarding device blocks:      0/166400             done                            
+Creating filesystem with 166400 4k blocks and 41664 inodes
+Filesystem UUID: 4825662f-57a2-4a3f-aa05-9b262feb578a
+Superblock backups stored on blocks: 
+	32768, 98304, 163840
+
+Allocating group tables: 0/6   done                            
+Writing inode tables: 0/6   done                            
+Creating journal (4096 blocks): done
+Writing superblocks and filesystem accounting information: 0/6   done
+
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_mass_storage file=/tmp/tmp.img
+root@salvator-x:~# 
+root@salvator-x:~# rmmod g_mass_storage
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_mass_storage file=/tmp/tmp.img
+[  937.400650] Mass Storage Function, version: 2009/09/11
+[  937.409177] LUN: removable file: (no medium)
+[  937.416084] LUN: file: /tmp/tmp.img
+[  937.420261] Number of LUNs=1
+[  937.424520] g_mass_storage gadget: Mass Storage Gadget, version: 2009/09/11
+[  937.432184] g_mass_storage gadget: userspace failed to provide iSerialNumber
+[  937.439906] g_mass_storage gadget: g_mass_storage ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/state
+configured
+root@salvator-x:~# 
+---------- HOST-PC -----------
+
+dmesg
+[711163.820677] usb 2-2: USB disconnect, device number 91
+[711163.821536] blk_update_request: I/O error, dev sdd, sector 0 op 0x1:(WRITE) flags 0x800 phys_seg 0 prio class 0
+[711163.961603] Buffer I/O error on dev sdd, logical block 484, lost sync page write
+[711163.961611] JBD2: Error -5 detected when updating journal superblock for sdd-8.
+[711163.961614] Aborting journal on device sdd-8.
+[711163.961617] Buffer I/O error on dev sdd, logical block 484, lost sync page write
+[711163.961620] JBD2: Error -5 detected when updating journal superblock for sdd-8.
+[711163.961673] EXT4-fs error (device sdd): ext4_put_super:1204: comm umount: Couldn't clean up the journal
+[711163.961680] EXT4-fs (sdd): Remounting filesystem read-only
+[711163.983663] sd 3:0:0:0: [sdd] Synchronizing SCSI cache
+[711163.983692] sd 3:0:0:0: [sdd] Synchronize Cache(10) failed: Result: hostbyte=DID_NO_CONNECT driverbyte=DRIVER_OK
+[711164.972213] usb 2-2: new SuperSpeed USB device number 92 using xhci_hcd
+[711164.995154] usb 2-2: New USB device found, idVendor=0525, idProduct=a4a5, bcdDevice= 5.10
+[711164.995162] usb 2-2: New USB device strings: Mfr=3, Product=4, SerialNumber=0
+[711164.995165] usb 2-2: Product: Mass Storage Gadget
+[711164.995168] usb 2-2: Manufacturer: Linux 5.10.218-yocto-standard with renesas_usb3
+[711164.997238] usb-storage 2-2:1.0: USB Mass Storage device detected
+[711164.997492] usb-storage 2-2:1.0: Quirks match for vid 0525 pid a4a5: 10000
+[711164.997574] scsi host3: usb-storage 2-2:1.0
+[711166.008909] scsi 3:0:0:0: Direct-Access     Linux    File-Stor Gadget 0510 PQ: 0 ANSI: 2
+[711166.009728] sd 3:0:0:0: Attached scsi generic sg1 type 0
+[711166.010454] sd 3:0:0:0: Power-on or device reset occurred
+[711166.011295] sd 3:0:0:0: [sdd] 1331200 512-byte logical blocks: (682 MB/650 MiB)
+[711166.011840] sd 3:0:0:0: [sdd] Write Protect is off
+[711166.011852] sd 3:0:0:0: [sdd] Mode Sense: 00 00 00 00
+[711166.012258] sd 3:0:0:0: [sdd] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[711166.015835] sd 3:0:0:0: [sdd] Attached SCSI disk
+[711166.304180] EXT4-fs (sdd): mounting ext3 file system using the ext4 subsystem
+[711166.307208] EXT4-fs (sdd): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+
+df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            3,8G     0  3,8G   0% /dev
+tmpfs           784M  2,5M  781M   1% /run
+/dev/nvme0n1p4  458G  300G  135G  70% /
+tmpfs           3,9G     0  3,9G   0% /dev/shm
+tmpfs           5,0M  4,0K  5,0M   1% /run/lock
+tmpfs           3,9G     0  3,9G   0% /sys/fs/cgroup
+/dev/loop0      128K  128K     0 100% /snap/bare/5
+/dev/loop1       64M   64M     0 100% /snap/core20/2318
+/dev/loop2      497M  497M     0 100% /snap/gnome-42-2204/141
+/dev/loop3       56M   56M     0 100% /snap/core18/2829
+/dev/loop4       13M   13M     0 100% /snap/snap-store/959
+/dev/loop5       64M   64M     0 100% /snap/core20/2182
+/dev/loop7      506M  506M     0 100% /snap/gnome-42-2204/176
+/dev/loop17      75M   75M     0 100% /snap/core22/1439
+/dev/loop10     384K  384K     0 100% /snap/device-tree-compiler/91
+/dev/loop14     347M  347M     0 100% /snap/gnome-3-38-2004/119
+/dev/loop8       13M   13M     0 100% /snap/snap-store/1113
+/dev/loop13      41M   41M     0 100% /snap/snapd/20290
+/dev/loop6       12M   12M     0 100% /snap/nmap/3470
+/dev/loop9       75M   75M     0 100% /snap/core22/1380
+/dev/loop16      92M   92M     0 100% /snap/gtk-common-themes/1535
+/dev/loop15     350M  350M     0 100% /snap/gnome-3-38-2004/143
+/dev/loop18     9,8M  9,8M     0 100% /snap/htop/4407
+/dev/loop11      12M   12M     0 100% /snap/nmap/3514
+/dev/loop12      39M   39M     0 100% /snap/snapd/21759
+/dev/nvme0n1p1  3,7G  210M  3,3G   6% /boot
+/dev/nvme0n1p2  3,9G  6,1M  3,9G   1% /boot/efi
+tmpfs           784M   32K  784M   1% /run/user/1000
+/dev/sdc1       944M  309M  588M  35% /mnt/usb
+/dev/sdd        624M   44K  591M   1% /media/rvc/storage
+
+---------- BOARD -----------
+
+root@salvator-x:~# trace-cmd record -p function_graph -l renesas_usb3_irq sleep 1 &
+[1] 997
+root@salvator-x:~# 
+sudo time dd if=/dev/zero of=/media/rvc/storage/file-600M bs=600M count=1 oflag=direct
+  plugin 'function_graph'
+1+0 records in
+1+0 records out
+629145600 bytes (629 MB, 600 MiB) copied, 2,42381 s, 260 MB/s
+0.00user 2.46system 0:02.47elapsed 99%CPU (0avgtext+0avgdata 616892maxresident)k
+8inputs+1228800outputs (0major+153692minor)pagefaults 0swaps
+CPU0 data recorded at offset=0x1b5000
+    77464 bytes in size (372736 uncompressed)
+CPU1 data recorded at offset=0x1c8000
+    0 bytes in size (0 uncompressed)
+CPU2 data recorded at offset=0x1c8000
+    0 bytes in size (0 uncompressed)
+CPU3 data recorded at offset=0x1c8000
+    0 bytes in size (0 uncompressed)
+CPU4 data recorded at offset=0x1c8000
+    0 bytes in size (0 uncompressed)
+CPU5 data recorded at offset=0x1c8000
+    0 bytes in size (0 uncompressed)
+
+root@salvator-x:~# trace-cmd report
+cpus=6
+          <idle>-0     [000]   946.527827: funcgraph_entry:      + 41.106 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.528089: funcgraph_entry:      + 45.313 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.528195: funcgraph_entry:      + 19.591 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.528367: funcgraph_entry:      + 18.149 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.528455: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.528571: funcgraph_entry:        8.413 us   |  renesas_usb3_irq();
+          <idle>-0     [000]   946.528925: funcgraph_entry:      + 20.312 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.529142: funcgraph_entry:      + 38.342 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.529240: funcgraph_entry:      + 18.029 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.529379: funcgraph_entry:      + 17.187 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.529465: funcgraph_entry:      + 15.265 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.529559: funcgraph_entry:      + 16.105 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.529650: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.529747: funcgraph_entry:      + 16.707 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.529873: funcgraph_entry:      + 35.216 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.529957: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.530083: funcgraph_entry:      + 26.082 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.530157: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.530289: funcgraph_entry:      + 25.000 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.530396: funcgraph_entry:        8.894 us   |  renesas_usb3_irq();
+          <idle>-0     [000]   946.530791: funcgraph_entry:      + 20.312 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.531010: funcgraph_entry:      + 41.105 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.531109: funcgraph_entry:      + 18.750 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.531245: funcgraph_entry:      + 16.707 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.531345: funcgraph_entry:      + 16.587 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.531439: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.531530: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.531637: funcgraph_entry:      + 18.870 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.531804: funcgraph_entry:      + 16.947 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.531891: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.532016: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.532115: funcgraph_entry:      + 16.586 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.532207: funcgraph_entry:      + 15.264 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.532298: funcgraph_entry:      + 15.384 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.532386: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.532521: funcgraph_entry:      + 37.139 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.532606: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.532723: funcgraph_entry:        8.774 us   |  renesas_usb3_irq();
+          <idle>-0     [000]   946.533029: funcgraph_entry:      + 21.274 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.533254: funcgraph_entry:      + 40.264 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.533360: funcgraph_entry:      + 17.548 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.533502: funcgraph_entry:      + 18.630 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.533588: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.533681: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.533782: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.533874: funcgraph_entry:      + 15.746 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.533967: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.534061: funcgraph_entry:      + 17.068 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.534194: funcgraph_entry:      + 27.284 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.534270: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.534369: funcgraph_entry:      + 16.947 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.534462: funcgraph_entry:      + 16.587 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.534565: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.534655: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.534745: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.534838: funcgraph_entry:      + 16.706 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.534967: funcgraph_entry:      + 27.885 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.535043: funcgraph_entry:      + 17.788 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.535178: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.535264: funcgraph_entry:      + 15.746 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.535359: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.535452: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.535545: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.535672: funcgraph_entry:      + 19.471 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.535832: funcgraph_entry:      + 26.683 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.535907: funcgraph_entry:      + 15.504 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.536034: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.536128: funcgraph_entry:      + 15.265 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.536215: funcgraph_entry:      + 15.265 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.536309: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.536395: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.536509: funcgraph_entry:        9.134 us   |  renesas_usb3_irq();
+          <idle>-0     [000]   946.537108: funcgraph_entry:      + 25.120 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.537338: funcgraph_entry:      + 40.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.537441: funcgraph_entry:      + 19.231 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.537595: funcgraph_entry:      + 18.510 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.537685: funcgraph_entry:      + 15.384 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.537778: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.537864: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.537962: funcgraph_entry:      + 16.947 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.538091: funcgraph_entry:      + 35.457 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.538174: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.538314: funcgraph_entry:      + 28.245 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.538390: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.538527: funcgraph_entry:      + 33.774 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.538608: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.538741: funcgraph_entry:      + 32.812 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.538821: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.538958: funcgraph_entry:      + 27.885 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.539033: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.539129: funcgraph_entry:      + 15.264 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.539256: funcgraph_entry:      + 28.125 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.539332: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.539427: funcgraph_entry:      + 16.947 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.539525: funcgraph_entry:      + 15.024 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.539640: funcgraph_entry:      + 20.673 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.539793: funcgraph_entry:      + 18.390 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.539913: funcgraph_entry:      + 34.254 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.540004: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.540128: funcgraph_entry:      + 16.707 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.540211: funcgraph_entry:      + 17.668 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.540349: funcgraph_entry:      + 33.173 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.540431: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.540572: funcgraph_entry:      + 31.250 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.540652: funcgraph_entry:      + 15.264 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.540776: funcgraph_entry:      + 14.543 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.540861: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.540962: funcgraph_entry:      + 15.746 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.541052: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.541149: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.541276: funcgraph_entry:      + 32.211 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.541356: funcgraph_entry:      + 17.068 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.541482: funcgraph_entry:      + 17.909 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.541581: funcgraph_entry:      + 20.432 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.541712: funcgraph_entry:      + 33.414 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.541793: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.541925: funcgraph_entry:      + 34.375 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.542005: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.542139: funcgraph_entry:      + 25.361 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.542213: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.542309: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.542442: funcgraph_entry:      + 31.971 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.542524: funcgraph_entry:      + 15.866 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.542650: funcgraph_entry:      + 27.043 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.542734: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.542859: funcgraph_entry:      + 34.736 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.542945: funcgraph_entry:      + 16.586 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.543047: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.543134: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.543272: funcgraph_entry:      + 26.443 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.543347: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.543444: funcgraph_entry:      + 17.668 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.543533: funcgraph_entry:      + 16.707 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.543659: funcgraph_entry:      + 18.990 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.543799: funcgraph_entry:      + 17.308 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.543882: funcgraph_entry:      + 18.029 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.544018: funcgraph_entry:      + 25.962 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.544128: funcgraph_entry:        9.255 us   |  renesas_usb3_irq();
+          <idle>-0     [000]   946.544533: funcgraph_entry:      + 25.240 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.544764: funcgraph_entry:      + 40.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.544866: funcgraph_entry:      + 18.870 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.545006: funcgraph_entry:      + 16.467 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.545105: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.545197: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.545289: funcgraph_entry:      + 15.265 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.545377: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.545501: funcgraph_entry:      + 17.308 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.545598: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.545689: funcgraph_entry:      + 18.149 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.545780: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.545916: funcgraph_entry:      + 35.817 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.546000: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.546129: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.546215: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.546309: funcgraph_entry:      + 15.504 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.546395: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.546487: funcgraph_entry:      + 15.265 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.546617: funcgraph_entry:      + 26.322 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.546691: funcgraph_entry:      + 15.384 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.546786: funcgraph_entry:      + 15.504 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.546875: funcgraph_entry:      + 14.784 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.546997: funcgraph_entry:      + 16.706 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.547104: funcgraph_entry:      + 28.004 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.547180: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.547275: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.547411: funcgraph_entry:      + 36.298 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.547495: funcgraph_entry:      + 16.706 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.547641: funcgraph_entry:      + 21.274 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.547776: funcgraph_entry:      + 18.630 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.547866: funcgraph_entry:      + 17.428 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.547962: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.548057: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.548157: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.548257: funcgraph_entry:      + 15.265 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.548350: funcgraph_entry:      + 14.424 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.548439: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.548541: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.548633: funcgraph_entry:      + 16.707 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.548767: funcgraph_entry:      + 35.577 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.548851: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.548985: funcgraph_entry:      + 26.803 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.549061: funcgraph_entry:      + 15.504 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.549159: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.549289: funcgraph_entry:      + 32.212 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.549369: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.549502: funcgraph_entry:      + 32.332 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.549583: funcgraph_entry:      + 15.145 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.549714: funcgraph_entry:      + 26.563 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.549790: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.549893: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.549986: funcgraph_entry:      + 15.264 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.550090: funcgraph_entry:      + 15.145 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.550177: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.550266: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.550392: funcgraph_entry:      + 14.904 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.550479: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.550570: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.550658: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.550794: funcgraph_entry:      + 35.216 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.550876: funcgraph_entry:      + 17.669 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.551002: funcgraph_entry:      + 26.923 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.551085: funcgraph_entry:      + 15.265 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.551206: funcgraph_entry:      + 23.557 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.551312: funcgraph_entry:        9.255 us   |  renesas_usb3_irq();
+          <idle>-0     [000]   946.553486: funcgraph_entry:      + 26.442 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.553625: funcgraph_entry:      + 38.582 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.553720: funcgraph_entry:      + 19.351 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.553863: funcgraph_entry:      + 16.707 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.553963: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.554053: funcgraph_entry:      + 15.866 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.554144: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.554233: funcgraph_entry:      + 15.265 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.554369: funcgraph_entry:      + 26.322 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.554447: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.554538: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.554642: funcgraph_entry:      + 14.903 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.554734: funcgraph_entry:      + 16.225 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.554828: funcgraph_entry:      + 15.504 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.554920: funcgraph_entry:      + 17.789 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.555051: funcgraph_entry:      + 35.337 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.555134: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.555260: funcgraph_entry:      + 26.322 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.555339: funcgraph_entry:      + 16.947 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.555468: funcgraph_entry:      + 24.519 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.555540: funcgraph_entry:      + 15.024 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.555641: funcgraph_entry:      + 20.072 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.555820: funcgraph_entry:      + 23.558 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.555929: funcgraph_entry:      + 27.164 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.556004: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.556097: funcgraph_entry:      + 15.264 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.556202: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.556295: funcgraph_entry:      + 17.068 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.556388: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.556481: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.556583: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.556670: funcgraph_entry:      + 14.663 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.556758: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.556847: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.556984: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.557072: funcgraph_entry:      + 15.024 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.557161: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.557250: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.557359: funcgraph_entry:      + 17.187 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.557493: funcgraph_entry:      + 36.058 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.557579: funcgraph_entry:      + 15.866 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.557726: funcgraph_entry:      + 31.731 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.557806: funcgraph_entry:      + 16.225 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.557937: funcgraph_entry:      + 32.332 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.558017: funcgraph_entry:      + 15.384 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.558148: funcgraph_entry:      + 26.202 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.558222: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.558319: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.558407: funcgraph_entry:      + 15.264 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.558509: funcgraph_entry:      + 15.746 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.558601: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.558703: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.558788: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.558921: funcgraph_entry:      + 35.697 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.559016: funcgraph_entry:      + 16.948 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.559150: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.559236: funcgraph_entry:      + 17.668 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.559328: funcgraph_entry:      + 15.265 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.559417: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.559514: funcgraph_entry:      + 15.384 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.559644: funcgraph_entry:      + 21.515 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.559770: funcgraph_entry:      + 16.947 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.559852: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.559945: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.560050: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.560146: funcgraph_entry:        8.533 us   |  renesas_usb3_irq();
+          <idle>-0     [000]   946.560542: funcgraph_entry:      + 18.029 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.560675: funcgraph_entry:      + 33.533 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.560758: funcgraph_entry:      + 16.587 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.560891: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.560985: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.561077: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.561164: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.561314: funcgraph_entry:      + 33.534 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.561395: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.561535: funcgraph_entry:      + 35.457 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.561617: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.561751: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.561833: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.561926: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.562015: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.562147: funcgraph_entry:      + 35.096 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.562231: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.562363: funcgraph_entry:      + 32.212 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.562444: funcgraph_entry:      + 16.706 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.562585: funcgraph_entry:      + 27.164 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.562660: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.562756: funcgraph_entry:      + 17.067 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.562895: funcgraph_entry:      + 28.847 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.562971: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.563069: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.563163: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.563290: funcgraph_entry:      + 34.375 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.563371: funcgraph_entry:      + 16.225 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.563504: funcgraph_entry:      + 32.212 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.563590: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.563771: funcgraph_entry:      + 23.919 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.563860: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.563958: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.564047: funcgraph_entry:      + 16.707 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.564154: funcgraph_entry:      + 14.784 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.564250: funcgraph_entry:      + 16.947 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.564343: funcgraph_entry:      + 16.105 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.564452: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.564585: funcgraph_entry:      + 34.976 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.564667: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.564793: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.564882: funcgraph_entry:      + 17.188 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.564972: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.565064: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.565155: funcgraph_entry:      + 17.067 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.565286: funcgraph_entry:      + 36.178 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.565369: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.565500: funcgraph_entry:      + 33.895 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.565582: funcgraph_entry:      + 16.347 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.565727: funcgraph_entry:      + 33.053 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.565808: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.565941: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.566026: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.566115: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.566246: funcgraph_entry:      + 34.015 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.566329: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.566460: funcgraph_entry:      + 25.121 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.566533: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.566630: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.566717: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.566821: funcgraph_entry:      + 15.145 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.566908: funcgraph_entry:      + 17.668 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.566999: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.567091: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.567194: funcgraph_entry:      + 15.504 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.567290: funcgraph_entry:        9.375 us   |  renesas_usb3_irq();
+          <idle>-0     [000]   946.567545: funcgraph_entry:      + 18.870 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.567692: funcgraph_entry:      + 35.457 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.567775: funcgraph_entry:      + 17.187 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.567934: funcgraph_entry:      + 21.875 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.568017: funcgraph_entry:      + 17.187 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.568110: funcgraph_entry:      + 16.586 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.568237: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.568319: funcgraph_entry:      + 17.067 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.568414: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.568504: funcgraph_entry:      + 15.504 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.568594: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.568697: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.568789: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.568878: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.568966: funcgraph_entry:      + 15.024 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.569101: funcgraph_entry:      + 38.342 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.569189: funcgraph_entry:      + 15.024 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.569317: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.569442: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.569520: funcgraph_entry:      + 16.467 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.569632: funcgraph_entry:      + 18.149 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.569740: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.569830: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.569917: funcgraph_entry:      + 15.264 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.570008: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.570100: funcgraph_entry:      + 16.586 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.570201: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.570290: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.570384: funcgraph_entry:      + 16.826 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.570475: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.570610: funcgraph_entry:      + 36.899 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.570695: funcgraph_entry:      + 17.187 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.570823: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.570909: funcgraph_entry:      + 15.866 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.570998: funcgraph_entry:      + 15.024 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.571092: funcgraph_entry:      + 15.145 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.571190: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.571332: funcgraph_entry:      + 34.495 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.571415: funcgraph_entry:      + 16.347 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.571546: funcgraph_entry:      + 31.851 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.571638: funcgraph_entry:      + 20.553 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.571815: funcgraph_entry:      + 28.966 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.571890: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.571984: funcgraph_entry:      + 15.024 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.572078: funcgraph_entry:      + 14.784 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.572208: funcgraph_entry:      + 33.414 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.572288: funcgraph_entry:      + 14.904 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.572413: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.572499: funcgraph_entry:      + 17.187 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.572592: funcgraph_entry:      + 14.904 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.572680: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.572786: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.572903: funcgraph_entry:      + 16.587 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.572993: funcgraph_entry:      + 14.663 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.573081: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.573173: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.573275: funcgraph_entry:      + 17.188 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.573367: funcgraph_entry:      + 16.467 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.573456: funcgraph_entry:      + 17.548 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.573582: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.573675: funcgraph_entry:      + 16.947 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.573767: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.573854: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.573964: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.574046: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.574145: funcgraph_entry:        9.135 us   |  renesas_usb3_irq();
+          <idle>-0     [000]   946.574376: funcgraph_entry:      + 18.870 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.574518: funcgraph_entry:      + 32.211 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.574597: funcgraph_entry:      + 18.389 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.574755: funcgraph_entry:      + 29.207 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.574833: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.574960: funcgraph_entry:      + 26.683 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.575033: funcgraph_entry:      + 14.784 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.575167: funcgraph_entry:      + 35.337 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.575251: funcgraph_entry:      + 16.707 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.575390: funcgraph_entry:      + 32.452 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.575468: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.575635: funcgraph_entry:      + 33.895 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.575735: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.575833: funcgraph_entry:      + 15.265 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.575935: funcgraph_entry:      + 16.587 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.576026: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.576118: funcgraph_entry:      + 17.308 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.576211: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.576309: funcgraph_entry:      + 17.067 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.576411: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.576538: funcgraph_entry:      + 27.524 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.576615: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.576751: funcgraph_entry:      + 38.221 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.576838: funcgraph_entry:      + 16.105 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.576970: funcgraph_entry:      + 32.812 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.577050: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.577192: funcgraph_entry:      + 32.572 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.577272: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.577399: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.577482: funcgraph_entry:      + 16.105 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.577572: funcgraph_entry:      + 15.024 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.577660: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.577756: funcgraph_entry:      + 15.866 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.577852: funcgraph_entry:      + 16.947 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.577944: funcgraph_entry:      + 16.587 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.578049: funcgraph_entry:      + 16.947 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.578175: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.578257: funcgraph_entry:      + 14.544 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.578343: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.578435: funcgraph_entry:      + 17.187 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.578525: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.578629: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.578715: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.578809: funcgraph_entry:      + 14.904 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.578946: funcgraph_entry:      + 37.981 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.579031: funcgraph_entry:      + 16.707 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.579166: funcgraph_entry:      + 32.212 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.579246: funcgraph_entry:      + 14.904 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.579388: funcgraph_entry:      + 31.730 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.579468: funcgraph_entry:      + 14.664 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.579574: funcgraph_entry:      + 20.794 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.579735: funcgraph_entry:      + 20.313 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.579868: funcgraph_entry:      + 28.125 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.579947: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.580037: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.580128: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.580232: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.580320: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.580407: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.580547: funcgraph_entry:      + 38.342 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.580633: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.580766: funcgraph_entry:      + 33.895 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.580847: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.580991: funcgraph_entry:      + 34.135 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.581071: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.581184: funcgraph_entry:        8.894 us   |  renesas_usb3_irq();
+          <idle>-0     [000]   946.581431: funcgraph_entry:      + 16.947 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.581536: funcgraph_entry:      + 30.889 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.581614: funcgraph_entry:      + 17.548 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.581765: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.581864: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.581954: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.582042: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.582174: funcgraph_entry:      + 32.692 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.582254: funcgraph_entry:      + 16.347 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.582383: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.582466: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.582560: funcgraph_entry:      + 15.024 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.582650: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.582746: funcgraph_entry:      + 16.586 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.582844: funcgraph_entry:      + 16.706 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.582939: funcgraph_entry:      + 15.264 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.583027: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.583116: funcgraph_entry:      + 15.504 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.583222: funcgraph_entry:      + 17.548 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.583352: funcgraph_entry:      + 18.149 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.583435: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.583526: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.583641: funcgraph_entry:      + 19.471 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.583788: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.583871: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.584006: funcgraph_entry:      + 36.298 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.584090: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.584226: funcgraph_entry:      + 34.375 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.584309: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.584450: funcgraph_entry:      + 31.130 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.584528: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.584656: funcgraph_entry:      + 32.091 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.584742: funcgraph_entry:      + 16.347 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.584867: funcgraph_entry:      + 25.240 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.584940: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.585082: funcgraph_entry:      + 28.125 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.585159: funcgraph_entry:      + 15.866 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.585283: funcgraph_entry:      + 26.081 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.585355: funcgraph_entry:      + 15.265 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.585453: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.585583: funcgraph_entry:      + 37.259 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.585668: funcgraph_entry:      + 16.587 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.585805: funcgraph_entry:      + 32.212 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.585885: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.586047: funcgraph_entry:      + 26.442 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.586121: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.586215: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.586305: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.586407: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.586495: funcgraph_entry:      + 16.707 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.586586: funcgraph_entry:      + 16.347 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.586721: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.586815: funcgraph_entry:      + 15.384 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.586901: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.586991: funcgraph_entry:      + 16.105 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.587127: funcgraph_entry:      + 37.259 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.587212: funcgraph_entry:      + 17.188 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.587345: funcgraph_entry:      + 32.933 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.587424: funcgraph_entry:      + 15.384 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.587554: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.587637: funcgraph_entry:      + 19.351 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.587788: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.587869: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.588001: funcgraph_entry:      + 33.293 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.588083: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.588195: funcgraph_entry:        9.375 us   |  renesas_usb3_irq();
+          <idle>-0     [000]   946.588401: funcgraph_entry:      + 16.947 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.588500: funcgraph_entry:      + 30.649 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.588591: funcgraph_entry:      + 19.231 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.588748: funcgraph_entry:      + 25.842 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.588822: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.588918: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.589022: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.589113: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.589203: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.589297: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.589396: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.589484: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.589578: funcgraph_entry:      + 15.264 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.589665: funcgraph_entry:      + 14.904 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.589799: funcgraph_entry:      + 35.217 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.589881: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.590012: funcgraph_entry:      + 31.491 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.590101: funcgraph_entry:      + 16.105 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.590264: funcgraph_entry:      + 18.149 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.590348: funcgraph_entry:      + 14.784 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.590445: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.590546: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.590638: funcgraph_entry:      + 16.587 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.590728: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.590822: funcgraph_entry:      + 15.384 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.590921: funcgraph_entry:      + 17.669 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.591012: funcgraph_entry:      + 16.947 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.591104: funcgraph_entry:      + 15.746 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.591196: funcgraph_entry:      + 15.504 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.591298: funcgraph_entry:      + 17.428 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.591391: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.591483: funcgraph_entry:      + 18.750 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.591572: funcgraph_entry:      + 16.707 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.591740: funcgraph_entry:      + 20.192 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.591865: funcgraph_entry:      + 26.923 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.591941: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.592080: funcgraph_entry:      + 35.337 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.592162: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.592288: funcgraph_entry:      + 28.125 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.592362: funcgraph_entry:      + 16.225 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.592491: funcgraph_entry:      + 26.562 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.592567: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.592662: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.592750: funcgraph_entry:      + 14.784 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.592881: funcgraph_entry:      + 34.375 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.592964: funcgraph_entry:      + 16.947 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.593094: funcgraph_entry:      + 32.933 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.593175: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.593305: funcgraph_entry:      + 26.082 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.593379: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.593514: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.593600: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.593694: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.593781: funcgraph_entry:      + 16.947 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.593880: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.593977: funcgraph_entry:      + 16.707 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.594069: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.594155: funcgraph_entry:      + 17.909 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.594250: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.594352: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.594446: funcgraph_entry:      + 15.866 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.594531: funcgraph_entry:      + 17.427 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.594624: funcgraph_entry:      + 14.784 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.594726: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.594821: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.594938: funcgraph_entry:        9.375 us   |  renesas_usb3_irq();
+          <idle>-0     [000]   946.595161: funcgraph_entry:      + 19.230 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.595293: funcgraph_entry:      + 33.894 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.595376: funcgraph_entry:      + 18.870 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.595515: funcgraph_entry:      + 25.601 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.595589: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.595740: funcgraph_entry:      + 20.192 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.595840: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.595929: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.596021: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.596113: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.596215: funcgraph_entry:      + 15.866 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.596304: funcgraph_entry:      + 15.746 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.596396: funcgraph_entry:      + 16.947 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.596489: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.596591: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.596681: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.596769: funcgraph_entry:      + 17.188 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.596907: funcgraph_entry:      + 29.327 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.596984: funcgraph_entry:      + 17.188 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.597090: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.597188: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.597317: funcgraph_entry:      + 38.702 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.597403: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.597532: funcgraph_entry:      + 27.644 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.597608: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.597734: funcgraph_entry:      + 26.683 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.597808: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.597903: funcgraph_entry:      + 15.384 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.597995: funcgraph_entry:      + 16.707 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.598129: funcgraph_entry:      + 34.856 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.598212: funcgraph_entry:      + 15.265 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.598320: funcgraph_entry:      + 16.587 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.598428: funcgraph_entry:      + 18.389 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.598559: funcgraph_entry:      + 34.015 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.598644: funcgraph_entry:      + 17.188 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.598768: funcgraph_entry:      + 16.586 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.598863: funcgraph_entry:      + 17.188 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.598955: funcgraph_entry:      + 14.904 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.599043: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.599132: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.599235: funcgraph_entry:      + 15.024 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.599324: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.599413: funcgraph_entry:      + 14.904 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.599501: funcgraph_entry:      + 14.784 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.599605: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.599759: funcgraph_entry:      + 25.601 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.599887: funcgraph_entry:      + 19.711 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.599978: funcgraph_entry:      + 17.067 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.600072: funcgraph_entry:      + 16.707 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.600210: funcgraph_entry:      + 37.620 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.600296: funcgraph_entry:      + 18.149 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.600442: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.600524: funcgraph_entry:      + 17.427 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.600621: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.600713: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.600815: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.600907: funcgraph_entry:      + 15.265 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.600996: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.601088: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.601190: funcgraph_entry:      + 14.904 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.601278: funcgraph_entry:      + 17.789 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.601371: funcgraph_entry:      + 14.663 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.601473: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.601565: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.601654: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.601781: funcgraph_entry:        9.014 us   |  renesas_usb3_irq();
+          <idle>-0     [000]   946.602010: funcgraph_entry:      + 18.270 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.602145: funcgraph_entry:      + 34.255 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.602228: funcgraph_entry:      + 17.669 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.602362: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.602444: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.602531: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.602637: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.602760: funcgraph_entry:      + 26.562 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.602836: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.602936: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.603067: funcgraph_entry:      + 34.855 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.603150: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.603281: funcgraph_entry:      + 19.711 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.603369: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.603463: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.603550: funcgraph_entry:      + 17.308 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.603678: funcgraph_entry:      + 20.192 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.603835: funcgraph_entry:      + 27.644 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.603909: funcgraph_entry:      + 16.105 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.604045: funcgraph_entry:      + 36.058 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.604140: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.604268: funcgraph_entry:      + 26.562 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.604342: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.604440: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.604530: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.604634: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.604719: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.604812: funcgraph_entry:      + 16.706 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.604946: funcgraph_entry:      + 34.375 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.605028: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.605160: funcgraph_entry:      + 32.813 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.605241: funcgraph_entry:      + 15.384 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.605391: funcgraph_entry:      + 25.961 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.605464: funcgraph_entry:      + 14.783 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.605557: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.605653: funcgraph_entry:      + 15.264 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.605757: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.605844: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.605940: funcgraph_entry:      + 15.384 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.606026: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.606127: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.606219: funcgraph_entry:      + 15.024 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.606306: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.606410: funcgraph_entry:      + 14.663 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.606500: funcgraph_entry:      + 17.428 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.606591: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.606685: funcgraph_entry:      + 16.706 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.606818: funcgraph_entry:      + 16.826 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.606913: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.607002: funcgraph_entry:      + 15.024 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.607091: funcgraph_entry:      + 17.428 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.607238: funcgraph_entry:      + 36.779 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.607325: funcgraph_entry:      + 16.947 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.607463: funcgraph_entry:      + 33.533 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.607544: funcgraph_entry:      + 16.467 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.607715: funcgraph_entry:      + 20.072 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.607811: funcgraph_entry:      + 17.548 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.607899: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.608031: funcgraph_entry:      + 34.255 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.608118: funcgraph_entry:      + 16.467 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.608256: funcgraph_entry:      + 36.298 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.608340: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.608478: funcgraph_entry:      + 26.683 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.608552: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.608691: funcgraph_entry:      + 23.198 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.608810: funcgraph_entry:        9.254 us   |  renesas_usb3_irq();
+          <idle>-0     [000]   946.608964: funcgraph_entry:      + 15.265 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.609067: funcgraph_entry:      + 31.851 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.609147: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.609278: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.609358: funcgraph_entry:      + 15.384 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.609454: funcgraph_entry:      + 16.948 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.609584: funcgraph_entry:      + 32.331 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.609664: funcgraph_entry:      + 16.586 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.609790: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.609873: funcgraph_entry:      + 15.024 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.609963: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.610050: funcgraph_entry:      + 17.308 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.610149: funcgraph_entry:      + 16.707 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.610249: funcgraph_entry:      + 14.783 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.610355: funcgraph_entry:      + 17.308 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.610476: funcgraph_entry:      + 36.899 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.610571: funcgraph_entry:      + 16.467 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.610699: funcgraph_entry:      + 27.644 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.610775: funcgraph_entry:      + 16.105 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.610877: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.610972: funcgraph_entry:      + 16.707 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.611078: funcgraph_entry:      + 15.384 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.611168: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.611255: funcgraph_entry:      + 16.706 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.611388: funcgraph_entry:      + 34.616 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.611471: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.611602: funcgraph_entry:      + 33.052 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.611686: funcgraph_entry:      + 17.428 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.611858: funcgraph_entry:      + 26.563 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.611934: funcgraph_entry:      + 15.384 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.612033: funcgraph_entry:      + 16.467 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.612153: funcgraph_entry:      + 16.586 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.612241: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.612333: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.612422: funcgraph_entry:      + 17.789 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.612548: funcgraph_entry:      + 17.909 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.612636: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.612726: funcgraph_entry:      + 14.904 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.612821: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.612917: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.613010: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.613101: funcgraph_entry:      + 15.866 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.613193: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.613291: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.613382: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.613471: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.613571: funcgraph_entry:      + 16.586 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.613696: funcgraph_entry:      + 28.365 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.613772: funcgraph_entry:      + 15.264 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.613868: funcgraph_entry:      + 16.467 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.613960: funcgraph_entry:      + 17.068 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.614085: funcgraph_entry:      + 17.068 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.614164: funcgraph_entry:      + 16.707 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.614258: funcgraph_entry:      + 14.784 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.614363: funcgraph_entry:      + 16.706 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.614453: funcgraph_entry:      + 16.467 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.614545: funcgraph_entry:      + 15.264 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.614639: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.614737: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.614827: funcgraph_entry:      + 20.192 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.614923: funcgraph_entry:      + 15.866 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.615012: funcgraph_entry:      + 15.866 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.615139: funcgraph_entry:      + 15.866 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.615221: funcgraph_entry:      + 17.909 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.615318: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.615426: funcgraph_entry:        9.255 us   |  renesas_usb3_irq();
+          <idle>-0     [000]   946.615591: funcgraph_entry:      + 19.831 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.615871: funcgraph_entry:      + 51.082 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.615989: funcgraph_entry:      + 20.313 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.616139: funcgraph_entry:      + 27.043 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.616216: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.616344: funcgraph_entry:      + 28.606 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.616420: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.616522: funcgraph_entry:      + 15.746 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.616618: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.616716: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.616804: funcgraph_entry:      + 17.788 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.616897: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.616991: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.617117: funcgraph_entry:      + 16.587 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.617209: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.617297: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.617387: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.617522: funcgraph_entry:      + 36.298 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.617605: funcgraph_entry:      + 17.067 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.617747: funcgraph_entry:      + 14.784 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.617833: funcgraph_entry:      + 16.947 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.617927: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.618015: funcgraph_entry:      + 17.548 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.618117: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.618245: funcgraph_entry:      + 34.375 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.618329: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.618464: funcgraph_entry:      + 31.971 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.618553: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.618691: funcgraph_entry:      + 32.452 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.618771: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.618907: funcgraph_entry:      + 27.524 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.618982: funcgraph_entry:      + 15.145 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.619117: funcgraph_entry:      + 33.173 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.619198: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.619325: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.619451: funcgraph_entry:      + 26.442 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.619525: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.619642: funcgraph_entry:      + 21.394 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.619783: funcgraph_entry:      + 18.029 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.619913: funcgraph_entry:      + 35.096 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.619996: funcgraph_entry:      + 15.745 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.620125: funcgraph_entry:      + 31.971 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.620213: funcgraph_entry:      + 16.706 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.620352: funcgraph_entry:      + 32.812 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.620433: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.620560: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.620648: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.620780: funcgraph_entry:      + 34.976 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.620862: funcgraph_entry:      + 15.505 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.620966: funcgraph_entry:      + 14.904 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.621092: funcgraph_entry:      + 26.202 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.621166: funcgraph_entry:      + 14.904 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.621263: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.621356: funcgraph_entry:      + 15.866 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.621453: funcgraph_entry:      + 16.347 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.621546: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.621635: funcgraph_entry:      + 15.865 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.621726: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.621830: funcgraph_entry:      + 17.187 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.621919: funcgraph_entry:      + 15.024 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.622011: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.622103: funcgraph_entry:      + 15.265 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.622236: funcgraph_entry:      + 26.802 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.622312: funcgraph_entry:      + 15.866 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.622407: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.622515: funcgraph_entry:        8.774 us   |  renesas_usb3_irq();
+          <idle>-0     [000]   946.622688: funcgraph_entry:      + 19.591 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.622793: funcgraph_entry:      + 34.015 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.622874: funcgraph_entry:      + 17.307 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.623010: funcgraph_entry:      + 26.803 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.623093: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.623219: funcgraph_entry:      + 33.173 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.623301: funcgraph_entry:      + 17.549 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.623441: funcgraph_entry:      + 25.360 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.623514: funcgraph_entry:      + 16.346 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.623668: funcgraph_entry:      + 23.558 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.623824: funcgraph_entry:      + 23.317 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.623957: funcgraph_entry:      + 35.938 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.624040: funcgraph_entry:      + 15.144 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.624199: funcgraph_entry:      + 27.764 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.624274: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.624371: funcgraph_entry:      + 16.586 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.624531: funcgraph_entry:      + 39.543 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.624633: funcgraph_entry:      + 18.630 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.624768: funcgraph_entry:      + 27.284 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.624843: funcgraph_entry:      + 15.145 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.624969: funcgraph_entry:      + 26.563 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.625044: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.625147: funcgraph_entry:      + 15.866 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.625238: funcgraph_entry:      + 14.663 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.625340: funcgraph_entry:      + 16.467 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.625435: funcgraph_entry:      + 16.467 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.625522: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.625615: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.625740: funcgraph_entry:      + 16.466 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.625828: funcgraph_entry:      + 15.385 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.625916: funcgraph_entry:      + 15.025 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.626054: funcgraph_entry:      + 38.221 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.626139: funcgraph_entry:      + 16.226 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.626273: funcgraph_entry:      + 32.812 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.626356: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.626492: funcgraph_entry:      + 16.587 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.626572: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.626665: funcgraph_entry:      + 15.024 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.626758: funcgraph_entry:      + 14.183 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.626857: funcgraph_entry:      + 15.986 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.626950: funcgraph_entry:      + 19.712 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.627046: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.627134: funcgraph_entry:      + 14.783 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.627238: funcgraph_entry:      + 15.985 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.627333: funcgraph_entry:      + 15.625 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.627460: funcgraph_entry:      + 16.106 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.627543: funcgraph_entry:      + 16.827 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.627641: funcgraph_entry:      + 19.831 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.627811: funcgraph_entry:      + 18.149 us  |  renesas_usb3_irq();
+    file-storage-993   [000]   946.627898: funcgraph_entry:      + 16.707 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.628034: funcgraph_entry:      + 44.832 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.628253: funcgraph_entry:      + 25.481 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.628453: funcgraph_entry:      + 42.788 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.628647: funcgraph_entry:      + 20.673 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.628840: funcgraph_entry:      + 40.505 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.629029: funcgraph_entry:      + 29.688 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.629211: funcgraph_entry:      + 39.183 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.629405: funcgraph_entry:      + 20.433 us  |  renesas_usb3_irq();
+          <idle>-0     [000]   946.629594: funcgraph_entry:      + 39.062 us  |  renesas_usb3_irq();
+[1]+  Done                    trace-cmd record -p function_graph -l renesas_usb3_irq sleep 1
+root@salvator-x:~# 
+sudo umount /media/rvc/storage
+
+----------- BOARD ------------
+
+root@salvator-x:~# rmmod g_mass_storage
+root@salvator-x:~# 
+root@salvator-x:~# rm -rf /tmp/tmp.img
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+[711223.956793] usb 2-2: USB disconnect, device number 92
+[711223.991354] sd 3:0:0:0: [sdd] Synchronizing SCSI cache
+[711223.991380] sd 3:0:0:0: [sdd] Synchronize Cache(10) failed: Result: hostbyte=DID_NO_CONNECT driverbyte=DRIVER_OK
+
+ 
+#### Result: OK ####

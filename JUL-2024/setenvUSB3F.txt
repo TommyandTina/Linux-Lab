@@ -1,4 +1,4 @@
-setenv ethaddr 00:11:22:33:44:55
+setenv ethaddr 2e:09:0a:02:e8:56
 setenv ipaddr 192.168.8.59
 setenv serverip 192.168.8.8
 

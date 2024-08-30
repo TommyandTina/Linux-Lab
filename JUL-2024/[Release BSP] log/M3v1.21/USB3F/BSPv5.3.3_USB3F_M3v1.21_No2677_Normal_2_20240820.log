@@ -1,0 +1,9 @@
+
+root@salvator-x:~# cat /proc/interrupts | grep usb
+ 41:          0          0          0          0          0          0     GIC-0 139 Level     e6590000.usb
+168:          0          0          0          0          0          0     GIC-0 136 Level     ee020000.usb
+169:          0          0          0          0          0          0     GIC-0 140 Level     ee080200.usb-phy, ehci_hcd:usb3, ohci_hcd:usb4
+170:          0          0          0          0          0          0     GIC-0 144 Level     ehci_hcd:usb1, ohci_hcd:usb2
+root@salvator-x:~# 
+ 
+#### Result: OK ####

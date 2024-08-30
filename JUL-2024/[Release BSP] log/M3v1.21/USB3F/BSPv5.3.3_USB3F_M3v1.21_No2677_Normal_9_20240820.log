@@ -1,0 +1,100 @@
+
+root@salvator-x:~# modprobe -r g_printer
+root@salvator-x:~# 
+root@salvator-x:~# lsmod
+Module                  Size  Used by
+crct10dif_ce           20480  1
+dw_hdmi_cec            16384  0
+ccree                 159744  0
+max9611                16384  0
+gpio_bd9571mwv         16384  0
+at24                   24576  0
+authenc                16384  1 ccree
+libdes                 24576  1 ccree
+optee_rng              16384  0
+pwm_bl                 16384  0
+rng_core               24576  1 optee_rng
+cfg80211              872448  0
+rfkill                 36864  2 cfg80211
+uio_pdrv_genirq        16384  0
+fuse                  143360  1
+ipv6                  577536  20
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_ncm
+[  200.458722] using random self ethernet address
+[  200.465349] using random host ethernet address
+[  200.473672] usb0: HOST MAC 4a:d3:e6:81:b8:83
+[  200.478788] usb0: MAC 46:78:a2:bd:23:9c
+[  200.483529] g_ncm gadget: NCM Gadget
+[  200.487767] g_ncm gadget: g_ncm ready
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_printer
+[  201.655255] printer gadget: printer ready
+root@salvator-x:~# [  202.040760] printer gadget: Using interface 0
+
+root@salvator-x:~# rmmod g_printer
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_printer
+[  203.033813] printer gadget: printer ready
+root@salvator-x:~# 
+root@salvator-x:~# dmes[  203.402072] printer gadget: Using interface 0
+g | grep renesas_usb3
+[    3.665439] renesas_usb3 ee020000.usb: probed with phy
+root@salvator-x:~# ----------- BOARD ------------
+
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s tate
+configured
+root@salvator-x:~# 
+root@salvator-x:~# ls /dev/g_printer0
+/dev/g_printer0
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/urandom of=16byte.txt bs=1 count=16
+16+0 records in
+16+0 records out
+16 bytes copied, 0.00305457 s, 5.2 kB/s
+root@salvator-x:~# 
+root@salvator-x:~# echo "$(<16byte.txt)"
+èI:i‡b≠pe™ÃXí/
+root@salvator-x:~# 
+root@salvator-x:~# echo "$(<16byte.txt)" >/dev/g_printer0
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+[709630.606486] usblp0: removed
+[709630.607143] usblp 2-2:1.0: usblp0: USB Bidirectional printer dev 45 if 0 alt 0 proto 2 vid 0x0525 pid 0xA4A8
+
+ls /dev/usb/lp*
+/dev/usb/lp0
+sudo chmod 777 /dev/usb/lp0
+
+èI:i‡b≠pe™ÃXí/
+
+sudo cat /dev/usb/lp0
+
+root@salvator-x:~# rmmod g_printer
+cat: /dev/usb/lp0: Input/output error
+root@salvator-x:~# 
+root@salvator-x:~# lsmod
+Module                  Size  Used by
+g_ncm                  16384  0
+crct10dif_ce           20480  1
+dw_hdmi_cec            16384  0
+ccree                 159744  0
+max9611                16384  0
+gpio_bd9571mwv         16384  0
+at24                   24576  0
+authenc                16384  1 ccree
+libdes                 24576  1 ccree
+optee_rng              16384  0
+pwm_bl                 16384  0
+rng_core               24576  1 optee_rng
+cfg80211              872448  0
+rfkill                 36864  2 cfg80211
+uio_pdrv_genirq        16384  0
+fuse                  143360  1
+ipv6                  577536  20
+root@salvator-x:~# 
+ 
+#### Result: OK ####

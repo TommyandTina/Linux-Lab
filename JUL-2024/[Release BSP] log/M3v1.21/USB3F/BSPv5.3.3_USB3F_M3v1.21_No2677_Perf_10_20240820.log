@@ -1,0 +1,150 @@
+
+root@salvator-x:~# cd
+root@salvator-x:~# 
+root@salvator-x:~# insmod qos.ko
+[  745.158687] QoS: install v2.07
+[  745.171935] Device "R-Car M3 Ver1.1"
+[  745.177928] QoS Driver is Successfully loaded
+root@salvator-x:~# 
+root@salvator-x:~# cd rch3m3m3ne3d3_linux_qos_v310/Reference
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# 
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# qos_tp setall m3_Ver30_infotainment_v01_195.csv
+QoS : setall success!
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# 
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# qos_tp switch
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# 
+root@salvator-x:~/rch3m3m3ne3d3_linux_qos_v310/Reference# cd
+root@salvator-x:~# ----------- BOARD ------------
+
+root@salvator-x:~# modprobe g_ncm
+[  748.317691] using random self ethernet address
+[  748.325102] using random host ethernet address
+[  748.335030] usb0: HOST MAC 7a:df:fc:11:d0:13
+[  748.342848] usb0: MAC f6:2c:1e:e9:0b:82
+[  748.349078] g_ncm gadget: NCM Gadget
+[  748.353492] g_ncm gadget: g_ncm ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/state
+configured
+root@salvator-x:~# 
+root@salvator-x:~# ip a |grep usb
+6: usb0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop qlen 1000
+root@salvator-x:~# 
+root@salvator-x:~# ifconfig usb0 192.168.0.2 up
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+[710976.080206] cdc_ncm 2-2:1.0 enx7adffc11d013: renamed from usb0
+dmesg 2>&1 |grep 'renamed from usb0'
+
+sudo ifconfig enx7adffc11d013 192.168.0.3 up
+enx00e0006095bd: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.8.8  netmask 255.255.255.0  broadcast 192.168.8.255
+        ether 00:e0:00:60:95:bd  txqueuelen 1000  (Ethernet)
+        RX packets 66710754  bytes 25145032019 (25.1 GB)
+        RX errors 0  dropped 1354572  overruns 0  frame 0
+        TX packets 70422340  bytes 91316027033 (91.3 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enx7adffc11d013: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.3  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::9071:dd14:aaf8:ea2  prefixlen 64  scopeid 0x20<link>
+        ether 7a:df:fc:11:d0:13  txqueuelen 1000  (Ethernet)
+        RX packets 2  bytes 152 (152.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2  bytes 443 (443.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 2138593  bytes 637116141 (637.1 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2138593  bytes 637116141 (637.1 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp59s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.4.12  netmask 255.255.248.0  broadcast 192.168.7.255
+        inet6 fe80::2885:7f4a:87f8:ff15  prefixlen 64  scopeid 0x20<link>
+        ether 38:ba:f8:7b:f4:c6  txqueuelen 1000  (Ethernet)
+        RX packets 13734687  bytes 13346136618 (13.3 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 10098080  bytes 8454123857 (8.4 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+
+---------- BOARD -----------
+
+root@salvator-x:~# kill $(jobs -p)
+kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
+root@salvator-x:~# 
+root@salvator-x:~# iperf3 -s > iperf3_result.txt &
+[1] 906
+root@salvator-x:~# 
+root@salvator-x:~# echo WAIT 10S
+WAIT 10S
+root@salvator-x:~# 
+root@salvator-x:~# cat iperf3_result.txt
+-----------------------------------------------------------
+Server listening on 5201 (test #1)
+-----------------------------------------------------------
+Accepted connection from 192.168.0.3, port 39846
+[  5] local 192.168.0.2 port 5201 connected to 192.168.0.3 port 51017
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-1.00   sec  25.9 MBytes   217 Mbits/sec  0.036 ms  7077/25842 (27%)  
+[  5]   1.00-2.00   sec  18.9 MBytes   158 Mbits/sec  0.252 ms  12115/25790 (47%)  
+[  5]   2.00-3.00   sec  16.3 MBytes   137 Mbits/sec  0.211 ms  14020/25844 (54%)  
+[  5]   3.00-4.00   sec  16.2 MBytes   136 Mbits/sec  0.049 ms  14206/25911 (55%)  
+[  5]   4.00-5.00   sec  16.0 MBytes   134 Mbits/sec  0.058 ms  14306/25872 (55%)  
+[  5]   5.00-6.00   sec  16.1 MBytes   135 Mbits/sec  0.145 ms  14284/25934 (55%)  
+[  5]   6.00-7.00   sec  15.8 MBytes   133 Mbits/sec  0.134 ms  14448/25887 (56%)  
+[  5]   7.00-8.00   sec  15.9 MBytes   133 Mbits/sec  0.070 ms  14368/25846 (56%)  
+[  5]   8.00-9.00   sec  15.9 MBytes   133 Mbits/sec  0.118 ms  14461/25984 (56%)  
+[  5]   9.00-10.00  sec  16.0 MBytes   134 Mbits/sec  0.103 ms  14255/25838 (55%)  
+[  5]  10.00-10.00  sec  9.90 KBytes  75.4 Mbits/sec  0.281 ms  0/7 (0%)  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-10.00  sec   173 MBytes   145 Mbits/sec  0.281 ms  133540/258755 (52%)  receiver
+root@salvator-x:~# 
+root@salvator-x:~# kill $(jobs -p)
+iperf3: interrupt - the server has terminated
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+iperf3 -c 192.168.0.2 -u -b 300M > iperf3_result.txt &
+Connecting to host 192.168.0.2, port 5201
+[ 10] local 192.168.0.3 port 51017 connected to 192.168.0.2 port 5201
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[ 10]   0.00-1.00   sec  35.7 MBytes   300 Mbits/sec  25886  
+[ 10]   1.00-2.00   sec  35.8 MBytes   300 Mbits/sec  25895  
+[ 10]   2.00-3.00   sec  35.8 MBytes   300 Mbits/sec  25896  
+[ 10]   3.00-4.00   sec  35.8 MBytes   300 Mbits/sec  25909  
+[ 10]   4.00-5.00   sec  35.7 MBytes   300 Mbits/sec  25884  
+[ 10]   5.00-6.00   sec  35.8 MBytes   300 Mbits/sec  25900  
+[ 10]   6.00-7.00   sec  35.8 MBytes   300 Mbits/sec  25893  
+[ 10]   7.00-8.00   sec  35.8 MBytes   300 Mbits/sec  25906  
+[ 10]   8.00-9.00   sec  35.8 MBytes   300 Mbits/sec  25891  
+[ 10]   9.00-10.00  sec  35.8 MBytes   300 Mbits/sec  25900  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[ 10]   0.00-10.00  sec   358 MBytes   300 Mbits/sec  0.000 ms  0/258960 (0%)  sender
+[ 10]   0.00-10.00  sec   173 MBytes   145 Mbits/sec  0.281 ms  133540/258755 (52%)  receiver
+
+iperf Done.
+
+^C
+[1]+  Done(1)                 iperf3 -s > iperf3_result.txt
+root@salvator-x:~# 
+root@salvator-x:~# 
+root@salvator-x:~# kill $(jobs -p)
+kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
+root@salvator-x:~# 
+root@salvator-x:~# rmmod g_ncm
+root@salvator-x:~# 
+root@salvator-x:~# rmmod qos
+[  766.629307] QoS Driver is unloaded
+root@salvator-x:~# 
+ 
+#### Result: OK ####

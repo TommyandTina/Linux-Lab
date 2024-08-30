@@ -1,0 +1,58 @@
+----------- BOARD ------------
+
+root@salvator-x:~# modprobe g_serial
+[   42.975117] g_serial gadget: Gadget Serial v2.4
+[   42.979963] g_serial gadget: g_serial ready
+root@salvator-x:~# 
+root@salvator-x:~# c[   44.001644] SDHI0 VccQ: disabling
+[   44.005307] SDHI3 VccQ: disabling
+at /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s tate
+not attached
+root@salvator-x:~# 
+root@salvator-x:~# mount -t debugfs none /sys/kernel/debug/
+mount: /sys/kernel/debug: none already mounted or mount point busy.
+       dmesg(1) may have more information after failed mount system call.
+root@salvator-x:~# 
+root@salvator-x:~# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s tate
+configured
+root@salvator-x:~# 
+root@salvator-x:~# ls /dev/ttyGS0
+/dev/ttyGS0
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+[709469.944444] usb 2-2: new SuperSpeed USB device number 28 using xhci_hcd
+[709469.964843] usb 2-2: New USB device found, idVendor=0525, idProduct=a4a7, bcdDevice= 5.10
+[709469.964862] usb 2-2: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[709469.964869] usb 2-2: Product: Gadget Serial v2.4
+[709469.964876] usb 2-2: Manufacturer: Linux 5.10.218-yocto-standard with renesas_usb3
+[709470.019419] cdc_acm 2-2:2.0: ttyACM0: USB ACM device
+[709470.019721] usbcore: registered new interface driver cdc_acm
+[709470.019726] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+
+ls /dev/ttyACM0
+/dev/ttyACM0
+
+----------- BOARD ------------
+
+root@salvator-x:~# cat > /dev/ttyGS0
+abcd...
+123456
+^C
+root@salvator-x:~# 
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+cat /dev/ttyACM0
+abcd...
+123456
+
+root@salvator-x:~# rmmod g_serial
+root@salvator-x:~# 
+ 
+#### Result: OK ####

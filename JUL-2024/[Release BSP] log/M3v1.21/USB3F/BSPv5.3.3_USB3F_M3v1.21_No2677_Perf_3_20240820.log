@@ -1,0 +1,118 @@
+----------- BOARD ------------
+
+root@salvator-x:~# modprobe g_ncm
+[  614.906032] using random self ethernet address
+[  614.911562] using random host ethernet address
+[  614.921221] usb0: HOST MAC d6:96:f1:9d:2c:e7
+[  614.926969] usb0: MAC 82:cd:1f:73:4b:27
+[  614.932839] g_ncm gadget: NCM Gadget
+[  614.937665] g_ncm gadget: g_ncm ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/state
+configured
+root@salvator-x:~# 
+root@salvator-x:~# ip a |grep usb
+3: usb0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop qlen 1000
+root@salvator-x:~# 
+root@salvator-x:~# ifconfig usb0 192.168.0.2 up
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+[710842.658631] cdc_ncm 2-2:1.0 enxd696f19d2ce7: renamed from usb0
+dmesg 2>&1 |grep 'renamed from usb0'
+
+sudo ifconfig enxd696f19d2ce7 192.168.0.3 up
+enx00e0006095bd: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.8.8  netmask 255.255.255.0  broadcast 192.168.8.255
+        ether 00:e0:00:60:95:bd  txqueuelen 1000  (Ethernet)
+        RX packets 66554288  bytes 25126554179 (25.1 GB)
+        RX errors 0  dropped 1354305  overruns 0  frame 0
+        TX packets 70209628  bytes 91024559307 (91.0 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enxd696f19d2ce7: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.3  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::a2fd:a0ce:bca4:2941  prefixlen 64  scopeid 0x20<link>
+        ether d6:96:f1:9d:2c:e7  txqueuelen 1000  (Ethernet)
+        RX packets 1  bytes 76 (76.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2  bytes 443 (443.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 2133443  bytes 635252568 (635.2 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2133443  bytes 635252568 (635.2 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp59s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.4.12  netmask 255.255.248.0  broadcast 192.168.7.255
+        inet6 fe80::2885:7f4a:87f8:ff15  prefixlen 64  scopeid 0x20<link>
+        ether 38:ba:f8:7b:f4:c6  txqueuelen 1000  (Ethernet)
+        RX packets 13727520  bytes 13345289362 (13.3 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 10087310  bytes 8450735887 (8.4 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+
+---------- BOARD -----------
+
+root@salvator-x:~# iperf3 -c 192.168.0.3 -u -b 300M
+Connecting to host 192.168.0.3, port 5201
+[  5] local 192.168.0.2 port 42984 connected to 192.168.0.3 port 5201
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  5]   0.00-1.00   sec  22.2 MBytes   187 Mbits/sec  16104  
+[  5]   1.00-2.00   sec  21.3 MBytes   179 Mbits/sec  15435  
+[  5]   2.00-3.00   sec  21.3 MBytes   179 Mbits/sec  15414  
+[  5]   3.00-4.00   sec  21.3 MBytes   178 Mbits/sec  15395  
+[  5]   4.00-5.00   sec  21.3 MBytes   179 Mbits/sec  15436  
+[  5]   5.00-6.00   sec  21.5 MBytes   180 Mbits/sec  15540  
+[  5]   6.00-7.00   sec  21.4 MBytes   180 Mbits/sec  15523  
+[  5]   7.00-8.00   sec  21.5 MBytes   180 Mbits/sec  15558  
+[  5]   8.00-9.00   sec  22.4 MBytes   188 Mbits/sec  16193  
+[  5]   9.00-10.03  sec  21.4 MBytes   175 Mbits/sec  15520  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-10.03  sec   216 MBytes   180 Mbits/sec  0.000 ms  0/156118 (0%)  sender
+[  5]   0.00-10.07  sec   216 MBytes   180 Mbits/sec  0.063 ms  0/156118 (0%)  receiver
+
+iperf Done.
+root@salvator-x:~# sh: 1: : not found
+iperf3: interrupt - the server has terminated
+
+
+---------- HOST-PC -----------
+iperf3 -s &
+-----------------------------------------------------------
+Server listening on 5201
+-----------------------------------------------------------
+Accepted connection from 192.168.0.2, port 48800
+[ 10] local 192.168.0.3 port 5201 connected to 192.168.0.2 port 42984
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[ 10]   0.00-1.00   sec  21.2 MBytes   178 Mbits/sec  0.076 ms  0/15385 (0%)  
+[ 10]   1.00-2.00   sec  21.3 MBytes   179 Mbits/sec  0.065 ms  0/15434 (0%)  
+[ 10]   2.00-3.00   sec  21.3 MBytes   179 Mbits/sec  0.070 ms  0/15415 (0%)  
+[ 10]   3.00-4.00   sec  21.2 MBytes   178 Mbits/sec  0.064 ms  0/15387 (0%)  
+[ 10]   4.00-5.00   sec  21.3 MBytes   179 Mbits/sec  0.061 ms  0/15431 (0%)  
+[ 10]   5.00-6.00   sec  21.5 MBytes   180 Mbits/sec  0.068 ms  0/15539 (0%)  
+[ 10]   6.00-7.00   sec  21.4 MBytes   180 Mbits/sec  0.073 ms  0/15528 (0%)  
+[ 10]   7.00-8.00   sec  21.5 MBytes   180 Mbits/sec  0.073 ms  0/15571 (0%)  
+[ 10]   8.00-9.00   sec  22.3 MBytes   187 Mbits/sec  0.075 ms  0/16178 (0%)  
+[ 10]   9.00-10.00  sec  21.4 MBytes   180 Mbits/sec  0.088 ms  0/15517 (0%)  
+[ 10]  10.00-10.07  sec  1.01 MBytes   118 Mbits/sec  0.063 ms  0/733 (0%)  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[ 10]   0.00-10.07  sec   216 MBytes   180 Mbits/sec  0.063 ms  0/156118 (0%)  receiver
+-----------------------------------------------------------
+Server listening on 5201
+-----------------------------------------------------------
+
+
+root@salvator-x:~# rmmod g_ncm
+root@salvator-x:~# 
+ 
+#### Result: OK ####

@@ -1,0 +1,165 @@
+
+root@salvator-x:~# zcat /proc/config.gz |grep DEBUG_LIST
+CONFIG_DEBUG_LIST=y
+root@salvator-x:~# 
+root@salvator-x:~# insmod renesas_usb3.ko
+[   72.966716] renesas_usb3 ee020000.usb: probed with phy
+root@salvator-x:~# 
+root@salvator-x:~# lsmod
+Module                  Size  Used by
+renesas_usb3           36864  0
+g_printer              16384  0
+dw_hdmi_cec            16384  0
+crct10dif_ce           20480  1
+ccree                 159744  0
+max9611                16384  0
+at24                   24576  0
+gpio_bd9571mwv         16384  0
+authenc                16384  1 ccree
+libdes                 24576  1 ccree
+optee_rng              16384  0
+pwm_bl                 16384  0
+rng_core               24576  1 optee_rng
+cfg80211              872448  0
+rfkill                 36864  2 cfg80211
+uio_pdrv_genirq        16384  0
+fuse                  143360  1
+ipv6                  577536  20
+root@salvator-x:~# ----------- BOARD ------------
+
+root@salvator-x:~# mount -t tmpfs -o size=400M tmpfs /tmp
+root@salvator-x:~# 
+root@salvator-x:~# dd if=/dev/zero of=/tmp/tmp.img bs=1M count=350
+350+0 records in
+350+0 records out
+367001600 bytes (367 MB, 350 MiB) copied, 1.77271 s, 207 MB/s
+root@salvator-x:~# 
+root@salvator-x:~# mkfs.ext3 -L storage /tmp/tmp.img
+mke2fs 1.47.0 (5-Feb-2023)
+Discarding device blocks:      0/358400             done                            
+Creating filesystem with 358400 1k blocks and 89760 inodes
+Filesystem UUID: 16de27bb-6faa-4b4d-a784-684564f3f871
+Superblock backups stored on blocks: 
+	8193, 24577, 40961, 57345, 73729, 204801, 221185
+
+Allocating group tables:  0/44     done                            
+Writing inode tables:  0/44     done                            
+Creating journal (8192 blocks): done
+Writing superblocks and filesystem accounting information:  0/44     done
+
+root@salvator-x:~# 
+root@salvator-x:~# modprobe g_mass_storage file=/tmp/tmp.img
+[   79.739616] Mass Storage Function, version: 2009/09/11
+[   79.745339] LUN: removable file: (no medium)
+[   79.750592] LUN: file: /tmp/tmp.img
+[   79.754352] Number of LUNs=1
+[   79.759554] g_mass_storage gadget: Mass Storage Gadget, version: 2009/09/11
+[   79.766903] g_mass_storage gadget: userspace failed to provide iSerialNumber
+[   79.774277] g_mass_storage gadget: g_mass_storage ready
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s tate
+not attached
+root@salvator-x:~# 
+root@salvator-x:~# mount -t debugfs none /sys/kernel/debug/
+mount: /sys/kernel/debug: none already mounted or mount point busy.
+       dmesg(1) may have more information after failed mount system call.
+root@salvator-x:~# 
+root@salvator-x:~# echo 1 > /sys/kernel/debug/usb/ee020000.usb/b_device
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/devices/platform/soc/ee020000.usb/udc/ee020000.usb/s tate
+configured
+root@salvator-x:~# 
+root@salvator-x:~# echo scan  > /sys/kernel/debug/kmemleak
+root@salvator-x:~# 
+root@salvator-x:~# echo clear > /sys/kernel/debug/kmemleak
+root@salvator-x:~# 
+---------- HOST-PC -----------
+
+dmesg
+[709896.405420] usb 2-2: new SuperSpeed USB device number 56 using xhci_hcd
+[709896.425912] usb 2-2: New USB device found, idVendor=0525, idProduct=a4a5, bcdDevice= 5.10
+[709896.425935] usb 2-2: New USB device strings: Mfr=3, Product=4, SerialNumber=0
+[709896.425946] usb 2-2: Product: Mass Storage Gadget
+[709896.425954] usb 2-2: Manufacturer: Linux 5.10.218-yocto-standard with renesas_usb3
+[709896.429663] usb-storage 2-2:1.0: USB Mass Storage device detected
+[709896.430013] usb-storage 2-2:1.0: Quirks match for vid 0525 pid a4a5: 10000
+[709896.430182] scsi host3: usb-storage 2-2:1.0
+[709897.435400] scsi 3:0:0:0: Direct-Access     Linux    File-Stor Gadget 0510 PQ: 0 ANSI: 2
+[709897.436382] sd 3:0:0:0: Attached scsi generic sg1 type 0
+[709897.437606] sd 3:0:0:0: Power-on or device reset occurred
+[709897.438128] sd 3:0:0:0: [sdd] 716800 512-byte logical blocks: (367 MB/350 MiB)
+[709897.438469] sd 3:0:0:0: [sdd] Write Protect is off
+[709897.438477] sd 3:0:0:0: [sdd] Mode Sense: 0f 00 00 00
+[709897.438839] sd 3:0:0:0: [sdd] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+[709897.442810] sd 3:0:0:0: [sdd] Attached SCSI disk
+[709897.741621] EXT4-fs (sdd): mounting ext3 file system using the ext4 subsystem
+[709897.748248] EXT4-fs (sdd): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+
+df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            3,8G     0  3,8G   0% /dev
+tmpfs           784M  2,4M  781M   1% /run
+/dev/nvme0n1p4  458G  296G  139G  69% /
+tmpfs           3,9G     0  3,9G   0% /dev/shm
+tmpfs           5,0M  4,0K  5,0M   1% /run/lock
+tmpfs           3,9G     0  3,9G   0% /sys/fs/cgroup
+/dev/loop0      128K  128K     0 100% /snap/bare/5
+/dev/loop1       64M   64M     0 100% /snap/core20/2318
+/dev/loop2      497M  497M     0 100% /snap/gnome-42-2204/141
+/dev/loop3       56M   56M     0 100% /snap/core18/2829
+/dev/loop4       13M   13M     0 100% /snap/snap-store/959
+/dev/loop5       64M   64M     0 100% /snap/core20/2182
+/dev/loop7      506M  506M     0 100% /snap/gnome-42-2204/176
+/dev/loop17      75M   75M     0 100% /snap/core22/1439
+/dev/loop10     384K  384K     0 100% /snap/device-tree-compiler/91
+/dev/loop14     347M  347M     0 100% /snap/gnome-3-38-2004/119
+/dev/loop8       13M   13M     0 100% /snap/snap-store/1113
+/dev/loop13      41M   41M     0 100% /snap/snapd/20290
+/dev/loop6       12M   12M     0 100% /snap/nmap/3470
+/dev/loop9       75M   75M     0 100% /snap/core22/1380
+/dev/loop16      92M   92M     0 100% /snap/gtk-common-themes/1535
+/dev/loop15     350M  350M     0 100% /snap/gnome-3-38-2004/143
+/dev/loop18     9,8M  9,8M     0 100% /snap/htop/4407
+/dev/loop11      12M   12M     0 100% /snap/nmap/3514
+/dev/loop12      39M   39M     0 100% /snap/snapd/21759
+/dev/nvme0n1p1  3,7G  210M  3,3G   6% /boot
+/dev/nvme0n1p2  3,9G  6,1M  3,9G   1% /boot/efi
+tmpfs           784M   32K  784M   1% /run/user/1000
+/dev/sdc1       944M  309M  588M  35% /mnt/usb
+/dev/sdd        318M   47K  301M   1% /media/rvc/storage
+
+dd if=/dev/urandom of=./file-10M bs=1M count=10
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0,0453774 s, 231 MB/s
+
+sudo cp ./file-10M_from_host /media/rvc/storage
+
+md5sum ./file-10M /media/rvc/storage/file-10M
+1c99649a2c95aeed33e7426c27b644bb  ./file-10M
+1c99649a2c95aeed33e7426c27b644bb  /media/rvc/storage/file-10M
+
+sudo umount /media/rvc/storage
+
+----------- BOARD ------------
+
+root@salvator-x:~# rmmod g_mass_storage
+root@salvator-x:~# 
+root@salvator-x:~# rm -rf /tmp/tmp.img
+root@salvator-x:~# 
+
+---------- HOST-PC -----------
+
+dmesg
+[709907.537700] usb 2-2: USB disconnect, device number 56
+[709907.561029] sd 3:0:0:0: [sdd] Synchronizing SCSI cache
+[709907.561092] sd 3:0:0:0: [sdd] Synchronize Cache(10) failed: Result: hostbyte=DID_NO_CONNECT driverbyte=DRIVER_OK
+BOARD
+echo scan  > /sys/kernel/debug/kmemleak
+
+root@salvator-x:~# echo scan > /sys/kernel/debug/kmemleak
+root@salvator-x:~# 
+root@salvator-x:~# cat /sys/kernel/debug/kmemleak
+root@salvator-x:~# 
+ 
+#### Result: OK ####

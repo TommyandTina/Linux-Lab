@@ -770,8 +770,8 @@ root@salvator-x:~#
 ----------- BOARD ------------
 
 root@salvator-x:~# modprobe usb_f_ss_lb bulk_maxpacket=512; modprobe g_zero
-[  174.368185] zero gadget: Gadget Zero, version: Cinco de Mayo 2008
-[  174.374745] zero gadget: zero ready
+[  200.180192] zero gadget: Gadget Zero, version: Cinco de Mayo 2008
+[  200.186630] zero gadget: zero ready
 root@salvator-x:~# 
 root@salvator-x:~# cat /sys/devices/platform/soc/e659c000.usb/udc/e659c000.usb/state
 configured
@@ -780,12 +780,13 @@ root@salvator-x:~#
 ---------- HOST-PC -----------
 
 lsusb | grep Gadget
-Bus 001 Device 095: ID 0525:a4a0 Netchip Technology, Inc. Linux-USB "Gadget Zero"
+Bus 001 Device 097: ID 0525:a4a0 Netchip Technology, Inc. Linux-USB "Gadget Zero"
+rvc@Long_Trinh_Da:~/banvien_stuff$ sudo rmmod usbtest
+rvc@Long_Trinh_Da:~/banvien_stuff$ sudo modprobe usbtest alt=2
+rvc@Long_Trinh_Da:~/banvien_stuff$ sudo ./testusb -a -t 25  -s 64 -c 1
+high speed      /dev/bus/usb/001/017    0
+/dev/bus/usb/001/017 test 25,    0.000825 secs
 
-sudo /home/rvc/banvien_stuff/testusb -D /proc/bus/usb/001/095 -t 1
-/home/rvc/banvien_stuff/testusb: /proc/bus/usb/001/095 may see only control tests
-high speed	/proc/bus/usb/001/095	0
-/proc/bus/usb/001/095 test 1,    0.099670 secs
 ----------- BOARD ------------
 
 root@salvator-x:~# rmmod g_zero

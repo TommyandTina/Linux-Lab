@@ -95,11 +95,15 @@
 	And finally, to umount ...
 		$ fusermount -u /home/johndoe/sshfs-path/
 
--Nén và giải nén zip
+-Nén và giải nén zip, gz, tarball
 	zip -r name.zip folder
 	unzip name.zip -d /path/dir
 	tar -cf folder (nén tar.gz)
+	tar -cJf archive.tar.xz /path/to/directory (nén tar.xz)
 	tar -xf folder.tar.gz (giải nén)
+	gunzip filename.gz: Giải nén và xóa file gốc.
+	zcat filename.gz > filename: Giải nén và giữ lại file .gz.
+
 
 - Search trong file/tên file và trong lịch sử commit:
 	git grep "word" 
@@ -269,3 +273,135 @@
 	find /path/to/directory -type f -mtime -7 -exec du -h {} + | sort -hr
 	find . -type d -mtime -7 -exec du -sh {} \; | sort -hr
 	
+- đổi màu terminal:
+	export PS1="\[\e[1;32m\]rvc@L410730-CL011\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ "
+	Một số mã màu cơ bản:
+	Color Name		Foreground Color Code	Background Color Code
+		Black			   30			  |          40
+		Red				   31			  |          41
+		Green			   32			  |          42
+		Yellow			   33			  |          43
+		Blue			   34			  |          44
+		Magenta			   35			  |          45
+		Cyan			   36			  |          46
+		White			   37			  |          47
+		Default			   39			  |          49
+		Reset			   0			  |          0
+	Kiểu chữ:
+		Bình thường: \e[0m
+		In đậm: \e[1m
+		Gạch dưới: \e[4m
+
+- apply thay vì git apply (số dòng không khớp)
+	patch -p1 < g_zero_usb2f.patch
+	
+- tmux thêm chuột:
+	~/.tmux.conf thêm : set -g mouse on			 sau đó nhập : tmux source-file ~/.tmux.conf
+	
+- Để truyền mạng qua dây LAN giữa hai máy Linux, trong đó máy Linux 1 có kết nối mạng qua Wi-Fi, bạn có thể làm theo các bước sau:
+
+	### Bước 1: Kết nối Cáp Ethernet
+
+	1. **Kết nối cáp Ethernet** giữa hai máy Linux.
+
+	### Bước 2: Cấu hình Máy Linux 1 (Máy có Wi-Fi)
+
+	Trên máy Linux 1, thực hiện các bước sau để chia sẻ kết nối:
+
+	1. **Xác định tên giao diện mạng Wi-Fi**:
+
+	   ```bash
+	   ip a
+	   ```
+
+	   Giả sử tên giao diện là `wlan0`.
+
+	2. **Xác định tên giao diện Ethernet**:
+
+	   Tên giao diện Ethernet thường là `eth0` hoặc `enpXsY`.
+	   Nếu máy sử dụng wifi thì kiểm tra bằng ip a hoặc ifconfig
+		   1. Xem bảng định tuyến
+				Chạy lệnh sau để xem bảng định tuyến:
+				ip route
+		2. Xác định giao diện kết nối
+				Tìm dòng bắt đầu bằng default, ví dụ:
+					default via 192.168.0.1 dev wlp59s0 proto dhcp metric 600
+
+	3. **Cấu hình địa chỉ IP cho giao diện Ethernet**:
+
+	   Giả sử bạn muốn sử dụng địa chỉ IP `192.168.8.8` cho máy Linux 1: (sử dụng IP mà trong cùng mạng (hub) với máy cần mạng)
+
+	   ```bash
+	   sudo ip addr add 192.168.8.8/24 dev eth0
+	   sudo ip link set eth0 up
+	   ```
+
+	4. **Chia sẻ kết nối mạng bằng `iptables`**:
+
+	   ```bash
+	   sudo iptables -t nat -A POSTROUTING -o wlp59s0 -j MASQUERADE
+	   sudo iptables -A FORWARD -i wlp59s0 -o enx00e0006095bd -j ACCEPT
+	   sudo iptables -A FORWARD -i enx00e0006095bd -o wlp59s0 -m state --state ESTABLISHED,RELATED -j ACCEPT
+	   ```
+
+	5. **Kích hoạt IP Forwarding**:
+
+	   Mở tệp cấu hình:
+
+	   ```bash
+	   sudo nano /etc/sysctl.conf
+	   ```
+
+	   Tìm dòng `#net.ipv4.ip_forward=1` và bỏ dấu `#` để kích hoạt. Sau đó, lưu và thoát.
+
+	   Chạy lệnh sau để áp dụng thay đổi:
+
+	   ```bash
+	   sudo sysctl -p
+	   ```
+	(Hoặc set manual: echo 1 > /proc/sys/net/ipv4/ip_forward)
+	
+	### Bước 3: Cấu hình Máy Linux 2 (Máy nhận)
+
+	Trên máy Linux 2, thực hiện các bước sau:
+
+	1. **Cấu hình địa chỉ IP cho giao diện Ethernet**:
+
+	   Giả sử bạn muốn sử dụng địa chỉ IP `192.168.1.2` cho máy Linux 2:
+
+	   ```bash
+	   sudo ip addr add 192.168.8.169/24 dev eth0
+	   sudo ip link set eth0 up
+	   ```
+
+	2. **Cấu hình Gateway**:
+
+	   Thiết lập gateway để hướng đến máy Linux 1:
+
+	   ```bash
+	   sudo ip route add default via 192.168.8.8
+	   ```
+	   nếu chỉ muốn trỏ 192.168.8.x thông qua 4.12 thì : sudo route add -net 192.168.8.0 netmask 255.255.255.0 gw 192.168.4.12
+	### Bước 4: Kiểm tra Kết nối
+
+	Trên máy Linux 2, kiểm tra kết nối đến Internet bằng cách ping đến một địa chỉ IP bên ngoài (ví dụ: Google):
+
+	```bash
+	ping 8.8.8.8
+	```
+
+	Nếu mọi thứ đều hoạt động, bạn sẽ nhận được phản hồi từ máy chủ.
+
+	### Kết luận
+
+	Với các bước trên, bạn có thể chia sẻ kết nối mạng từ máy Linux 1 (có Wi-Fi) đến máy Linux 2 qua cáp Ethernet.
+
+	!Note:
+		Xem bảng iptables (forward) : sudo iptables -L -v -n
+		Xem bảng iptables (nat) : sudo iptables -t nat -L -v -n
+
+	- xóa các rules:
+		sudo ip route del default via 192.168.8.8
+		sudo iptables -t nat -D POSTROUTING -o wifi_device -j MASQUERADE
+		sudo iptables -D FORWARD -i wifi_device -o lan_device -j ACCEPT
+		sudo iptables -D FORWARD -i lan_device -o wifi_device -m state --state RELATED,ESTABLISHED -j ACCEPT

@@ -10,6 +10,9 @@ defconfig :
 	CONFIG_USB_XHCI_RCAR=y
 	CONFIG_USB_XHCI_TEGRA=y
 merge_config.sh (nếu xài thì sử dụng các dòng dưới)
+
+CONFIG_USB_RENESAS_USB3=y
+
 CONFIG_USB_LIBCOMPOSITE=y
 CONFIG_USB_F_ACM=y
 CONFIG_USB_F_SS_LB=y
