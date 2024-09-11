@@ -1,0 +1,133 @@
+- Trong C Kernel ##__VA_ARGS__ xử lý:
+	##__VA_ARGS__ được sử dụng trong macro khi mà số lượng đầu vào không cố định:
+		#define MY_MACRO(fmt, ...) printf(fmt, ##__VA_ARGS__)
+	Cũng ở ví dụ trên ta thấy trong function (không phải macro) thì ... được sử dụng cho hàm có tham số đầu vào không xác định
+	Giải thích thêm:
+	
+	#define debug(M, ...) fprintf(stderr,M "\n",##__VA_ARGS __)
+	I googled for an answer and I came up with the following.
+
+	The ## will remove the comma if no variable arguments are given to the macro. So, if the macro is invoked like this
+
+	debug("message");
+	with no quotes, it is expanded to
+
+	fprintf(stderr,"message");
+	not
+
+	fprintf(stderr,"message",);
+	
+- Tạo file debugfs trong /sys/kernel/debug 
+	*** về usb_debug_root được định nghĩa trong 'common.c' và sử dụng trong 'renesas_usb3.c'
+	struct dentry *usb_debug_root;
+	EXPORT_SYMBOL_GPL(usb_debug_root);
+
+	static int __init usb_common_init(void)
+	{
+		usb_debug_root = debugfs_create_dir("usb", NULL);
+		ledtrig_usb_init();
+		return 0;
+	}
+	
+- Giải thích các hệ thống file
+	Debugfs:
+	Là một hệ thống file ảo cho phép các nhà phát triển kernel dễ dàng cung cấp thông tin cho không gian người dùng mà không có quy tắc nghiêm ngặt. Bạn có thể tạo các file tùy ý và chứa bất kỳ loại dữ liệu nào.
+		# Mount debugfs (nếu chưa được mount)
+		sudo mount -t debugfs none /sys/kernel/debug
+
+		# Tạo file
+		echo "Debug information" > /sys/kernel/debug/my_debug_file
+
+		# Đọc nội dung file
+		cat /sys/kernel/debug/my_debug_file
+		Demo:
+		#include <linux/module.h>
+		#include <linux/kernel.h>
+		#include <linux/debugfs.h>
+
+		struct my_data {
+			int value;
+		};
+
+		static struct dentry *dir, *file;
+		static struct my_data my_device_data = {42}; // Dữ liệu riêng
+
+		static ssize_t read_file(struct file *filp, char __user *buf, size_t len, loff_t *offset) {
+				struct my_data *data = &my_device_data; // Lấy dữ liệu riêng
+				char buffer[32]; // Tạo buffer tạm
+				len = snprintf(buffer, sizeof(buffer), "Value: %d\n", data->value); // Định dạng và ghi vào buffer
+				return simple_read_from_buffer(buf, len, offset, buffer, len); // Trả về từ buffer
+		}
+		//static ssize_t read_file(struct file *filp, char __user *buf, size_t len, loff_t *offset) {
+		//    return simple_read_from_buffer(buf, len, offset, "Value: 42\n", 12);
+		//}
+
+		static const struct file_operations fops = {
+			.owner = THIS_MODULE,
+			.read = read_file,
+		};
+
+		static int __init my_debugfs_init(void) {
+			dir = debugfs_create_dir("my_debug2", NULL);
+			file = debugfs_create_file("my_file2", 0444, dir, &my_device_data, &fops); // Truyền dữ liệu riêng, lúc này có thể lấy data của my_device_data trong read_file
+			return 0;
+		}
+
+		static void __exit my_debugfs_exit(void) {
+			debugfs_remove(file);
+			debugfs_remove(dir);
+		}
+
+		module_init(my_debugfs_init);
+		module_exit(my_debugfs_exit);
+		MODULE_LICENSE("GPL");
+
+		
+		
+		
+		
+		
+	/proc:
+	Đây là một hệ thống file ảo chứa thông tin về các quá trình đang chạy trong hệ thống. Nó chủ yếu được sử dụng để cung cấp thông tin cho người dùng và các ứng dụng, nhưng không cho phép thay đổi trạng thái của các quá trình.
+		# Xem thông tin về quá trình với PID 1 (thường là init)
+		cat /proc/1/status
+
+		# Xem tất cả các quá trình đang chạy
+		cat /proc/stat
+		Demo:
+		#include <linux/module.h>
+		#include <linux/kernel.h>
+		#include <linux/proc_fs.h>
+
+		static struct proc_dir_entry *entry, *parent_dir;
+		static ssize_t read_proc(struct file *filp, char __user *buf, size_t len, loff_t *offset) {
+			return simple_read_from_buffer(buf, len, offset, "Hello from /proc\n", 18);
+		}
+
+		static const struct proc_ops proc_fops = {
+			.proc_read= read_proc,
+		};
+
+		static int __init my_proc_init(void) {
+				parent_dir = proc_mkdir("my_subdir", NULL); // Tạo thư mục con
+				entry = proc_create("my_proc_file", 0444, parent_dir, &proc_fops);
+				return 0;
+		}
+
+		static void __exit my_proc_exit(void) {
+			proc_remove(entry);
+		}
+
+		module_init(my_proc_init);
+		module_exit(my_proc_exit);
+		MODULE_LICENSE("GPL");
+		
+		
+		
+	Sysfs:
+	Là một hệ thống file ảo được sử dụng để cung cấp thông tin về các thiết bị và driver. Nó có quy tắc nghiêm ngặt về "one-value-per-file", có nghĩa là mỗi file trong sysfs chỉ chứa một giá trị duy nhất. Điều này giúp giữ cho cấu trúc dữ liệu rõ ràng và dễ quản lý.
+		# Xem thông tin về thiết bị lưu trữ
+		cat /sys/block/sda/size
+
+		# Xem thuộc tính của một thiết bị
+		cat /sys/class/net/eth0/address

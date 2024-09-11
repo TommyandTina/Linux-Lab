@@ -145,7 +145,7 @@
 	exit và lưu ":wq"
 	tới cuối dòng  $
 	tới cuối trang :$ hoặc ctrl + end
-	undo ctrl+u
+	undo ctrl+u, redo Ctrl+R
 	search : /word		next search: n
 	tới 1 dòng bất kì : xxgg VD: 81gg
 	copy (yank) xx dòng: xxyy VD: 10yy
@@ -272,6 +272,7 @@
 - Tìm file mới sinh ra có dung lượng lớn:
 	find /path/to/directory -type f -mtime -7 -exec du -h {} + | sort -hr
 	find . -type d -mtime -7 -exec du -sh {} \; | sort -hr
+	sudo find /tftpboot/ -type d -mtime -30 -exec du -sh {} + | sort -rh | head -n 10
 	
 - đổi màu terminal:
 	export PS1="\[\e[1;32m\]rvc@L410730-CL011\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ "
@@ -367,13 +368,14 @@
 
 	1. **Cấu hình địa chỉ IP cho giao diện Ethernet**:
 
-	   Giả sử bạn muốn sử dụng địa chỉ IP `192.168.1.2` cho máy Linux 2:
+	   Giả sử bạn muốn sử dụng địa chỉ IP `192.168.8.169` cho máy Linux 2:
 
 	   ```bash
 	   sudo ip addr add 192.168.8.169/24 dev eth0
 	   sudo ip link set eth0 up
 	   ```
-
+		hoặc : sudo ifconfig eth0 192.168.8.169 up
+		
 	2. **Cấu hình Gateway**:
 
 	   Thiết lập gateway để hướng đến máy Linux 1:
@@ -382,6 +384,7 @@
 	   sudo ip route add default via 192.168.8.8
 	   ```
 	   nếu chỉ muốn trỏ 192.168.8.x thông qua 4.12 thì : sudo route add -net 192.168.8.0 netmask 255.255.255.0 gw 192.168.4.12
+	   hoặc : sudo ip route add 192.168.8.0/24 via 192.168.4.12
 	### Bước 4: Kiểm tra Kết nối
 
 	Trên máy Linux 2, kiểm tra kết nối đến Internet bằng cách ping đến một địa chỉ IP bên ngoài (ví dụ: Google):
@@ -399,9 +402,53 @@
 	!Note:
 		Xem bảng iptables (forward) : sudo iptables -L -v -n
 		Xem bảng iptables (nat) : sudo iptables -t nat -L -v -n
+		Xem các route: ip route
 
 	- xóa các rules:
 		sudo ip route del default via 192.168.8.8
 		sudo iptables -t nat -D POSTROUTING -o wifi_device -j MASQUERADE
 		sudo iptables -D FORWARD -i wifi_device -o lan_device -j ACCEPT
 		sudo iptables -D FORWARD -i lan_device -o wifi_device -m state --state RELATED,ESTABLISHED -j ACCEPT
+		sudo iptables -F FORWARD (xóa các rules của chain mặc định)
+		sudo iptables -X CHAIN_NAME (xóa chain tạo thêm)
+	
+	- Kiểm tra route (tcp -T thông qua wifi)
+	traceroute -T 192.168.8.8
+	
+- Makefile build module theo source linux:
+	KERNEL :=/prj/soc-sw/local/work/long.trinh-tien/kernel/usb2f_test/linux-bsp/
+	obj-m += i2cd.o
+	all:
+		make -C $(KERNEL) -I$(KERNEL)/include M=`pwd` modules
+	clean:
+		make -C $(KERNEL) M=$(PWD) clean
+		
+- không ghi vào history :
+	unset HISTFILE
+	history -c
+
+- Đánh số trang word không tự động bằng VBA:
+	Ấn alt+F11 -> chọn insert -> modules
+		Sub SetPageNumbersManual()
+			Dim sec As Section
+			Dim pgNum As PageNumbers
+			Dim startNumber As Long
+			
+			startNumber = 1
+			
+			For Each sec In ActiveDocument.Sections
+				Set pgNum = sec.Footers(wdHeaderFooterPrimary).PageNumbers
+				
+				pgNum.RestartNumberingAtSection = False
+				pgNum.NumberStyle = wdPageNumberStyleArabic
+				
+				'To automatically set page num, use this : pgNum.Add wdAlignParagraphRight, True
+				
+				pgNum.RestartNumberingAtSection = True
+				pgNum.StartingNumber = startNumber
+				
+				startNumber = startNumber + 1
+			Next sec
+		End Sub
+		
+	Đảm bảo mỗi page là 1 section (thêm section break bằng cách Layout -> Breaks -> Section breaks -> Next Page)
