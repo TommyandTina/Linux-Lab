@@ -1,0 +1,67 @@
+{INCLUDETEXT "..\APR-2024\0804\Process on udemy.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\APR-2024\0904\virtual memory.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\APR-2024\1004\process programming (advanced included), process monitor.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\APR-2024\1104\Signals.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\APR-2024\1504\threads.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\APR-2024\1604\IPC_PIPES and FIFO.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\APR-2024\1704\POSIX_message queue_semaphore_shared memory.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\APR-2024\1704\shared memory.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\AUG-2024\TongHop.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\AUG-2024\~$ongHop.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\FEB-2024\1902\ES-ES_RVC_SOC_SW-190224-1120-20.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\FEB-2024\1902\Jira task create and import.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\FEB-2024\1902\Management task list.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\FEB-2024\1902\Workflow for jira task.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\FEB-2024\1902\Working rule.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\FEB-2024\2002\Agile.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\FEB-2024\2002\Multithreading,process, mutex, queue, conditional signal.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\FEB-2024\2002\V-model MCAL Development Overview.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\FEB-2024\2202\Python basic.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\FEB-2024\2302\Makefile.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\FEB-2024\2602\Bash basic.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\FEB-2024\2602\Python basic.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\FEB-2024\2802\makefile basic.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\FEB-2024\2802 fix\makefile basic.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\FEB-2024\2902\linux_basic_command.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\FEB-2024\2902\overview linux operation system.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\JUL-2024\USB3F S2R.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\JUN-2024\bootguilde\Boot Guide\BootUp_Ethernet.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\JUN-2024\bootguilde\Boot Guide\BootUp_SDCard.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\JUN-2024\bootguilde\IPL\loadIPL_manual.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\JUN-2024\bootguilde\IPL\SW-burn_IPL_auto.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\JUN-2024\bootguilde\long cross image\Long's boot guilde.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\JUN-2024\Fix tool bsp rom writer.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\JUN-2024\RCAR Gen3 Training - Build Linux Kernal Guideline.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\JUN-2024\RCAR_board\Investigate board rcar.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\JUN-2024\ssh virtual machine.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\JUN-2024\UT_training\Long_msiof_UT.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\JUN-2024\work\VideoCaptureM3_note.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAR-2024\0103\device tree.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAR-2024\0403\linux device drivers training.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAR-2024\0803\raspi3(drop).docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAR-2024\1103\CI-CD_GitLab.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAR-2024\1203\resource-CICD\[ADAS_ST][QNX]_Guideline_work_with_CI_non-CI.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAR-2024\1303\Instructions_for_opening_raw_images.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAR-2024\1503\Image processing.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAR-2024\2003\linux kernel update.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAR-2024\2103\H264 and MPEG4.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAR-2024\2103\Unit Test NEW.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAY-2024\C note_ GCC Compiler and debug with preprocessor.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAY-2024\C_note_data structure.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAY-2024\gcc compiler.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAY-2024\Interupt.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAY-2024\Operating system.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAY-2024\phong van rvc.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAY-2024\u-boot.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAY-2024\UT_gdb_note with R_IMPDRV_AttrSetClBrkAddr.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAY-2024\vim and nano editor note.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\MAY-2024\~$u-boot.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\soc_training_trinh_tien_long-Trinh_Tien_Long\CICD\[ADAS_ST][QNX]_Guideline_work_with_CI_non-CI.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\soc_training_trinh_tien_long-Trinh_Tien_Long\Image_Processing\Instructions_for_opening_raw_images.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\soc_training_trinh_tien_long-Trinh_Tien_Long\Linux\REMOTE HARDWARE CONTROL 1.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\soc_training_trinh_tien_long-Trinh_Tien_Long\Methodology_Process\V-Model_Overview.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\soc_training_trinh_tien_long-Trinh_Tien_Long\RTOS\FreeRTOS_document.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\soc_training_trinh_tien_long-Trinh_Tien_Long\Specific_Training\MMP_Project\ALSA-Overview.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\soc_training_trinh_tien_long-Trinh_Tien_Long\Template\BV Word Template.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\soc_training_trinh_tien_long-Trinh_Tien_Long\Working_Rules\Rule_working.docx" \* MERGEFORMAT}
+{INCLUDETEXT "..\soc_training_trinh_tien_long-Trinh_Tien_Long\Yocto\Reference\Bitbake_Yocto.docx" \* MERGEFORMAT}

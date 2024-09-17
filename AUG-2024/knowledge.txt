@@ -131,3 +131,14 @@
 
 		# Xem thuộc tính của một thiết bị
 		cat /sys/class/net/eth0/address
+		
+- Yocto working:
+	Dưới đây là cách Yocto xử lý các bước nếu chúng không được định nghĩa trong recipe:
+
+	do_fetch: Xử lý việc tải nguồn từ SRC_URI.
+	do_unpack: Xử lý việc giải nén nguồn dựa trên định dạng của nguồn (tarball, Git, v.v.).
+	do_configure: Cấu hình mã nguồn để chuẩn bị cho việc biên dịch. Được tự động xử lý nếu sử dụng lớp như autotools hoặc cmake.
+	do_compile: Biên dịch mã nguồn. Được định nghĩa trong recipe hoặc lớp kế thừa.
+	do_install: Cài đặt các tệp vào thư mục đích.
+	do_package: Đóng gói các tệp đã cài đặt thành các gói phần mềm.
+	do_package_index: Tạo chỉ mục cho các gói phần mềm.

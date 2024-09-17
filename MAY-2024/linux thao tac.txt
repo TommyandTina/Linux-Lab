@@ -225,6 +225,8 @@
 	Chọn version mong muốn: conf/local.conf	: PREFERRED_VERSION_wayland-protocols = "1.33" (đảm bảo đã thêm layer đó vào bblayers.conf)
 	IMAGE_INSTALL:remove = "kernel-module-cmemdrv"
 	IMAGE_INSTALL += "util-linux usbutils e2fsprogs iperf3 linuxptp gcc make binutils trace-cmd"
+	Xem toàn bộ recipe có sẵn: bitbake-layers show-recipes > ../../recipe_yocto.txt
+	Cài file rpm từ trong source yocto: rpm -ivh package1.rpm package2.rpm (lấy file trên trong build/tmp/deploy/rpm)
 
 - thêm file này vào cuối file kia:
 	cat file2 >> file1  (1 dấu > là ghi đè)
@@ -300,7 +302,7 @@
 	~/.tmux.conf thêm : set -g mouse on			 sau đó nhập : tmux source-file ~/.tmux.conf
 	
 - Để truyền mạng qua dây LAN giữa hai máy Linux, trong đó máy Linux 1 có kết nối mạng qua Wi-Fi, bạn có thể làm theo các bước sau:
-
+	(IP forwarding còn có tác dụng trong việc thông mạng tới các interface trong cùng 1 máy)
 	### Bước 1: Kết nối Cáp Ethernet
 
 	1. **Kết nối cáp Ethernet** giữa hai máy Linux.
@@ -412,6 +414,12 @@
 		sudo iptables -F FORWARD (xóa các rules của chain mặc định)
 		sudo iptables -X CHAIN_NAME (xóa chain tạo thêm)
 	
+	- Lưu Cấu Hình iptables (optional)
+	Để lưu cấu hình iptables và đảm bảo nó được khôi phục sau khi khởi động lại, bạn có thể cài đặt iptables-persistent:
+
+		sudo apt install iptables-persistent
+	
+	
 	- Kiểm tra route (tcp -T thông qua wifi)
 	traceroute -T 192.168.8.8
 	
@@ -452,3 +460,75 @@
 		End Sub
 		
 	Đảm bảo mỗi page là 1 section (thêm section break bằng cách Layout -> Breaks -> Section breaks -> Next Page)
+	
+- Workaround đánh table of content nhiều file
+	Cho table of content nằm cuối cùng
+	Chọn Insert -> Quick Parts -> Field -> IncludeText -> nhập tên file cần thêm TOC -> OK
+	Xuống trang cuối Insert table of content như thường
+	
+- Để máy Linux cấp IP cho switch và các máy con, bạn có thể sử dụng DHCP (Dynamic Host Configuration Protocol). Dưới đây là các bước thiết lập DHCP server trên máy Linux:
+	(kết hợp với IP forwarding để cho máy linux thành 1 router truyền mạng qua lan)
+	Bước 1: Cài Đặt DHCP Server
+	Trên hệ thống Ubuntu hoặc Debian, bạn có thể cài đặt isc-dhcp-server bằng lệnh:
+
+		sudo apt update
+		sudo apt install isc-dhcp-server
+	Trên Fedora hoặc CentOS:
+
+		sudo dnf install dhcp
+	Bước 2: Cấu Hình DHCP Server
+	Mở file cấu hình DHCP:
+
+		sudo nano /etc/dhcp/dhcpd.conf
+	Thêm cấu hình sau vào file:
+
+		# Cấu hình subnet
+		subnet 192.168.8.0 netmask 255.255.255.0 {
+			range 192.168.8.100 192.168.8.200;  # Dải IP cấp phát
+			option routers 192.168.8.8;        # Địa chỉ IP của router (gateway)
+			option domain-name-servers 8.8.8.8; # DNS server
+			option domain-name "example.com";  # Tên miền 
+		}
+	Thay đổi dải IP và các tham số cho phù hợp với mạng của bạn.
+
+	Bước 3: Chỉnh Sửa File Cấu Hình Network
+	Mở file cấu hình mạng để chỉ định interface cho DHCP server:
+
+		sudo nano /etc/default/isc-dhcp-server
+	Tìm dòng INTERFACES và thay đổi nó thành interface bạn muốn (ví dụ: eth0):
+
+		INTERFACES="eth0"
+	Bước 4: Khởi Động DHCP Server
+	Khởi động và kiểm tra trạng thái của DHCP server:
+
+		sudo systemctl restart isc-dhcp-server
+		sudo systemctl status isc-dhcp-server
+	Bước 5: Kết Nối Switch và Các Máy Con
+		Kết nối switch vào interface của máy Linux.
+		Kết nối các máy con vào switch.
+		
+
+
+- Bật access point (wifi hotspot):
+	Bật Access Point wifi hotspot
+		nmcli dev wifi hotspot ifname wlp59s0 ssid RVC password Pass1234
+	Xóa:
+		nmcli connection delete Hotspot
+
+	
+	Reset:
+		sudo nmcli radio wifi on
+		sudo ip link set wlp59s0 down
+		sudo ip link set wlp59s0 up
+		nmcli device
+		Check in /etc/NetworkManager/NetworkManager.conf
+		[ifupdown]
+		managed=false	->		managed=true
+		sudo systemctl restart NetworkManager
+		nmcli connection show
+	Truy cập wifi:
+		sudo nmcli device wifi connect R-GUEST
+		
+- Lấy MAC address qua IP:
+	ifconfig : lấy interface (ví dụ là wlp59s0)
+	sudo arping -I wlp59s0 -c1 192.168.2.130
