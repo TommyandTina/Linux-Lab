@@ -113,6 +113,8 @@
 	grep -Rnw '/path/to/somewhere/' -e 'pattern' (-r or -R is recursive ; use -R to search entirely; -n is 
 		line number; -w stands for match the whole word.
 	grep -rn "sata" .
+	tìm kiếm tất cả trừ x : grep -v x
+	tìm kiếm tất cả trừ x,y,z : grep -Ev 'x|y|z'
 
 - Kiểm tra các file .pc khi sử dụng poky cross toolchains (đôi khi nó include 1 package mà máy ta không có -> lỗi)
 	Xóa file hoặc unset PKG_CONFIG_PATH
@@ -227,6 +229,7 @@
 	IMAGE_INSTALL += "util-linux usbutils e2fsprogs iperf3 linuxptp gcc make binutils trace-cmd"
 	Xem toàn bộ recipe có sẵn: bitbake-layers show-recipes > ../../recipe_yocto.txt
 	Cài file rpm từ trong source yocto: rpm -ivh package1.rpm package2.rpm (lấy file trên trong build/tmp/deploy/rpm)
+	Để remove 1 file bb thì comment lại SRC_UNI
 
 - thêm file này vào cuối file kia:
 	cat file2 >> file1  (1 dấu > là ghi đè)
@@ -532,3 +535,39 @@
 - Lấy MAC address qua IP:
 	ifconfig : lấy interface (ví dụ là wlp59s0)
 	sudo arping -I wlp59s0 -c1 192.168.2.130
+	
+- Làm router wifi bị lag
+	Lấy MAC address như cách trên, sau đó nhập vào dưới và kết nối lại wifi
+	
+	sudo ip link set dev wlp59s0 down
+	sudo ip link set dev wlp59s0 address 38:ba:f8:7b:f4:c6
+	sudo ip link set dev wlp59s0 up
+	sudo nmcli device wifi connect R-GUEST
+	
+	Đổi ip không bị mất mạng:
+	
+	sudo ip addr del 192.168.4.12/21 dev wlp59s0
+	sudo ip addr add 192.168.2.41/21 dev wlp59s0
+	
+	192.168.1.165 : da :54:6c:eb:37:dd:09
+	192.168.1.159 : Nguyen : 74:13:ea:0c:1e:f8
+	192.168.1.190 : Tien : a8:41:f4:8e:4a:f5
+	192.168.1.158 : Trinh : 00:d4:9e:51:c2:96
+	192.168.2.31 : Thuận : 54:8d:5a:df:5d:9f
+	192.168.1.9 : Uyen : f4:6d:3f:89:f2:15
+	
+- Stop terminal:
+	#!/bin/bash
+
+	while true; do
+		for pts in $(who | grep '192.168.8.110' | awk '{print $2}'); do
+			echo Pass1234 | sudo -S pkill -STOP -t $pts
+		done
+		sleep 20
+	done
+	#dừng
+	kill $(jobs -p)
+	
+- Truy cập vào terminal khác:
+	ps -t pts/X
+	script /proc/4581/fd/1
