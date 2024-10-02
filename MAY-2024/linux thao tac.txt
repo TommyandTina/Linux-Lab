@@ -571,3 +571,7 @@
 - Truy cập vào terminal khác:
 	ps -t pts/X
 	script /proc/4581/fd/1
+	
+- Xóa commit gần nhất:
+	Giữ lại thay đổi : git reset --soft HEAD~1
+	Xóa luôn thay đổi : git reset --hard HEAD~1
