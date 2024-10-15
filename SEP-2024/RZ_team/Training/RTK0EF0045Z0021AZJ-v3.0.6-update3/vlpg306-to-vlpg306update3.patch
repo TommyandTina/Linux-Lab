@@ -1,0 +1,187 @@
+diff -uprN VLP_G_v3.0.6/extra/0001-rz-common-gst-plugins-bad-Depending-bayer2raw-if-lay.patch VLP_G_v3.0.6-update3/extra/0001-rz-common-gst-plugins-bad-Depending-bayer2raw-if-lay.patch
+--- VLP_G_v3.0.6/extra/0001-rz-common-gst-plugins-bad-Depending-bayer2raw-if-lay.patch	1970-01-01 09:00:00.000000000 +0900
++++ VLP_G_v3.0.6-update3/extra/0001-rz-common-gst-plugins-bad-Depending-bayer2raw-if-lay.patch	2024-07-26 11:28:28.707110356 +0900
+@@ -0,0 +1,50 @@
++From 4996b8d944bfd047cb271fea24cf41aa83f840c0 Mon Sep 17 00:00:00 2001
++From: trungvanle <trung.le.xk@renesas.com>
++Date: Mon, 1 Jul 2024 17:28:00 +0700
++Subject: [PATCH] rz-common: gst-plugins-bad: Depending bayer2raw if layer
++ meta-rz-graphics is added
++
++Currently, a build error occurs when building gstreamer-plugins-bad without the
++meta-rz-features/meta-rz-graphics layer. This error is caused by the bayer2raw
++recipe, which lacks the EGL/eglext_REL.h header file. To resolve this issue,
++add a judgement to check whether the meta-rz-graphics layer is included or not.
++If it is not included, exclude the bayer2raw, bayerconver and bayersink.
++
++Note: This update apply for both G2 series and G2L series.
++
++Signed-off-by: trungvanle <trung.le.xk@renesas.com>
++---
++ .../gstreamer/gstreamer1.0-plugins-bad_1.16.3.bbappend    | 8 ++++----
++ 1 file changed, 4 insertions(+), 4 deletions(-)
++
++diff --git a/meta-rz-common/recipes-multimedia/gstreamer/gstreamer1.0-plugins-bad_1.16.3.bbappend b/meta-rz-common/recipes-multimedia/gstreamer/gstreamer1.0-plugins-bad_1.16.3.bbappend
++index 44c95183..b0ec1ff4 100644
++--- a/meta-rz-common/recipes-multimedia/gstreamer/gstreamer1.0-plugins-bad_1.16.3.bbappend
+++++ b/meta-rz-common/recipes-multimedia/gstreamer/gstreamer1.0-plugins-bad_1.16.3.bbappend
++@@ -10,19 +10,19 @@ SRC_URI_append = " \
++     file://0004-waylandsink-Add-mising-code-for-scale-feature.patch \
++     file://0005-gstreamer-waylandsink-disable-subsurface-in-fullscre.patch \
++     file://0006-waylandsink-Add-support-for-I420-in-dmabuf.patch \
++-    ${@bb.utils.contains('MACHINE_FEATURES', 'bayer2raw', 'file://0007-New-libbayersink-Bayer-to-RAW-converter-and-display-.patch', '', d)} \
++-    ${@bb.utils.contains('MACHINE_FEATURES', 'bayer2raw', 'file://0008-ext-bayerconvert-add-bayerconvert-plugin.patch', '', d)} \
+++    ${@bb.utils.contains('MACHINE_FEATURES', 'bayer2raw', bb.utils.contains('BBFILE_COLLECTIONS', 'rz-graphics', 'file://0007-New-libbayersink-Bayer-to-RAW-converter-and-display-.patch', '', d), '', d)} \
+++    ${@bb.utils.contains('MACHINE_FEATURES', 'bayer2raw', bb.utils.contains('BBFILE_COLLECTIONS', 'rz-graphics', 'file://0008-ext-bayerconvert-add-bayerconvert-plugin.patch', '', d), '', d)} \
++  "
++ 
++ SRC_URI_append_rzg2l = " \
++     file://0001-gstreamer-waylandsink-Add-stride-restriction-to-buff.patch \
++-    file://0002-ext-bayersink-Remove-EGL_PIXMAP_BIT-while-using-mali.patch \
+++    ${@bb.utils.contains('MACHINE_FEATURES', 'bayer2raw', bb.utils.contains('BBFILE_COLLECTIONS', 'rz-graphics', 'file://0002-ext-bayersink-Remove-EGL_PIXMAP_BIT-while-using-mali.patch', '', d), '', d)} \
++ "
++ 
++ SRCREV_base = "3ef17d3c57e12f9d7536e464656b871a8949fa5b"
++ 
++ DEPENDS += "weston virtual/libgles2 mmngr-user-module mmngrbuf-user-module"
++-DEPENDS += "${@bb.utils.contains('MACHINE_FEATURES', 'bayer2raw', 'bayer2raw', '', d)}"
+++DEPENDS += "${@bb.utils.contains('MACHINE_FEATURES', 'bayer2raw', bb.utils.contains('BBFILE_COLLECTIONS', 'rz-graphics', 'bayer2raw', '', d), '', d)}"
++ 
++ 
++ S = "${WORKDIR}/git"
++-- 
++2.25.1
++
+diff -uprN VLP_G_v3.0.6/extra/0001-rz-common-linux-update-linux-kernel-to-the-latest-re.patch VLP_G_v3.0.6-update3/extra/0001-rz-common-linux-update-linux-kernel-to-the-latest-re.patch
+--- VLP_G_v3.0.6/extra/0001-rz-common-linux-update-linux-kernel-to-the-latest-re.patch	1970-01-01 09:00:00.000000000 +0900
++++ VLP_G_v3.0.6-update3/extra/0001-rz-common-linux-update-linux-kernel-to-the-latest-re.patch	2024-07-26 11:28:28.707110356 +0900
+@@ -0,0 +1,45 @@
++From 4ba2b531f4e9db85ffbd94e2df35bf6e1a6a1aad Mon Sep 17 00:00:00 2001
++From: Hien Huynh <hien.huynh.px@renesas.com>
++Date: Wed, 12 Jun 2024 21:08:55 +0700
++Subject: [PATCH] rz-common: linux: update linux kernel to the latest revision
++
++Update linux kernel to the latest revision to fix below issues:
++- RZ/G2L Series, RZ/V2L and RZ/Five: no sound for 48Khz rate.
++- Add condition for RZ/G2L's PLL setting for display clock to let
++low resolutions work normally.
++
++Signed-off-by: Hien Huynh <hien.huynh.px@renesas.com>
++---
++ .../linux-libc-headers/linux-libc-headers_5.10.bb               | 2 +-
++ meta-rz-common/recipes-kernel/linux/linux-renesas_5.10.bb       | 2 +-
++ 2 files changed, 2 insertions(+), 2 deletions(-)
++
++diff --git a/meta-rz-common/recipes-kernel/linux-libc-headers/linux-libc-headers_5.10.bb b/meta-rz-common/recipes-kernel/linux-libc-headers/linux-libc-headers_5.10.bb
++index c08e628357..1636e9b992 100644
++--- a/meta-rz-common/recipes-kernel/linux-libc-headers/linux-libc-headers_5.10.bb
+++++ b/meta-rz-common/recipes-kernel/linux-libc-headers/linux-libc-headers_5.10.bb
++@@ -3,7 +3,7 @@ require recipes-kernel/linux-libc-headers/linux-libc-headers.inc
++ KERNEL_URL = " \
++     git://github.com/renesas-rz/rz_linux-cip.git"
++ BRANCH = "${@oe.utils.conditional("IS_RT_BSP", "1", "rz-5.10-cip41-rt17", "rz-5.10-cip41",d)}"
++-SRCREV = "${@oe.utils.conditional("IS_RT_BSP", "1", "ca73c38c8cc9f885d71d7aa3e4c492e3138305fb", "0db7a90de0883e06da1aa5554bc2ec17a5f89545",d)}"
+++SRCREV = "${@oe.utils.conditional("IS_RT_BSP", "1", "13d833431c8f69b225e3bb94cb72b06774fd47c0", "0030c60827fe590e8dbdfe58a9844328b9e28b9a",d)}"
++ LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
++ 
++ SRC_URI = "${KERNEL_URL};branch=${BRANCH}"
++diff --git a/meta-rz-common/recipes-kernel/linux/linux-renesas_5.10.bb b/meta-rz-common/recipes-kernel/linux/linux-renesas_5.10.bb
++index 3d5c1f0020..cacbe7ae47 100644
++--- a/meta-rz-common/recipes-kernel/linux/linux-renesas_5.10.bb
+++++ b/meta-rz-common/recipes-kernel/linux/linux-renesas_5.10.bb
++@@ -14,7 +14,7 @@ COMPATIBLE_MACHINE_rzg3s = "(rzg3s-dev|smarc-rzg3s)"
++ KERNEL_URL = " \
++     git://github.com/renesas-rz/rz_linux-cip.git"
++ BRANCH = "${@oe.utils.conditional("IS_RT_BSP", "1", "rz-5.10-cip41-rt17", "rz-5.10-cip41",d)}"
++-SRCREV = "${@oe.utils.conditional("IS_RT_BSP", "1", "ca73c38c8cc9f885d71d7aa3e4c492e3138305fb", "0db7a90de0883e06da1aa5554bc2ec17a5f89545",d)}"
+++SRCREV = "${@oe.utils.conditional("IS_RT_BSP", "1", "13d833431c8f69b225e3bb94cb72b06774fd47c0", "0030c60827fe590e8dbdfe58a9844328b9e28b9a",d)}"
++ 
++ SRC_URI = "${KERNEL_URL};protocol=https;nocheckout=1;branch=${BRANCH}"
++ LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
++-- 
++2.25.1
++
+diff -uprN VLP_G_v3.0.6/extra/0001-rz-common-recipes-debian-buster-glibc-update-to-v2.2.patch VLP_G_v3.0.6-update3/extra/0001-rz-common-recipes-debian-buster-glibc-update-to-v2.2.patch
+--- VLP_G_v3.0.6/extra/0001-rz-common-recipes-debian-buster-glibc-update-to-v2.2.patch	1970-01-01 09:00:00.000000000 +0900
++++ VLP_G_v3.0.6-update3/extra/0001-rz-common-recipes-debian-buster-glibc-update-to-v2.2.patch	2024-07-26 11:28:28.707110356 +0900
+@@ -0,0 +1,44 @@
++From d35f32841cee804a72c33d82ee975929ed41cf34 Mon Sep 17 00:00:00 2001
++From: Yoshikuni Kamimiya <yoshikuni.kamimiya.xw@renesas.com>
++Date: Thu, 25 Jul 2024 19:41:44 +0900
++Subject: [PATCH] rz-common: recipes-debian: buster: glibc: update to
++ v2.28-10+deb10u4
++
++---
++ .../recipes-debian/buster/sources/glibc.inc        | 14 +++++++-------
++ 1 file changed, 7 insertions(+), 7 deletions(-)
++
++diff --git a/meta-rz-common/recipes-debian/buster/sources/glibc.inc b/meta-rz-common/recipes-debian/buster/sources/glibc.inc
++index 3e8cb96f..ef6920e0 100644
++--- a/meta-rz-common/recipes-debian/buster/sources/glibc.inc
+++++ b/meta-rz-common/recipes-debian/buster/sources/glibc.inc
++@@ -1,19 +1,19 @@
++ # This is generated by debian-source.bbclass
++-DPV = "2.28-10+deb10u2"
+++DPV = "2.28-10+deb10u4"
++ DPV_EPOCH = ""
++ REPACK_PV = "2.28"
++ PV = "2.28"
++ 
++ DEBIAN_SRC_URI = " \
++-    ${DEBIAN_SECURITY_UPDATE_MIRROR}/main/g/glibc/glibc_2.28-10+deb10u2.dsc;name=glibc_2.28-10+deb10u2.dsc \
+++    ${DEBIAN_SECURITY_UPDATE_MIRROR}/main/g/glibc/glibc_2.28-10+deb10u4.dsc;name=glibc_2.28-10+deb10u4.dsc \
++     ${DEBIAN_SECURITY_UPDATE_MIRROR}/main/g/glibc/glibc_2.28.orig.tar.xz;name=glibc_2.28.orig.tar.xz \
++-    ${DEBIAN_SECURITY_UPDATE_MIRROR}/main/g/glibc/glibc_2.28-10+deb10u2.debian.tar.xz;name=glibc_2.28-10+deb10u2.debian.tar.xz \
+++    ${DEBIAN_SECURITY_UPDATE_MIRROR}/main/g/glibc/glibc_2.28-10+deb10u4.debian.tar.xz;name=glibc_2.28-10+deb10u4.debian.tar.xz \
++ "
++ 
++-SRC_URI[glibc_2.28-10+deb10u2.dsc.md5sum] = "8a9b02db2971504e563523b8f49e0955"
+++SRC_URI[glibc_2.28-10+deb10u4.dsc.md5sum] = "b39dd7f7f54c6b7da3eefcd391470af2"
++ SRC_URI[glibc_2.28.orig.tar.xz.md5sum] = "2d78d5b080fbe4fefa2e1ccef9c39dbc"
++-SRC_URI[glibc_2.28-10+deb10u2.debian.tar.xz.md5sum] = "7126538aa85de4e8b9cb6d03ba5de681"
+++SRC_URI[glibc_2.28-10+deb10u4.debian.tar.xz.md5sum] = "8ebb6ee80ba6a5e39eacc31c95994ef0"
++ 
++-SRC_URI[glibc_2.28-10+deb10u2.dsc.sha256sum] = "1db9443dcf591e7c3980686ebf782400658761c6dcf832c704efbd592e203418"
+++SRC_URI[glibc_2.28-10+deb10u4.dsc.sha256sum] = "55e4ebd9a55755c84d42709b23f9b269f46b6a76f5040a0e05cfd323ba67f8af"
++ SRC_URI[glibc_2.28.orig.tar.xz.sha256sum] = "53d3c1c7bff0fb25d4c7874bf13435dc44a71fd7dd5ffc9bfdcb513cdfc36854"
++-SRC_URI[glibc_2.28-10+deb10u2.debian.tar.xz.sha256sum] = "e9e8a1512517faa1cab5a5fe0231dcae3d410ad3f981a8db5e1494ed68bee15a"
+++SRC_URI[glibc_2.28-10+deb10u4.debian.tar.xz.sha256sum] = "dc287870d4b8cb5d1d175fa9b95e3a97d6b68699680b443ae7b2a1b89f0fe8fc"
++-- 
++2.25.1
++
+diff -uprN VLP_G_v3.0.6/extra/0001-virtualization-layer-docker-ce-Fix-issue-conflict-sy.patch VLP_G_v3.0.6-update3/extra/0001-virtualization-layer-docker-ce-Fix-issue-conflict-sy.patch
+--- VLP_G_v3.0.6/extra/0001-virtualization-layer-docker-ce-Fix-issue-conflict-sy.patch	1970-01-01 09:00:00.000000000 +0900
++++ VLP_G_v3.0.6-update3/extra/0001-virtualization-layer-docker-ce-Fix-issue-conflict-sy.patch	2024-07-26 11:28:28.711110384 +0900
+@@ -0,0 +1,32 @@
++From 4061d967c62ee6a1ea05eae405875ce45a1481a3 Mon Sep 17 00:00:00 2001
++From: Huy Nguyen <huy.nguyen.wh@renesas.com>
++Date: Fri, 12 Apr 2024 09:38:45 +0700
++Subject: [PATCH] virtualization-layer: docker-ce: Fix issue conflict system
++
++The sysvinit functionality conflicts with the docker daemon
++settings required for the systemd docker.socket.
++
++Ensure that the sysvinit capabilities are only enabled if
++systemd is not present.
++
++Refer: https://git.yoctoproject.org/meta-virtualization/commit/?id=f6bf30aca6cb16f4fe185965f56e4e59dd7848f8
++
++Signed-off-by: Huy Nguyen <huy.nguyen.wh@renesas.com>
++---
++ .../virtualization-layer/docker/docker-ce_git.bbappend      | 6 ++----
++ 1 file changed, 2 insertions(+), 4 deletions(-)
++
++diff --git a/meta-rz-common/dynamic-layers/virtualization-layer/docker/docker-ce_git.bbappend b/meta-rz-common/dynamic-layers/virtualization-layer/docker/docker-ce_git.bbappend
++index 8d7b829199..53c2f3ce1a 100644
++--- a/meta-rz-common/dynamic-layers/virtualization-layer/docker/docker-ce_git.bbappend
+++++ b/meta-rz-common/dynamic-layers/virtualization-layer/docker/docker-ce_git.bbappend
++@@ -1,4 +1,2 @@
++-do_install_append() {
++-	install -d ${D}${sysconfdir}/init.d
++-	install -m 0755 ${WORKDIR}/docker.init ${D}${sysconfdir}/init.d/docker.init
++-}
+++INITSCRIPT_PACKAGES = "${@bb.utils.contains('DISTRO_FEATURES','systemd','', '${PN}',d)}"
+++INITSCRIPT_NAME:${PN} = "${@bb.utils.contains('DISTRO_FEATURES','systemd','', 'docker.init',d)}"
++-- 
++2.25.1
++
