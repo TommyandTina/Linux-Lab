@@ -1,0 +1,223 @@
+	x. How to run test						
+	- 1-7 total test						
+	----START TESTING----						
+	Check IPL : does it have Loosy compresss ?, more detail see MMP_MMNGR renesas documentation						
+	*/						
+	NOTICE:  BL2: Lossy Decomp areas						
+	NOTICE:       Entry 0: DCMPAREACRAx:0x80000540 DCMPAREACRBx:0x570						
+	NOTICE:       Entry 1: DCMPAREACRAx:0x40000000 DCMPAREACRBx:0x0						
+	NOTICE:       Entry 2: DCMPAREACRAx:0x20000000 DCMPAREACRBx:0x0						
+	/*						
+	Make sure vsp2_tp is built for your board target						
+	modprobe -a mmngr mmngrbuf						
+	Step 1: copy Gen3_vsp2_tp_macro/* and Gen3_vsp2_tp_data/* to /v4l2-TP/Gen3_vsp2_tp						
+	Step 2: chmod +x * 						
+	Step 3: ./vsp2_tp						
+	Step 4: mac run totalTest.mac						
+	Step 5: Wait for 10-15min						
+							
+	Use teraterm to save log due to long execution						
+							
+	- 8. case 4_1&4&7&10&13						
+	----START TESTING----						
+	Make sure vsp2_tp is built for your board target						
+	modprobe -a mmngr mmngrbuf						
+	Step 1: ./vsp2_tp 						
+	Step 2: tt media 1						
+	Step 3: tt compress case 1						
+	Step 4: tt compress case 4						
+	Step 5: tt compress case 7						
+	Step 6: tt compress case 10						
+							
+	----START TESTING----						
+	modprobe -a mmngr mmngrbuf						
+	Step 1: copy /v4l2-TP/Gen3_vsp2_tp_script/testSusres.sh to v4l2-TP/Gen3_vsp2_tp/						
+	Step 2: chmod +x * 						
+	Before step 3, make sure we vsp2_tp is built for your board target						
+	Step 3: ./testSusres.sh &						
+	Step 4: i2cset -f 7 0x30 0x20 0x0F -> turn off board						
+	Step 5: echo mem > /sys/power/state -> turn on board						
+							
+	Note: v4l-utils						
+	Repo: https://git.linuxtv.org/v4l-utils.git						
+	Commit: 						
+	4aee01a027923cab1e40969f56f8ba58d3e6c0d1						
+							
+	Build v4_utils : 						
+	At 192.168.4.12						
+	$ source ~/thuanha/sdk/environment-setup-cortexa57-cortexa53-poky-linux						
+							
+	Before you build this source, you should check your poky that install libmmngr, libmmngrbuf, libmedia, libv4l2 and their header files.						
+	If  there is no shared lib , you should build these share lib and adjust path variable to your Makefile.						
+							
+	For v4l2-utils						
+	$ git clone https://git.linuxtv.org/v4l-utils.git						
+	$ cd v4l-utils						
+	$ git checkout v4l-utils-1.26.1						
+	$ source /path/to/your/poky						
+	$ meson build						
+	$ cd build						
+	$ ninja						
+							
+	media-ctl test app, header files and sharelib will be at ~/WORK/v4l-utils/build/utils/						
+							
+	Download v4l2-TP from sharepoint (test tool)						
+							
+	After ninja, change Makefile of testtool you want to compile (in v4l2-TP/vsp2driver_tp-rcar-gen3/*):						
+	CFLAGS          +=      \						
+	        -I./            \						
+	        -I/path-to/v4l-utils/build/utils \						
+							
+	LDFLAGS         +=      \						
+	        -L/path-to/v4l-utils/build/utils/media-ctl \						
+							
+							
+	----START TESTING----						
+	modprobe -a mmngr mmngrbuf						
+	Make sure v4l2_uds_tp, v4l2_lut_tp, v4l2_hgo_tp, v4l2_clu_tp, v4l2_bru_tp compile for exact target (check Makefile) (m3/m3n and e3 using same command 'make m3')						
+	Step 1: copy v4l2_uds_tp, v4l2_lut_tp, v4l2_hgo_tp, v4l2_clu_tp, v4l2_bru_tp that you have built in previous step to /v4l2-TP/Gen3_vsp2_tp_script						
+	Step 2: copy file in input_image to /v4l2-TP/Gen3_vsp2_tp_script						
+	Step 3: chmod +x * in /v4l2-TP/Gen3_vsp2_tp_script						
+	Step 4: ./testVsp2driver_tp.sh						
+							
+							
+	- 9.State-transition-test_40&41&51						
+	----START TESTING----						
+	Make sure vsp2_tp is built for your board target						
+	modprobe -a mmngr mmngrbuf						
+	Step 1: ./vsp2_tp tt media 1 "->" tt seq case 43 						
+	Step 2: modprobe -r vsp2 						
+	Step 3: modprobe vsp2						
+	Step 4: ./vsp2_tp tt media 1 "->" tt seq case 44    (after 10s send interrupt - Ctrl + C)						
+	Step 5: modprobe -r vsp2						
+	Step 6: modprobe vsp2						
+	Step 7: ./vsp2_tp tt media 1 "->" tt seq case 45						
+							
+	- 13. Repetition-test-and-memory-leak-test-1-4_8-11_12						
+	----START TESTING----						
+	Case 1-4,8-11						
+	Check vsp2 (may be miss after running case 12)						
+	modprobe -a mmngr mmngrbuf						
+	Step 1: ./vsp2_tp 						
+	Step 2: mac run test_loop.mac						
+							
+	Case 12						
+	modprobe -a mmngr mmngrbuf						
+	Step 1: ../Gen3_vsp2_tp_script/test4311.sh						
+	Step 2: modprobe vsp2                       (turn it on again for another case)						
+							
+	- 14.Memory-leak-test-5000s						
+	----START TESTING----						
+	Make sure vsp2_tp is built for your board						
+	modprobe -a mmngr mmngrbuf						
+	Step 1: Change media 3 -> 2 if not using H3 in testLongExec.sh						
+	Step 2: copy testLongExec.sh to Gen3_vsp2_tp						
+	Step 3: ./testLongExec.sh 						
+							
+	This test case cost 5000 seconds, so we can run it when we are taking a break						
+							
+	!!! Use teraterm to save log, otherwise it will occur buffer leak (Cost you another 5000s !!!!)						
+							
+	- 15.Simutaneous-operation-test						
+	----START TESTING----						
+	modprobe -a mmngr mmngrbuf						
+	Step 0: systemctl stop weston@root						
+	Step 1: modprobe vspm_if						
+	Step 2: Copy testDoubleExec.sh, execVsp2UsecaseAll.sh, execVspmtpLoop.sh to Gen3_vsp2_tp						
+	Step 3: change ./vspm_tp -> vspm_tp in execVspmtpLoop.sh						
+	Step 4: If you are using M3/M3N/E3, change media 3 to media 2 in execVsp2UsecaseAll.sh and testDoubleExec.sh. Delete 4 line for only H3 in testDoubleExec.sh (need to read notes in japanese T.T)						
+	Step 5: ./testDoubleExec.sh						
+							
+	- 16.CPU-high-load-test						
+	How to build stress	 	 	 	 	 	 
+	$ wget http://repository.timesys.com/buildsources/s/stress/stress-1.0.4/stress-1.0.4.tar.gz	 					
+	$ tar -xvf stress-1.0.4.tar.gz	 	 	 	 	 	 
+	$ cd stress-1.0.4	 	 	 	 	 	 
+	$ source /opt/poky/2.4.3/environment-setup-aarch64-poky-linux	 	 	 			
+	$ ./configure --build=x86_64-linux --host=x86_64-pokysdk-linux	 	 	 			
+	$ make	 	 	 	 	 	 
+	-> Please copy the binary generated by stress under the src/ directory to rootfs.						
+							
+	----START TESTING----						
+	Make sure vsp2_tp is built for your board, stress is built and put at same directory of test7111_stress						
+	modprobe -a mmngr mmngrbuf						
+	Step 1: Change media 3 -> 2 if not using H3 in test7111_stress.mac						
+	Step 2: ./vsp2_tp						
+	Step 3: mac run test7111_stress.mac						
+							
+	- 17.Forced-termination-test						
+	----START TESTING----						
+	Make sure vsp2_tp is built for your board						
+	modprobe -a mmngr mmngrbuf						
+	Step 1: ./vsp2_tp tt media 1 "->" tt kill case 1						
+	Step 2: ./vsp2_tp tt media 1 "->" tt kill case 9						
+	Step 3: ./vsp2_tp tt media 1 "->" tt kill case 2						
+	Step 4: ./vsp2_tp tt media 1 "->" tt kill case 2 ./vsp2_tp tt media 1 "->" tt kill case 9						
+	Step 5: ./vsp2_tp tt media 1 "->" tt kill case 3 ./vsp2_tp tt media 1 "->" tt kill case 9						
+	Step 6: ./vsp2_tp tt media 1 "->" tt kill case 4 ./vsp2_tp tt media 1 "->" tt kill case 9						
+	Step 7: ./vsp2_tp tt media 1 "->" tt kill case 5 ./vsp2_tp tt media 1 "->" tt kill case 9						
+	Step 8: ./vsp2_tp tt media 1 "->" tt kill case 6 ./vsp2_tp tt media 1 "->" tt kill case 9						
+	Step 9: ./vsp2_tp tt media 1 "->" tt kill case 7 ./vsp2_tp tt media 1 "->" tt kill case 9						
+	Step 10: ./vsp2_tp tt media 1 "->" tt kill case 8 ./vsp2_tp tt media 1 "->" tt kill case 9						
+							
+	- 18.Processing-time-test_1-9						
+	Read 8.case 4_14-28 to get v4-utils before doing next steps						
+							
+	----START TESTING----						
+	No 1~8						
+	Make sure vsp2_tp is built for your board						
+	modprobe -a mmngr mmngrbuf						
+	Step 1: edit Makefile( make sure mediactl.h is in CFLAGS dir)						
+							
+	CFLAGS		+=	\			
+		-I./		\			
+		#NAME?					
+							
+	LDFLAGS 	+=	\				
+		#NAME?					
+							
+	Step 2: edit in v4l2_*_tp.c in ../v4l2_measure, add 4th argument is 0						
+	Example:						
+	FROM						
+		if (v4l2_subdev_set_selection(brupad.ppad2->entity, &rect,					
+			brupad.ppad2->index, V4L2_SEL_TGT_COMPOSE,				
+			V4L2_SUBDEV_FORMAT_ACTIVE) != 0) {				
+			printf("Error : v4l2_subdev_set_selection(bru pad 2)\n");				
+			return -1;				
+		}					
+	TO						
+		if (v4l2_subdev_set_selection(brupad.ppad2->entity, &rect,					
+			brupad.ppad2->index,0, V4L2_SEL_TGT_COMPOSE,				
+			V4L2_SUBDEV_FORMAT_ACTIVE) != 0) {				
+			printf("Error : v4l2_subdev_set_selection(bru pad 2)\n");				
+			return -1;				
+		}					
+	Step 3: change FROM  #include <mediactl/mediactl.h> to  #include <media-ctl/mediactl.h>						
+	Step 4: make m3 (for e3,m3,m3n) or make (for h3)						
+	Step 5: ./v4l2_measure_m3_e3 u > kekka_uds.txt && cat kekka_uds.txt						
+	Step 6: ./v4l2_measure_m3_e3 l > kekka_lut.txt && cat kekka_lut.txt						
+	Step 7: ./v4l2_measure_m3_e3 c > kekka_clu.txt && cat kekka_clu.txt						
+	Step 8: ./v4l2_measure_m3_e3 h > kekka_hgo.txt && cat kekka_hgo.txt						
+							
+	NO.9						
+	Keep going from NO.8						
+	Step 9: ./vsp2_tp tt media 1 "->" tt all f &						
+							
+	- 19.WPF-test-1-7						
+	----START TESTING----						
+	Make sure v4l2_wpf_cmps_tp is built for your board						
+	modprobe -a mmngr mmngrbuf						
+	Step 1:	chmod 777 * 		->	./v4l2_wpf_cmps_tp		
+	Step 2: ./v4l2_wpf_cmps_tp 1						
+	Step 3: ./v4l2_wpf_cmps_tp 2						
+	Step 4: ./v4l2_wpf_cmps_tp 3						
+	Step 5: ./v4l2_wpf_cmps_tp 4						
+	Step 6: ./v4l2_wpf_cmps_tp 5						
+	Step 7: ./v4l2_wpf_cmps_tp 6						
+	Step 8: ./v4l2_wpf_cmps_tp 7						
+							
+							
+	- 20.YUV-test						
+	----START TESTING----						
+	modprobe -a mmngr mmngrbuf						
+	Step 1:	chmod 777 * 		->	./v4l2_tp_yvu		

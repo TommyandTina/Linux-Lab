@@ -11,6 +11,10 @@
 	rsync -R /usr/sbin/mkfs /đường_dẫn_đích : giữ nguyên cấu trúc khi copy VD: /usr/lib/opkg/alternatives/mkfs.ext2 vào thư mục /home/user -> /home/user/usr/lib/opkg/alternatives/mkfs.ext2
 	(COPY mkfs và lsblk vào root mới - đứng ở thư mục rootfs cũ chứa lsblk : sudo rsync -Rl $(find . -name '*mkfs*' 2>/dev/null) ../../E3_full/rootfs/)
 	rsync -rl thì chỉ copy như 'cp' chứ không vào đúng thư mục
+	
+- move tất cả vào 1 thư mục nằm trong thư mục hiện tại:
+	mv !(yocto_rzsbc_board) yocto_rzsbc_board/
+	cp -r !(yocto_rzsbc_board) yocto_rzsbc_board/
 -remove:
 	rm -rf:xóa sạch folder + file
 
@@ -230,6 +234,27 @@
 	Xem toàn bộ recipe có sẵn: bitbake-layers show-recipes > ../../recipe_yocto.txt
 	Cài file rpm từ trong source yocto: rpm -ivh package1.rpm package2.rpm (lấy file trên trong build/tmp/deploy/rpm)
 	Để remove 1 file bb thì comment lại SRC_UNI
+	Thêm checksum cho các SRC_UNI được thêm mới/thay đổi:
+		1. Tính Toán Checksum
+		Trước tiên, bạn cần tính toán checksum cho mã nguồn Docker CE mà bạn đang cố gắng tải xuống.
+
+		Clone Repository:
+
+		git clone https://github.com/docker/docker-ce.git -b 19.03
+		cd docker-ce
+
+		Tính Toán SHA256 Checksum:
+
+		Sử dụng lệnh sau để tính toán checksum:
+
+		git archive --format=tar HEAD | sha256sum
+		git archive --format=tar HEAD | md5sum
+		find . -type f -exec sha256sum {} + | sort | sha256sum
+		find . -type f -exec md5sum {} + | sort | md5sum
+
+		Ghi lại giá trị checksum mà lệnh này trả về.
+		SRC_URI[localedef.md5sum] = "NEW_MD5_CHECKSUM"
+		SRC_URI[localedef.sha256sum] = "NEW_SHA256_CHECKSUM"
 
 - thêm file này vào cuối file kia:
 	cat file2 >> file1  (1 dấu > là ghi đè)
@@ -575,3 +600,44 @@
 - Xóa commit gần nhất:
 	Giữ lại thay đổi : git reset --soft HEAD~1
 	Xóa luôn thay đổi : git reset --hard HEAD~1
+	
+- Jupyter notebook .ipynb:
+	!mkdir {HOME}/datasets : dấu ! là lệnh shell, không ảnh hưởng tới work directory hiện tại của mã (python)
+	%cd {HOME}/datasets : dấu % là magic commands, có thể thay đổi được work directory của mã đang chạy
+	
+- Lấy diff mà loại trừ 1 số file/thư mục
+	1. Nhiều Tùy Chọn --exclude
+	Bạn có thể sử dụng nhiều lần tùy chọn --exclude để loại trừ từng thư mục:
+
+	diff -r --exclude=.git --exclude=build --exclude=logs dir1/ dir2/
+	2. Sử Dụng Mẫu
+	Nếu bạn muốn loại trừ các thư mục theo mẫu, bạn có thể sử dụng cú pháp wildcard với --exclude:
+
+	diff -r --exclude=.git --exclude=build --exclude=logs dir1/ dir2/
+	3. Exclude Nhiều Thư Mục Bằng Tập Tin
+	Một cách khác là tạo một file chứa danh sách các mẫu mà bạn muốn loại trừ, sau đó sử dụng --exclude-from (không phải tất cả các phiên bản diff hỗ trợ tùy chọn này):
+
+	# Tạo file exclude.txt chứa:
+	# .git
+	# build
+	# logs
+
+	diff -r --exclude-from=exclude.txt dir1/ dir2/
+	
+- Xem pass wifi window:
+	netsh wlan show profile
+	netsh wlan show profile name="RVC-WLS" key=clear
+	
+- Xem pass wifi linux (sudo only):
+	Xem danh sách các mạng đã kết nối:
+
+	Sử dụng lệnh sau để liệt kê các mạng Wi-Fi đã lưu:
+	nmcli connection show
+	Xem thông tin chi tiết của một mạng cụ thể:
+
+	Thay TênMạng bằng tên mạng bạn muốn kiểm tra:
+	nmcli connection show "TênMạng"
+	Kiểm tra mật khẩu:
+
+	Để xem mật khẩu, sử dụng lệnh sau (thay TênMạng bằng tên mạng):
+	sudo nmcli -s -g 802-11-wireless-security.psk connection show "TênMạng"
