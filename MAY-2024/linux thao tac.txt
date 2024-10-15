@@ -255,6 +255,12 @@
 		Ghi lại giá trị checksum mà lệnh này trả về.
 		SRC_URI[localedef.md5sum] = "NEW_MD5_CHECKSUM"
 		SRC_URI[localedef.sha256sum] = "NEW_SHA256_CHECKSUM"
+	
+	Thêm patch cho recipe:
+		Tạo folder "files", cho file patch vào đó
+		Thêm SRC_UNI+= " \
+			file://0001-linux-cip6.1-arm64-arch_gicv3-Workaround-GIC-access-.patch \
+		"
 
 - thêm file này vào cuối file kia:
 	cat file2 >> file1  (1 dấu > là ghi đè)
