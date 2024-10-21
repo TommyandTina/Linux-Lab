@@ -452,8 +452,14 @@
 	Để lưu cấu hình iptables và đảm bảo nó được khôi phục sau khi khởi động lại, bạn có thể cài đặt iptables-persistent:
 
 		sudo apt install iptables-persistent
+		Save vĩnh viễn: sudo netfilter-persistent save
 	
-	
+	- Restore lại:
+		sudo iptables -F
+		sudo iptables -t nat -F
+		sudo iptables -X
+		sudo rm /etc/iptables/rules.v4
+		sudo systemctl restart netfilter-persistent
 	- Kiểm tra route (tcp -T thông qua wifi)
 	traceroute -T 192.168.8.8
 	
@@ -541,7 +547,27 @@
 		Kết nối switch vào interface của máy Linux.
 		Kết nối các máy con vào switch.
 		
+- Ping 8.8.8.8 được nhưng không ping www.google.com được (thiếu dns server):
+	Kiểm Tra Tệp /etc/resolv.conf:
+	Mở tệp /etc/resolv.conf và kiểm tra nội dung:
 
+	cat /etc/resolv.conf
+	Nếu không có dòng nào chứa nameserver, bạn cần thêm máy chủ DNS. Ví dụ:
+
+	nameserver 8.8.8.8
+	nameserver 8.8.4.4
+	Để chỉnh sửa, sử dụng:
+
+	sudo nano /etc/resolv.conf
+	Sau đó, thêm các dòng trên và lưu lại.
+	Khởi Động Lại Dịch Vụ Mạng:
+	Sau khi chỉnh sửa, bạn có thể khởi động lại dịch vụ mạng để áp dụng thay đổi:
+
+	sudo systemctl restart networking
+	Kiểm Tra Kết Nối:
+	Sau khi thực hiện các bước trên, hãy thử ping lại www.google.com để kiểm tra xem vấn đề đã được giải quyết chưa:
+
+	ping www.google.com
 
 - Bật access point (wifi hotspot):
 	Bật Access Point wifi hotspot
@@ -647,3 +673,98 @@
 
 	Để xem mật khẩu, sử dụng lệnh sau (thay TênMạng bằng tên mạng):
 	sudo nmcli -s -g 802-11-wireless-security.psk connection show "TênMạng"
+	
+- minicom
+	Gõ trong u-boot: Ctrl A-Z-O, tắt Hardware flow
+	
+- Domain free:
+	Client ID: 4540882
+	Login email: tmytmgttl@fhpfhp.fr.nf
+	Pass iPhone
+	
+- Tạo openvpn (cho server và client):
+Bước khởi tạo file ca
+	sudo apt-get update
+	sudo apt-get install easy-rsa openvpn
+	make-cadir ~/Downloads/openvpn-ca
+	cd ~/Downloads/openvpn-ca
+	vi ~/Downloads/openvpn-ca/vars và uncomment các dòng sau:
+		set_var EASYRSA_REQ_COUNTRY     "US"
+		set_var EASYRSA_REQ_PROVINCE    "California"
+		set_var EASYRSA_REQ_CITY        "San Francisco"
+		set_var EASYRSA_REQ_ORG         "YourOrg"
+		set_var EASYRSA_REQ_EMAIL       "email@example.com"
+		set_var EASYRSA_REQ_OU          "YourOrganizationalUnit"
+Tạo cho server:
+	./easyrsa init-pki   # Khởi tạo thư mục PKI
+	./easyrsa build-ca   # Tạo CA
+	./easyrsa gen-req server nopass  # Tạo yêu cầu chứng chỉ cho server
+	./easyrsa sign-req server server  # Ký yêu cầu chứng chỉ cho server
+	./easyrsa gen-dh     # Tạo DH parameters
+Tạo cho client:
+	./easyrsa gen-req client1 nopass  # Tạo yêu cầu chứng chỉ cho client
+	./easyrsa sign-req client client1  # Ký yêu cầu chứng chỉ cho client
+	
+Trên server, chạy: 
+	sudo vi /etc/openvpn/server.conf
+	Comment hết lại rồi thêm:
+		port 1194
+		proto udp
+		dev tun
+		ca ca.crt
+		cert server.crt
+		key server.key
+		dh dh.pem
+		server 10.8.0.0 255.255.255.0
+		ifconfig-pool-persist ipp.txt
+		push "redirect-gateway def1 bypass-dhcp"
+		push "dhcp-option DNS 8.8.8.8"
+		push "dhcp-option DNS 8.8.4.4"
+		client-to-client
+		duplicate-cn
+		keepalive 10 120
+		cipher AES-256-CBC
+		persist-key
+		persist-tun
+		status openvpn-status.log
+		verb 3
+	Copy các file sau qua :
+		sudo cp ~/Downloads/openvpn-ca/pki/ca.crt /etc/openvpn/
+		sudo cp ~/Downloads/openvpn-ca/pki/issued/server.crt /etc/openvpn/
+		sudo cp ~/Downloads/openvpn-ca/pki/private/server.key /etc/openvpn/
+		sudo cp ~/Downloads/openvpn-ca/pki/dh.pem /etc/openvpn/
+	sudo systemctl start openvpn@server		: Bật 1 lần
+	sudo systemctl enable openvpn@server	: luôn bật khi khởi động
+	sudo systemctl status openvpn@server
+	sudo ufw allow 1194/udp					: optional, nếu có tường lửa
+
+Trên client chạy:
+	vi client.ovpn
+	Thêm vào file trên :
+		client
+		dev tun
+		proto udp
+		remote your-server-ip 1194  # Thay `your-server-ip` bằng địa chỉ IP của server OpenVPN , ip này là ip mà bạn có thể ping tới được (thường là public ip)
+		resolv-retry infinite
+		nobind
+		persist-key
+		persist-tun
+		cipher AES-256-CBC
+		verb 3
+
+		<ca>
+		# Nội dung của tệp ca.crt
+		</ca>
+
+		<cert>
+		# Nội dung của tệp client1.crt
+		</cert>
+
+		<key>
+		# Nội dung của tệp client1.key
+		</key>
+		
+	Chứng chỉ CA: 		cat ~/Downloads/openvpn-ca/pki/ca.crt
+	Chứng chỉ Client:	cat ~/Downloads/openvpn-ca/pki/issued/client1.crt
+	Khóa Client:		cat ~/Downloads/openvpn-ca/pki/private/client1.key
+	Kết nối vpn : 		sudo openvpn --config ~/client.ovpn

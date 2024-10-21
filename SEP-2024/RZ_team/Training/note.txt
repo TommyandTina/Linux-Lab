@@ -83,8 +83,21 @@ diff '--exclude=build' '--exclude=.git' '--exclude=*.pyc' '--exclude=__pycache__
 > SRC_URI[sha256sum] = "58b88be4fa3000803866cad67afb2fa975b940de7a6cfecfdf8a3041bb053e4f"
 
 		
-- rz-sbc scarthgap:
+- rz-smarc scarthgap:
 	/home/long.trinh-tien/rz-community-bsp/meta-rz-bsp/recipes-kernel/linux/linux-cip_6.1.bb thêm:
 	SRC_URI += " \
 		file://0001-linux-cip6.1-arm64-arch_gicv3-Workaround-GIC-access-.patch \
 	"
+	
+- RZ sbc khi cắm UART phải đổi TXD và RXD cho nhau so với trên hướng dẫn
+	Tạo sd bootable:
+		Balena etcher trên linux:  reboot máy để chạy balena etcher không lỗi
+		./sd_flash.sh /dev/sdb core-image-qt*.tar.gz (chỉ xài tar.gz, wic không extract được)
+	Trong bootloader.py thêm:
+	import codecs
+	codecs.register_error("strict", codecs.ignore_errors)
+	wic to sd card:
+		sudo dd if=core-image-sato-raspberrypi4-64.wic of=/dev/sdX bs=1M status=progress
+		bmaptool copy --nobmap core-image.wic /dev/sdb
+	wic.bz2 to sd card
+		sudo bmaptool copy core-image-sato-raspberrypi4-64.wic.bz2 /dev/sdX
